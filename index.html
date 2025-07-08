@@ -98,9 +98,16 @@
         
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 122, 255, 0.2);
+            border-color: rgba(0, 122, 255, 0.3);
         }
         
         .gradient-text {
@@ -179,11 +186,6 @@
                 linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 40px 40px;
-        }
-        
-        .old-way-card:hover {
-            box-shadow: 0 20px 40px rgba(0, 122, 255, 0.2);
-            border-color: rgba(0, 122, 255, 0.3);
         }
     </style>
 </head>
@@ -267,84 +269,48 @@
                     THE OLD WAY IS DEAD
                 </div>
                 <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">
-                    <span class="gradient-text">The Old Way is Dead</span>
+                    <span class="gradient-text">Static NPCs</span> are History
                 </h2>
                 <p class="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                    Static NPCs. Scripted dialogues. Predictable worlds. That era is over.
+                    Scripted dialogues. Predictable worlds. Repetitive interactions. That era is over.
                 </p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass-card rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl fade-in old-way-card">
-                    <div class="comparison-item old mb-10">
-                        <div class="flex items-center gap-3 mb-6">
-                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-2xl">
-                                👎
-                            </div>
-                            <div class="text-red-400 font-bold text-lg">Scripted NPCs</div>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">Pre-written dialogue trees</h3>
-                        <p class="text-gray-400 opacity-70">Limited responses, repetitive interactions, breaks immersion after 5 minutes</p>
-                    </div>
+                <div class="glass-card rounded-2xl p-8 transform transition-all hover:scale-105">
+                    <div class="text-red-400 text-sm font-semibold mb-4">OLD: Scripted NPCs</div>
+                    <h3 class="text-2xl font-bold mb-4">Pre-written dialogue trees</h3>
+                    <p class="text-gray-400 mb-6">Limited responses, repetitive interactions, breaks immersion after 5 minutes</p>
                     
-                    <div class="comparison-item new">
-                        <div class="flex items-center gap-3 mb-6">
-                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 flex items-center justify-center text-2xl">
-                                ✨
-                            </div>
-                            <div class="text-accent-400 font-bold text-lg">Living Characters</div>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">AI-driven personalities</h3>
-                        <p class="text-gray-400">Infinite conversations, evolving relationships, remembers everything</p>
-                    </div>
+                    <div class="h-px bg-gray-800 my-6"></div>
+                    
+                    <div class="text-green-400 text-sm font-semibold mb-4">NEW: Living Characters</div>
+                    <h3 class="text-2xl font-bold mb-4">AI-driven personalities</h3>
+                    <p class="text-gray-400">Infinite conversations, evolving relationships, remembers everything</p>
                 </div>
                 
-                <div class="glass-card rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl fade-in old-way-card">
-                    <div class="comparison-item old mb-10">
-                        <div class="flex items-center gap-3 mb-6">
-                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-2xl">
-                                👎
-                            </div>
-                            <div class="text-red-400 font-bold text-lg">Static Tutorials</div>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">One-size-fits-all tooltips</h3>
-                        <p class="text-gray-400 opacity-70">Players skip tutorials, get frustrated, abandon complex games</p>
-                    </div>
+                <div class="glass-card rounded-2xl p-8 transform transition-all hover:scale-105">
+                    <div class="text-red-400 text-sm font-semibold mb-4">OLD: Static Tutorials</div>
+                    <h3 class="text-2xl font-bold mb-4">One-size-fits-all tooltips</h3>
+                    <p class="text-gray-400 mb-6">Players skip tutorials, get frustrated, abandon complex games</p>
                     
-                    <div class="comparison-item new">
-                        <div class="flex items-center gap-3 mb-6">
-                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 flex items-center justify-center text-2xl">
-                                ✨
-                            </div>
-                            <div class="text-accent-400 font-bold text-lg">Adaptive Mentors</div>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">AI companions that teach</h3>
-                        <p class="text-gray-400">Personalized guidance, answers any question, learns player's style</p>
-                    </div>
+                    <div class="h-px bg-gray-800 my-6"></div>
+                    
+                    <div class="text-green-400 text-sm font-semibold mb-4">NEW: Adaptive Mentors</div>
+                    <h3 class="text-2xl font-bold mb-4">AI companions that teach</h3>
+                    <p class="text-gray-400">Personalized guidance, answers any question, learns player's style</p>
                 </div>
                 
-                <div class="glass-card rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl fade-in old-way-card">
-                    <div class="comparison-item old mb-10">
-                        <div class="flex items-center gap-3 mb-6">
-                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-2xl">
-                                👎
-                            </div>
-                            <div class="text-red-400 font-bold text-lg">Cloud Dependencies</div>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">$1.8M/month for 10k players</h3>
-                        <p class="text-gray-400 opacity-70">Latency kills immersion, server outages, privacy nightmares</p>
-                    </div>
+                <div class="glass-card rounded-2xl p-8 transform transition-all hover:scale-105">
+                    <div class="text-red-400 text-sm font-semibold mb-4">OLD: Cloud Dependencies</div>
+                    <h3 class="text-2xl font-bold mb-4">$1.8M/month for 10k players</h3>
+                    <p class="text-gray-400 mb-6">Latency kills immersion, server outages, privacy nightmares</p>
                     
-                    <div class="comparison-item new">
-                        <div class="flex items-center gap-3 mb-6">
-                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 flex items-center justify-center text-2xl">
-                                ✨
-                            </div>
-                            <div class="text-accent-400 font-bold text-lg">Local Intelligence</div>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">Zero infrastructure costs</h3>
-                        <p class="text-gray-400">Instant responses, always online, complete privacy</p>
-                    </div>
+                    <div class="h-px bg-gray-800 my-6"></div>
+                    
+                    <div class="text-green-400 text-sm font-semibold mb-4">NEW: Local Intelligence</div>
+                    <h3 class="text-2xl font-bold mb-4">Zero infrastructure costs</h3>
+                    <p class="text-gray-400">Instant responses, always online, complete privacy</p>
                 </div>
             </div>
         </div>
@@ -430,51 +396,54 @@
             
             <div class="max-w-4xl mx-auto mb-20 fade-in">
                 <div class="relative aspect-video rounded-2xl overflow-hidden border border-white/10">
-                    <div class="absolute inset-0 bg-gradient-to-br from-dark-700 to-dark-900 flex items-center justify-center cursor-pointer play-button">
-                        <div class="w-24 h-24 rounded-full bg-white/90 flex items-center justify-center text-3xl text-primary-600 shadow-xl">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
+                    <iframe 
+                        src="https://www.youtube.com/embed/poEFkKJ11Io" 
+                        title="Tryll Engine Demo"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen
+                        class="w-full h-full">
+                    </iframe>
                 </div>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in">
                     <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
+                        <i class="fas fa-calendar text-primary-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Book a Live Demo</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Get a personalized demo and see how Tryll can transform your game project.
+                    </p>
+                    <button class="px-6 py-3 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 text-white font-medium text-sm transition-all duration-300 hover:shadow-lg">
+                        Schedule Demo
+                    </button>
+                </div>
+                
+                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in">
+                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
+                        <i class="fas fa-question-circle text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">FAQ</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Find answers to common questions about Tryll Engine and implementation.
+                    </p>
+                    <button class="px-6 py-3 rounded-full bg-dark-700 text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300">
+                        View FAQ
+                    </button>
+                </div>
+                
+                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in">
+                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
                         <i class="fas fa-gamepad text-accent-500"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Try It Now</h3>
+                    <h3 class="text-2xl font-bold text-white mb-4">Try It In-Game</h3>
                     <p class="text-gray-400 mb-6 leading-relaxed">
-                        Download our Deep Rock Galactic mod and experience AI companions today.
+                        <span class="text-accent-400 font-medium">(Coming Soon!)</span> Download BoscoTryll Deep Rock Galactic mod and experience our AI companion.
                     </p>
-                    <button class="px-6 py-3 rounded-full bg-dark-700 text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300">
-                        Play with an AI Character
-                    </button>
-                </div>
-                
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
-                        <i class="fas fa-bolt text-primary-400"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Watch Full Demo</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">
-                        See how easy it is to integrate Tryll into any game engine in minutes.
-                    </p>
-                    <button class="px-6 py-3 rounded-full bg-dark-700 text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300">
-                        Watch Full Demo
-                    </button>
-                </div>
-                
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
-                        <i class="fas fa-book text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Read the Docs</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">
-                        Unity, Unreal, and custom engine support. Get started in 5 minutes.
-                    </p>
-                    <button class="px-6 py-3 rounded-full bg-dark-700 text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300">
-                        View Documentation
+                    <button class="px-6 py-3 rounded-full bg-dark-700 text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300 opacity-60 cursor-not-allowed">
+                        Coming Soon
                     </button>
                 </div>
             </div>
@@ -555,9 +524,27 @@
                         </div>
                         <div>
                             <h3 class="text-2xl font-bold text-white mb-4">Creative Control</h3>
-                            <p class="text-gray-400 leading-relaxed">
-                                Fine-tune personalities, set boundaries, and ensure NPCs stay true to your game's vision and rating.
+                            <p class="text-gray-400 leading-relaxed mb-6">
+                                We have a few stabilization mechanisms in place:
                             </p>
+                            <ul class="text-gray-400 leading-relaxed space-y-3">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-primary-400 font-bold">1.</span>
+                                    <span>Player's input in natural language is sent to a model. A model analyzes it and picks one of pre-defined options in the traditional dialogue tree that fits player's intentions the most.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-primary-400 font-bold">2.</span>
+                                    <span>Traditional dialogue tree need not to be abandoned. It can be shown on screen, and when player wants to, they can input text in natural language.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-primary-400 font-bold">3.</span>
+                                    <span>If player's hardware can not handle LLM inference during some scenes, we will fallback to a traditional dialogue tree.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-primary-400 font-bold">4.</span>
+                                    <span>Content filtering is important</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -815,10 +802,6 @@
             });
         });
         
-        // Video placeholder click
-        document.querySelector('.play-button').addEventListener('click', function() {
-            alert('Video player would open here. Replace with actual YouTube/Vimeo embed.');
-        });
         
         // Email form handling
         document.querySelector('form').addEventListener('submit', function(e) {

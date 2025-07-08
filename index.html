@@ -12,27 +12,35 @@
                 extend: {
                     colors: {
                         primary: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            200: '#bae6fd',
-                            300: '#7dd3fc',
-                            400: '#38bdf8',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            800: '#075985',
-                            900: '#0c4a6e',
+                            50: '#f8f9fa',
+                            100: '#f1f3f4',
+                            200: '#e3e5e8',
+                            300: '#c7ccd1',
+                            400: '#9ca3ab',
+                            500: '#232E41',
+                            600: '#1d2637',
+                            700: '#171e2d',
+                            800: '#111723',
+                            900: '#0b0f19',
                         },
                         dark: {
-                            900: '#050505',
-                            800: '#0a0a0a',
-                            700: '#101010',
-                            600: '#151515',
-                            500: '#1a1a1a',
+                            900: '#0a0d12',
+                            800: '#0f1419',
+                            700: '#141a20',
+                            600: '#1a2026',
+                            500: '#1f262d',
                         },
                         accent: {
-                            500: '#00f0a0',
-                            600: '#00c080',
+                            50: '#fefcfb',
+                            100: '#fdf9f7',
+                            200: '#fbf3ef',
+                            300: '#f8ede7',
+                            400: '#f7e7de',
+                            500: '#F6F0EB',
+                            600: '#ded5d0',
+                            700: '#c6bab5',
+                            800: '#ae9f9a',
+                            900: '#968480',
                         }
                     },
                     animation: {
@@ -41,6 +49,14 @@
                         'gradient-x': 'gradient-x 8s ease infinite',
                         'gradient-y': 'gradient-y 8s ease infinite',
                         'gradient-xy': 'gradient-xy 8s ease infinite',
+                        'fade-in-up': 'fade-in-up 0.8s ease-out',
+                        'fade-in-down': 'fade-in-down 0.8s ease-out',
+                        'fade-in-left': 'fade-in-left 0.8s ease-out',
+                        'fade-in-right': 'fade-in-right 0.8s ease-out',
+                        'scale-in': 'scale-in 0.5s ease-out',
+                        'rotate-in': 'rotate-in 0.6s ease-out',
+                        'slide-up': 'slide-up 0.6s ease-out',
+                        'glow-pulse': 'glow-pulse 2s ease-in-out infinite alternate',
                     },
                     keyframes: {
                         'float': {
@@ -76,6 +92,38 @@
                                 'background-size':'200% 200%',
                                 'background-position': 'right center'
                             }
+                        },
+                        'fade-in-up': {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        'fade-in-down': {
+                            '0%': { opacity: '0', transform: 'translateY(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        'fade-in-left': {
+                            '0%': { opacity: '0', transform: 'translateX(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        'fade-in-right': {
+                            '0%': { opacity: '0', transform: 'translateX(30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        'scale-in': {
+                            '0%': { opacity: '0', transform: 'scale(0.8)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' }
+                        },
+                        'rotate-in': {
+                            '0%': { opacity: '0', transform: 'rotate(-5deg) scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'rotate(0deg) scale(1)' }
+                        },
+                        'slide-up': {
+                            '0%': { transform: 'translateY(100%)' },
+                            '100%': { transform: 'translateY(0)' }
+                        },
+                        'glow-pulse': {
+                            '0%': { filter: 'brightness(1) saturate(1)' },
+                            '100%': { filter: 'brightness(1.2) saturate(1.3)' }
                         }
                     }
                 }
@@ -83,13 +131,61 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #050505;
-            color: #f5f5f7;
+            background-color: #0a0d12;
+            color: #F6F0EB;
             overflow-x: hidden;
+            line-height: 1.6;
+            letter-spacing: -0.025em;
+        }
+        
+        .heading-primary {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+        
+        .heading-secondary {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            line-height: 1.2;
+        }
+        
+        .heading-tertiary {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+        }
+        
+        .body-large {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+        
+        .body-medium {
+            font-size: 1rem;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        
+        .body-small {
+            font-size: 0.875rem;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+        
+        .mono-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            letter-spacing: 0.025em;
         }
         
         html {
@@ -97,52 +193,69 @@
         }
         
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            background: rgba(246, 240, 235, 0.08);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(246, 240, 235, 0.15);
+            box-shadow: 0 8px 32px rgba(35, 46, 65, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 122, 255, 0.2);
-            border-color: rgba(0, 122, 255, 0.3);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 24px 48px rgba(35, 46, 65, 0.4), 0 0 0 1px rgba(246, 240, 235, 0.2);
+            border-color: rgba(246, 240, 235, 0.25);
+            background: rgba(246, 240, 235, 0.12);
         }
         
         .gradient-text {
-            background: linear-gradient(90deg, #38bdf8 0%, #00f0a0 100%);
+            background: linear-gradient(135deg, #232E41 0%, #F6F0EB 50%, #232E41 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradient-text 3s ease infinite;
+        }
+        
+        @keyframes gradient-text {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
         
         .gradient-bg {
-            background: linear-gradient(90deg, rgba(56, 189, 248, 0.1) 0%, rgba(0, 240, 160, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(35, 46, 65, 0.2) 0%, rgba(246, 240, 235, 0.1) 100%);
         }
         
         .hero-gradient {
-            background: radial-gradient(ellipse at 30% 40%, rgba(56, 189, 248, 0.2) 0%, rgba(10, 10, 10, 0) 60%),
-                        radial-gradient(ellipse at 70% 60%, rgba(0, 240, 160, 0.2) 0%, rgba(10, 10, 10, 0) 60%);
+            background: radial-gradient(ellipse at 30% 40%, rgba(35, 46, 65, 0.3) 0%, rgba(10, 13, 18, 0) 60%),
+                        radial-gradient(ellipse at 70% 60%, rgba(246, 240, 235, 0.15) 0%, rgba(10, 13, 18, 0) 60%),
+                        radial-gradient(ellipse at 50% 80%, rgba(35, 46, 65, 0.2) 0%, transparent 50%);
         }
         
         .ai-particle {
             position: absolute;
-            background: rgba(255, 255, 255, 0.8);
+            background: radial-gradient(circle, rgba(246, 240, 235, 0.8) 0%, rgba(35, 46, 65, 0.4) 100%);
             border-radius: 50%;
             filter: blur(1px);
-            animation: float 6s ease-in-out infinite;
-            opacity: 0.6;
+            animation: float 6s ease-in-out infinite, particle-glow 4s ease-in-out infinite alternate;
+            opacity: 0.7;
+        }
+        
+        @keyframes particle-glow {
+            0% { box-shadow: 0 0 5px rgba(246, 240, 235, 0.3); }
+            100% { box-shadow: 0 0 15px rgba(246, 240, 235, 0.6), 0 0 25px rgba(35, 46, 65, 0.3); }
         }
         
         .neon-glow {
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5), 
-                        0 0 30px rgba(0, 240, 160, 0.3);
+            box-shadow: 0 0 20px rgba(35, 46, 65, 0.6), 
+                        0 0 40px rgba(246, 240, 235, 0.3),
+                        0 4px 20px rgba(35, 46, 65, 0.4);
         }
         
         .neon-glow-hover:hover {
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.7), 
-                        0 0 40px rgba(0, 240, 160, 0.5);
+            box-shadow: 0 0 30px rgba(35, 46, 65, 0.8), 
+                        0 0 60px rgba(246, 240, 235, 0.4),
+                        0 8px 30px rgba(35, 46, 65, 0.5);
         }
         
         .fade-in {
@@ -157,20 +270,20 @@
         }
         
         .play-button {
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .play-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.7);
+            transform: scale(1.1) rotate(3deg);
+            box-shadow: 0 0 30px rgba(35, 46, 65, 0.8), 0 0 50px rgba(246, 240, 235, 0.4);
         }
         
         .ripple {
             position: absolute;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
+            background: radial-gradient(circle, rgba(246, 240, 235, 0.6) 0%, rgba(35, 46, 65, 0.3) 100%);
             transform: scale(0);
-            animation: ripple 0.6s linear;
+            animation: ripple 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             pointer-events: none;
         }
         
@@ -181,65 +294,270 @@
             }
         }
         
+        .glass-enhanced {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glass-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(246, 240, 235, 0.1) 0%, 
+                transparent 50%, 
+                rgba(35, 46, 65, 0.05) 100%);
+            pointer-events: none;
+        }
+        
+        .glass-enhanced::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(246, 240, 235, 0.3) 50%, 
+                transparent 100%);
+            pointer-events: none;
+        }
+        
+        .subtle-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .subtle-hover:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.05);
+        }
+        
+        .breathing-animation {
+            animation: breathing 4s ease-in-out infinite;
+        }
+        
+        @keyframes breathing {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        .parallax-float {
+            animation: parallax-float 8s ease-in-out infinite;
+        }
+        
+        @keyframes parallax-float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-10px) rotate(1deg); }
+            66% { transform: translateY(-5px) rotate(-1deg); }
+        }
+        
+        .stagger-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: stagger-fade 0.8s ease-out forwards;
+        }
+        
+        @keyframes stagger-fade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .magnetic-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        
+        .magnetic-hover:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 10px 30px rgba(35, 46, 65, 0.3);
+        }
+        
+        .radial-light {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .radial-light::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(35, 46, 65, 0.2) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .radial-light:hover::before {
+            opacity: 1;
+        }
+        
+        .light-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: light-float 6s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .light-orb-1 {
+            top: 10%;
+            left: 15%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(35, 46, 65, 0.3) 0%, transparent 70%);
+            animation-delay: 0s;
+        }
+        
+        .light-orb-2 {
+            top: 60%;
+            right: 20%;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(246, 240, 235, 0.15) 0%, transparent 70%);
+            animation-delay: -2s;
+        }
+        
+        .light-orb-3 {
+            bottom: 20%;
+            left: 30%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(35, 46, 65, 0.25) 0%, transparent 70%);
+            animation-delay: -4s;
+        }
+        
+        @keyframes light-float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -20px) scale(1.1); }
+            66% { transform: translate(-20px, 10px) scale(0.9); }
+        }
+        
+        .spotlight {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 50% 0%, rgba(35, 46, 65, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .beam-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .beam-effect::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, 
+                rgba(35, 46, 65, 0.1) 0deg, 
+                transparent 60deg, 
+                transparent 300deg, 
+                rgba(246, 240, 235, 0.05) 360deg);
+            animation: beam-rotate 20s linear infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes beam-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
         .grid-pattern {
             background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(246, 240, 235, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(246, 240, 235, 0.05) 1px, transparent 1px);
             background-size: 40px 40px;
+            position: relative;
+        }
+        
+        .grid-pattern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(35, 46, 65, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(246, 240, 235, 0.08) 0%, transparent 50%);
+            pointer-events: none;
         }
     </style>
 </head>
 <body class="antialiased">
     <!-- Navigation -->
-    <nav class="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 glass-card backdrop-blur-md rounded-full px-2 py-2 shadow-lg border border-white/10">
+    <nav class="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 glass-card glass-enhanced backdrop-blur-md rounded-full px-2 py-2 shadow-lg border border-accent-300/10">
         <div class="flex items-center gap-6">
             <div class="logo pl-4">
                 <span class="text-lg font-bold gradient-text">🎮 Tryll Engine</span>
             </div>
             <ul class="nav-links hidden md:flex gap-6 list-none">
-                <li><a href="#features" class="text-gray-400 hover:text-white transition-colors duration-200 font-medium text-sm">Features</a></li>
-                <li><a href="#demo" class="text-gray-400 hover:text-white transition-colors duration-200 font-medium text-sm">Demo</a></li>
-                <li><a href="#audience" class="text-gray-400 hover:text-white transition-colors duration-200 font-medium text-sm">For You</a></li>
-                <li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors duration-200 font-medium text-sm">Pricing</a></li>
+                <li><a href="#features" class="text-accent-400 hover:text-accent-100 transition-colors duration-200 font-medium text-sm">Features</a></li>
+                <li><a href="#demo" class="text-accent-400 hover:text-accent-100 transition-colors duration-200 font-medium text-sm">Demo</a></li>
+                <li><a href="#audience" class="text-accent-400 hover:text-accent-100 transition-colors duration-200 font-medium text-sm">For You</a></li>
+                <li><a href="#pricing" class="text-accent-400 hover:text-accent-100 transition-colors duration-200 font-medium text-sm">Pricing</a></li>
             </ul>
-            <a href="#pricing" class="bg-gradient-to-r from-primary-500 to-accent-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 neon-glow hover:neon-glow-hover">
+            <a href="#pricing" class="bg-gradient-to-r from-primary-500 to-primary-600 text-accent-100 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 neon-glow hover:neon-glow-hover">
                 Get Started
             </a>
         </div>
     </nav>
     
     <!-- Hero Section -->
-    <section class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden beam-effect">
+        <div class="spotlight"></div>
+        <div class="light-orb light-orb-1"></div>
+        <div class="light-orb light-orb-2"></div>
+        <div class="light-orb light-orb-3"></div>
         <!-- AI Particles Background -->
         <div id="particles"></div>
         
         <div class="container mx-auto px-6 py-24 relative z-10">
             <div class="max-w-4xl mx-auto text-center fade-in">
-                <div class="inline-block px-4 py-2 rounded-full bg-dark-700 text-primary-400 text-sm font-medium mb-6 border border-primary-800/50">
+                <div class="inline-block px-4 py-2 rounded-full bg-primary-900/30 text-accent-200 text-sm font-medium mb-6 border border-primary-700/50">
                     <i class="fas fa-bolt mr-2"></i> AI REVOLUTION IN GAMING
                 </div>
                 
-                <h1 class="text-6xl md:text-8xl font-bold mb-6">
+                <h1 class="text-6xl md:text-8xl font-bold mb-6 heading-primary">
                     <span class="gradient-text">Gaming</span> <br>
-                    <span class="text-white">Reimagined</span>
+                    <span class="text-accent-100">Reimagined</span>
                 </h1>
                 
-                <p class="text-xl md:text-2xl text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed">
+                <p class="text-xl md:text-2xl text-accent-300 mb-10 max-w-3xl mx-auto body-large">
                     Tryll Engine is the complete AI infrastructure for game developers — from living NPCs to dynamic dialogues, 
                     intelligent commentators, and adaptive learning systems. Running locally with zero cloud costs.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-                    <button class="relative overflow-hidden px-8 py-4 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 text-white font-medium text-lg transition-all duration-300 neon-glow hover:neon-glow-hover hover:shadow-xl">
+                    <button class="relative overflow-hidden px-8 py-4 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 text-accent-100 font-medium text-lg transition-all duration-300 neon-glow hover:neon-glow-hover hover:shadow-xl">
                         Try it for free
                     </button>
                     
-                    <button class="relative overflow-hidden px-8 py-4 rounded-full glass-card text-white font-medium text-lg border border-white/10 hover:border-white/20 transition-all duration-300">
+                    <button class="relative overflow-hidden px-8 py-4 rounded-full glass-card text-accent-100 font-medium text-lg border border-accent-300/10 hover:border-accent-300/20 transition-all duration-300">
                         <i class="fas fa-play mr-2"></i> Watch Demo
                     </button>
                 </div>
                 
-                <div class="flex flex-wrap justify-center gap-8 text-gray-400">
+                <div class="flex flex-wrap justify-center gap-8 text-accent-400">
                     <div class="flex items-center gap-2">
                         <div class="w-3 h-3 rounded-full bg-accent-500 animate-pulse"></div>
                         <span>$0 cloud costs</span>
@@ -249,7 +567,7 @@
                         <span>1-click Unreal/Unity integration</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <div class="w-3 h-3 rounded-full bg-white animate-pulse"></div>
+                        <div class="w-3 h-3 rounded-full bg-accent-200 animate-pulse"></div>
                         <span>100% Private & Secure</span>
                     </div>
                 </div>
@@ -257,7 +575,7 @@
         </div>
         
         <div class="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce">
-            <i class="fas fa-chevron-down text-white/50 text-2xl"></i>
+            <i class="fas fa-chevron-down text-accent-300/50 text-2xl"></i>
         </div>
     </section>
 
@@ -265,52 +583,52 @@
     <section class="py-28 bg-dark-900 relative overflow-hidden fade-in">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-20">
-                <div class="inline-block px-4 py-2 rounded-full bg-dark-700 text-primary-400 text-sm font-medium mb-6 border border-primary-800/50">
+                <div class="inline-block px-4 py-2 rounded-full bg-primary-900/30 text-accent-200 text-sm font-medium mb-6 border border-primary-700/50">
                     THE OLD WAY IS DEAD
                 </div>
-                <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                <h2 class="text-4xl md:text-6xl font-bold text-accent-100 mb-6 heading-primary">
                     <span class="gradient-text">Static NPCs</span> are History
                 </h2>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                <p class="text-xl text-accent-300 max-w-3xl mx-auto body-large">
                     Scripted dialogues. Predictable worlds. Repetitive interactions. That era is over.
                 </p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass-card rounded-2xl p-8 transform transition-all hover:scale-105">
+                <div class="glass-card glass-enhanced rounded-2xl p-8 transform transition-all hover:scale-105">
                     <div class="text-red-400 text-sm font-semibold mb-4">OLD: Scripted NPCs</div>
-                    <h3 class="text-2xl font-bold mb-4">Pre-written dialogue trees</h3>
-                    <p class="text-gray-400 mb-6">Limited responses, repetitive interactions, breaks immersion after 5 minutes</p>
+                    <h3 class="text-2xl font-bold mb-4 text-accent-100">Pre-written dialogue trees</h3>
+                    <p class="text-accent-300 mb-6">Limited responses, repetitive interactions, breaks immersion after 5 minutes</p>
                     
                     <div class="h-px bg-gray-800 my-6"></div>
                     
                     <div class="text-green-400 text-sm font-semibold mb-4">NEW: Living Characters</div>
-                    <h3 class="text-2xl font-bold mb-4">AI-driven personalities</h3>
-                    <p class="text-gray-400">Infinite conversations, evolving relationships, remembers everything</p>
+                    <h3 class="text-2xl font-bold mb-4 text-accent-100">AI-driven personalities</h3>
+                    <p class="text-accent-300">Infinite conversations, evolving relationships, remembers everything</p>
                 </div>
                 
-                <div class="glass-card rounded-2xl p-8 transform transition-all hover:scale-105">
+                <div class="glass-card glass-enhanced rounded-2xl p-8 transform transition-all hover:scale-105">
                     <div class="text-red-400 text-sm font-semibold mb-4">OLD: Static Tutorials</div>
-                    <h3 class="text-2xl font-bold mb-4">One-size-fits-all tooltips</h3>
-                    <p class="text-gray-400 mb-6">Players skip tutorials, get frustrated, abandon complex games</p>
+                    <h3 class="text-2xl font-bold mb-4 text-accent-100">One-size-fits-all tooltips</h3>
+                    <p class="text-accent-300 mb-6">Players skip tutorials, get frustrated, abandon complex games</p>
                     
                     <div class="h-px bg-gray-800 my-6"></div>
                     
                     <div class="text-green-400 text-sm font-semibold mb-4">NEW: Adaptive Mentors</div>
-                    <h3 class="text-2xl font-bold mb-4">AI companions that teach</h3>
-                    <p class="text-gray-400">Personalized guidance, answers any question, learns player's style</p>
+                    <h3 class="text-2xl font-bold mb-4 text-accent-100">AI companions that teach</h3>
+                    <p class="text-accent-300">Personalized guidance, answers any question, learns player's style</p>
                 </div>
                 
-                <div class="glass-card rounded-2xl p-8 transform transition-all hover:scale-105">
+                <div class="glass-card glass-enhanced rounded-2xl p-8 transform transition-all hover:scale-105">
                     <div class="text-red-400 text-sm font-semibold mb-4">OLD: Cloud Dependencies</div>
-                    <h3 class="text-2xl font-bold mb-4">$1.8M/month for 10k players</h3>
-                    <p class="text-gray-400 mb-6">Latency kills immersion, server outages, privacy nightmares</p>
+                    <h3 class="text-2xl font-bold mb-4 text-accent-100">$1.8M/month for 10k players</h3>
+                    <p class="text-accent-300 mb-6">Latency kills immersion, server outages, privacy nightmares</p>
                     
                     <div class="h-px bg-gray-800 my-6"></div>
                     
                     <div class="text-green-400 text-sm font-semibold mb-4">NEW: Local Intelligence</div>
-                    <h3 class="text-2xl font-bold mb-4">Zero infrastructure costs</h3>
-                    <p class="text-gray-400">Instant responses, always online, complete privacy</p>
+                    <h3 class="text-2xl font-bold mb-4 text-accent-100">Zero infrastructure costs</h3>
+                    <p class="text-accent-300">Instant responses, always online, complete privacy</p>
                 </div>
             </div>
         </div>
@@ -321,13 +639,14 @@
 
     <!-- Value Proposition -->
      
-    <section class="py-24 bg-dark-900 grid-pattern relative overflow-hidden">
+    <section class="py-24 bg-dark-900 grid-pattern relative overflow-hidden beam-effect">
+        <div class="light-orb light-orb-2"></div>
         <div class="container mx-auto px-6">
             <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
                 <div class="inline-block px-4 py-2 rounded-full bg-dark-700 text-primary-400 text-sm font-medium mb-6 border border-primary-800/50">
                     THE REVOLUTION
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-accent-100 mb-6 heading-primary">
                     Why <span class="gradient-text">Tryll Engine</span> Changes Everything
                 </h2>
                 <p class="text-xl text-gray-400 leading-relaxed">
@@ -337,36 +656,36 @@
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-primary-500/30 fade-in">
-                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6">
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
+                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6 magnetic-hover">
                         <i class="fas fa-dollar-sign text-accent-500"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Local AI, Low Cost</h3>
-                    <p class="text-gray-400 leading-relaxed">
+                    <h3 class="text-2xl font-bold text-accent-100 mb-4 heading-tertiary">Local AI, Low Cost</h3>
+                    <p class="text-accent-300 body-medium">
                         No cloud required – cut the expensive API costs and latency. 
                         <span class="text-accent-400 font-medium">Save up to $1.8M/month</span> compared to cloud solutions 
                         while delivering instant, private AI interactions.
                     </p>
                 </div>
                 
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-primary-500/30 fade-in">
-                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6">
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
+                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6 magnetic-hover">
                         <i class="fas fa-brain text-primary-400"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Intelligent NPCs</h3>
-                    <p class="text-gray-400 leading-relaxed">
+                    <h3 class="text-2xl font-bold text-accent-100 mb-4 heading-tertiary">Intelligent NPCs</h3>
+                    <p class="text-accent-300 body-medium">
                         Game characters that truly listen, think, and respond – powered by advanced LLM agents. 
                         <span class="text-primary-300 font-medium">Every conversation is unique</span>, every playthrough 
                         offers new stories.
                     </p>
                 </div>
                 
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-primary-500/30 fade-in">
-                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6">
-                        <i class="fas fa-rocket text-white"></i>
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
+                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6 magnetic-hover">
+                        <i class="fas fa-rocket text-accent-100"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">High Quality at Scale</h3>
-                    <p class="text-gray-400 leading-relaxed">
+                    <h3 class="text-2xl font-bold text-accent-100 mb-4 heading-tertiary">High Quality at Scale</h3>
+                    <p class="text-accent-300 body-medium">
                         Works offline on your hardware – from indie projects to AAA worlds. 
                         <span class="text-white font-medium">Lightning-fast responses</span> for every player, 
                         no matter where they are.
@@ -382,12 +701,13 @@
 
     <!-- Demo Section -->
     <section class="py-24 bg-dark-800 relative overflow-hidden">
+        <div class="light-orb light-orb-1"></div>
         <div class="container mx-auto px-6">
             <div class="max-w-3xl mx-auto text-center mb-16 fade-in">
                 <div class="inline-block px-4 py-2 rounded-full bg-dark-700 text-primary-400 text-sm font-medium mb-6 border border-primary-800/50">
                     SEE IT IN ACTION
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-accent-100 mb-6 heading-primary">
                     Experience the <span class="gradient-text">Magic</span>
                 </h2>
                 <p class="text-xl text-gray-400 leading-relaxed">
@@ -409,8 +729,8 @@
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
+                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
+                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto breathing-animation">
                         <i class="fas fa-calendar text-primary-400"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4">Book a Live Demo</h3>
@@ -422,9 +742,9 @@
                     </button>
                 </div>
                 
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
-                        <i class="fas fa-question-circle text-white"></i>
+                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
+                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto breathing-animation">
+                        <i class="fas fa-question-circle text-accent-100"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4">FAQ</h3>
                     <p class="text-gray-400 mb-6 leading-relaxed">
@@ -435,8 +755,8 @@
                     </button>
                 </div>
                 
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
+                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
+                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto breathing-animation">
                         <i class="fas fa-gamepad text-accent-500"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4">Try It In-Game</h3>
@@ -461,7 +781,7 @@
                 <div class="inline-block px-4 py-2 rounded-full bg-dark-700 text-primary-400 text-sm font-medium mb-6 border border-primary-800/50">
                     FEATURES & BENEFITS
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-accent-100 mb-6 heading-primary">
                     <span class="gradient-text">Creative Control</span> You Can Trust
                 </h2>
                 <p class="text-xl text-gray-400 leading-relaxed">
@@ -477,7 +797,7 @@
                         </div>
                         <div>
                             <h3 class="text-2xl font-bold text-white mb-4">Smart Language Processing</h3>
-                            <p class="text-gray-400 leading-relaxed">
+                            <p class="text-accent-300 body-medium">
                                 Natural language input gets intelligently mapped to your predefined dialogue options. Players feel heard while you maintain narrative control.
                             </p>
                         </div>
@@ -489,7 +809,7 @@
                         </div>
                         <div>
                             <h3 class="text-2xl font-bold text-white mb-4">Hybrid Dialogue System</h3>
-                            <p class="text-gray-400 leading-relaxed">
+                            <p class="text-accent-300 body-medium">
                                 Keep your traditional dialogue trees visible on screen. Players can choose between structured options or free-form natural language input.
                             </p>
                         </div>
@@ -501,7 +821,7 @@
                         </div>
                         <div>
                             <h3 class="text-2xl font-bold text-white mb-4">Performance-Aware Fallbacks</h3>
-                            <p class="text-gray-400 leading-relaxed">
+                            <p class="text-accent-300 body-medium">
                                 Automatic fallback to traditional dialogue trees when hardware can't handle AI inference. No player left behind.
                             </p>
                         </div>
@@ -513,7 +833,7 @@
                         </div>
                         <div>
                             <h3 class="text-2xl font-bold text-white mb-4">Built-in Content Safety</h3>
-                            <p class="text-gray-400 leading-relaxed">
+                            <p class="text-accent-300 body-medium">
                                 Comprehensive content filtering ensures AI responses stay within your creative boundaries and community standards.
                             </p>
                         </div>
@@ -530,12 +850,13 @@
 
     <!-- Audience Section -->
     <section class="py-24 bg-dark-800 relative overflow-hidden">
+        <div class="light-orb light-orb-3"></div>
         <div class="container mx-auto px-6">
             <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
                 <div class="inline-block px-4 py-2 rounded-full bg-dark-700 text-primary-400 text-sm font-medium mb-6 border border-primary-800/50">
                     BUILT FOR YOU
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-accent-100 mb-6 heading-primary">
                     Perfect for <span class="gradient-text">Every Creator</span>
                 </h2>
                 <p class="text-xl text-gray-400 leading-relaxed">
@@ -544,7 +865,7 @@
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in">
+                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
                     <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
                         <i class="fas fa-paint-brush text-accent-500"></i>
                     </div>
@@ -557,7 +878,7 @@
                     </p>
                 </div>
                 
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in">
+                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
                     <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
                         <i class="fas fa-code text-primary-400"></i>
                     </div>
@@ -570,7 +891,7 @@
                     </p>
                 </div>
                 
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in">
+                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
                     <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
                         <i class="fas fa-building text-white"></i>
                     </div>
@@ -583,7 +904,7 @@
                     </p>
                 </div>
                 
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in">
+                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
                     <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
                         <i class="fas fa-tools text-gray-300"></i>
                     </div>
@@ -602,7 +923,7 @@
     <!-- Social Proof -->
     <section class="py-24 bg-gradient-to-br from-dark-800 to-dark-900 relative overflow-hidden">
         <div class="container mx-auto px-6">
-            <div class="max-w-3xl mx-auto glass-card p-12 rounded-3xl text-center fade-in">
+            <div class="max-w-3xl mx-auto glass-card glass-enhanced p-12 rounded-3xl text-center fade-in">
                 <div class="text-5xl mb-6 text-primary-400">
                     <i class="fas fa-quote-left"></i>
                 </div>
@@ -629,7 +950,7 @@
                 <div class="inline-block px-4 py-2 rounded-full bg-dark-700 text-primary-400 text-sm font-medium mb-6 border border-primary-800/50">
                     JOIN THE REVOLUTION
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-accent-100 mb-6 heading-primary">
                     Ready to <span class="gradient-text">Redefine Gaming</span>?
                 </h2>
                 <p class="text-xl text-gray-400 mb-10 leading-relaxed">

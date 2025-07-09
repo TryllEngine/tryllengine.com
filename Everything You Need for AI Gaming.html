@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everything You Need for AI Gaming</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --success: #4ade80;
+            --warning: #fbbf24;
+            --danger: #f87171;
+            --light: #ffffff;
+            --light-gray: #f3f4f6;
+            --gray: #6b7280;
+            --dark-gray: #374151;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--dark-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 6rem 2rem;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 4rem;
+            font-weight: 900;
+            color: rgba(102, 126, 234, 0.1);
+            z-index: 0;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: rgba(102, 126, 234, 0.1);
+            color: var(--primary);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .feature-card ul {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+            color: var(--gray);
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Scroll animations */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h2 {
+                font-size: 2.5rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Features Section -->
+    <section id="features" class="features-section scroll-fade">
+        <div class="section-header">
+            <div class="section-badge">Features</div>
+            <h2>Everything You Need for AI Gaming</h2>
+            <p class="section-subtitle">
+                Build immersive worlds with intelligent characters that players will never forget
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-number">01</div>
+                <h3>Local Processing Power</h3>
+                <p>Run advanced AI models directly on player hardware.</p>
+                <ul>
+                    <li>Works offline</li>
+                    <li>Free for you and the player</li>
+                    <li>Complete privacy - data never leaves player's device</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-number">02</div>
+                <h3>Attract Attention</h3>
+                <p>Leverage first-mover advantage in AI gaming and turn your game into an infinite content generator.</p>
+                <ul>
+                    <li>First-mover advantage in AI gaming</li>
+                    <li>Viral power of AI content creation</li>
+                    <li>Every playthrough becomes unique content</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-number">03</div>
+                <h3>Easy Integration</h3>
+                <p>Unreal Engine plugin with 1-click installation. Works great out of the box, but you can customize exactly what happens.</p>
+                <ul>
+                    <li>Simple yet powerful design</li>
+                    <li>Example projects included</li>
+                    <li>Full customization options</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-number">04</div>
+                <h3>Agency</h3>
+                <p>Our agents are integrated into the game world and can perform function calls. NPCs don't just talk - they act.</p>
+                <ul>
+                    <li>Player is rude → NPC draws sword</li>
+                    <li>Strategy AI adapts and trains new troop types</li>
+                    <li>Real-time function calls to game systems</li>
+                    <li>Context-aware world interactions</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-number">05</div>
+                <h3>Scalable Architecture</h3>
+                <p>Works on all PC types. We pick optimal models based on hardware, language, and age.</p>
+                <ul>
+                    <li>Automatic hardware optimization</li>
+                    <li>Scales from indie to AAA productions</li>
+                    <li>Multi-platform deployment ready</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-number">06</div>
+                <h3>Natural Language Support</h3>
+                <p>Tryll Agents know how to listen and how to speak. The engine is shipped with NLP modules.</p>
+                <ul>
+                    <li>Text-to-speech</li>
+                    <li>Speech-to-text</li>
+                    <li>Multi-language support</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-fade').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Auto-trigger the scroll animation on load
+        setTimeout(() => {
+            document.querySelector('.features-section').classList.add('visible');
+        }, 100);
+    </script>
+</body>
+</html>

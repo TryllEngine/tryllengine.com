@@ -136,50 +136,56 @@
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #0a0d12;
-            color: #F6F0EB;
+            background-color: #000000;
+            color: #9ca3af;
             overflow-x: hidden;
-            line-height: 1.6;
-            letter-spacing: -0.025em;
+            line-height: 1.5;
+            letter-spacing: -0.015em;
         }
         
         .heading-primary {
             font-family: 'Inter', sans-serif;
-            font-weight: 800;
-            letter-spacing: -0.02em;
+            font-weight: 700;
+            letter-spacing: -0.03em;
             line-height: 1.1;
+            color: #ffffff;
         }
         
         .heading-secondary {
             font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            letter-spacing: -0.015em;
+            font-weight: 600;
+            letter-spacing: -0.02em;
             line-height: 1.2;
+            color: #ffffff;
         }
         
         .heading-tertiary {
             font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            letter-spacing: -0.01em;
+            font-weight: 500;
+            letter-spacing: -0.015em;
             line-height: 1.3;
+            color: #ffffff;
         }
         
         .body-large {
             font-size: 1.125rem;
-            line-height: 1.7;
+            line-height: 1.6;
             font-weight: 400;
+            color: #6b7280;
         }
         
         .body-medium {
             font-size: 1rem;
-            line-height: 1.6;
+            line-height: 1.5;
             font-weight: 400;
+            color: #6b7280;
         }
         
         .body-small {
             font-size: 0.875rem;
-            line-height: 1.5;
+            line-height: 1.4;
             font-weight: 400;
+            color: #6b7280;
         }
         
         .mono-text {
@@ -193,57 +199,39 @@
         }
         
         .glass-card {
-            background: rgba(246, 240, 235, 0.08);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(246, 240, 235, 0.15);
-            box-shadow: 0 8px 32px rgba(35, 46, 65, 0.3);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            transition: all 0.3s ease;
         }
         
         .glass-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 24px 48px rgba(35, 46, 65, 0.4), 0 0 0 1px rgba(246, 240, 235, 0.2);
-            border-color: rgba(246, 240, 235, 0.25);
-            background: rgba(246, 240, 235, 0.12);
+            border-color: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .nav-glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.05);
         }
         
         
         .gradient-bg {
-            background: linear-gradient(135deg, rgba(35, 46, 65, 0.2) 0%, rgba(246, 240, 235, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(35, 46, 65, 0.8) 0%, rgba(35, 46, 65, 0.6) 100%);
         }
         
         .hero-gradient {
-            background: radial-gradient(ellipse at 30% 40%, rgba(35, 46, 65, 0.3) 0%, rgba(10, 13, 18, 0) 60%),
-                        radial-gradient(ellipse at 70% 60%, rgba(246, 240, 235, 0.15) 0%, rgba(10, 13, 18, 0) 60%),
-                        radial-gradient(ellipse at 50% 80%, rgba(35, 46, 65, 0.2) 0%, transparent 50%);
+            background: radial-gradient(ellipse at 50% 20%, rgba(35, 46, 65, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
         }
         
-        .ai-particle {
-            position: absolute;
-            background: radial-gradient(circle, rgba(246, 240, 235, 0.8) 0%, rgba(35, 46, 65, 0.4) 100%);
-            border-radius: 50%;
-            filter: blur(1px);
-            animation: float 6s ease-in-out infinite, particle-glow 4s ease-in-out infinite alternate;
-            opacity: 0.7;
-        }
         
-        @keyframes particle-glow {
-            0% { box-shadow: 0 0 5px rgba(246, 240, 235, 0.3); }
-            100% { box-shadow: 0 0 15px rgba(246, 240, 235, 0.6), 0 0 25px rgba(35, 46, 65, 0.3); }
-        }
-        
-        .neon-glow {
-            box-shadow: 0 0 20px rgba(35, 46, 65, 0.6), 
-                        0 0 40px rgba(246, 240, 235, 0.3),
-                        0 4px 20px rgba(35, 46, 65, 0.4);
-        }
-        
-        .neon-glow-hover:hover {
-            box-shadow: 0 0 30px rgba(35, 46, 65, 0.8), 
-                        0 0 60px rgba(246, 240, 235, 0.4),
-                        0 8px 30px rgba(35, 46, 65, 0.5);
-        }
         
         .fade-in {
             opacity: 0;
@@ -256,14 +244,6 @@
             transform: translateY(0);
         }
         
-        .play-button {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .play-button:hover {
-            transform: scale(1.1) rotate(3deg);
-            box-shadow: 0 0 30px rgba(35, 46, 65, 0.8), 0 0 50px rgba(246, 240, 235, 0.4);
-        }
         
         .ripple {
             position: absolute;
@@ -281,66 +261,9 @@
             }
         }
         
-        .glass-enhanced {
-            position: relative;
-            overflow: hidden;
-        }
         
-        .glass-enhanced::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, 
-                rgba(246, 240, 235, 0.1) 0%, 
-                transparent 50%, 
-                rgba(35, 46, 65, 0.05) 100%);
-            pointer-events: none;
-        }
         
-        .glass-enhanced::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                rgba(246, 240, 235, 0.3) 50%, 
-                transparent 100%);
-            pointer-events: none;
-        }
         
-        .subtle-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .subtle-hover:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.05);
-        }
-        
-        .breathing-animation {
-            animation: breathing 4s ease-in-out infinite;
-        }
-        
-        @keyframes breathing {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-        }
-        
-        .parallax-float {
-            animation: parallax-float 8s ease-in-out infinite;
-        }
-        
-        @keyframes parallax-float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-10px) rotate(1deg); }
-            66% { transform: translateY(-5px) rotate(-1deg); }
-        }
         
         .stagger-fade {
             opacity: 0;
@@ -355,230 +278,108 @@
             }
         }
         
-        .magnetic-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
         
-        .magnetic-hover:hover {
-            transform: scale(1.05) rotate(2deg);
-            box-shadow: 0 10px 30px rgba(35, 46, 65, 0.3);
-        }
         
-        .radial-light {
-            position: relative;
-            overflow: hidden;
-        }
         
-        .radial-light::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(35, 46, 65, 0.2) 0%, transparent 70%);
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            pointer-events: none;
-            z-index: -1;
-        }
         
-        .radial-light:hover::before {
-            opacity: 1;
-        }
         
-        .light-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(40px);
-            animation: light-float 6s ease-in-out infinite;
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        .light-orb-1 {
-            top: 10%;
-            left: 15%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(35, 46, 65, 0.3) 0%, transparent 70%);
-            animation-delay: 0s;
-        }
-        
-        .light-orb-2 {
-            top: 60%;
-            right: 20%;
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, rgba(246, 240, 235, 0.15) 0%, transparent 70%);
-            animation-delay: -2s;
-        }
-        
-        .light-orb-3 {
-            bottom: 20%;
-            left: 30%;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(35, 46, 65, 0.25) 0%, transparent 70%);
-            animation-delay: -4s;
-        }
-        
-        @keyframes light-float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -20px) scale(1.1); }
-            66% { transform: translate(-20px, 10px) scale(0.9); }
-        }
-        
-        .spotlight {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at 50% 0%, rgba(35, 46, 65, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        .beam-effect {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .beam-effect::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(from 0deg, 
-                rgba(35, 46, 65, 0.1) 0deg, 
-                transparent 60deg, 
-                transparent 300deg, 
-                rgba(246, 240, 235, 0.05) 360deg);
-            animation: beam-rotate 20s linear infinite;
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        @keyframes beam-rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .grid-pattern {
-            background-image: 
-                linear-gradient(rgba(246, 240, 235, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(246, 240, 235, 0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
-            position: relative;
-        }
-        
-        .grid-pattern::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 30%, rgba(35, 46, 65, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 70%, rgba(246, 240, 235, 0.08) 0%, transparent 50%);
-            pointer-events: none;
-        }
         
         .text-secondary {
-            color: #ffffff8c;
+            color: #6b7280;
+        }
+        
+        .text-primary {
+            color: #232E41;
+        }
+        
+        .text-accent {
+            color: #F6F0EB;
+        }
+        
+        .feature-item.active {
+            background: rgba(255, 255, 255, 0.08);
+            border-left: 4px solid #232E41;
+        }
+        
+        .feature-item.active h3 {
+            color: #ffffff;
         }
     </style>
 </head>
 <body class="antialiased">
     <!-- Navigation -->
-    <nav class="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 glass-card glass-enhanced backdrop-blur-md rounded-full px-2 py-2 shadow-lg border border-accent-300/10">
-        <div class="flex items-center gap-6">
-            <div class="logo pl-4">
-                <span class="text-lg font-bold text-white">🎮 Tryll Engine</span>
+    <nav class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 nav-glass-card px-6 py-3">
+        <div class="flex items-center gap-8">
+            <div class="logo">
+                <img src="./logo/full%20logo_white.svg" alt="Tryll Engine" class="h-8" />
             </div>
             <ul class="nav-links hidden md:flex gap-6 list-none">
-                <li><a href="#features" class="text-accent-400 hover:text-accent-100 transition-colors duration-200 font-medium text-sm">Features</a></li>
-                <li><a href="#demo" class="text-accent-400 hover:text-accent-100 transition-colors duration-200 font-medium text-sm">Demo</a></li>
-                <li><a href="#audience" class="text-accent-400 hover:text-accent-100 transition-colors duration-200 font-medium text-sm">For You</a></li>
-                <li><a href="#pricing" class="text-accent-400 hover:text-accent-100 transition-colors duration-200 font-medium text-sm">Pricing</a></li>
+                <li><a href="#features" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Features</a></li>
+                <li><a href="#demo" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Demo</a></li>
+                <li><a href="#audience" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">For You</a></li>
+                <li><a href="#pricing" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Pricing</a></li>
             </ul>
-            <a href="#pricing" class="bg-gradient-to-r from-primary-500 to-primary-600 text-accent-100 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 neon-glow hover:neon-glow-hover">
+            <a href="#pricing" class="bg-primary-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-primary-600">
                 Get Started
             </a>
         </div>
     </nav>
     
     <!-- Hero Section -->
-    <section class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden beam-effect">
-        <div class="spotlight"></div>
-        <div class="light-orb light-orb-1"></div>
-        <div class="light-orb light-orb-2"></div>
-        <div class="light-orb light-orb-3"></div>
-        <!-- AI Particles Background -->
-        <div id="particles"></div>
-        
-        <div class="container mx-auto px-6 py-24 relative z-10">
+    <section class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="container mx-auto px-6 py-32 relative z-10">
             <div class="max-w-4xl mx-auto text-center fade-in">
-                <div class="inline-block px-4 py-2 rounded-full bg-primary-900/30 text-accent-200 text-sm font-medium mb-6 border border-primary-700/50">
-                    <i class="fas fa-bolt mr-2"></i> AI REVOLUTION IN GAMING
+                <div class="mb-8">
+                    <img src="./logo/logo%20mark_white%20.svg" alt="Tryll" class="w-30 h-30 mx-auto" style="width: 120px; height: 120px;" />
                 </div>
                 
-                <h1 class="text-6xl md:text-8xl font-bold mb-6 heading-primary">
-                    <span class="text-white">Gaming</span> <br>
-                    <span class="text-accent-100">Reimagined</span>
+                <h1 class="font-bold mb-8 heading-primary leading-tight text-white" style="font-size: 62px;">
+                    Gaming Reimagined
                 </h1>
                 
-                <p class="text-xl md:text-2xl text-secondary mb-10 max-w-3xl mx-auto body-large">
+                <p class="text-xl md:text-2xl text-secondary mb-12 max-w-3xl mx-auto body-large">
                     Tryll Engine is the complete AI infrastructure for game developers — from living NPCs to dynamic dialogues, 
                     intelligent commentators, and adaptive learning systems. Running locally with zero cloud costs.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-                    <button class="relative overflow-hidden px-8 py-4 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 text-accent-100 font-medium text-lg transition-all duration-300 neon-glow hover:neon-glow-hover hover:shadow-xl">
+                    <button class="px-8 py-4 rounded-lg bg-primary-500 text-white font-medium text-lg transition-all duration-300 hover:bg-primary-600">
                         Try it for free
                     </button>
                     
-                    <button class="relative overflow-hidden px-8 py-4 rounded-full glass-card text-accent-100 font-medium text-lg border border-accent-300/10 hover:border-accent-300/20 transition-all duration-300">
+                    <button class="px-8 py-4 rounded-lg glass-card text-white font-medium text-lg border border-white/10 hover:border-white/20 transition-all duration-300">
                         <i class="fas fa-play mr-2"></i> Watch Demo
                     </button>
                 </div>
                 
-                <div class="flex flex-wrap justify-center gap-8 text-accent-400">
+                <div class="flex flex-wrap justify-center gap-8 text-secondary">
                     <div class="flex items-center gap-2">
-                        <div class="w-3 h-3 rounded-full bg-accent-500 animate-pulse"></div>
+                        <div class="w-2 h-2 rounded-full bg-primary-500"></div>
                         <span>$0 cloud costs</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <div class="w-3 h-3 rounded-full bg-primary-500 animate-pulse"></div>
+                        <div class="w-2 h-2 rounded-full bg-primary-500"></div>
                         <span>1-click Unreal/Unity integration</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <div class="w-3 h-3 rounded-full bg-accent-200 animate-pulse"></div>
+                        <div class="w-2 h-2 rounded-full bg-primary-500"></div>
                         <span>100% Private & Secure</span>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div class="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce">
-            <i class="fas fa-chevron-down text-secondary/50 text-2xl"></i>
-        </div>
     </section>
 
     <!-- The Old Way is Dead -->
-    <section class="py-28 bg-dark-900 relative overflow-hidden fade-in">
+    <section class="py-24 bg-black relative overflow-hidden fade-in">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-20">
-                <div class="inline-block px-4 py-2 rounded-full bg-primary-900/30 text-accent-200 text-sm font-medium mb-6 border border-primary-700/50">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
+                    <div class="w-2 h-2 rounded-full bg-red-500"></div>
                     THE OLD WAY IS DEAD
                 </div>
-                <h2 class="text-4xl md:text-6xl font-bold text-accent-100 mb-6 heading-primary">
-                    <span class="text-white">Static NPCs</span> are History
+                <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 heading-primary">
+                    Static NPCs are History
                 </h2>
                 <p class="text-xl text-secondary max-w-3xl mx-auto body-large">
                     Scripted dialogues. Predictable worlds. Repetitive interactions. That era is over.
@@ -586,59 +387,58 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass-card glass-enhanced rounded-2xl p-8 transform transition-all hover:scale-105">
+                <div class="glass-card rounded-2xl p-8 transition-all hover:border-white/20">
                     <div class="text-red-400 text-sm font-semibold mb-4">OLD: Scripted NPCs</div>
-                    <h3 class="text-2xl font-bold mb-4 text-accent-100">Pre-written dialogue trees</h3>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Pre-written dialogue trees</h3>
                     <p class="text-secondary mb-6">Limited responses, repetitive interactions, breaks immersion after 5 minutes</p>
                     
-                    <div class="h-px bg-gray-800 my-6"></div>
+                    <div class="h-px bg-white/10 my-6"></div>
                     
                     <div class="text-green-400 text-sm font-semibold mb-4">NEW: Living Characters</div>
-                    <h3 class="text-2xl font-bold mb-4 text-accent-100">AI-driven personalities</h3>
+                    <h3 class="text-2xl font-bold mb-4 text-white">AI-driven personalities</h3>
                     <p class="text-secondary">Infinite conversations, evolving relationships, remembers everything</p>
                 </div>
                 
-                <div class="glass-card glass-enhanced rounded-2xl p-8 transform transition-all hover:scale-105">
+                <div class="glass-card rounded-2xl p-8 transition-all hover:border-white/20">
                     <div class="text-red-400 text-sm font-semibold mb-4">OLD: Static Tutorials</div>
-                    <h3 class="text-2xl font-bold mb-4 text-accent-100">One-size-fits-all tooltips</h3>
+                    <h3 class="text-2xl font-bold mb-4 text-white">One-size-fits-all tooltips</h3>
                     <p class="text-secondary mb-6">Players skip tutorials, get frustrated, abandon complex games</p>
                     
-                    <div class="h-px bg-gray-800 my-6"></div>
+                    <div class="h-px bg-white/10 my-6"></div>
                     
                     <div class="text-green-400 text-sm font-semibold mb-4">NEW: Adaptive Mentors</div>
-                    <h3 class="text-2xl font-bold mb-4 text-accent-100">AI companions that teach</h3>
+                    <h3 class="text-2xl font-bold mb-4 text-white">AI companions that teach</h3>
                     <p class="text-secondary">Personalized guidance, answers any question, learns player's style</p>
                 </div>
                 
-                <div class="glass-card glass-enhanced rounded-2xl p-8 transform transition-all hover:scale-105">
+                <div class="glass-card rounded-2xl p-8 transition-all hover:border-white/20">
                     <div class="text-red-400 text-sm font-semibold mb-4">OLD: Cloud Dependencies</div>
-                    <h3 class="text-2xl font-bold mb-4 text-accent-100">$1.8M/month for 10k players</h3>
+                    <h3 class="text-2xl font-bold mb-4 text-white">$1.8M/month for 10k players</h3>
                     <p class="text-secondary mb-6">Latency kills immersion, server outages, privacy nightmares</p>
                     
-                    <div class="h-px bg-gray-800 my-6"></div>
+                    <div class="h-px bg-white/10 my-6"></div>
                     
                     <div class="text-green-400 text-sm font-semibold mb-4">NEW: Local Intelligence</div>
-                    <h3 class="text-2xl font-bold mb-4 text-accent-100">Zero infrastructure costs</h3>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Zero infrastructure costs</h3>
                     <p class="text-secondary">Instant responses, always online, complete privacy</p>
                 </div>
             </div>
         </div>
         
-        <!-- Floating AI elements -->
-        <div class="absolute -bottom-40 -right-40 w-80 h-80 bg-primary-500/10 rounded-full blur-3xl"></div>
+        </div>
     </section>
 
     <!-- Value Proposition -->
      
-    <section class="py-24 bg-dark-900 grid-pattern relative overflow-hidden beam-effect">
-        <div class="light-orb light-orb-2"></div>
+    <section class="py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-6">
             <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
-                <div class="inline-block px-4 py-2 rounded-full bg-dark-700 text-primary-400 text-sm font-medium mb-6 border border-primary-800/50">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
+                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
                     THE REVOLUTION
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-accent-100 mb-6 heading-primary">
-                    Why <span class="text-white">Tryll Engine</span> Changes Everything
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+                    Why Tryll Engine Changes Everything
                 </h2>
                 <p class="text-xl text-secondary leading-relaxed">
                     The gaming industry embraced physics, graphics, and multiplayer revolutions. 
@@ -647,35 +447,35 @@
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
-                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6 magnetic-hover">
-                        <i class="fas fa-dollar-sign text-accent-500"></i>
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-dollar-sign text-white"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-accent-100 mb-4 heading-tertiary">Local AI, Low Cost</h3>
+                    <h3 class="text-2xl font-bold text-white mb-4 heading-tertiary">Local AI, Low Cost</h3>
                     <p class="text-secondary body-medium">
                         No cloud required – cut the expensive API costs and latency. 
-                        <span class="text-accent-400 font-medium">Save up to $1.8M/month</span> compared to cloud solutions 
+                        <span class="text-white font-medium">Save up to $1.8M/month</span> compared to cloud solutions 
                         while delivering instant, private AI interactions.
                     </p>
                 </div>
                 
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
-                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6 magnetic-hover">
-                        <i class="fas fa-brain text-primary-400"></i>
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-brain text-white"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-accent-100 mb-4 heading-tertiary">Intelligent NPCs</h3>
+                    <h3 class="text-2xl font-bold text-white mb-4 heading-tertiary">Intelligent NPCs</h3>
                     <p class="text-secondary body-medium">
                         Game characters that truly listen, think, and respond – powered by advanced LLM agents. 
-                        <span class="text-primary-300 font-medium">Every conversation is unique</span>, every playthrough 
+                        <span class="text-white font-medium">Every conversation is unique</span>, every playthrough 
                         offers new stories.
                     </p>
                 </div>
                 
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
-                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6 magnetic-hover">
-                        <i class="fas fa-rocket text-accent-100"></i>
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-rocket text-white"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-accent-100 mb-4 heading-tertiary">High Quality at Scale</h3>
+                    <h3 class="text-2xl font-bold text-white mb-4 heading-tertiary">High Quality at Scale</h3>
                     <p class="text-secondary body-medium">
                         Works offline on your hardware – from indie projects to AAA worlds. 
                         <span class="text-white font-medium">Lightning-fast responses</span> for every player, 
@@ -685,21 +485,163 @@
             </div>
         </div>
         
-        <!-- Floating AI elements -->
-        <div class="absolute -right-20 -top-20 w-64 h-64 rounded-full bg-primary-500/10 blur-3xl"></div>
-        <div class="absolute -left-20 bottom-0 w-64 h-64 rounded-full bg-accent-500/10 blur-3xl"></div>
+        </div>
+    </section>
+
+    <!-- Everything You Need Section -->
+    <section id="everything-features" class="py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
+                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
+                    FEATURES
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+                    Everything You Need for AI Gaming
+                </h2>
+                <p class="text-xl text-secondary leading-relaxed">
+                    Build immersive worlds with intelligent characters that players will never forget
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in relative">
+                    <div class="absolute top-6 right-6 text-6xl font-bold text-white/10">01</div>
+                    <h3 class="text-2xl font-bold text-white mb-4 relative z-10">Local Processing Power</h3>
+                    <p class="text-secondary mb-6 relative z-10">Run advanced AI models directly on player hardware.</p>
+                    <ul class="space-y-2 text-secondary relative z-10">
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Works offline</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Free for you and the player</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Complete privacy - data never leaves player's device</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in relative">
+                    <div class="absolute top-6 right-6 text-6xl font-bold text-white/10">02</div>
+                    <h3 class="text-2xl font-bold text-white mb-4 relative z-10">Attract Attention</h3>
+                    <p class="text-secondary mb-6 relative z-10">Leverage first-mover advantage in AI gaming and turn your game into an infinite content generator.</p>
+                    <ul class="space-y-2 text-secondary relative z-10">
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>First-mover advantage in AI gaming</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Viral power of AI content creation</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Every playthrough becomes unique content</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in relative">
+                    <div class="absolute top-6 right-6 text-6xl font-bold text-white/10">03</div>
+                    <h3 class="text-2xl font-bold text-white mb-4 relative z-10">Easy Integration</h3>
+                    <p class="text-secondary mb-6 relative z-10">Unreal Engine plugin with 1-click installation. Works great out of the box, but you can customize exactly what happens.</p>
+                    <ul class="space-y-2 text-secondary relative z-10">
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Simple yet powerful design</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Example projects included</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Full customization options</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in relative">
+                    <div class="absolute top-6 right-6 text-6xl font-bold text-white/10">04</div>
+                    <h3 class="text-2xl font-bold text-white mb-4 relative z-10">Agency</h3>
+                    <p class="text-secondary mb-6 relative z-10">Our agents are integrated into the game world and can perform function calls. NPCs don't just talk - they act.</p>
+                    <ul class="space-y-2 text-secondary relative z-10">
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Player is rude → NPC draws sword</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Strategy AI adapts and trains new troop types</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Real-time function calls to game systems</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Context-aware world interactions</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in relative">
+                    <div class="absolute top-6 right-6 text-6xl font-bold text-white/10">05</div>
+                    <h3 class="text-2xl font-bold text-white mb-4 relative z-10">Scalable Architecture</h3>
+                    <p class="text-secondary mb-6 relative z-10">Works on all PC types. We pick optimal models based on hardware, language, and age.</p>
+                    <ul class="space-y-2 text-secondary relative z-10">
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Automatic hardware optimization</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Scales from indie to AAA productions</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Multi-platform deployment ready</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in relative">
+                    <div class="absolute top-6 right-6 text-6xl font-bold text-white/10">06</div>
+                    <h3 class="text-2xl font-bold text-white mb-4 relative z-10">Natural Language Support</h3>
+                    <p class="text-secondary mb-6 relative z-10">Tryll Agents know how to listen and how to speak. The engine is shipped with NLP modules.</p>
+                    <ul class="space-y-2 text-secondary relative z-10">
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Text-to-speech</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Speech-to-text</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Multi-language support</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Demo Section -->
-    <section class="py-24 bg-dark-800 relative overflow-hidden">
-        <div class="light-orb light-orb-1"></div>
+    <section class="py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-6">
             <div class="max-w-3xl mx-auto text-center mb-16 fade-in">
-                <div class="inline-block px-4 py-2 rounded-full bg-dark-700 text-primary-400 text-sm font-medium mb-6 border border-primary-800/50">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
+                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
                     SEE IT IN ACTION
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-accent-100 mb-6 heading-primary">
-                    Experience the <span class="text-white">Magic</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+                    Experience the Magic
                 </h2>
                 <p class="text-xl text-secondary leading-relaxed">
                     Don't just imagine AI-driven characters. See them come to life in this 3-minute demo.
@@ -720,60 +662,60 @@
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto breathing-animation">
-                        <i class="fas fa-calendar text-primary-400"></i>
+                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
+                        <i class="fas fa-calendar text-white"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4">Book a Live Demo</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">
+                    <p class="text-secondary mb-6 leading-relaxed">
                         Get a personalized demo and see how Tryll can transform your game project.
                     </p>
-                    <button class="px-6 py-3 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 text-white font-medium text-sm transition-all duration-300 hover:shadow-lg">
+                    <button class="px-6 py-3 rounded-lg bg-primary-500 text-white font-medium text-sm transition-all duration-300 hover:bg-primary-600">
                         Schedule Demo
                     </button>
                 </div>
                 
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto breathing-animation">
-                        <i class="fas fa-question-circle text-accent-100"></i>
+                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
+                        <i class="fas fa-question-circle text-white"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4">FAQ</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">
+                    <p class="text-secondary mb-6 leading-relaxed">
                         Find answers to common questions about Tryll Engine and implementation.
                     </p>
-                    <button class="px-6 py-3 rounded-full bg-dark-700 text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300">
+                    <button class="px-6 py-3 rounded-lg glass-card text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300">
                         View FAQ
                     </button>
                 </div>
                 
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto breathing-animation">
-                        <i class="fas fa-gamepad text-accent-500"></i>
+                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
+                        <i class="fas fa-gamepad text-white"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4">Try It In-Game</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">
-                        <span class="text-accent-400 font-medium">(Coming Soon!)</span> Download BoscoTryll Deep Rock Galactic mod and experience our AI companion.
+                    <p class="text-secondary mb-6 leading-relaxed">
+                        <span class="text-white font-medium">(Coming Soon!)</span> Download BoscoTryll Deep Rock Galactic mod and experience our AI companion.
                     </p>
-                    <button class="px-6 py-3 rounded-full bg-dark-700 text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300 opacity-60 cursor-not-allowed">
+                    <button class="px-6 py-3 rounded-lg glass-card text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300 opacity-60 cursor-not-allowed">
                         Coming Soon
                     </button>
                 </div>
             </div>
         </div>
         
-        <!-- Floating AI elements -->
-        <div class="absolute -right-20 top-1/3 w-64 h-64 rounded-full bg-primary-500/10 blur-3xl"></div>
+        </div>
     </section>
 
     <!-- Features Section -->
-    <section class="py-24 bg-dark-900 relative overflow-hidden">
+    <section class="py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-6">
             <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
-                <div class="inline-block px-4 py-2 rounded-full bg-dark-700 text-primary-400 text-sm font-medium mb-6 border border-primary-800/50">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
+                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
                     FEATURES & BENEFITS
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-accent-100 mb-6 heading-primary">
-                    <span class="text-white">Creative Control</span> You Can Trust
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+                    Creative Control You Can Trust
                 </h2>
                 <p class="text-xl text-secondary leading-relaxed">
                     Maintain full creative control while leveraging AI power. Our hybrid approach ensures your vision remains intact.
@@ -782,7 +724,7 @@
             
             <div class="max-w-4xl mx-auto">
                 <div class="space-y-8">
-                    <div class="glass-card p-8 rounded-2xl flex items-start gap-6 transition-all duration-300 hover:border-primary-500/30 fade-in">
+                    <div class="glass-card p-8 rounded-2xl flex items-start gap-6 transition-all duration-300 hover:border-white/20 fade-in">
                         <div class="flex-shrink-0 w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-lg font-bold text-white">
                             1
                         </div>
@@ -794,7 +736,7 @@
                         </div>
                     </div>
                     
-                    <div class="glass-card p-8 rounded-2xl flex items-start gap-6 transition-all duration-300 hover:border-primary-500/30 fade-in">
+                    <div class="glass-card p-8 rounded-2xl flex items-start gap-6 transition-all duration-300 hover:border-white/20 fade-in">
                         <div class="flex-shrink-0 w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-lg font-bold text-white">
                             2
                         </div>
@@ -806,7 +748,7 @@
                         </div>
                     </div>
                     
-                    <div class="glass-card p-8 rounded-2xl flex items-start gap-6 transition-all duration-300 hover:border-primary-500/30 fade-in">
+                    <div class="glass-card p-8 rounded-2xl flex items-start gap-6 transition-all duration-300 hover:border-white/20 fade-in">
                         <div class="flex-shrink-0 w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-lg font-bold text-white">
                             3
                         </div>
@@ -818,7 +760,7 @@
                         </div>
                     </div>
                     
-                    <div class="glass-card p-8 rounded-2xl flex items-start gap-6 transition-all duration-300 hover:border-primary-500/30 fade-in">
+                    <div class="glass-card p-8 rounded-2xl flex items-start gap-6 transition-all duration-300 hover:border-white/20 fade-in">
                         <div class="flex-shrink-0 w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-lg font-bold text-white">
                             4
                         </div>
@@ -833,22 +775,60 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Floating AI elements -->
-        <div class="absolute -left-20 top-1/4 w-64 h-64 rounded-full bg-primary-500/10 blur-3xl"></div>
-        <div class="absolute -right-20 bottom-1/4 w-64 h-64 rounded-full bg-accent-500/10 blur-3xl"></div>
+    </section>
+
+    <!-- Cloud Cost Warning Section -->
+    <section class="py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center mb-16 fade-in">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-400 text-sm font-medium mb-8 border border-red-500/30">
+                    <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                    CLOUD WILL BANKRUPT YOU
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+                    $1.8M <span class="text-white">Per Month</span>
+                </h2>
+                <p class="text-xl text-secondary leading-relaxed">
+                    That's what it costs to serve just <strong class="text-white">10,000 concurrent players</strong> using OpenAI-style API pricing. 
+                    For most studios, success becomes unsustainable.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-6 rounded-2xl text-center fade-in transition-all duration-300 hover:border-white/20">
+                    <div class="text-3xl font-bold text-red-400 mb-4">$1.8M</div>
+                    <p class="text-secondary">Monthly cost for 10k concurrent users if using cloud APIs.</p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl text-center fade-in transition-all duration-300 hover:border-white/20">
+                    <div class="text-3xl font-bold text-yellow-400 mb-4">150+</div>
+                    <p class="text-secondary">Steam games hit 10k concurrent players <strong class="text-white">every day</strong>. Are you ready for that scale?</p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl text-center fade-in transition-all duration-300 hover:border-white/20">
+                    <div class="text-3xl font-bold text-green-400 mb-4">$0</div>
+                    <p class="text-secondary">Tryll runs <strong class="text-white">fully local</strong>. No latency. No outages. No cloud bills.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-16 fade-in">
+                <a href="#features" class="text-sm text-primary-500 hover:text-white transition-colors duration-300 font-medium">
+                    Learn how we cut costs →
+                </a>
+            </div>
+        </div>
     </section>
 
     <!-- Audience Section -->
-    <section class="py-24 bg-dark-800 relative overflow-hidden">
-        <div class="light-orb light-orb-3"></div>
+    <section class="py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-6">
             <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
-                <div class="inline-block px-4 py-2 rounded-full bg-dark-700 text-primary-400 text-sm font-medium mb-6 border border-primary-800/50">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
+                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
                     BUILT FOR YOU
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-accent-100 mb-6 heading-primary">
-                    Perfect for <span class="text-white">Every Creator</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+                    Perfect for Every Creator
                 </h2>
                 <p class="text-xl text-secondary leading-relaxed">
                     Whether you're an indie developer or a AAA studio, Tryll Engine adapts to your needs.
@@ -912,141 +892,406 @@
     </section>
 
     <!-- Social Proof -->
-    <section class="py-24 bg-gradient-to-br from-dark-800 to-dark-900 relative overflow-hidden">
+    <section class="py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-6">
-            <div class="max-w-3xl mx-auto glass-card glass-enhanced p-12 rounded-3xl text-center fade-in">
-                <div class="text-5xl mb-6 text-primary-400">
+            <div class="max-w-4xl mx-auto glass-card p-12 rounded-3xl text-center fade-in">
+                <div class="text-5xl mb-6 text-primary-500">
                     <i class="fas fa-quote-left"></i>
                 </div>
                 <p class="text-2xl text-white mb-8 leading-relaxed">
-                    "We added Tryll to our game prototype – and our NPCs feel alive. 
-                    Players spent 3x longer in conversations. It's a game changer!"
+                    "Thing that we want to do more than anything is to put [AI] on your PC as well.<br><br>
+                    Our focus is to turn Windows PC into target first-class platform that we will support and maintain for as long as we shall live."
                 </p>
                 <div>
-                    <p class="text-lg font-bold text-white">Sarah Chen</p>
-                    <p class="text-gray-400">Creative Director at Moonlight Studios</p>
+                    <p class="text-lg font-bold text-white">Jensen Huang</p>
+                    <p class="text-secondary">NVIDIA Keynote, CES 2025</p>
                 </div>
             </div>
         </div>
-        
-        <!-- Floating AI elements -->
-        <div class="absolute -left-20 top-1/3 w-64 h-64 rounded-full bg-primary-500/10 blur-3xl"></div>
-        <div class="absolute -right-20 bottom-1/3 w-64 h-64 rounded-full bg-accent-500/10 blur-3xl"></div>
+    </section>
+
+    <!-- Interactive Features Section -->
+    <section class="py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
+                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
+                    FEATURES
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+                    See Tryll Engine in Action
+                </h2>
+                <p class="text-xl text-secondary leading-relaxed">
+                    Click on any feature to see how it transforms your game
+                </p>
+            </div>
+
+            <div class="max-w-7xl mx-auto">
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="grid lg:grid-cols-2 gap-12 items-start">
+                        <!-- Features List -->
+                        <div class="space-y-6">
+                            <div class="feature-item active cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5" data-feature="personalities">
+                                <h3 class="text-2xl font-bold text-white mb-3">AI-driven personalities</h3>
+                                <p class="text-secondary leading-relaxed">
+                                    Create NPCs with unique personalities, memories, and emotional intelligence. Characters remember past interactions and develop relationships with players over time.
+                                </p>
+                                <div class="mt-4 space-y-2">
+                                    <div class="flex items-center gap-2 text-sm text-secondary">
+                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
+                                        <span>Persistent memory across conversations</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-secondary">
+                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
+                                        <span>Emotional context awareness</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-secondary">
+                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
+                                        <span>Dynamic relationship building</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="feature-item cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5" data-feature="teaching">
+                                <h3 class="text-2xl font-bold text-white mb-3">AI systems that teach</h3>
+                                <p class="text-secondary leading-relaxed">
+                                    Adaptive AI mentors that guide players through complex mechanics. Each player gets personalized guidance based on their learning style and progress.
+                                </p>
+                                <div class="mt-4 space-y-2">
+                                    <div class="flex items-center gap-2 text-sm text-secondary">
+                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
+                                        <span>Personalized learning paths</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-secondary">
+                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
+                                        <span>Real-time skill assessment</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-secondary">
+                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
+                                        <span>Contextual hints and tips</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="feature-item cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5" data-feature="integration">
+                                <h3 class="text-2xl font-bold text-white mb-3">Easy integration</h3>
+                                <p class="text-secondary leading-relaxed">
+                                    Get up and running in minutes with our 1-click Unreal Engine plugin. No complex setup, no AI expertise required - just install and start creating.
+                                </p>
+                                <div class="mt-4 space-y-2">
+                                    <div class="flex items-center gap-2 text-sm text-secondary">
+                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
+                                        <span>1-click Unreal Engine plugin</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-secondary">
+                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
+                                        <span>Visual scripting interface</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-secondary">
+                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
+                                        <span>Complete example projects</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="feature-item cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5" data-feature="agency">
+                                <h3 class="text-2xl font-bold text-white mb-3">Agency</h3>
+                                <p class="text-secondary leading-relaxed">
+                                    NPCs don't just talk - they act. Our AI agents can interact with game systems, trigger events, and respond to the world around them with contextual actions.
+                                </p>
+                                <div class="mt-4 space-y-2">
+                                    <div class="flex items-center gap-2 text-sm text-secondary">
+                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
+                                        <span>Real-time function calls</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-secondary">
+                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
+                                        <span>Context-aware world interactions</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-secondary">
+                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
+                                        <span>Dynamic event triggering</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video Display -->
+                        <div class="lg:sticky lg:top-8">
+                            <div class="aspect-video rounded-xl overflow-hidden bg-white/5 border border-white/10">
+                                <video id="feature-video" class="w-full h-full object-cover" autoplay muted loop>
+                                    <source src="./videos/personalities.mp4" type="video/mp4">
+                                    <div class="w-full h-full flex items-center justify-center text-secondary">
+                                        <div class="text-center">
+                                            <div class="text-6xl mb-4">🎮</div>
+                                            <p>AI-driven personalities demo</p>
+                                        </div>
+                                    </div>
+                                </video>
+                            </div>
+                            <div class="mt-4 text-center">
+                                <p class="text-sm text-secondary" id="video-caption">Watch how AI-driven personalities create unique character interactions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
+                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
+                    FAQ
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+                    Frequently Asked Questions
+                </h2>
+                <p class="text-xl text-secondary leading-relaxed">
+                    Everything you need to know about Tryll Engine
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="space-y-6">
+                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <h3 class="text-xl font-bold text-white mb-4">What is Tryll Engine?</h3>
+                        <p class="text-secondary leading-relaxed">
+                            Tryll Engine is a complete AI infrastructure for game developers that enables intelligent NPCs, dynamic dialogues, and adaptive learning systems. It runs locally on player hardware with zero cloud costs.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <h3 class="text-xl font-bold text-white mb-4">How does local AI work?</h3>
+                        <p class="text-secondary leading-relaxed">
+                            Tryll Engine runs AI models directly on the player's device, eliminating the need for cloud servers. This means instant responses, complete privacy, and no ongoing costs for developers or players.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <h3 class="text-xl font-bold text-white mb-4">Which game engines are supported?</h3>
+                        <p class="text-secondary leading-relaxed">
+                            Currently, we support Unreal Engine with a 1-click plugin. Unity support is in development. We're also working on support for other popular engines based on community demand.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <h3 class="text-xl font-bold text-white mb-4">What are the system requirements?</h3>
+                        <p class="text-secondary leading-relaxed">
+                            Tryll Engine automatically optimizes for available hardware. It works on a wide range of PCs, from budget systems to high-end gaming rigs. The engine automatically selects the best AI model for each player's hardware.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <h3 class="text-xl font-bold text-white mb-4">Is it really free for indie developers?</h3>
+                        <p class="text-secondary leading-relaxed">
+                            Yes! If you've generated or raised less than $200k in the past 12 months, Tryll Engine is completely free. This includes all features, documentation, and Discord community support.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <h3 class="text-xl font-bold text-white mb-4">How do I maintain creative control?</h3>
+                        <p class="text-secondary leading-relaxed">
+                            Tryll Engine uses a hybrid approach. You can keep traditional dialogue trees visible while allowing natural language input. The AI intelligently maps player input to your predefined options, giving players freedom while maintaining your narrative control.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <h3 class="text-xl font-bold text-white mb-4">What about content safety?</h3>
+                        <p class="text-secondary leading-relaxed">
+                            Tryll Engine includes comprehensive content filtering to ensure AI responses stay within your creative boundaries and community standards. You have full control over what the AI can and cannot say.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <h3 class="text-xl font-bold text-white mb-4">Can I try it before committing?</h3>
+                        <p class="text-secondary leading-relaxed">
+                            Absolutely! We offer live demos and will have a downloadable mod for Deep Rock Galactic coming soon. You can also join our Discord community to see examples and get your questions answered.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-16 fade-in">
+                    <p class="text-secondary mb-6">Still have questions?</p>
+                    <button class="px-8 py-4 rounded-lg bg-primary-500 text-white font-medium text-lg transition-all duration-300 hover:bg-primary-600">
+                        Contact Support
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
+                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
+                    PRICING
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+                    Choose Your Plan
+                </h2>
+                <p class="text-xl text-secondary leading-relaxed">
+                    Start free, scale when you succeed. Fair pricing based on your revenue.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Free Tier -->
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="mb-6">
+                        <div class="text-lg text-white mb-2 font-semibold">Under $200k USD in revenue/investments?</div>
+                        <h3 class="text-3xl font-bold text-white mb-4">Free</h3>
+                        <p class="text-secondary mb-6">For game developers, modders, and individuals</p>
+                        <div class="text-4xl font-bold text-white mb-6">$0</div>
+                    </div>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded border-2 border-white bg-white flex items-center justify-center mt-0.5 flex-shrink-0">
+                                <svg class="w-3 h-3 text-black" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <span class="text-secondary">All features included</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded border-2 border-white bg-white flex items-center justify-center mt-0.5 flex-shrink-0">
+                                <svg class="w-3 h-3 text-black" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <span class="text-secondary">Documentation</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded border-2 border-white bg-white flex items-center justify-center mt-0.5 flex-shrink-0">
+                                <svg class="w-3 h-3 text-black" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <span class="text-secondary">Access to Tryll Engine Discord community</span>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full px-8 py-4 rounded-lg bg-primary-500 text-white font-medium text-lg transition-all duration-300 hover:bg-primary-600">
+                        Use it for free
+                    </button>
+                </div>
+                
+                <!-- Seat-based Tier -->
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="mb-6">
+                        <div class="text-lg text-white mb-2 font-semibold">Over $200k USD in revenue/investments?</div>
+                        <h3 class="text-3xl font-bold text-white mb-4">Seat-based</h3>
+                        <p class="text-secondary mb-6">If you are using Tryll Engine commercially, have generated or raised more than $200k in the past 12 months, and will be licensing to third party end users, then a seat license fee is required.</p>
+                        <div class="text-4xl font-bold text-white mb-6">$1,000 <span class="text-lg font-normal text-secondary">per seat per year</span></div>
+                    </div>
+                    
+                    <button class="w-full px-8 py-4 rounded-lg bg-primary-500 text-white font-medium text-lg transition-all duration-300 hover:bg-primary-600 mb-6">
+                        Buy seats
+                    </button>
+                    
+                    <div class="bg-white/5 p-6 rounded-lg mb-8 border border-white/10">
+                        <h4 class="text-white font-semibold mb-3">Not sure? Let us help.</h4>
+                        <p class="text-secondary text-sm mb-4">Got questions about whether our standard license applies to you? We're here to guide you and someone from our team will be in touch.</p>
+                        <button class="px-6 py-3 rounded-lg glass-card text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300">
+                            Contact us
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Final CTA -->
     <section class="py-24 bg-dark-900 relative overflow-hidden">
         <div class="container mx-auto px-6">
             <div class="max-w-3xl mx-auto text-center fade-in">
-                <div class="inline-block px-4 py-2 rounded-full bg-dark-700 text-primary-400 text-sm font-medium mb-6 border border-primary-800/50">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
+                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
                     JOIN THE REVOLUTION
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-accent-100 mb-6 heading-primary">
-                    Ready to <span class="text-white">Redefine Gaming</span>?
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+                    Ready to Redefine Gaming?
                 </h2>
                 <p class="text-xl text-secondary mb-10 leading-relaxed">
                     Your journey to smarter games starts now. Join the AI revolution in gaming.
                 </p>
                 
                 <div class="flex flex-col items-center gap-6 mb-16">
-                    <button class="relative overflow-hidden px-8 py-4 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 text-white font-medium text-lg transition-all duration-300 neon-glow hover:neon-glow-hover hover:shadow-xl">
+                    <button class="px-8 py-4 rounded-lg bg-primary-500 text-white font-medium text-lg transition-all duration-300 hover:bg-primary-600">
                         Join Whitelist (Free)
                     </button>
                     
-                    <p class="text-gray-400">or</p>
+                    <p class="text-secondary">or</p>
                     
                     <form class="w-full max-w-md">
                         <div class="flex gap-2">
-                            <input type="email" placeholder="Enter your email for updates" class="flex-1 px-6 py-4 rounded-full glass-card text-white border border-white/10 focus:border-primary-500/50 outline-none transition-all duration-300">
-                            <button type="submit" class="px-8 py-4 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 text-white font-medium text-lg transition-all duration-300 neon-glow hover:neon-glow-hover">
+                            <input type="email" placeholder="Enter your email for updates" class="flex-1 px-6 py-4 rounded-lg glass-card text-white border border-white/10 focus:border-primary-500/50 outline-none transition-all duration-300">
+                            <button type="submit" class="px-8 py-4 rounded-lg bg-primary-500 text-white font-medium text-lg transition-all duration-300 hover:bg-primary-600">
                                 Subscribe
                             </button>
                         </div>
                     </form>
                     
-                    <button class="px-8 py-4 rounded-full glass-card text-white font-medium text-lg border border-white/10 hover:border-white/20 transition-all duration-300">
+                    <button class="px-8 py-4 rounded-lg glass-card text-white font-medium text-lg border border-white/10 hover:border-white/20 transition-all duration-300">
                         <i class="fas fa-play mr-2"></i> Watch Demo
                     </button>
                 </div>
                 
-                <div class="flex flex-wrap justify-center gap-8 text-gray-400">
+                <div class="flex flex-wrap justify-center gap-8 text-secondary">
                     <div class="flex items-center gap-2">
-                        <div class="w-3 h-3 rounded-full bg-accent-500 animate-pulse"></div>
+                        <div class="w-2 h-2 rounded-full bg-primary-500"></div>
                         <span>147 Studios Waiting</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <div class="w-3 h-3 rounded-full bg-primary-500 animate-pulse"></div>
+                        <div class="w-2 h-2 rounded-full bg-primary-500"></div>
                         <span>Free for Indies</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <div class="w-3 h-3 rounded-full bg-white animate-pulse"></div>
+                        <div class="w-2 h-2 rounded-full bg-primary-500"></div>
                         <span>5min Setup</span>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- Floating AI elements -->
-        <div class="absolute -left-20 top-1/4 w-64 h-64 rounded-full bg-primary-500/10 blur-3xl"></div>
-        <div class="absolute -right-20 bottom-1/4 w-64 h-64 rounded-full bg-accent-500/10 blur-3xl"></div>
     </section>
 
     <!-- Footer -->
     <footer class="py-12 border-t border-white/10">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="text-gray-400 mb-6 md:mb-0">
+                <div class="text-secondary mb-6 md:mb-0">
                     &copy; 2025 Tryll Engine. Pioneering the future of gaming.
                 </div>
                 
                 <div class="flex gap-6">
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                    <a href="#" class="text-secondary hover:text-white transition-colors duration-300">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                    <a href="#" class="text-secondary hover:text-white transition-colors duration-300">
                         <i class="fab fa-discord"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                    <a href="#" class="text-secondary hover:text-white transition-colors duration-300">
                         <i class="fab fa-github"></i>
                     </a>
                 </div>
                 
                 <div class="flex gap-6 mt-6 md:mt-0">
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 text-sm">Privacy</a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 text-sm">Terms</a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 text-sm">Contact</a>
+                    <a href="#" class="text-secondary hover:text-white transition-colors duration-300 text-sm">Privacy</a>
+                    <a href="#" class="text-secondary hover:text-white transition-colors duration-300 text-sm">Terms</a>
+                    <a href="#" class="text-secondary hover:text-white transition-colors duration-300 text-sm">Contact</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Create AI particles
-        function createParticles() {
-            const container = document.getElementById('particles');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('ai-particle');
-                
-                // Random properties
-                const size = Math.random() * 5 + 1;
-                const posX = Math.random() * 100;
-                const posY = Math.random() * 100;
-                const delay = Math.random() * 5;
-                const duration = 5 + Math.random() * 10;
-                
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${posX}%`;
-                particle.style.top = `${posY}%`;
-                particle.style.animationDelay = `${delay}s`;
-                particle.style.animationDuration = `${duration}s`;
-                
-                container.appendChild(particle);
-            }
-        }
         
         // Intersection Observer for fade-in animations
         const observerOptions = {
@@ -1095,8 +1340,56 @@
             this.reset();
         });
         
-        // Initialize particles when page loads
-        window.addEventListener('load', createParticles);
+        // Interactive Features Section
+        document.addEventListener('DOMContentLoaded', function() {
+            const featureItems = document.querySelectorAll('.feature-item');
+            const video = document.getElementById('feature-video');
+            const caption = document.getElementById('video-caption');
+            
+            const features = {
+                personalities: {
+                    video: './videos/personalities.mp4',
+                    caption: 'Watch how AI-driven personalities create unique character interactions'
+                },
+                teaching: {
+                    video: './videos/teaching.mp4',
+                    caption: 'See AI mentors adapt to different learning styles and provide personalized guidance'
+                },
+                integration: {
+                    video: './videos/integration.mp4',
+                    caption: 'Experience the simplicity of 1-click installation and visual scripting'
+                },
+                agency: {
+                    video: './videos/agency.mp4',
+                    caption: 'Watch NPCs interact with the game world through contextual actions'
+                }
+            };
+            
+            featureItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remove active class from all items
+                    featureItems.forEach(i => i.classList.remove('active'));
+                    
+                    // Add active class to clicked item
+                    this.classList.add('active');
+                    
+                    // Get feature data
+                    const feature = this.dataset.feature;
+                    const featureData = features[feature];
+                    
+                    if (featureData) {
+                        // Update video source
+                        video.src = featureData.video;
+                        video.load();
+                        video.play();
+                        
+                        // Update caption
+                        caption.textContent = featureData.caption;
+                    }
+                });
+            });
+        });
+        
     </script>
-<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=Skizzik/tryll2" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
+</body>
 </html>

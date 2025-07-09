@@ -304,67 +304,128 @@
         .feature-item.active h3 {
             color: #ffffff;
         }
+        
+        /* Dropdown styling */
+        select option {
+            background-color: #0f1419 !important;
+            color: #ffffff !important;
+        }
+        
+        select {
+            color-scheme: dark;
+        }
+        
+        /* Hide scrollbar for horizontal scroll */
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Feature item active state */
+        .feature-item.active {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border-color: rgba(35, 46, 65, 0.5) !important;
+        }
+        
+        .feature-item.active h3 {
+            color: #ffffff !important;
+        }
     </style>
 </head>
 <body class="antialiased">
     <!-- Navigation -->
-    <nav class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 nav-glass-card px-8 py-4 w-full max-w-7xl">
+    <nav class="fixed top-4 left-4 right-4 md:top-6 md:left-1/2 md:transform md:-translate-x-1/2 z-50 nav-glass-card px-4 md:px-8 py-3 md:py-4 w-auto md:w-full md:max-w-7xl">
         <div class="flex items-center justify-between">
             <div class="logo">
-                <img src="./logo/full%20logo_white.svg" alt="Tryll Engine" class="h-12" />
+                <img src="./logo/full%20logo_white.svg" alt="Tryll Engine" class="h-8 md:h-12" />
             </div>
-            <div class="flex items-center gap-8">
-                <ul class="nav-links hidden md:flex gap-6 list-none">
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-8">
+                <ul class="nav-links flex gap-6 list-none">
                     <li><a href="#demo" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Demo</a></li>
                     <li><a href="#features" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Features</a></li>
                     <li><a href="#pricing" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Pricing</a></li>
                     <li><a href="#for-you" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">For You</a></li>
+                    <li><a href="team.html" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Team</a></li>
                 </ul>
                 <a href="#contact" class="bg-primary-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-primary-600">
                     Get Started
                 </a>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div class="md:hidden flex items-center gap-3">
+                <a href="#contact" class="bg-primary-500 text-white px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 hover:bg-primary-600">
+                    Get Started
+                </a>
+                <button id="mobile-menu-btn" class="text-white p-2 rounded-lg hover:bg-white/10 transition-colors duration-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="md:hidden fixed inset-0 bg-black/95 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40">
+            <div class="flex flex-col items-center justify-center h-full space-y-8 text-center px-6">
+                <a href="#demo" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Demo</a>
+                <a href="#features" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Features</a>
+                <a href="#pricing" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Pricing</a>
+                <a href="#for-you" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">For You</a>
+                <a href="team.html" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Team</a>
+                <div class="pt-4">
+                    <a href="#contact" class="bg-primary-500 text-white px-8 py-4 rounded-lg text-lg font-medium transition-all duration-200 hover:bg-primary-600">
+                        Get Started
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
     
     <!-- Hero Section -->
     <section class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div class="container mx-auto px-6 py-32 relative z-10">
+        <div class="container mx-auto px-4 md:px-6 py-24 md:py-32 relative z-10">
             <div class="max-w-4xl mx-auto text-center fade-in">
-                <div class="mb-8">
-                    <img src="./logo/logo%20mark_white%20.svg" alt="Tryll" class="w-30 h-30 mx-auto" style="width: 120px; height: 120px;" />
+                <div class="mb-6 md:mb-8">
+                    <img src="./logo/logo%20mark_white%20.svg" alt="Tryll" class="w-20 h-20 md:w-30 md:h-30 mx-auto" style="width: 80px; height: 80px;" />
                 </div>
                 
-                <h1 class="font-bold mb-8 heading-primary leading-tight text-white" style="font-size: 62px;">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 heading-primary leading-tight text-white">
                     Gaming Reimagined
                 </h1>
                 
-                <p class="text-xl md:text-2xl text-secondary mb-12 max-w-3xl mx-auto body-large">
+                <p class="text-lg sm:text-xl md:text-2xl text-secondary mb-8 md:mb-12 max-w-3xl mx-auto body-large leading-relaxed px-2">
                     Tryll Engine is the complete AI infrastructure for game developers — from living NPCs to dynamic dialogues, 
                     intelligent commentators, and adaptive learning systems. Running locally with zero cloud costs.
                 </p>
                 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-                    <a href="#contact" class="inline-block px-8 py-4 rounded-lg bg-primary-500 text-white font-medium text-lg transition-all duration-300 hover:bg-primary-600">
+                <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center mb-12 md:mb-16 px-4">
+                    <a href="#contact" class="inline-block px-6 md:px-8 py-3 md:py-4 rounded-lg bg-primary-500 text-white font-medium text-base md:text-lg transition-all duration-300 hover:bg-primary-600 w-full sm:w-auto text-center">
                         Try it for free
                     </a>
                     
-                    <a href="#demo" class="inline-block px-8 py-4 rounded-lg glass-card text-white font-medium text-lg border border-white/10 hover:border-white/20 transition-all duration-300">
+                    <a href="#demo" class="inline-block px-6 md:px-8 py-3 md:py-4 rounded-lg glass-card text-white font-medium text-base md:text-lg border border-white/10 hover:border-white/20 transition-all duration-300 w-full sm:w-auto text-center">
                         <i class="fas fa-play mr-2"></i> Watch Demo
                     </a>
                 </div>
                 
-                <div class="flex flex-wrap justify-center gap-8 text-secondary">
-                    <div class="flex items-center gap-2">
-                        <div class="w-2 h-2 rounded-full bg-primary-500"></div>
+                <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4 md:gap-8 text-secondary text-sm md:text-base px-4">
+                    <div class="flex items-center justify-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-primary-500 flex-shrink-0"></div>
                         <span>$0 cloud costs</span>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <div class="w-2 h-2 rounded-full bg-primary-500"></div>
-                        <span>1-click Unreal/Unity integration</span>
+                    <div class="flex items-center justify-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-primary-500 flex-shrink-0"></div>
+                        <span>1-click integration</span>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <div class="w-2 h-2 rounded-full bg-primary-500"></div>
+                    <div class="flex items-center justify-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-primary-500 flex-shrink-0"></div>
                         <span>100% Private & Secure</span>
                     </div>
                 </div>
@@ -397,42 +458,42 @@
                 </div>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-white/20 fade-in">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="glass-card p-6 md:p-8 rounded-2xl text-center transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-16 h-16 md:w-20 md:h-20 rounded-full gradient-bg flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 mx-auto">
                         <i class="fas fa-calendar text-white"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Book a Live Demo</h3>
-                    <p class="text-secondary mb-6 leading-relaxed">
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Book a Live Demo</h3>
+                    <p class="text-secondary mb-4 md:mb-6 leading-relaxed text-sm md:text-base">
                         Get a personalized demo and see how Tryll can transform your game project.
                     </p>
-                    <a href="#contact" class="inline-block px-6 py-3 rounded-lg bg-primary-500 text-white font-medium text-sm transition-all duration-300 hover:bg-primary-600">
+                    <a href="#contact" class="inline-block px-4 md:px-6 py-2 md:py-3 rounded-lg bg-primary-500 text-white font-medium text-sm transition-all duration-300 hover:bg-primary-600 w-full sm:w-auto">
                         Schedule Demo
                     </a>
                 </div>
                 
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-white/20 fade-in">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
+                <div class="glass-card p-6 md:p-8 rounded-2xl text-center transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-16 h-16 md:w-20 md:h-20 rounded-full gradient-bg flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 mx-auto">
                         <i class="fas fa-question-circle text-white"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">FAQ</h3>
-                    <p class="text-secondary mb-6 leading-relaxed">
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">FAQ</h3>
+                    <p class="text-secondary mb-4 md:mb-6 leading-relaxed text-sm md:text-base">
                         Find answers to common questions about Tryll Engine and implementation.
                     </p>
-                    <button class="px-6 py-3 rounded-lg glass-card text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300">
+                    <a href="#faq" class="inline-block px-4 md:px-6 py-2 md:py-3 rounded-lg glass-card text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300 w-full sm:w-auto">
                         View FAQ
-                    </button>
+                    </a>
                 </div>
                 
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-white/20 fade-in">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
+                <div class="glass-card p-6 md:p-8 rounded-2xl text-center transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-16 h-16 md:w-20 md:h-20 rounded-full gradient-bg flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 mx-auto">
                         <i class="fas fa-gamepad text-white"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Try It In-Game</h3>
-                    <p class="text-secondary mb-6 leading-relaxed">
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Try It In-Game</h3>
+                    <p class="text-secondary mb-4 md:mb-6 leading-relaxed text-sm md:text-base">
                         <span class="text-white font-medium">(Coming Soon!)</span> Download BoscoTryll Deep Rock Galactic mod and experience our AI companion.
                     </p>
-                    <button class="px-6 py-3 rounded-lg glass-card text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300 opacity-60 cursor-not-allowed">
+                    <button class="px-4 md:px-6 py-2 md:py-3 rounded-lg glass-card text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300 opacity-60 cursor-not-allowed w-full sm:w-auto">
                         Coming Soon
                     </button>
                 </div>
@@ -501,64 +562,136 @@
     </section>
 
     <!-- Interactive Features Section -->
-    <section id="features" class="py-24 relative overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+    <section id="features" class="py-16 md:py-24 relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-3xl mx-auto text-center mb-12 md:mb-20 fade-in">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
                     See Tryll Engine in Action
                 </h2>
-                <p class="text-xl text-secondary leading-relaxed">
-                    Click on any feature to see how it transforms your game
+                <p class="text-lg md:text-xl text-secondary leading-relaxed px-2">
+                    Explore features by swiping or clicking the tabs below
                 </p>
             </div>
 
-            <div class="max-w-7xl mx-auto">
-                <div class="grid lg:grid-cols-5 gap-12 items-start">
-                    <!-- Features List - 60% width (3 columns) -->
-                    <div class="lg:col-span-3 space-y-6">
-                        <div class="feature-item active cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5" data-feature="personalities">
-                            <h3 class="text-2xl font-bold text-white mb-3">AI-driven personalities</h3>
-                            <p class="text-secondary leading-relaxed">
-                                Create NPCs with unique personalities and memories. Characters remember past interactions and develop relationships with players.
+            <div class="max-w-5xl mx-auto">
+                <!-- Video Display (Top on Mobile) -->
+                <div class="mb-8 md:mb-12">
+                    <div class="video-container relative aspect-video max-w-4xl mx-auto">
+                        <div id="feature-video" class="w-full h-full object-cover rounded-xl">
+                            <div class="w-full h-full flex items-center justify-center text-secondary bg-white/5 rounded-xl border border-white/10">
+                                <div class="text-center p-6 md:p-8">
+                                    <div class="text-6xl md:text-8xl mb-4 md:mb-6">🧠</div>
+                                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">AI-Driven Personalities</h3>
+                                    <p class="text-secondary text-base md:text-lg leading-relaxed">NPCs with unique personalities, memories, and evolving relationships</p>
+                                    <div class="mt-4 md:mt-6 text-sm text-white/60">Demo video coming soon</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Tabs (Horizontal Scroll on Mobile) -->
+                <div class="feature-tabs-container">
+                    <!-- Desktop: Grid Layout -->
+                    <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+                        <div class="feature-item active cursor-pointer transition-all duration-300 p-4 lg:p-6 rounded-xl hover:bg-white/5 border border-white/10" data-feature="personalities">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-sm">🧠</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-white">AI Personalities</h3>
+                            </div>
+                            <p class="text-secondary text-sm leading-relaxed">
+                                NPCs with unique memories and evolving relationships.
                             </p>
                         </div>
 
-                        <div class="feature-item cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5" data-feature="teaching">
-                            <h3 class="text-2xl font-bold text-white mb-3">AI systems that teach</h3>
-                            <p class="text-secondary leading-relaxed">
-                                Adaptive AI mentors guide players through complex mechanics. Each player gets personalized guidance based on their learning style.
+                        <div class="feature-item cursor-pointer transition-all duration-300 p-4 lg:p-6 rounded-xl hover:bg-white/5 border border-white/10" data-feature="teaching">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-sm">🎓</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-white">AI Teaching</h3>
+                            </div>
+                            <p class="text-secondary text-sm leading-relaxed">
+                                Adaptive mentors that guide players through complex mechanics.
                             </p>
                         </div>
 
-                        <div class="feature-item cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5" data-feature="integration">
-                            <h3 class="text-2xl font-bold text-white mb-3">Easy integration</h3>
-                            <p class="text-secondary leading-relaxed">
-                                Get up and running in minutes with our 1-click Unreal Engine plugin. No AI expertise required - just install and start creating.
+                        <div class="feature-item cursor-pointer transition-all duration-300 p-4 lg:p-6 rounded-xl hover:bg-white/5 border border-white/10" data-feature="integration">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-sm">🔧</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-white">Easy Integration</h3>
+                            </div>
+                            <p class="text-secondary text-sm leading-relaxed">
+                                1-click Unreal plugin. No AI expertise required.
                             </p>
                         </div>
 
-                        <div class="feature-item cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5" data-feature="agency">
-                            <h3 class="text-2xl font-bold text-white mb-3">Agency</h3>
-                            <p class="text-secondary leading-relaxed">
-                                NPCs don't just talk - they act. Our AI agents interact with game systems, trigger events, and respond contextually.
+                        <div class="feature-item cursor-pointer transition-all duration-300 p-4 lg:p-6 rounded-xl hover:bg-white/5 border border-white/10" data-feature="agency">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-sm">⚡</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-white">AI Agency</h3>
+                            </div>
+                            <p class="text-secondary text-sm leading-relaxed">
+                                NPCs that act and interact with game systems.
                             </p>
                         </div>
                     </div>
 
-                    <!-- Video Display - 40% width (2 columns) -->
-                    <div class="lg:col-span-2">
-                        <div class="video-container relative" style="height: 788px;">
-                            <div id="video-wrapper" class="absolute transition-all duration-500 ease-out" style="width: 700px; height: 394px; top: 0;">
-                                <div id="feature-video" class="w-full h-full object-cover rounded-xl">
-                                    <div class="w-full h-full flex items-center justify-center text-secondary bg-white/5 rounded-xl border border-white/10">
-                                        <div class="text-center p-8">
-                                            <div class="text-8xl mb-6">🧠</div>
-                                            <h3 class="text-2xl font-bold text-white mb-4">AI-Driven Personalities</h3>
-                                            <p class="text-secondary text-lg leading-relaxed">NPCs with unique personalities, memories, and evolving relationships</p>
-                                            <div class="mt-6 text-sm text-white/60">Demo video coming soon</div>
-                                        </div>
+                    <!-- Mobile: Horizontal Scroll -->
+                    <div class="md:hidden">
+                        <div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide" style="scroll-snap-type: x mandatory;">
+                            <div class="feature-item active cursor-pointer transition-all duration-300 p-4 rounded-xl bg-white/5 border border-white/10 min-w-[280px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="personalities">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
+                                        <span class="text-white text-lg">🧠</span>
                                     </div>
+                                    <h3 class="text-lg font-bold text-white">AI Personalities</h3>
                                 </div>
+                                <p class="text-secondary text-sm leading-relaxed">
+                                    Create NPCs with unique personalities and memories. Characters remember past interactions and develop relationships with players.
+                                </p>
+                            </div>
+
+                            <div class="feature-item cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 min-w-[280px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="teaching">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
+                                        <span class="text-white text-lg">🎓</span>
+                                    </div>
+                                    <h3 class="text-lg font-bold text-white">AI Teaching</h3>
+                                </div>
+                                <p class="text-secondary text-sm leading-relaxed">
+                                    Adaptive AI mentors guide players through complex mechanics. Each player gets personalized guidance based on their learning style.
+                                </p>
+                            </div>
+
+                            <div class="feature-item cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 min-w-[280px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="integration">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
+                                        <span class="text-white text-lg">🔧</span>
+                                    </div>
+                                    <h3 class="text-lg font-bold text-white">Easy Integration</h3>
+                                </div>
+                                <p class="text-secondary text-sm leading-relaxed">
+                                    Get up and running in minutes with our 1-click Unreal Engine plugin. No AI expertise required - just install and start creating.
+                                </p>
+                            </div>
+
+                            <div class="feature-item cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 min-w-[280px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="agency">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
+                                        <span class="text-white text-lg">⚡</span>
+                                    </div>
+                                    <h3 class="text-lg font-bold text-white">AI Agency</h3>
+                                </div>
+                                <p class="text-secondary text-sm leading-relaxed">
+                                    NPCs don't just talk - they act. Our AI agents interact with game systems, trigger events, and respond contextually.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -1161,17 +1294,17 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-24 bg-black relative overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
+    <section id="faq" class="py-16 md:py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-3xl mx-auto text-center mb-16 md:mb-20 fade-in">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-xs md:text-sm font-medium mb-6 md:mb-8 border border-white/10">
                     <div class="w-2 h-2 rounded-full bg-primary-500"></div>
                     FAQ
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
                     Frequently Asked Questions
                 </h2>
-                <p class="text-xl text-secondary leading-relaxed">
+                <p class="text-lg md:text-xl text-secondary leading-relaxed px-2">
                     Everything you need to know about Tryll Engine
                 </p>
             </div>
@@ -1302,25 +1435,25 @@
     </section>
 
     <!-- Contact Form -->
-    <section id="contact" class="py-24 bg-dark-900 relative overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="max-w-3xl mx-auto text-center mb-16 fade-in">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
+    <section id="contact" class="py-16 md:py-24 bg-dark-900 relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16 fade-in">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-xs md:text-sm font-medium mb-6 md:mb-8 border border-white/10">
                     <div class="w-2 h-2 rounded-full bg-primary-500"></div>
                     JOIN THE REVOLUTION
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
                     Ready to Redefine Gaming?
                 </h2>
-                <p class="text-xl text-secondary mb-10 leading-relaxed">
+                <p class="text-lg md:text-xl text-secondary mb-8 md:mb-10 leading-relaxed px-2">
                     Join the revolution. Be among the first studios to access Tryll Engine. Limited early access spots with integration support available.
                 </p>
             </div>
             
             <!-- Contact Form -->
-            <div class="max-w-lg mx-auto">
-                <form id="contact-form" class="glass-card p-8 rounded-2xl">
-                    <div class="space-y-6">
+            <div class="max-w-lg mx-auto px-4">
+                <form id="contact-form" class="glass-card p-6 md:p-8 rounded-2xl" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="space-y-5 md:space-y-6">
                         <div>
                             <label for="name" class="block text-sm font-medium text-white mb-2">Name</label>
                             <input 
@@ -1328,7 +1461,7 @@
                                 id="name" 
                                 name="name" 
                                 required 
-                                class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                                class="w-full px-4 py-3 md:py-4 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 text-base"
                                 placeholder="Your name"
                             >
                         </div>
@@ -1340,8 +1473,10 @@
                                 id="email" 
                                 name="email" 
                                 required 
-                                class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                                class="w-full px-4 py-3 md:py-4 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 text-base"
                                 placeholder="your@email.com"
+                                inputmode="email"
+                                autocomplete="email"
                             >
                         </div>
                         
@@ -1350,19 +1485,24 @@
                             <select 
                                 id="category" 
                                 name="category" 
-                                class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                                class="w-full px-4 py-3 md:py-4 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 text-base"
+                                style="color-scheme: dark;"
                             >
-                                <option value="">Select category</option>
-                                <option value="studio">Studio</option>
-                                <option value="solo-dev">Solo Developer</option>
-                                <option value="modder">Modder</option>
-                                <option value="other">Other</option>
+                                <option value="" class="bg-dark-800 text-white">Select category</option>
+                                <option value="studio" class="bg-dark-800 text-white">Studio</option>
+                                <option value="solo-dev" class="bg-dark-800 text-white">Solo Developer</option>
+                                <option value="modder" class="bg-dark-800 text-white">Modder</option>
+                                <option value="other" class="bg-dark-800 text-white">Other</option>
                             </select>
                         </div>
                         
+                        <!-- Hidden field for tracking -->
+                        <input type="hidden" name="_subject" value="New Tryll Engine Contact Form Submission">
+                        <input type="hidden" name="_next" value="https://your-domain.com/thank-you.html">
+                        
                         <button 
                             type="submit" 
-                            class="w-full px-8 py-4 rounded-lg bg-primary-500 text-white font-medium text-lg transition-all duration-300 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-dark-900"
+                            class="w-full px-6 md:px-8 py-4 md:py-5 rounded-lg bg-primary-500 text-white font-medium text-base md:text-lg transition-all duration-300 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-dark-900 active:transform active:scale-95"
                         >
                             Get Started
                         </button>
@@ -1436,18 +1576,93 @@
         });
         
         
-        // Contact form handling
+        // Contact form handling with Formspree
         const form = document.getElementById('contact-form');
         if (form) {
-            form.addEventListener('submit', function(e) {
+            form.addEventListener('submit', async function(e) {
                 e.preventDefault();
-                const name = this.querySelector('#name').value;
-                const email = this.querySelector('#email').value;
-                const category = this.querySelector('#category').value;
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
                 
-                const categoryText = category ? ` as a ${category}` : '';
-                alert(`Thank you, ${name}! We'll keep ${email} updated on Tryll Engine's progress${categoryText}.`);
-                this.reset();
+                // Disable submit button and show loading
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+                
+                const formData = new FormData(this);
+                
+                try {
+                    const response = await fetch(this.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        // Redirect to thank you page
+                        window.location.href = 'thank-you.html';
+                    } else {
+                        const data = await response.json();
+                        if (data.errors) {
+                            alert('Error: ' + data.errors.map(error => error.message).join(', '));
+                        } else {
+                            alert('There was an error submitting the form. Please try again.');
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('There was an error submitting the form. Please try again.');
+                } finally {
+                    // Re-enable submit button
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                }
+            });
+        }
+        
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            let isMenuOpen = false;
+            
+            function toggleMenu() {
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    mobileMenu.classList.remove('opacity-0', 'invisible');
+                    mobileMenu.classList.add('opacity-100', 'visible');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    mobileMenu.classList.add('opacity-0', 'invisible');
+                    mobileMenu.classList.remove('opacity-100', 'visible');
+                    document.body.style.overflow = '';
+                }
+            }
+            
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            
+            // Close menu when clicking on overlay
+            mobileMenu.addEventListener('click', function(e) {
+                if (e.target === mobileMenu) {
+                    toggleMenu();
+                }
+            });
+            
+            // Close menu when clicking on a link
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    toggleMenu();
+                });
+            });
+            
+            // Close menu on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && isMenuOpen) {
+                    toggleMenu();
+                }
             });
         }
         
@@ -1456,27 +1671,46 @@
             // Interactive Features Section
             const featureItems = document.querySelectorAll('.feature-item');
             const video = document.getElementById('feature-video');
-            const videoWrapper = document.getElementById('video-wrapper');
             
-            if (featureItems.length > 0 && video && videoWrapper) {
+            if (featureItems.length > 0 && video) {
                 const features = {
                     personalities: {
-                        video: './videos/personalities.mp4',
-                        position: 0 // Top position
+                        icon: '🧠',
+                        title: 'AI-Driven Personalities',
+                        description: 'NPCs with unique personalities, memories, and evolving relationships'
                     },
                     teaching: {
-                        video: './videos/teaching.mp4',
-                        position: 1 // 1/4 down
+                        icon: '🎓',
+                        title: 'Adaptive AI Mentors',
+                        description: 'Personalized guidance that adapts to each player\'s learning style'
                     },
                     integration: {
-                        video: './videos/integration.mp4',
-                        position: 2 // 2/4 down
+                        icon: '🔧',
+                        title: 'Easy Integration',
+                        description: '1-click Unreal Engine plugin - no AI expertise required'
                     },
                     agency: {
-                        video: './videos/agency.mp4',
-                        position: 3 // Bottom position
+                        icon: '⚡',
+                        title: 'AI Agency',
+                        description: 'NPCs that don\'t just talk - they act and interact with game systems'
                     }
                 };
+                
+                function updateVideo(feature) {
+                    const content = features[feature];
+                    if (content) {
+                        video.innerHTML = `
+                            <div class="w-full h-full flex items-center justify-center text-secondary bg-white/5 rounded-xl border border-white/10">
+                                <div class="text-center p-6 md:p-8">
+                                    <div class="text-6xl md:text-8xl mb-4 md:mb-6">${content.icon}</div>
+                                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">${content.title}</h3>
+                                    <p class="text-secondary text-base md:text-lg leading-relaxed">${content.description}</p>
+                                    <div class="mt-4 md:mt-6 text-sm text-white/60">Demo video coming soon</div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                }
                 
                 featureItems.forEach((item, index) => {
                     item.addEventListener('click', function(e) {
@@ -1489,58 +1723,61 @@
                         // Add active class to clicked item
                         this.classList.add('active');
                         
-                        // Get feature data
-                        const feature = this.dataset.feature;
-                        const featureData = features[feature];
-                        
-                        if (featureData) {
-                            // Show fallback content immediately since videos don't exist
-                            const fallbackContent = {
-                                personalities: {
-                                    icon: '🧠',
-                                    title: 'AI-Driven Personalities',
-                                    description: 'NPCs with unique personalities, memories, and evolving relationships'
-                                },
-                                teaching: {
-                                    icon: '🎓',
-                                    title: 'Adaptive AI Mentors',
-                                    description: 'Personalized guidance that adapts to each player\'s learning style'
-                                },
-                                integration: {
-                                    icon: '🔧',
-                                    title: 'Easy Integration',
-                                    description: '1-click Unreal Engine plugin - no AI expertise required'
-                                },
-                                agency: {
-                                    icon: '⚡',
-                                    title: 'AI Agency',
-                                    description: 'NPCs that don\'t just talk - they act and interact with game systems'
-                                }
-                            };
-                            
-                            const content = fallbackContent[feature];
-                            video.innerHTML = `
-                                <div class="w-full h-full flex items-center justify-center text-secondary bg-white/5 rounded-xl border border-white/10">
-                                    <div class="text-center p-8">
-                                        <div class="text-8xl mb-6">${content.icon}</div>
-                                        <h3 class="text-2xl font-bold text-white mb-4">${content.title}</h3>
-                                        <p class="text-secondary text-lg leading-relaxed">${content.description}</p>
-                                        <div class="mt-6 text-sm text-white/60">Demo video coming soon</div>
-                                    </div>
-                                </div>
-                            `;
-                            
-                            // Calculate video position based on feature position
-                            // Container height is 788px, video height is 394px
-                            // Reduced movement for better alignment with text
-                            const maxMovement = 200;
-                            const topPosition = (featureData.position / 3) * maxMovement;
-                            
-                            // Move video wrapper smoothly
-                            videoWrapper.style.top = `${topPosition}px`;
-                        }
+                        // Update video content
+                        updateVideo(this.dataset.feature);
                     });
                 });
+                
+                // Handle mobile horizontal scroll interaction
+                const mobileScrollContainer = document.querySelector('.md\\:hidden .overflow-x-auto');
+                if (mobileScrollContainer) {
+                    let isScrolling = false;
+                    let scrollTimeout;
+                    
+                    mobileScrollContainer.addEventListener('scroll', function() {
+                        // Clear previous timeout
+                        clearTimeout(scrollTimeout);
+                        
+                        // Set scrolling state
+                        isScrolling = true;
+                        
+                        // Set timeout to detect scroll end
+                        scrollTimeout = setTimeout(() => {
+                            isScrolling = false;
+                            
+                            // Find the feature item that's most in view
+                            const container = this;
+                            const containerRect = container.getBoundingClientRect();
+                            const containerCenter = containerRect.left + containerRect.width / 2;
+                            
+                            let closestItem = null;
+                            let closestDistance = Infinity;
+                            
+                            const mobileFeatureItems = container.querySelectorAll('.feature-item');
+                            mobileFeatureItems.forEach(item => {
+                                const itemRect = item.getBoundingClientRect();
+                                const itemCenter = itemRect.left + itemRect.width / 2;
+                                const distance = Math.abs(containerCenter - itemCenter);
+                                
+                                if (distance < closestDistance) {
+                                    closestDistance = distance;
+                                    closestItem = item;
+                                }
+                            });
+                            
+                            if (closestItem) {
+                                // Remove active class from all items
+                                featureItems.forEach(i => i.classList.remove('active'));
+                                
+                                // Add active class to closest item
+                                closestItem.classList.add('active');
+                                
+                                // Update video content
+                                updateVideo(closestItem.dataset.feature);
+                            }
+                        }, 100);
+                    });
+                }
             }
 
             // FAQ Accordion Functionality

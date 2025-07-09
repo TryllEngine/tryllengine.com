@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Tryll Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            500: '#232E41',
+                            600: '#1d2637',
+                        },
+                        dark: {
+                            900: '#0a0d12',
+                            800: '#0f1419',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #000000;
+            color: #9ca3af;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="container mx-auto px-6 py-16 relative z-10">
+            <div class="max-w-2xl mx-auto text-center">
+                <div class="glass-card p-12 rounded-2xl">
+                    <div class="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-8">
+                        <i class="fas fa-check text-white text-3xl"></i>
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 text-white">
+                        Thank You!
+                    </h1>
+                    
+                    <p class="text-xl text-gray-400 mb-8">
+                        Your message has been received. We'll be in touch soon with updates about Tryll Engine.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="index.html" class="inline-block px-8 py-4 rounded-lg bg-primary-500 text-white font-medium text-lg transition-all duration-300 hover:bg-primary-600">
+                            Back to Home
+                        </a>
+                        
+                        <a href="team.html" class="inline-block px-8 py-4 rounded-lg border border-white/10 text-white font-medium text-lg transition-all duration-300 hover:border-white/20">
+                            Meet the Team
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

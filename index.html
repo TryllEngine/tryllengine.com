@@ -208,19 +208,6 @@
             background: rgba(246, 240, 235, 0.12);
         }
         
-        .gradient-text {
-            background: linear-gradient(135deg, #232E41 0%, #F6F0EB 50%, #232E41 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% 200%;
-            animation: gradient-text 3s ease infinite;
-        }
-        
-        @keyframes gradient-text {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
         
         .gradient-bg {
             background: linear-gradient(135deg, rgba(35, 46, 65, 0.2) 0%, rgba(246, 240, 235, 0.1) 100%);
@@ -501,6 +488,10 @@
                         radial-gradient(circle at 80% 70%, rgba(246, 240, 235, 0.08) 0%, transparent 50%);
             pointer-events: none;
         }
+        
+        .text-secondary {
+            color: #ffffff8c;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -508,7 +499,7 @@
     <nav class="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 glass-card glass-enhanced backdrop-blur-md rounded-full px-2 py-2 shadow-lg border border-accent-300/10">
         <div class="flex items-center gap-6">
             <div class="logo pl-4">
-                <span class="text-lg font-bold gradient-text">🎮 Tryll Engine</span>
+                <span class="text-lg font-bold text-white">🎮 Tryll Engine</span>
             </div>
             <ul class="nav-links hidden md:flex gap-6 list-none">
                 <li><a href="#features" class="text-accent-400 hover:text-accent-100 transition-colors duration-200 font-medium text-sm">Features</a></li>
@@ -538,11 +529,11 @@
                 </div>
                 
                 <h1 class="text-6xl md:text-8xl font-bold mb-6 heading-primary">
-                    <span class="gradient-text">Gaming</span> <br>
+                    <span class="text-white">Gaming</span> <br>
                     <span class="text-accent-100">Reimagined</span>
                 </h1>
                 
-                <p class="text-xl md:text-2xl text-accent-300 mb-10 max-w-3xl mx-auto body-large">
+                <p class="text-xl md:text-2xl text-secondary mb-10 max-w-3xl mx-auto body-large">
                     Tryll Engine is the complete AI infrastructure for game developers — from living NPCs to dynamic dialogues, 
                     intelligent commentators, and adaptive learning systems. Running locally with zero cloud costs.
                 </p>
@@ -575,7 +566,7 @@
         </div>
         
         <div class="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce">
-            <i class="fas fa-chevron-down text-accent-300/50 text-2xl"></i>
+            <i class="fas fa-chevron-down text-secondary/50 text-2xl"></i>
         </div>
     </section>
 
@@ -587,9 +578,9 @@
                     THE OLD WAY IS DEAD
                 </div>
                 <h2 class="text-4xl md:text-6xl font-bold text-accent-100 mb-6 heading-primary">
-                    <span class="gradient-text">Static NPCs</span> are History
+                    <span class="text-white">Static NPCs</span> are History
                 </h2>
-                <p class="text-xl text-accent-300 max-w-3xl mx-auto body-large">
+                <p class="text-xl text-secondary max-w-3xl mx-auto body-large">
                     Scripted dialogues. Predictable worlds. Repetitive interactions. That era is over.
                 </p>
             </div>
@@ -598,37 +589,37 @@
                 <div class="glass-card glass-enhanced rounded-2xl p-8 transform transition-all hover:scale-105">
                     <div class="text-red-400 text-sm font-semibold mb-4">OLD: Scripted NPCs</div>
                     <h3 class="text-2xl font-bold mb-4 text-accent-100">Pre-written dialogue trees</h3>
-                    <p class="text-accent-300 mb-6">Limited responses, repetitive interactions, breaks immersion after 5 minutes</p>
+                    <p class="text-secondary mb-6">Limited responses, repetitive interactions, breaks immersion after 5 minutes</p>
                     
                     <div class="h-px bg-gray-800 my-6"></div>
                     
                     <div class="text-green-400 text-sm font-semibold mb-4">NEW: Living Characters</div>
                     <h3 class="text-2xl font-bold mb-4 text-accent-100">AI-driven personalities</h3>
-                    <p class="text-accent-300">Infinite conversations, evolving relationships, remembers everything</p>
+                    <p class="text-secondary">Infinite conversations, evolving relationships, remembers everything</p>
                 </div>
                 
                 <div class="glass-card glass-enhanced rounded-2xl p-8 transform transition-all hover:scale-105">
                     <div class="text-red-400 text-sm font-semibold mb-4">OLD: Static Tutorials</div>
                     <h3 class="text-2xl font-bold mb-4 text-accent-100">One-size-fits-all tooltips</h3>
-                    <p class="text-accent-300 mb-6">Players skip tutorials, get frustrated, abandon complex games</p>
+                    <p class="text-secondary mb-6">Players skip tutorials, get frustrated, abandon complex games</p>
                     
                     <div class="h-px bg-gray-800 my-6"></div>
                     
                     <div class="text-green-400 text-sm font-semibold mb-4">NEW: Adaptive Mentors</div>
                     <h3 class="text-2xl font-bold mb-4 text-accent-100">AI companions that teach</h3>
-                    <p class="text-accent-300">Personalized guidance, answers any question, learns player's style</p>
+                    <p class="text-secondary">Personalized guidance, answers any question, learns player's style</p>
                 </div>
                 
                 <div class="glass-card glass-enhanced rounded-2xl p-8 transform transition-all hover:scale-105">
                     <div class="text-red-400 text-sm font-semibold mb-4">OLD: Cloud Dependencies</div>
                     <h3 class="text-2xl font-bold mb-4 text-accent-100">$1.8M/month for 10k players</h3>
-                    <p class="text-accent-300 mb-6">Latency kills immersion, server outages, privacy nightmares</p>
+                    <p class="text-secondary mb-6">Latency kills immersion, server outages, privacy nightmares</p>
                     
                     <div class="h-px bg-gray-800 my-6"></div>
                     
                     <div class="text-green-400 text-sm font-semibold mb-4">NEW: Local Intelligence</div>
                     <h3 class="text-2xl font-bold mb-4 text-accent-100">Zero infrastructure costs</h3>
-                    <p class="text-accent-300">Instant responses, always online, complete privacy</p>
+                    <p class="text-secondary">Instant responses, always online, complete privacy</p>
                 </div>
             </div>
         </div>
@@ -647,9 +638,9 @@
                     THE REVOLUTION
                 </div>
                 <h2 class="text-4xl md:text-5xl font-bold text-accent-100 mb-6 heading-primary">
-                    Why <span class="gradient-text">Tryll Engine</span> Changes Everything
+                    Why <span class="text-white">Tryll Engine</span> Changes Everything
                 </h2>
-                <p class="text-xl text-gray-400 leading-relaxed">
+                <p class="text-xl text-secondary leading-relaxed">
                     The gaming industry embraced physics, graphics, and multiplayer revolutions. 
                     Now it's time for the AI revolution. Be among the first to define what comes next.
                 </p>
@@ -661,7 +652,7 @@
                         <i class="fas fa-dollar-sign text-accent-500"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-accent-100 mb-4 heading-tertiary">Local AI, Low Cost</h3>
-                    <p class="text-accent-300 body-medium">
+                    <p class="text-secondary body-medium">
                         No cloud required – cut the expensive API costs and latency. 
                         <span class="text-accent-400 font-medium">Save up to $1.8M/month</span> compared to cloud solutions 
                         while delivering instant, private AI interactions.
@@ -673,7 +664,7 @@
                         <i class="fas fa-brain text-primary-400"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-accent-100 mb-4 heading-tertiary">Intelligent NPCs</h3>
-                    <p class="text-accent-300 body-medium">
+                    <p class="text-secondary body-medium">
                         Game characters that truly listen, think, and respond – powered by advanced LLM agents. 
                         <span class="text-primary-300 font-medium">Every conversation is unique</span>, every playthrough 
                         offers new stories.
@@ -685,7 +676,7 @@
                         <i class="fas fa-rocket text-accent-100"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-accent-100 mb-4 heading-tertiary">High Quality at Scale</h3>
-                    <p class="text-accent-300 body-medium">
+                    <p class="text-secondary body-medium">
                         Works offline on your hardware – from indie projects to AAA worlds. 
                         <span class="text-white font-medium">Lightning-fast responses</span> for every player, 
                         no matter where they are.
@@ -708,9 +699,9 @@
                     SEE IT IN ACTION
                 </div>
                 <h2 class="text-4xl md:text-5xl font-bold text-accent-100 mb-6 heading-primary">
-                    Experience the <span class="gradient-text">Magic</span>
+                    Experience the <span class="text-white">Magic</span>
                 </h2>
-                <p class="text-xl text-gray-400 leading-relaxed">
+                <p class="text-xl text-secondary leading-relaxed">
                     Don't just imagine AI-driven characters. See them come to life in this 3-minute demo.
                 </p>
             </div>
@@ -782,9 +773,9 @@
                     FEATURES & BENEFITS
                 </div>
                 <h2 class="text-4xl md:text-5xl font-bold text-accent-100 mb-6 heading-primary">
-                    <span class="gradient-text">Creative Control</span> You Can Trust
+                    <span class="text-white">Creative Control</span> You Can Trust
                 </h2>
-                <p class="text-xl text-gray-400 leading-relaxed">
+                <p class="text-xl text-secondary leading-relaxed">
                     Maintain full creative control while leveraging AI power. Our hybrid approach ensures your vision remains intact.
                 </p>
             </div>
@@ -797,7 +788,7 @@
                         </div>
                         <div>
                             <h3 class="text-2xl font-bold text-white mb-4">Smart Language Processing</h3>
-                            <p class="text-accent-300 body-medium">
+                            <p class="text-secondary body-medium">
                                 Natural language input gets intelligently mapped to your predefined dialogue options. Players feel heard while you maintain narrative control.
                             </p>
                         </div>
@@ -809,7 +800,7 @@
                         </div>
                         <div>
                             <h3 class="text-2xl font-bold text-white mb-4">Hybrid Dialogue System</h3>
-                            <p class="text-accent-300 body-medium">
+                            <p class="text-secondary body-medium">
                                 Keep your traditional dialogue trees visible on screen. Players can choose between structured options or free-form natural language input.
                             </p>
                         </div>
@@ -821,7 +812,7 @@
                         </div>
                         <div>
                             <h3 class="text-2xl font-bold text-white mb-4">Performance-Aware Fallbacks</h3>
-                            <p class="text-accent-300 body-medium">
+                            <p class="text-secondary body-medium">
                                 Automatic fallback to traditional dialogue trees when hardware can't handle AI inference. No player left behind.
                             </p>
                         </div>
@@ -833,7 +824,7 @@
                         </div>
                         <div>
                             <h3 class="text-2xl font-bold text-white mb-4">Built-in Content Safety</h3>
-                            <p class="text-accent-300 body-medium">
+                            <p class="text-secondary body-medium">
                                 Comprehensive content filtering ensures AI responses stay within your creative boundaries and community standards.
                             </p>
                         </div>
@@ -857,9 +848,9 @@
                     BUILT FOR YOU
                 </div>
                 <h2 class="text-4xl md:text-5xl font-bold text-accent-100 mb-6 heading-primary">
-                    Perfect for <span class="gradient-text">Every Creator</span>
+                    Perfect for <span class="text-white">Every Creator</span>
                 </h2>
-                <p class="text-xl text-gray-400 leading-relaxed">
+                <p class="text-xl text-secondary leading-relaxed">
                     Whether you're an indie developer or a AAA studio, Tryll Engine adapts to your needs.
                 </p>
             </div>
@@ -951,9 +942,9 @@
                     JOIN THE REVOLUTION
                 </div>
                 <h2 class="text-4xl md:text-5xl font-bold text-accent-100 mb-6 heading-primary">
-                    Ready to <span class="gradient-text">Redefine Gaming</span>?
+                    Ready to <span class="text-white">Redefine Gaming</span>?
                 </h2>
-                <p class="text-xl text-gray-400 mb-10 leading-relaxed">
+                <p class="text-xl text-secondary mb-10 leading-relaxed">
                     Your journey to smarter games starts now. Join the AI revolution in gaming.
                 </p>
                 

@@ -72,10 +72,72 @@
         }
         
         .nav-glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
+            --shadow-offset: 0px;
+            --shadow-blur: 20px;
+            --shadow-spread: -5px;
+            --shadow-color: rgba(255, 255, 255, 0.25);
+            --tint-color: 255, 255, 255;
+            --tint-opacity: 0.02;
+            --frost-blur: 16px;
+            --noise-frequency: 0.001;
+            --distortion-strength: 0;
+            
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
             transition: all 0.3s ease;
+        }
+        
+        /* Glass tint layer */
+        .nav-glass-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(var(--tint-color), var(--tint-opacity));
+            box-shadow: inset var(--shadow-offset) var(--shadow-offset) 
+                        var(--shadow-blur) var(--shadow-spread) var(--shadow-color);
+            border-radius: inherit;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* Frost blur layer */
+        .nav-glass-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            backdrop-filter: blur(var(--frost-blur));
+            -webkit-backdrop-filter: blur(var(--frost-blur));
+            border-radius: inherit;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Content layer */
+        .nav-glass-card > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Subtle border */
+        .nav-glass-card {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2),
+                        0 1px 0 0 rgba(255, 255, 255, 0.05) inset;
+        }
+        
+        /* Hover effect */
+        .nav-glass-card:hover {
+            --tint-opacity: 0.04;
+            --shadow-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        /* Optional: Add noise filter for Chromium browsers */
+        @supports (filter: url(#noiseFilter)) {
+            .nav-glass-card::after {
+                filter: url(#noiseFilter);
+            }
         }
         
         .gradient-bg {
@@ -107,17 +169,18 @@
             transform: translateY(-2px);
         }
         
-        .portrait-placeholder {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, #232E41 0%, #1d2637 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #9ca3af;
-            font-size: 2rem;
-            margin: 0 auto 1rem;
+        /* Custom photo adjustments */
+        .photo-sasha {
+            object-position: center 5%;
+        }
+        
+        .photo-lidia {
+            object-position: 45% top;
+            transform: scale(1.25) translateY(-8px);
+        }
+        
+        .photo-maksim {
+            transform: scale(1.15);
         }
     </style>
 </head>
@@ -127,7 +190,7 @@
         <div class="flex items-center justify-between">
             <div class="logo">
                 <a href="index.html">
-                    <img src="./logo/full%20logo_white.svg" alt="Tryll Engine" class="h-8 md:h-12" />
+                    <img src="./assets/logo/full logo_white_bold engine.svg" alt="Tryll Engine" class="h-8 md:h-12" />
                 </a>
             </div>
             
@@ -365,50 +428,80 @@
                         Core Team
                     </h2>
                     <p class="text-xl text-gray-400">
-                        Placeholder portraits - will be replaced with actual team photos
+                        Industry veterans bringing the future of gaming AI to life
                     </p>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                    <!-- Team Member 1 -->
+                <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <!-- Sasha -->
                     <div class="glass-card p-8 text-center fade-in">
-                        <div class="portrait-placeholder">
-                            <i class="fas fa-user"></i>
+                        <div class="w-40 h-40 mx-auto mb-4 rounded-full overflow-hidden">
+                            <img src="./assets/team_photos/Sasha.png" alt="Sasha" class="w-full h-full object-cover object-top photo-sasha">
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Team Member 1</h3>
-                        <p class="text-gray-400 mb-4">Technical Lead</p>
-                        <div class="text-sm text-gray-400">
-                            <p>Engine Architecture</p>
-                            <p>AI Systems</p>
-                            <p>Performance Optimization</p>
+                        <h3 class="text-xl font-bold text-white mb-2">Sasha</h3>
+                        <p class="text-accent-500 font-semibold mb-4">CEO</p>
+                        <div class="text-sm text-gray-300">
+                            <p>Built esports data systems at Bayes Esports. Gamer, modder, product lead</p>
                         </div>
                     </div>
 
-                    <!-- Team Member 2 -->
+                    <!-- Lidia -->
                     <div class="glass-card p-8 text-center fade-in">
-                        <div class="portrait-placeholder">
-                            <i class="fas fa-user"></i>
+                        <div class="w-40 h-40 mx-auto mb-4 rounded-full overflow-hidden">
+                            <img src="./assets/team_photos/Lidia.png" alt="Lidia" class="w-full h-full object-cover object-top photo-lidia">
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Team Member 2</h3>
-                        <p class="text-gray-400 mb-4">AI Engineer</p>
-                        <div class="text-sm text-gray-400">
-                            <p>Machine Learning</p>
-                            <p>NLP Systems</p>
-                            <p>Model Optimization</p>
+                        <h3 class="text-xl font-bold text-white mb-2">Lidia</h3>
+                        <p class="text-accent-500 font-semibold mb-4">Creative Strategy & Art Ops</p>
+                        <div class="text-sm text-gray-300">
+                            <p>Co-founder of Indomi (60+ artists). Led AAA art for Netflix & more. Industry connector & advocate.</p>
                         </div>
                     </div>
 
-                    <!-- Team Member 3 -->
+                    <!-- Maksim -->
                     <div class="glass-card p-8 text-center fade-in">
-                        <div class="portrait-placeholder">
-                            <i class="fas fa-user"></i>
+                        <div class="w-40 h-40 mx-auto mb-4 rounded-full overflow-hidden">
+                            <img src="./assets/team_photos/Maksim.png" alt="Maksim" class="w-full h-full object-cover object-top photo-maksim">
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Team Member 3</h3>
-                        <p class="text-gray-400 mb-4">Game Developer</p>
-                        <div class="text-sm text-gray-400">
-                            <p>Unreal Engine</p>
-                            <p>Gameplay Systems</p>
-                            <p>Plugin Development</p>
+                        <h3 class="text-xl font-bold text-white mb-2">Maksim</h3>
+                        <p class="text-accent-500 font-semibold mb-4">VP AI & Growth</p>
+                        <div class="text-sm text-gray-300">
+                            <p>Scaled AI content to 13M+ views/week. Expert in viral go-to-market with 100k+ TikTok fans.</p>
+                        </div>
+                    </div>
+
+                    <!-- Gennadii -->
+                    <div class="glass-card p-8 text-center fade-in">
+                        <div class="w-40 h-40 mx-auto mb-4 rounded-full overflow-hidden">
+                            <img src="./assets/team_photos/Gennadii.png" alt="Gennadii" class="w-full h-full object-cover object-top">
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Gennadii</h3>
+                        <p class="text-accent-500 font-semibold mb-4">VP Games Tech</p>
+                        <div class="text-sm text-gray-300">
+                            <p>Shipped 50+ game projects incl. Baldur's Gate 3. Unity & platform dev veteran. CEO @ General Arcade.</p>
+                        </div>
+                    </div>
+
+                    <!-- Alex -->
+                    <div class="glass-card p-8 text-center fade-in">
+                        <div class="w-40 h-40 mx-auto mb-4 rounded-full overflow-hidden">
+                            <img src="./assets/team_photos/Alex.png" alt="Alex" class="w-full h-full object-cover object-top">
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Alex</h3>
+                        <p class="text-accent-500 font-semibold mb-4">VP Commercial</p>
+                        <div class="text-sm text-gray-300">
+                            <p>Co-founder @ Immortals Studios (70+ team). Clients: Blizzard, Mihoyo, Tencent. BD across East & West.</p>
+                        </div>
+                    </div>
+
+                    <!-- Andrei -->
+                    <div class="glass-card p-8 text-center fade-in">
+                        <div class="w-40 h-40 mx-auto mb-4 rounded-full overflow-hidden">
+                            <img src="./assets/team_photos/Andrei.png" alt="Andrei" class="w-full h-full object-cover object-top">
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Andrei</h3>
+                        <p class="text-accent-500 font-semibold mb-4">VP Engineering</p>
+                        <div class="text-sm text-gray-300">
+                            <p>20+ yrs in games & sim. Led Switch ports of KCD, Remnant. Deep Unreal & custom engine expertise.</p>
                         </div>
                     </div>
                 </div>
@@ -426,8 +519,9 @@
                 <p class="text-xl text-gray-400 mb-10">
                     Join our team of experienced developers and help shape the future of AI in gaming.
                 </p>
-                <a href="index.html#contact" class="inline-block px-8 py-4 rounded-lg bg-primary-500 text-white font-medium text-lg transition-all duration-300 hover:bg-primary-600">
-                    Get Started
+                <a href="https://discord.gg/XCBBGUMzUM" class="inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-[#5865F2] text-white font-medium text-lg transition-all duration-300 hover:bg-[#4752C4]">
+                    <i class="fab fa-discord text-xl"></i>
+                    Contact us on Discord
                 </a>
             </div>
         </div>
@@ -455,6 +549,14 @@
             </div>
         </div>
     </footer>
+
+    <!-- SVG Noise Filter -->
+    <svg style="display: none;">
+        <filter id="noiseFilter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.001" numOctaves="1" result="turbulence"/>
+            <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+    </svg>
 
     <script>
         // Mobile menu functionality

@@ -308,20 +308,22 @@
 </head>
 <body class="antialiased">
     <!-- Navigation -->
-    <nav class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 nav-glass-card px-6 py-3">
-        <div class="flex items-center gap-8">
+    <nav class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 nav-glass-card px-8 py-4 w-full max-w-7xl">
+        <div class="flex items-center justify-between">
             <div class="logo">
-                <img src="./logo/full%20logo_white.svg" alt="Tryll Engine" class="h-8" />
+                <img src="./logo/full%20logo_white.svg" alt="Tryll Engine" class="h-12" />
             </div>
-            <ul class="nav-links hidden md:flex gap-6 list-none">
-                <li><a href="#features" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Features</a></li>
-                <li><a href="#demo" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Demo</a></li>
-                <li><a href="#audience" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">For You</a></li>
-                <li><a href="#pricing" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Pricing</a></li>
-            </ul>
-            <a href="#pricing" class="bg-primary-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-primary-600">
-                Get Started
-            </a>
+            <div class="flex items-center gap-8">
+                <ul class="nav-links hidden md:flex gap-6 list-none">
+                    <li><a href="#features" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Features</a></li>
+                    <li><a href="#demo" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Demo</a></li>
+                    <li><a href="#audience" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">For You</a></li>
+                    <li><a href="#pricing" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Pricing</a></li>
+                </ul>
+                <a href="#pricing" class="bg-primary-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-primary-600">
+                    Get Started
+                </a>
+            </div>
         </div>
     </nav>
     
@@ -367,6 +369,80 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center mb-16 fade-in">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
+                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
+                    SEE IT IN ACTION
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+                    Experience the Magic
+                </h2>
+                <p class="text-xl text-secondary leading-relaxed">
+                    Don't just imagine AI-driven characters. See them come to life in this 3-minute demo.
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto mb-20 fade-in">
+                <div class="relative aspect-video rounded-2xl overflow-hidden border border-white/10">
+                    <iframe 
+                        src="https://www.youtube.com/embed/poEFkKJ11Io" 
+                        title="Tryll Engine Demo"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen
+                        class="w-full h-full">
+                    </iframe>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
+                        <i class="fas fa-calendar text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Book a Live Demo</h3>
+                    <p class="text-secondary mb-6 leading-relaxed">
+                        Get a personalized demo and see how Tryll can transform your game project.
+                    </p>
+                    <button class="px-6 py-3 rounded-lg bg-primary-500 text-white font-medium text-sm transition-all duration-300 hover:bg-primary-600">
+                        Schedule Demo
+                    </button>
+                </div>
+                
+                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
+                        <i class="fas fa-question-circle text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">FAQ</h3>
+                    <p class="text-secondary mb-6 leading-relaxed">
+                        Find answers to common questions about Tryll Engine and implementation.
+                    </p>
+                    <button class="px-6 py-3 rounded-lg glass-card text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300">
+                        View FAQ
+                    </button>
+                </div>
+                
+                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
+                        <i class="fas fa-gamepad text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Try It In-Game</h3>
+                    <p class="text-secondary mb-6 leading-relaxed">
+                        <span class="text-white font-medium">(Coming Soon!)</span> Download BoscoTryll Deep Rock Galactic mod and experience our AI companion.
+                    </p>
+                    <button class="px-6 py-3 rounded-lg glass-card text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300 opacity-60 cursor-not-allowed">
+                        Coming Soon
+                    </button>
+                </div>
+            </div>
+        </div>
+        
         </div>
     </section>
 
@@ -428,8 +504,78 @@
         </div>
     </section>
 
+    <!-- Interactive Features Section -->
+    <section class="py-24 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
+                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
+                    FEATURES
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+                    See Tryll Engine in Action
+                </h2>
+                <p class="text-xl text-secondary leading-relaxed">
+                    Click on any feature to see how it transforms your game
+                </p>
+            </div>
+
+            <div class="max-w-7xl mx-auto">
+                <div class="grid lg:grid-cols-5 gap-12 items-start">
+                    <!-- Features List - 60% width (3 columns) -->
+                    <div class="lg:col-span-3 space-y-6">
+                        <div class="feature-item active cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5" data-feature="personalities">
+                            <h3 class="text-2xl font-bold text-white mb-3">AI-driven personalities</h3>
+                            <p class="text-secondary leading-relaxed">
+                                Create NPCs with unique personalities and memories. Characters remember past interactions and develop relationships with players.
+                            </p>
+                        </div>
+
+                        <div class="feature-item cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5" data-feature="teaching">
+                            <h3 class="text-2xl font-bold text-white mb-3">AI systems that teach</h3>
+                            <p class="text-secondary leading-relaxed">
+                                Adaptive AI mentors guide players through complex mechanics. Each player gets personalized guidance based on their learning style.
+                            </p>
+                        </div>
+
+                        <div class="feature-item cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5" data-feature="integration">
+                            <h3 class="text-2xl font-bold text-white mb-3">Easy integration</h3>
+                            <p class="text-secondary leading-relaxed">
+                                Get up and running in minutes with our 1-click Unreal Engine plugin. No AI expertise required - just install and start creating.
+                            </p>
+                        </div>
+
+                        <div class="feature-item cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5" data-feature="agency">
+                            <h3 class="text-2xl font-bold text-white mb-3">Agency</h3>
+                            <p class="text-secondary leading-relaxed">
+                                NPCs don't just talk - they act. Our AI agents interact with game systems, trigger events, and respond contextually.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Video Display - 40% width (2 columns) -->
+                    <div class="lg:col-span-2">
+                        <div class="video-container relative" style="height: 788px;">
+                            <div id="video-wrapper" class="absolute transition-all duration-500 ease-out" style="width: 700px; height: 394px; top: 0;">
+                                <video id="feature-video" class="w-full h-full object-cover rounded-xl" autoplay muted loop>
+                                    <source src="./videos/personalities.mp4" type="video/mp4">
+                                    <div class="w-full h-full flex items-center justify-center text-secondary bg-white/5 rounded-xl">
+                                        <div class="text-center">
+                                            <div class="text-6xl mb-4">🎮</div>
+                                            <p>AI-driven personalities demo</p>
+                                        </div>
+                                    </div>
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Value Proposition -->
-     
+    <!-- 
     <section class="py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-6">
             <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
@@ -487,6 +633,7 @@
         
         </div>
     </section>
+    -->
 
     <!-- Everything You Need Section -->
     <section id="everything-features" class="py-24 bg-black relative overflow-hidden">
@@ -632,80 +779,6 @@
         </div>
     </section>
 
-    <!-- Demo Section -->
-    <section class="py-24 bg-black relative overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="max-w-3xl mx-auto text-center mb-16 fade-in">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
-                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
-                    SEE IT IN ACTION
-                </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
-                    Experience the Magic
-                </h2>
-                <p class="text-xl text-secondary leading-relaxed">
-                    Don't just imagine AI-driven characters. See them come to life in this 3-minute demo.
-                </p>
-            </div>
-            
-            <div class="max-w-4xl mx-auto mb-20 fade-in">
-                <div class="relative aspect-video rounded-2xl overflow-hidden border border-white/10">
-                    <iframe 
-                        src="https://www.youtube.com/embed/poEFkKJ11Io" 
-                        title="Tryll Engine Demo"
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen
-                        class="w-full h-full">
-                    </iframe>
-                </div>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-white/20 fade-in">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
-                        <i class="fas fa-calendar text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Book a Live Demo</h3>
-                    <p class="text-secondary mb-6 leading-relaxed">
-                        Get a personalized demo and see how Tryll can transform your game project.
-                    </p>
-                    <button class="px-6 py-3 rounded-lg bg-primary-500 text-white font-medium text-sm transition-all duration-300 hover:bg-primary-600">
-                        Schedule Demo
-                    </button>
-                </div>
-                
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-white/20 fade-in">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
-                        <i class="fas fa-question-circle text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">FAQ</h3>
-                    <p class="text-secondary mb-6 leading-relaxed">
-                        Find answers to common questions about Tryll Engine and implementation.
-                    </p>
-                    <button class="px-6 py-3 rounded-lg glass-card text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300">
-                        View FAQ
-                    </button>
-                </div>
-                
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-white/20 fade-in">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
-                        <i class="fas fa-gamepad text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Try It In-Game</h3>
-                    <p class="text-secondary mb-6 leading-relaxed">
-                        <span class="text-white font-medium">(Coming Soon!)</span> Download BoscoTryll Deep Rock Galactic mod and experience our AI companion.
-                    </p>
-                    <button class="px-6 py-3 rounded-lg glass-card text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300 opacity-60 cursor-not-allowed">
-                        Coming Soon
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        </div>
-    </section>
-
     <!-- Features Section -->
     <section class="py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-6">
@@ -835,33 +908,7 @@
                 </p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
-                        <i class="fas fa-paint-brush text-accent-500"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Game Designers</h3>
-                    <p class="text-gray-400 mb-4 leading-relaxed">
-                        <span class="text-white font-medium">Focus on storytelling, not scripting AI</span>
-                    </p>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Tired of lifeless NPCs? Give them a soul and watch players get genuinely invested in your story.
-                    </p>
-                </div>
-                
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
-                        <i class="fas fa-code text-primary-400"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Developers</h3>
-                    <p class="text-gray-400 mb-4 leading-relaxed">
-                        <span class="text-white font-medium">Easy API, Powerful Results</span>
-                    </p>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Integrated AI agents in minutes – no PhD required. Simple SDK with Unity/Unreal plugins.
-                    </p>
-                </div>
-                
+            <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
                 <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
                     <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
                         <i class="fas fa-building text-white"></i>
@@ -870,9 +917,50 @@
                     <p class="text-gray-400 mb-4 leading-relaxed">
                         <span class="text-white font-medium">Cut Costs, Innovate More</span>
                     </p>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Local AI saves 95% vs cloud costs. Reinvest in creativity, not infrastructure.
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Local AI saves 95% vs cloud costs. Reinvest in creativity, not infrastructure. Scale from indie to AAA with zero cloud bills.
                     </p>
+                    <ul class="text-gray-400 text-sm text-left space-y-2">
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Eliminate $1.8M/month cloud costs</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Enterprise-grade AI without infrastructure</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Dedicated integration support</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
+                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
+                        <i class="fas fa-user text-primary-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Solo Developers</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">
+                        <span class="text-white font-medium">Professional AI Made Simple</span>
+                    </p>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        No AI expertise required. Focus on your game vision while Tryll handles the complex AI infrastructure.
+                    </p>
+                    <ul class="text-gray-400 text-sm text-left space-y-2">
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Free for under $200k revenue</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>1-click Unreal Engine integration</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Community support & examples</span>
+                        </li>
+                    </ul>
                 </div>
                 
                 <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
@@ -883,15 +971,30 @@
                     <p class="text-gray-400 mb-4 leading-relaxed">
                         <span class="text-white font-medium">Enhance Any Game World</span>
                     </p>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Add intelligent NPCs to existing games. Extend the life of beloved classics.
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Add intelligent NPCs to existing games. Extend the life of beloved classics with AI-powered characters.
                     </p>
+                    <ul class="text-gray-400 text-sm text-left space-y-2">
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Retrofit any game with AI NPCs</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>No source code access needed</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Active modding community</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Social Proof -->
+    <!--
     <section class="py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-6">
             <div class="max-w-4xl mx-auto glass-card p-12 rounded-3xl text-center fade-in">
@@ -909,135 +1012,7 @@
             </div>
         </div>
     </section>
-
-    <!-- Interactive Features Section -->
-    <section class="py-24 bg-black relative overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
-                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
-                    FEATURES
-                </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
-                    See Tryll Engine in Action
-                </h2>
-                <p class="text-xl text-secondary leading-relaxed">
-                    Click on any feature to see how it transforms your game
-                </p>
-            </div>
-
-            <div class="max-w-7xl mx-auto">
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
-                    <div class="grid lg:grid-cols-2 gap-12 items-start">
-                        <!-- Features List -->
-                        <div class="space-y-6">
-                            <div class="feature-item active cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5" data-feature="personalities">
-                                <h3 class="text-2xl font-bold text-white mb-3">AI-driven personalities</h3>
-                                <p class="text-secondary leading-relaxed">
-                                    Create NPCs with unique personalities, memories, and emotional intelligence. Characters remember past interactions and develop relationships with players over time.
-                                </p>
-                                <div class="mt-4 space-y-2">
-                                    <div class="flex items-center gap-2 text-sm text-secondary">
-                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
-                                        <span>Persistent memory across conversations</span>
-                                    </div>
-                                    <div class="flex items-center gap-2 text-sm text-secondary">
-                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
-                                        <span>Emotional context awareness</span>
-                                    </div>
-                                    <div class="flex items-center gap-2 text-sm text-secondary">
-                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
-                                        <span>Dynamic relationship building</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="feature-item cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5" data-feature="teaching">
-                                <h3 class="text-2xl font-bold text-white mb-3">AI systems that teach</h3>
-                                <p class="text-secondary leading-relaxed">
-                                    Adaptive AI mentors that guide players through complex mechanics. Each player gets personalized guidance based on their learning style and progress.
-                                </p>
-                                <div class="mt-4 space-y-2">
-                                    <div class="flex items-center gap-2 text-sm text-secondary">
-                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
-                                        <span>Personalized learning paths</span>
-                                    </div>
-                                    <div class="flex items-center gap-2 text-sm text-secondary">
-                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
-                                        <span>Real-time skill assessment</span>
-                                    </div>
-                                    <div class="flex items-center gap-2 text-sm text-secondary">
-                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
-                                        <span>Contextual hints and tips</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="feature-item cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5" data-feature="integration">
-                                <h3 class="text-2xl font-bold text-white mb-3">Easy integration</h3>
-                                <p class="text-secondary leading-relaxed">
-                                    Get up and running in minutes with our 1-click Unreal Engine plugin. No complex setup, no AI expertise required - just install and start creating.
-                                </p>
-                                <div class="mt-4 space-y-2">
-                                    <div class="flex items-center gap-2 text-sm text-secondary">
-                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
-                                        <span>1-click Unreal Engine plugin</span>
-                                    </div>
-                                    <div class="flex items-center gap-2 text-sm text-secondary">
-                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
-                                        <span>Visual scripting interface</span>
-                                    </div>
-                                    <div class="flex items-center gap-2 text-sm text-secondary">
-                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
-                                        <span>Complete example projects</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="feature-item cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5" data-feature="agency">
-                                <h3 class="text-2xl font-bold text-white mb-3">Agency</h3>
-                                <p class="text-secondary leading-relaxed">
-                                    NPCs don't just talk - they act. Our AI agents can interact with game systems, trigger events, and respond to the world around them with contextual actions.
-                                </p>
-                                <div class="mt-4 space-y-2">
-                                    <div class="flex items-center gap-2 text-sm text-secondary">
-                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
-                                        <span>Real-time function calls</span>
-                                    </div>
-                                    <div class="flex items-center gap-2 text-sm text-secondary">
-                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
-                                        <span>Context-aware world interactions</span>
-                                    </div>
-                                    <div class="flex items-center gap-2 text-sm text-secondary">
-                                        <span class="w-1.5 h-1.5 bg-primary-500 rounded-full"></span>
-                                        <span>Dynamic event triggering</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Video Display -->
-                        <div class="lg:sticky lg:top-8">
-                            <div class="aspect-video rounded-xl overflow-hidden bg-white/5 border border-white/10">
-                                <video id="feature-video" class="w-full h-full object-cover" autoplay muted loop>
-                                    <source src="./videos/personalities.mp4" type="video/mp4">
-                                    <div class="w-full h-full flex items-center justify-center text-secondary">
-                                        <div class="text-center">
-                                            <div class="text-6xl mb-4">🎮</div>
-                                            <p>AI-driven personalities demo</p>
-                                        </div>
-                                    </div>
-                                </video>
-                            </div>
-                            <div class="mt-4 text-center">
-                                <p class="text-sm text-secondary" id="video-caption">Watch how AI-driven personalities create unique character interactions</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    -->
 
     <!-- FAQ Section -->
     <section class="py-24 bg-black relative overflow-hidden">
@@ -1056,61 +1031,117 @@
             </div>
 
             <div class="max-w-4xl mx-auto">
-                <div class="space-y-6">
-                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
-                        <h3 class="text-xl font-bold text-white mb-4">What is Tryll Engine?</h3>
-                        <p class="text-secondary leading-relaxed">
-                            Tryll Engine is a complete AI infrastructure for game developers that enables intelligent NPCs, dynamic dialogues, and adaptive learning systems. It runs locally on player hardware with zero cloud costs.
-                        </p>
+                <div class="space-y-4">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-1">
+                            <h3 class="text-xl font-bold text-white">What is Tryll Engine?</h3>
+                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                        </button>
+                        <div id="faq-1" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                            <div class="px-8 pb-6">
+                                <p class="text-secondary leading-relaxed">
+                                    Tryll Engine is a complete AI infrastructure for game developers that enables intelligent NPCs, dynamic dialogues, and adaptive learning systems. It runs locally on player hardware with zero cloud costs.
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
-                        <h3 class="text-xl font-bold text-white mb-4">How does local AI work?</h3>
-                        <p class="text-secondary leading-relaxed">
-                            Tryll Engine runs AI models directly on the player's device, eliminating the need for cloud servers. This means instant responses, complete privacy, and no ongoing costs for developers or players.
-                        </p>
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-2">
+                            <h3 class="text-xl font-bold text-white">How does local AI work?</h3>
+                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                        </button>
+                        <div id="faq-2" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                            <div class="px-8 pb-6">
+                                <p class="text-secondary leading-relaxed">
+                                    Tryll Engine runs AI models directly on the player's device, eliminating the need for cloud servers. This means instant responses, complete privacy, and no ongoing costs for developers or players.
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
-                        <h3 class="text-xl font-bold text-white mb-4">Which game engines are supported?</h3>
-                        <p class="text-secondary leading-relaxed">
-                            Currently, we support Unreal Engine with a 1-click plugin. Unity support is in development. We're also working on support for other popular engines based on community demand.
-                        </p>
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-3">
+                            <h3 class="text-xl font-bold text-white">Which game engines are supported?</h3>
+                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                        </button>
+                        <div id="faq-3" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                            <div class="px-8 pb-6">
+                                <p class="text-secondary leading-relaxed">
+                                    Currently, we support Unreal Engine with a 1-click plugin. Unity support is in development. We're also working on support for other popular engines based on community demand.
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
-                        <h3 class="text-xl font-bold text-white mb-4">What are the system requirements?</h3>
-                        <p class="text-secondary leading-relaxed">
-                            Tryll Engine automatically optimizes for available hardware. It works on a wide range of PCs, from budget systems to high-end gaming rigs. The engine automatically selects the best AI model for each player's hardware.
-                        </p>
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-4">
+                            <h3 class="text-xl font-bold text-white">What are the system requirements?</h3>
+                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                        </button>
+                        <div id="faq-4" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                            <div class="px-8 pb-6">
+                                <p class="text-secondary leading-relaxed">
+                                    Tryll Engine automatically optimizes for available hardware. It works on a wide range of PCs, from budget systems to high-end gaming rigs. The engine automatically selects the best AI model for each player's hardware.
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
-                        <h3 class="text-xl font-bold text-white mb-4">Is it really free for indie developers?</h3>
-                        <p class="text-secondary leading-relaxed">
-                            Yes! If you've generated or raised less than $200k in the past 12 months, Tryll Engine is completely free. This includes all features, documentation, and Discord community support.
-                        </p>
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-5">
+                            <h3 class="text-xl font-bold text-white">Is it really free for indie developers?</h3>
+                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                        </button>
+                        <div id="faq-5" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                            <div class="px-8 pb-6">
+                                <p class="text-secondary leading-relaxed">
+                                    Yes! If you've generated or raised less than $200k in the past 12 months, Tryll Engine is completely free. This includes all features, documentation, and Discord community support.
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
-                        <h3 class="text-xl font-bold text-white mb-4">How do I maintain creative control?</h3>
-                        <p class="text-secondary leading-relaxed">
-                            Tryll Engine uses a hybrid approach. You can keep traditional dialogue trees visible while allowing natural language input. The AI intelligently maps player input to your predefined options, giving players freedom while maintaining your narrative control.
-                        </p>
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-6">
+                            <h3 class="text-xl font-bold text-white">How do I maintain creative control?</h3>
+                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                        </button>
+                        <div id="faq-6" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                            <div class="px-8 pb-6">
+                                <p class="text-secondary leading-relaxed">
+                                    Tryll Engine uses a hybrid approach. You can keep traditional dialogue trees visible while allowing natural language input. The AI intelligently maps player input to your predefined options, giving players freedom while maintaining your narrative control.
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
-                        <h3 class="text-xl font-bold text-white mb-4">What about content safety?</h3>
-                        <p class="text-secondary leading-relaxed">
-                            Tryll Engine includes comprehensive content filtering to ensure AI responses stay within your creative boundaries and community standards. You have full control over what the AI can and cannot say.
-                        </p>
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-7">
+                            <h3 class="text-xl font-bold text-white">What about content safety?</h3>
+                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                        </button>
+                        <div id="faq-7" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                            <div class="px-8 pb-6">
+                                <p class="text-secondary leading-relaxed">
+                                    Tryll Engine includes comprehensive content filtering to ensure AI responses stay within your creative boundaries and community standards. You have full control over what the AI can and cannot say.
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
-                        <h3 class="text-xl font-bold text-white mb-4">Can I try it before committing?</h3>
-                        <p class="text-secondary leading-relaxed">
-                            Absolutely! We offer live demos and will have a downloadable mod for Deep Rock Galactic coming soon. You can also join our Discord community to see examples and get your questions answered.
-                        </p>
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-8">
+                            <h3 class="text-xl font-bold text-white">Can I try it before committing?</h3>
+                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                        </button>
+                        <div id="faq-8" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                            <div class="px-8 pb-6">
+                                <p class="text-secondary leading-relaxed">
+                                    Absolutely! We offer live demos and will have a downloadable mod for Deep Rock Galactic coming soon. You can also join our Discord community to see examples and get your questions answered.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -1219,27 +1250,16 @@
                     Ready to Redefine Gaming?
                 </h2>
                 <p class="text-xl text-secondary mb-10 leading-relaxed">
-                    Your journey to smarter games starts now. Join the AI revolution in gaming.
+                    Join the revolution. Be among the first studios to access Tryll Engine. Limited early access spots with integration support available.
                 </p>
                 
-                <div class="flex flex-col items-center gap-6 mb-16">
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
                     <button class="px-8 py-4 rounded-lg bg-primary-500 text-white font-medium text-lg transition-all duration-300 hover:bg-primary-600">
-                        Join Whitelist (Free)
+                        Try it now
                     </button>
                     
-                    <p class="text-secondary">or</p>
-                    
-                    <form class="w-full max-w-md">
-                        <div class="flex gap-2">
-                            <input type="email" placeholder="Enter your email for updates" class="flex-1 px-6 py-4 rounded-lg glass-card text-white border border-white/10 focus:border-primary-500/50 outline-none transition-all duration-300">
-                            <button type="submit" class="px-8 py-4 rounded-lg bg-primary-500 text-white font-medium text-lg transition-all duration-300 hover:bg-primary-600">
-                                Subscribe
-                            </button>
-                        </div>
-                    </form>
-                    
                     <button class="px-8 py-4 rounded-lg glass-card text-white font-medium text-lg border border-white/10 hover:border-white/20 transition-all duration-300">
-                        <i class="fas fa-play mr-2"></i> Watch Demo
+                        Schedule demo
                     </button>
                 </div>
                 
@@ -1340,54 +1360,107 @@
             this.reset();
         });
         
-        // Interactive Features Section
+        // All interactive functionality
         document.addEventListener('DOMContentLoaded', function() {
+            // Interactive Features Section
             const featureItems = document.querySelectorAll('.feature-item');
             const video = document.getElementById('feature-video');
-            const caption = document.getElementById('video-caption');
+            const videoWrapper = document.getElementById('video-wrapper');
             
-            const features = {
-                personalities: {
-                    video: './videos/personalities.mp4',
-                    caption: 'Watch how AI-driven personalities create unique character interactions'
-                },
-                teaching: {
-                    video: './videos/teaching.mp4',
-                    caption: 'See AI mentors adapt to different learning styles and provide personalized guidance'
-                },
-                integration: {
-                    video: './videos/integration.mp4',
-                    caption: 'Experience the simplicity of 1-click installation and visual scripting'
-                },
-                agency: {
-                    video: './videos/agency.mp4',
-                    caption: 'Watch NPCs interact with the game world through contextual actions'
-                }
-            };
-            
-            featureItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    // Remove active class from all items
-                    featureItems.forEach(i => i.classList.remove('active'));
-                    
-                    // Add active class to clicked item
-                    this.classList.add('active');
-                    
-                    // Get feature data
-                    const feature = this.dataset.feature;
-                    const featureData = features[feature];
-                    
-                    if (featureData) {
-                        // Update video source
-                        video.src = featureData.video;
-                        video.load();
-                        video.play();
-                        
-                        // Update caption
-                        caption.textContent = featureData.caption;
+            if (featureItems.length > 0 && video && videoWrapper) {
+                const features = {
+                    personalities: {
+                        video: './videos/personalities.mp4',
+                        position: 0 // Top position
+                    },
+                    teaching: {
+                        video: './videos/teaching.mp4',
+                        position: 1 // 1/4 down
+                    },
+                    integration: {
+                        video: './videos/integration.mp4',
+                        position: 2 // 2/4 down
+                    },
+                    agency: {
+                        video: './videos/agency.mp4',
+                        position: 3 // Bottom position
                     }
+                };
+                
+                featureItems.forEach((item, index) => {
+                    item.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        console.log('Feature clicked:', this.dataset.feature);
+                        
+                        // Remove active class from all items
+                        featureItems.forEach(i => i.classList.remove('active'));
+                        
+                        // Add active class to clicked item
+                        this.classList.add('active');
+                        
+                        // Get feature data
+                        const feature = this.dataset.feature;
+                        const featureData = features[feature];
+                        
+                        if (featureData) {
+                            // Update video source
+                            video.src = featureData.video;
+                            video.load();
+                            video.play();
+                            
+                            // Calculate video position based on feature position
+                            // Container height is 788px, video height is 394px
+                            // Available movement space is 788 - 394 = 394px
+                            const maxMovement = 394;
+                            const topPosition = (featureData.position / 3) * maxMovement;
+                            
+                            // Move video wrapper smoothly
+                            videoWrapper.style.top = `${topPosition}px`;
+                        }
+                    });
                 });
-            });
+            }
+
+            // FAQ Accordion Functionality
+            const faqToggles = document.querySelectorAll('.faq-toggle');
+            
+            if (faqToggles.length > 0) {
+                faqToggles.forEach(toggle => {
+                    toggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        console.log('FAQ clicked:', this.dataset.target);
+                        
+                        const target = document.getElementById(this.dataset.target);
+                        const icon = this.querySelector('i');
+                        
+                        if (target && icon) {
+                            // Check if this FAQ is currently open
+                            const isOpen = target.style.maxHeight && target.style.maxHeight !== '0px';
+                            
+                            // Close all other FAQs
+                            faqToggles.forEach(otherToggle => {
+                                if (otherToggle !== this) {
+                                    const otherTarget = document.getElementById(otherToggle.dataset.target);
+                                    const otherIcon = otherToggle.querySelector('i');
+                                    if (otherTarget && otherIcon) {
+                                        otherTarget.style.maxHeight = '0px';
+                                        otherIcon.style.transform = 'rotate(0deg)';
+                                    }
+                                }
+                            });
+                            
+                            // Toggle current FAQ
+                            if (isOpen) {
+                                target.style.maxHeight = '0px';
+                                icon.style.transform = 'rotate(0deg)';
+                            } else {
+                                target.style.maxHeight = target.scrollHeight + 'px';
+                                icon.style.transform = 'rotate(180deg)';
+                            }
+                        }
+                    });
+                });
+            }
         });
         
     </script>

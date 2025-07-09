@@ -395,6 +395,7 @@
         .feature-item.active h3 {
             color: #ffffff !important;
         }
+        
     </style>
 </head>
 <body id="top" class="antialiased">
@@ -586,10 +587,10 @@
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-white line-through opacity-70">Pre-written dialogue trees</h3>
                     <div class="flex-grow">
-                        <p class="text-secondary mb-6">Limited responses, repetitive interactions, breaks immersion after 5 minutes</p>
+                        <p class="text-secondary mb-4">Limited responses, repetitive interactions, breaks immersion after 5 minutes</p>
                     </div>
                     
-                    <div class="flex items-center justify-center my-6">
+                    <div class="flex items-center justify-center my-4">
                         <div class="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 border border-white/10">
                             <div class="text-white text-xs font-medium uppercase tracking-wide">Level Up</div>
                             <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -603,7 +604,7 @@
                         <span>NEW: Living Characters</span>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-white">AI-driven personalities</h3>
-                    <p class="text-secondary">Infinite conversations, evolving relationships, remembers everything</p>
+                    <p class="text-secondary mb-6">Infinite conversations, evolving relationships, remembers everything</p>
                 </div>
                 
                 <div class="glass-card rounded-2xl p-8 transition-all hover:border-white/20 flex flex-col">
@@ -613,10 +614,10 @@
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-white line-through opacity-70">One-size-fits-all tooltips</h3>
                     <div class="flex-grow">
-                        <p class="text-secondary mb-6">Players skip tutorials, get frustrated, abandon complex games</p>
+                        <p class="text-secondary mb-4">Players skip tutorials, get frustrated, abandon complex games</p>
                     </div>
                     
-                    <div class="flex items-center justify-center my-6">
+                    <div class="flex items-center justify-center my-4">
                         <div class="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 border border-white/10">
                             <div class="text-white text-xs font-medium uppercase tracking-wide">Level Up</div>
                             <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -630,7 +631,7 @@
                         <span>NEW: Adaptive Mentors</span>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-white">AI companions that teach</h3>
-                    <p class="text-secondary">Personalized guidance, answers any question, learns player's style</p>
+                    <p class="text-secondary mb-6">Personalized guidance, answers any question, learns player's style</p>
                 </div>
                 
                 <div class="glass-card rounded-2xl p-8 transition-all hover:border-white/20 flex flex-col">
@@ -640,10 +641,10 @@
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-white line-through opacity-70">$1.8M/month for 10k players</h3>
                     <div class="flex-grow">
-                        <p class="text-secondary mb-6">Latency kills immersion, server outages, privacy nightmares</p>
+                        <p class="text-secondary mb-4">Latency kills immersion, server outages, privacy nightmares</p>
                     </div>
                     
-                    <div class="flex items-center justify-center my-6">
+                    <div class="flex items-center justify-center my-4">
                         <div class="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 border border-white/10">
                             <div class="text-white text-xs font-medium uppercase tracking-wide">Level Up</div>
                             <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -657,7 +658,7 @@
                         <span>NEW: Local Intelligence</span>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-white">Zero infrastructure costs</h3>
-                    <p class="text-secondary">Instant responses, always online, complete privacy</p>
+                    <p class="text-secondary mb-6">Instant responses, always online, complete privacy</p>
                 </div>
             </div>
         </div>
@@ -667,7 +668,7 @@
 
     <!-- Interactive Features Section -->
     <section id="features" class="py-16 md:py-24 relative overflow-hidden">
-        <div class="container mx-auto px-4 md:px-6">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
             <div class="max-w-3xl mx-auto text-center mb-12 md:mb-20 fade-in">
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
                     See Tryll Engine in Action
@@ -677,11 +678,168 @@
                 </p>
             </div>
 
-            <div class="max-w-6xl mx-auto">
-                <!-- Video Display (Sticky on desktop, top on mobile) -->
-                <div class="mb-8 md:mb-12">
-                    <div id="features-video-container" class="sticky top-24 z-20">
-                        <div id="feature-video" class="relative aspect-video max-w-4xl mx-auto rounded-xl overflow-hidden border border-white/10 bg-white/5 transition-all duration-500 ease-out">
+            <!-- Mobile: Video at top, features below -->
+            <div class="md:hidden">
+                <div class="mb-8">
+                    <div id="feature-video-mobile" class="relative aspect-video rounded-xl overflow-hidden border border-white/10 bg-white/5 transition-all duration-500 ease-out">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center p-6">
+                                <div class="text-6xl mb-4">🛡️</div>
+                                <h3 class="text-xl font-bold text-white mb-3">Stop Losing Players</h3>
+                                <p class="text-secondary text-base leading-relaxed">AI mentors that listen to players and adapt to their style and level. Think "in-game support agent" that helps decrease your refund rate.</p>
+                                <div class="mt-4 text-sm text-white/60">Demo video coming soon</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Features (Horizontal Scroll) -->
+                <div class="feature-tabs-container">
+                    <div class="flex gap-3 overflow-x-auto pb-4 scrollbar-hide" style="scroll-snap-type: x mandatory;">
+                        <div class="feature-item-mobile active cursor-pointer transition-all duration-300 p-4 rounded-xl bg-white/5 border border-white/10 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="retention">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-lg">🛡️</span>
+                                </div>
+                                <h3 class="text-base font-bold text-white">Stop Losing Players</h3>
+                            </div>
+                            <p class="text-secondary text-sm leading-relaxed">
+                                AI mentors that listen to players and adapt to their style and level. Think "in-game support agent" that helps decrease your refund rate.
+                            </p>
+                        </div>
+
+                        <div class="feature-item-mobile cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="engagement">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-lg">💖</span>
+                                </div>
+                                <h3 class="text-base font-bold text-white">Keep Players Engaged</h3>
+                            </div>
+                            <p class="text-secondary text-sm leading-relaxed">
+                                Players will build personal relationships with your game via living NPCs that have memory and personality.
+                            </p>
+                        </div>
+
+                        <div class="feature-item-mobile cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="delegation">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-lg">⚔️</span>
+                                </div>
+                                <h3 class="text-base font-bold text-white">Delegate to AI</h3>
+                            </div>
+                            <p class="text-secondary text-sm leading-relaxed">
+                                Tryll is an agentic system that can make calls to your game engine functions. Player is rude to an NPC? Draw a sword!
+                            </p>
+                        </div>
+
+                        <div class="feature-item-mobile cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="content">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-lg">♾️</span>
+                                </div>
+                                <h3 class="text-base font-bold text-white">Infinite Content</h3>
+                            </div>
+                            <p class="text-secondary text-sm leading-relaxed">
+                                Every playthrough is a unique blend of your game design, story, and gamer's personality. 1 million players = 1 million unique experiences.
+                            </p>
+                        </div>
+
+                        <div class="feature-item-mobile cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="control">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-lg">🎛️</span>
+                                </div>
+                                <h3 class="text-base font-bold text-white">Creative Control</h3>
+                            </div>
+                            <p class="text-secondary text-sm leading-relaxed">
+                                Tryll ships with a set of tools to give you full creative control over player's experience.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Desktop: Left-Right Split -->
+            <div class="hidden md:grid md:grid-cols-2 md:gap-12 lg:gap-16">
+                <!-- Left: Features List -->
+                <div class="relative">
+                    <div class="space-y-4" id="features-list">
+                        <div class="feature-item-left active cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5 border border-white/10" data-feature="retention">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-primary-500 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-xl">🛡️</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white mb-2">Stop Losing Players</h3>
+                                    <p class="text-secondary text-sm leading-relaxed">
+                                        AI mentors that listen to players and adapt to their style and level. Think "in-game support agent" that helps decrease your refund rate.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item-left cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5 border border-white/10" data-feature="engagement">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-primary-500 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-xl">💖</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white mb-2">Keep Players Engaged</h3>
+                                    <p class="text-secondary text-sm leading-relaxed">
+                                        Players will build personal relationships with your game via living NPCs that have memory and personality.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item-left cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5 border border-white/10" data-feature="delegation">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-primary-500 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-xl">⚔️</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white mb-2">Delegate to AI</h3>
+                                    <p class="text-secondary text-sm leading-relaxed">
+                                        Tryll is an agentic system that can make calls to your game engine functions. Player is rude to an NPC? Draw a sword!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item-left cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5 border border-white/10" data-feature="content">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-primary-500 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-xl">♾️</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white mb-2">Infinite Content</h3>
+                                    <p class="text-secondary text-sm leading-relaxed">
+                                        Every playthrough is a unique blend of your game design, story, and gamer's personality. 1 million players = 1 million unique experiences.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item-left cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5 border border-white/10" data-feature="control">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-primary-500 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-white text-xl">🎛️</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white mb-2">Creative Control</h3>
+                                    <p class="text-secondary text-sm leading-relaxed">
+                                        Tryll ships with a set of tools to give you full creative control over player's experience.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right: Video Container -->
+                <div class="relative">
+                    <div class="sticky top-24">
+                        <div id="feature-video-desktop" class="relative aspect-video rounded-xl overflow-hidden border border-white/10 bg-white/5 transition-all duration-500 ease-out transform">
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="text-center p-6 md:p-8">
                                     <div class="text-6xl md:text-8xl mb-4 md:mb-6">🛡️</div>
@@ -693,138 +851,8 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Feature Tabs (Horizontal Scroll on Mobile) -->
-                <div class="feature-tabs-container">
-                    <!-- Desktop: Grid Layout -->
-                    <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6">
-                        <div class="feature-item active cursor-pointer transition-all duration-300 p-4 lg:p-6 rounded-xl hover:bg-white/5 border border-white/10" data-feature="retention">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white text-sm">🛡️</span>
-                                </div>
-                                <h3 class="text-lg font-bold text-white">Stop Losing Players</h3>
-                            </div>
-                            <p class="text-secondary text-sm leading-relaxed">
-                                AI mentors adapt to player style and level to reduce refunds.
-                            </p>
-                        </div>
-
-                        <div class="feature-item cursor-pointer transition-all duration-300 p-4 lg:p-6 rounded-xl hover:bg-white/5 border border-white/10" data-feature="engagement">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white text-sm">💖</span>
-                                </div>
-                                <h3 class="text-lg font-bold text-white">Keep Players Engaged</h3>
-                            </div>
-                            <p class="text-secondary text-sm leading-relaxed">
-                                Living NPCs with memory and personality create lasting relationships.
-                            </p>
-                        </div>
-
-                        <div class="feature-item cursor-pointer transition-all duration-300 p-4 lg:p-6 rounded-xl hover:bg-white/5 border border-white/10" data-feature="delegation">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white text-sm">⚔️</span>
-                                </div>
-                                <h3 class="text-lg font-bold text-white">Delegate to AI</h3>
-                            </div>
-                            <p class="text-secondary text-sm leading-relaxed">
-                                AI makes calls to game engine functions. Player is rude? Draw a sword!
-                            </p>
-                        </div>
-
-                        <div class="feature-item cursor-pointer transition-all duration-300 p-4 lg:p-6 rounded-xl hover:bg-white/5 border border-white/10" data-feature="content">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white text-sm">♾️</span>
-                                </div>
-                                <h3 class="text-lg font-bold text-white">Infinite Content</h3>
-                            </div>
-                            <p class="text-secondary text-sm leading-relaxed">
-                                1 million players = 1 million unique experiences.
-                            </p>
-                        </div>
-
-                        <div class="feature-item cursor-pointer transition-all duration-300 p-4 lg:p-6 rounded-xl hover:bg-white/5 border border-white/10" data-feature="control">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-8 h-8 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white text-sm">🎛️</span>
-                                </div>
-                                <h3 class="text-lg font-bold text-white">Creative Control</h3>
-                            </div>
-                            <p class="text-secondary text-sm leading-relaxed">
-                                Full control over player experience with powerful tools.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Mobile: Horizontal Scroll -->
-                    <div class="md:hidden">
-                        <div class="flex gap-3 overflow-x-auto pb-4 scrollbar-hide" style="scroll-snap-type: x mandatory;">
-                            <div class="feature-item active cursor-pointer transition-all duration-300 p-4 rounded-xl bg-white/5 border border-white/10 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="retention">
-                                <div class="flex items-center gap-3 mb-3">
-                                    <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
-                                        <span class="text-white text-lg">🛡️</span>
-                                    </div>
-                                    <h3 class="text-base font-bold text-white">Stop Losing Players</h3>
-                                </div>
-                                <p class="text-secondary text-sm leading-relaxed">
-                                    AI mentors that listen to players and adapt to their style and level. Think "in-game support agent" that helps decrease your refund rate.
-                                </p>
-                            </div>
-
-                            <div class="feature-item cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="engagement">
-                                <div class="flex items-center gap-3 mb-3">
-                                    <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
-                                        <span class="text-white text-lg">💖</span>
-                                    </div>
-                                    <h3 class="text-base font-bold text-white">Keep Players Engaged</h3>
-                                </div>
-                                <p class="text-secondary text-sm leading-relaxed">
-                                    Players will build personal relationships with your game via living NPCs that have memory and personality.
-                                </p>
-                            </div>
-
-                            <div class="feature-item cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="delegation">
-                                <div class="flex items-center gap-3 mb-3">
-                                    <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
-                                        <span class="text-white text-lg">⚔️</span>
-                                    </div>
-                                    <h3 class="text-base font-bold text-white">Delegate to AI</h3>
-                                </div>
-                                <p class="text-secondary text-sm leading-relaxed">
-                                    Tryll is an agentic system that can make calls to your game engine functions. Player is rude to an NPC? Draw a sword!
-                                </p>
-                            </div>
-
-                            <div class="feature-item cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="content">
-                                <div class="flex items-center gap-3 mb-3">
-                                    <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
-                                        <span class="text-white text-lg">♾️</span>
-                                    </div>
-                                    <h3 class="text-base font-bold text-white">Infinite Content</h3>
-                                </div>
-                                <p class="text-secondary text-sm leading-relaxed">
-                                    Every playthrough is a unique blend of your game design, story, and gamer's personality. 1 million players = 1 million unique experiences.
-                                </p>
-                            </div>
-
-                            <div class="feature-item cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="control">
-                                <div class="flex items-center gap-3 mb-3">
-                                    <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
-                                        <span class="text-white text-lg">🎛️</span>
-                                    </div>
-                                    <h3 class="text-base font-bold text-white">Creative Control</h3>
-                                </div>
-                                <p class="text-secondary text-sm leading-relaxed">
-                                    Tryll ships with a set of tools to give you full creative control over player's experience.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
+            
         </div>
     </section>
 
@@ -975,145 +1003,6 @@
     </section>
     -->
 
-    <!-- Everything You Need Section -->
-    <section id="everything-features" class="py-12 md:py-24 bg-black relative overflow-hidden">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="max-w-3xl mx-auto text-center mb-12 md:mb-20 fade-in">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
-                    Everything You Need for Gaming Intelligence
-                </h2>
-                <p class="text-xl text-secondary leading-relaxed">
-                    Build immersive worlds with intelligent characters that players will never forget
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in relative">
-                    <div class="absolute top-6 right-6 text-6xl font-bold text-white/10">01</div>
-                    <h3 class="text-2xl font-bold text-white mb-4 relative z-10">Local Processing Power</h3>
-                    <p class="text-secondary mb-6 relative z-10">Run advanced AI models directly on player hardware.</p>
-                    <ul class="space-y-2 text-secondary relative z-10">
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Works offline</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Free for you and the player</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Complete privacy - data never leaves player's device</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in relative">
-                    <div class="absolute top-6 right-6 text-6xl font-bold text-white/10">02</div>
-                    <h3 class="text-2xl font-bold text-white mb-4 relative z-10">Attract Attention</h3>
-                    <p class="text-secondary mb-6 relative z-10">Leverage first-mover advantage in AI gaming and turn your game into an infinite content generator.</p>
-                    <ul class="space-y-2 text-secondary relative z-10">
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>First-mover advantage in AI gaming</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Viral power of AI content creation</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Every playthrough becomes unique content</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in relative">
-                    <div class="absolute top-6 right-6 text-6xl font-bold text-white/10">03</div>
-                    <h3 class="text-2xl font-bold text-white mb-4 relative z-10">Easy Integration</h3>
-                    <p class="text-secondary mb-6 relative z-10">Unreal Engine plugin with 1-click installation. Works great out of the box, but you can customize exactly what happens.</p>
-                    <ul class="space-y-2 text-secondary relative z-10">
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Simple yet powerful design</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Example projects included</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Full customization options</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in relative">
-                    <div class="absolute top-6 right-6 text-6xl font-bold text-white/10">04</div>
-                    <h3 class="text-2xl font-bold text-white mb-4 relative z-10">Agency</h3>
-                    <p class="text-secondary mb-6 relative z-10">Our agents are integrated into the game world and can perform function calls. NPCs don't just talk - they act.</p>
-                    <ul class="space-y-2 text-secondary relative z-10">
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Player is rude → NPC draws sword</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Strategy AI adapts and trains new troop types</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Real-time function calls to game systems</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Context-aware world interactions</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in relative">
-                    <div class="absolute top-6 right-6 text-6xl font-bold text-white/10">05</div>
-                    <h3 class="text-2xl font-bold text-white mb-4 relative z-10">Scalable Architecture</h3>
-                    <p class="text-secondary mb-6 relative z-10">Works on all PC types. We pick optimal models based on hardware, language, and age.</p>
-                    <ul class="space-y-2 text-secondary relative z-10">
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Automatic hardware optimization</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Scales from indie to AAA productions</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Multi-platform deployment ready</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in relative">
-                    <div class="absolute top-6 right-6 text-6xl font-bold text-white/10">06</div>
-                    <h3 class="text-2xl font-bold text-white mb-4 relative z-10">Natural Language Support</h3>
-                    <p class="text-secondary mb-6 relative z-10">Tryll Agents know how to listen and how to speak. The engine is shipped with NLP modules.</p>
-                    <ul class="space-y-2 text-secondary relative z-10">
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Text-to-speech</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Speech-to-text</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Multi-language support</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Features Section -->
     <section class="py-12 md:py-24 bg-black relative overflow-hidden">
@@ -1308,19 +1197,12 @@
                         <div class="text-4xl font-bold text-white mb-6">$1,000 <span class="text-lg font-normal text-secondary">per seat per year</span></div>
                     </div>
                     
-                    <div class="flex-grow mb-6">
-                        <a href="#contact" class="inline-block w-full px-8 py-4 rounded-lg bg-primary-500 text-white font-medium text-lg transition-all duration-300 hover:bg-primary-600 text-center">
-                            Buy seats
-                        </a>
-                    </div>
+                    <div class="flex-grow"></div>
                     
-                    <div class="bg-white/5 p-6 rounded-lg border border-white/10">
-                        <h4 class="text-white font-semibold mb-3">Not sure? Let us help.</h4>
-                        <p class="text-secondary text-sm mb-4">Got questions about whether our standard license applies to you? We're here to guide you and someone from our team will be in touch.</p>
-                        <a href="#contact" class="inline-block px-6 py-3 rounded-lg glass-card text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300">
-                            Contact us
-                        </a>
-                    </div>
+                    <a href="#contact" class="inline-block w-full px-8 py-4 rounded-lg bg-primary-500 text-white font-medium text-lg transition-all duration-300 hover:bg-primary-600 text-center mt-auto">
+                        Buy seats
+                    </a>
+                    
                 </div>
             </div>
         </div>
@@ -1931,67 +1813,105 @@
             // Initialize video animation
             initVideoAnimation();
             // Interactive Features Section
-            const featureItems = document.querySelectorAll('.feature-item');
-            const video = document.getElementById('feature-video');
+            const featureItemsDesktop = document.querySelectorAll('.feature-item-left');
+            const featureItemsMobile = document.querySelectorAll('.feature-item-mobile');
+            const videoDesktop = document.getElementById('feature-video-desktop');
+            const videoMobile = document.getElementById('feature-video-mobile');
             
-            if (featureItems.length > 0 && video) {
-                const features = {
-                    retention: {
-                        icon: '🛡️',
-                        title: 'Stop Losing Players',
-                        description: 'AI mentors that listen to players and adapt to their style and level. Think "in-game support agent" that helps decrease your refund rate.'
-                    },
-                    engagement: {
-                        icon: '💖',
-                        title: 'Keep Players Engaged',
-                        description: 'Players will build personal relationships with your game via living NPCs that have memory and personality.'
-                    },
-                    delegation: {
-                        icon: '⚔️',
-                        title: 'Delegate Decisions to AI',
-                        description: 'Tryll is an agentic system that can make calls to your game engine functions. Player is rude to an NPC? Draw a sword!'
-                    },
-                    content: {
-                        icon: '♾️',
-                        title: 'Infinite Content Glitch',
-                        description: 'Every playthrough is a unique blend of your game design, story, and gamer\'s personality. 1 million players = 1 million unique experiences.'
-                    },
-                    control: {
-                        icon: '🎛️',
-                        title: 'Creative Control',
-                        description: 'Tryll ships with a set of tools to give you full creative control over player\'s experience.'
-                    }
-                };
-                
-                function updateVideo(feature) {
-                    const content = features[feature];
-                    if (content) {
-                        video.innerHTML = `
-                            <div class="w-full h-full flex items-center justify-center text-secondary bg-white/5 rounded-xl border border-white/10">
-                                <div class="text-center p-6 md:p-8">
-                                    <div class="text-6xl md:text-8xl mb-4 md:mb-6">${content.icon}</div>
-                                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">${content.title}</h3>
-                                    <p class="text-secondary text-base md:text-lg leading-relaxed">${content.description}</p>
-                                    <div class="mt-4 md:mt-6 text-sm text-white/60">Demo video coming soon</div>
-                                </div>
-                            </div>
-                        `;
-                    }
+            const features = {
+                retention: {
+                    icon: '🛡️',
+                    title: 'Stop Losing Players',
+                    description: 'AI mentors that listen to players and adapt to their style and level. Think "in-game support agent" that helps decrease your refund rate.'
+                },
+                engagement: {
+                    icon: '💖',
+                    title: 'Keep Players Engaged',
+                    description: 'Players will build personal relationships with your game via living NPCs that have memory and personality.'
+                },
+                delegation: {
+                    icon: '⚔️',
+                    title: 'Delegate to AI',
+                    description: 'Tryll is an agentic system that can make calls to your game engine functions. Player is rude to an NPC? Draw a sword!'
+                },
+                content: {
+                    icon: '♾️',
+                    title: 'Infinite Content',
+                    description: 'Every playthrough is a unique blend of your game design, story, and gamer\'s personality. 1 million players = 1 million unique experiences.'
+                },
+                control: {
+                    icon: '🎛️',
+                    title: 'Creative Control',
+                    description: 'Tryll ships with a set of tools to give you full creative control over player\'s experience.'
                 }
-                
-                featureItems.forEach((item, index) => {
+            };
+            
+            function updateVideo(feature, videoElement) {
+                const content = features[feature];
+                if (content && videoElement) {
+                    videoElement.innerHTML = `
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center p-6 md:p-8">
+                                <div class="text-6xl md:text-8xl mb-4 md:mb-6">${content.icon}</div>
+                                <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">${content.title}</h3>
+                                <p class="text-secondary text-base md:text-lg leading-relaxed">${content.description}</p>
+                                <div class="mt-4 md:mt-6 text-sm text-white/60">Demo video coming soon</div>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+            
+            function updateVideoPosition(index) {
+                if (videoDesktop) {
+                    // Calculate vertical position based on feature index (0-4)
+                    // Feature 1 (index 0): top (0%)
+                    // Feature 2 (index 1): 1/4 down (25%)
+                    // Feature 3 (index 2): 2/4 down (50%)
+                    // Feature 4 (index 3): 3/4 down (75%)
+                    // Feature 5 (index 4): bottom (100%)
+                    const percentage = index * 25;
+                    videoDesktop.style.transform = `translateY(${percentage}%)`;
+                }
+            }
+            
+            // Desktop features
+            if (featureItemsDesktop.length > 0 && videoDesktop) {
+                featureItemsDesktop.forEach((item, index) => {
                     item.addEventListener('click', function(e) {
                         e.preventDefault();
-                        console.log('Feature clicked:', this.dataset.feature);
+                        console.log('Desktop feature clicked:', this.dataset.feature);
                         
-                        // Remove active class from all items
-                        featureItems.forEach(i => i.classList.remove('active'));
+                        // Remove active class from all desktop items
+                        featureItemsDesktop.forEach(i => i.classList.remove('active'));
                         
                         // Add active class to clicked item
                         this.classList.add('active');
                         
                         // Update video content
-                        updateVideo(this.dataset.feature);
+                        updateVideo(this.dataset.feature, videoDesktop);
+                        
+                        // Update video position
+                        updateVideoPosition(index);
+                    });
+                });
+            }
+            
+            // Mobile features
+            if (featureItemsMobile.length > 0 && videoMobile) {
+                featureItemsMobile.forEach((item, index) => {
+                    item.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        console.log('Mobile feature clicked:', this.dataset.feature);
+                        
+                        // Remove active class from all mobile items
+                        featureItemsMobile.forEach(i => i.classList.remove('active'));
+                        
+                        // Add active class to clicked item
+                        this.classList.add('active');
+                        
+                        // Update video content
+                        updateVideo(this.dataset.feature, videoMobile);
                     });
                 });
                 
@@ -2020,7 +1940,7 @@
                             let closestItem = null;
                             let closestDistance = Infinity;
                             
-                            const mobileFeatureItems = container.querySelectorAll('.feature-item');
+                            const mobileFeatureItems = container.querySelectorAll('.feature-item-mobile');
                             mobileFeatureItems.forEach(item => {
                                 const itemRect = item.getBoundingClientRect();
                                 const itemCenter = itemRect.left + itemRect.width / 2;
@@ -2033,14 +1953,14 @@
                             });
                             
                             if (closestItem) {
-                                // Remove active class from all items
-                                featureItems.forEach(i => i.classList.remove('active'));
+                                // Remove active class from all mobile items
+                                featureItemsMobile.forEach(i => i.classList.remove('active'));
                                 
                                 // Add active class to closest item
                                 closestItem.classList.add('active');
                                 
                                 // Update video content
-                                updateVideo(closestItem.dataset.feature);
+                                updateVideo(closestItem.dataset.feature, videoMobile);
                             }
                         }, 100);
                     });

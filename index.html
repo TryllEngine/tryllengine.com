@@ -134,6 +134,10 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
         
+        html {
+            scroll-padding-top: 80px; /* Account for fixed header height */
+        }
+        
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: #000000;
@@ -347,11 +351,10 @@
             <!-- Desktop Navigation -->
             <div class="hidden md:flex items-center gap-8">
                 <ul class="nav-links flex gap-6 list-none">
-                    <li><a href="#demo" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Demo</a></li>
                     <li><a href="#features" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Features</a></li>
                     <li><a href="#pricing" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Pricing</a></li>
-                    <li><a href="#for-you" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">For You</a></li>
-                    <li><a href="team.html" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Team</a></li>
+                    <li><a href="#faq" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">FAQ</a></li>
+                    <!-- <li><a href="team.html" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Team</a></li> -->
                 </ul>
                 <a href="#contact" class="bg-primary-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-primary-600">
                     Get Started
@@ -374,11 +377,10 @@
         <!-- Mobile Menu Overlay -->
         <div id="mobile-menu" class="md:hidden fixed inset-0 bg-black/95 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40">
             <div class="flex flex-col items-center justify-center h-full space-y-8 text-center px-6">
-                <a href="#demo" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Demo</a>
                 <a href="#features" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Features</a>
                 <a href="#pricing" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Pricing</a>
-                <a href="#for-you" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">For You</a>
-                <a href="team.html" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Team</a>
+                <a href="#faq" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">FAQ</a>
+                <!-- <a href="team.html" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Team</a> -->
                 <div class="pt-4">
                     <a href="#contact" class="bg-primary-500 text-white px-8 py-4 rounded-lg text-lg font-medium transition-all duration-200 hover:bg-primary-600">
                         Get Started
@@ -389,7 +391,7 @@
     </nav>
     
     <!-- Hero Section -->
-    <section class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden" style="padding-top: 60px;">
         <div class="container mx-auto px-4 md:px-6 py-24 md:py-32 relative z-10">
             <div class="max-w-4xl mx-auto text-center fade-in">
                 <div class="mb-6 md:mb-8">
@@ -405,14 +407,27 @@
                     intelligent commentators, and adaptive learning systems. Running locally with zero cloud costs.
                 </p>
                 
-                <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center mb-12 md:mb-16 px-4">
-                    <a href="#contact" class="inline-block px-6 md:px-8 py-3 md:py-4 rounded-lg bg-primary-500 text-white font-medium text-base md:text-lg transition-all duration-300 hover:bg-primary-600 w-full sm:w-auto text-center">
-                        Try it for free
+                <div class="flex justify-center mb-8 md:mb-12 px-4">
+                    <a href="#contact" class="inline-block px-6 md:px-8 py-3 md:py-4 rounded-lg bg-primary-500 text-white font-medium text-base md:text-lg transition-all duration-300 hover:bg-primary-600 w-full sm:w-auto text-center max-w-xs">
+                        <i class="fas fa-rocket mr-2"></i>
+                        Try Tryll For Free
                     </a>
-                    
-                    <a href="#demo" class="inline-block px-6 md:px-8 py-3 md:py-4 rounded-lg glass-card text-white font-medium text-base md:text-lg border border-white/10 hover:border-white/20 transition-all duration-300 w-full sm:w-auto text-center">
-                        <i class="fas fa-play mr-2"></i> Watch Demo
-                    </a>
+                </div>
+                
+                <!-- YouTube Video -->
+                <div class="mb-8 md:mb-12">
+                    <div id="hero-video" class="relative max-w-2xl mx-auto aspect-video rounded-xl overflow-hidden border border-white/10 bg-white/5 transition-all duration-700 ease-out">
+                        <iframe 
+                            id="youtube-player"
+                            class="w-full h-full"
+                            src="https://www.youtube.com/embed/poEFkKJ11Io?enablejsapi=1&controls=1&modestbranding=1&rel=0&autoplay=0&mute=1"
+                            title="Tryll Engine Demo"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+                    </div>
                 </div>
                 
                 <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4 md:gap-8 text-secondary text-sm md:text-base px-4">
@@ -434,30 +449,8 @@
     </section>
 
     <!-- Demo Section -->
-    <section id="demo" class="py-24 bg-black relative overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="max-w-3xl mx-auto text-center mb-16 fade-in">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
-                    Experience the Magic
-                </h2>
-                <p class="text-xl text-secondary leading-relaxed">
-                    Don't just imagine AI-driven characters. See them come to life in this 3-minute demo.
-                </p>
-            </div>
-            
-            <div class="max-w-4xl mx-auto mb-20 fade-in">
-                <div class="relative aspect-video rounded-2xl overflow-hidden border border-white/10">
-                    <iframe 
-                        src="https://www.youtube.com/embed/poEFkKJ11Io" 
-                        title="Tryll Engine Demo"
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen
-                        class="w-full h-full">
-                    </iframe>
-                </div>
-            </div>
-            
+    <section id="demo" class="py-12 md:py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                 <div class="glass-card p-6 md:p-8 rounded-2xl text-center transition-all duration-300 hover:border-white/20 fade-in">
                     <div class="w-16 h-16 md:w-20 md:h-20 rounded-full gradient-bg flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 mx-auto">
@@ -499,14 +492,12 @@
                 </div>
             </div>
         </div>
-        
-        </div>
     </section>
 
     <!-- The Old Way is Dead -->
-    <section class="py-24 bg-black relative overflow-hidden fade-in">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20">
+    <section class="py-12 md:py-24 bg-black relative overflow-hidden fade-in">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-12 md:mb-20">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
                     <div class="w-2 h-2 rounded-full bg-red-500"></div>
                     THE OLD WAY IS DEAD
@@ -574,11 +565,11 @@
             </div>
 
             <div class="max-w-5xl mx-auto">
-                <!-- Video Display (Top on Mobile) -->
+                <!-- Video Display (Sticky on desktop, top on mobile) -->
                 <div class="mb-8 md:mb-12">
-                    <div class="video-container relative aspect-video max-w-4xl mx-auto">
-                        <div id="feature-video" class="w-full h-full object-cover rounded-xl">
-                            <div class="w-full h-full flex items-center justify-center text-secondary bg-white/5 rounded-xl border border-white/10">
+                    <div id="features-video-container" class="sticky top-24 z-20">
+                        <div id="feature-video" class="relative aspect-video max-w-4xl mx-auto rounded-xl overflow-hidden border border-white/10 bg-white/5 transition-all duration-500 ease-out">
+                            <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="text-center p-6 md:p-8">
                                     <div class="text-6xl md:text-8xl mb-4 md:mb-6">🧠</div>
                                     <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">AI-Driven Personalities</h3>
@@ -645,52 +636,52 @@
 
                     <!-- Mobile: Horizontal Scroll -->
                     <div class="md:hidden">
-                        <div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide" style="scroll-snap-type: x mandatory;">
-                            <div class="feature-item active cursor-pointer transition-all duration-300 p-4 rounded-xl bg-white/5 border border-white/10 min-w-[280px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="personalities">
+                        <div class="flex gap-3 overflow-x-auto pb-4 scrollbar-hide" style="scroll-snap-type: x mandatory;">
+                            <div class="feature-item active cursor-pointer transition-all duration-300 p-4 rounded-xl bg-white/5 border border-white/10 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="personalities">
                                 <div class="flex items-center gap-3 mb-3">
                                     <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
                                         <span class="text-white text-lg">🧠</span>
                                     </div>
-                                    <h3 class="text-lg font-bold text-white">AI Personalities</h3>
+                                    <h3 class="text-base font-bold text-white">AI Personalities</h3>
                                 </div>
                                 <p class="text-secondary text-sm leading-relaxed">
-                                    Create NPCs with unique personalities and memories. Characters remember past interactions and develop relationships with players.
+                                    Create NPCs with unique personalities and memories. Characters remember past interactions and develop relationships.
                                 </p>
                             </div>
 
-                            <div class="feature-item cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 min-w-[280px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="teaching">
+                            <div class="feature-item cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="teaching">
                                 <div class="flex items-center gap-3 mb-3">
                                     <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
                                         <span class="text-white text-lg">🎓</span>
                                     </div>
-                                    <h3 class="text-lg font-bold text-white">AI Teaching</h3>
+                                    <h3 class="text-base font-bold text-white">AI Teaching</h3>
                                 </div>
                                 <p class="text-secondary text-sm leading-relaxed">
-                                    Adaptive AI mentors guide players through complex mechanics. Each player gets personalized guidance based on their learning style.
+                                    Adaptive AI mentors guide players through complex mechanics. Each player gets personalized guidance.
                                 </p>
                             </div>
 
-                            <div class="feature-item cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 min-w-[280px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="integration">
+                            <div class="feature-item cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="integration">
                                 <div class="flex items-center gap-3 mb-3">
                                     <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
                                         <span class="text-white text-lg">🔧</span>
                                     </div>
-                                    <h3 class="text-lg font-bold text-white">Easy Integration</h3>
+                                    <h3 class="text-base font-bold text-white">Easy Integration</h3>
                                 </div>
                                 <p class="text-secondary text-sm leading-relaxed">
-                                    Get up and running in minutes with our 1-click Unreal Engine plugin. No AI expertise required - just install and start creating.
+                                    Get up and running in minutes with our 1-click Unreal Engine plugin. No AI expertise required.
                                 </p>
                             </div>
 
-                            <div class="feature-item cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 min-w-[280px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="agency">
+                            <div class="feature-item cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="agency">
                                 <div class="flex items-center gap-3 mb-3">
                                     <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
                                         <span class="text-white text-lg">⚡</span>
                                     </div>
-                                    <h3 class="text-lg font-bold text-white">AI Agency</h3>
+                                    <h3 class="text-base font-bold text-white">AI Agency</h3>
                                 </div>
                                 <p class="text-secondary text-sm leading-relaxed">
-                                    NPCs don't just talk - they act. Our AI agents interact with game systems, trigger events, and respond contextually.
+                                    NPCs don't just talk - they act. Our AI agents interact with game systems and trigger events.
                                 </p>
                             </div>
                         </div>
@@ -701,9 +692,9 @@
     </section>
 
     <!-- What is Tryll Engine -->
-    <section class="py-24 bg-black relative overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto text-center mb-20 fade-in">
+    <section class="py-12 md:py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-4xl mx-auto text-center mb-12 md:mb-20 fade-in">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
                     <div class="w-2 h-2 rounded-full bg-primary-500"></div>
                     CORE SYSTEM
@@ -848,9 +839,9 @@
     -->
 
     <!-- Everything You Need Section -->
-    <section id="everything-features" class="py-24 bg-black relative overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
+    <section id="everything-features" class="py-12 md:py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-3xl mx-auto text-center mb-12 md:mb-20 fade-in">
                 <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
                     Everything You Need for AI Gaming
                 </h2>
@@ -988,9 +979,9 @@
     </section>
 
     <!-- Features Section -->
-    <section class="py-24 bg-black relative overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
+    <section class="py-12 md:py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-3xl mx-auto text-center mb-12 md:mb-20 fade-in">
                 <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
                     Creative Control You Can Trust
                 </h2>
@@ -1055,9 +1046,9 @@
     </section>
 
     <!-- Cloud Cost Warning Section -->
-    <section class="py-24 bg-black relative overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto text-center mb-16 fade-in">
+    <section class="py-12 md:py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-4xl mx-auto text-center mb-12 md:mb-16 fade-in">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-400 text-sm font-medium mb-8 border border-red-500/30">
                     <div class="w-2 h-2 rounded-full bg-red-500"></div>
                     CLOUD WILL BANKRUPT YOU
@@ -1114,9 +1105,9 @@
     -->
 
     <!-- Pricing Section -->
-    <section id="pricing" class="py-24 bg-black relative overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
+    <section id="pricing" class="py-12 md:py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-3xl mx-auto text-center mb-12 md:mb-20 fade-in">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
                     <div class="w-2 h-2 rounded-full bg-primary-500"></div>
                     TRYLL PRICING
@@ -1197,9 +1188,9 @@
     </section>
 
     <!-- Audience Section -->
-    <section id="for-you" class="py-24 bg-black relative overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
+    <section id="for-you" class="py-12 md:py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-3xl mx-auto text-center mb-12 md:mb-20 fade-in">
                 <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
                     Perfect for Every Creator
                 </h2>
@@ -1666,8 +1657,125 @@
             });
         }
         
+        // Screen Studio-style video animation with YouTube autoplay
+        function initVideoAnimation() {
+            const heroVideo = document.getElementById('hero-video');
+            const featureVideo = document.getElementById('feature-video');
+            const featuresSection = document.getElementById('features');
+            const youtubePlayer = document.getElementById('youtube-player');
+            
+            if (!heroVideo || !featureVideo || !featuresSection) return;
+            
+            let isAnimating = false;
+            let hasStartedVideo = false;
+            
+            function handleScroll() {
+                if (isAnimating) return;
+                
+                const scrollY = window.scrollY;
+                const windowHeight = window.innerHeight;
+                const heroSection = heroVideo.closest('section');
+                const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+                const featuresTop = featuresSection.offsetTop;
+                
+                // Calculate animation progress
+                const animationStart = heroBottom - windowHeight;
+                const animationEnd = featuresTop - windowHeight * 0.3;
+                const progress = Math.max(0, Math.min(1, (scrollY - animationStart) / (animationEnd - animationStart)));
+                
+                // YouTube autoplay on scroll trigger
+                if (!hasStartedVideo && scrollY > windowHeight * 0.3 && youtubePlayer) {
+                    hasStartedVideo = true;
+                    // Try to start the video with sound if user has interacted
+                    try {
+                        youtubePlayer.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                    } catch (e) {
+                        // Fallback: update src to include autoplay
+                        const currentSrc = youtubePlayer.src;
+                        if (currentSrc.includes('autoplay=0')) {
+                            youtubePlayer.src = currentSrc.replace('autoplay=0', 'autoplay=1');
+                        }
+                    }
+                }
+                
+                // Update hero video - scale until video center reaches screen center
+                const heroVideoRect = heroVideo.getBoundingClientRect();
+                const videoCenter = heroVideoRect.top + (heroVideoRect.height / 2);
+                const screenCenter = windowHeight / 2;
+                const videoAtCenter = videoCenter <= screenCenter;
+                
+                if (progress > 0 && !videoAtCenter) {
+                    // Still scaling up - video hasn't reached center yet
+                    const scale = 1 + (progress * 0.8); // Grow by 80% (larger effect)
+                    const opacity = 1 - (progress * 0.3); // Fade slightly
+                    heroVideo.style.transform = `scale(${scale})`;
+                    heroVideo.style.opacity = opacity;
+                } else if (videoAtCenter && progress > 0) {
+                    // Video is at or past center - only scale down if scrolling up
+                    const currentScale = heroVideo.style.transform.match(/scale\(([^)]+)\)/);
+                    const currentOpacity = heroVideo.style.opacity;
+                    
+                    // Keep current scale/opacity when scrolling down past center
+                    if (currentScale && currentOpacity) {
+                        heroVideo.style.transform = currentScale[0];
+                        heroVideo.style.opacity = currentOpacity;
+                    }
+                }
+                
+                // Update feature video
+                if (progress > 0.7) {
+                    const featureProgress = (progress - 0.7) / 0.3; // Last 30% of animation
+                    const scale = 0.8 + (featureProgress * 0.2); // Scale from 80% to 100%
+                    const opacity = featureProgress;
+                    featureVideo.style.transform = `scale(${scale})`;
+                    featureVideo.style.opacity = opacity;
+                } else {
+                    featureVideo.style.transform = 'scale(0.8)';
+                    featureVideo.style.opacity = '0';
+                }
+                
+                // Sticky behavior for desktop - simplified to avoid layout breaks
+                if (window.innerWidth >= 768) {
+                    const featuresContainer = document.getElementById('features-video-container');
+                    const featuresRect = featuresSection.getBoundingClientRect();
+                    
+                    // Keep sticky positioning throughout, just adjust z-index when needed
+                    featuresContainer.style.position = 'sticky';
+                    featuresContainer.style.top = '6rem';
+                    featuresContainer.style.left = 'auto';
+                    featuresContainer.style.transform = 'none';
+                    featuresContainer.style.width = 'auto';
+                    featuresContainer.style.maxWidth = 'none';
+                    
+                    // Only adjust z-index when video is actively in sticky range
+                    if (featuresRect.top <= 100 && featuresRect.bottom > windowHeight) {
+                        featuresContainer.style.zIndex = '25';
+                    } else {
+                        featuresContainer.style.zIndex = '20';
+                    }
+                }
+            }
+            
+            // Throttle scroll events
+            let ticking = false;
+            function requestTick() {
+                if (!ticking) {
+                    requestAnimationFrame(handleScroll);
+                    ticking = true;
+                    setTimeout(() => { ticking = false; }, 16);
+                }
+            }
+            
+            window.addEventListener('scroll', requestTick);
+            
+            // Initial call
+            handleScroll();
+        }
+        
         // All interactive functionality
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize video animation
+            initVideoAnimation();
             // Interactive Features Section
             const featureItems = document.querySelectorAll('.feature-item');
             const video = document.getElementById('feature-video');

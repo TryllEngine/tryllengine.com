@@ -357,13 +357,32 @@
             color: #F6F0EB;
         }
         
-        .feature-item.active {
+        .feature-item-left.active {
             background: rgba(255, 255, 255, 0.08);
-            border-left: 4px solid #232E41;
+            border: 2px solid rgba(35, 46, 65, 0.8);
+            transform: translateX(4px);
+            transition: all 0.3s ease-in-out;
         }
         
-        .feature-item.active h3 {
+        .feature-item-mobile.active {
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(35, 46, 65, 0.8);
+            transform: scale(1.02);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .feature-item-left.active h3,
+        .feature-item-mobile.active h3 {
             color: #ffffff;
+        }
+        
+        /* Faster transition when becoming inactive */
+        .feature-item-left:not(.active) {
+            transition: all 0.15s ease-out;
+        }
+        
+        .feature-item-mobile:not(.active) {
+            transition: all 0.15s ease-out;
         }
         
         /* Dropdown styling */
@@ -386,14 +405,33 @@
             display: none;
         }
         
-        /* Feature item active state */
-        .feature-item.active {
+        /* Feature item active state - enhanced */
+        .feature-item-left.active {
             background: rgba(255, 255, 255, 0.08) !important;
-            border-color: rgba(35, 46, 65, 0.5) !important;
+            border: 2px solid rgba(35, 46, 65, 0.8) !important;
+            transform: translateX(4px) !important;
+            transition: all 0.3s ease-in-out !important;
         }
         
-        .feature-item.active h3 {
+        .feature-item-mobile.active {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border: 2px solid rgba(35, 46, 65, 0.8) !important;
+            transform: scale(1.02) !important;
+            transition: all 0.3s ease-in-out !important;
+        }
+        
+        .feature-item-left.active h3,
+        .feature-item-mobile.active h3 {
             color: #ffffff !important;
+        }
+        
+        /* Faster transition when becoming inactive */
+        .feature-item-left:not(.active) {
+            transition: all 0.15s ease-out !important;
+        }
+        
+        .feature-item-mobile:not(.active) {
+            transition: all 0.15s ease-out !important;
         }
         
     </style>
@@ -412,7 +450,7 @@
         <div class="flex items-center justify-between">
             <div class="logo">
                 <a href="#top" class="block">
-                    <img src="./assets/logo/full logo_white_bold engine.svg" alt="Tryll Engine" class="h-8 md:h-12" />
+                    <img src="./assets/logo/full-logo/light-text.svg" alt="Tryll Engine" class="h-8 md:h-12" />
                 </a>
             </div>
             
@@ -464,7 +502,7 @@
         <div class="container mx-auto px-4 md:px-6 py-24 md:py-32 relative z-10">
             <div class="max-w-4xl mx-auto text-center fade-in">
                 <div class="mb-6 md:mb-8">
-                    <img src="./assets/logo/logo mark_blue .svg" alt="Tryll" class="w-20 h-20 md:w-30 md:h-30 mx-auto" style="width: 80px; height: 80px;" />
+                    <img src="./assets/logo/logo-mark/blue.svg" alt="Tryll" class="w-20 h-20 md:w-30 md:h-30 mx-auto" style="width: 80px; height: 80px;" />
                 </div>
                 
                 <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 heading-primary leading-tight text-white">
@@ -696,61 +734,36 @@
                 <!-- Mobile Features (Horizontal Scroll) -->
                 <div class="feature-tabs-container">
                     <div class="flex gap-3 overflow-x-auto pb-4 scrollbar-hide" style="scroll-snap-type: x mandatory;">
-                        <div class="feature-item-mobile active cursor-pointer transition-all duration-300 p-4 rounded-xl bg-white/5 border border-white/10 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="retention">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white text-lg">🛡️</span>
-                                </div>
-                                <h3 class="text-base font-bold text-white">Stop Losing Players</h3>
-                            </div>
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl hover:bg-white/5 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="retention">
+                            <h3 class="text-base font-light text-white mb-3">Stop Losing Players</h3>
                             <p class="text-secondary text-sm leading-relaxed">
                                 AI mentors that listen to players and adapt to their style and level. Think "in-game support agent" that helps decrease your refund rate.
                             </p>
                         </div>
 
-                        <div class="feature-item-mobile cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="engagement">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white text-lg">💖</span>
-                                </div>
-                                <h3 class="text-base font-bold text-white">Keep Players Engaged</h3>
-                            </div>
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl hover:bg-white/5 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="engagement">
+                            <h3 class="text-base font-light text-white mb-3">Keep Players Engaged</h3>
                             <p class="text-secondary text-sm leading-relaxed">
                                 Players will build personal relationships with your game via living NPCs that have memory and personality.
                             </p>
                         </div>
 
-                        <div class="feature-item-mobile cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="delegation">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white text-lg">⚔️</span>
-                                </div>
-                                <h3 class="text-base font-bold text-white">Delegate to AI</h3>
-                            </div>
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl hover:bg-white/5 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="delegation">
+                            <h3 class="text-base font-light text-white mb-3">Delegate to AI</h3>
                             <p class="text-secondary text-sm leading-relaxed">
                                 Tryll is an agentic system that can make calls to your game engine functions. Player is rude to an NPC? Draw a sword!
                             </p>
                         </div>
 
-                        <div class="feature-item-mobile cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="content">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white text-lg">♾️</span>
-                                </div>
-                                <h3 class="text-base font-bold text-white">Infinite Content</h3>
-                            </div>
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl hover:bg-white/5 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="content">
+                            <h3 class="text-base font-light text-white mb-3">Infinite Content</h3>
                             <p class="text-secondary text-sm leading-relaxed">
                                 Every playthrough is a unique blend of your game design, story, and gamer's personality. 1 million players = 1 million unique experiences.
                             </p>
                         </div>
 
-                        <div class="feature-item-mobile cursor-pointer transition-all duration-300 p-4 rounded-xl hover:bg-white/5 border border-white/10 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="control">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white text-lg">🎛️</span>
-                                </div>
-                                <h3 class="text-base font-bold text-white">Creative Control</h3>
-                            </div>
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl hover:bg-white/5 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="control">
+                            <h3 class="text-base font-light text-white mb-3">Creative Control</h3>
                             <p class="text-secondary text-sm leading-relaxed">
                                 Tryll ships with a set of tools to give you full creative control over player's experience.
                             </p>
@@ -760,77 +773,52 @@
             </div>
             
             <!-- Desktop: Left-Right Split -->
-            <div class="hidden md:grid md:grid-cols-2 md:gap-12 lg:gap-16">
+            <div class="hidden md:grid md:grid-cols-2 md:gap-6 lg:gap-8">
                 <!-- Left: Features List -->
                 <div class="relative">
                     <div class="space-y-4" id="features-list">
-                        <div class="feature-item-left active cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5 border border-white/10" data-feature="retention">
-                            <div class="flex items-start gap-4">
-                                <div class="w-12 h-12 rounded-xl bg-primary-500 flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white text-xl">🛡️</span>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-white mb-2">Stop Losing Players</h3>
-                                    <p class="text-secondary text-sm leading-relaxed">
-                                        AI mentors that listen to players and adapt to their style and level. Think "in-game support agent" that helps decrease your refund rate.
-                                    </p>
-                                </div>
+                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/5" data-feature="retention">
+                            <div>
+                                <h3 class="text-xl font-light text-white mb-2">Stop Losing Players</h3>
+                                <p class="text-secondary text-sm leading-relaxed">
+                                    AI mentors that listen to players and adapt to their style and level. Think "in-game support agent" that helps decrease your refund rate.
+                                </p>
                             </div>
                         </div>
                         
-                        <div class="feature-item-left cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5 border border-white/10" data-feature="engagement">
-                            <div class="flex items-start gap-4">
-                                <div class="w-12 h-12 rounded-xl bg-primary-500 flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white text-xl">💖</span>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-white mb-2">Keep Players Engaged</h3>
-                                    <p class="text-secondary text-sm leading-relaxed">
-                                        Players will build personal relationships with your game via living NPCs that have memory and personality.
-                                    </p>
-                                </div>
+                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/5" data-feature="engagement">
+                            <div>
+                                <h3 class="text-xl font-light text-white mb-2">Keep Players Engaged</h3>
+                                <p class="text-secondary text-sm leading-relaxed">
+                                    Players will build personal relationships with your game via living NPCs that have memory and personality.
+                                </p>
                             </div>
                         </div>
                         
-                        <div class="feature-item-left cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5 border border-white/10" data-feature="delegation">
-                            <div class="flex items-start gap-4">
-                                <div class="w-12 h-12 rounded-xl bg-primary-500 flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white text-xl">⚔️</span>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-white mb-2">Delegate to AI</h3>
-                                    <p class="text-secondary text-sm leading-relaxed">
-                                        Tryll is an agentic system that can make calls to your game engine functions. Player is rude to an NPC? Draw a sword!
-                                    </p>
-                                </div>
+                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/5" data-feature="delegation">
+                            <div>
+                                <h3 class="text-xl font-light text-white mb-2">Delegate to AI</h3>
+                                <p class="text-secondary text-sm leading-relaxed">
+                                    Tryll is an agentic system that can make calls to your game engine functions. Player is rude to an NPC? Draw a sword!
+                                </p>
                             </div>
                         </div>
                         
-                        <div class="feature-item-left cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5 border border-white/10" data-feature="content">
-                            <div class="flex items-start gap-4">
-                                <div class="w-12 h-12 rounded-xl bg-primary-500 flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white text-xl">♾️</span>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-white mb-2">Infinite Content</h3>
-                                    <p class="text-secondary text-sm leading-relaxed">
-                                        Every playthrough is a unique blend of your game design, story, and gamer's personality. 1 million players = 1 million unique experiences.
-                                    </p>
-                                </div>
+                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/5" data-feature="content">
+                            <div>
+                                <h3 class="text-xl font-light text-white mb-2">Infinite Content</h3>
+                                <p class="text-secondary text-sm leading-relaxed">
+                                    Every playthrough is a unique blend of your game design, story, and gamer's personality. 1 million players = 1 million unique experiences.
+                                </p>
                             </div>
                         </div>
                         
-                        <div class="feature-item-left cursor-pointer transition-all duration-300 p-6 rounded-xl hover:bg-white/5 border border-white/10" data-feature="control">
-                            <div class="flex items-start gap-4">
-                                <div class="w-12 h-12 rounded-xl bg-primary-500 flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white text-xl">🎛️</span>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-white mb-2">Creative Control</h3>
-                                    <p class="text-secondary text-sm leading-relaxed">
-                                        Tryll ships with a set of tools to give you full creative control over player's experience.
-                                    </p>
-                                </div>
+                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/5" data-feature="control">
+                            <div>
+                                <h3 class="text-xl font-light text-white mb-2">Creative Control</h3>
+                                <p class="text-secondary text-sm leading-relaxed">
+                                    Tryll ships with a set of tools to give you full creative control over player's experience.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -872,7 +860,7 @@
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start text-center fade-in">
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch text-center fade-in">
                 <!-- Plugin -->
                 <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20">
                     <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
@@ -1325,13 +1313,13 @@
                 <div class="space-y-4">
                     <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-1">
-                            <h3 class="text-xl font-bold text-white">What is Tryll Engine?</h3>
+                            <h3 class="text-xl font-bold text-white">What kind of hardware is needed to run both the game and AI at 90 FPS?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
                         </button>
                         <div id="faq-1" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
                             <div class="px-8 pb-6">
                                 <p class="text-secondary leading-relaxed">
-                                    Tryll Engine is a complete AI infrastructure for game developers that enables intelligent NPCs, dynamic dialogues, and adaptive learning systems. It runs locally on player hardware with zero cloud costs, providing instant responses and complete privacy.
+                                    To maintain 90 FPS while running local AI inference, we recommend a GPU like the RTX 4070 Ti Super or equivalent. Tryll automatically selects the most efficient model and quantization for the user's system to ensure smooth gameplay without compromising AI responsiveness.
                                 </p>
                             </div>
                         </div>
@@ -1339,13 +1327,13 @@
 
                     <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-2">
-                            <h3 class="text-xl font-bold text-white">How does local AI work?</h3>
+                            <h3 class="text-xl font-bold text-white">How many gamers can actually run these models?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
                         </button>
                         <div id="faq-2" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
                             <div class="px-8 pb-6">
                                 <p class="text-secondary leading-relaxed">
-                                    Tryll Engine runs AI models directly on the player's device, eliminating the need for cloud servers. This means instant responses, complete privacy, and no ongoing costs for developers or players.
+                                    Our benchmarks show that ~40% of PC gamers can already run Tryll's default models (7B–13B) at acceptable speeds. As open-source models get smaller and faster every month, and gamers continue upgrading hardware, this percentage grows — unlocking scalable deployment without cloud reliance.
                                 </p>
                             </div>
                         </div>
@@ -1353,84 +1341,133 @@
 
                     <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-3">
-                            <h3 class="text-xl font-bold text-white">Which game engines are supported?</h3>
+                            <h3 class="text-xl font-bold text-white">Why is local AI better than using a cloud API like OpenAI or Convai?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
                         </button>
                         <div id="faq-3" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
                             <div class="px-8 pb-6">
-                                <p class="text-secondary leading-relaxed">
-                                    Currently, we support Unreal Engine with a 1-click plugin. Unity support is in development. We're also working on support for other popular engines based on community demand.
-                                </p>
+                                <div class="text-secondary leading-relaxed">
+                                    <p class="mb-3 font-medium">Local AI advantages:</p>
+                                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                                        <li>Zero cost per player — no API or infrastructure bills</li>
+                                        <li>Offline capable — your game keeps working without an internet connection</li>
+                                        <li>Private by design — no personal data leaves the device</li>
+                                    </ul>
+                                    <p class="mb-3 font-medium">Cloud-based AI adds legal and UX risks:</p>
+                                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                                        <li>Immersion-breaking outages during play sessions</li>
+                                        <li>Legal compliance challenges (GDPR, AI Act, export laws)</li>
+                                    </ul>
+                                    <p>Tryll's local-first approach is not just cheaper — it's safer, faster, and scalable to millions of players.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-4">
-                            <h3 class="text-xl font-bold text-white">What are the system requirements?</h3>
+                            <h3 class="text-xl font-bold text-white">How does Tryll optimize for different hardware configurations?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
                         </button>
                         <div id="faq-4" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
                             <div class="px-8 pb-6">
-                                <p class="text-secondary leading-relaxed">
-                                    Tryll Engine automatically optimizes for available hardware. It works on a wide range of PCs, from budget systems to high-end gaming rigs. The engine automatically selects the best AI model for each player's hardware.
-                                </p>
+                                <div class="text-secondary leading-relaxed">
+                                    <p class="mb-3">Our LLM Manager automatically:</p>
+                                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                                        <li>Detects hardware on first launch</li>
+                                        <li>Picks the most efficient model (4B, 8B, 14B, 27B)</li>
+                                        <li>Adjusts memory usage and context size dynamically</li>
+                                        <li>Offloads high-level reasoning and memory management to modular agents (Director, Writer)</li>
+                                        <li>Updates models automatically as the ecosystem evolves</li>
+                                    </ul>
+                                    <p>This ensures smooth AI performance across a wide range of gaming machines.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-5">
-                            <h3 class="text-xl font-bold text-white">Is it really free for indie developers?</h3>
+                            <h3 class="text-xl font-bold text-white">What's the install size and memory footprint?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
                         </button>
                         <div id="faq-5" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
                             <div class="px-8 pb-6">
-                                <p class="text-secondary leading-relaxed">
-                                    Yes! If you've generated or raised less than $200k in the past 12 months, Tryll Engine is completely free. This includes all features, documentation, and Discord community support.
-                                </p>
+                                <div class="text-secondary leading-relaxed">
+                                    <p class="mb-3"><strong>Model storage:</strong> 3 / 5 / 10 / 20 GB depending on model size (4B - 27B parameters)</p>
+                                    <p class="mb-3 font-medium">Runtime memory usage:</p>
+                                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                                        <li>6-8 GB VRAM during inference</li>
+                                        <li>2-4 GB system RAM for context and agent logic</li>
+                                    </ul>
+                                    <p class="mb-3"><strong>Total impact:</strong> Adds 8-12 GB to your game installation</p>
+                                    <p>Models are stored in Content/Trinity/Models/ and can be downloaded or streamed post-install</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-6">
-                            <h3 class="text-xl font-bold text-white">How do I maintain creative control?</h3>
+                            <h3 class="text-xl font-bold text-white">How does Tryll manage AI models and inference on the player's machine?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
                         </button>
                         <div id="faq-6" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
                             <div class="px-8 pb-6">
-                                <p class="text-secondary leading-relaxed">
-                                    Tryll Engine uses a hybrid approach. You can keep traditional dialogue trees visible while allowing natural language input. The AI intelligently maps player input to your predefined options, giving players freedom while maintaining your narrative control.
-                                </p>
+                                <div class="text-secondary leading-relaxed">
+                                    <p class="mb-3">Tryll includes a local-first LLM Manager that handles:</p>
+                                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                                        <li>Detecting available GPU and RAM</li>
+                                        <li>Selecting the optimal model size and quantization (4B-30B)</li>
+                                        <li>Auto-updating models as better open-source options become available</li>
+                                        <li>Dynamically adjusting context usage by offloading high-level reasoning to the Director agent and storing memory in a local, searchable context database</li>
+                                        <li>Falling back to traditional dialogue if the system cannot run models</li>
+                                    </ul>
+                                    <p>All of this happens invisibly at runtime — no setup required from players or developers.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-7">
-                            <h3 class="text-xl font-bold text-white">What about content safety?</h3>
+                            <h3 class="text-xl font-bold text-white">How does Tryll integrate with Unreal Engine's systems?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
                         </button>
                         <div id="faq-7" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
                             <div class="px-8 pb-6">
-                                <p class="text-secondary leading-relaxed">
-                                    Tryll Engine includes comprehensive content filtering to ensure AI responses stay within your creative boundaries and community standards. You have full control over what the AI can and cannot say.
-                                </p>
+                                <div class="text-secondary leading-relaxed">
+                                    <p class="mb-3">Tryll provides seamless integration via:</p>
+                                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                                        <li><strong>Base Blueprint classes:</strong> For example, TryllDescriptionActorComponent, which you can inherit from to build custom logic</li>
+                                        <li><strong>Event system:</strong> Nodes like BeginTrinityDialogue() and SendPlayerInput() hook directly into your game flow</li>
+                                        <li><strong>Function Registry:</strong> Lets you map AI-generated function calls to your existing Blueprint or C++ logic</li>
+                                        <li><strong>Hot reload support:</strong> Modify AI behavior and logic without restarting the Unreal Editor</li>
+                                        <li><strong>Packaging:</strong> Required binaries and models are automatically bundled during your build process</li>
+                                    </ul>
+                                    <p>This system is designed to extend Unreal's existing workflows — not replace or override them.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-8">
-                            <h3 class="text-xl font-bold text-white">Can I try it before committing?</h3>
+                            <h3 class="text-xl font-bold text-white">Can Tryll Engine integrate with our proprietary game engine?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
                         </button>
                         <div id="faq-8" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
                             <div class="px-8 pb-6">
-                                <p class="text-secondary leading-relaxed">
-                                    Absolutely! We offer live demos and will have a downloadable mod for Deep Rock Galactic coming soon. You can also join our Discord community to see examples and get your questions answered.
-                                </p>
+                                <div class="text-secondary leading-relaxed">
+                                    <p class="mb-4">Absolutely. While we offer 1-click integration for Unreal Engine (and soon Unity), Tryll is fundamentally an agentic AI system and local LLM manager. The plugin is simply a bridge to connect your game world to Tryll's AI runtime.</p>
+                                    <p class="mb-3">Tryll communicates via standard interfaces (HTTP, OpenAI-compatible API, or local IPC), so integration with proprietary or custom engines is fully supported. You can send game state to Tryll and receive:</p>
+                                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                                        <li>Text responses (dialogue)</li>
+                                        <li>Voice (optional)</li>
+                                        <li>Function calls like AttackPlayer, GiveItem, etc.</li>
+                                    </ul>
+                                    <p>In other words, the plugin is not the product — it's just how Tryll sees and influences the game world.</p>
+                                </div>
                             </div>
                         </div>
                     </div>

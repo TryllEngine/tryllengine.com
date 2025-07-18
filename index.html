@@ -5,11 +5,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tryll Engine - The Future of Gaming AI</title>
     
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Tryll Engine brings gaming intelligence to life with local AI-powered game systems. Create dynamic worlds that think, learn, and adapt - no cloud required. Transform your game development today.">
+    <meta name="keywords" content="gaming AI, NPC AI, local AI engine, game development, intelligent NPCs, offline AI, game AI technology">
+    <meta name="author" content="Tryll Engine">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tryllengine.com/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tryllengine.com/">
+    <meta property="og:title" content="Tryll Engine - The Future of Gaming AI">
+    <meta property="og:description" content="Revolutionary local AI engine for intelligent NPCs. Create dynamic, thinking characters that adapt and learn - no cloud required.">
+    <meta property="og:image" content="https://tryllengine.com/assets/logo/logo-mark/blue.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tryllengine.com/">
+    <meta property="twitter:title" content="Tryll Engine - The Future of Gaming AI">
+    <meta property="twitter:description" content="Revolutionary local AI engine for intelligent NPCs. Create dynamic, thinking characters that adapt and learn - no cloud required.">
+    <meta property="twitter:image" content="https://tryllengine.com/assets/logo/logo-mark/blue.svg">
+    
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
     <link rel="manifest" href="/assets/favicon/site.webmanifest">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Tryll Engine",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Windows, macOS, Linux",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "description": "Local AI engine for gaming intelligence. Create dynamic characters that think, learn, and adapt without cloud dependencies.",
+        "featureList": [
+            "Local AI processing",
+            "Gaming intelligence platform",
+            "Dynamic character behavior",
+            "No cloud dependencies",
+            "LLM integration",
+            "Real-time AI responses"
+        ],
+        "creator": {
+            "@type": "Organization",
+            "name": "Tryll Engine",
+            "url": "https://tryllengine.com"
+        }
+    }
+    </script>
+    
+    <!-- FAQ Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What kind of hardware is needed to run both the game and AI at 90 FPS?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "To maintain 90 FPS while running local AI inference, we recommend a GPU like the RTX 4070 Ti Super or equivalent. Tryll automatically selects the most efficient model and quantization for the user's system to ensure smooth gameplay without compromising AI responsiveness."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How many gamers can actually run these models?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Our benchmarks show that ~40% of PC gamers can already run Tryll's default models (7B–13B) at acceptable speeds. As open-source models get smaller and faster every month, and gamers continue upgrading hardware, this percentage grows - unlocking scalable deployment without cloud reliance."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why is local AI better than using a cloud API like OpenAI or Convai?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Local AI advantages: Zero cost per player - no API or infrastructure bills. Offline capable - your game keeps working without an internet connection. Private by design - no personal data leaves the device. Cloud-based AI adds legal and UX risks: Immersion-breaking outages during play sessions. Legal compliance challenges (GDPR, AI Act, export laws). Tryll's local-first approach is not just cheaper - it's safer, faster, and scalable to millions of players."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does Tryll optimize for different hardware configurations?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Our LLM Manager automatically: Detects hardware on first launch. Picks the most efficient model (4B, 8B, 14B, 27B). Adjusts memory usage and context size dynamically. Offloads high-level reasoning and memory management to modular agents (Director, Writer). Updates models automatically as the ecosystem evolves. This ensures smooth AI performance across a wide range of gaming machines."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What's the install size and memory footprint?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Default models range from 2-8GB download size. In memory, they typically use 4-12GB of VRAM depending on model size and quantization. The engine itself adds minimal overhead (~100MB). Players can choose smaller models for lower-end systems or larger ones for more sophisticated AI behavior."
+                }
+            }
+        ]
+    }
+    </script>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -468,7 +569,6 @@
                     <li><a href="#pricing" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Pricing</a></li>
                     <li><a href="#faq" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">FAQ</a></li>
                     <li><a href="#contact-email" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Contact</a></li>
-                    <!-- <li><a href="team.html" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Team</a></li> -->
                 </ul>
                 <a href="#contact" class="bg-primary-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-primary-600">
                     Get Started
@@ -494,7 +594,6 @@
                 <a href="#features" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Features</a>
                 <a href="#pricing" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Pricing</a>
                 <a href="#faq" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">FAQ</a>
-                <!-- <a href="team.html" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Team</a> -->
                 <div class="pt-4">
                     <a href="#contact" class="bg-primary-500 text-white px-8 py-4 rounded-lg text-lg font-medium transition-all duration-200 hover:bg-primary-600">
                         Get Started
@@ -1554,7 +1653,7 @@
                         
                         <!-- Hidden field for tracking -->
                         <input type="hidden" name="_subject" value="New Tryll Engine Contact Form Submission">
-                        <input type="hidden" name="_next" value="https://your-domain.com/thank-you.html">
+                        <input type="hidden" name="_next" value="https://tryllengine.com/">
                         
                         <button 
                             type="submit" 
@@ -1669,7 +1768,7 @@
                     
                     if (response.ok) {
                         // Redirect to thank you page
-                        window.location.href = 'thank-you.html';
+                        window.location.href = '/';
                     } else {
                         const data = await response.json();
                         if (data.errors) {

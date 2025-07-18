@@ -1,0 +1,11 @@
+# Robots.txt for TryllEngine.com
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://tryllengine.com/sitemap.xml
+
+# LLMs.txt location for AI models
+LLMs: https://tryllengine.com/llms.txt

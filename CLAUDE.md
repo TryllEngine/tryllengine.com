@@ -10,9 +10,17 @@ TryllEngine is a static marketing website for a gaming AI product. The site prom
 
 ```
 TryllEngine/
-├── index.html  # Main landing page with embedded JavaScript
-├── style.css   # Basic styles (mostly unused as site uses Tailwind CSS)
-└── logo/       # Logo assets in various formats (SVG, PNG)
+├── index.html              # Main landing page with embedded JavaScript
+├── privacy-policy.html     # Privacy policy page
+├── style.css              # Basic styles (mostly unused as site uses Tailwind CSS)
+├── robots.txt             # Search engine crawling rules
+├── sitemap.xml            # XML sitemap for search engines
+├── CNAME                  # GitHub Pages custom domain
+├── assets/
+│   ├── favicon/           # Favicon files in various formats
+│   ├── logo/              # Logo assets (SVG)
+│   └── team_photos/       # Team member photos (unused)
+└── everything-you-need-section.html  # HTML snippet (backup/reference)
 ```
 
 ## Key Technologies
@@ -49,14 +57,17 @@ The website is a single-page marketing site with:
    - Target audience breakdown (Studios, Solo Developers, Modders)
    - FAQ section with collapsible answers
    - Pricing tiers and final call-to-action
+   - Contact form (redirects to homepage on submission)
 
-2. **Styling approach**:
+2. **privacy-policy.html** - Privacy policy page with legal information
+
+3. **Styling approach**:
    - Primarily uses Tailwind CSS via CDN
    - Custom Tailwind config embedded in `<script>` tag
    - Custom CSS for animations, glass effects, and particles
    - The separate style.css file appears to be legacy/unused
 
-3. **JavaScript functionality**:
+4. **JavaScript functionality**:
    - Intersection Observer for fade-in animations
    - Ripple effects on buttons
    - Interactive feature showcase with smooth transitions
@@ -71,6 +82,22 @@ The website is a single-page marketing site with:
 - **Neon glow effects** - `.neon-glow` classes for button hover states
 - **Grid pattern backgrounds** - CSS-based grid overlays
 - **Responsive design** - Mobile-first approach using Tailwind breakpoints
+
+## SEO Setup
+
+- **Meta tags**: Description, keywords, Open Graph, Twitter cards
+- **robots.txt**: Allows all crawlers, points to sitemap
+- **sitemap.xml**: Lists main pages for search engine discovery
+- **Canonical URLs**: Set for all pages
+
+## Recent Improvements (2025-07-18)
+
+### SEO Implementation
+- Added comprehensive meta tags for search engine optimization
+- Created robots.txt and sitemap.xml files
+- Removed unused pages (team.html, thank-you.html, old-features-section-backup.html)
+- Updated form submissions to redirect to homepage
+- Cleaned up project structure by removing Node.js files
 
 ## Recent Improvements (2025-07-09)
 

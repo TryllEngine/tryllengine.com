@@ -87,7 +87,7 @@ The website is a single-page marketing site with:
 
 - **Primary company color**: #232E41 (dark blue-gray) - Use for accents and highlights
 - **Primary blue**: #3B82F6 (Tailwind blue-500) - Used for buttons and links
-- **Secondary colors**: Various grays and whites for text
+- **Secondary colors**: #F6F0EB 
 
 ## SEO Setup
 

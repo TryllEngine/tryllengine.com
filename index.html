@@ -239,65 +239,100 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
         
         html {
             scroll-padding-top: 80px; /* Account for fixed header height */
         }
         
+        :root {
+            /* Typography scale */
+            --typo-label: 12px;
+            --typo-copy: 14px;
+            --typo-largecopy: 16px;
+            --typo-subtitle: 20px;
+            --typo-title: 32px;
+            --typo-hero: 48px;
+        }
+        
+        @media (min-width: 768px) {
+            :root {
+                --typo-label: 13px;
+                --typo-copy: 16px;
+                --typo-largecopy: 18px;
+                --typo-subtitle: 24px;
+                --typo-title: 48px;
+                --typo-hero: 62px;
+            }
+        }
+        
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', BlinkMacSystemFont, -apple-system, 'SF Pro Display', 'SF Pro', sans-serif;
             background-color: #000000;
-            color: #9ca3af;
+            background-image: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.15), transparent),
+                radial-gradient(ellipse 80% 50% at 80% 80%, rgba(147, 51, 234, 0.1), transparent);
+            color: #ffffff;
             overflow-x: hidden;
-            line-height: 1.5;
-            letter-spacing: -0.015em;
+            line-height: 1.5em;
+            letter-spacing: -0.011em;
+            font-weight: 449;
+            font-size: var(--typo-copy);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
         
         .heading-primary {
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            letter-spacing: -0.03em;
+            font-family: 'Inter', BlinkMacSystemFont, -apple-system, 'SF Pro Display', sans-serif;
+            font-weight: 650;
+            letter-spacing: -0.025em;
             line-height: 1.1;
             color: #ffffff;
         }
         
         .heading-secondary {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', BlinkMacSystemFont, -apple-system, 'SF Pro Display', sans-serif;
             font-weight: 600;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.018em;
             line-height: 1.2;
             color: #ffffff;
         }
         
         .heading-tertiary {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', BlinkMacSystemFont, -apple-system, 'SF Pro Display', sans-serif;
             font-weight: 500;
-            letter-spacing: -0.015em;
+            letter-spacing: -0.012em;
             line-height: 1.3;
             color: #ffffff;
         }
         
         .body-large {
-            font-size: 1.125rem;
+            font-size: var(--typo-largecopy);
             line-height: 1.6;
-            font-weight: 400;
-            color: #6b7280;
+            font-weight: 449;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: -0.008em;
+            text-wrap: balance;
         }
         
         .body-medium {
-            font-size: 1rem;
-            line-height: 1.5;
-            font-weight: 400;
-            color: #6b7280;
+            font-size: var(--typo-copy);
+            line-height: 1.5em;
+            font-weight: 449;
+            color: rgba(255, 255, 255, 0.65);
+            letter-spacing: -0.006em;
+            text-wrap: balance;
         }
         
         .body-small {
-            font-size: 0.875rem;
-            line-height: 1.4;
-            font-weight: 400;
-            color: #6b7280;
+            font-size: var(--typo-label);
+            line-height: 1.45;
+            font-weight: 449;
+            color: rgba(255, 255, 255, 0.55);
+            letter-spacing: -0.004em;
+            text-wrap: balance;
         }
         
         .mono-text {
@@ -306,20 +341,208 @@
             letter-spacing: 0.025em;
         }
         
+        /* Button and interactive element text weight */
+        button, [role="button"], a {
+            font-weight: 500;
+        }
+        
+        /* Code and pre elements */
+        code, pre {
+            font-weight: 500;
+        }
+        
+        /* Enhanced card backgrounds */
+        .bg-white\/10 {
+            background-color: rgba(255, 255, 255, 0.08) !important;
+        }
+        
+        .bg-white\/\[0\.12\] {
+            background-color: rgba(255, 255, 255, 0.12) !important;
+        }
+        
+        .hover\:bg-white\/20:hover {
+            background-color: rgba(255, 255, 255, 0.15) !important;
+        }
+        
+        /* Button enhancements */
+        .bg-primary-500, .bg-blue-500 {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            color: #ffffff !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .bg-primary-500:hover, .bg-blue-500:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.2) 100%);
+            border-color: rgba(255, 255, 255, 0.5) !important;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+        
+        /* Better borders */
+        .border-white\/20 {
+            border-color: rgba(255, 255, 255, 0.15) !important;
+        }
+        
+        /* Card shadow for depth */
+        .card-shadow {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 
+                        0 4px 6px rgba(0, 0, 0, 0.1),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Section backgrounds */
+        .section-gradient {
+            background: radial-gradient(ellipse at center top, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+        }
+        
+        /* Pricing cards */
+        .pricing-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Feature cards enhanced */
+        .feature-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* FAQ cards contrast */
+        .faq-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .faq-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+        
+        /* Code blocks */
+        .code-block, pre, code {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Input fields */
+        input, textarea {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        
+        input:focus, textarea:focus {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Grid background pattern */
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: -1px -1px;
+        }
+        
+        /* Dot pattern background */
+        .dot-bg {
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        /* Radio button selector styling */
+        .peer:checked ~ div {
+            background: rgba(255, 255, 255, 0.95) !important;
+            color: #000000 !important;
+            border-color: rgba(255, 255, 255, 1) !important;
+            font-weight: 600;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4), inset 0 0 0 2px rgba(0, 0, 0, 0.1);
+        }
+        
         html {
             scroll-behavior: smooth;
         }
         
+        /* Better font rendering for all text */
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+        
+        /* Default font weight for all elements */
+        *, *::before, *::after {
+            font-weight: inherit;
+        }
+        
+        /* Tailwind font weight overrides */
+        .font-normal { font-weight: 449 !important; }
+        .font-medium { font-weight: 500 !important; }
+        .font-semibold { font-weight: 600 !important; }
+        .font-bold { font-weight: 650 !important; }
+        
+        /* Text color adjustments for better readability */
+        .text-gray-400 { color: rgba(255, 255, 255, 0.75); }
+        .text-gray-500 { color: rgba(255, 255, 255, 0.65); }
+        .text-gray-600 { color: rgba(255, 255, 255, 0.55); }
+        .text-white\/80 { color: rgba(255, 255, 255, 0.8); }
+        .text-white\/60 { color: rgba(255, 255, 255, 0.6); }
+        
+        /* Improve readability for smaller text */
+        .text-sm {
+            font-weight: 500;
+            letter-spacing: -0.004em;
+        }
+        
+        .text-xs {
+            font-weight: 500;
+            letter-spacing: 0;
+        }
+        
+        /* Ensure all paragraphs have better weight */
+        p {
+            font-weight: 449;
+            text-wrap: balance;
+            line-height: 1.5em;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Lead paragraphs */
+        .text-lg, .text-xl {
+            font-weight: 449;
+            opacity: 0.85;
+        }
+        
+        /* Better weight for all list items */
+        li {
+            font-weight: 449;
+            line-height: 1.5em;
+        }
+        
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 12px;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         
         .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.12);
-            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
         }
         
         .nav-glass-card {
@@ -454,7 +677,9 @@
         
         
         .text-secondary {
-            color: #6b7280;
+            color: rgba(255, 255, 255, 0.65);
+            font-weight: 449;
+            text-wrap: balance;
         }
         
         .text-primary {
@@ -648,7 +873,7 @@
                     <li><a href="#faq" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">FAQ</a></li>
                     <li><a href="#contact-email" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Contact</a></li>
                 </ul>
-                <a href="#contact" class="bg-primary-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-primary-600">
+                <a href="#contact" class="bg-primary-500 text-white px-4 py-2 rounded-lg text-sm font-normal transition-all duration-200 hover:bg-primary-600">
                     Get Started
                 </a>
             </div>
@@ -707,7 +932,7 @@
                 
                 <!-- YouTube Video -->
                 <div class="mb-8 md:mb-12">
-                    <div id="hero-video" class="relative max-w-2xl mx-auto aspect-video rounded-xl overflow-hidden border border-white/10 bg-white/5 transition-all duration-700 ease-out">
+                    <div id="hero-video" class="relative max-w-2xl mx-auto aspect-video rounded-xl overflow-hidden border border-white/20 bg-white/10 transition-all duration-700 ease-out">
                         <iframe 
                             id="youtube-player"
                             class="w-full h-full"
@@ -764,7 +989,7 @@
                     <p class="text-secondary mb-4 md:mb-6 leading-relaxed text-sm md:text-base">
                         Find answers to common questions about Tryll Engine and implementation.
                     </p>
-                    <a href="#faq" class="inline-block px-4 md:px-6 py-2 md:py-3 rounded-lg glass-card text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300 w-full sm:w-auto">
+                    <a href="#faq" class="inline-block px-4 md:px-6 py-2 md:py-3 rounded-lg glass-card text-white font-medium text-sm border border-white/20 hover:border-white/20 transition-all duration-300 w-full sm:w-auto">
                         View FAQ
                     </a>
                 </div>
@@ -777,7 +1002,7 @@
                     <p class="text-secondary mb-4 md:mb-6 leading-relaxed text-sm md:text-base">
                         <span class="text-white font-medium">(Coming Soon!)</span> Download BoscoTryll Deep Rock Galactic mod and experience our AI companion.
                     </p>
-                    <button class="px-4 md:px-6 py-2 md:py-3 rounded-lg glass-card text-white font-medium text-sm border border-white/10 hover:border-white/20 transition-all duration-300 opacity-60 cursor-not-allowed w-full sm:w-auto">
+                    <button class="px-4 md:px-6 py-2 md:py-3 rounded-lg glass-card text-white font-medium text-sm border border-white/20 hover:border-white/20 transition-all duration-300 opacity-60 cursor-not-allowed w-full sm:w-auto">
                         Coming Soon
                     </button>
                 </div>
@@ -789,7 +1014,7 @@
     <section class="py-12 md:py-24 bg-black relative overflow-hidden fade-in">
         <div class="max-w-7xl mx-auto px-4 md:px-6">
             <div class="text-center mb-12 md:mb-20">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-sm font-normal mb-8 border border-white/20">
                     <div class="w-2 h-2 rounded-full bg-red-500"></div>
                     THE OLD WAY IS DEAD
                 </div>
@@ -803,7 +1028,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="glass-card rounded-2xl p-8 transition-all hover:border-white/20 flex flex-col">
-                    <div class="flex items-center gap-2 text-red-400 text-base font-semibold mb-4">
+                    <div class="flex items-center gap-2 text-red-400 text-base font-medium mb-4">
                         <span class="text-red-500">❌</span>
                         <span>OLD: Scripted Gameplay</span>
                     </div>
@@ -813,7 +1038,7 @@
                     </div>
                     
                     <div class="flex items-center justify-center my-4">
-                        <div class="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 border border-white/10">
+                        <div class="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/10 border border-white/20">
                             <div class="text-white text-xs font-medium uppercase tracking-wide">Level Up</div>
                             <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
@@ -821,7 +1046,7 @@
                         </div>
                     </div>
                     
-                    <div class="flex items-center gap-2 text-green-400 text-base font-semibold mb-4">
+                    <div class="flex items-center gap-2 text-green-400 text-base font-medium mb-4">
                         <span class="text-green-500">✅</span>
                         <span>NEW: Dynamic Intelligence</span>
                     </div>
@@ -830,7 +1055,7 @@
                 </div>
                 
                 <div class="glass-card rounded-2xl p-8 transition-all hover:border-white/20 flex flex-col">
-                    <div class="flex items-center gap-2 text-red-400 text-base font-semibold mb-4">
+                    <div class="flex items-center gap-2 text-red-400 text-base font-medium mb-4">
                         <span class="text-red-500">❌</span>
                         <span>OLD: Static Game Worlds</span>
                     </div>
@@ -840,7 +1065,7 @@
                     </div>
                     
                     <div class="flex items-center justify-center my-4">
-                        <div class="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 border border-white/10">
+                        <div class="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/10 border border-white/20">
                             <div class="text-white text-xs font-medium uppercase tracking-wide">Level Up</div>
                             <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
@@ -848,7 +1073,7 @@
                         </div>
                     </div>
                     
-                    <div class="flex items-center gap-2 text-green-400 text-base font-semibold mb-4">
+                    <div class="flex items-center gap-2 text-green-400 text-base font-medium mb-4">
                         <span class="text-green-500">✅</span>
                         <span>NEW: Living Ecosystems</span>
                     </div>
@@ -857,7 +1082,7 @@
                 </div>
                 
                 <div class="glass-card rounded-2xl p-8 transition-all hover:border-white/20 flex flex-col">
-                    <div class="flex items-center gap-2 text-red-400 text-base font-semibold mb-4">
+                    <div class="flex items-center gap-2 text-red-400 text-base font-medium mb-4">
                         <span class="text-red-500">❌</span>
                         <span>OLD: Cloud Dependencies</span>
                     </div>
@@ -867,7 +1092,7 @@
                     </div>
                     
                     <div class="flex items-center justify-center my-4">
-                        <div class="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 border border-white/10">
+                        <div class="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/10 border border-white/20">
                             <div class="text-white text-xs font-medium uppercase tracking-wide">Level Up</div>
                             <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
@@ -875,7 +1100,7 @@
                         </div>
                     </div>
                     
-                    <div class="flex items-center gap-2 text-green-400 text-base font-semibold mb-4">
+                    <div class="flex items-center gap-2 text-green-400 text-base font-medium mb-4">
                         <span class="text-green-500">✅</span>
                         <span>NEW: Local Intelligence</span>
                     </div>
@@ -903,11 +1128,11 @@
             <!-- Mobile: Video at top, features below -->
             <div class="md:hidden">
                 <div class="mb-4">
-                    <div id="feature-video-mobile" class="relative aspect-video rounded-xl overflow-hidden border border-white/10 bg-white/5 transition-all duration-500 ease-out">
+                    <div id="feature-video-mobile" class="relative aspect-video rounded-xl overflow-hidden border border-white/20 bg-white/10 transition-all duration-500 ease-out">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <div class="text-center p-6">
                                 <div class="text-4xl mb-4">✨</div>
-                                <h3 class="text-xl font-bold text-white mb-3">Click a feature below</h3>
+                                <h3 class="text-xl font-bold text-white mb-3">Select a use case below</h3>
                                 <p class="text-secondary text-base leading-relaxed">Explore how Tryll Engine transforms your game with intelligent AI features</p>
                                 <div class="mt-4 text-sm text-white/60">Demo video coming soon</div>
                             </div>
@@ -918,45 +1143,45 @@
                 <!-- Mobile Features (Horizontal Scroll) -->
                 <div class="overflow-x-auto overflow-y-visible scrollbar-hide feature-scroll-container">
                     <div class="flex gap-4 px-4 pb-4 py-2" style="width: max-content;">
-                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="retention">
-                        <h3 class="text-lg font-semibold text-white mb-2">Stop Losing Players</h3>
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="tutorials">
+                        <h3 class="text-lg font-semibold text-white mb-2">Natural Language Tutorials</h3>
                         <p class="text-secondary text-sm leading-relaxed">
-                            AI mentors that listen to players and adapt to their style and level. Think "in-game support agent" that helps decrease your refund rate.
+                            Let players ask questions about your game in plain English. Connect documentation, wikis, and guides to an AI that provides instant, contextual help - reducing return rates and negative reviews from frustrated players.
                         </p>
                     </div>
-                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="engagement">
-                        <h3 class="text-lg font-semibold text-white mb-2">Keep Players Engaged</h3>
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="companions">
+                        <h3 class="text-lg font-semibold text-white mb-2">Relationship-Building AI</h3>
                         <p class="text-secondary text-sm leading-relaxed">
-                            Players will build personal relationships with your game via living NPCs that have memory and personality.
+                            Companions that remember every interaction, react to player choices, and develop unique personalities. Transform static followers into dynamic characters players genuinely care about.
                         </p>
                     </div>
-                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="delegation">
-                        <h3 class="text-lg font-semibold text-white mb-2">Delegate to AI</h3>
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="agents">
+                        <h3 class="text-lg font-semibold text-white mb-2">AI That Takes Action</h3>
                         <p class="text-secondary text-sm leading-relaxed">
-                            Tryll is an agentic system that can make calls to your game engine functions. Player is rude to an NPC? Draw a sword!
+                            Connect any LLM directly to your game functions. AI can spawn enemies, change weather, give rewards, or modify the world based on player interactions - true model-to-game connectivity.
                         </p>
                     </div>
-                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="content">
-                        <h3 class="text-lg font-semibold text-white mb-2">Infinite Content</h3>
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="creativity">
+                        <h3 class="text-lg font-semibold text-white mb-2">Prompt-Based Content Creation</h3>
                         <p class="text-secondary text-sm leading-relaxed">
-                            Every playthrough is a unique blend of your game design, story, and gamer's personality. 1 million players = 1 million unique experiences.
+                            Let players create through natural language. Managing a band? Write music with prompts. Designing characters? Describe them instead of mixing preset options. Generate what players imagine, not what you pre-built.
                         </p>
                     </div>
-                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="control">
-                        <h3 class="text-lg font-semibold text-white mb-2">Creative Control</h3>
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="personalization">
+                        <h3 class="text-lg font-semibold text-white mb-2">Narrative That Adapts to You</h3>
                         <p class="text-secondary text-sm leading-relaxed">
-                            Tryll ships with a set of tools to give you full creative control over player's experience.
+                            Reach a wider player base without diluting your vision. Focus on core game design and world-building while AI listens to each player and adjusts the experience. Same game, personalized seasoning for every taste.
                         </p>
                         </div>
                     </div>
                 </div>
                 <!-- Feature dots indicator -->
                 <div class="feature-dots md:hidden">
-                    <span class="feature-dot active" data-feature="retention"></span>
-                    <span class="feature-dot" data-feature="engagement"></span>
-                    <span class="feature-dot" data-feature="delegation"></span>
-                    <span class="feature-dot" data-feature="content"></span>
-                    <span class="feature-dot" data-feature="control"></span>
+                    <span class="feature-dot active" data-feature="tutorials"></span>
+                    <span class="feature-dot" data-feature="companions"></span>
+                    <span class="feature-dot" data-feature="agents"></span>
+                    <span class="feature-dot" data-feature="creativity"></span>
+                    <span class="feature-dot" data-feature="personalization"></span>
                 </div>
             </div>
             
@@ -965,47 +1190,47 @@
                 <!-- Left: Features List -->
                 <div class="relative">
                     <div class="space-y-4" id="features-list">
-                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/5" data-feature="retention">
+                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/10" data-feature="tutorials">
                             <div>
-                                <h3 class="text-xl font-light text-white mb-2">Stop Losing Players</h3>
+                                <h3 class="text-xl font-semibold text-white mb-2">Natural Language Tutorials</h3>
                                 <p class="text-secondary text-sm leading-relaxed">
-                                    AI mentors that listen to players and adapt to their style and level. Think "in-game support agent" that helps decrease your refund rate.
+                                    Let players ask questions about your game in plain English. Connect documentation, wikis, and guides to an AI that provides instant, contextual help - reducing return rates and negative reviews from frustrated players.
                                 </p>
                             </div>
                         </div>
                         
-                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/5" data-feature="engagement">
+                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/10" data-feature="companions">
                             <div>
-                                <h3 class="text-xl font-light text-white mb-2">Keep Players Engaged</h3>
+                                <h3 class="text-xl font-semibold text-white mb-2">Relationship-Building AI</h3>
                                 <p class="text-secondary text-sm leading-relaxed">
-                                    Players will build personal relationships with your game via living NPCs that have memory and personality.
+                                    Companions that remember every interaction, react to player choices, and develop unique personalities. Transform static followers into dynamic characters players genuinely care about.
                                 </p>
                             </div>
                         </div>
                         
-                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/5" data-feature="delegation">
+                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/10" data-feature="agents">
                             <div>
-                                <h3 class="text-xl font-light text-white mb-2">Delegate to AI</h3>
+                                <h3 class="text-xl font-semibold text-white mb-2">AI That Takes Action</h3>
                                 <p class="text-secondary text-sm leading-relaxed">
-                                    Tryll is an agentic system that can make calls to your game engine functions. Player is rude to an NPC? Draw a sword!
+                                    Connect any LLM directly to your game functions. AI can spawn enemies, change weather, give rewards, or modify the world based on player interactions - true model-to-game connectivity.
                                 </p>
                             </div>
                         </div>
                         
-                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/5" data-feature="content">
+                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/10" data-feature="creativity">
                             <div>
-                                <h3 class="text-xl font-light text-white mb-2">Infinite Content</h3>
+                                <h3 class="text-xl font-semibold text-white mb-2">Prompt-Based Content Creation</h3>
                                 <p class="text-secondary text-sm leading-relaxed">
-                                    Every playthrough is a unique blend of your game design, story, and gamer's personality. 1 million players = 1 million unique experiences.
+                                    Let players create through natural language. Managing a band? Write music with prompts. Designing characters? Describe them instead of mixing preset options. Generate what players imagine, not what you pre-built.
                                 </p>
                             </div>
                         </div>
                         
-                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/5" data-feature="control">
+                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/10" data-feature="personalization">
                             <div>
-                                <h3 class="text-xl font-light text-white mb-2">Creative Control</h3>
+                                <h3 class="text-xl font-semibold text-white mb-2">Narrative That Adapts to You</h3>
                                 <p class="text-secondary text-sm leading-relaxed">
-                                    Tryll ships with a set of tools to give you full creative control over player's experience.
+                                    Reach a wider player base without diluting your vision. Focus on core game design and world-building while AI listens to each player and adjusts the experience. Same game, personalized seasoning for every taste.
                                 </p>
                             </div>
                         </div>
@@ -1015,12 +1240,12 @@
                 <!-- Right: Video Container -->
                 <div class="relative">
                     <div class="sticky top-24">
-                        <div id="feature-video-desktop" class="relative aspect-video rounded-xl overflow-hidden border border-white/10 bg-white/5 transition-all duration-500 ease-out transform">
+                        <div id="feature-video-desktop" class="relative aspect-video rounded-xl overflow-hidden border border-white/20 bg-white/10 transition-all duration-500 ease-out transform">
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="text-center p-6 md:p-8">
-                                    <div class="text-6xl md:text-8xl mb-4 md:mb-6">🛡️</div>
-                                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Stop Losing Players</h3>
-                                    <p class="text-secondary text-base md:text-lg leading-relaxed">AI mentors that listen to players and adapt to their style and level. Think "in-game support agent" that helps decrease your refund rate.</p>
+                                    <div class="text-6xl md:text-8xl mb-4 md:mb-6">📚</div>
+                                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Natural Language Tutorials</h3>
+                                    <p class="text-secondary text-base md:text-lg leading-relaxed">Let players ask questions about your game in plain English. Connect documentation, wikis, and guides to an AI that provides instant, contextual help - reducing return rates and negative reviews from frustrated players.</p>
                                     <div class="mt-4 md:mt-6 text-sm text-white/60">Demo video coming soon</div>
                                 </div>
                             </div>
@@ -1036,7 +1261,7 @@
     <section class="py-12 md:py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-4 md:px-6">
             <div class="max-w-4xl mx-auto text-center mb-12 md:mb-20 fade-in">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-sm font-normal mb-8 border border-white/20">
                     <div class="w-2 h-2 rounded-full bg-primary-500"></div>
                     CORE SYSTEM
                 </div>
@@ -1123,7 +1348,7 @@
     <section class="py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-6">
             <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-sm font-medium mb-8 border border-white/10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-sm font-normal mb-8 border border-white/20">
                     <div class="w-2 h-2 rounded-full bg-primary-500"></div>
                     THE REVOLUTION
                 </div>
@@ -1251,7 +1476,7 @@
     <section class="py-12 md:py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-4 md:px-6">
             <div class="max-w-4xl mx-auto text-center mb-12 md:mb-16 fade-in">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-400 text-sm font-medium mb-8 border border-red-500/30">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-400 text-sm font-normal mb-8 border border-red-500/30">
                     <div class="w-2 h-2 rounded-full bg-red-500"></div>
                     CLOUD WILL DRAIN YOU
                 </div>
@@ -1365,7 +1590,7 @@
                 <!-- Seat-based Tier -->
                 <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/40 fade-in flex flex-col relative" style="background: linear-gradient(135deg, rgba(35, 46, 65, 0.25) 0%, rgba(35, 46, 65, 0.12) 100%); backdrop-filter: blur(20px); border-color: rgba(35, 46, 65, 0.4);">
                     <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                        <div class="px-4 py-1 rounded-full text-white text-sm font-medium" style="background-color: #232E41;">
+                        <div class="px-4 py-1 rounded-full text-white text-sm font-normal" style="background-color: #232E41;">
                             Commercial license
                         </div>
                     </div>
@@ -1546,7 +1771,7 @@
     <section id="faq" class="py-16 md:py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-4 md:px-6">
             <div class="max-w-3xl mx-auto text-center mb-16 md:mb-20 fade-in">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-xs md:text-sm font-medium mb-6 md:mb-8 border border-white/10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-xs md:text-sm font-normal mb-6 md:mb-8 border border-white/20">
                     <div class="w-2 h-2 rounded-full bg-primary-500"></div>
                     FAQ
                 </div>
@@ -1755,7 +1980,7 @@
     <section id="contact" class="py-16 md:py-24 relative overflow-hidden" style="background: linear-gradient(180deg, #000000 0%, #0a0a0f 50%, #000000 100%);">
         <div class="container mx-auto px-4 md:px-6">
             <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16 fade-in">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-xs md:text-sm font-medium mb-6 md:mb-8 border border-white/10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-xs md:text-sm font-normal mb-6 md:mb-8 border border-white/20">
                     <div class="w-2 h-2 rounded-full bg-primary-500"></div>
                     JOIN THE REVOLUTION
                 </div>
@@ -1772,25 +1997,25 @@
                 <form id="contact-form" class="glass-card p-6 md:p-8 rounded-2xl" action="https://formspree.io/f/movlaywd" method="POST" style="background: linear-gradient(135deg, rgba(35, 46, 65, 0.15) 0%, rgba(35, 46, 65, 0.08) 100%); backdrop-filter: blur(20px);">
                     <div class="space-y-5 md:space-y-6">
                         <div>
-                            <label for="name" class="block text-sm font-medium text-white mb-2">Name</label>
+                            <label for="name" class="block text-sm font-normal text-white mb-2">Name</label>
                             <input 
                                 type="text" 
                                 id="name" 
                                 name="name" 
                                 required 
-                                class="w-full px-4 py-3 md:py-4 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 text-base"
+                                class="w-full px-4 py-3 md:py-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 text-base"
                                 placeholder="Your name"
                             >
                         </div>
                         
                         <div>
-                            <label for="email" class="block text-sm font-medium text-white mb-2">Email</label>
+                            <label for="email" class="block text-sm font-normal text-white mb-2">Email</label>
                             <input 
                                 type="email" 
                                 id="email" 
                                 name="email" 
                                 required 
-                                class="w-full px-4 py-3 md:py-4 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 text-base"
+                                class="w-full px-4 py-3 md:py-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 text-base"
                                 placeholder="your@email.com"
                                 inputmode="email"
                                 autocomplete="email"
@@ -1798,29 +2023,29 @@
                         </div>
                         
                         <div>
-                            <label class="block text-sm font-medium text-white mb-3">I am a...</label>
+                            <label class="block text-sm font-normal text-white mb-3">I am a...</label>
                             <div class="grid grid-cols-2 gap-3">
                                 <label class="relative">
                                     <input type="radio" name="category" value="studio" class="peer sr-only" />
-                                    <div class="px-4 py-3 rounded-lg bg-white/5 border-2 border-white/20 text-white/60 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary-500 peer-checked:border-primary-400 peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary-500/30 hover:bg-white/10 hover:text-white hover:border-white/30">
+                                    <div class="px-4 py-3 rounded-lg bg-white/10 border-2 border-white/20 text-white/60 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary-500 peer-checked:border-primary-400 peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary-500/30 hover:bg-white/10 hover:text-white hover:border-white/30">
                                         Studio
                                     </div>
                                 </label>
                                 <label class="relative">
                                     <input type="radio" name="category" value="solo-dev" class="peer sr-only" />
-                                    <div class="px-4 py-3 rounded-lg bg-white/5 border-2 border-white/20 text-white/60 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary-500 peer-checked:border-primary-400 peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary-500/30 hover:bg-white/10 hover:text-white hover:border-white/30">
+                                    <div class="px-4 py-3 rounded-lg bg-white/10 border-2 border-white/20 text-white/60 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary-500 peer-checked:border-primary-400 peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary-500/30 hover:bg-white/10 hover:text-white hover:border-white/30">
                                         Solo Dev
                                     </div>
                                 </label>
                                 <label class="relative">
                                     <input type="radio" name="category" value="modder" class="peer sr-only" />
-                                    <div class="px-4 py-3 rounded-lg bg-white/5 border-2 border-white/20 text-white/60 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary-500 peer-checked:border-primary-400 peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary-500/30 hover:bg-white/10 hover:text-white hover:border-white/30">
+                                    <div class="px-4 py-3 rounded-lg bg-white/10 border-2 border-white/20 text-white/60 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary-500 peer-checked:border-primary-400 peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary-500/30 hover:bg-white/10 hover:text-white hover:border-white/30">
                                         Modder
                                     </div>
                                 </label>
                                 <label class="relative">
                                     <input type="radio" name="category" value="other" class="peer sr-only" />
-                                    <div class="px-4 py-3 rounded-lg bg-white/5 border-2 border-white/20 text-white/60 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary-500 peer-checked:border-primary-400 peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary-500/30 hover:bg-white/10 hover:text-white hover:border-white/30">
+                                    <div class="px-4 py-3 rounded-lg bg-white/10 border-2 border-white/20 text-white/60 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary-500 peer-checked:border-primary-400 peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary-500/30 hover:bg-white/10 hover:text-white hover:border-white/30">
                                         Other
                                     </div>
                                 </label>
@@ -1852,16 +2077,16 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-8 border-t border-white/10">
+    <footer class="py-8 border-t border-white/20">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div class="flex flex-col items-center gap-6 md:grid md:grid-cols-3 md:items-center">
                 <!-- Left: Copyright -->
-                <div class="text-secondary text-sm order-2 md:order-1">
-                    &copy; 2025 Tryll Engine.
+                <div class="text-secondary text-sm order-2 md:order-1 text-center md:text-left">
+                    © 2025 Tryll Engine, Inc. All rights reserved.
                 </div>
                 
                 <!-- Center: Social Links -->
-                <div class="flex gap-6 justify-center order-1 md:order-2">
+                <div class="flex gap-6 items-center justify-center order-1 md:order-2">
                     <a href="https://discord.gg/XCBBGUMzUM" class="text-secondary hover:text-white transition-colors duration-300 text-xl">
                         <i class="fab fa-discord"></i>
                     </a>
@@ -1871,7 +2096,7 @@
                 </div>
                 
                 <!-- Right: Privacy & Terms -->
-                <div class="flex gap-6 justify-center md:justify-end order-3">
+                <div class="flex gap-6 order-3 md:order-3 justify-center md:justify-end">
                     <a href="privacy-policy.html" class="text-secondary hover:text-white transition-colors duration-300 text-sm">Privacy Policy</a>
                 </div>
             </div>
@@ -2135,30 +2360,30 @@
             const videoMobile = document.getElementById('feature-video-mobile');
             
             const features = {
-                retention: {
-                    icon: '🛡️',
-                    title: 'Stop Losing Players',
-                    description: 'AI mentors that listen to players and adapt to their style and level. Think "in-game support agent" that helps decrease your refund rate.'
+                tutorials: {
+                    icon: '📚',
+                    title: 'Natural Language Tutorials',
+                    description: 'Let players ask questions about your game in plain English. Connect documentation, wikis, and guides to an AI that provides instant, contextual help - reducing return rates and negative reviews from frustrated players.'
                 },
-                engagement: {
-                    icon: '💖',
-                    title: 'Keep Players Engaged',
-                    description: 'Players will build personal relationships with your game via living NPCs that have memory and personality.'
+                companions: {
+                    icon: '🤝',
+                    title: 'Relationship-Building AI',
+                    description: 'Companions that remember every interaction, react to player choices, and develop unique personalities. Transform static followers into dynamic characters players genuinely care about.'
                 },
-                delegation: {
-                    icon: '⚔️',
-                    title: 'Delegate to AI',
-                    description: 'Tryll is an agentic system that can make calls to your game engine functions. Player is rude to an NPC? Draw a sword!'
+                agents: {
+                    icon: '⚡',
+                    title: 'AI That Takes Action',
+                    description: 'Connect any LLM directly to your game functions. AI can spawn enemies, change weather, give rewards, or modify the world based on player interactions - true model-to-game connectivity.'
                 },
-                content: {
-                    icon: '♾️',
-                    title: 'Infinite Content',
-                    description: 'Every playthrough is a unique blend of your game design, story, and gamer\'s personality. 1 million players = 1 million unique experiences.'
+                creativity: {
+                    icon: '🎨',
+                    title: 'Prompt-Based Content Creation',
+                    description: 'Let players create through natural language. Managing a band? Write music with prompts. Designing characters? Describe them instead of mixing preset options. Generate what players imagine, not what you pre-built.'
                 },
-                control: {
-                    icon: '🎛️',
-                    title: 'Creative Control',
-                    description: 'Tryll ships with a set of tools to give you full creative control over player\'s experience.'
+                personalization: {
+                    icon: '🎯',
+                    title: 'Narrative That Adapts to You',
+                    description: 'Reach a wider player base without diluting your vision. Focus on core game design and world-building while AI listens to each player and adjusts the experience. Same game, personalized seasoning for every taste.'
                 }
             };
             
@@ -2403,14 +2628,5 @@
         });
         
     </script>
-    
-    <!-- Footer -->
-    <footer class="py-8 border-t border-white/10">
-        <div class="container mx-auto px-4 md:px-6">
-            <p class="text-center text-gray-500 text-sm">
-                © 2025 Tryll Engine, Inc. All rights reserved.
-            </p>
-        </div>
-    </footer>
 </body>
 </html>

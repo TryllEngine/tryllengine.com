@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -116,39 +116,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        primary: {
-                            50: '#f8f9fa',
-                            100: '#f1f3f4',
-                            200: '#e3e5e8',
-                            300: '#c7ccd1',
-                            400: '#9ca3ab',
-                            500: '#232E41',
-                            600: '#1d2637',
-                            700: '#171e2d',
-                            800: '#111723',
-                            900: '#0b0f19',
-                        },
+                        primary: '#232E41',
+                        secondary: '#F6F0EB',
+                        'primary-light': '#2a3750',
+                        'primary-dark': '#1a232f',
+                        'secondary-light': '#ffffff',
+                        'secondary-dark': '#e8e2dd',
                         dark: {
                             900: '#0a0d12',
                             800: '#0f1419',
                             700: '#141a20',
                             600: '#1a2026',
                             500: '#1f262d',
-                        },
-                        accent: {
-                            50: '#fefcfb',
-                            100: '#fdf9f7',
-                            200: '#fbf3ef',
-                            300: '#f8ede7',
-                            400: '#f7e7de',
-                            500: '#F6F0EB',
-                            600: '#ded5d0',
-                            700: '#c6bab5',
-                            800: '#ae9f9a',
-                            900: '#968480',
                         }
                     },
                     animation: {
@@ -269,11 +252,8 @@
         
         body {
             font-family: 'Inter', BlinkMacSystemFont, -apple-system, 'SF Pro Display', 'SF Pro', sans-serif;
-            background-color: #000000;
-            background-image: 
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.15), transparent),
-                radial-gradient(ellipse 80% 50% at 80% 80%, rgba(147, 51, 234, 0.1), transparent);
-            color: #ffffff;
+            background-color: #F6F0EB;
+            color: #232E41;
             overflow-x: hidden;
             line-height: 1.5em;
             letter-spacing: -0.011em;
@@ -284,12 +264,24 @@
             text-rendering: optimizeLegibility;
         }
         
+        .dark body {
+            background-color: #000000;
+            background-image: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(35, 46, 65, 0.15), transparent),
+                radial-gradient(ellipse 80% 50% at 80% 80%, rgba(35, 46, 65, 0.1), transparent);
+            color: #F6F0EB;
+        }
+        
         .heading-primary {
             font-family: 'Inter', BlinkMacSystemFont, -apple-system, 'SF Pro Display', sans-serif;
             font-weight: 650;
             letter-spacing: -0.025em;
             line-height: 1.1;
-            color: #ffffff;
+            color: #232E41;
+        }
+        
+        .dark .heading-primary {
+            color: #F6F0EB;
         }
         
         .heading-secondary {
@@ -297,7 +289,11 @@
             font-weight: 600;
             letter-spacing: -0.018em;
             line-height: 1.2;
-            color: #ffffff;
+            color: #232E41;
+        }
+        
+        .dark .heading-secondary {
+            color: #F6F0EB;
         }
         
         .heading-tertiary {
@@ -305,7 +301,11 @@
             font-weight: 500;
             letter-spacing: -0.012em;
             line-height: 1.3;
-            color: #ffffff;
+            color: #232E41;
+        }
+        
+        .dark .heading-tertiary {
+            color: #F6F0EB;
         }
         
         .body-large {
@@ -364,7 +364,185 @@
             background-color: rgba(255, 255, 255, 0.15) !important;
         }
         
-        /* Button enhancements */
+        /* Button styles with brand colors */
+        .btn-primary {
+            background-color: #232E41;
+            color: #F6F0EB;
+            border: 2px solid transparent;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2a3750;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(35, 46, 65, 0.3);
+        }
+        
+        .btn-primary:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(246, 240, 235, 0.5);
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: #232E41;
+            border: 2px solid #232E41;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #F6F0EB;
+            color: #232E41;
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(35, 46, 65, 0.3);
+        }
+        
+        /* Dark mode button styles */
+        .dark .btn-primary {
+            background-color: #F6F0EB;
+            color: #232E41;
+        }
+        
+        .dark .btn-primary:hover {
+            background-color: #ffffff;
+        }
+        
+        .dark .btn-primary:focus {
+            box-shadow: 0 0 0 3px rgba(35, 46, 65, 0.5);
+        }
+        
+        .dark .btn-secondary {
+            color: #F6F0EB;
+            border-color: #F6F0EB;
+        }
+        
+        .dark .btn-secondary:hover {
+            background-color: rgba(35, 46, 65, 0.2);
+            color: #F6F0EB;
+        }
+        
+        .dark .btn-secondary:focus {
+            box-shadow: 0 0 0 3px rgba(246, 240, 235, 0.3);
+        }
+        
+        /* Form control styles */
+        .form-input {
+            background-color: rgba(35, 46, 65, 0.05);
+            border: 1px solid rgba(35, 46, 65, 0.2);
+            color: #232E41;
+            transition: all 0.2s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #232E41;
+            box-shadow: 0 0 0 3px rgba(35, 46, 65, 0.1);
+        }
+        
+        .form-input::placeholder {
+            color: rgba(35, 46, 65, 0.5);
+        }
+        
+        .dark .form-input {
+            background-color: rgba(246, 240, 235, 0.1);
+            border-color: rgba(246, 240, 235, 0.2);
+            color: #F6F0EB;
+        }
+        
+        .dark .form-input:focus {
+            border-color: #F6F0EB;
+            box-shadow: 0 0 0 3px rgba(246, 240, 235, 0.2);
+        }
+        
+        .dark .form-input::placeholder {
+            color: rgba(246, 240, 235, 0.5);
+        }
+        
+        /* Checkbox and radio styles */
+        input[type="checkbox"],
+        input[type="radio"] {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+        
+        input[type="checkbox"]:focus,
+        input[type="radio"]:focus {
+            outline: none !important;
+            box-shadow: 0 0 0 2px rgba(35, 46, 65, 0.2) !important;
+        }
+        
+        .dark input[type="checkbox"]:focus,
+        .dark input[type="radio"]:focus {
+            box-shadow: 0 0 0 2px rgba(246, 240, 235, 0.2) !important;
+        }
+        
+        input[type="checkbox"]:checked,
+        input[type="radio"]:checked {
+            accent-color: #232E41;
+        }
+        
+        .dark input[type="checkbox"]:checked,
+        .dark input[type="radio"]:checked {
+            accent-color: #F6F0EB;
+        }
+        
+        /* Dark mode toggle styles */
+        .theme-toggle {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background-color: #232E41;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: 2px solid rgba(35, 46, 65, 0.2);
+        }
+        
+        .dark .theme-toggle {
+            background-color: #F6F0EB;
+            border-color: rgba(246, 240, 235, 0.2);
+        }
+        
+        .theme-toggle-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 22px;
+            height: 22px;
+            background-color: #F6F0EB;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .dark .theme-toggle-slider {
+            transform: translateX(30px);
+            background-color: #232E41;
+        }
+        
+        .theme-toggle-icon {
+            font-size: 14px;
+            color: #232E41;
+        }
+        
+        .dark .theme-toggle-icon {
+            color: #F6F0EB;
+        }
+        
+        /* Legacy button enhancements (to be replaced) */
         .bg-primary-500, .bg-blue-500 {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
             border: 1px solid rgba(255, 255, 255, 0.3) !important;
@@ -399,21 +577,36 @@
         
         /* Pricing cards */
         .pricing-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, rgba(35, 46, 65, 0.1) 0%, rgba(35, 46, 65, 0.05) 100%);
+            border: 1px solid rgba(35, 46, 65, 0.2);
+        }
+        
+        .dark .pricing-card {
+            background: linear-gradient(135deg, rgba(246, 240, 235, 0.1) 0%, rgba(246, 240, 235, 0.05) 100%);
+            border: 1px solid rgba(246, 240, 235, 0.2);
         }
         
         /* Feature cards enhanced */
         .feature-card {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(35, 46, 65, 0.06);
+            border: 1px solid rgba(35, 46, 65, 0.12);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
         }
         
         .feature-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(35, 46, 65, 0.1);
+            border-color: rgba(35, 46, 65, 0.2);
+        }
+        
+        .dark .feature-card {
+            background: rgba(246, 240, 235, 0.06);
+            border: 1px solid rgba(246, 240, 235, 0.12);
+        }
+        
+        .dark .feature-card:hover {
+            background: rgba(246, 240, 235, 0.1);
+            border-color: rgba(246, 240, 235, 0.2);
             transform: translateY(-2px);
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         }
@@ -493,11 +686,22 @@
         .font-bold { font-weight: 650 !important; }
         
         /* Text color adjustments for better readability */
-        .text-gray-400 { color: rgba(255, 255, 255, 0.75); }
-        .text-gray-500 { color: rgba(255, 255, 255, 0.65); }
-        .text-gray-600 { color: rgba(255, 255, 255, 0.55); }
-        .text-white\/80 { color: rgba(255, 255, 255, 0.8); }
-        .text-white\/60 { color: rgba(255, 255, 255, 0.6); }
+        .text-gray-400 { color: rgba(35, 46, 65, 0.85); }
+        .text-gray-500 { color: rgba(35, 46, 65, 0.75); }
+        
+        .dark .text-gray-400 { color: rgba(246, 240, 235, 0.85); }
+        .dark .text-gray-500 { color: rgba(246, 240, 235, 0.75); }
+        .text-gray-600 { color: rgba(35, 46, 65, 0.65); }
+        .dark .text-gray-600 { color: rgba(246, 240, 235, 0.65); }
+        
+        .text-white { color: #232E41; }
+        .dark .text-white { color: #F6F0EB; }
+        
+        .text-white\/80 { color: rgba(35, 46, 65, 0.8); }
+        .dark .text-white\/80 { color: rgba(246, 240, 235, 0.8); }
+        
+        .text-white\/60 { color: rgba(35, 46, 65, 0.6); }
+        .dark .text-white\/60 { color: rgba(246, 240, 235, 0.6); }
         
         /* Improve readability for smaller text */
         .text-sm {
@@ -531,8 +735,8 @@
         }
         
         .glass-card {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(35, 46, 65, 0.08);
+            border: 1px solid rgba(35, 46, 65, 0.15);
             border-radius: 12px;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
@@ -540,9 +744,20 @@
         }
         
         .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.25);
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+            border-color: rgba(35, 46, 65, 0.25);
+            background: rgba(35, 46, 65, 0.12);
+            box-shadow: 0 0 40px rgba(35, 46, 65, 0.1);
+        }
+        
+        .dark .glass-card {
+            background: rgba(246, 240, 235, 0.08);
+            border: 1px solid rgba(246, 240, 235, 0.12);
+        }
+        
+        .dark .glass-card:hover {
+            border-color: rgba(246, 240, 235, 0.25);
+            background: rgba(246, 240, 235, 0.1);
+            box-shadow: 0 0 40px rgba(246, 240, 235, 0.1);
         }
         
         .nav-glass-card {
@@ -873,14 +1088,19 @@
                     <li><a href="#faq" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">FAQ</a></li>
                     <li><a href="#contact-email" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Contact</a></li>
                 </ul>
-                <a href="#contact" class="bg-primary-500 text-white px-4 py-2 rounded-lg text-sm font-normal transition-all duration-200 hover:bg-primary-600">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <div class="theme-toggle-slider">
+                        <i class="fas fa-moon theme-toggle-icon"></i>
+                    </div>
+                </button>
+                <a href="#contact" class="btn-primary px-4 py-2 rounded-lg text-sm inline-flex items-center justify-center">
                     Get Started
                 </a>
             </div>
             
             <!-- Mobile Navigation -->
             <div class="md:hidden flex items-center gap-3">
-                <a href="#contact" class="bg-primary-500 text-white px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 hover:bg-primary-600">
+                <a href="#contact" class="btn-primary px-3 py-2 rounded-lg text-xs inline-flex items-center justify-center">
                     Get Started
                 </a>
                 <button id="mobile-menu-btn" class="text-white p-2 rounded-lg hover:bg-white/10 transition-colors duration-200">
@@ -898,7 +1118,14 @@
                 <a href="#pricing" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Pricing</a>
                 <a href="#faq" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">FAQ</a>
                 <div class="pt-4">
-                    <a href="#contact" class="bg-primary-500 text-white px-8 py-4 rounded-lg text-lg font-medium transition-all duration-200 hover:bg-primary-600">
+                    <button id="theme-toggle-mobile" class="theme-toggle mb-6" aria-label="Toggle dark mode">
+                        <div class="theme-toggle-slider">
+                            <i class="fas fa-moon theme-toggle-icon"></i>
+                        </div>
+                    </button>
+                </div>
+                <div class="pt-4">
+                    <a href="#contact" class="btn-primary px-8 py-4 rounded-lg text-lg inline-flex items-center justify-center">
                         Get Started
                     </a>
                 </div>
@@ -1002,7 +1229,7 @@
                     <p class="text-secondary mb-4 md:mb-6 leading-relaxed text-sm md:text-base">
                         <span class="text-white font-medium">(Coming Soon!)</span> Download BoscoTryll Deep Rock Galactic mod and experience our AI companion.
                     </p>
-                    <button class="px-4 md:px-6 py-2 md:py-3 rounded-lg glass-card text-white font-medium text-sm border border-white/20 hover:border-white/20 transition-all duration-300 opacity-60 cursor-not-allowed w-full sm:w-auto">
+                    <button class="btn-secondary px-4 md:px-6 py-2 md:py-3 rounded-lg text-sm w-full sm:w-auto opacity-60 cursor-not-allowed" disabled>
                         Coming Soon
                     </button>
                 </div>
@@ -1134,7 +1361,7 @@
                                 <div class="text-4xl mb-4">✨</div>
                                 <h3 class="text-xl font-bold text-white mb-3">Select a use case below</h3>
                                 <p class="text-secondary text-base leading-relaxed">Explore how Tryll Engine transforms your game with intelligent AI features</p>
-                                <div class="mt-4 text-sm text-white/60">Demo video coming soon</div>
+                                <div class="mt-4 text-sm text-white/80">Demo video coming soon</div>
                             </div>
                         </div>
                     </div>
@@ -1246,7 +1473,7 @@
                                     <div class="text-6xl md:text-8xl mb-4 md:mb-6">📚</div>
                                     <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Natural Language Tutorials</h3>
                                     <p class="text-secondary text-base md:text-lg leading-relaxed">Let players ask questions about your game in plain English. Connect documentation, wikis, and guides to an AI that provides instant, contextual help - reducing return rates and negative reviews from frustrated players.</p>
-                                    <div class="mt-4 md:mt-6 text-sm text-white/60">Demo video coming soon</div>
+                                    <div class="mt-4 md:mt-6 text-sm text-white/80">Demo video coming soon</div>
                                 </div>
                             </div>
                         </div>
@@ -1688,13 +1915,13 @@
                         <i class="fas fa-building text-white"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4">Studios</h3>
-                    <p class="text-gray-400 mb-4 leading-relaxed">
+                    <p class="text-secondary mb-4 leading-relaxed">
                         <span class="text-white font-medium">Cut Costs, Innovate More</span>
                     </p>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                    <p class="text-secondary/90 text-sm leading-relaxed mb-4">
                         Local AI saves 95% vs cloud costs. Reinvest in creativity, not infrastructure. Scale from indie to AAA with zero cloud bills.
                     </p>
-                    <ul class="text-gray-400 text-sm text-left space-y-2">
+                    <ul class="text-secondary/85 text-sm text-left space-y-2">
                         <li class="flex items-start gap-2">
                             <span class="text-primary-500 mt-1">•</span>
                             <span>Eliminate $1.8M/month cloud costs</span>
@@ -1715,13 +1942,13 @@
                         <i class="fas fa-user text-primary-400"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4">Solo Developers</h3>
-                    <p class="text-gray-400 mb-4 leading-relaxed">
+                    <p class="text-secondary mb-4 leading-relaxed">
                         <span class="text-white font-medium">Professional AI Made Simple</span>
                     </p>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                    <p class="text-secondary/90 text-sm leading-relaxed mb-4">
                         No AI expertise required. Focus on your game vision while Tryll handles the complex AI infrastructure.
                     </p>
-                    <ul class="text-gray-400 text-sm text-left space-y-2">
+                    <ul class="text-secondary/85 text-sm text-left space-y-2">
                         <li class="flex items-start gap-2">
                             <span class="text-primary-500 mt-1">•</span>
                             <span>Free for under $200k revenue</span>
@@ -1742,13 +1969,13 @@
                         <i class="fas fa-tools text-gray-300"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4">Modders</h3>
-                    <p class="text-gray-400 mb-4 leading-relaxed">
+                    <p class="text-secondary mb-4 leading-relaxed">
                         <span class="text-white font-medium">Enhance Any Game World</span>
                     </p>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                    <p class="text-secondary/90 text-sm leading-relaxed mb-4">
                         Add intelligent NPCs to existing games. Extend the life of beloved classics with AI-powered characters.
                     </p>
-                    <ul class="text-gray-400 text-sm text-left space-y-2">
+                    <ul class="text-secondary/85 text-sm text-left space-y-2">
                         <li class="flex items-start gap-2">
                             <span class="text-primary-500 mt-1">•</span>
                             <span>Retrofit any game with AI NPCs</span>
@@ -2003,7 +2230,7 @@
                                 id="name" 
                                 name="name" 
                                 required 
-                                class="w-full px-4 py-3 md:py-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 text-base"
+                                class="form-input w-full px-4 py-3 md:py-4 rounded-lg text-base"
                                 placeholder="Your name"
                             >
                         </div>
@@ -2015,7 +2242,7 @@
                                 id="email" 
                                 name="email" 
                                 required 
-                                class="w-full px-4 py-3 md:py-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 text-base"
+                                class="form-input w-full px-4 py-3 md:py-4 rounded-lg text-base"
                                 placeholder="your@email.com"
                                 inputmode="email"
                                 autocomplete="email"
@@ -2027,25 +2254,25 @@
                             <div class="grid grid-cols-2 gap-3">
                                 <label class="relative">
                                     <input type="radio" name="category" value="studio" class="peer sr-only" />
-                                    <div class="px-4 py-3 rounded-lg bg-white/10 border-2 border-white/20 text-white/60 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary-500 peer-checked:border-primary-400 peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary-500/30 hover:bg-white/10 hover:text-white hover:border-white/30">
+                                    <div class="px-4 py-3 rounded-lg bg-white/10 border-2 border-white/20 text-white/80 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary peer-checked:border-primary peer-checked:text-secondary peer-checked:shadow-lg peer-checked:shadow-primary/30 hover:bg-white/15 hover:text-white hover:border-white/40">
                                         Studio
                                     </div>
                                 </label>
                                 <label class="relative">
                                     <input type="radio" name="category" value="solo-dev" class="peer sr-only" />
-                                    <div class="px-4 py-3 rounded-lg bg-white/10 border-2 border-white/20 text-white/60 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary-500 peer-checked:border-primary-400 peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary-500/30 hover:bg-white/10 hover:text-white hover:border-white/30">
+                                    <div class="px-4 py-3 rounded-lg bg-white/10 border-2 border-white/20 text-white/80 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary peer-checked:border-primary peer-checked:text-secondary peer-checked:shadow-lg peer-checked:shadow-primary/30 hover:bg-white/15 hover:text-white hover:border-white/40">
                                         Solo Dev
                                     </div>
                                 </label>
                                 <label class="relative">
                                     <input type="radio" name="category" value="modder" class="peer sr-only" />
-                                    <div class="px-4 py-3 rounded-lg bg-white/10 border-2 border-white/20 text-white/60 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary-500 peer-checked:border-primary-400 peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary-500/30 hover:bg-white/10 hover:text-white hover:border-white/30">
+                                    <div class="px-4 py-3 rounded-lg bg-white/10 border-2 border-white/20 text-white/80 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary peer-checked:border-primary peer-checked:text-secondary peer-checked:shadow-lg peer-checked:shadow-primary/30 hover:bg-white/15 hover:text-white hover:border-white/40">
                                         Modder
                                     </div>
                                 </label>
                                 <label class="relative">
                                     <input type="radio" name="category" value="other" class="peer sr-only" />
-                                    <div class="px-4 py-3 rounded-lg bg-white/10 border-2 border-white/20 text-white/60 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary-500 peer-checked:border-primary-400 peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary-500/30 hover:bg-white/10 hover:text-white hover:border-white/30">
+                                    <div class="px-4 py-3 rounded-lg bg-white/10 border-2 border-white/20 text-white/80 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary peer-checked:border-primary peer-checked:text-secondary peer-checked:shadow-lg peer-checked:shadow-primary/30 hover:bg-white/15 hover:text-white hover:border-white/40">
                                         Other
                                     </div>
                                 </label>
@@ -2059,7 +2286,7 @@
                                 id="privacy-policy" 
                                 name="privacy_policy_consent" 
                                 required
-                                class="mt-1 w-4 h-4 rounded border-white/20 bg-white/10 text-primary-500 focus:ring-2 focus:ring-primary-500 focus:ring-offset-0 focus:ring-offset-transparent"
+                                class="mt-1 w-4 h-4 rounded accent-primary dark:accent-secondary focus:ring-2 focus:ring-primary dark:focus:ring-secondary"
                             >
                             <label for="privacy-policy" class="text-sm text-white/80 leading-relaxed">
                                 I agree to the <a href="/privacy-policy.html" target="_blank" class="underline hover:text-white transition-colors">Privacy Policy</a> and consent to the processing of my personal data.
@@ -2072,7 +2299,7 @@
                         
                         <button 
                             type="submit" 
-                            class="w-full px-6 md:px-8 py-4 md:py-5 rounded-lg bg-primary-500 text-white font-medium text-base md:text-lg transition-all duration-300 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-black active:transform active:scale-95"
+                            class="btn-primary w-full px-6 md:px-8 py-4 md:py-5 rounded-lg text-base md:text-lg inline-flex items-center justify-center"
                         >
                             Get Started
                         </button>
@@ -2365,6 +2592,53 @@
         
         // All interactive functionality
         document.addEventListener('DOMContentLoaded', function() {
+            // Dark mode toggle functionality
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+            const html = document.documentElement;
+            const themeIcon = document.querySelector('.theme-toggle-icon');
+            const themeIconMobile = document.querySelector('#theme-toggle-mobile .theme-toggle-icon');
+            
+            function toggleTheme() {
+                html.classList.toggle('dark');
+                const isDark = html.classList.contains('dark');
+                
+                // Update icons
+                if (themeIcon) {
+                    themeIcon.classList.remove(isDark ? 'fa-sun' : 'fa-moon');
+                    themeIcon.classList.add(isDark ? 'fa-moon' : 'fa-sun');
+                }
+                if (themeIconMobile) {
+                    themeIconMobile.classList.remove(isDark ? 'fa-sun' : 'fa-moon');
+                    themeIconMobile.classList.add(isDark ? 'fa-moon' : 'fa-sun');
+                }
+                
+                // Save preference
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            }
+            
+            // Set initial theme based on saved preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                html.classList.remove('dark');
+                if (themeIcon) {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                }
+                if (themeIconMobile) {
+                    themeIconMobile.classList.remove('fa-moon');
+                    themeIconMobile.classList.add('fa-sun');
+                }
+            }
+            
+            // Add click listeners
+            if (themeToggle) {
+                themeToggle.addEventListener('click', toggleTheme);
+            }
+            if (themeToggleMobile) {
+                themeToggleMobile.addEventListener('click', toggleTheme);
+            }
+            
             // Initialize video animation
             initVideoAnimation();
             // Interactive Features Section
@@ -2411,7 +2685,7 @@
                                 <div class="${isMobile ? 'text-4xl' : 'text-6xl md:text-8xl'} mb-4 md:mb-6">${content.icon}</div>
                                 <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">${content.title}</h3>
                                 <p class="text-secondary text-base md:text-lg leading-relaxed">${content.description}</p>
-                                <div class="mt-4 md:mt-6 text-sm text-white/60">Demo video coming soon</div>
+                                <div class="mt-4 md:mt-6 text-sm text-white/80">Demo video coming soon</div>
                             </div>
                         </div>
                     `;

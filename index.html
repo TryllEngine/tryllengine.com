@@ -467,15 +467,14 @@
         
         .feature-item-left.active {
             background: rgba(255, 255, 255, 0.08);
-            border: 2px solid rgba(35, 46, 65, 0.8);
+            box-shadow: 0 0 0 2px rgba(35, 46, 65, 0.8);
             transform: translateX(4px);
             transition: all 0.3s ease-in-out;
         }
         
         .feature-item-mobile.active {
             background: rgba(255, 255, 255, 0.08);
-            border: 2px solid rgba(35, 46, 65, 0.8);
-            transform: scale(1.02);
+            box-shadow: 0 0 0 2px rgba(35, 46, 65, 0.8);
             transition: all 0.3s ease-in-out;
         }
         
@@ -516,15 +515,14 @@
         /* Feature item active state - enhanced */
         .feature-item-left.active {
             background: rgba(255, 255, 255, 0.08) !important;
-            border: 2px solid rgba(35, 46, 65, 0.8) !important;
+            box-shadow: 0 0 0 2px rgba(35, 46, 65, 0.8) !important;
             transform: translateX(4px) !important;
             transition: all 0.3s ease-in-out !important;
         }
         
         .feature-item-mobile.active {
             background: rgba(255, 255, 255, 0.08) !important;
-            border: 2px solid rgba(35, 46, 65, 0.8) !important;
-            transform: scale(1.02) !important;
+            box-shadow: 0 0 0 2px rgba(35, 46, 65, 0.8) !important;
             transition: all 0.3s ease-in-out !important;
         }
         
@@ -540,6 +538,86 @@
         
         .feature-item-mobile:not(.active) {
             transition: all 0.15s ease-out !important;
+        }
+        
+        /* Mobile feature improvements */
+        @media (max-width: 768px) {
+            .feature-tabs-container {
+                width: 100%;
+            }
+            
+            .feature-item-mobile h3 {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+            
+            .feature-item-mobile p {
+                font-size: 0.875rem;
+                line-height: 1.4;
+            }
+            
+            /* Ensure proper scrolling */
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            
+            /* Horizontal scroll with snap */
+            .feature-scroll-container {
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .feature-scroll-container .feature-item-mobile {
+                scroll-snap-align: center;
+                scroll-snap-stop: always;
+            }
+            
+            /* Add initial padding for first item to center */
+            .feature-scroll-container > div {
+                padding-left: calc(50vw - 140px);
+                padding-right: calc(50vw - 140px);
+            }
+            
+            /* Feature card styling for mobile */
+            .feature-item-mobile {
+                background: rgba(255, 255, 255, 0.03) !important;
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                min-height: 120px;
+            }
+            
+            .feature-item-mobile.active {
+                background: rgba(255, 255, 255, 0.1) !important;
+                box-shadow: 0 0 0 2px rgba(246, 240, 235, 0.3), 0 0 30px rgba(246, 240, 235, 0.1) !important;
+                transform: none !important;
+            }
+            
+            /* Add visual indicator dots */
+            .feature-dots {
+                display: flex;
+                justify-content: center;
+                gap: 8px;
+                margin-top: 16px;
+            }
+            
+            .feature-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.2);
+                transition: all 0.3s ease;
+                cursor: pointer;
+            }
+            
+            .feature-dot.active {
+                background: rgba(246, 240, 235, 0.8);
+                transform: scale(1.5);
+            }
         }
         
     </style>
@@ -716,10 +794,10 @@
                     THE OLD WAY IS DEAD
                 </div>
                 <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 heading-primary">
-                    Static NPCs are History
+                    Static Game Worlds are History
                 </h2>
                 <p class="text-xl text-secondary max-w-3xl mx-auto body-large">
-                    Scripted dialogues. Predictable worlds. Repetitive interactions. That era is over.
+                    Scripted experiences. Predictable outcomes. Limited interactions. Gaming intelligence changes everything.
                 </p>
             </div>
             
@@ -727,11 +805,11 @@
                 <div class="glass-card rounded-2xl p-8 transition-all hover:border-white/20 flex flex-col">
                     <div class="flex items-center gap-2 text-red-400 text-base font-semibold mb-4">
                         <span class="text-red-500">❌</span>
-                        <span>OLD: Scripted NPCs</span>
+                        <span>OLD: Scripted Gameplay</span>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white line-through opacity-70">Pre-written dialogue trees</h3>
+                    <h3 class="text-2xl font-bold mb-4 text-white line-through opacity-70">Pre-written scenarios</h3>
                     <div class="flex-grow">
-                        <p class="text-secondary mb-4">Limited responses, repetitive interactions, breaks immersion after 5 minutes</p>
+                        <p class="text-secondary mb-4">Fixed paths, predictable outcomes, same experience every playthrough</p>
                     </div>
                     
                     <div class="flex items-center justify-center my-4">
@@ -745,20 +823,20 @@
                     
                     <div class="flex items-center gap-2 text-green-400 text-base font-semibold mb-4">
                         <span class="text-green-500">✅</span>
-                        <span>NEW: Living Characters</span>
+                        <span>NEW: Dynamic Intelligence</span>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">AI-driven personalities</h3>
-                    <p class="text-secondary mb-6">Infinite conversations, evolving relationships, remembers everything</p>
+                    <h3 class="text-2xl font-bold mb-4 text-white">AI-driven experiences</h3>
+                    <p class="text-secondary mb-6">Emergent gameplay, adaptive challenges, unique every time</p>
                 </div>
                 
                 <div class="glass-card rounded-2xl p-8 transition-all hover:border-white/20 flex flex-col">
                     <div class="flex items-center gap-2 text-red-400 text-base font-semibold mb-4">
                         <span class="text-red-500">❌</span>
-                        <span>OLD: Static Tutorials</span>
+                        <span>OLD: Static Game Worlds</span>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white line-through opacity-70">One-size-fits-all tooltips</h3>
+                    <h3 class="text-2xl font-bold mb-4 text-white line-through opacity-70">Fixed environments</h3>
                     <div class="flex-grow">
-                        <p class="text-secondary mb-4">Players skip tutorials, get frustrated, abandon complex games</p>
+                        <p class="text-secondary mb-4">Static objects, unchanging reactions, worlds that never evolve</p>
                     </div>
                     
                     <div class="flex items-center justify-center my-4">
@@ -772,10 +850,10 @@
                     
                     <div class="flex items-center gap-2 text-green-400 text-base font-semibold mb-4">
                         <span class="text-green-500">✅</span>
-                        <span>NEW: Adaptive Mentors</span>
+                        <span>NEW: Living Ecosystems</span>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">AI companions that teach</h3>
-                    <p class="text-secondary mb-6">Personalized guidance, answers any question, learns player's style</p>
+                    <h3 class="text-2xl font-bold mb-4 text-white">AI-powered worlds</h3>
+                    <p class="text-secondary mb-6">Dynamic environments, reactive systems, worlds that remember and adapt</p>
                 </div>
                 
                 <div class="glass-card rounded-2xl p-8 transition-all hover:border-white/20 flex flex-col">
@@ -828,9 +906,9 @@
                     <div id="feature-video-mobile" class="relative aspect-video rounded-xl overflow-hidden border border-white/10 bg-white/5 transition-all duration-500 ease-out">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <div class="text-center p-6">
-                                <div class="text-6xl mb-4">🛡️</div>
-                                <h3 class="text-xl font-bold text-white mb-3">Stop Losing Players</h3>
-                                <p class="text-secondary text-base leading-relaxed">AI mentors that listen to players and adapt to their style and level. Think "in-game support agent" that helps decrease your refund rate.</p>
+                                <div class="text-4xl mb-4">✨</div>
+                                <h3 class="text-xl font-bold text-white mb-3">Click a feature below</h3>
+                                <p class="text-secondary text-base leading-relaxed">Explore how Tryll Engine transforms your game with intelligent AI features</p>
                                 <div class="mt-4 text-sm text-white/60">Demo video coming soon</div>
                             </div>
                         </div>
@@ -838,43 +916,47 @@
                 </div>
                 
                 <!-- Mobile Features (Horizontal Scroll) -->
-                <div class="feature-tabs-container">
-                    <div class="flex gap-3 overflow-x-auto pb-4 scrollbar-hide" style="scroll-snap-type: x mandatory;">
-                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl hover:bg-white/5 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="retention">
-                            <h3 class="text-base font-light text-white mb-3">Stop Losing Players</h3>
-                            <p class="text-secondary text-sm leading-relaxed">
-                                AI mentors that listen to players and adapt to their style and level. Think "in-game support agent" that helps decrease your refund rate.
-                            </p>
-                        </div>
-
-                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl hover:bg-white/5 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="engagement">
-                            <h3 class="text-base font-light text-white mb-3">Keep Players Engaged</h3>
-                            <p class="text-secondary text-sm leading-relaxed">
-                                Players will build personal relationships with your game via living NPCs that have memory and personality.
-                            </p>
-                        </div>
-
-                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl hover:bg-white/5 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="delegation">
-                            <h3 class="text-base font-light text-white mb-3">Delegate to AI</h3>
-                            <p class="text-secondary text-sm leading-relaxed">
-                                Tryll is an agentic system that can make calls to your game engine functions. Player is rude to an NPC? Draw a sword!
-                            </p>
-                        </div>
-
-                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl hover:bg-white/5 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="content">
-                            <h3 class="text-base font-light text-white mb-3">Infinite Content</h3>
-                            <p class="text-secondary text-sm leading-relaxed">
-                                Every playthrough is a unique blend of your game design, story, and gamer's personality. 1 million players = 1 million unique experiences.
-                            </p>
-                        </div>
-
-                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl hover:bg-white/5 w-[calc(100vw-3rem)] max-w-[320px] flex-shrink-0" style="scroll-snap-align: start;" data-feature="control">
-                            <h3 class="text-base font-light text-white mb-3">Creative Control</h3>
-                            <p class="text-secondary text-sm leading-relaxed">
-                                Tryll ships with a set of tools to give you full creative control over player's experience.
-                            </p>
+                <div class="overflow-x-auto overflow-y-visible scrollbar-hide feature-scroll-container">
+                    <div class="flex gap-4 px-4 pb-4 py-2" style="width: max-content;">
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="retention">
+                        <h3 class="text-lg font-semibold text-white mb-2">Stop Losing Players</h3>
+                        <p class="text-secondary text-sm leading-relaxed">
+                            AI mentors that listen to players and adapt to their style and level. Think "in-game support agent" that helps decrease your refund rate.
+                        </p>
+                    </div>
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="engagement">
+                        <h3 class="text-lg font-semibold text-white mb-2">Keep Players Engaged</h3>
+                        <p class="text-secondary text-sm leading-relaxed">
+                            Players will build personal relationships with your game via living NPCs that have memory and personality.
+                        </p>
+                    </div>
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="delegation">
+                        <h3 class="text-lg font-semibold text-white mb-2">Delegate to AI</h3>
+                        <p class="text-secondary text-sm leading-relaxed">
+                            Tryll is an agentic system that can make calls to your game engine functions. Player is rude to an NPC? Draw a sword!
+                        </p>
+                    </div>
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="content">
+                        <h3 class="text-lg font-semibold text-white mb-2">Infinite Content</h3>
+                        <p class="text-secondary text-sm leading-relaxed">
+                            Every playthrough is a unique blend of your game design, story, and gamer's personality. 1 million players = 1 million unique experiences.
+                        </p>
+                    </div>
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="control">
+                        <h3 class="text-lg font-semibold text-white mb-2">Creative Control</h3>
+                        <p class="text-secondary text-sm leading-relaxed">
+                            Tryll ships with a set of tools to give you full creative control over player's experience.
+                        </p>
                         </div>
                     </div>
+                </div>
+                <!-- Feature dots indicator -->
+                <div class="feature-dots md:hidden">
+                    <span class="feature-dot active" data-feature="retention"></span>
+                    <span class="feature-dot" data-feature="engagement"></span>
+                    <span class="feature-dot" data-feature="delegation"></span>
+                    <span class="feature-dot" data-feature="content"></span>
+                    <span class="feature-dot" data-feature="control"></span>
                 </div>
             </div>
             
@@ -1228,75 +1310,136 @@
     <section id="pricing" class="py-12 md:py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-4 md:px-6">
             <div class="max-w-3xl mx-auto text-center mb-12 md:mb-20 fade-in">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-sm font-medium mb-8 border border-green-500/30">
-                    <div class="w-2 h-2 rounded-full bg-green-500"></div>
-                    TRYLL WILL DRIVE YOUR REVENUE
-                </div>
                 <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
-                    Choose Your Plan
+                    Simple, transparent pricing
                 </h2>
                 <p class="text-xl text-secondary leading-relaxed">
-                    Tryll will sell your games. Start free, scale when you succeed.
+                    Start free. Scale when you succeed.
                 </p>
             </div>
             
             <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 <!-- Free Tier -->
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in flex flex-col">
-                    <div class="mb-6">
-                        <div class="text-lg text-white mb-2 font-semibold">Under $200k USD in revenue/investments?</div>
-                        <h3 class="text-3xl font-bold text-white mb-4">Free</h3>
-                        <p class="text-secondary mb-6">For game developers, modders, and individuals</p>
-                        <div class="text-4xl font-bold text-white mb-6">$0</div>
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/30 fade-in flex flex-col" style="background: linear-gradient(135deg, rgba(35, 46, 65, 0.15) 0%, rgba(35, 46, 65, 0.08) 100%); backdrop-filter: blur(20px);">
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold text-white mb-2">Free</h3>
+                        <p class="text-secondary mb-6">For indie developers, modders, and individuals</p>
+                        <div class="flex items-baseline gap-1 mb-2">
+                            <span class="text-5xl font-bold text-white">$0</span>
+                        </div>
+                        <p class="text-sm text-secondary">Under $200k USD in revenue/investments</p>
                     </div>
                     
                     <div class="space-y-4 mb-8 flex-grow">
                         <div class="flex items-start gap-3">
-                            <div class="w-5 h-5 rounded border-2 border-white bg-white flex items-center justify-center mt-0.5 flex-shrink-0">
-                                <svg class="w-3 h-3 text-black" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                            </div>
+                            <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
                             <span class="text-secondary">All features included</span>
                         </div>
                         <div class="flex items-start gap-3">
-                            <div class="w-5 h-5 rounded border-2 border-white bg-white flex items-center justify-center mt-0.5 flex-shrink-0">
-                                <svg class="w-3 h-3 text-black" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                            </div>
-                            <span class="text-secondary">Documentation</span>
+                            <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-secondary">Full documentation</span>
                         </div>
                         <div class="flex items-start gap-3">
-                            <div class="w-5 h-5 rounded border-2 border-white bg-white flex items-center justify-center mt-0.5 flex-shrink-0">
-                                <svg class="w-3 h-3 text-black" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                            </div>
-                            <span class="text-secondary">Access to Tryll Engine Discord community</span>
+                            <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-secondary">Community support</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-secondary">Discord community access</span>
                         </div>
                     </div>
                     
-                    <a href="#contact" class="inline-block w-full px-8 py-4 rounded-lg bg-primary-500 text-white font-medium text-lg transition-all duration-300 hover:bg-primary-600 text-center mt-auto">
+                    <a href="#contact" class="inline-block w-full px-6 py-3 rounded-lg bg-primary-500/10 border border-primary-500/30 text-primary-400 font-medium text-center transition-all duration-300 hover:bg-primary-500/20 hover:border-primary-500/50">
                         Use it for free
                     </a>
                 </div>
                 
                 <!-- Seat-based Tier -->
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in flex flex-col">
-                    <div class="mb-6">
-                        <div class="text-lg text-white mb-2 font-semibold">Over $200k USD in revenue/investments?</div>
-                        <h3 class="text-3xl font-bold text-white mb-4">Seat-based</h3>
-                        <p class="text-secondary mb-6">If you are using Tryll Engine commercially, have generated or raised more than $200k in the past 12 months, and will be licensing to third party end users, then a seat license fee is required.</p>
-                        <div class="text-4xl font-bold text-white mb-6">$1,000 <span class="text-lg font-normal text-secondary">per seat per year</span></div>
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/40 fade-in flex flex-col relative" style="background: linear-gradient(135deg, rgba(35, 46, 65, 0.25) 0%, rgba(35, 46, 65, 0.12) 100%); backdrop-filter: blur(20px); border-color: rgba(35, 46, 65, 0.4);">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <div class="px-4 py-1 rounded-full text-white text-sm font-medium" style="background-color: #232E41;">
+                            Commercial license
+                        </div>
+                    </div>
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold text-white mb-2">Seat-based</h3>
+                        <p class="text-secondary mb-6">For commercial use over $200k revenue</p>
+                        <div class="flex items-baseline gap-1 mb-2">
+                            <span class="text-5xl font-bold text-white">$1,000</span>
+                        </div>
+                        <p class="text-sm text-secondary">Per seat per year</p>
                     </div>
                     
-                    <div class="flex-grow"></div>
+                    <div class="space-y-4 mb-8 flex-grow">
+                        <p class="text-sm text-secondary mb-4">Required if you are using Tryll Engine commercially, have generated or raised more than $200k in the past 12 months, and will be licensing to third party end users.</p>
+                        
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-secondary">Everything in Free</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-secondary">Priority support</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-secondary">Commercial use rights</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-secondary">Enterprise features</span>
+                        </div>
+                    </div>
                     
-                    <a href="#contact" class="inline-block w-full px-8 py-4 rounded-lg bg-primary-500 text-white font-medium text-lg transition-all duration-300 hover:bg-primary-600 text-center mt-auto">
+                    <a href="#contact" class="inline-block w-full px-6 py-3 rounded-lg bg-primary-500 text-white font-medium text-center transition-all duration-300 hover:bg-primary-600 shadow-lg shadow-primary-500/25">
                         Buy seats
                     </a>
-                    
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <p class="text-secondary mb-6">Both plans include:</p>
+                <div class="flex flex-wrap justify-center gap-6 text-sm text-secondary">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>No cloud costs</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>Runs locally on gamers' machines</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>Regular updates</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>Unreal Engine integration</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1414,8 +1557,29 @@
                     Everything you need to know about Tryll Engine
                 </p>
             </div>
-
-            <div class="max-w-4xl mx-auto">
+            
+            <!-- Tab buttons -->
+            <div class="max-w-4xl mx-auto mb-8">
+                <div class="flex justify-center gap-4">
+                    <button 
+                        id="faq-tab-developers" 
+                        class="faq-tab px-6 py-3 rounded-lg font-medium transition-all duration-300 bg-primary-500 text-white"
+                        onclick="switchFAQTab('developers')"
+                    >
+                        For Developers
+                    </button>
+                    <button 
+                        id="faq-tab-players" 
+                        class="faq-tab px-6 py-3 rounded-lg font-medium transition-all duration-300 bg-white/10 text-secondary hover:bg-white/20"
+                        onclick="switchFAQTab('players')"
+                    >
+                        For Players
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Developer FAQ (default visible) -->
+            <div id="faq-developers" class="max-w-4xl mx-auto">
                 <div class="space-y-4">
                     <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-1">
@@ -1472,52 +1636,10 @@
 
                     <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-4">
-                            <h3 class="text-xl font-bold text-white">How does Tryll optimize for different hardware configurations?</h3>
-                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
-                        </button>
-                        <div id="faq-4" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
-                            <div class="px-8 pb-6">
-                                <div class="text-secondary leading-relaxed">
-                                    <p class="mb-3">Our LLM Manager automatically:</p>
-                                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
-                                        <li>Detects hardware on first launch</li>
-                                        <li>Picks the most efficient model (4B, 8B, 14B, 27B)</li>
-                                        <li>Adjusts memory usage and context size dynamically</li>
-                                        <li>Offloads high-level reasoning and memory management to modular agents (Director, Writer)</li>
-                                        <li>Updates models automatically as the ecosystem evolves</li>
-                                    </ul>
-                                    <p>This ensures smooth AI performance across a wide range of gaming machines.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
-                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-5">
-                            <h3 class="text-xl font-bold text-white">What's the install size and memory footprint?</h3>
-                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
-                        </button>
-                        <div id="faq-5" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
-                            <div class="px-8 pb-6">
-                                <div class="text-secondary leading-relaxed">
-                                    <p class="mb-3"><strong>Model storage:</strong> 3 / 5 / 10 / 20 GB depending on model size (4B - 27B parameters)</p>
-                                    <p class="mb-3 font-medium">Runtime memory usage:</p>
-                                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
-                                        <li>6-10 GB VRAM during inference</li>
-                                        <li>2-4 GB system RAM for context and agent logic</li>
-                                    </ul>
-                                    <p class="mb-3"><strong>Total impact:</strong> Adds 8-12 GB to your game installation</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
-                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-6">
                             <h3 class="text-xl font-bold text-white">How does Tryll manage AI models and inference on the player's machine?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
                         </button>
-                        <div id="faq-6" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                        <div id="faq-4" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
                             <div class="px-8 pb-6">
                                 <div class="text-secondary leading-relaxed">
                                     <p class="mb-3">Tryll includes a local-first LLM Manager that handles:</p>
@@ -1533,64 +1655,104 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
-                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-7">
-                            <h3 class="text-xl font-bold text-white">How does Tryll integrate with Unreal Engine's systems?</h3>
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-5">
+                            <h3 class="text-xl font-bold text-white">How does using Tryll Engine affect game stability?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
                         </button>
-                        <div id="faq-7" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                        <div id="faq-5" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                            <div class="px-8 pb-6">
+                                <p class="text-secondary leading-relaxed">
+                                    Tryll Engine is designed with stability as a top priority. The AI runs in a separate process with robust error handling and automatic recovery mechanisms. If the AI system encounters any issues, it gracefully falls back to default behaviors without affecting core gameplay. Our extensive testing shows no impact on game stability when properly integrated.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-6">
+                            <h3 class="text-xl font-bold text-white">How can game developers control GPU and CPU resources used by Tryll?</h3>
+                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                        </button>
+                        <div id="faq-6" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
                             <div class="px-8 pb-6">
                                 <div class="text-secondary leading-relaxed">
-                                    <p class="mb-3">Tryll provides seamless integration via:</p>
-                                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
-                                        <li><strong>Base Blueprint classes:</strong> For example, TryllDescriptionActorComponent, which you can inherit from to build custom logic</li>
-                                        <li><strong>Event system:</strong> Nodes like BeginTrinityDialogue() and SendPlayerInput() hook directly into your game flow</li>
-                                        <li><strong>Function Registry:</strong> Lets you map AI-generated function calls to your existing Blueprint or C++ logic</li>
-                                        <li><strong>Hot reload support:</strong> Modify AI behavior and logic without restarting the Unreal Editor</li>
-                                        <li><strong>Packaging:</strong> Required binaries and models are automatically bundled during your build process</li>
+                                    <p class="mb-3">Developers have full control through our resource management API:</p>
+                                    <ul class="list-disc list-inside space-y-2 ml-4">
+                                        <li>Set maximum GPU memory allocation (e.g., limit to 4GB)</li>
+                                        <li>Configure CPU thread limits and priority levels</li>
+                                        <li>Define performance profiles (minimal, balanced, maximum)</li>
+                                        <li>Implement dynamic resource scaling based on game demands</li>
+                                        <li>Monitor resource usage in real-time through our dashboard</li>
                                     </ul>
-                                    <p>This system is designed to extend Unreal's existing workflows - not replace or override them.</p>
+                                    <p class="mt-3">These settings can be adjusted per-platform and even changed dynamically during gameplay.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                    
+                </div>
+            </div>
+            
+            <!-- Player FAQ (initially hidden) -->
+            <div id="faq-players" class="max-w-4xl mx-auto" style="display: none;">
+                <div class="space-y-4">
                     <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
-                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-8">
-                            <h3 class="text-xl font-bold text-white">Can Tryll Engine integrate with our proprietary game engine?</h3>
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-p1">
+                            <h3 class="text-xl font-bold text-white">How does the use of Tryll Engine affect performance of the game?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
                         </button>
-                        <div id="faq-8" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                        <div id="faq-p1" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
                             <div class="px-8 pb-6">
-                                <div class="text-secondary leading-relaxed">
-                                    <p class="mb-4">Absolutely. While we offer 1-click integration for Unreal Engine (and soon Unity), Tryll is fundamentally an agentic AI system and local LLM manager. The plugin is simply a bridge to connect your game world to Tryll's AI runtime.</p>
-                                    <p class="mb-3">Tryll communicates via standard interfaces (HTTP, OpenAI-compatible API, or local IPC), so integration with proprietary or custom engines is fully supported. You can send game state to Tryll and receive:</p>
-                                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
-                                        <li>Text responses (dialogue)</li>
-                                        <li>Voice (optional)</li>
-                                        <li>Function calls like AttackPlayer, GiveItem, etc.</li>
-                                    </ul>
-                                    <p>In other words, the plugin is not the product - it's just how Tryll sees and influences the game world.</p>
-                                </div>
+                                <p class="text-secondary leading-relaxed">
+                                    Tryll is optimized to have minimal impact on game performance. On recommended hardware (RTX 4070 or equivalent), you can expect a 5-10% performance impact while maintaining smooth gameplay. The AI automatically adjusts its resource usage based on your system's capabilities, ensuring your gaming experience remains fluid and responsive.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-p2">
+                            <h3 class="text-xl font-bold text-white">If I don't have a powerful enough GPU/CPU to run Tryll, can I still play the game?</h3>
+                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                        </button>
+                        <div id="faq-p2" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                            <div class="px-8 pb-6">
+                                <p class="text-secondary leading-relaxed">
+                                    Absolutely! We've implemented several fallback mechanisms that seamlessly switch to the classic gaming experience without AI if your system doesn't meet the requirements. You'll still enjoy the full game with traditional scripted NPCs and dialogues. As you upgrade your hardware in the future, Tryll features will automatically become available.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-p3">
+                            <h3 class="text-xl font-bold text-white">How does Tryll handle my personal data and conversations?</h3>
+                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                        </button>
+                        <div id="faq-p3" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                            <div class="px-8 pb-6">
+                                <p class="text-secondary leading-relaxed">
+                                    Your privacy is protected by design. All conversations with AI characters, game states, and personal data stay entirely on your local machine. Tryll has no cloud connection, no data collection, and no telemetry. We never see or have access to any of your interactions - everything is processed locally using the AI models installed on your computer. Your gaming experience remains completely private and under your control.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="text-center mt-16 fade-in">
-                    <p class="text-secondary mb-6">Still have questions?</p>
-                    <a href="https://discord.gg/XCBBGUMzUM" class="inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-[#5865F2] text-white font-medium text-lg transition-all duration-300 hover:bg-[#4752C4]">
-                        <i class="fab fa-discord text-xl"></i>
-                        Contact us on Discord
-                    </a>
-                </div>
+            </div>
+            
+            <div class="text-center mt-16 fade-in">
+                <p class="text-secondary mb-6">Still have questions?</p>
+                <a href="https://discord.gg/XCBBGUMzUM" class="inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-[#5865F2] text-white font-medium text-lg transition-all duration-300 hover:bg-[#4752C4]">
+                    <i class="fab fa-discord text-xl"></i>
+                    Contact us on Discord
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Contact Form -->
-    <section id="contact" class="py-16 md:py-24 bg-dark-900 relative overflow-hidden">
+    <section id="contact" class="py-16 md:py-24 relative overflow-hidden" style="background: linear-gradient(180deg, #000000 0%, #0a0a0f 50%, #000000 100%);">
         <div class="container mx-auto px-4 md:px-6">
             <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16 fade-in">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white text-xs md:text-sm font-medium mb-6 md:mb-8 border border-white/10">
@@ -1607,7 +1769,7 @@
             
             <!-- Contact Form -->
             <div class="max-w-lg mx-auto px-4">
-                <form id="contact-form" class="glass-card p-6 md:p-8 rounded-2xl" action="https://formspree.io/f/movlaywd" method="POST">
+                <form id="contact-form" class="glass-card p-6 md:p-8 rounded-2xl" action="https://formspree.io/f/movlaywd" method="POST" style="background: linear-gradient(135deg, rgba(35, 46, 65, 0.15) 0%, rgba(35, 46, 65, 0.08) 100%); backdrop-filter: blur(20px);">
                     <div class="space-y-5 md:space-y-6">
                         <div>
                             <label for="name" class="block text-sm font-medium text-white mb-2">Name</label>
@@ -1636,19 +1798,33 @@
                         </div>
                         
                         <div>
-                            <label for="category" class="block text-sm font-medium text-white mb-2">I am a...</label>
-                            <select 
-                                id="category" 
-                                name="category" 
-                                class="w-full px-4 py-3 md:py-4 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 text-base"
-                                style="color-scheme: dark;"
-                            >
-                                <option value="" class="bg-dark-800 text-white">Select category</option>
-                                <option value="studio" class="bg-dark-800 text-white">Studio</option>
-                                <option value="solo-dev" class="bg-dark-800 text-white">Solo Developer</option>
-                                <option value="modder" class="bg-dark-800 text-white">Modder</option>
-                                <option value="other" class="bg-dark-800 text-white">Other</option>
-                            </select>
+                            <label class="block text-sm font-medium text-white mb-3">I am a...</label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <label class="relative">
+                                    <input type="radio" name="category" value="studio" class="peer sr-only" />
+                                    <div class="px-4 py-3 rounded-lg bg-white/5 border-2 border-white/20 text-white/60 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary-500 peer-checked:border-primary-400 peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary-500/30 hover:bg-white/10 hover:text-white hover:border-white/30">
+                                        Studio
+                                    </div>
+                                </label>
+                                <label class="relative">
+                                    <input type="radio" name="category" value="solo-dev" class="peer sr-only" />
+                                    <div class="px-4 py-3 rounded-lg bg-white/5 border-2 border-white/20 text-white/60 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary-500 peer-checked:border-primary-400 peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary-500/30 hover:bg-white/10 hover:text-white hover:border-white/30">
+                                        Solo Dev
+                                    </div>
+                                </label>
+                                <label class="relative">
+                                    <input type="radio" name="category" value="modder" class="peer sr-only" />
+                                    <div class="px-4 py-3 rounded-lg bg-white/5 border-2 border-white/20 text-white/60 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary-500 peer-checked:border-primary-400 peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary-500/30 hover:bg-white/10 hover:text-white hover:border-white/30">
+                                        Modder
+                                    </div>
+                                </label>
+                                <label class="relative">
+                                    <input type="radio" name="category" value="other" class="peer sr-only" />
+                                    <div class="px-4 py-3 rounded-lg bg-white/5 border-2 border-white/20 text-white/60 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary-500 peer-checked:border-primary-400 peer-checked:text-white peer-checked:shadow-lg peer-checked:shadow-primary-500/30 hover:bg-white/10 hover:text-white hover:border-white/30">
+                                        Other
+                                    </div>
+                                </label>
+                            </div>
                         </div>
                         
                         <!-- Hidden field for tracking -->
@@ -1657,7 +1833,7 @@
                         
                         <button 
                             type="submit" 
-                            class="w-full px-6 md:px-8 py-4 md:py-5 rounded-lg bg-primary-500 text-white font-medium text-base md:text-lg transition-all duration-300 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-dark-900 active:transform active:scale-95"
+                            class="w-full px-6 md:px-8 py-4 md:py-5 rounded-lg bg-primary-500 text-white font-medium text-base md:text-lg transition-all duration-300 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-black active:transform active:scale-95"
                         >
                             Get Started
                         </button>
@@ -1989,10 +2165,11 @@
             function updateVideo(feature, videoElement) {
                 const content = features[feature];
                 if (content && videoElement) {
+                    const isMobile = videoElement.id === 'feature-video-mobile';
                     videoElement.innerHTML = `
                         <div class="absolute inset-0 flex items-center justify-center">
                             <div class="text-center p-6 md:p-8">
-                                <div class="text-6xl md:text-8xl mb-4 md:mb-6">${content.icon}</div>
+                                <div class="${isMobile ? 'text-4xl' : 'text-6xl md:text-8xl'} mb-4 md:mb-6">${content.icon}</div>
                                 <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">${content.title}</h3>
                                 <p class="text-secondary text-base md:text-lg leading-relaxed">${content.description}</p>
                                 <div class="mt-4 md:mt-6 text-sm text-white/60">Demo video coming soon</div>
@@ -2017,6 +2194,12 @@
             
             // Desktop features
             if (featureItemsDesktop.length > 0 && videoDesktop) {
+                // Set first item as active by default
+                if (featureItemsDesktop[0]) {
+                    featureItemsDesktop[0].classList.add('active');
+                    updateVideo(featureItemsDesktop[0].dataset.feature, videoDesktop);
+                }
+                
                 featureItemsDesktop.forEach((item, index) => {
                     item.addEventListener('click', function(e) {
                         e.preventDefault();
@@ -2039,6 +2222,12 @@
             
             // Mobile features
             if (featureItemsMobile.length > 0 && videoMobile) {
+                // Set first item as active by default
+                if (featureItemsMobile[0]) {
+                    featureItemsMobile[0].classList.add('active');
+                    updateVideo(featureItemsMobile[0].dataset.feature, videoMobile);
+                }
+                
                 featureItemsMobile.forEach((item, index) => {
                     item.addEventListener('click', function(e) {
                         e.preventDefault();
@@ -2052,11 +2241,27 @@
                         
                         // Update video content
                         updateVideo(this.dataset.feature, videoMobile);
+                        
+                        // Update dots
+                        const dots = document.querySelectorAll('.feature-dot');
+                        dots.forEach(dot => {
+                            if (dot.dataset.feature === this.dataset.feature) {
+                                dot.classList.add('active');
+                            } else {
+                                dot.classList.remove('active');
+                            }
+                        });
+                        
+                        // Scroll to center the clicked card
+                        const scrollContainer = document.querySelector('.feature-scroll-container');
+                        if (scrollContainer) {
+                            this.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                        }
                     });
                 });
                 
                 // Handle mobile horizontal scroll interaction
-                const mobileScrollContainer = document.querySelector('.md\\:hidden .overflow-x-auto');
+                const mobileScrollContainer = document.querySelector('.feature-scroll-container');
                 if (mobileScrollContainer) {
                     let isScrolling = false;
                     let scrollTimeout;
@@ -2101,12 +2306,60 @@
                                 
                                 // Update video content
                                 updateVideo(closestItem.dataset.feature, videoMobile);
+                                
+                                // Update dots
+                                const dots = document.querySelectorAll('.feature-dot');
+                                dots.forEach(dot => {
+                                    if (dot.dataset.feature === closestItem.dataset.feature) {
+                                        dot.classList.add('active');
+                                    } else {
+                                        dot.classList.remove('active');
+                                    }
+                                });
                             }
                         }, 100);
                     });
                 }
+                
+                // Handle dot clicks
+                const dots = document.querySelectorAll('.feature-dot');
+                dots.forEach(dot => {
+                    dot.addEventListener('click', function() {
+                        const targetFeature = this.dataset.feature;
+                        const targetItem = document.querySelector(`.feature-item-mobile[data-feature="${targetFeature}"]`);
+                        
+                        if (targetItem && mobileScrollContainer) {
+                            // Scroll to the target item
+                            targetItem.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                        }
+                    });
+                });
             }
 
+            // FAQ Tab Switching
+            window.switchFAQTab = function(tab) {
+                const developersTab = document.getElementById('faq-tab-developers');
+                const playersTab = document.getElementById('faq-tab-players');
+                const developersContent = document.getElementById('faq-developers');
+                const playersContent = document.getElementById('faq-players');
+                
+                if (tab === 'developers') {
+                    developersTab.classList.add('bg-primary-500', 'text-white');
+                    developersTab.classList.remove('bg-white/10', 'text-secondary');
+                    playersTab.classList.remove('bg-primary-500', 'text-white');
+                    playersTab.classList.add('bg-white/10', 'text-secondary');
+                    developersContent.style.display = 'block';
+                    playersContent.style.display = 'none';
+                } else {
+                    playersTab.classList.add('bg-primary-500', 'text-white');
+                    playersTab.classList.remove('bg-white/10', 'text-secondary');
+                    developersTab.classList.remove('bg-primary-500', 'text-white');
+                    developersTab.classList.add('bg-white/10', 'text-secondary');
+                    playersContent.style.display = 'block';
+                    developersContent.style.display = 'none';
+                }
+            };
+            
             // FAQ Accordion Functionality
             const faqToggles = document.querySelectorAll('.faq-toggle');
             

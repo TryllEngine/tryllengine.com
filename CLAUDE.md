@@ -83,6 +83,12 @@ The website is a single-page marketing site with:
 - **Grid pattern backgrounds** - CSS-based grid overlays
 - **Responsive design** - Mobile-first approach using Tailwind breakpoints
 
+## Brand Colors
+
+- **Primary company color**: #232E41 (dark blue-gray) - Use for accents and highlights
+- **Primary blue**: #3B82F6 (Tailwind blue-500) - Used for buttons and links
+- **Secondary colors**: Various grays and whites for text
+
 ## SEO Setup
 
 - **Meta tags**: Description, keywords, Open Graph, Twitter cards

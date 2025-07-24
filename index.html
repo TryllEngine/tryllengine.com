@@ -907,6 +907,111 @@
             }
         }
         
+        /* Feature video animations */
+        #feature-video-desktop,
+        #feature-video-mobile {
+            transition: opacity 0.3s ease-out, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        #feature-video-desktop.transitioning {
+            filter: blur(2px);
+            opacity: 0.95;
+        }
+        
+        /* Content animations */
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes scale-in {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slide-up {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fade-in 0.6s ease-out forwards;
+        }
+        
+        .animate-scale-in {
+            animation: scale-in 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        
+        .animate-slide-up {
+            animation: slide-up 0.6s ease-out forwards;
+            animation-delay: 0.1s;
+            animation-fill-mode: both;
+        }
+        
+        .animate-slide-up-delay {
+            animation: slide-up 0.6s ease-out forwards;
+            animation-delay: 0.2s;
+            animation-fill-mode: both;
+        }
+        
+        .animate-fade-in-delay {
+            animation: fade-in 0.6s ease-out forwards;
+            animation-delay: 0.3s;
+            animation-fill-mode: both;
+        }
+        
+        /* Enhanced feature item hover effects */
+        .feature-item-left {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .feature-item-left::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .feature-item-left:hover::before {
+            left: 100%;
+        }
+        
+        .feature-item-left:hover {
+            background: rgba(255, 255, 255, 0.05) !important;
+            transform: translateX(2px);
+        }
+        
+        /* Video container shadow and glow effect */
+        #feature-video-desktop {
+            box-shadow: 0 0 40px rgba(35, 46, 65, 0.3);
+        }
+        
+        #feature-video-desktop.transitioning {
+            box-shadow: 0 0 60px rgba(35, 46, 65, 0.5);
+        }
+        
     </style>
 </head>
 <body id="top" class="antialiased">
@@ -935,13 +1040,24 @@
                     <li><a href="#faq" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">FAQ</a></li>
                     <li><a href="#contact-email" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Contact</a></li>
                 </ul>
-                <a href="#contact" class="btn-primary px-4 py-2 rounded-lg text-sm inline-flex items-center justify-center">
-                    Get Started
-                </a>
+                <div class="flex items-center gap-3">
+                    <a href="boscotryll.html" class="px-4 py-2 rounded-lg text-sm inline-flex items-center justify-center transition-all duration-300 font-medium bg-white/10 border border-white/20 hover:bg-white/20 text-white">
+                        <i class="fas fa-gamepad mr-2"></i>
+                        Try in Action
+                    </a>
+                    <a href="#contact" class="btn-primary px-4 py-2 rounded-lg text-sm inline-flex items-center justify-center gap-2">
+                        <i class="fas fa-rocket"></i>
+                        Get Early Access
+                    </a>
+                </div>
             </div>
             
             <!-- Mobile Navigation -->
             <div class="md:hidden flex items-center gap-3">
+                <a href="boscotryll.html" class="px-3 py-2 rounded-lg text-xs inline-flex items-center justify-center transition-all duration-300 bg-white/10 border border-white/20 hover:bg-white/20 text-white">
+                    <i class="fas fa-gamepad mr-1"></i>
+                    Try It
+                </a>
                 <a href="#contact" class="btn-primary px-3 py-2 rounded-lg text-xs inline-flex items-center justify-center">
                     Get Started
                 </a>
@@ -957,11 +1073,13 @@
         <div id="mobile-menu" class="md:hidden fixed inset-0 bg-black/95 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40">
             <div class="flex flex-col items-center justify-center h-full space-y-8 text-center px-6">
                 <a href="#features" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Features</a>
+                <a href="boscotryll.html" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Try in Action</a>
                 <a href="#pricing" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Pricing</a>
                 <a href="#faq" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">FAQ</a>
                 <div class="pt-4">
-                    <a href="#contact" class="btn-primary px-8 py-4 rounded-lg text-lg inline-flex items-center justify-center">
-                        Get Started
+                    <a href="#contact" class="btn-primary px-8 py-4 rounded-lg text-lg inline-flex items-center justify-center gap-2">
+                        <i class="fas fa-rocket"></i>
+                        Get Early Access
                     </a>
                 </div>
             </div>
@@ -1026,51 +1144,37 @@
         </div>
     </section>
 
-    <!-- Demo Section -->
-    <section id="demo" class="py-12 md:py-24 bg-black relative overflow-hidden">
+    <!-- First Demo Announcement Section -->
+    <section class="py-12 md:py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-4 md:px-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                <div class="glass-card p-6 md:p-8 rounded-2xl text-center transition-all duration-300 hover:border-white/20 fade-in">
-                    <div class="w-16 h-16 md:w-20 md:h-20 rounded-full gradient-bg flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 mx-auto">
-                        <i class="fas fa-calendar text-white"></i>
-                    </div>
-                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Book a Live Demo</h3>
-                    <p class="text-secondary mb-4 md:mb-6 leading-relaxed text-sm md:text-base">
-                        Get a personalized demo and see how Tryll can transform your game project.
-                    </p>
-                    <a href="#contact" class="inline-block px-4 md:px-6 py-2 md:py-3 rounded-lg bg-primary-500 text-white font-medium text-sm transition-all duration-300 hover:bg-primary-600 w-full sm:w-auto">
-                        Schedule Demo
-                    </a>
+            <div class="max-w-4xl mx-auto text-center fade-in">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-sm font-normal mb-8 border border-white/20">
+                    <span class="animate-pulse">🚀</span>
+                    <span>Live Demo Available</span>
                 </div>
                 
-                <div class="glass-card p-6 md:p-8 rounded-2xl text-center transition-all duration-300 hover:border-white/20 fade-in">
-                    <div class="w-16 h-16 md:w-20 md:h-20 rounded-full gradient-bg flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 mx-auto">
-                        <i class="fas fa-question-circle text-white"></i>
-                    </div>
-                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">FAQ</h3>
-                    <p class="text-secondary mb-4 md:mb-6 leading-relaxed text-sm md:text-base">
-                        Find answers to common questions about Tryll Engine and implementation.
-                    </p>
-                    <a href="#faq" class="inline-block px-4 md:px-6 py-2 md:py-3 rounded-lg glass-card text-white font-medium text-sm border border-white/20 hover:border-white/20 transition-all duration-300 w-full sm:w-auto">
-                        View FAQ
-                    </a>
-                </div>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
+                    First publicly available Tryll Engine demo is live as Deep Rock Galactic mod
+                </h2>
                 
-                <div class="glass-card p-6 md:p-8 rounded-2xl text-center transition-all duration-300 hover:border-white/20 fade-in">
-                    <div class="w-16 h-16 md:w-20 md:h-20 rounded-full gradient-bg flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 mx-auto">
-                        <i class="fas fa-gamepad text-white"></i>
-                    </div>
-                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Try It In-Game</h3>
-                    <p class="text-secondary mb-4 md:mb-6 leading-relaxed text-sm md:text-base">
-                        <span class="text-white font-medium">(Coming Soon!)</span> Download BoscoTryll Deep Rock Galactic mod and experience our AI companion.
-                    </p>
-                    <button class="btn-secondary px-4 md:px-6 py-2 md:py-3 rounded-lg text-sm w-full sm:w-auto opacity-60 cursor-not-allowed" disabled>
-                        Coming Soon
-                    </button>
+                <p class="text-lg md:text-xl text-secondary mb-8 leading-relaxed">
+                    Experience the power of local AI in gaming. No cloud costs, full control, instant responses.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="boscotryll.html" class="btn-primary px-6 py-3 rounded-lg text-base inline-flex items-center justify-center gap-2">
+                        <i class="fas fa-gamepad"></i>
+                        Play BoscoTryll Now
+                    </a>
+                    <a href="https://discord.gg/XCBBGUMzUM" class="glass-card px-6 py-3 rounded-lg text-base inline-flex items-center justify-center hover:bg-white/10 transition-all duration-300">
+                        <i class="fab fa-discord mr-2"></i>
+                        Join Alpha Community
+                    </a>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- The Old Way is Dead -->
     <section class="py-12 md:py-24 bg-black relative overflow-hidden fade-in">
@@ -1205,34 +1309,34 @@
                 <!-- Mobile Features (Horizontal Scroll) -->
                 <div class="overflow-x-auto overflow-y-visible scrollbar-hide feature-scroll-container">
                     <div class="flex gap-4 px-4 pb-4 py-2" style="width: max-content;">
-                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="tutorials">
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0 active" style="width: 280px;" data-feature="tutorials">
                         <h3 class="text-lg font-semibold text-white mb-2">Natural Language Tutorials</h3>
                         <p class="text-secondary text-sm leading-relaxed">
-                            Let players ask questions about your game in plain English. Connect documentation, wikis, and guides to an AI that provides instant, contextual help - reducing return rates and negative reviews from frustrated players.
+                            Reduce support tickets and negative reviews. Connect your documentation, wikis, and guides to an AI that answers player questions instantly - no more frustrated players abandoning your game because they can't figure something out.
                         </p>
                     </div>
                         <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="companions">
                         <h3 class="text-lg font-semibold text-white mb-2">Relationship-Building AI</h3>
                         <p class="text-secondary text-sm leading-relaxed">
-                            Companions that remember every interaction, react to player choices, and develop unique personalities. Transform static followers into dynamic characters players genuinely care about.
+                            Create companions with persistent memory and evolving personalities. Your NPCs can remember past interactions, form opinions, and develop relationships - without writing thousands of dialogue branches.
                         </p>
                     </div>
                         <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="agents">
                         <h3 class="text-lg font-semibold text-white mb-2">AI That Takes Action</h3>
                         <p class="text-secondary text-sm leading-relaxed">
-                            Connect any LLM directly to your game functions. AI can spawn enemies, change weather, give rewards, or modify the world based on player interactions - true model-to-game connectivity.
+                            Give AI direct control over game mechanics. Let NPCs spawn enemies, modify environments, or distribute rewards based on context. Ship dynamic gameplay without hardcoding every possibility.
                         </p>
                     </div>
                         <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="creativity">
-                        <h3 class="text-lg font-semibold text-white mb-2">Prompt-Based Content Creation</h3>
+                        <h3 class="text-lg font-semibold text-white mb-2">Dynamic World Generation</h3>
                         <p class="text-secondary text-sm leading-relaxed">
-                            Let players create through natural language. Managing a band? Write music with prompts. Designing characters? Describe them instead of mixing preset options. Generate what players imagine, not what you pre-built.
+                            Generate quests, lore, and world events on the fly. Your game world can create infinite content based on player actions and preferences - no more static quest databases or repetitive content.
                         </p>
                     </div>
                         <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="personalization">
-                        <h3 class="text-lg font-semibold text-white mb-2">Narrative That Adapts to You</h3>
+                        <h3 class="text-lg font-semibold text-white mb-2">Adaptive Narrative Systems</h3>
                         <p class="text-secondary text-sm leading-relaxed">
-                            Reach a wider player base without diluting your vision. Focus on core game design and world-building while AI listens to each player and adjusts the experience. Same game, personalized seasoning for every taste.
+                            Ship one game that feels custom-made for each player. Your narrative adapts to playstyle, choices, and preferences automatically - increasing retention without multiplying development costs.
                         </p>
                         </div>
                     </div>
@@ -1252,11 +1356,11 @@
                 <!-- Left: Features List -->
                 <div class="relative">
                     <div class="space-y-4" id="features-list">
-                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/10" data-feature="tutorials">
+                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/10 active" data-feature="tutorials">
                             <div>
                                 <h3 class="text-xl font-semibold text-white mb-2">Natural Language Tutorials</h3>
                                 <p class="text-secondary text-sm leading-relaxed">
-                                    Let players ask questions about your game in plain English. Connect documentation, wikis, and guides to an AI that provides instant, contextual help - reducing return rates and negative reviews from frustrated players.
+                                    Reduce support tickets and negative reviews. Connect your documentation, wikis, and guides to an AI that answers player questions instantly - no more frustrated players abandoning your game because they can't figure something out.
                                 </p>
                             </div>
                         </div>
@@ -1265,7 +1369,7 @@
                             <div>
                                 <h3 class="text-xl font-semibold text-white mb-2">Relationship-Building AI</h3>
                                 <p class="text-secondary text-sm leading-relaxed">
-                                    Companions that remember every interaction, react to player choices, and develop unique personalities. Transform static followers into dynamic characters players genuinely care about.
+                                    Create companions with persistent memory and evolving personalities. Your NPCs can remember past interactions, form opinions, and develop relationships - without writing thousands of dialogue branches.
                                 </p>
                             </div>
                         </div>
@@ -1274,25 +1378,25 @@
                             <div>
                                 <h3 class="text-xl font-semibold text-white mb-2">AI That Takes Action</h3>
                                 <p class="text-secondary text-sm leading-relaxed">
-                                    Connect any LLM directly to your game functions. AI can spawn enemies, change weather, give rewards, or modify the world based on player interactions - true model-to-game connectivity.
+                                    Give AI direct control over game mechanics. Let NPCs spawn enemies, modify environments, or distribute rewards based on context. Ship dynamic gameplay without hardcoding every possibility.
                                 </p>
                             </div>
                         </div>
                         
                         <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/10" data-feature="creativity">
                             <div>
-                                <h3 class="text-xl font-semibold text-white mb-2">Prompt-Based Content Creation</h3>
+                                <h3 class="text-xl font-semibold text-white mb-2">Dynamic World Generation</h3>
                                 <p class="text-secondary text-sm leading-relaxed">
-                                    Let players create through natural language. Managing a band? Write music with prompts. Designing characters? Describe them instead of mixing preset options. Generate what players imagine, not what you pre-built.
+                                    Generate quests, lore, and world events on the fly. Your game world can create infinite content based on player actions and preferences - no more static quest databases or repetitive content.
                                 </p>
                             </div>
                         </div>
                         
                         <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/10" data-feature="personalization">
                             <div>
-                                <h3 class="text-xl font-semibold text-white mb-2">Narrative That Adapts to You</h3>
+                                <h3 class="text-xl font-semibold text-white mb-2">Adaptive Narrative Systems</h3>
                                 <p class="text-secondary text-sm leading-relaxed">
-                                    Reach a wider player base without diluting your vision. Focus on core game design and world-building while AI listens to each player and adjusts the experience. Same game, personalized seasoning for every taste.
+                                    Ship one game that feels custom-made for each player. Your narrative adapts to playstyle, choices, and preferences automatically - increasing retention without multiplying development costs.
                                 </p>
                             </div>
                         </div>
@@ -1300,14 +1404,14 @@
                 </div>
                 
                 <!-- Right: Video Container -->
-                <div class="relative">
-                    <div class="sticky top-24">
+                <div class="relative" id="features-right-container">
+                    <div class="sticky top-24" id="video-sticky-container">
                         <div id="feature-video-desktop" class="relative aspect-video rounded-xl overflow-hidden border border-white/20 bg-white/10 transition-all duration-500 ease-out transform">
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="text-center p-6 md:p-8">
                                     <div class="text-6xl md:text-8xl mb-4 md:mb-6">📚</div>
                                     <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">Natural Language Tutorials</h3>
-                                    <p class="text-secondary text-base md:text-lg leading-relaxed">Let players ask questions about your game in plain English. Connect documentation, wikis, and guides to an AI that provides instant, contextual help - reducing return rates and negative reviews from frustrated players.</p>
+                                    <p class="text-secondary text-base md:text-lg leading-relaxed">Reduce support tickets and negative reviews. Connect your documentation, wikis, and guides to an AI that answers player questions instantly - no more frustrated players abandoning your game because they can't figure something out.</p>
                                     <div class="mt-4 md:mt-6 text-sm text-white/80">Demo video coming soon</div>
                                 </div>
                             </div>
@@ -2158,16 +2262,23 @@
             <div class="flex flex-col items-center gap-6 md:grid md:grid-cols-3 md:items-center">
                 <!-- Left: Copyright -->
                 <div class="text-secondary text-sm order-2 md:order-1 text-center md:text-left">
-                    © 2025 Tryll Engine, Inc. All rights reserved.
+                    © 2025 Tryll Engine, Inc. All rights reserved.<br>
+                    <span class="text-xs">Deep Rock Galactic and Bosco are trademarks of Ghost Ship Games ApS.</span>
                 </div>
                 
                 <!-- Center: Social Links -->
                 <div class="flex gap-6 items-center justify-center order-1 md:order-2">
-                    <a href="https://discord.gg/XCBBGUMzUM" class="text-secondary hover:text-white transition-colors duration-300 text-xl">
+                    <a href="https://discord.gg/XCBBGUMzUM" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Join our Discord">
                         <i class="fab fa-discord"></i>
                     </a>
-                    <a href="https://www.youtube.com/@Tryll_Engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl">
+                    <a href="https://www.youtube.com/@Tryll_Engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Watch on YouTube">
                         <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://instagram.com/tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://tiktok.com/@tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on TikTok">
+                        <i class="fab fa-tiktok"></i>
                     </a>
                 </div>
                 
@@ -2439,27 +2550,27 @@
                 tutorials: {
                     icon: '📚',
                     title: 'Natural Language Tutorials',
-                    description: 'Let players ask questions about your game in plain English. Connect documentation, wikis, and guides to an AI that provides instant, contextual help - reducing return rates and negative reviews from frustrated players.'
+                    description: 'Reduce support tickets and negative reviews. Connect your documentation, wikis, and guides to an AI that answers player questions instantly - no more frustrated players abandoning your game because they can\'t figure something out.'
                 },
                 companions: {
                     icon: '🤝',
                     title: 'Relationship-Building AI',
-                    description: 'Companions that remember every interaction, react to player choices, and develop unique personalities. Transform static followers into dynamic characters players genuinely care about.'
+                    description: 'Create companions with persistent memory and evolving personalities. Your NPCs can remember past interactions, form opinions, and develop relationships - without writing thousands of dialogue branches.'
                 },
                 agents: {
                     icon: '⚡',
                     title: 'AI That Takes Action',
-                    description: 'Connect any LLM directly to your game functions. AI can spawn enemies, change weather, give rewards, or modify the world based on player interactions - true model-to-game connectivity.'
+                    description: 'Give AI direct control over game mechanics. Let NPCs spawn enemies, modify environments, or distribute rewards based on context. Ship dynamic gameplay without hardcoding every possibility.'
                 },
                 creativity: {
-                    icon: '🎨',
-                    title: 'Prompt-Based Content Creation',
-                    description: 'Let players create through natural language. Managing a band? Write music with prompts. Designing characters? Describe them instead of mixing preset options. Generate what players imagine, not what you pre-built.'
+                    icon: '🌍',
+                    title: 'Dynamic World Generation',
+                    description: 'Generate quests, lore, and world events on the fly. Your game world can create infinite content based on player actions and preferences - no more static quest databases or repetitive content.'
                 },
                 personalization: {
                     icon: '🎯',
-                    title: 'Narrative That Adapts to You',
-                    description: 'Reach a wider player base without diluting your vision. Focus on core game design and world-building while AI listens to each player and adjusts the experience. Same game, personalized seasoning for every taste.'
+                    title: 'Adaptive Narrative Systems',
+                    description: 'Ship one game that feels custom-made for each player. Your narrative adapts to playstyle, choices, and preferences automatically - increasing retention without multiplying development costs.'
                 }
             };
             
@@ -2467,29 +2578,64 @@
                 const content = features[feature];
                 if (content && videoElement) {
                     const isMobile = videoElement.id === 'feature-video-mobile';
-                    videoElement.innerHTML = `
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="text-center p-6 md:p-8">
-                                <div class="${isMobile ? 'text-4xl' : 'text-6xl md:text-8xl'} mb-4 md:mb-6">${content.icon}</div>
-                                <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">${content.title}</h3>
-                                <p class="text-secondary text-base md:text-lg leading-relaxed">${content.description}</p>
-                                <div class="mt-4 md:mt-6 text-sm text-white/80">Demo video coming soon</div>
+                    
+                    // Add fade out effect
+                    videoElement.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        videoElement.innerHTML = `
+                            <div class="absolute inset-0 flex items-center justify-center feature-content">
+                                <div class="text-center p-6 md:p-8">
+                                    <div class="${isMobile ? 'text-4xl' : 'text-6xl md:text-8xl'} mb-4 md:mb-6">${content.icon}</div>
+                                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">${content.title}</h3>
+                                    <p class="text-secondary text-base md:text-lg leading-relaxed">${content.description}</p>
+                                    <div class="mt-4 md:mt-6 text-sm text-white/80">Demo video coming soon</div>
+                                </div>
                             </div>
-                        </div>
-                    `;
+                        `;
+                        // Add fade in effect
+                        videoElement.style.opacity = '1';
+                    }, 150);
                 }
             }
             
             function updateVideoPosition(index) {
-                if (videoDesktop) {
-                    // Calculate vertical position based on feature index (0-4)
-                    // Feature 1 (index 0): top (0%)
-                    // Feature 2 (index 1): 1/4 down (25%)
-                    // Feature 3 (index 2): 2/4 down (50%)
-                    // Feature 4 (index 3): 3/4 down (75%)
-                    // Feature 5 (index 4): bottom (100%)
-                    const percentage = index * 25;
-                    videoDesktop.style.transform = `translateY(${percentage}%)`;
+                const videoDesktop = document.getElementById('feature-video-desktop');
+                const leftContainer = document.getElementById('features-list');
+                const rightContainer = document.getElementById('features-right-container');
+                const stickyContainer = document.getElementById('video-sticky-container');
+                
+                if (videoDesktop && leftContainer && rightContainer) {
+                    // Make right container match left container height
+                    const leftHeight = leftContainer.offsetHeight;
+                    rightContainer.style.height = leftHeight + 'px';
+                    
+                    // Get video dimensions
+                    const videoHeight = videoDesktop.offsetHeight;
+                    
+                    // Set sticky container height to match left side
+                    stickyContainer.style.height = leftHeight + 'px';
+                    
+                    // Calculate available space for movement
+                    const availableSpace = leftHeight - videoHeight;
+                    
+                    // Calculate position based on index
+                    const featureItemsDesktop = document.querySelectorAll('.feature-item-left');
+                    const totalItems = featureItemsDesktop.length;
+                    const stepPercentage = index / (totalItems - 1); // 0 to 1
+                    const pixelOffset = availableSpace * stepPercentage;
+                    
+                    // Apply smooth transition
+                    videoDesktop.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                    
+                    // Apply transform with subtle effects
+                    videoDesktop.classList.add('transitioning');
+                    videoDesktop.style.transform = `translateY(${pixelOffset}px)`;
+                    
+                    // Add a slight fade effect during transition
+                    setTimeout(() => {
+                        videoDesktop.classList.remove('transitioning');
+                    }, 600);
                 }
             }
             
@@ -2499,6 +2645,8 @@
                 if (featureItemsDesktop[0]) {
                     featureItemsDesktop[0].classList.add('active');
                     updateVideo(featureItemsDesktop[0].dataset.feature, videoDesktop);
+                    // Set initial position to top
+                    setTimeout(() => updateVideoPosition(0), 100);
                 }
                 
                 featureItemsDesktop.forEach((item, index) => {
@@ -2518,6 +2666,19 @@
                         // Update video position
                         updateVideoPosition(index);
                     });
+                });
+                
+                // Handle window resize
+                let resizeTimeout;
+                window.addEventListener('resize', () => {
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(() => {
+                        const activeItem = document.querySelector('.feature-item-left.active');
+                        if (activeItem) {
+                            const activeIndex = Array.from(featureItemsDesktop).indexOf(activeItem);
+                            updateVideoPosition(activeIndex);
+                        }
+                    }, 150);
                 });
             }
             

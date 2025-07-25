@@ -692,12 +692,9 @@
             
             <!-- Mobile Navigation -->
             <div class="md:hidden flex items-center gap-3">
-                <a href="index.html" class="px-3 py-2 rounded-lg text-xs inline-flex items-center justify-center transition-all duration-300 bg-white/10 border border-white/20 hover:bg-white/20 text-white">
+                <a href="index.html" class="btn-primary px-3 py-2 rounded-lg text-xs inline-flex items-center justify-center">
                     <i class="fas fa-arrow-left mr-1"></i>
                     Back
-                </a>
-                <a href="https://discord.gg/XCBBGUMzUM" class="btn-primary px-3 py-2 rounded-lg text-xs inline-flex items-center justify-center">
-                    <i class="fab fa-discord"></i>
                 </a>
                 <button id="mobile-menu-btn" class="text-white p-2 rounded-lg hover:bg-white/10 transition-colors duration-200">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -710,6 +707,12 @@
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="md:hidden fixed inset-0 bg-black/95 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40">
+        <!-- Close button -->
+        <button id="mobile-menu-close" class="absolute top-6 right-6 text-white/60 hover:text-white transition-colors duration-200">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
         <div class="flex flex-col items-center justify-center h-full space-y-8 text-center px-6">
             <a href="index.html" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Tryll Engine</a>
             <a href="#features" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Features</a>
@@ -1310,6 +1313,7 @@
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
         
         if (mobileMenuBtn && mobileMenu) {
             mobileMenuBtn.addEventListener('click', () => {
@@ -1317,6 +1321,15 @@
                 mobileMenu.classList.toggle('invisible');
                 document.body.classList.toggle('overflow-hidden');
             });
+            
+            // Close button functionality
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', () => {
+                    mobileMenu.classList.add('opacity-0');
+                    mobileMenu.classList.add('invisible');
+                    document.body.classList.remove('overflow-hidden');
+                });
+            }
             
             // Close mobile menu when clicking a link
             mobileMenu.querySelectorAll('.mobile-menu-link').forEach(link => {

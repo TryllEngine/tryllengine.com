@@ -1054,10 +1054,6 @@
             
             <!-- Mobile Navigation -->
             <div class="md:hidden flex items-center gap-3">
-                <a href="boscotryll.html" class="px-3 py-2 rounded-lg text-xs inline-flex items-center justify-center transition-all duration-300 bg-white/10 border border-white/20 hover:bg-white/20 text-white">
-                    <i class="fas fa-gamepad mr-1"></i>
-                    Try It
-                </a>
                 <a href="#contact" class="btn-primary px-3 py-2 rounded-lg text-xs inline-flex items-center justify-center">
                     Get Started
                 </a>
@@ -1071,6 +1067,12 @@
         
         <!-- Mobile Menu Overlay -->
         <div id="mobile-menu" class="md:hidden fixed inset-0 bg-black/95 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40">
+            <!-- Close button -->
+            <button id="mobile-menu-close" class="absolute top-6 right-6 text-white/60 hover:text-white transition-colors duration-200">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
             <div class="flex flex-col items-center justify-center h-full space-y-8 text-center px-6">
                 <a href="#features" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Features</a>
                 <a href="boscotryll.html" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Try in Action</a>
@@ -2379,6 +2381,7 @@
         // Mobile menu functionality
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
         const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
         
         if (mobileMenuBtn && mobileMenu) {
@@ -2398,6 +2401,11 @@
             }
             
             mobileMenuBtn.addEventListener('click', toggleMenu);
+            
+            // Close menu when clicking close button
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', toggleMenu);
+            }
             
             // Close menu when clicking on overlay
             mobileMenu.addEventListener('click', function(e) {

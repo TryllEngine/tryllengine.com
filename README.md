@@ -1,111 +1,131 @@
-# TryllEngine Website
+# Tryll Engine Website
 
-A marketing website for TryllEngine with backend API for contact form submissions.
+Official marketing website for Tryll Engine - the AI engine that brings NPCs to life in games without cloud dependencies.
 
-## Features
+## 🚀 Overview
 
-- Static marketing website with modern design
-- Contact form with backend API
-- SQLite database for storing submissions
-- Team page with project showcase
-- Rate limiting and basic validation
-- Responsive design
+Tryll Engine enables game developers to integrate intelligent NPCs powered by local language models. This repository contains the marketing website and BoscoTryll showcase mod demonstration.
 
-## Setup
+## 🎮 Live Demo
 
-### Prerequisites
+Visit [tryllengine.com](https://tryllengine.com) to see:
+- Product features and capabilities
+- BoscoTryll showcase mod for Deep Rock Galactic
+- Pricing and early access information
 
-- Node.js (v16 or higher)
-- npm or yarn
-
-### Installation
-
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-4. For production:
-   ```bash
-   npm start
-   ```
-
-The server will start on `http://localhost:3000`
-
-### Database
-
-The application uses SQLite for storing contact form submissions. The database file (`contacts.db`) will be created automatically when you first run the server.
-
-### API Endpoints
-
-- `POST /api/contact` - Submit contact form
-- `GET /api/admin/contacts` - View all submissions (admin only)
-
-### Project Structure
+## 📁 Project Structure
 
 ```
-TryllEngine/
-├── index.html          # Main landing page
-├── team.html           # Team page with project showcase
-├── server.js           # Backend API server
-├── package.json        # Dependencies and scripts
-├── contacts.db         # SQLite database (created automatically)
-├── logo/              # Logo assets
-└── README.md          # This file
+TryllEngine.com/
+├── index.html              # Main landing page
+├── boscotryll.html         # BoscoTryll mod showcase page
+├── privacy-policy.html     # Privacy policy
+├── style.css              # Legacy styles (site uses Tailwind CSS)
+├── STYLE_GUIDE.md         # Design system documentation
+├── robots.txt             # SEO crawler rules
+├── sitemap.xml            # Search engine sitemap
+├── CNAME                  # GitHub Pages custom domain
+└── assets/
+    ├── favicon/           # Favicon files
+    ├── logo/              # Brand assets (SVG)
+    └── team_photos/       # Team photos (unused)
 ```
 
-### Features
+## 🛠️ Technology Stack
 
-#### Contact Form
-- Name, email, and category fields
-- Client-side and server-side validation
-- Rate limiting (5 submissions per 15 minutes per IP)
-- Stores submissions in SQLite database
+- **Frontend**: HTML5, Tailwind CSS (via CDN), Vanilla JavaScript
+- **Design**: Glass morphism, dark theme, responsive mobile-first
+- **Hosting**: GitHub Pages
+- **Icons**: Font Awesome 6.4.0
+- **Fonts**: Inter, JetBrains Mono
 
-#### Team Page
-- Showcases team expertise and game projects
-- Placeholder portraits for team members
-- Project details with platforms and contributions
+## 🎨 Key Features
 
-### Development
+### Marketing Site (index.html)
+- Interactive feature showcase with smooth animations
+- Developer-focused messaging
+- Pricing tiers (Free & Commercial)
+- FAQ section with collapsible items
+- Contact form for early access
 
-For development with auto-reload:
+### BoscoTryll Showcase (boscotryll.html)
+- Demonstrates Tryll Engine capabilities
+- Installation and customization guides
+- Personality examples for AI companions
+- System requirements and roadmap
+- Alpha community integration
+
+## 🚦 Development
+
+### Local Development
+
+Since this is a static website, simply open files in a browser:
+
 ```bash
-npm run dev
+# Direct browser
+open index.html
+
+# Or use any static server
+python -m http.server 8000
+# Visit http://localhost:8000
 ```
 
-For production deployment:
+### Making Changes
+
+1. Follow the design patterns in `STYLE_GUIDE.md`
+2. Use existing Tailwind classes and custom components
+3. Test on mobile devices (mobile-first approach)
+4. Ensure all animations use the established patterns
+
+### Git Workflow
+
 ```bash
-npm start
+# Stage changes
+git add .
+
+# Commit with descriptive message
+git commit -m "Your change description"
+
+# Push to GitHub
+git push origin main
 ```
 
-### Security Notes
+Changes are automatically deployed via GitHub Pages.
 
-- Rate limiting implemented for contact form
-- Basic input validation
-- CORS enabled for development
-- Admin endpoint needs authentication in production
+## 📝 Content Guidelines
 
-### Deployment
+### Brand Voice
+- **Tone**: Professional yet approachable
+- **Audience**: Game developers (studios, indies, modders)
+- **Focus**: Technical capabilities without jargon
 
-1. Install dependencies on server
-2. Set `NODE_ENV=production`
-3. Start with `npm start`
-4. Use process manager like PM2 for production
+### SEO Optimization
+- All pages include meta descriptions and Open Graph tags
+- Structured data for better search visibility
+- Sitemap.xml for search engine discovery
 
-### Contact Form Data
+## ⚖️ Legal
 
-Submissions include:
-- Name
-- Email
-- Category (Studio, Solo Developer, Modder, Other)
-- Timestamp
-- IP address (for rate limiting)
+### Trademarks
+- Tryll Engine is a trademark of Tryll Engine, Inc.
+- Deep Rock Galactic and Bosco are trademarks of Ghost Ship Games ApS
+- BoscoTryll is an unofficial mod not affiliated with Ghost Ship Games
 
-Access submissions via `/api/admin/contacts` (add authentication for production use).
+### License
+© 2025 Tryll Engine, Inc. All rights reserved.
+
+## 🤝 Contributing
+
+This is the official Tryll Engine website. For questions or suggestions:
+- Join our [Discord](https://discord.gg/XCBBGUMzUM)
+- Email: Contact through the website form
+
+## 🔗 Links
+
+- **Website**: [tryllengine.com](https://tryllengine.com)
+- **Discord**: [Join Community](https://discord.gg/XCBBGUMzUM)
+- **BoscoTryll Mod**: [View Showcase](https://tryllengine.com/boscotryll.html)
+
+---
+
+Built with ❤️ by the Tryll Engine team

@@ -6,6 +6,3 @@ Allow: /
 
 # Sitemap location
 Sitemap: https://tryllengine.com/sitemap.xml
-
-# LLMs.txt location for AI models
-LLMs: https://tryllengine.com/llms.txt

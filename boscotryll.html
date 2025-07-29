@@ -1128,14 +1128,7 @@
                     </li>
                     <li class="flex items-start">
                         <span class="text-white font-bold mr-3 text-xl">5.</span>
-                        <span class="text-secondary">Enable subtitles in Game Settings <span class="inline-flex items-center ml-1">
-                            <span class="relative group">
-                                <i class="fas fa-info-circle text-xs text-white/50 cursor-help"></i>
-                                <span class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-black/90 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
-                                    Game must be in English
-                                </span>
-                            </span>
-                        </span></span>
+                        <span class="text-secondary">Enable subtitles in Game Settings</span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-white font-bold mr-3 text-xl">6.</span>
@@ -1686,6 +1679,27 @@
                     });
                 });
             }
+            
+            // Smooth scroll with offset for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const offset = 100; // Match the scroll-margin-top value
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - offset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>

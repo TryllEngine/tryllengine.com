@@ -226,7 +226,13 @@
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
         
         html {
-            scroll-padding-top: 80px; /* Account for fixed header height */
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px; /* Account for fixed header height */
+        }
+        
+        /* Additional offset for anchor targets */
+        section[id] {
+            scroll-margin-top: 100px;
         }
         
         :root {
@@ -2867,6 +2873,27 @@
                     });
                 });
             }
+            
+            // Smooth scroll with offset for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const offset = 100; // Match the scroll-margin-top value
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - offset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
         });
         
     </script>

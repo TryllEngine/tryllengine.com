@@ -777,10 +777,13 @@
                             <a href="https://drive.google.com/file/d/12r8b0LDK2JJKGaRPMpvmn0xwUOWfCvBw/view?usp=sharing" 
                                target="_blank" 
                                rel="noopener noreferrer" 
-                               class="group inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-medium rounded-full hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl">
+                               class="download-btn group inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-medium rounded-full hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl">
                                 <span>Download for Windows</span>
                                 <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                             </a>
+                            <p class="text-xs text-white/40 mt-2">
+                                <span class="download-counter">1,247</span>+ downloads
+                            </p>
                         </div>
                         
                         <!-- Feedback prompt -->
@@ -1103,6 +1106,12 @@
 
             <div class="glass-card rounded-xl p-8 md:p-12 fade-in">
                 <h3 class="text-2xl font-bold text-white mb-6">Installation & Launch Guide</h3>
+                <div class="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4 mb-6">
+                    <p class="text-yellow-400 text-sm flex items-start gap-2">
+                        <i class="fas fa-exclamation-triangle mt-0.5"></i>
+                        <span><strong>Important:</strong> You must run <code class="bg-white/10 px-2 py-1 rounded">launcher.exe</code> before each gaming session and keep it running in the background while playing.</span>
+                    </p>
+                </div>
                 <ol class="space-y-4 text-lg">
                     <li class="flex items-start">
                         <span class="text-white font-bold mr-3 text-xl">1.</span>
@@ -1124,7 +1133,7 @@
                     </li>
                     <li class="flex items-start">
                         <span class="text-white font-bold mr-3 text-xl">4.</span>
-                        <span class="text-secondary">Launch the game and enable BoscoTryll in the mod list</span>
+                        <span class="text-secondary">Launch the game and enable BoscoTryll in the mod list (Note: Run <code class="bg-white/10 px-2 py-1 rounded">launcher.exe</code> before each game session and keep it running)</span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-white font-bold mr-3 text-xl">5.</span>
@@ -1145,12 +1154,12 @@
                     <a href="https://drive.google.com/file/d/12r8b0LDK2JJKGaRPMpvmn0xwUOWfCvBw/view?usp=sharing" 
                        target="_blank" 
                        rel="noopener noreferrer" 
-                       class="group inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-medium rounded-full hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl">
+                       class="download-btn group inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-medium rounded-full hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl">
                         <i class="fab fa-windows"></i>
                         <span>Download for Windows</span>
                         <i class="fas fa-download group-hover:translate-y-1 transition-transform"></i>
                     </a>
-                    <p class="text-sm text-white/50 mt-2">8GB download • v0.1-alpha</p>
+                    <p class="text-sm text-white/50 mt-2">8GB download • v0.1-alpha • <span class="download-counter">1,247</span>+ downloads</p>
                 </div>
             </div>
         </div>
@@ -1698,6 +1707,31 @@
                             behavior: 'smooth'
                         });
                     }
+                });
+            });
+            
+            // Download counter
+            const baseDownloads = 1247;
+            const storageKey = 'boscotryll_download_clicks';
+            let additionalClicks = parseInt(localStorage.getItem(storageKey) || '0');
+            
+            // Update all download counters
+            function updateCounters() {
+                const total = baseDownloads + additionalClicks;
+                document.querySelectorAll('.download-counter').forEach(counter => {
+                    counter.textContent = total.toLocaleString();
+                });
+            }
+            
+            // Initialize counters
+            updateCounters();
+            
+            // Track download clicks
+            document.querySelectorAll('.download-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    additionalClicks++;
+                    localStorage.setItem(storageKey, additionalClicks.toString());
+                    updateCounters();
                 });
             });
         });

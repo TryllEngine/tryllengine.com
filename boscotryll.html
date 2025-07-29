@@ -789,12 +789,18 @@
                         </div>
                         
                         <!-- Meta info -->
-                        <div class="flex flex-wrap items-center gap-6 text-sm text-white/40 justify-center lg:justify-start">
-                            <span>v0.1-alpha</span>
-                            <span class="hidden sm:inline">•</span>
-                            <span>8GB download</span>
-                            <span class="hidden sm:inline">•</span>
-                            <span>RTX 3060+ recommended</span>
+                        <div class="flex flex-wrap items-center justify-between gap-6 text-sm text-white/40">
+                            <div class="flex flex-wrap items-center gap-6">
+                                <span>v0.1-alpha</span>
+                                <span class="hidden sm:inline">•</span>
+                                <span>8GB download</span>
+                                <span class="hidden sm:inline">•</span>
+                                <span>RTX 3060+ recommended</span>
+                            </div>
+                            <a href="#features" class="text-white/40 hover:text-white/80 transition-colors flex items-center gap-2">
+                                <span>Explore Features</span>
+                                <i class="fas fa-chevron-down text-xs"></i>
+                            </a>
                         </div>
                         
                         <!-- Alpha warning -->
@@ -826,15 +832,6 @@
                 </div>
             </div>
             
-            <!-- Bottom navigation - more subtle -->
-            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 fade-in">
-                <div class="flex items-center gap-8 text-sm">
-                    <a href="#features" class="text-white/40 hover:text-white/80 transition-colors flex items-center gap-2">
-                        <span>Explore Features</span>
-                        <i class="fas fa-chevron-down text-xs"></i>
-                    </a>
-                </div>
-            </div>
         </div>
         
     </section>
@@ -1295,6 +1292,13 @@
                                 <div>
                                     <p class="text-white font-semibold">OS</p>
                                     <p class="text-secondary">Windows</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-language text-white mr-3 mt-1"></i>
+                                <div>
+                                    <p class="text-white font-semibold">Game Settings</p>
+                                    <p class="text-secondary">Language: English, Subtitles: Enabled</p>
                                 </div>
                             </li>
                         </ul>

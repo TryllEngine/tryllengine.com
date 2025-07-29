@@ -4,31 +4,33 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-TryllEngine is a static marketing website for a gaming AI product. The site promotes an AI engine that enables intelligent NPCs in games, running locally without cloud dependencies.
+TryllEngine is a static marketing website for a gaming AI product. The site promotes an AI engine that enables intelligent NPCs in games, running locally without cloud dependencies. The site includes a showcase mod demonstration (BoscoTryll) for Deep Rock Galactic.
 
 ## Project Structure
 
 ```
-TryllEngine/
+TryllEngine.com/
 ├── index.html              # Main landing page with embedded JavaScript
+├── boscotryll.html         # BoscoTryll mod showcase page
 ├── privacy-policy.html     # Privacy policy page
-├── style.css              # Basic styles (mostly unused as site uses Tailwind CSS)
+├── style.css              # Legacy styles (mostly unused as site uses Tailwind CSS)
+├── STYLE_GUIDE.md         # Design system documentation
 ├── robots.txt             # Search engine crawling rules
 ├── sitemap.xml            # XML sitemap for search engines
 ├── CNAME                  # GitHub Pages custom domain
-├── assets/
-│   ├── favicon/           # Favicon files in various formats
-│   ├── logo/              # Logo assets (SVG)
-│   └── team_photos/       # Team member photos (unused)
-└── everything-you-need-section.html  # HTML snippet (backup/reference)
+└── assets/
+    ├── favicon/           # Favicon files in various formats
+    ├── logo/              # Logo assets (SVG)
+    └── team_photos/       # Team member photos (unused)
 ```
 
 ## Key Technologies
 
-- **HTML5** - Single page website structure
+- **HTML5** - Static website structure
 - **Tailwind CSS** - Utility-first CSS framework loaded via CDN
-- **Font Awesome** - Icon library loaded via CDN
-- **Vanilla JavaScript** - For interactive elements (particles, animations, form handling)
+- **Font Awesome** - Icon library loaded via CDN (v6.4.0)
+- **Vanilla JavaScript** - For interactive elements (animations, form handling, feature showcase)
+- **GitHub Pages** - Static hosting
 
 ## Development Commands
 
@@ -45,79 +47,120 @@ python -m http.server 8000
 
 ## Architecture Notes
 
-The website is a single-page marketing site with:
+### Main Landing Page (index.html)
+1. **Navigation**: Fixed header with responsive mobile menu
+2. **Hero Section**: Main value proposition with CTA buttons
+3. **Interactive Features**: Developer-focused feature showcase with smooth animations
+4. **"The Old Way is Dead"**: Comparison section highlighting advantages
+5. **Cost Analysis**: Visual comparison of cloud vs local costs
+6. **Target Audiences**: Studios, Solo Developers, Modders
+7. **FAQ Section**: Collapsible accordion-style questions
+8. **Pricing Tiers**: Free and Commercial options
+9. **Contact Form**: Early access signup
 
-1. **index.html** - Contains all content, structured in sections:
-   - Hero section with branding and key messaging
-   - Demo section with YouTube embed and action cards
-   - "The Old Way is Dead" comparison section
-   - Interactive features showcase with clickable demo cards
-   - Feature grid with detailed explanations
-   - Cost comparison and value proposition
-   - Target audience breakdown (Studios, Solo Developers, Modders)
-   - FAQ section with collapsible answers
-   - Pricing tiers and final call-to-action
-   - Contact form (redirects to homepage on submission)
+### BoscoTryll Showcase (boscotryll.html)
+1. **Hero Section**: Mod introduction with download CTA
+2. **Disclaimer**: Trademark notices for Ghost Ship Games
+3. **Feature Showcase**: Interactive demo of mod capabilities
+4. **Installation Guide**: Step-by-step instructions
+5. **Customization**: Personality examples and configuration
+6. **System Requirements**: Hardware specifications
+7. **Roadmap**: Planned features and improvements
+8. **Community Integration**: Discord links and feedback prompts
 
-2. **privacy-policy.html** - Privacy policy page with legal information
-
-3. **Styling approach**:
-   - Primarily uses Tailwind CSS via CDN
-   - Custom Tailwind config embedded in `<script>` tag
-   - Custom CSS for animations, glass effects, and particles
-   - The separate style.css file appears to be legacy/unused
-
-4. **JavaScript functionality**:
-   - Intersection Observer for fade-in animations
-   - Ripple effects on buttons
-   - Interactive feature showcase with smooth transitions
-   - FAQ accordion with expand/collapse functionality
-   - Form submission handlers with null checks
-   - Fallback content system for missing video assets
+### JavaScript Functionality
+- **Feature Showcase**: Dynamic content switching with position tracking
+- **Mobile Menu**: Toggle with close button functionality
+- **Animations**: Intersection Observer for fade-in effects
+- **FAQ Accordion**: Expand/collapse functionality
+- **Form Handling**: Validation and submission with privacy checkbox
+- **Ripple Effects**: Button click animations
 
 ## Important Patterns
 
-- **Glass morphism design** - `.glass-card` class for translucent card effects
-- **Gradient text** - `.gradient-text` class for colored headings
-- **Neon glow effects** - `.neon-glow` classes for button hover states
-- **Grid pattern backgrounds** - CSS-based grid overlays
-- **Responsive design** - Mobile-first approach using Tailwind breakpoints
+### CSS Classes
+- **Glass morphism**: `.glass-card` for translucent card effects
+- **Navigation glass**: `.nav-glass-card` with enhanced frost effects
+- **Gradient text**: `.gradient-text` for branded headings
+- **Primary button**: `.btn-primary` for main CTAs
+- **Text hierarchy**: `.heading-primary`, `.text-secondary`
+- **Animations**: `.fade-in`, `.animate-slide-up`, `.animate-scale-in`
 
-## Brand Colors
+### Design System
+- **Dark theme only**: Pure black (#000000) background
+- **Mobile-first**: All components responsive by default
+- **Consistent spacing**: Using Tailwind's spacing scale
+- **Typography**: Inter for UI, JetBrains Mono for code
 
-- **Primary company color**: #232E41 (dark blue-gray) - Use for accents and highlights
-- **Primary blue**: #3B82F6 (Tailwind blue-500) - Used for buttons and links
-- **Secondary colors**: #F6F0EB 
+## Brand Guidelines
 
-## SEO Setup
+### Colors
+- **Primary**: #232E41 (dark blue-gray)
+- **Primary Blue**: #3B82F6 (Tailwind blue-500)
+- **Secondary**: #F6F0EB (light cream)
+- **Text Colors**:
+  - Primary headings: rgba(255, 255, 255, 0.9)
+  - Body text: rgba(255, 255, 255, 0.65)
+  - Muted text: rgba(255, 255, 255, 0.4)
 
-- **Meta tags**: Description, keywords, Open Graph, Twitter cards
-- **robots.txt**: Allows all crawlers, points to sitemap
-- **sitemap.xml**: Lists main pages for search engine discovery
-- **Canonical URLs**: Set for all pages
+### Voice & Tone
+- **Audience**: Game developers (technical but approachable)
+- **Style**: Professional yet conversational
+- **Focus**: Benefits over features, local-first messaging
 
-## Recent Improvements (2025-07-18)
+## SEO & Analytics
 
-### SEO Implementation
-- Added comprehensive meta tags for search engine optimization
-- Created robots.txt and sitemap.xml files
-- Removed unused pages (team.html, thank-you.html, old-features-section-backup.html)
-- Updated form submissions to redirect to homepage
-- Cleaned up project structure by removing Node.js files
+- **Meta Tags**: Comprehensive Open Graph and Twitter cards
+- **Structured Data**: JSON-LD for better search visibility
+- **Sitemap**: XML sitemap for all pages
+- **Canonical URLs**: Properly set for all pages
+- **Robots.txt**: Configured for optimal crawling
 
-## Recent Improvements (2025-07-09)
+## Recent Improvements (2025-07-25)
 
-### Fixed JavaScript Issues
-- Added null checks for form event listeners to prevent console errors
-- Improved error handling for missing DOM elements
-- Enhanced feature showcase with proper fallback content
+### Major Additions
+- Added BoscoTryll showcase page demonstrating Tryll Engine capabilities
+- Created STYLE_GUIDE.md for design system documentation
+- Implemented trademark disclaimers for Ghost Ship Games
 
-### Interactive Features
-- **Feature Showcase**: Clickable feature items with smooth transitions and visual feedback
-- **FAQ Accordion**: Fully functional collapsible FAQ items (collapsed by default)
-- **Fallback System**: Rich placeholder content for missing video assets with icons and descriptions
+### UX Improvements
+- Rewrote feature descriptions to target developers instead of players
+- Updated navigation CTAs ("Try in Action", "Add AI to Your Game")
+- Added icons to navigation buttons for visual clarity
+- Simplified mobile navigation to single primary CTA
+- Added close buttons to mobile menu overlays
+
+### Technical Fixes
+- Fixed animation opacity issues with `animation-fill-mode: both`
+- Implemented proper height matching for feature showcase columns
+- Added container IDs for JavaScript functionality
+- Fixed text disappearing after animations
+- Improved contrast for secondary buttons
 
 ### Content Updates
-- Enhanced FAQ answers with comprehensive information
-- Added proper visual indicators for interactive elements
-- Improved user experience with meaningful placeholder content
+- Renamed roadmap items for clarity (e.g., "Voice & Text Chat" instead of "NLP")
+- Added personality examples (Veteran Miner, Annoyed Old-Timer, Lazy Little Bot)
+- Updated tagline to position as showcase mod
+- Added "tell us what you think" messaging for alpha feedback
+
+## Best Practices
+
+### When Making Changes
+1. **Always use existing patterns** - Check STYLE_GUIDE.md first
+2. **Test on mobile** - Mobile-first approach is critical
+3. **Maintain consistency** - Use established color and spacing systems
+4. **Preserve animations** - Keep smooth transitions and effects
+5. **Update sitemap.xml** - When adding new pages
+
+### Code Style
+- Use semantic HTML5 elements
+- Follow Tailwind utility patterns
+- Keep JavaScript vanilla (no frameworks)
+- Comment complex animations or interactions
+- Use descriptive class names for custom styles
+
+### Git Workflow
+- Stage only relevant files (exclude test files, temp files)
+- Write clear commit messages
+- Update this file when making architectural changes
+- Test locally before pushing

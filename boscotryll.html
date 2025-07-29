@@ -781,9 +781,6 @@
                                 <span>Download for Windows</span>
                                 <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                             </a>
-                            <p class="text-xs text-white/40 mt-2">
-                                <span class="download-counter">...</span> downloads
-                            </p>
                         </div>
                         
                         <!-- Feedback prompt -->
@@ -1161,7 +1158,7 @@
                         <span>Download for Windows</span>
                         <i class="fas fa-download group-hover:translate-y-1 transition-transform"></i>
                     </a>
-                    <p class="text-sm text-white/50 mt-2">8GB download • v0.1-alpha • <span class="download-counter">...</span> downloads</p>
+                    <p class="text-sm text-white/50 mt-2">8GB download • v0.1-alpha</p>
                 </div>
             </div>
         </div>
@@ -1712,47 +1709,21 @@
                 });
             });
             
-            // Download counter using CountAPI
-            async function fetchDownloadCount() {
-                try {
-                    const response = await fetch('https://api.countapi.xyz/get/tryllengine.com/boscotryll-downloads');
-                    const data = await response.json();
-                    return data.value || 0;
-                } catch (error) {
-                    console.error('Failed to fetch download count:', error);
-                    return 0;
-                }
-            }
-            
-            async function incrementDownloadCount() {
+            // Internal download tracking using CountAPI
+            async function trackDownloadClick() {
                 try {
                     const response = await fetch('https://api.countapi.xyz/hit/tryllengine.com/boscotryll-downloads');
                     const data = await response.json();
-                    return data.value || 0;
+                    console.log('Download tracked:', data.value);
                 } catch (error) {
-                    console.error('Failed to increment download count:', error);
-                    return 0;
+                    console.error('Failed to track download:', error);
                 }
             }
             
-            // Update all download counters
-            async function updateCounters() {
-                const count = await fetchDownloadCount();
-                document.querySelectorAll('.download-counter').forEach(counter => {
-                    counter.textContent = count.toLocaleString();
-                });
-            }
-            
-            // Initialize counters
-            updateCounters();
-            
-            // Track download clicks
+            // Track download clicks for internal stats
             document.querySelectorAll('.download-btn').forEach(btn => {
-                btn.addEventListener('click', async function() {
-                    const newCount = await incrementDownloadCount();
-                    document.querySelectorAll('.download-counter').forEach(counter => {
-                        counter.textContent = newCount.toLocaleString();
-                    });
+                btn.addEventListener('click', function() {
+                    trackDownloadClick();
                 });
             });
         });

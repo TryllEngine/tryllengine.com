@@ -655,6 +655,13 @@
         #feature-video-desktop.transitioning {
             box-shadow: 0 0 60px rgba(35, 46, 65, 0.5);
         }
+        
+        /* Tab styles */
+        .tab-active {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+            color: white !important;
+        }
     </style>
 </head>
 <body id="top" class="antialiased">
@@ -774,7 +781,7 @@
                     <!-- CTA Section -->
                     <div class="space-y-6 fade-in">
                         <div>
-                            <a href="https://drive.google.com/file/d/12r8b0LDK2JJKGaRPMpvmn0xwUOWfCvBw/view" 
+                            <a href="https://drive.google.com/file/d/192ABqDSZNscdUE6MnmY7UmQI4wXm4iJG/view" 
                                target="_blank" 
                                rel="noopener noreferrer" 
                                class="download-btn group inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-medium rounded-full hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl">
@@ -1028,7 +1035,7 @@
                             ✓
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-white mb-4">In-game UI for personality & voice customization <span class="text-green-400 text-lg font-semibold ml-2">✓ Released</span></h3>
+                            <h3 class="text-2xl font-bold text-white mb-4">In-game UI to change bosco personality & voice <span class="text-green-400 text-lg font-semibold ml-2">✓ Released</span></h3>
                             <p class="text-secondary body-medium">
                                 Customize Bosco's personality and voice directly from the game menu. No more editing config files - adjust your companion's traits on the fly.
                             </p>
@@ -1102,55 +1109,54 @@
             </div>
 
             <div class="glass-card rounded-xl p-8 md:p-12 fade-in">
-                <h3 class="text-2xl font-bold text-white mb-6">Installation & Launch Guide</h3>
+                <h3 class="text-2xl font-bold text-white mb-6">Installation</h3>
                 <ol class="space-y-4 text-lg">
                     <li class="flex items-start">
                         <span class="text-white font-bold mr-3 text-xl">1.</span>
-                        <span class="text-secondary"><strong>First Launch:</strong> Run <code class="bg-white/10 px-2 py-1 rounded">launcher.exe</code> (this will install all dependencies)</span>
+                        <span class="text-secondary"><strong>Run installer.exe</strong></span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-white font-bold mr-3 text-xl">2.</span>
-                        <span class="text-secondary">Allow Windows Defender to run the script when prompted</span>
+                        <span class="text-secondary"><strong>Allow Windows Defender</strong> when prompted</span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-white font-bold mr-3 text-xl">3.</span>
-                        <span class="text-secondary">Wait for automatic installation of:
+                        <span class="text-secondary"><strong>Wait for automatic installation</strong> (~10-15 minutes)
                             <ul class="mt-2 ml-6 space-y-1 text-base">
                                 <li>• Python 3.12 with dependencies</li>
-                                <li>• Ollama with model qwen2.5:7b</li>
-                                <li>• Mod files into <code class="bg-white/10 px-1 py-0.5 rounded text-sm">Steam\steamapps\common\Deep Rock Galactic\FSD\Mods\BoscoTryll\</code></li>
+                                <li>• Ollama with qwen2.5:7b model (~6GB download)</li>
+                                <li>• All required mod files</li>
                             </ul>
                         </span>
                     </li>
+                </ol>
+                
+                <!-- Usage section -->
+                <h3 class="text-2xl font-bold text-white mb-6 mt-12">Usage</h3>
+                <ol class="space-y-4 text-lg">
                     <li class="flex items-start">
-                        <span class="text-white font-bold mr-3 text-xl">4.</span>
-                        <span class="text-secondary">Launch the game and enable BoscoTryll in the mod list</span>
+                        <span class="text-white font-bold mr-3 text-xl">1.</span>
+                        <span class="text-secondary">Run <code class="bg-white/10 px-2 py-1 rounded">launcher.exe</code> from the desktop or from BoscoTryll folder. Keep it open.</span>
                     </li>
                     <li class="flex items-start">
-                        <span class="text-white font-bold mr-3 text-xl">5.</span>
-                        <span class="text-secondary">Enable subtitles in Game Settings</span>
+                        <span class="text-white font-bold mr-3 text-xl">2.</span>
+                        <span class="text-secondary">Launch Deep Rock Galactic</span>
                     </li>
                     <li class="flex items-start">
-                        <span class="text-white font-bold mr-3 text-xl">6.</span>
-                        <span class="text-secondary">Start a mission with Bosco (single-player or multiplayer without players) - Bosco will react to all in-game shouts according to his personality (<a href="#customization" class="text-blue-400 hover:text-blue-300 underline">customizable</a>)</span>
+                        <span class="text-white font-bold mr-3 text-xl">3.</span>
+                        <span class="text-secondary">The mod will work automatically in any mission with Bosco</span>
                     </li>
                 </ol>
                 
-                <!-- Subsequent launches -->
-                <div class="mt-8 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-                    <h4 class="text-lg font-semibold text-blue-400 mb-2">For Subsequent Launches:</h4>
+                <div class="mt-4 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
                     <p class="text-white/80 text-sm">
-                        Run <code class="bg-white/10 px-2 py-1 rounded">launcher.exe</code> before starting the game and keep it running in the background while playing for the mod to work.
+                        You can safely restart <code class="bg-white/10 px-1 py-0.5 rounded">launcher.exe</code> during gameplay if needed.
                     </p>
-                </div>
-                
-                <div class="mt-4 p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
-                    <p class="text-green-400 font-semibold">✓ That's it! BoscoTryll is now installed and ready to use.</p>
                 </div>
                 
                 <!-- Download button -->
                 <div class="mt-8 text-center">
-                    <a href="https://drive.google.com/file/d/12r8b0LDK2JJKGaRPMpvmn0xwUOWfCvBw/view?usp=sharing" 
+                    <a href="https://drive.google.com/file/d/192ABqDSZNscdUE6MnmY7UmQI4wXm4iJG/view" 
                        target="_blank" 
                        rel="noopener noreferrer" 
                        class="download-btn group inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-medium rounded-full hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl">
@@ -1178,34 +1184,73 @@
 
             <div class="glass-card rounded-xl p-8 md:p-12 fade-in">
                 <h3 class="text-2xl font-bold text-white mb-6">Customize Bosco's Personality</h3>
-                <p class="text-secondary mb-6">
-                    Edit Bosco's personality by modifying the configuration file:
-                </p>
                 
-                <div class="code-block mb-6" data-language="JSON">
+                <!-- Tab buttons -->
+                <div class="flex gap-2 mb-6">
+                    <button id="ingame-tab" class="px-6 py-3 rounded-lg bg-white/10 text-white font-medium border border-white/20 transition-all duration-300 hover:bg-white/20 tab-active" onclick="switchTab('ingame')">
+                        In-Game
+                    </button>
+                    <button id="config-tab" class="px-6 py-3 rounded-lg bg-white/5 text-white/60 font-medium border border-white/10 transition-all duration-300 hover:bg-white/10" onclick="switchTab('config')">
+                        Config File
+                    </button>
+                </div>
+                
+                <!-- In-Game tab content -->
+                <div id="ingame-content" class="tab-content">
+                    <p class="text-secondary mb-6">
+                        Press <code class="bg-white/10 px-2 py-1 rounded">~</code> to open the customization UI
+                    </p>
+                    <h4 class="text-lg font-semibold text-white mb-3">In-Game Customization</h4>
+                    <p class="text-secondary mb-4">
+                        The in-game UI allows you to:
+                    </p>
+                    <ul class="space-y-2 text-secondary ml-6">
+                            <li class="flex items-start">
+                                <span class="mr-2">•</span>
+                                <span>Set a custom personality for Bosco</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-2">•</span>
+                                <span>Pick from available voices</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-2">•</span>
+                                <span>Preview changes instantly</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-2">•</span>
+                                <span>Save your preferences for future sessions</span>
+                            </li>
+                    </ul>
+                    
+                    <div class="mt-8 p-6 bg-primary/20 rounded-lg border border-primary/30">
+                        <h4 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+                            <i class="fas fa-users"></i>
+                            Share Your Personality Prompts
+                        </h4>
+                        <p class="text-secondary mb-4">
+                            Share your best Bosco personality prompts with the community in our Discord!
+                        </p>
+                        <a href="https://discord.gg/quR73ZuBwF" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-300">
+                            <i class="fab fa-discord text-xl"></i>
+                            <span class="font-semibold">#🤖prompt-engineering</span>
+                            <i class="fas fa-external-link-alt text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Config File tab content -->
+                <div id="config-content" class="tab-content" style="display: none;">
+                    <p class="text-secondary mb-6">
+                        Edit Bosco's personality by modifying the configuration file:
+                    </p>
+                    
+                    <div class="code-block mb-6" data-language="JSON">
                     <p class="text-white/80 mb-2">Steam\steamapps\common\Deep Rock Galactic\FSD\Mods\BoscoTryll\library\bosco_config.json:</p>
                     <pre class="text-green-400 whitespace-pre-wrap break-words">{
   "personality": "Sad and depressed personality. Very lazy and lamenting everything. Clearly not enthusiastic to be here. Every response carries some regret and complaining but reluctingly submissive.",
   "voice": "am_michael"
 }</pre>
-                </div>
-                
-                <div class="mt-8 grid gap-4">
-                    <h4 class="text-xl font-bold text-white">Example Personalities:</h4>
-                    <div class="space-y-3">
-                        <div class="p-4 bg-white/5 rounded-lg border border-white/10">
-                            <p class="text-white font-semibold mb-1">Veteran Miner</p>
-                            <p class="text-secondary text-sm">"Grizzled veteran who's seen it all. Shares war stories and mining wisdom."</p>
-                        </div>
-                        <div class="p-4 bg-white/5 rounded-lg border border-white/10">
-                            <p class="text-white font-semibold mb-1">Annoyed Old-Timer</p>
-                            <p class="text-secondary text-sm">"Been doing this job too long. Complains about everything but gets the job done."</p>
-                        </div>
-                        <div class="p-4 bg-white/5 rounded-lg border border-white/10">
-                            <p class="text-white font-semibold mb-1">Lazy Little Bot</p>
-                            <p class="text-secondary text-sm">"Would rather be in sleep mode. Does the bare minimum with lots of sighs."</p>
-                        </div>
-                    </div>
                 </div>
                 
                 <div class="mt-8">
@@ -1246,6 +1291,7 @@
                         <i class="fas fa-external-link-alt text-sm"></i>
                     </a>
                 </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1271,7 +1317,7 @@
                                 <i class="fas fa-microchip text-white mr-3 mt-1"></i>
                                 <div>
                                     <p class="text-white font-semibold">GPU</p>
-                                    <p class="text-secondary">12GB+ VRAM (Works best on NVIDIA)</p>
+                                    <p class="text-secondary">12GB+ VRAM (NVIDIA recommended, RTX 3060+)</p>
                                 </div>
                             </li>
                             <li class="flex items-start">
@@ -1285,7 +1331,7 @@
                                 <i class="fas fa-hdd text-white mr-3 mt-1"></i>
                                 <div>
                                     <p class="text-white font-semibold">Storage</p>
-                                    <p class="text-secondary">8GB free space (LLM takes ~6GB)</p>
+                                    <p class="text-secondary">8GB free space</p>
                                 </div>
                             </li>
                             <li class="flex items-start">
@@ -1296,10 +1342,10 @@
                                 </div>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-language text-white mr-3 mt-1"></i>
+                                <i class="fas fa-gamepad text-white mr-3 mt-1"></i>
                                 <div>
-                                    <p class="text-white font-semibold">Game Settings</p>
-                                    <p class="text-secondary">Language: English, Subtitles: Enabled</p>
+                                    <p class="text-white font-semibold">Game</p>
+                                    <p class="text-secondary">Deep Rock Galactic with English language and subtitles enabled</p>
                                 </div>
                             </li>
                         </ul>
@@ -1313,10 +1359,7 @@
                                 Important Information
                             </p>
                             <p class="text-secondary mb-3">
-                                LLM is loaded into VRAM at all times and takes up about 9GBs of VRAM. GPU processing resources only used during active text generation.
-                            </p>
-                            <p class="text-secondary">
-                                <strong class="text-white">Performance Tip:</strong> If you're experiencing FPS drops, tweak your graphics settings to make room for the LLM.
+                                The AI model uses ~9GB VRAM at all times. Adjust graphics settings if experiencing FPS drops.
                             </p>
                         </div>
                     </div>
@@ -1727,6 +1770,32 @@
                 });
             });
         });
+        
+        // Tab switching function
+        function switchTab(tab) {
+            const ingameTab = document.getElementById('ingame-tab');
+            const configTab = document.getElementById('config-tab');
+            const ingameContent = document.getElementById('ingame-content');
+            const configContent = document.getElementById('config-content');
+            
+            if (tab === 'ingame') {
+                ingameTab.classList.add('tab-active', 'bg-white/10', 'border-white/20');
+                ingameTab.classList.remove('bg-white/5', 'text-white/60', 'border-white/10');
+                configTab.classList.remove('tab-active', 'bg-white/10', 'border-white/20');
+                configTab.classList.add('bg-white/5', 'text-white/60', 'border-white/10');
+                
+                ingameContent.style.display = 'block';
+                configContent.style.display = 'none';
+            } else {
+                configTab.classList.add('tab-active', 'bg-white/10', 'border-white/20');
+                configTab.classList.remove('bg-white/5', 'text-white/60', 'border-white/10');
+                ingameTab.classList.remove('tab-active', 'bg-white/10', 'border-white/20');
+                ingameTab.classList.add('bg-white/5', 'text-white/60', 'border-white/10');
+                
+                configContent.style.display = 'block';
+                ingameContent.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>

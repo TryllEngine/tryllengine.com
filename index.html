@@ -2373,15 +2373,7 @@
                 });
             });
 
-            // Track form submissions
-            const contactForm = document.getElementById('contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function() {
-                    const email = this.querySelector('[name="email"]').value;
-                    const type = this.querySelector('[name="type"]').value;
-                    trackEvent('Form', 'submit', 'Contact Form - ' + type);
-                });
-            }
+            // Form tracking will be handled in the main form submit handler below
 
             // Track scroll depth
             let scrollDepths = [25, 50, 75, 100];
@@ -2453,6 +2445,11 @@
                 const submitBtn = this.querySelector('button[type="submit"]');
                 const originalText = submitBtn.textContent;
                 
+                // Track form submission
+                const email = this.querySelector('[name="email"]').value;
+                const type = this.querySelector('[name="type"]').value;
+                trackEvent('Form', 'submit', 'Contact Form - ' + type);
+                
                 // Disable submit button and show loading
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Submitting...';
@@ -2469,8 +2466,11 @@
                     });
                     
                     if (response.ok) {
-                        // Redirect to thank you page
-                        window.location.href = '/';
+                        // Show success message and reset form
+                        alert('Thank you for your interest! We\'ll be in touch soon.');
+                        this.reset();
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
                     } else {
                         const data = await response.json();
                         if (data.errors) {
@@ -2478,12 +2478,12 @@
                         } else {
                             alert('There was an error submitting the form. Please try again.');
                         }
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalText;
                     }
                 } catch (error) {
                     console.error('Error:', error);
                     alert('There was an error submitting the form. Please try again.');
-                } finally {
-                    // Re-enable submit button
                     submitBtn.disabled = false;
                     submitBtn.textContent = originalText;
                 }

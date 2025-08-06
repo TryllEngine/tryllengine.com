@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K8MPGKVX');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Google tag (gtag.js) - Keep for existing tracking -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V0BH3P7R63"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -1032,6 +1040,10 @@
     </style>
 </head>
 <body id="top" class="antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8MPGKVX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <!-- SVG Noise Filter -->
     <svg style="display: none;">
         <filter id="noiseFilter">
@@ -2306,6 +2318,93 @@
     </footer>
 
     <script>
+        // Google Analytics Event Tracking
+        function trackEvent(category, action, label = null, value = null) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', action, {
+                    'event_category': category,
+                    'event_label': label,
+                    'value': value
+                });
+            }
+        }
+
+        // Track all button clicks
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track CTA button clicks
+            document.querySelectorAll('a[href*="boscotryll"], button').forEach(element => {
+                element.addEventListener('click', function(e) {
+                    const text = this.textContent.trim();
+                    const href = this.getAttribute('href');
+                    
+                    if (href && href.includes('boscotryll')) {
+                        trackEvent('CTA', 'click', 'BoscoTryll - ' + text);
+                    } else if (this.classList.contains('btn-primary')) {
+                        trackEvent('CTA', 'click', 'Primary Button - ' + text);
+                    } else if (text) {
+                        trackEvent('Button', 'click', text);
+                    }
+                });
+            });
+
+            // Track navigation clicks
+            document.querySelectorAll('nav a, .mobile-menu-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    const text = this.textContent.trim();
+                    const isMobile = this.classList.contains('mobile-menu-link');
+                    trackEvent('Navigation', 'click', (isMobile ? 'Mobile - ' : 'Desktop - ') + text);
+                });
+            });
+
+            // Track external links
+            document.querySelectorAll('a[href^="http"]:not([href*="tryllengine.com"])').forEach(link => {
+                link.addEventListener('click', function() {
+                    const href = this.getAttribute('href');
+                    trackEvent('Outbound Link', 'click', href);
+                });
+            });
+
+            // Track FAQ interactions
+            document.querySelectorAll('.faq-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const question = this.querySelector('.faq-question').textContent.trim();
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    trackEvent('FAQ', isExpanded ? 'close' : 'open', question);
+                });
+            });
+
+            // Track form submissions
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function() {
+                    const email = this.querySelector('[name="email"]').value;
+                    const type = this.querySelector('[name="type"]').value;
+                    trackEvent('Form', 'submit', 'Contact Form - ' + type);
+                });
+            }
+
+            // Track scroll depth
+            let scrollDepths = [25, 50, 75, 100];
+            let achievedDepths = [];
+            
+            window.addEventListener('scroll', function() {
+                const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+                
+                scrollDepths.forEach(depth => {
+                    if (scrollPercent >= depth && !achievedDepths.includes(depth)) {
+                        achievedDepths.push(depth);
+                        trackEvent('Engagement', 'scroll', 'Depth', depth);
+                    }
+                });
+            });
+
+            // Track time on page
+            let startTime = Date.now();
+            window.addEventListener('beforeunload', function() {
+                const timeOnPage = Math.round((Date.now() - startTime) / 1000);
+                trackEvent('Engagement', 'time_on_page', 'Seconds', timeOnPage);
+            });
+        });
         
         // Intersection Observer for fade-in animations
         const observerOptions = {

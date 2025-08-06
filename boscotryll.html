@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K8MPGKVX');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Google tag (gtag.js) - Keep for existing tracking -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V0BH3P7R63"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -675,6 +683,10 @@
     </style>
 </head>
 <body id="top" class="antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8MPGKVX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <!-- SVG Noise Filter -->
     <svg style="display: none;">
         <filter id="noiseFilter">
@@ -1448,6 +1460,100 @@
     </footer>
 
     <script>
+        // Google Analytics Event Tracking
+        function trackEvent(category, action, label = null, value = null) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', action, {
+                    'event_category': category,
+                    'event_label': label,
+                    'value': value
+                });
+            }
+        }
+
+        // Track all interactions on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track download button clicks
+            document.querySelectorAll('a[href*="drive.google.com"], a[href*="download"], button:contains("Download")').forEach(element => {
+                element.addEventListener('click', function() {
+                    const text = this.textContent.trim();
+                    trackEvent('Download', 'click', 'BoscoTryll Mod - ' + text);
+                });
+            });
+
+            // Track Discord links
+            document.querySelectorAll('a[href*="discord"]').forEach(link => {
+                link.addEventListener('click', function() {
+                    trackEvent('Social', 'click', 'Discord');
+                });
+            });
+
+            // Track tab switches
+            window.switchTab = function(tabName) {
+                trackEvent('Content', 'tab_switch', 'Customization - ' + tabName);
+                // Original tab switching code continues...
+                const ingameTab = document.getElementById('ingame-tab');
+                const configTab = document.getElementById('config-tab');
+                const ingameContent = document.getElementById('ingame-content');
+                const configContent = document.getElementById('config-content');
+                
+                if (tabName === 'ingame') {
+                    ingameTab.classList.add('bg-white/10', 'text-white', 'border-white/20', 'tab-active');
+                    ingameTab.classList.remove('bg-white/5', 'text-white/60', 'border-white/10');
+                    configTab.classList.remove('bg-white/10', 'text-white', 'border-white/20', 'tab-active');
+                    configTab.classList.add('bg-white/5', 'text-white/60', 'border-white/10');
+                    ingameContent.classList.remove('hidden');
+                    configContent.classList.add('hidden');
+                } else {
+                    configTab.classList.add('bg-white/10', 'text-white', 'border-white/20', 'tab-active');
+                    configTab.classList.remove('bg-white/5', 'text-white/60', 'border-white/10');
+                    ingameTab.classList.remove('bg-white/10', 'text-white', 'border-white/20', 'tab-active');
+                    ingameTab.classList.add('bg-white/5', 'text-white/60', 'border-white/10');
+                    configContent.classList.remove('hidden');
+                    ingameContent.classList.add('hidden');
+                }
+            };
+
+            // Track feature showcase interactions
+            document.querySelectorAll('.feature-item').forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    const title = this.querySelector('h3').textContent.trim();
+                    trackEvent('Feature', 'view', title);
+                });
+            });
+
+            // Track video plays (if any)
+            document.querySelectorAll('video').forEach(video => {
+                video.addEventListener('play', function() {
+                    trackEvent('Media', 'play', 'Video - ' + (this.id || 'unnamed'));
+                });
+            });
+
+            // Track navigation
+            document.querySelectorAll('nav a, .mobile-menu-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    const text = this.textContent.trim();
+                    const isMobile = this.classList.contains('mobile-menu-link');
+                    trackEvent('Navigation', 'click', (isMobile ? 'Mobile - ' : 'Desktop - ') + text);
+                });
+            });
+
+            // Track scroll depth
+            let scrollDepths = [25, 50, 75, 100];
+            let achievedDepths = [];
+            
+            window.addEventListener('scroll', function() {
+                const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+                
+                scrollDepths.forEach(depth => {
+                    if (scrollPercent >= depth && !achievedDepths.includes(depth)) {
+                        achievedDepths.push(depth);
+                        trackEvent('Engagement', 'scroll', 'BoscoTryll Page Depth', depth);
+                    }
+                });
+            });
+        });
+
         // Intersection Observer for fade-in animations
         const observerOptions = {
             threshold: 0.1,

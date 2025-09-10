@@ -786,8 +786,8 @@
                     
                     <!-- Description -->
                     <p class="text-base md:text-lg text-white/50 mb-12 leading-relaxed max-w-md fade-in">
-                        A showcase mod demonstrating Tryll Engine's capabilities. 
-                        Give Bosco a personality and watch him come to life with AI-powered responses.
+                        Live proof of concept: See how Tryll Engine transforms a simple drone into an intelligent companion. 
+                        Every feature you see here can be integrated into your own game.
                     </p>
                     
                     <!-- CTA Section -->
@@ -810,7 +810,7 @@
                         <!-- Meta info -->
                         <div class="flex flex-wrap items-center justify-between gap-6 text-sm text-white/40">
                             <div class="flex flex-wrap items-center gap-6">
-                                <span>v0.1-alpha</span>
+                                <span>v0.2-alpha</span>
                                 <span class="hidden sm:inline">•</span>
                                 <span>8GB download</span>
                                 <span class="hidden sm:inline">•</span>
@@ -891,38 +891,45 @@
                 <!-- Mobile Features (Horizontal Scroll) -->
                 <div class="overflow-x-auto overflow-y-visible scrollbar-hide feature-scroll-container">
                     <div class="flex gap-4 px-4 pb-4 py-2" style="width: max-content;">
-                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0 active" style="width: 280px;" data-feature="shouts">
-                        <h3 class="text-lg font-semibold text-white mb-2">Reacts to Shouts</h3>
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0 active" style="width: 280px;" data-feature="gamecontrol">
+                        <h3 class="text-lg font-semibold text-white mb-2">🎮 AI Controls Game Mechanics <span class="text-xs text-green-400">NEW</span></h3>
                         <p class="text-secondary text-sm leading-relaxed">
-                            Bosco responds intelligently to in-game shouts and callouts, creating dynamic interactions during your missions.
+                            Watch as Bosco spawns enemy waves when insulted and adjusts mineral prices based on how you treat him - all through AI decisions, not scripting.
+                        </p>
+                    </div>
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="memory">
+                        <h3 class="text-lg font-semibold text-white mb-2">🧠 Persistent Memory <span class="text-xs text-green-400">NEW</span></h3>
+                        <p class="text-secondary text-sm leading-relaxed">
+                            Bosco remembers how you treat him across sessions, building friendship or resentment. Your NPCs can have real memory and emotional depth.
+                        </p>
+                    </div>
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="shouts">
+                        <h3 class="text-lg font-semibold text-white mb-2">🎤 Context-Aware Responses</h3>
+                        <p class="text-secondary text-sm leading-relaxed">
+                            Bosco understands Rock & Stone salutes vs insults. NPCs interpret player intent from any text input - no predefined commands needed.
                         </p>
                     </div>
                         <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="tts">
-                        <h3 class="text-lg font-semibold text-white mb-2">Every Response Feels Unique</h3>
+                        <h3 class="text-lg font-semibold text-white mb-2">🔊 Dynamic Voice Acting</h3>
                         <p class="text-secondary text-sm leading-relaxed">
-                            Bosco speaks aloud in different ways, making conversations feel natural.
+                            Every Bosco line is generated in real-time. Infinite dialogue variety without recording studios or voice actor costs.
                         </p>
                     </div>
                         <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="personality">
-                        <h3 class="text-lg font-semibold text-white mb-2">Customizable Personality</h3>
+                        <h3 class="text-lg font-semibold text-white mb-2">🎭 Customizable Personalities</h3>
                         <p class="text-secondary text-sm leading-relaxed">
-                            Tailor Bosco's personality to your liking - from helpful assistant to sarcastic companion.
+                            Choose Bosco's personality: Veteran Miner, Lazy Bot, or create your own. Let players customize NPCs without breaking immersion.
                         </p>
                     </div>
-                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="llm">
-                        <h3 class="text-lg font-semibold text-white mb-2">Works Right Out of the Box</h3>
-                        <p class="text-secondary text-sm leading-relaxed">
-                            Just install and play - Tryll Engine handles all the complex setup automatically.
-                        </p>
-                        </div>
                     </div>
                 </div>
                 <!-- Feature dots indicator -->
                 <div class="feature-dots md:hidden">
-                    <span class="feature-dot active" data-feature="shouts"></span>
+                    <span class="feature-dot active" data-feature="gamecontrol"></span>
+                    <span class="feature-dot" data-feature="memory"></span>
+                    <span class="feature-dot" data-feature="shouts"></span>
                     <span class="feature-dot" data-feature="tts"></span>
                     <span class="feature-dot" data-feature="personality"></span>
-                    <span class="feature-dot" data-feature="llm"></span>
                 </div>
             </div>
             
@@ -931,38 +938,47 @@
                 <!-- Left: Features List -->
                 <div class="relative">
                     <div class="space-y-4" id="features-list">
-                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/10 active" data-feature="shouts">
+                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/10 active" data-feature="gamecontrol">
                             <div>
-                                <h3 class="text-xl font-semibold text-white mb-2">Reacts to Shouts</h3>
+                                <h3 class="text-xl font-semibold text-white mb-2">🎮 AI Controls Game Mechanics <span class="text-xs text-green-400">NEW</span></h3>
                                 <p class="text-secondary text-sm leading-relaxed">
-                                    Bosco responds intelligently to in-game shouts and callouts, creating dynamic interactions during your missions.
+                                    Watch as Bosco spawns enemy waves when insulted and adjusts mineral prices based on how you treat him - all through AI decisions, not scripting.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/10" data-feature="memory">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">🧠 Persistent Memory <span class="text-xs text-green-400">NEW</span></h3>
+                                <p class="text-secondary text-sm leading-relaxed">
+                                    Bosco remembers how you treat him across sessions, building friendship or resentment. Your NPCs can have real memory and emotional depth.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/10" data-feature="shouts">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">🎤 Context-Aware Responses</h3>
+                                <p class="text-secondary text-sm leading-relaxed">
+                                    Bosco understands Rock & Stone salutes vs insults. NPCs interpret player intent from any text input - no predefined commands needed.
                                 </p>
                             </div>
                         </div>
                         
                         <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/10" data-feature="tts">
                             <div>
-                                <h3 class="text-xl font-semibold text-white mb-2">Every Response Feels Unique</h3>
+                                <h3 class="text-xl font-semibold text-white mb-2">🔊 Dynamic Voice Acting</h3>
                                 <p class="text-secondary text-sm leading-relaxed">
-                                    Bosco speaks aloud in different ways, making conversations feel natural.
+                                    Every Bosco line is generated in real-time. Infinite dialogue variety without recording studios or voice actor costs.
                                 </p>
                             </div>
                         </div>
                         
                         <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/10" data-feature="personality">
                             <div>
-                                <h3 class="text-xl font-semibold text-white mb-2">Customizable Personality</h3>
+                                <h3 class="text-xl font-semibold text-white mb-2">🎭 Customizable Personalities</h3>
                                 <p class="text-secondary text-sm leading-relaxed">
-                                    Tailor Bosco's personality to your liking - from helpful assistant to sarcastic companion.
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/10" data-feature="llm">
-                            <div>
-                                <h3 class="text-xl font-semibold text-white mb-2">Works Right Out of the Box</h3>
-                                <p class="text-secondary text-sm leading-relaxed">
-                                    Just install and play - Tryll Engine handles all the complex setup automatically.
+                                    Choose Bosco's personality: Veteran Miner, Lazy Bot, or create your own. Let players customize NPCs without breaking immersion.
                                 </p>
                             </div>
                         </div>
@@ -1055,20 +1071,56 @@
                     </div>
                     
                     <div class="glass-card p-8 rounded-2xl flex items-start gap-6 transition-all duration-300 hover:border-white/20 fade-in relative">
-                        <div class="flex-shrink-0 w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-lg font-bold text-white z-10">
-                            2
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-lg font-bold text-white z-10">
+                            ✓
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-white mb-4">Voice & Text Chat</h3>
+                            <h3 class="text-2xl font-bold text-white mb-4">Dynamic Relationships <span class="text-green-400 text-lg font-semibold ml-2">✓ v0.2-alpha</span></h3>
                             <p class="text-secondary body-medium">
-                                Talk to Bosco using your voice or keyboard. Have real conversations with your AI companion during missions.
+                                Bosco can now be either friendly or antagonistic depending on how you interact with him. Your relationship affects gameplay dynamics.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-8 rounded-2xl flex items-start gap-6 transition-all duration-300 hover:border-white/20 fade-in relative">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-lg font-bold text-white z-10">
+                            ✓
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Enemy Waves <span class="text-green-400 text-lg font-semibold ml-2">✓ v0.2-alpha</span></h3>
+                            <p class="text-secondary body-medium">
+                                Be polite to Bosco, or you might trigger enemy waves! Your behavior now has real consequences in the game.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-8 rounded-2xl flex items-start gap-6 transition-all duration-300 hover:border-white/20 fade-in relative">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-lg font-bold text-white z-10">
+                            ✓
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Economy Control <span class="text-green-400 text-lg font-semibold ml-2">✓ v0.2-alpha</span></h3>
+                            <p class="text-secondary body-medium">
+                                If you have a good relationship with Bosco, it will affect resource drop prices. Maintain a positive relationship for better deals!
                             </p>
                         </div>
                     </div>
                     
                     <div class="glass-card p-8 rounded-2xl flex items-start gap-6 transition-all duration-300 hover:border-white/20 fade-in relative">
                         <div class="flex-shrink-0 w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-lg font-bold text-white z-10">
-                            3
+                            5
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Voice Input & Commands</h3>
+                            <p class="text-secondary body-medium">
+                                Talk to Bosco using your voice or keyboard. Command him to mine, fight, or follow with natural conversation. True hands-free gameplay.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-8 rounded-2xl flex items-start gap-6 transition-all duration-300 hover:border-white/20 fade-in relative">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-lg font-bold text-white z-10">
+                            6
                         </div>
                         <div>
                             <h3 class="text-2xl font-bold text-white mb-4">In-Game Assistant</h3>
@@ -1080,27 +1132,16 @@
                     
                     <div class="glass-card p-8 rounded-2xl flex items-start gap-6 transition-all duration-300 hover:border-white/20 fade-in relative">
                         <div class="flex-shrink-0 w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-lg font-bold text-white z-10">
-                            4
+                            7
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-white mb-4">Voice Commands</h3>
+                            <h3 class="text-2xl font-bold text-white mb-4">Multi-language Support</h3>
                             <p class="text-secondary body-medium">
-                                Command Bosco to mine, fight, or follow using your voice. True hands-free gameplay experience.
+                                Experience BoscoTryll in multiple languages - expanding AI-powered NPCs to players worldwide.
                             </p>
                         </div>
                     </div>
                     
-                    <div class="glass-card p-8 rounded-2xl flex items-start gap-6 transition-all duration-300 hover:border-white/20 fade-in relative">
-                        <div class="flex-shrink-0 w-12 h-12 rounded-full gradient-bg flex items-center justify-center text-lg font-bold text-white z-10">
-                            5
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-white mb-4">Better Voice Acting</h3>
-                            <p class="text-secondary body-medium">
-                                More natural-sounding Bosco with support for multiple languages and voice styles.
-                            </p>
-                        </div>
-                    </div>
                     
                 </div>
                 </div>
@@ -1188,7 +1229,7 @@
                         <span>Download for Windows</span>
                         <i class="fas fa-download group-hover:translate-y-1 transition-transform"></i>
                     </a>
-                    <p class="text-sm text-white/50 mt-2">8GB download • v0.1-alpha</p>
+                    <p class="text-sm text-white/50 mt-2">8GB download • v0.2-alpha</p>
                 </div>
             </div>
         </div>
@@ -1648,25 +1689,30 @@
             const featureDots = document.querySelectorAll('.feature-dot');
             
             const features = {
+                gamecontrol: {
+                    icon: '🎮',
+                    title: 'AI Controls Game Mechanics',
+                    description: 'Watch as Bosco spawns enemy waves when insulted and adjusts mineral prices based on how you treat him - all through AI decisions, not scripting.'
+                },
+                memory: {
+                    icon: '🧠',
+                    title: 'Persistent Memory',
+                    description: 'Bosco remembers how you treat him across sessions, building friendship or resentment. Your NPCs can have real memory and emotional depth.'
+                },
                 shouts: {
                     icon: '🎤',
-                    title: 'Reacts to Shouts',
-                    description: 'Bosco responds intelligently to in-game shouts and callouts, creating dynamic interactions during your missions.'
+                    title: 'Context-Aware Responses',
+                    description: 'Bosco understands Rock & Stone salutes vs insults. NPCs interpret player intent from any text input - no predefined commands needed.'
                 },
                 tts: {
                     icon: '🔊',
-                    title: 'Every Response Feels Unique',
-                    description: 'Bosco speaks aloud in different ways, making conversations feel natural.'
+                    title: 'Dynamic Voice Acting',
+                    description: 'Every Bosco line is generated in real-time. Infinite dialogue variety without recording studios or voice actor costs.'
                 },
                 personality: {
                     icon: '🎭',
-                    title: 'Customizable Personality',
-                    description: 'Tailor Bosco\'s personality to your liking - from helpful assistant to sarcastic companion.'
-                },
-                llm: {
-                    icon: '💻',
-                    title: 'Works Right Out of the Box',
-                    description: 'Just install and play - Tryll Engine handles all the complex setup automatically.'
+                    title: 'Customizable Personalities',
+                    description: 'Choose Bosco\'s personality: Veteran Miner, Lazy Bot, or create your own. Let players customize NPCs without breaking immersion.'
                 }
             };
             

@@ -752,14 +752,14 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 md:pt-0">
         <!-- Clean gradient with subtle animation -->
         <div class="absolute inset-0">
             <div class="absolute inset-0 bg-black"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
             <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-white/5 rounded-full blur-3xl"></div>
         </div>
-        
+
         <div class="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <!-- Left: Content -->
@@ -808,15 +808,16 @@
                         </div>
                         
                         <!-- Meta info -->
-                        <div class="flex flex-wrap items-center justify-between gap-6 text-sm text-white/40">
-                            <div class="flex flex-wrap items-center gap-6">
+                        <div class="space-y-3 text-sm text-white/40 text-center lg:text-left">
+                            <div class="flex items-center justify-center lg:justify-start gap-2 flex-wrap">
                                 <span>v0.2-alpha</span>
-                                <span class="hidden sm:inline">•</span>
+                                <span>•</span>
                                 <span>8GB download</span>
-                                <span class="hidden sm:inline">•</span>
+                            </div>
+                            <div>
                                 <span>RTX 3060+ recommended</span>
                             </div>
-                            <a href="#features" class="text-white/40 hover:text-white/80 transition-colors flex items-center gap-2">
+                            <a href="#features" class="text-white/40 hover:text-white/80 transition-colors inline-flex items-center gap-2">
                                 <span>Explore Features</span>
                                 <i class="fas fa-chevron-down text-xs"></i>
                             </a>
@@ -1058,14 +1059,15 @@
                     <div class="absolute left-[30px] top-0 bottom-0 w-px bg-gradient-to-b from-primary via-primary/50 to-transparent"></div>
                     
                     <div class="space-y-8">
+                    <!-- v0.1-alpha Released Features -->
                     <div class="glass-card p-8 rounded-2xl flex items-start gap-6 transition-all duration-300 hover:border-white/20 fade-in relative">
                         <div class="flex-shrink-0 w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-lg font-bold text-white z-10">
                             ✓
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-white mb-4">In-game UI to change bosco personality & voice <span class="text-green-400 text-lg font-semibold ml-2">✓ Released</span></h3>
+                            <h3 class="text-2xl font-bold text-white mb-4">Intelligent Responses <span class="text-green-400 text-lg font-semibold ml-2">✓ v0.1-alpha</span></h3>
                             <p class="text-secondary body-medium">
-                                Customize Bosco's personality and voice directly from the game menu. No more editing config files - adjust your companion's traits on the fly.
+                                Bosco reacts dynamically to all in-game shouts and callouts. Every interaction feels unique and contextual.
                             </p>
                         </div>
                     </div>
@@ -1075,7 +1077,45 @@
                             ✓
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-white mb-4">Dynamic Relationships <span class="text-green-400 text-lg font-semibold ml-2">✓ v0.2-alpha</span></h3>
+                            <h3 class="text-2xl font-bold text-white mb-4">Voice Acting <span class="text-green-400 text-lg font-semibold ml-2">✓ v0.1-alpha</span></h3>
+                            <p class="text-secondary body-medium">
+                                Every response is voiced aloud with multiple voice options. Choose from different voice styles to match your preference.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-8 rounded-2xl flex items-start gap-6 transition-all duration-300 hover:border-white/20 fade-in relative">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-lg font-bold text-white z-10">
+                            ✓
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Customizable Personality <span class="text-green-400 text-lg font-semibold ml-2">✓ v0.1-alpha</span></h3>
+                            <p class="text-secondary body-medium">
+                                Press ~ in-game to open the customization UI for hot-swapping Bosco's personality and voice!
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-8 rounded-2xl flex items-start gap-6 transition-all duration-300 hover:border-white/20 fade-in relative">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-lg font-bold text-white z-10">
+                            ✓
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Easy Installation <span class="text-green-400 text-lg font-semibold ml-2">✓ v0.1-alpha</span></h3>
+                            <p class="text-secondary body-medium">
+                                Automated installer handles all setup. Get Bosco up and running in minutes without technical expertise.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- v0.2-alpha New Features -->
+                    
+                    <div class="glass-card p-8 rounded-2xl flex items-start gap-6 transition-all duration-300 hover:border-white/20 fade-in relative">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-lg font-bold text-white z-10">
+                            ✓
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Dynamic Relationships <span class="bg-yellow-500 text-black text-xs font-bold px-2 py-1 rounded ml-2">NEW</span> <span class="text-green-400 text-lg font-semibold ml-2">✓ v0.2-alpha</span></h3>
                             <p class="text-secondary body-medium">
                                 Bosco can now be either friendly or antagonistic depending on how you interact with him. Your relationship affects gameplay dynamics.
                             </p>
@@ -1087,7 +1127,7 @@
                             ✓
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-white mb-4">Enemy Waves <span class="text-green-400 text-lg font-semibold ml-2">✓ v0.2-alpha</span></h3>
+                            <h3 class="text-2xl font-bold text-white mb-4">Enemy Waves <span class="bg-yellow-500 text-black text-xs font-bold px-2 py-1 rounded ml-2">NEW</span> <span class="text-green-400 text-lg font-semibold ml-2">✓ v0.2-alpha</span></h3>
                             <p class="text-secondary body-medium">
                                 Be polite to Bosco, or you might trigger enemy waves! Your behavior now has real consequences in the game.
                             </p>
@@ -1099,7 +1139,7 @@
                             ✓
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-white mb-4">Economy Control <span class="text-green-400 text-lg font-semibold ml-2">✓ v0.2-alpha</span></h3>
+                            <h3 class="text-2xl font-bold text-white mb-4">Economy Control <span class="bg-yellow-500 text-black text-xs font-bold px-2 py-1 rounded ml-2">NEW</span> <span class="text-green-400 text-lg font-semibold ml-2">✓ v0.2-alpha</span></h3>
                             <p class="text-secondary body-medium">
                                 If you have a good relationship with Bosco, it will affect resource drop prices. Maintain a positive relationship for better deals!
                             </p>
@@ -1111,7 +1151,7 @@
                             5
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-white mb-4">Voice Input & Commands</h3>
+                            <h3 class="text-2xl font-bold text-white mb-4">Voice Input & Commands <span class="text-gray-400 text-sm font-normal ml-2">Coming Soon</span></h3>
                             <p class="text-secondary body-medium">
                                 Talk to Bosco using your voice or keyboard. Command him to mine, fight, or follow with natural conversation. True hands-free gameplay.
                             </p>
@@ -1123,7 +1163,7 @@
                             6
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-white mb-4">In-Game Assistant</h3>
+                            <h3 class="text-2xl font-bold text-white mb-4">In-Game Assistant <span class="text-gray-400 text-sm font-normal ml-2">Coming Soon</span></h3>
                             <p class="text-secondary body-medium">
                                 Ask Bosco about game mechanics, strategies, or lore. Get instant answers without leaving the game or checking wikis.
                             </p>
@@ -1135,7 +1175,7 @@
                             7
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-white mb-4">Multi-language Support</h3>
+                            <h3 class="text-2xl font-bold text-white mb-4">Multi-language Support <span class="text-gray-400 text-sm font-normal ml-2">Coming Soon</span></h3>
                             <p class="text-secondary body-medium">
                                 Experience BoscoTryll in multiple languages - expanding AI-powered NPCs to players worldwide.
                             </p>
@@ -1692,12 +1732,14 @@
                 gamecontrol: {
                     icon: '🎮',
                     title: 'AI Controls Game Mechanics',
-                    description: 'Watch as Bosco spawns enemy waves when insulted and adjusts mineral prices based on how you treat him - all through AI decisions, not scripting.'
+                    description: 'Watch as Bosco spawns enemy waves when insulted and adjusts mineral prices based on how you treat him - all through AI decisions, not scripting.',
+                    isNew: true
                 },
                 memory: {
                     icon: '🧠',
                     title: 'Persistent Memory',
-                    description: 'Bosco remembers how you treat him across sessions, building friendship or resentment. Your NPCs can have real memory and emotional depth.'
+                    description: 'Bosco remembers how you treat him across sessions, building friendship or resentment. Your NPCs can have real memory and emotional depth.',
+                    isNew: true
                 },
                 shouts: {
                     icon: '🎤',

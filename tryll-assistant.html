@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tryll Assistant - Your AI gaming companion</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Chat with game wikis in-game. Free, private, and customizable AI assistant that runs on your GPU.">
+    <meta name="keywords" content="gaming AI, game assistant, AI overlay, game wiki, LLM gaming, privacy-focused AI">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Tryll Assistant - Your AI gaming companion">
+    <meta property="og:description" content="Chat with game wikis in-game. Free, private, and runs on your GPU.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tryllengine.com/tryll-assistant.html">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.5;
+        }
+
+        /* Navigation */
+        nav {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        /* Badge */
+        .badge {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Hero heading */
+        .hero-heading {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        @media (max-width: 768px) {
+            .hero-heading {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Section heading */
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        @media (max-width: 768px) {
+            .section-heading {
+                font-size: 2rem;
+            }
+        }
+
+        /* Button */
+        .btn-primary {
+            background: #000000;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 100px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: #1f1f1f;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #000000;
+            padding: 14px 28px;
+            border-radius: 100px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary:hover {
+            border-color: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Feature icon */
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        /* Demo container */
+        .demo-container {
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: #f9fafb;
+        }
+
+        /* Feature card */
+        .feature-card {
+            padding: 32px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            background: white;
+            transition: all 0.2s ease;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Pricing card */
+        .pricing-card {
+            padding: 40px 32px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            background: white;
+            transition: all 0.2s ease;
+        }
+
+        .pricing-card:hover {
+            border-color: rgba(0, 0, 0, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .pricing-card.featured {
+            border-color: #000000;
+            border-width: 2px;
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: rgba(0, 0, 0, 0.08);
+        }
+
+        /* FAQ item */
+        .faq-item {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 24px 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .faq-answer {
+            margin-top: 16px;
+            color: #666666;
+            line-height: 1.7;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Icon styles */
+        .icon-feature { color: #6366f1; }
+        .icon-free { color: #10b981; }
+        .icon-privacy { color: #3b82f6; }
+        .icon-custom { color: #a855f7; }
+        .icon-dev { color: #8b5cf6; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white z-50">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="text-xl font-bold">Tryll <span style="font-style: italic;">Assistant</span></div>
+                <span class="badge">Beta</span>
+            </div>
+            <div class="hidden md:flex items-center gap-6 text-sm">
+                <a href="#features" class="hover:opacity-60 transition">Features</a>
+                <a href="#developers" class="hover:opacity-60 transition">For Developers</a>
+                <a href="#pricing" class="hover:opacity-60 transition">Pricing</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="hero-heading mb-6">
+                Your AI gaming companion. <span style="font-style: italic;">Always available.</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+                Chat with game wikis in real-time without leaving your game. Free, private, and runs entirely on your device.
+            </p>
+            <div class="flex items-center justify-center gap-4 flex-wrap mb-8">
+                <button class="btn-primary">
+                    Download for Windows
+                </button>
+                <a href="https://store.steampowered.com" target="_blank" class="btn-secondary">
+                    View on Steam
+                </a>
+            </div>
+            <div class="flex items-center justify-center gap-8 text-sm text-gray-500">
+                <div class="flex items-center gap-2">
+                    <span>⚡</span> On-device
+                </div>
+                <div class="flex items-center gap-2">
+                    <span>🔒</span> Private
+                </div>
+                <div class="flex items-center gap-2">
+                    <span>🎮</span> Real-time
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="py-16 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="demo-container">
+                <div class="aspect-video flex items-center justify-center">
+                    <div class="text-center text-gray-500">
+                        <div class="text-4xl mb-3">▶</div>
+                        <p>Demo Video Placeholder</p>
+                        <p class="text-sm mt-1">Replace with actual demo content</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tagline Section -->
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="section-heading mb-4">
+                Enhancing gameplay with<br>on-device AI assistance
+            </h2>
+            <div class="flex items-center justify-center gap-12 mt-12 flex-wrap">
+                <div class="text-center">
+                    <div class="feature-icon mx-auto mb-3">⚡</div>
+                    <div class="font-semibold">Real-time</div>
+                </div>
+                <div class="text-center">
+                    <div class="feature-icon mx-auto mb-3">💻</div>
+                    <div class="font-semibold">On-device</div>
+                </div>
+                <div class="text-center">
+                    <div class="feature-icon mx-auto mb-3">🎮</div>
+                    <div class="font-semibold">In-game</div>
+                </div>
+            </div>
+            <p class="text-gray-600 mt-8 max-w-3xl mx-auto leading-relaxed">
+                Access game knowledge instantly without tabbing out. Tryll Assistant runs locally on your GPU, providing intelligent responses while keeping your data completely private.
+            </p>
+        </div>
+    </section>
+
+    <div class="divider max-w-5xl mx-auto"></div>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="section-heading mb-4">Key features</h2>
+                <p class="text-gray-600">Everything gamers need, nothing they don't</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="feature-card">
+                    <div class="icon-feature mb-4 text-3xl">📚</div>
+                    <h3 class="text-xl font-bold mb-3">Chat with Game Wikis In-Game</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Access comprehensive game knowledge without interrupting your gameplay. Ask about items, quests, strategies, or mechanics and get instant answers.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-free mb-4 text-3xl">🎁</div>
+                    <h3 class="text-xl font-bold mb-3">Free Forever</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Runs the LLM directly on your GPU with no subscriptions, credits, or hidden fees. Your hardware, your assistant, completely free.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-privacy mb-4 text-3xl">🔒</div>
+                    <h3 class="text-xl font-bold mb-3">Fully Private</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        No data leaves your device. All processing happens locally on your machine. You have complete control over your data and conversations.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-custom mb-4 text-3xl">⚙️</div>
+                    <h3 class="text-xl font-bold mb-3">Fully Customizable</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Upload your own documents and knowledge bases. Create custom assistants for speedruns, competitive play, or personal gaming notes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider max-w-5xl mx-auto"></div>
+
+    <!-- For Developers Section -->
+    <section id="developers" class="py-20 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="section-heading mb-4">For Developers</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Want deeper integration with your game? Contact us to enable advanced features.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="border border-black/8 rounded-2xl p-8">
+                    <div class="icon-dev mb-3 text-2xl">💬</div>
+                    <h3 class="font-bold text-lg mb-2">In-Game Chat</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Move assistant from overlay to an in-game character or chat interface. Seamlessly integrate AI into your game's UI.
+                    </p>
+                </div>
+
+                <div class="border border-black/8 rounded-2xl p-8">
+                    <div class="icon-dev mb-3 text-2xl">⚡</div>
+                    <h3 class="font-bold text-lg mb-2">Reactivity</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Send in-game events and data to the LLM. Example: "Player is level 7, dwarf paladin at mines. Provide relevant advice."
+                    </p>
+                </div>
+
+                <div class="border border-black/8 rounded-2xl p-8">
+                    <div class="icon-dev mb-3 text-2xl">🎯</div>
+                    <h3 class="font-bold text-lg mb-2">Interactivity</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Let the LLM take actions. When a player asks "where do I go?", let AI create map pings or highlight objectives.
+                    </p>
+                </div>
+
+                <div class="border border-black/8 rounded-2xl p-8">
+                    <div class="icon-dev mb-3 text-2xl">🚀</div>
+                    <h3 class="font-bold text-lg mb-2">Full Integration</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Use Tryll Engine to power your game. We handle installation, updates, connectivity—you focus on game mechanics.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="btn-primary">Contact Us for Integration</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider max-w-5xl mx-auto"></div>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="section-heading mb-4">Simple Pricing</h2>
+                <p class="text-gray-600">Based on your game budget, not player count</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Indie -->
+                <div class="pricing-card">
+                    <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Indie</div>
+                    <div class="text-4xl font-bold mb-1">$3,000</div>
+                    <div class="text-sm text-gray-500 mb-6">per title</div>
+                    <div class="text-sm text-gray-600 mb-6 pb-6 border-b border-black/8">
+                        For games with budgets<br>
+                        <span class="font-semibold text-black">under $300k</span>
+                    </div>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500">✓</span>
+                            <span>Full integration support</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500">✓</span>
+                            <span>All advanced features</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500">✓</span>
+                            <span>Unlimited players</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500">✓</span>
+                            <span>Technical support</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- AA (Featured) -->
+                <div class="pricing-card featured relative">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-3 py-1 rounded-full font-semibold">
+                        Most Popular
+                    </div>
+                    <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">AA</div>
+                    <div class="text-4xl font-bold mb-1">$15,000</div>
+                    <div class="text-sm text-gray-500 mb-6">per title</div>
+                    <div class="text-sm text-gray-600 mb-6 pb-6 border-b border-black/8">
+                        For games with budgets<br>
+                        <span class="font-semibold text-black">under $1M</span>
+                    </div>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500">✓</span>
+                            <span>Full integration support</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500">✓</span>
+                            <span>All advanced features</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500">✓</span>
+                            <span>Unlimited players</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500">✓</span>
+                            <span>Priority support</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500">✓</span>
+                            <span>Custom features</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- AAA -->
+                <div class="pricing-card">
+                    <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">AAA</div>
+                    <div class="text-4xl font-bold mb-1">$30,000</div>
+                    <div class="text-sm text-gray-500 mb-6">per title</div>
+                    <div class="text-sm text-gray-600 mb-6 pb-6 border-b border-black/8">
+                        For games with budgets<br>
+                        <span class="font-semibold text-black">over $1M</span>
+                    </div>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500">✓</span>
+                            <span>Full integration support</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500">✓</span>
+                            <span>All advanced features</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500">✓</span>
+                            <span>Unlimited players</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500">✓</span>
+                            <span>Dedicated support</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500">✓</span>
+                            <span>Custom development</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500">✓</span>
+                            <span>White-label options</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center mt-10 text-sm text-gray-500">
+                All tiers include lifetime updates and support for your title
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 px-6 bg-black text-white">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-5xl font-bold mb-6" style="letter-spacing: -0.02em;">
+                From text to presence
+            </h2>
+            <p class="text-xl text-gray-300 mb-10">
+                Download Tryll Assistant and never tab out for a wiki again
+            </p>
+            <div class="flex items-center justify-center gap-4 flex-wrap">
+                <button class="bg-white text-black px-7 py-3 rounded-full font-medium hover:bg-gray-100 transition">
+                    Download for Windows
+                </button>
+                <a href="https://store.steampowered.com" target="_blank" class="border border-white/20 text-white px-7 py-3 rounded-full font-medium hover:bg-white/10 transition">
+                    View on Steam
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-black/8">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-6">
+                <div class="text-xl font-bold">Tryll <span style="font-style: italic;">Assistant</span></div>
+                <div class="flex items-center gap-6 text-sm">
+                    <a href="https://x.com" class="hover:opacity-60 transition">X.com</a>
+                    <a href="https://discord.gg" class="hover:opacity-60 transition">Discord</a>
+                    <a href="https://instagram.com" class="hover:opacity-60 transition">Instagram</a>
+                    <a href="https://youtube.com" class="hover:opacity-60 transition">Youtube</a>
+                </div>
+            </div>
+            <div class="text-center text-sm text-gray-500">
+                © 2025 TryllEngine. All rights reserved.
+            </div>
+            <div class="flex items-center justify-center gap-6 mt-4 text-sm text-gray-500">
+                <a href="https://tryllengine.com/privacy-policy.html" class="hover:text-black transition">Privacy Policy</a>
+                <a href="#" class="hover:text-black transition">Terms of use</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -3,6 +3,7 @@
 
 User-agent: *
 Allow: /
+Disallow: /tryll-assistant.html
 
 # Sitemap location
 Sitemap: https://tryllengine.com/sitemap.xml

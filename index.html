@@ -95,7 +95,7 @@
             },
             {
                 "@type": "Question",
-                "name": "Why is local AI better than using a cloud API like OpenAI or Convai?",
+                "name": "Why is local AI better than using a cloud API?",
                 "acceptedAnswer": {
                     "@type": "Answer",
                     "text": "Local AI advantages: Zero cost per player - no API or infrastructure bills. Offline capable - your game keeps working without an internet connection. Private by design - no personal data leaves the device. Cloud-based AI adds legal and UX risks: Immersion-breaking outages during play sessions. Legal compliance challenges (GDPR, AI Act, export laws). Tryll's local-first approach is not just cheaper - it's safer, faster, and scalable to millions of players."
@@ -106,7 +106,7 @@
                 "name": "How does Tryll optimize for different hardware configurations?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Our LLM Manager automatically: Detects hardware on first launch. Picks the most efficient model (4B, 8B, 14B, 27B). Adjusts memory usage and context size dynamically. Offloads high-level reasoning and memory management to modular agents (Director, Writer). Updates models automatically as the ecosystem evolves. This ensures smooth AI performance across a wide range of gaming machines."
+                    "text": "Our LLM Manager automatically: Detects hardware on first launch. Picks the most efficient model (4B, 8B, 14B). Adjusts memory usage and context size dynamically. Offloads high-level reasoning and memory management to modular agents (Director, Writer). Updates models automatically as the ecosystem evolves. This ensures smooth AI performance across a wide range of gaming machines."
                 }
             },
             {
@@ -1058,23 +1058,23 @@
                     <li><a href="#pricing" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Pricing</a></li>
                     <li><a href="#faq" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">FAQ</a></li>
                     <li><a href="#contact-email" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Contact</a></li>
+                    <li><a href="boscotryll" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">BoscoTryll Mod</a></li>
                 </ul>
                 <div class="flex items-center gap-3">
-                    <a href="boscotryll" class="px-4 py-2 rounded-lg text-sm inline-flex items-center justify-center transition-all duration-300 font-medium bg-white/10 border border-white/20 hover:bg-white/20 text-white">
-                        <i class="fas fa-gamepad mr-2"></i>
-                        Try in Action
+                    <a href="tryll-assistant" class="btn-primary px-4 py-2 rounded-lg text-sm inline-flex items-center justify-center gap-2">
+                        <i class="fas fa-plus"></i>
+                        Add Your Game
                     </a>
-                    <a href="#contact" class="btn-primary px-4 py-2 rounded-lg text-sm inline-flex items-center justify-center gap-2">
-                        <i class="fas fa-rocket"></i>
-                        Get Early Access
+                    <a href="#contact" class="px-4 py-2 rounded-lg text-sm inline-flex items-center justify-center transition-all duration-300 font-medium bg-white/10 border border-white/20 hover:bg-white/20 text-white">
+                        Book a Demo
                     </a>
                 </div>
             </div>
             
             <!-- Mobile Navigation -->
             <div class="md:hidden flex items-center gap-3">
-                <a href="#contact" class="btn-primary px-3 py-2 rounded-lg text-xs inline-flex items-center justify-center">
-                    Get Started
+                <a href="tryll-assistant" class="btn-primary px-3 py-2 rounded-lg text-xs inline-flex items-center justify-center">
+                    Add Your Game
                 </a>
                 <button id="mobile-menu-btn" class="text-white p-2 rounded-lg hover:bg-white/10 transition-colors duration-200">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1094,13 +1094,16 @@
             </button>
             <div class="flex flex-col items-center justify-center h-full space-y-8 text-center px-6">
                 <a href="#features" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Features</a>
-                <a href="boscotryll" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Try in Action</a>
                 <a href="#pricing" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Pricing</a>
                 <a href="#faq" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">FAQ</a>
-                <div class="pt-4">
-                    <a href="#contact" class="btn-primary px-8 py-4 rounded-lg text-lg inline-flex items-center justify-center gap-2">
-                        <i class="fas fa-rocket"></i>
-                        Get Early Access
+                <a href="boscotryll" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">BoscoTryll Mod</a>
+                <div class="pt-4 space-y-3">
+                    <a href="tryll-assistant" class="btn-primary px-8 py-4 rounded-lg text-lg inline-flex items-center justify-center gap-2 w-full">
+                        <i class="fas fa-plus"></i>
+                        Add Your Game
+                    </a>
+                    <a href="#contact" class="px-8 py-4 rounded-lg text-lg inline-flex items-center justify-center gap-2 w-full bg-white/10 border border-white/20 text-white">
+                        Book a Demo
                     </a>
                 </div>
             </div>
@@ -1116,18 +1119,24 @@
                 </div>
                 
                 <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 heading-primary leading-tight text-white">
-                    On-Device AI<br class="hidden md:block"> for Games
+                    Power Your Game<br class="hidden md:block"> with LLMs
                 </h1>
-                
-                <p class="text-lg sm:text-xl md:text-2xl text-secondary mb-8 md:mb-12 max-w-3xl mx-auto body-large leading-relaxed px-2">
-                    Tryll uses gamers' hardware to run AI models for free. Developers add AI mechanics to any game 
-                    without AI expertise. No cloud costs, no latency, infinite scale.
+
+                <p class="text-lg sm:text-xl md:text-2xl text-secondary mb-4 md:mb-6 max-w-3xl mx-auto body-large leading-relaxed px-2">
+                    Zero to launch in minutes — for free.
                 </p>
-                
-                <div class="flex justify-center mb-8 md:mb-12 px-4">
-                    <a href="#contact" class="inline-block px-6 md:px-8 py-3 md:py-4 rounded-lg bg-primary-500 text-white font-medium text-base md:text-lg transition-all duration-300 hover:bg-primary-600 w-full sm:w-auto text-center max-w-xs">
-                        <i class="fas fa-rocket mr-2"></i>
-                        Try Tryll For Free
+
+                <p class="text-base sm:text-lg md:text-xl text-secondary mb-8 md:mb-12 max-w-3xl mx-auto body-large leading-relaxed px-2 opacity-80">
+                    Add intelligent LLM features to your game without the complexity. No cloud costs, no data leaving player devices. Start with a free assistant, go deeper when ready.
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8 md:mb-12 px-4">
+                    <a href="tryll-assistant" class="inline-block px-6 md:px-8 py-3 md:py-4 rounded-lg bg-primary-500 text-white font-medium text-base md:text-lg transition-all duration-300 hover:bg-primary-600 w-full sm:w-auto text-center max-w-xs">
+                        <i class="fas fa-plus mr-2"></i>
+                        Add Your Game
+                    </a>
+                    <a href="#how-it-works" class="inline-block px-6 md:px-8 py-3 md:py-4 rounded-lg bg-white/10 border border-white/20 text-white font-medium text-base md:text-lg transition-all duration-300 hover:bg-white/20 w-full sm:w-auto text-center max-w-xs">
+                        See How It Works
                     </a>
                 </div>
                 
@@ -1150,149 +1159,147 @@
                 <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4 md:gap-8 text-secondary text-sm md:text-base px-4">
                     <div class="flex items-center justify-center gap-2">
                         <div class="w-2 h-2 rounded-full bg-primary-500 flex-shrink-0"></div>
-                        <span>$0 cloud costs</span>
+                        <span>Free to start</span>
                     </div>
                     <div class="flex items-center justify-center gap-2">
                         <div class="w-2 h-2 rounded-full bg-primary-500 flex-shrink-0"></div>
-                        <span>1-click integration</span>
+                        <span>No code required</span>
                     </div>
                     <div class="flex items-center justify-center gap-2">
                         <div class="w-2 h-2 rounded-full bg-primary-500 flex-shrink-0"></div>
-                        <span>100% Private & Secure</span>
+                        <span>We handle everything</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- First Demo Announcement Section -->
-    <section class="py-12 md:py-24 bg-black relative overflow-hidden">
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-12 md:py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-4 md:px-6">
-            <div class="max-w-4xl mx-auto text-center fade-in">
+            <div class="max-w-4xl mx-auto text-center fade-in mb-12 md:mb-16">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-sm font-normal mb-8 border border-white/20">
-                    <span class="animate-pulse">🚀</span>
-                    <span>Live Demo Available</span>
+                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
+                    HOW IT WORKS
                 </div>
-                
+
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
-                    First public demo is out! Try our BoscoTryll mod for Deep Rock Galactic for free!
+                    Start Simple. Go Deeper When Ready.
                 </h2>
-                
-                <p class="text-lg md:text-xl text-secondary mb-8 leading-relaxed">
-                    Experience the power of local AI in gaming. No cloud costs, full control, instant responses.
+
+                <p class="text-lg md:text-xl text-secondary leading-relaxed">
+                    Three steps to an intelligent assistant for your game.
                 </p>
-                
-                <div class="flex justify-center">
-                    <a href="boscotryll" class="btn-primary px-6 py-3 rounded-lg text-base inline-flex items-center justify-center gap-2">
-                        <i class="fas fa-gamepad"></i>
-                        Play BoscoTryll Now
-                    </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto fade-in">
+                <!-- Step 1 -->
+                <div class="glass-card p-8 rounded-2xl text-center">
+                    <div class="w-16 h-16 rounded-full bg-primary-500/20 flex items-center justify-center text-2xl mb-6 mx-auto">
+                        <span class="text-primary-500 font-bold">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Tell Us Your Game</h3>
+                    <p class="text-secondary leading-relaxed">
+                        Share your game name and a link to your wiki, docs, or knowledge base. Or we'll help gather it.
+                    </p>
                 </div>
+
+                <!-- Step 2 -->
+                <div class="glass-card p-8 rounded-2xl text-center">
+                    <div class="w-16 h-16 rounded-full bg-primary-500/20 flex items-center justify-center text-2xl mb-6 mx-auto">
+                        <span class="text-primary-500 font-bold">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">We Do the Heavy Lifting</h3>
+                    <p class="text-secondary leading-relaxed">
+                        No coding needed. We compile your data with source references, create and test prompts, validate for accuracy. You review, we iterate.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="glass-card p-8 rounded-2xl text-center">
+                    <div class="w-16 h-16 rounded-full bg-primary-500/20 flex items-center justify-center text-2xl mb-6 mx-auto">
+                        <span class="text-primary-500 font-bold">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Players Stay Immersed</h3>
+                    <p class="text-secondary leading-relaxed">
+                        No more alt-tabbing to Google. No Reddit searches. No wiki rabbit holes. Answers appear instantly inside your game.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 fade-in">
+                <p class="text-secondary mb-6">Ready for more? Upgrade to <span class="text-white font-medium">Companion</span> for real-time awareness, or <span class="text-white font-medium">Engine Integration</span> for custom in-game characters.</p>
+                <a href="#pricing" class="text-primary-500 hover:text-primary-400 font-medium inline-flex items-center gap-2 transition-colors">
+                    See Pricing
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
 
 
-    <!-- The Old Way is Dead -->
+    <!-- The Developer Problem -->
     <section class="py-12 md:py-24 bg-black relative overflow-hidden fade-in">
         <div class="max-w-7xl mx-auto px-4 md:px-6">
             <div class="text-center mb-12 md:mb-20">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-sm font-normal mb-8 border border-white/20">
                     <div class="w-2 h-2 rounded-full bg-red-500"></div>
-                    THE OLD WAY IS DEAD
+                    THE PROBLEM
                 </div>
                 <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 heading-primary">
-                    Static Game Worlds are History
+                    Adding LLMs to Games is Hard
                 </h2>
                 <p class="text-xl text-secondary max-w-3xl mx-auto body-large">
-                    Cloud AI costs $1.8M/month for 10k users. Latency kills gameplay. Privacy concerns limit adoption. On-device AI changes everything.
+                    You want intelligent features. But the path there is filled with complexity you shouldn't have to deal with.
                 </p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="glass-card rounded-2xl p-8 transition-all hover:border-white/20 flex flex-col">
-                    <div class="flex items-center gap-2 text-red-400 text-base font-medium mb-4">
-                        <span class="text-red-500">❌</span>
-                        <span>OLD: Scripted Gameplay</span>
+                    <div class="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-xl mb-6">
+                        <i class="fas fa-server text-red-500"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white line-through opacity-70">Pre-written scenarios</h3>
-                    <div class="flex-grow">
-                        <p class="text-secondary mb-4">Fixed paths, predictable outcomes, same experience every playthrough</p>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Infrastructure Nightmare</h3>
+                    <p class="text-secondary mb-4 flex-grow">
+                        Cloud APIs, server costs, rate limits, latency optimization. You wanted to build a game, not run a data center.
+                    </p>
+                    <div class="pt-4 border-t border-white/10">
+                        <p class="text-green-400 text-sm font-medium">
+                            <i class="fas fa-check mr-2"></i>We run on player hardware. Zero infrastructure.
+                        </p>
                     </div>
-                    
-                    <div class="flex items-center justify-center my-4">
-                        <div class="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/10 border border-white/20">
-                            <div class="text-white text-xs font-medium uppercase tracking-wide">Level Up</div>
-                            <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-center gap-2 text-green-400 text-base font-medium mb-4">
-                        <span class="text-green-500">✅</span>
-                        <span>NEW: Dynamic Intelligence</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">AI-driven experiences</h3>
-                    <p class="text-secondary mb-6">Emergent gameplay, adaptive challenges, unique every time</p>
                 </div>
-                
+
                 <div class="glass-card rounded-2xl p-8 transition-all hover:border-white/20 flex flex-col">
-                    <div class="flex items-center gap-2 text-red-400 text-base font-medium mb-4">
-                        <span class="text-red-500">❌</span>
-                        <span>OLD: Static Game Worlds</span>
+                    <div class="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-xl mb-6">
+                        <i class="fas fa-brain text-red-500"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white line-through opacity-70">Fixed environments</h3>
-                    <div class="flex-grow">
-                        <p class="text-secondary mb-4">Static objects, unchanging reactions, worlds that never evolve</p>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Prompt Engineering Rabbit Hole</h3>
+                    <p class="text-secondary mb-4 flex-grow">
+                        Getting LLMs to behave consistently is an art. Hallucinations, off-topic responses, prompt injection attacks. Months of trial and error.
+                    </p>
+                    <div class="pt-4 border-t border-white/10">
+                        <p class="text-green-400 text-sm font-medium">
+                            <i class="fas fa-check mr-2"></i>We handle prompts, testing, and safety. You review.
+                        </p>
                     </div>
-                    
-                    <div class="flex items-center justify-center my-4">
-                        <div class="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/10 border border-white/20">
-                            <div class="text-white text-xs font-medium uppercase tracking-wide">Level Up</div>
-                            <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-center gap-2 text-green-400 text-base font-medium mb-4">
-                        <span class="text-green-500">✅</span>
-                        <span>NEW: Living Ecosystems</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">AI-powered worlds</h3>
-                    <p class="text-secondary mb-6">Dynamic environments, reactive systems, worlds that remember and adapt</p>
                 </div>
-                
+
                 <div class="glass-card rounded-2xl p-8 transition-all hover:border-white/20 flex flex-col">
-                    <div class="flex items-center gap-2 text-red-400 text-base font-medium mb-4">
-                        <span class="text-red-500">❌</span>
-                        <span>OLD: Cloud Dependencies</span>
+                    <div class="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-xl mb-6">
+                        <i class="fas fa-code text-red-500"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white line-through opacity-70">$1.8M/month for 10k players</h3>
-                    <div class="flex-grow">
-                        <p class="text-secondary mb-4">Latency kills immersion, server outages, privacy nightmares</p>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Integration Complexity</h3>
+                    <p class="text-secondary mb-4 flex-grow">
+                        Game engine plugins, state management, context windows, memory systems. A whole new codebase just for AI features.
+                    </p>
+                    <div class="pt-4 border-t border-white/10">
+                        <p class="text-green-400 text-sm font-medium">
+                            <i class="fas fa-check mr-2"></i>Start with zero code. Add integration when ready.
+                        </p>
                     </div>
-                    
-                    <div class="flex items-center justify-center my-4">
-                        <div class="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/10 border border-white/20">
-                            <div class="text-white text-xs font-medium uppercase tracking-wide">Level Up</div>
-                            <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-center gap-2 text-green-400 text-base font-medium mb-4">
-                        <span class="text-green-500">✅</span>
-                        <span>NEW: Local Intelligence</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Zero infrastructure costs</h3>
-                    <p class="text-secondary mb-6">Instant responses, always online, complete privacy</p>
                 </div>
             </div>
-        </div>
-        
         </div>
     </section>
 
@@ -1424,7 +1431,8 @@
         </div>
     </section>
 
-    <!-- What is Tryll Engine -->
+    <!-- What is Tryll Engine (Hidden for now) -->
+    <!--
     <section class="py-12 md:py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-4 md:px-6">
             <div class="max-w-4xl mx-auto text-center mb-12 md:mb-20 fade-in">
@@ -1441,7 +1449,6 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch text-center fade-in">
-                <!-- Plugin -->
                 <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20">
                     <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
                         <i class="fas fa-plug text-white"></i>
@@ -1463,7 +1470,6 @@
                     </ul>
                 </div>
 
-                <!-- AI System -->
                 <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20">
                     <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
                         <i class="fas fa-robot text-white"></i>
@@ -1485,7 +1491,6 @@
                     </ul>
                 </div>
 
-                <!-- LLM Manager -->
                 <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20">
                     <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
                         <i class="fas fa-microchip text-white"></i>
@@ -1509,6 +1514,7 @@
             </div>
         </div>
     </section>
+    -->
 
     <!-- Value Proposition -->
     <!-- 
@@ -1572,7 +1578,8 @@
     -->
 
 
-    <!-- Cloud Cost Warning Section -->
+    <!-- Cloud Cost Warning Section (Hidden for now) -->
+    <!--
     <section class="py-12 md:py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-4 md:px-6">
             <div class="max-w-4xl mx-auto text-center mb-12 md:mb-16 fade-in">
@@ -1584,7 +1591,7 @@
                     $1.8M <span class="text-white">Per Month</span>
                 </h2>
                 <p class="text-xl text-secondary leading-relaxed">
-                    That's what it costs to serve just <strong class="text-white">10,000 concurrent players</strong> using OpenAI-style API pricing. 
+                    That's what it costs to serve just <strong class="text-white">10,000 concurrent players</strong> using OpenAI-style API pricing.
                     For most studios, success becomes unsustainable.
                 </p>
             </div>
@@ -1608,6 +1615,7 @@
 
         </div>
     </section>
+    -->
 
 
     <!-- Social Proof -->
@@ -1634,154 +1642,224 @@
     <!-- Pricing Section -->
     <section id="pricing" class="py-12 md:py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-4 md:px-6">
-            <div class="max-w-3xl mx-auto text-center mb-12 md:mb-20 fade-in">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+            <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16 fade-in">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-sm font-normal mb-8 border border-white/20">
+                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
                     PRICING
-                </h2>
-                <p class="text-xl text-secondary leading-relaxed">
-                    Start free. Scale when you succeed.
-                </p>
-            </div>
-
-            <div class="max-w-4xl mx-auto space-y-0">
-                <!-- Free Tier -->
-                <div class="border-b border-white/10 py-8 px-6 md:px-12 fade-in flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                    <div class="flex-1">
-                        <h3 class="text-3xl md:text-4xl font-bold text-white mb-2" style="font-family: 'JetBrains Mono', monospace;">FREE</h3>
-                    </div>
-                    <div class="flex-1 text-right">
-                        <div class="text-4xl md:text-5xl font-bold text-white mb-1" style="font-family: 'JetBrains Mono', monospace;">&lt;$200k</div>
-                        <div class="text-lg text-secondary">Revenue</div>
-                    </div>
                 </div>
-
-                <!-- Seat-based Tier -->
-                <div class="border-b border-white/10 py-8 px-6 md:px-12 fade-in flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                    <div class="flex-1">
-                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-2" style="font-family: 'JetBrains Mono', monospace;">$1'000/<br class="md:hidden">YEAR/SEAT</h3>
-                    </div>
-                    <div class="flex-1 text-right">
-                        <div class="text-4xl md:text-5xl font-bold text-white mb-1" style="font-family: 'JetBrains Mono', monospace;">&lt;$1M</div>
-                        <div class="text-lg text-secondary">Revenue</div>
-                    </div>
-                </div>
-
-                <!-- Budget-based Tier -->
-                <div class="border-b border-white/10 py-8 px-6 md:px-12 fade-in flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                    <div class="flex-1">
-                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-2" style="font-family: 'JetBrains Mono', monospace;">0.5% OF GAME<br>BUDGET</h3>
-                    </div>
-                    <div class="flex-1 text-right">
-                        <div class="text-4xl md:text-5xl font-bold text-white mb-1" style="font-family: 'JetBrains Mono', monospace;">&gt;$1M</div>
-                        <div class="text-lg text-secondary">Revenue</div>
-                    </div>
-                </div>
-
-                <!-- Tryll Assistant Tier -->
-                <div class="py-8 px-6 md:px-12 fade-in flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                    <div class="flex-1">
-                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-2" style="font-family: 'JetBrains Mono', monospace;">FIXED PRICE<br>PER PRODUCT</h3>
-                    </div>
-                    <div class="flex-1 text-right">
-                        <div class="text-2xl md:text-3xl font-normal text-white" style="font-family: 'JetBrains Mono', monospace;">Tryll Assistant</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Audience Section -->
-    <section id="for-you" class="py-12 md:py-24 bg-black relative overflow-hidden">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="max-w-3xl mx-auto text-center mb-12 md:mb-20 fade-in">
                 <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
-                    Perfect for Every Creator
+                    Price Scales With Your Success
                 </h2>
                 <p class="text-xl text-secondary leading-relaxed">
-                    Whether you're an indie developer or a AAA studio, Tryll Engine adapts to your needs.
+                    Start free. Pay only when your game succeeds.
                 </p>
             </div>
-            
-            <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
-                        <i class="fas fa-building text-white"></i>
+
+            <!-- Pricing Cards Grid -->
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-16">
+
+                <!-- Community Tier Card -->
+                <div class="glass-card rounded-2xl p-8 fade-in hover:border-primary-500/40 transition-all duration-300 flex flex-col">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Community</h3>
+                        <p class="text-secondary text-sm">Static knowledge base overlay</p>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Studios</h3>
-                    <p class="text-secondary mb-4 leading-relaxed">
-                        <span class="text-white font-medium">Cut Costs, Innovate More</span>
-                    </p>
-                    <p class="text-secondary/90 text-sm leading-relaxed mb-4">
-                        Local AI saves 95% vs cloud costs. Reinvest in creativity, not infrastructure. Scale from indie to AAA with zero cloud bills.
-                    </p>
-                    <ul class="text-secondary/85 text-sm text-left space-y-2">
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Eliminate $1.8M/month cloud costs</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Enterprise-grade AI without infrastructure</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Dedicated integration support</span>
-                        </li>
-                    </ul>
+
+                    <div class="mb-8 flex-grow">
+                        <div class="flex items-baseline gap-2 mb-2">
+                            <span class="text-5xl font-bold text-white" style="font-family: 'JetBrains Mono', monospace;">$0</span>
+                        </div>
+                        <p class="text-secondary text-sm mb-6">Free forever</p>
+                        <ul class="space-y-3 text-secondary text-base">
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Works with any published game</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Zero integration required</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Wiki/docs knowledge base</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Source references in answers</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>100% local, private, offline</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="tryll-assistant" class="btn-primary text-center py-3 px-6 rounded-lg font-semibold transition-all duration-300 hover:scale-105 mt-auto">
+                        Add Your Game
+                    </a>
                 </div>
-                
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
-                        <i class="fas fa-user text-primary-400"></i>
+
+                <!-- Companion Tier Card -->
+                <div class="glass-card rounded-2xl p-8 fade-in flex flex-col border-2 border-primary-500/30 relative" style="transition: border-color 0.3s;">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary-500 text-white px-4 py-1 rounded-full text-sm font-semibold pointer-events-none">
+                        Most Popular
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Solo Developers</h3>
-                    <p class="text-secondary mb-4 leading-relaxed">
-                        <span class="text-white font-medium">Professional AI Made Simple</span>
-                    </p>
-                    <p class="text-secondary/90 text-sm leading-relaxed mb-4">
-                        No AI expertise required. Focus on your game vision while Tryll handles the complex AI infrastructure.
-                    </p>
-                    <ul class="text-secondary/85 text-sm text-left space-y-2">
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Free for under $200k revenue</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>1-click Unreal Engine integration</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Community support & examples</span>
-                        </li>
-                    </ul>
+
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Companion</h3>
+                        <p class="text-secondary text-sm">Real-time game state awareness</p>
+                    </div>
+
+                    <div class="mb-8 flex-grow">
+                        <div class="flex items-baseline gap-2 mb-2">
+                            <span class="text-4xl font-bold text-white" style="font-family: 'JetBrains Mono', monospace;">5%</span>
+                            <span class="text-secondary text-lg">× reviews × price</span>
+                        </div>
+                        <p class="text-secondary text-sm mb-6">One-time payment</p>
+                        <p class="text-base font-semibold mb-3 text-white">Everything in Community, plus:</p>
+                        <ul class="space-y-3 text-secondary text-base">
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Real-time player state awareness</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Reads location, stats, quests, inventory</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Contextual hints, not generic answers</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Personalized onboarding & reminders</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Adapts to player behavior</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="#contact" class="btn-primary text-center py-3 px-6 rounded-lg font-semibold transition-all duration-300 hover:scale-105 mt-auto">
+                        Book a Demo
+                    </a>
                 </div>
-                
-                <div class="glass-card p-8 rounded-2xl text-center transition-all duration-300 hover:border-primary-500/30 fade-in radial-light">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
-                        <i class="fas fa-tools text-gray-300"></i>
+
+                <!-- Engine Integration Tier Card -->
+                <div class="glass-card rounded-2xl p-8 fade-in hover:border-primary-500/40 transition-all duration-300 flex flex-col">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Engine Integration</h3>
+                        <p class="text-secondary text-sm">Full Tryll Engine power</p>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Modders</h3>
-                    <p class="text-secondary mb-4 leading-relaxed">
-                        <span class="text-white font-medium">Enhance Any Game World</span>
-                    </p>
-                    <p class="text-secondary/90 text-sm leading-relaxed mb-4">
-                        Add intelligent NPCs to existing games. Extend the life of beloved classics with AI-powered characters.
-                    </p>
-                    <ul class="text-secondary/85 text-sm text-left space-y-2">
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Retrofit any game with AI NPCs</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>No source code access needed</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Active modding community</span>
-                        </li>
-                    </ul>
+
+                    <div class="mb-8 flex-grow">
+                        <div class="flex items-baseline gap-2 mb-2">
+                            <span class="text-4xl font-bold text-white" style="font-family: 'JetBrains Mono', monospace;">10%</span>
+                            <span class="text-secondary text-lg">× reviews × price</span>
+                        </div>
+                        <p class="text-secondary text-sm mb-6">One-time payment</p>
+                        <p class="text-base font-semibold mb-3 text-white">Everything in Companion, plus:</p>
+                        <ul class="space-y-3 text-secondary text-base">
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Custom in-game characters</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Voice integration (TTS/STT)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>AI that takes action in-game</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Dynamic world generation</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Relationship-building AI with memory</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>New mechanics: mimics, commentary</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="#contact" class="btn-primary text-center py-3 px-6 rounded-lg font-semibold transition-all duration-300 hover:scale-105 mt-auto">
+                        Book a Demo
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Price Calculator -->
+            <div class="max-w-3xl mx-auto fade-in">
+                <div class="glass-card rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold text-white mb-6 text-center">Price Calculator</h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <!-- Game Price -->
+                        <div>
+                            <label class="block text-white font-medium mb-3">Game Price</label>
+                            <div class="flex gap-2 flex-wrap">
+                                <button class="price-btn px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all" data-price="0">$0</button>
+                                <button class="price-btn px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all" data-price="5">$5</button>
+                                <button class="price-btn px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all active" data-price="10">$10</button>
+                                <button class="price-btn px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all" data-price="20">$20</button>
+                                <button class="price-btn px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all" data-price="50">$50</button>
+                            </div>
+                            <div class="mt-3">
+                                <label class="text-secondary text-sm">Custom price: $</label>
+                                <input type="number" id="custom-price" min="0" max="100" placeholder="0-100" class="w-20 ml-2 px-3 py-1 rounded-lg bg-white/5 border border-white/20 text-white text-sm">
+                            </div>
+                        </div>
+
+                        <!-- Steam Reviews -->
+                        <div>
+                            <label class="block text-white font-medium mb-3">Steam Reviews: <span id="reviews-display" class="text-primary-500">10,000</span></label>
+                            <input type="range" id="reviews-slider" min="0" max="36" value="10" step="1" class="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer">
+                            <div class="flex justify-between text-secondary text-xs mt-2">
+                                <span>0</span>
+                                <span>20k</span>
+                                <span>50k</span>
+                                <span>100k</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tier Selection -->
+                    <div class="mb-8">
+                        <label class="block text-white font-medium mb-3">Select Tier</label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <button class="tier-btn px-4 py-3 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all text-center" data-coefficient="0">
+                                <span class="block font-semibold">Community</span>
+                                <span class="text-xs text-secondary">0%</span>
+                            </button>
+                            <button class="tier-btn px-4 py-3 rounded-lg border border-primary-500/50 bg-primary-500/10 text-white transition-all text-center active" data-coefficient="0.05">
+                                <span class="block font-semibold">Companion</span>
+                                <span class="text-xs text-secondary">5%</span>
+                            </button>
+                            <button class="tier-btn px-4 py-3 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all text-center" data-coefficient="0.10">
+                                <span class="block font-semibold">Engine</span>
+                                <span class="text-xs text-secondary">10%</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Result -->
+                    <div class="text-center p-6 rounded-xl bg-white/5 border border-white/10">
+                        <p class="text-secondary mb-2">One-time price</p>
+                        <p class="text-5xl font-bold text-white mb-2" style="font-family: 'JetBrains Mono', monospace;">$<span id="calculated-price">5,000</span></p>
+                        <p class="text-secondary text-sm mb-4"><span id="reviews-count">10,000</span> reviews × $<span id="price-display">10</span> × <span id="coefficient-display">5%</span></p>
+                        <div class="pt-4 border-t border-white/10">
+                            <p class="text-secondary text-sm mb-1">Estimated game revenue</p>
+                            <p class="text-2xl font-bold text-green-400" style="font-family: 'JetBrains Mono', monospace;">$<span id="estimated-revenue">5,000,000</span></p>
+                            <p class="text-secondary text-xs mt-1">Based on 1 review ≈ 50 sales</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1856,7 +1934,7 @@
 
                     <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-3">
-                            <h3 class="text-xl font-bold text-white">Why is local AI better than using a cloud API like OpenAI or Convai?</h3>
+                            <h3 class="text-xl font-bold text-white">Why is local AI better than using a cloud API?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
                         </button>
                         <div id="faq-3" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
@@ -1890,7 +1968,7 @@
                                     <p class="mb-3">Tryll includes a local-first LLM Manager that handles:</p>
                                     <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
                                         <li>Detecting available GPU and RAM</li>
-                                        <li>Selecting the optimal model size and quantization (4B-30B)</li>
+                                        <li>Selecting the optimal model size and quantization (4B-14B)</li>
                                         <li>Auto-updating models as better open-source options become available</li>
                                         <li>Dynamically adjusting context usage by offloading high-level reasoning to the Director agent and storing memory in a local, searchable context database</li>
                                         <li>Falling back to traditional dialogue if the system cannot run models</li>
@@ -1913,29 +1991,7 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
-                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-6">
-                            <h3 class="text-xl font-bold text-white">How can game developers control GPU and CPU resources used by Tryll?</h3>
-                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
-                        </button>
-                        <div id="faq-6" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
-                            <div class="px-8 pb-6">
-                                <div class="text-secondary leading-relaxed">
-                                    <p class="mb-3">Developers have full control through our resource management API:</p>
-                                    <ul class="list-disc list-inside space-y-2 ml-4">
-                                        <li>Set maximum GPU memory allocation (e.g., limit to 4GB)</li>
-                                        <li>Configure CPU thread limits and priority levels</li>
-                                        <li>Define performance profiles (minimal, balanced, maximum)</li>
-                                        <li>Implement dynamic resource scaling based on game demands</li>
-                                        <li>Monitor resource usage in real-time through our dashboard</li>
-                                    </ul>
-                                    <p class="mt-3">These settings can be adjusted per-platform and even changed dynamically during gameplay.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
+
                 </div>
             </div>
             
@@ -2002,13 +2058,13 @@
             <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16 fade-in">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-xs md:text-sm font-normal mb-6 md:mb-8 border border-white/20">
                     <div class="w-2 h-2 rounded-full bg-primary-500"></div>
-                    JOIN THE REVOLUTION
+                    GET STARTED
                 </div>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
-                    Ready for On-Device AI?
+                    Book a Demo
                 </h2>
                 <p class="text-lg md:text-xl text-secondary mb-8 md:mb-10 leading-relaxed px-2">
-                    Join the revolution. Be among the first studios to access Tryll Engine. Limited early access spots with integration support available.
+                    Interested in Companion or Engine Integration? Let's talk about how Tryll can help your game.
                 </p>
             </div>
             
@@ -2090,11 +2146,11 @@
                         <input type="hidden" name="_subject" value="New Tryll Engine Contact Form Submission">
                         <input type="hidden" name="_next" value="https://tryllengine.com/">
                         
-                        <button 
-                            type="submit" 
+                        <button
+                            type="submit"
                             class="btn-primary w-full px-6 md:px-8 py-4 md:py-5 rounded-lg text-base md:text-lg inline-flex items-center justify-center"
                         >
-                            Get Started
+                            Request Demo
                         </button>
                     </div>
                 </form>
@@ -2862,8 +2918,101 @@
                     }
                 });
             });
+
+            // Price Calculator functionality
+            const priceButtons = document.querySelectorAll('.price-btn');
+            const tierButtons = document.querySelectorAll('.tier-btn');
+            const reviewsSlider = document.getElementById('reviews-slider');
+            const customPriceInput = document.getElementById('custom-price');
+            const reviewsDisplay = document.getElementById('reviews-display');
+            const calculatedPrice = document.getElementById('calculated-price');
+            const reviewsCount = document.getElementById('reviews-count');
+            const priceDisplay = document.getElementById('price-display');
+            const coefficientDisplay = document.getElementById('coefficient-display');
+
+            let currentPrice = 10;
+            let currentReviews = 10000;
+            let currentCoefficient = 0.05;
+
+            // Custom review values: 0-20k step 1k, then 25k-100k step 5k
+            const reviewValues = [
+                0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000,
+                11000, 12000, 13000, 14000, 15000, 16000, 17000, 18000, 19000, 20000,
+                25000, 30000, 35000, 40000, 45000, 50000, 55000, 60000, 65000, 70000,
+                75000, 80000, 85000, 90000, 95000, 100000
+            ];
+
+            const estimatedRevenue = document.getElementById('estimated-revenue');
+
+            function updateCalculator() {
+                const total = currentReviews * currentPrice * currentCoefficient;
+                const revenue = currentReviews * 50 * currentPrice;
+                calculatedPrice.textContent = total.toLocaleString();
+                reviewsCount.textContent = currentReviews.toLocaleString();
+                priceDisplay.textContent = currentPrice;
+                coefficientDisplay.textContent = (currentCoefficient * 100) + '%';
+                estimatedRevenue.textContent = revenue.toLocaleString();
+            }
+
+            // Price button clicks
+            priceButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    priceButtons.forEach(b => b.classList.remove('active', 'bg-white/20', 'border-white/40'));
+                    this.classList.add('active', 'bg-white/20', 'border-white/40');
+                    currentPrice = parseInt(this.dataset.price);
+                    customPriceInput.value = '';
+                    updateCalculator();
+                });
+            });
+
+            // Custom price input
+            customPriceInput.addEventListener('input', function() {
+                const val = parseInt(this.value) || 0;
+                if (val >= 0 && val <= 100) {
+                    currentPrice = val;
+                    priceButtons.forEach(b => b.classList.remove('active', 'bg-white/20', 'border-white/40'));
+                    updateCalculator();
+                }
+            });
+
+            // Reviews slider with custom step values
+            reviewsSlider.addEventListener('input', function() {
+                const index = parseInt(this.value);
+                currentReviews = reviewValues[index];
+                reviewsDisplay.textContent = currentReviews.toLocaleString();
+                updateCalculator();
+            });
+
+            // Tier button clicks
+            tierButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    tierButtons.forEach(b => {
+                        b.classList.remove('active', 'border-primary-500/50', 'bg-primary-500/10');
+                        b.classList.add('border-white/20', 'bg-white/5');
+                    });
+                    this.classList.add('active', 'border-primary-500/50', 'bg-primary-500/10');
+                    this.classList.remove('border-white/20', 'bg-white/5');
+                    currentCoefficient = parseFloat(this.dataset.coefficient);
+                    updateCalculator();
+                });
+            });
+
+            // Initial calculation
+            updateCalculator();
         });
-        
+
+    </script>
+
+    <!-- Shopify Storefront API Integration -->
+    <script src="shopify-config.js"></script>
+    <script src="shopify-integration.js"></script>
+    <script>
+        // Initialize Shopify integration when configuration is available
+        if (typeof SHOPIFY_CONFIG !== 'undefined' && typeof initShopify === 'function') {
+            initShopify(SHOPIFY_CONFIG);
+        } else {
+            console.warn('Shopify integration not initialized: Configuration or integration script missing');
+        }
     </script>
 </body>
 </html>

@@ -3,7 +3,6 @@
 
 User-agent: *
 Allow: /
-Disallow: /tryll-assistant.html
 Disallow: /test-redesign.html
 
 # Sitemap location

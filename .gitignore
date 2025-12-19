@@ -1,2 +1,11 @@
 # Claude Code directory
 .claude
+
+# Shopify configuration (contains API credentials)
+shopify-config.js
+
+.playwright-mcp
+
+# Pages not ready for upload
+safety.html
+beyond-chat.html

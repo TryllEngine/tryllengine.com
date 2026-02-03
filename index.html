@@ -1850,7 +1850,8 @@
                     <div class="text-center p-6 rounded-xl bg-white/5 border border-white/10">
                         <p class="text-secondary mb-2">One-time price</p>
                         <p class="text-5xl font-bold text-white mb-2" style="font-family: 'JetBrains Mono', monospace;">$<span id="calculated-price">5,000</span></p>
-                        <p class="text-secondary text-sm mb-4"><span id="reviews-count">10,000</span> reviews × $<span id="price-display">10</span> × <span id="coefficient-display">5%</span></p>
+                        <p class="text-secondary text-sm mb-2"><span id="reviews-count">10,000</span> reviews × $<span id="price-display">10</span> × <span id="coefficient-display">5%</span></p>
+                        <p class="text-primary-500 text-sm mb-4">Unlimited tokens per user: <span class="font-bold" style="font-family: 'JetBrains Mono', monospace;">$<span id="cost-per-user">0.01</span></span>/user</p>
                         <div class="pt-4 border-t border-white/10">
                             <p class="text-secondary text-sm mb-1">Estimated copies sold</p>
                             <p class="text-xl font-bold text-white mb-3" style="font-family: 'JetBrains Mono', monospace;"><span id="estimated-copies">500,000</span></p>
@@ -2175,7 +2176,7 @@
             <div class="flex flex-col items-center gap-6 md:grid md:grid-cols-3 md:items-center">
                 <!-- Left: Copyright -->
                 <div class="text-secondary text-sm order-2 md:order-1 text-center md:text-left">
-                    © 2025 Tryll Engine, Inc. All rights reserved.<br>
+                    © 2026 Tryll Engine, Inc. All rights reserved.<br>
                     <span class="text-xs">Deep Rock Galactic and Bosco are trademarks of Ghost Ship Games ApS.</span>
                 </div>
                 
@@ -2947,17 +2948,20 @@
 
             const estimatedRevenue = document.getElementById('estimated-revenue');
             const estimatedCopies = document.getElementById('estimated-copies');
+            const costPerUser = document.getElementById('cost-per-user');
 
             function updateCalculator() {
                 const total = currentReviews * currentPrice * currentCoefficient;
                 const copies = currentReviews * 50;
                 const revenue = copies * currentPrice;
+                const perUser = copies > 0 ? total / copies : 0;
                 calculatedPrice.textContent = total.toLocaleString();
                 reviewsCount.textContent = currentReviews.toLocaleString();
                 priceDisplay.textContent = currentPrice;
                 coefficientDisplay.textContent = (currentCoefficient * 100) + '%';
                 estimatedCopies.textContent = copies.toLocaleString();
                 estimatedRevenue.textContent = revenue.toLocaleString();
+                costPerUser.textContent = perUser < 0.01 ? perUser.toFixed(3) : perUser.toFixed(2);
             }
 
             // Price button clicks

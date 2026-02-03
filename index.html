@@ -3019,17 +3019,5 @@
         });
 
     </script>
-
-    <!-- Shopify Storefront API Integration -->
-    <script src="shopify-config.js"></script>
-    <script src="shopify-integration.js"></script>
-    <script>
-        // Initialize Shopify integration when configuration is available
-        if (typeof SHOPIFY_CONFIG !== 'undefined' && typeof initShopify === 'function') {
-            initShopify(SHOPIFY_CONFIG);
-        } else {
-            console.warn('Shopify integration not initialized: Configuration or integration script missing');
-        }
-    </script>
 </body>
 </html>

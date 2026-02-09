@@ -1,0 +1,68 @@
+[
+  {
+    "slug": "introducing-tryll-engine-2",
+    "title": "Introducing Tryll Engine 2.0: Faster, Smarter, Local",
+    "excerpt": "Our biggest update yet brings 3x faster inference, support for the latest open-source models, and a completely redesigned API for game developers.",
+    "category": "news",
+    "date": "2026-02-08",
+    "readTime": 5,
+    "image": null,
+    "icon": "fa-newspaper",
+    "author": "Tryll Engine Team"
+  },
+  {
+    "slug": "building-ai-companion-unity",
+    "title": "Building Your First AI Companion in Unity",
+    "excerpt": "Step-by-step guide to integrating Tryll Engine into your Unity project and creating an NPC that remembers player interactions.",
+    "category": "tutorial",
+    "date": "2026-02-05",
+    "readTime": 12,
+    "image": null,
+    "icon": "fa-code",
+    "author": "Tryll Engine Team"
+  },
+  {
+    "slug": "how-we-achieved-40ms-response-times",
+    "title": "How We Achieved 40ms Response Times on Consumer GPUs",
+    "excerpt": "Deep dive into our optimization techniques for running 7B parameter models at gaming-viable speeds on RTX 3060 and above.",
+    "category": "engineering",
+    "date": "2026-01-28",
+    "readTime": 8,
+    "image": null,
+    "icon": "fa-microchip",
+    "author": "Tryll Engine Team"
+  },
+  {
+    "slug": "boscotryll-bringing-ai-to-drg",
+    "title": "BoscoTryll: Bringing AI to Deep Rock Galactic",
+    "excerpt": "How we transformed a simple drone companion into a character with genuine personality using local LLMs.",
+    "category": "case-study",
+    "date": "2026-01-20",
+    "readTime": 10,
+    "image": null,
+    "icon": "fa-gamepad",
+    "author": "Tryll Engine Team"
+  },
+  {
+    "slug": "memory-systems-making-npcs-remember",
+    "title": "Memory Systems: Making NPCs Remember",
+    "excerpt": "Learn how to implement short-term and long-term memory for your AI characters using Tryll's memory management APIs.",
+    "category": "tutorial",
+    "date": "2026-01-15",
+    "readTime": 15,
+    "image": null,
+    "icon": "fa-brain",
+    "author": "Tryll Engine Team"
+  },
+  {
+    "slug": "10000-developers-and-counting",
+    "title": "10,000 Developers and Counting",
+    "excerpt": "We've hit a major milestone! A look back at our journey and what's coming next for the Tryll community.",
+    "category": "news",
+    "date": "2026-01-08",
+    "readTime": 3,
+    "image": null,
+    "icon": "fa-users",
+    "author": "Tryll Engine Team"
+  }
+]

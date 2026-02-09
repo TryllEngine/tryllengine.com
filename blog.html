@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K8MPGKVX');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Tryll Engine</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Insights, tutorials, and updates from the Tryll Engine team. Learn about on-device AI for games, intelligent NPCs, and local AI technology.">
+    <meta name="keywords" content="game AI blog, NPC AI tutorials, local AI development, game development insights, AI gaming technology">
+    <meta name="author" content="Tryll Engine">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tryllengine.com/blog">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tryllengine.com/blog">
+    <meta property="og:title" content="Blog - Tryll Engine">
+    <meta property="og:description" content="Insights, tutorials, and updates from the Tryll Engine team.">
+    <meta property="og:image" content="https://tryllengine.com/assets/logo/logo-mark/blue.svg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tryllengine.com/blog">
+    <meta property="twitter:title" content="Blog - Tryll Engine">
+    <meta property="twitter:description" content="Insights, tutorials, and updates from the Tryll Engine team.">
+    <meta property="twitter:image" content="https://tryllengine.com/assets/logo/logo-mark/blue.svg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicon/site.webmanifest">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#232E41',
+                        secondary: '#F6F0EB',
+                        'primary-light': '#2a3750',
+                        'primary-dark': '#1a232f'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap');
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', BlinkMacSystemFont, -apple-system, 'SF Pro Display', sans-serif;
+            background-color: #000000;
+            background-image:
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.15), transparent),
+                radial-gradient(ellipse 80% 50% at 80% 80%, rgba(147, 51, 234, 0.1), transparent);
+            color: rgba(255, 255, 255, 0.85);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .heading-primary {
+            font-weight: 650;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+            color: #ffffff;
+        }
+
+        .text-secondary { color: rgba(255, 255, 255, 0.65); }
+
+        .nav-glass-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .blog-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .blog-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .blog-card-image {
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(147, 51, 234, 0.2) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category-pill {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .category-pill:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .category-pill.active {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.4);
+            color: #60a5fa;
+        }
+
+        .btn-primary {
+            background-color: #3B82F6;
+            color: #ffffff;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #2563EB;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .category-badge.tutorial { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
+        .category-badge.news { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+        .category-badge.case-study { background: rgba(168, 85, 247, 0.2); color: #c084fc; }
+        .category-badge.engineering { background: rgba(251, 146, 60, 0.2); color: #fb923c; }
+
+        .search-input {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: rgba(59, 130, 246, 0.4);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .card-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8MPGKVX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Navigation -->
+    <nav class="fixed top-4 left-4 right-4 md:top-6 md:left-1/2 md:transform md:-translate-x-1/2 z-50 nav-glass-card px-4 md:px-8 py-3 md:py-4 w-auto md:w-full md:max-w-7xl">
+        <div class="flex items-center justify-between">
+            <div class="logo">
+                <a href="/" class="block">
+                    <img src="./assets/logo/full-logo/light-text.svg" alt="Tryll Engine" class="h-8 md:h-12" />
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-8">
+                <ul class="nav-links flex gap-6 list-none">
+                    <li><a href="/#features" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Features</a></li>
+                    <li><a href="/#pricing" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Pricing</a></li>
+                    <li><a href="/#faq" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">FAQ</a></li>
+                    <li><a href="/blog" class="text-white transition-colors duration-200 font-medium text-sm">Blog</a></li>
+                    <li><a href="/boscotryll" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">BoscoTryll Mod</a></li>
+                </ul>
+                <div class="flex items-center gap-3">
+                    <a href="/tryll-assistant" class="btn-primary px-4 py-2 rounded-lg text-sm inline-flex items-center justify-center gap-2">
+                        <i class="fas fa-plus"></i>
+                        Add Your Game
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="md:hidden flex items-center gap-3">
+                <a href="/tryll-assistant" class="btn-primary px-3 py-2 rounded-lg text-xs inline-flex items-center justify-center">
+                    Add Your Game
+                </a>
+                <button id="mobile-menu-btn" class="text-white p-2 rounded-lg hover:bg-white/10 transition-colors duration-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="md:hidden fixed inset-0 bg-black/95 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40">
+            <button id="mobile-menu-close" class="absolute top-6 right-6 text-white/60 hover:text-white transition-colors duration-200">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div class="flex flex-col items-center justify-center h-full space-y-8 text-center px-6">
+                <a href="/#features" class="mobile-menu-link text-white text-xl font-medium hover:text-blue-400 transition-colors duration-200">Features</a>
+                <a href="/#pricing" class="mobile-menu-link text-white text-xl font-medium hover:text-blue-400 transition-colors duration-200">Pricing</a>
+                <a href="/#faq" class="mobile-menu-link text-white text-xl font-medium hover:text-blue-400 transition-colors duration-200">FAQ</a>
+                <a href="/blog" class="mobile-menu-link text-blue-400 text-xl font-medium">Blog</a>
+                <a href="/boscotryll" class="mobile-menu-link text-white text-xl font-medium hover:text-blue-400 transition-colors duration-200">BoscoTryll Mod</a>
+                <div class="pt-4">
+                    <a href="/tryll-assistant" class="btn-primary px-8 py-4 rounded-lg text-lg inline-flex items-center justify-center gap-2">
+                        <i class="fas fa-plus"></i>
+                        Add Your Game
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 md:pt-40 pb-12 md:pb-16 px-4">
+        <div class="max-w-6xl mx-auto text-center fade-in">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl heading-primary mb-6">
+                Blog
+            </h1>
+            <p class="text-lg md:text-xl text-secondary max-w-2xl mx-auto">
+                Insights, tutorials, and updates from the Tryll Engine team
+            </p>
+        </div>
+    </section>
+
+    <!-- Search + Category Filters -->
+    <section class="pb-8 md:pb-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <!-- Search -->
+            <div class="max-w-md mx-auto mb-6">
+                <div class="relative">
+                    <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-white/40"></i>
+                    <input type="text" id="search-input" placeholder="Search posts..."
+                        class="search-input w-full pl-11 pr-4 py-3 rounded-xl text-sm" />
+                </div>
+            </div>
+            <!-- Categories -->
+            <div class="flex flex-wrap gap-3 justify-center" id="category-filters">
+                <button class="category-pill active" data-category="all">All</button>
+                <button class="category-pill" data-category="news">News</button>
+                <button class="category-pill" data-category="tutorial">Tutorials</button>
+                <button class="category-pill" data-category="engineering">Engineering</button>
+                <button class="category-pill" data-category="case-study">Case Studies</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Posts Grid -->
+    <section class="pb-20 md:pb-32 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" id="blog-grid">
+                <!-- Cards rendered dynamically from posts.json -->
+            </div>
+
+            <!-- Empty state -->
+            <div id="empty-state" class="hidden text-center py-16">
+                <i class="fas fa-search text-3xl text-white/20 mb-4"></i>
+                <p class="text-secondary text-lg">No posts found matching your search.</p>
+            </div>
+
+            <!-- Loading state -->
+            <div id="loading-state" class="text-center py-16">
+                <p class="text-secondary">Loading posts...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center gap-6 md:grid md:grid-cols-3 md:items-center">
+                <div class="text-secondary text-sm order-2 md:order-1 text-center md:text-left">
+                    &copy; 2026 Tryll Engine, Inc. All rights reserved.
+                </div>
+                <div class="flex gap-6 items-center justify-center order-1 md:order-2">
+                    <a href="https://discord.gg/XCBBGUMzUM" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Join our Discord">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@Tryll_Engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Watch on YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://instagram.com/tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://tiktok.com/@tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+                <div class="flex gap-6 order-3 md:order-3 justify-center md:justify-end">
+                    <a href="/privacy-policy" class="text-secondary hover:text-white transition-colors duration-300 text-sm">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('opacity-0', 'invisible');
+            mobileMenu.classList.add('opacity-100', 'visible');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('opacity-0', 'invisible');
+            mobileMenu.classList.remove('opacity-100', 'visible');
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        mobileMenuLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+
+        // Blog rendering
+        const blogGrid = document.getElementById('blog-grid');
+        const emptyState = document.getElementById('empty-state');
+        const loadingState = document.getElementById('loading-state');
+        const searchInput = document.getElementById('search-input');
+        const categoryFilters = document.querySelectorAll('.category-pill[data-category]');
+
+        let allPosts = [];
+        let activeCategory = 'all';
+
+        const categoryLabels = {
+            'news': 'News',
+            'tutorial': 'Tutorial',
+            'engineering': 'Engineering',
+            'case-study': 'Case Study'
+        };
+
+        function formatDate(dateStr) {
+            const d = new Date(dateStr + 'T00:00:00');
+            return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        function renderCard(post) {
+            const imageHtml = post.image
+                ? `<img src="${post.image}" alt="${post.title}" />`
+                : `<div class="absolute inset-0 flex items-center justify-center"><i class="fas ${post.icon} text-4xl text-white/30"></i></div>`;
+
+            return `
+                <article class="blog-card card-fade-in" data-category="${post.category}">
+                    <a href="/blog/${post.slug}" class="block">
+                        <div class="blog-card-image">${imageHtml}</div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="category-badge ${post.category}">${categoryLabels[post.category] || post.category}</span>
+                                <span class="text-sm text-secondary">${post.readTime} min read</span>
+                            </div>
+                            <h2 class="text-xl font-semibold text-white mb-3 line-clamp-2">${post.title}</h2>
+                            <p class="text-secondary text-sm mb-4 line-clamp-3">${post.excerpt}</p>
+                            <div class="flex items-center gap-3 text-sm text-secondary">
+                                <span>${formatDate(post.date)}</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            `;
+        }
+
+        function filterAndRender() {
+            const query = searchInput.value.toLowerCase().trim();
+
+            const filtered = allPosts.filter(post => {
+                const matchesCategory = activeCategory === 'all' || post.category === activeCategory;
+                const matchesSearch = !query
+                    || post.title.toLowerCase().includes(query)
+                    || post.excerpt.toLowerCase().includes(query);
+                return matchesCategory && matchesSearch;
+            });
+
+            blogGrid.innerHTML = filtered.map(renderCard).join('');
+            emptyState.classList.toggle('hidden', filtered.length > 0);
+        }
+
+        // Category filter clicks
+        categoryFilters.forEach(filter => {
+            filter.addEventListener('click', () => {
+                categoryFilters.forEach(f => f.classList.remove('active'));
+                filter.classList.add('active');
+                activeCategory = filter.dataset.category;
+                filterAndRender();
+            });
+        });
+
+        // Search with debounce
+        let searchTimeout;
+        searchInput.addEventListener('input', () => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(filterAndRender, 200);
+        });
+
+        // Load posts
+        fetch('/blog/posts.json')
+            .then(r => {
+                if (!r.ok) throw new Error('Failed to load posts');
+                return r.json();
+            })
+            .then(posts => {
+                allPosts = posts;
+                loadingState.classList.add('hidden');
+                filterAndRender();
+            })
+            .catch(() => {
+                loadingState.innerHTML = '<p class="text-red-400">Failed to load posts. Please try refreshing.</p>';
+            });
+    </script>
+</body>
+</html>

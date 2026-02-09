@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K8MPGKVX');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ============================================
+         REPLACE all POST_* placeholders below:
+         POST_SLUG          - URL slug (e.g. "my-post-title")
+         POST_TITLE         - Full post title
+         POST_EXCERPT        - 1-2 sentence summary for social previews
+         POST_DATE_ISO       - ISO date (e.g. "2026-03-15")
+         POST_DATE_FORMATTED - Display date (e.g. "Mar 15, 2026")
+         POST_CATEGORY       - CSS class: news, tutorial, engineering, case-study
+         POST_CATEGORY_LABEL - Display text: News, Tutorial, Engineering, Case Study
+         POST_READ_TIME      - Number only (e.g. "8")
+         POST_IMAGE          - Full URL or path to hero image (or remove the img tag)
+         ============================================ -->
+
+    <title>POST_TITLE - Tryll Engine Blog</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="POST_EXCERPT">
+    <meta name="author" content="Tryll Engine">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tryllengine.com/blog/POST_SLUG">
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tryllengine.com/blog/POST_SLUG">
+    <meta property="og:title" content="POST_TITLE">
+    <meta property="og:description" content="POST_EXCERPT">
+    <meta property="og:image" content="POST_IMAGE">
+    <meta property="og:site_name" content="Tryll Engine">
+    <meta property="article:published_time" content="POST_DATE_ISO">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tryllengine.com/blog/POST_SLUG">
+    <meta property="twitter:title" content="POST_TITLE">
+    <meta property="twitter:description" content="POST_EXCERPT">
+    <meta property="twitter:image" content="POST_IMAGE">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicon/site.webmanifest">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#232E41',
+                        secondary: '#F6F0EB',
+                        'primary-light': '#2a3750',
+                        'primary-dark': '#1a232f'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', BlinkMacSystemFont, -apple-system, 'SF Pro Display', sans-serif;
+            background-color: #000000;
+            background-image:
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.15), transparent),
+                radial-gradient(ellipse 80% 50% at 80% 80%, rgba(147, 51, 234, 0.1), transparent);
+            color: rgba(255, 255, 255, 0.85);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .heading-primary {
+            font-weight: 650;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+            color: #ffffff;
+        }
+
+        .text-secondary { color: rgba(255, 255, 255, 0.65); }
+
+        .nav-glass-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .btn-primary {
+            background-color: #3B82F6;
+            color: #ffffff;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #2563EB;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .category-badge.tutorial { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
+        .category-badge.news { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+        .category-badge.case-study { background: rgba(168, 85, 247, 0.2); color: #c084fc; }
+        .category-badge.engineering { background: rgba(251, 146, 60, 0.2); color: #fb923c; }
+
+        .blog-card-image {
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(147, 51, 234, 0.2) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Article prose styling for rendered markdown */
+        .prose {
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.8;
+            font-size: 1.0625rem;
+        }
+
+        .prose h2 {
+            color: #ffffff;
+            font-weight: 650;
+            font-size: 1.75rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.025em;
+        }
+
+        .prose h3 {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .prose h4 {
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .prose p {
+            margin-bottom: 1.5rem;
+        }
+
+        .prose a {
+            color: #60a5fa;
+            text-decoration: underline;
+            text-decoration-color: rgba(96, 165, 250, 0.3);
+            text-underline-offset: 3px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .prose a:hover {
+            text-decoration-color: #60a5fa;
+        }
+
+        .prose img {
+            border-radius: 12px;
+            margin: 2rem 0;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .prose blockquote {
+            border-left: 3px solid rgba(59, 130, 246, 0.4);
+            padding-left: 1.25rem;
+            margin: 1.5rem 0;
+            color: rgba(255, 255, 255, 0.6);
+            font-style: italic;
+        }
+
+        .prose code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-size: 0.875em;
+            color: #e2e8f0;
+        }
+
+        .prose pre {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.25rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        .prose pre code {
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            font-size: 0.875rem;
+            line-height: 1.7;
+        }
+
+        .prose ul, .prose ol {
+            margin: 1rem 0 1.5rem 1.5rem;
+        }
+
+        .prose ol { list-style: decimal; }
+        .prose ul { list-style: disc; }
+
+        .prose li {
+            margin-bottom: 0.5rem;
+        }
+
+        .prose ul li::marker {
+            color: rgba(59, 130, 246, 0.6);
+        }
+
+        .prose hr {
+            border-color: rgba(255, 255, 255, 0.1);
+            margin: 2.5rem 0;
+        }
+
+        .prose table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .prose th, .prose td {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+
+        .prose th {
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .prose strong {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+        }
+
+        /* Responsive video embed */
+        .video-embed {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .video-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8MPGKVX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Navigation -->
+    <nav class="fixed top-4 left-4 right-4 md:top-6 md:left-1/2 md:transform md:-translate-x-1/2 z-50 nav-glass-card px-4 md:px-8 py-3 md:py-4 w-auto md:w-full md:max-w-7xl">
+        <div class="flex items-center justify-between">
+            <div class="logo">
+                <a href="/" class="block">
+                    <img src="/assets/logo/full-logo/light-text.svg" alt="Tryll Engine" class="h-8 md:h-12" />
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-8">
+                <ul class="nav-links flex gap-6 list-none">
+                    <li><a href="/#features" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Features</a></li>
+                    <li><a href="/#pricing" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Pricing</a></li>
+                    <li><a href="/#faq" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">FAQ</a></li>
+                    <li><a href="/blog" class="text-white transition-colors duration-200 font-medium text-sm">Blog</a></li>
+                    <li><a href="/boscotryll" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">BoscoTryll Mod</a></li>
+                </ul>
+                <div class="flex items-center gap-3">
+                    <a href="/tryll-assistant" class="btn-primary px-4 py-2 rounded-lg text-sm inline-flex items-center justify-center gap-2">
+                        <i class="fas fa-plus"></i>
+                        Add Your Game
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="md:hidden flex items-center gap-3">
+                <a href="/tryll-assistant" class="btn-primary px-3 py-2 rounded-lg text-xs inline-flex items-center justify-center">
+                    Add Your Game
+                </a>
+                <button id="mobile-menu-btn" class="text-white p-2 rounded-lg hover:bg-white/10 transition-colors duration-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="md:hidden fixed inset-0 bg-black/95 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40">
+            <button id="mobile-menu-close" class="absolute top-6 right-6 text-white/60 hover:text-white transition-colors duration-200">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div class="flex flex-col items-center justify-center h-full space-y-8 text-center px-6">
+                <a href="/#features" class="mobile-menu-link text-white text-xl font-medium hover:text-blue-400 transition-colors duration-200">Features</a>
+                <a href="/#pricing" class="mobile-menu-link text-white text-xl font-medium hover:text-blue-400 transition-colors duration-200">Pricing</a>
+                <a href="/#faq" class="mobile-menu-link text-white text-xl font-medium hover:text-blue-400 transition-colors duration-200">FAQ</a>
+                <a href="/blog" class="mobile-menu-link text-blue-400 text-xl font-medium">Blog</a>
+                <a href="/boscotryll" class="mobile-menu-link text-white text-xl font-medium hover:text-blue-400 transition-colors duration-200">BoscoTryll Mod</a>
+                <div class="pt-4">
+                    <a href="/tryll-assistant" class="btn-primary px-8 py-4 rounded-lg text-lg inline-flex items-center justify-center gap-2">
+                        <i class="fas fa-plus"></i>
+                        Add Your Game
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article -->
+    <article class="pt-32 md:pt-40 pb-20 px-4">
+        <div class="max-w-3xl mx-auto fade-in">
+            <!-- Back to blog -->
+            <a href="/blog" class="inline-flex items-center gap-2 text-secondary hover:text-white transition-colors mb-8 text-sm">
+                <i class="fas fa-arrow-left"></i> Back to Blog
+            </a>
+
+            <!-- Article metadata -->
+            <div class="flex items-center gap-3 mb-6">
+                <span class="category-badge POST_CATEGORY">POST_CATEGORY_LABEL</span>
+                <span class="text-sm text-secondary">POST_READ_TIME min read</span>
+                <span class="text-sm text-secondary">&middot;</span>
+                <span class="text-sm text-secondary">POST_DATE_FORMATTED</span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-3xl md:text-4xl lg:text-5xl heading-primary mb-6">
+                POST_TITLE
+            </h1>
+
+            <!-- Excerpt -->
+            <p class="text-lg text-secondary mb-8" style="line-height: 1.6;">
+                POST_EXCERPT
+            </p>
+
+            <!-- Hero image (remove this div if no image) -->
+            <div class="rounded-xl overflow-hidden mb-12 blog-card-image">
+                <img src="POST_IMAGE" alt="POST_TITLE" />
+            </div>
+
+            <!-- Markdown content renders here -->
+            <div id="article-content" class="prose">
+                <div class="text-secondary text-center py-12">Loading article...</div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center gap-6 md:grid md:grid-cols-3 md:items-center">
+                <div class="text-secondary text-sm order-2 md:order-1 text-center md:text-left">
+                    &copy; 2026 Tryll Engine, Inc. All rights reserved.
+                </div>
+                <div class="flex gap-6 items-center justify-center order-1 md:order-2">
+                    <a href="https://discord.gg/XCBBGUMzUM" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Join our Discord">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@Tryll_Engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Watch on YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://instagram.com/tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://tiktok.com/@tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+                <div class="flex gap-6 order-3 md:order-3 justify-center md:justify-end">
+                    <a href="/privacy-policy" class="text-secondary hover:text-white transition-colors duration-300 text-sm">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Markdown renderer -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('opacity-0', 'invisible');
+            mobileMenu.classList.add('opacity-100', 'visible');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('opacity-0', 'invisible');
+            mobileMenu.classList.remove('opacity-100', 'visible');
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        mobileMenuLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+
+        // Fetch and render markdown content
+        const slug = 'POST_SLUG';
+        fetch(`/blog/content/${slug}.md`)
+            .then(r => {
+                if (!r.ok) throw new Error('Failed to load article');
+                return r.text();
+            })
+            .then(md => {
+                document.getElementById('article-content').innerHTML = marked.parse(md);
+            })
+            .catch(() => {
+                document.getElementById('article-content').innerHTML =
+                    '<p class="text-red-400 text-center py-12">Failed to load article content. Please try refreshing.</p>';
+            });
+    </script>
+</body>
+</html>

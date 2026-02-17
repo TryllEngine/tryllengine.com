@@ -11,28 +11,30 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Tryll Engine</title>
+
+    <title>We've Received an Epic MegaGrant from Unreal Engine - Tryll Engine Blog</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Insights, tutorials, and updates from the Tryll Engine team. Learn about on-device AI for games, intelligent NPCs, and local AI technology.">
-    <meta name="keywords" content="game AI blog, NPC AI tutorials, local AI development, game development insights, AI gaming technology">
+    <meta name="description" content="Tryll Engine has been awarded an Epic MegaGrant to bring on-device AI into Unreal Engine games.">
     <meta name="author" content="Tryll Engine">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://tryllengine.com/blog">
+    <link rel="canonical" href="https://tryllengine.com/blog/epic-megagrant-from-unreal-engine">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tryllengine.com/blog">
-    <meta property="og:title" content="Blog - Tryll Engine">
-    <meta property="og:description" content="Insights, tutorials, and updates from the Tryll Engine team.">
-    <meta property="og:image" content="https://tryllengine.com/assets/logo/logo-mark/blue.svg">
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tryllengine.com/blog/epic-megagrant-from-unreal-engine">
+    <meta property="og:title" content="We've Received an Epic MegaGrant from Unreal Engine">
+    <meta property="og:description" content="Tryll Engine has been awarded an Epic MegaGrant to bring on-device AI into Unreal Engine games.">
+    <meta property="og:image" content="https://tryllengine.com/assets/blog/epic-megagrant.jpg">
+    <meta property="og:site_name" content="Tryll Engine">
+    <meta property="article:published_time" content="2026-01-12">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://tryllengine.com/blog">
-    <meta property="twitter:title" content="Blog - Tryll Engine">
-    <meta property="twitter:description" content="Insights, tutorials, and updates from the Tryll Engine team.">
-    <meta property="twitter:image" content="https://tryllengine.com/assets/logo/logo-mark/blue.svg">
+    <meta property="twitter:url" content="https://tryllengine.com/blog/epic-megagrant-from-unreal-engine">
+    <meta property="twitter:title" content="We've Received an Epic MegaGrant from Unreal Engine">
+    <meta property="twitter:description" content="Tryll Engine has been awarded an Epic MegaGrant to bring on-device AI into Unreal Engine games.">
+    <meta property="twitter:image" content="https://tryllengine.com/assets/blog/epic-megagrant.jpg">
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -59,6 +61,7 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
 
         html { scroll-behavior: smooth; }
 
@@ -103,19 +106,24 @@
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
 
-        /* Minimal blog card — no borders, no background */
-        .blog-card {
-            transition: opacity 0.2s ease;
+        .category-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        .blog-card:hover {
-            opacity: 0.8;
-        }
+        .category-badge.tutorial { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
+        .category-badge.news { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+        .category-badge.case-study { background: rgba(168, 85, 247, 0.2); color: #c084fc; }
+        .category-badge.engineering { background: rgba(251, 146, 60, 0.2); color: #fb923c; }
 
         .blog-card-image {
-            aspect-ratio: 1 / 1;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.15) 100%);
-            border-radius: 12px;
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(147, 51, 234, 0.2) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -126,30 +134,70 @@
             object-fit: cover;
         }
 
-        /* Category filter as simple text links */
-        .category-link {
-            font-size: 0.9375rem;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.45);
-            transition: color 0.2s ease;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 0;
+        .prose {
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.8;
+            font-size: 1.0625rem;
         }
 
-        .category-link:hover {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .category-link.active {
+        .prose h2 {
             color: #ffffff;
+            font-weight: 650;
+            font-size: 1.75rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.025em;
         }
 
-        .category-accent {
+        .prose h3 {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .prose p { margin-bottom: 1.5rem; }
+
+        .prose a {
             color: #60a5fa;
-            font-size: 0.8125rem;
-            font-weight: 500;
+            text-decoration: underline;
+            text-decoration-color: rgba(96, 165, 250, 0.3);
+            text-underline-offset: 3px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .prose a:hover { text-decoration-color: #60a5fa; }
+
+        .prose img {
+            border-radius: 12px;
+            margin: 2rem 0;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .prose blockquote {
+            border-left: 3px solid rgba(59, 130, 246, 0.4);
+            padding-left: 1.25rem;
+            margin: 1.5rem 0;
+            color: rgba(255, 255, 255, 0.6);
+            font-style: italic;
+        }
+
+        .prose ul, .prose ol { margin: 1rem 0 1.5rem 1.5rem; }
+        .prose ol { list-style: decimal; }
+        .prose ul { list-style: disc; }
+        .prose li { margin-bottom: 0.5rem; }
+        .prose ul li::marker { color: rgba(59, 130, 246, 0.6); }
+
+        .prose hr {
+            border-color: rgba(255, 255, 255, 0.1);
+            margin: 2.5rem 0;
+        }
+
+        .prose strong {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
         }
 
         .fade-in {
@@ -173,11 +221,9 @@
         <div class="flex items-center justify-between">
             <div class="logo">
                 <a href="/" class="block">
-                    <img src="./assets/logo/full-logo/light-text.svg" alt="Tryll Engine" class="h-8 md:h-12" />
+                    <img src="/assets/logo/full-logo/light-text.svg" alt="Tryll Engine" class="h-8 md:h-12" />
                 </a>
             </div>
-
-            <!-- Desktop Navigation -->
             <div class="hidden md:flex items-center gap-8">
                 <ul class="nav-links flex gap-6 list-none">
                     <li><a href="/#features" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Features</a></li>
@@ -193,8 +239,6 @@
                     </a>
                 </div>
             </div>
-
-            <!-- Mobile Navigation -->
             <div class="md:hidden flex items-center gap-3">
                 <a href="/tryll-assistant" class="btn-primary px-3 py-2 rounded-lg text-xs inline-flex items-center justify-center">
                     Add Your Game
@@ -206,8 +250,6 @@
                 </button>
             </div>
         </div>
-
-        <!-- Mobile Menu Overlay -->
         <div id="mobile-menu" class="md:hidden fixed inset-0 bg-black/95 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40">
             <button id="mobile-menu-close" class="absolute top-6 right-6 text-white/60 hover:text-white transition-colors duration-200">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -230,42 +272,34 @@
         </div>
     </nav>
 
-    <!-- Header + Filters -->
-    <section class="pt-32 md:pt-40 pb-10 md:pb-14 px-4">
-        <div class="max-w-5xl mx-auto fade-in">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl heading-primary mb-10">
-                Blog
+    <!-- Article -->
+    <article class="pt-32 md:pt-40 pb-20 px-4">
+        <div class="max-w-3xl mx-auto fade-in">
+            <a href="/blog" class="inline-flex items-center gap-2 text-secondary hover:text-white transition-colors mb-8 text-sm">
+                <i class="fas fa-arrow-left"></i> Back to Blog
+            </a>
+
+            <!-- Hero image -->
+            <div class="rounded-xl overflow-hidden mb-6 w-[168px] h-[168px]">
+                <img src="/assets/blog/polygon.png" alt="We've Received an Epic MegaGrant from Unreal Engine" class="w-full h-full object-cover" />
+            </div>
+
+            <h1 class="text-3xl md:text-4xl lg:text-5xl heading-primary mb-6">
+                We've Received an Epic MegaGrant from Unreal Engine
             </h1>
 
-            <!-- Category filters as simple text links -->
-            <div class="flex flex-wrap gap-x-6 gap-y-3" id="category-filters">
-                <button class="category-link active" data-category="all">All</button>
-                <button class="category-link" data-category="news">News</button>
-                <button class="category-link" data-category="engineering">Engineering</button>
-                <button class="category-link" data-category="tutorial">Tutorials</button>
-                <button class="category-link" data-category="case-study">Case Studies</button>
+            <div class="flex items-center gap-3 mb-10">
+                <span class="category-badge news">News</span>
+                <span class="text-sm text-secondary">2 min read</span>
+                <span class="text-sm text-secondary">&middot;</span>
+                <span class="text-sm text-secondary">Jan 12, 2026</span>
+            </div>
+
+            <div id="article-content" class="prose">
+                <div class="text-secondary text-center py-12">Loading article...</div>
             </div>
         </div>
-    </section>
-
-    <!-- Blog Posts Grid -->
-    <section class="pb-20 md:pb-32 px-4">
-        <div class="max-w-5xl mx-auto">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 md:gap-x-8 gap-y-12 md:gap-y-16" id="blog-grid">
-                <!-- Cards rendered dynamically from posts.json -->
-            </div>
-
-            <!-- Empty state -->
-            <div id="empty-state" class="hidden text-center py-16">
-                <p class="text-secondary text-lg">No posts found.</p>
-            </div>
-
-            <!-- Loading state -->
-            <div id="loading-state" class="text-center py-16">
-                <p class="text-secondary">Loading posts...</p>
-            </div>
-        </div>
-    </section>
+    </article>
 
     <!-- Footer -->
     <footer class="py-8 border-t border-white/20">
@@ -295,8 +329,8 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
-        // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileMenuClose = document.getElementById('mobile-menu-close');
@@ -318,78 +352,18 @@
         mobileMenuClose.addEventListener('click', closeMobileMenu);
         mobileMenuLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
 
-        // Blog rendering
-        const blogGrid = document.getElementById('blog-grid');
-        const emptyState = document.getElementById('empty-state');
-        const loadingState = document.getElementById('loading-state');
-        const categoryFilters = document.querySelectorAll('.category-link[data-category]');
-
-        let allPosts = [];
-        let activeCategory = 'all';
-
-        const categoryLabels = {
-            'news': 'News',
-            'tutorial': 'Tutorial',
-            'engineering': 'Engineering',
-            'case-study': 'Case Study'
-        };
-
-        function formatDate(dateStr) {
-            const d = new Date(dateStr + 'T00:00:00');
-            return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-        }
-
-        function renderCard(post) {
-            const imageHtml = post.image
-                ? `<img src="${post.image}" alt="${post.title}" />`
-                : `<div class="absolute inset-0 flex items-center justify-center"><i class="fas ${post.icon} text-5xl text-white/20"></i></div>`;
-
-            return `
-                <article class="blog-card" data-category="${post.category}">
-                    <a href="/blog/${post.slug}.html" class="block">
-                        <div class="blog-card-image mb-4">${imageHtml}</div>
-                        <h2 class="text-lg font-semibold text-white mb-2 leading-snug">${post.title}</h2>
-                        <div class="flex items-center gap-2 text-sm">
-                            <span class="category-accent">${categoryLabels[post.category] || post.category}</span>
-                            <span class="text-secondary">${formatDate(post.date)}</span>
-                        </div>
-                    </a>
-                </article>
-            `;
-        }
-
-        function filterAndRender() {
-            const filtered = allPosts.filter(post => {
-                return activeCategory === 'all' || post.category === activeCategory;
-            });
-
-            blogGrid.innerHTML = filtered.map(renderCard).join('');
-            emptyState.classList.toggle('hidden', filtered.length > 0);
-        }
-
-        // Category filter clicks
-        categoryFilters.forEach(filter => {
-            filter.addEventListener('click', () => {
-                categoryFilters.forEach(f => f.classList.remove('active'));
-                filter.classList.add('active');
-                activeCategory = filter.dataset.category;
-                filterAndRender();
-            });
-        });
-
-        // Load posts
-        fetch('/blog/posts.json')
+        const slug = 'epic-megagrant-from-unreal-engine';
+        fetch(`/blog/content/${slug}.md`)
             .then(r => {
-                if (!r.ok) throw new Error('Failed to load posts');
-                return r.json();
+                if (!r.ok) throw new Error('Failed to load article');
+                return r.text();
             })
-            .then(posts => {
-                allPosts = posts;
-                loadingState.classList.add('hidden');
-                filterAndRender();
+            .then(md => {
+                document.getElementById('article-content').innerHTML = marked.parse(md);
             })
             .catch(() => {
-                loadingState.innerHTML = '<p class="text-red-400">Failed to load posts. Please try refreshing.</p>';
+                document.getElementById('article-content').innerHTML =
+                    '<p class="text-red-400 text-center py-12">Failed to load article content. Please try refreshing.</p>';
             });
     </script>
 </body>

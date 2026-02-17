@@ -26,13 +26,37 @@
     </url>
     <url>
         <loc>https://tryllengine.com/blog.html</loc>
-        <lastmod>2026-02-09</lastmod>
+        <lastmod>2026-02-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://tryllengine.com/blog/introducing-tryll-engine-2.html</loc>
-        <lastmod>2026-02-08</lastmod>
+        <loc>https://tryllengine.com/blog/tryll-assistant-live-on-steam.html</loc>
+        <lastmod>2026-02-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://tryllengine.com/blog/how-we-catch-prompt-injections-and-hallucinations.html</loc>
+        <lastmod>2026-02-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://tryllengine.com/blog/epic-megagrant-from-unreal-engine.html</loc>
+        <lastmod>2026-01-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://tryllengine.com/blog/welcome-vladimir-belyaev-as-cto.html</loc>
+        <lastmod>2025-12-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://tryllengine.com/blog/welcome-alexander-stojanovic-as-advisor.html</loc>
+        <lastmod>2025-11-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>

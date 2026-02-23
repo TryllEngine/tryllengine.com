@@ -1711,9 +1711,9 @@
                     <div class="mb-8 flex-grow">
                         <div class="flex items-baseline gap-2 mb-2">
                             <span class="text-4xl font-bold text-white" style="font-family: 'JetBrains Mono', monospace;">5%</span>
-                            <span class="text-secondary text-lg">× reviews × price</span>
+                            <span class="text-secondary text-lg">of game price</span>
                         </div>
-                        <p class="text-secondary text-sm mb-6">One-time payment</p>
+                        <p class="text-secondary text-sm mb-6">Per copy sold</p>
                         <p class="text-base font-semibold mb-3 text-white">Everything in Community, plus:</p>
                         <ul class="space-y-3 text-secondary text-base">
                             <li class="flex items-start gap-3">
@@ -1754,9 +1754,9 @@
                     <div class="mb-8 flex-grow">
                         <div class="flex items-baseline gap-2 mb-2">
                             <span class="text-4xl font-bold text-white" style="font-family: 'JetBrains Mono', monospace;">10%</span>
-                            <span class="text-secondary text-lg">× reviews × price</span>
+                            <span class="text-secondary text-lg">of game price</span>
                         </div>
-                        <p class="text-secondary text-sm mb-6">One-time payment</p>
+                        <p class="text-secondary text-sm mb-6">Per copy sold</p>
                         <p class="text-base font-semibold mb-3 text-white">Everything in Companion, plus:</p>
                         <ul class="space-y-3 text-secondary text-base">
                             <li class="flex items-start gap-3">
@@ -1797,69 +1797,58 @@
             <div class="max-w-3xl mx-auto fade-in">
                 <div class="glass-card rounded-2xl p-8">
                     <h3 class="text-2xl font-bold text-white mb-2 text-center">Price Calculator</h3>
-                    <p class="text-secondary text-center mb-6">Tryll scales with your success</p>
+                    <p class="text-secondary text-center mb-6">Fixed fee per copy sold. Like revenue share, without sharing financials.</p>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                        <!-- Game Price -->
-                        <div>
-                            <label class="block text-white font-medium mb-3">Game Price</label>
-                            <div class="flex gap-2 flex-wrap">
-                                <button class="price-btn px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all" data-price="0">$0</button>
-                                <button class="price-btn px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all" data-price="5">$5</button>
-                                <button class="price-btn px-4 py-2 rounded-lg border border-white/40 bg-white/20 text-white hover:bg-white/10 transition-all active" data-price="10">$10</button>
-                                <button class="price-btn px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all" data-price="20">$20</button>
-                                <button class="price-btn px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all" data-price="50">$50</button>
-                            </div>
-                            <div class="mt-3">
-                                <label class="text-secondary text-sm">Custom price: $</label>
-                                <input type="number" id="custom-price" min="0" max="100" placeholder="0-100" class="w-20 ml-2 px-3 py-1 rounded-lg bg-white/5 border border-white/20 text-white text-sm">
-                            </div>
-                        </div>
-
-                        <!-- Steam Reviews -->
-                        <div>
-                            <label class="block text-white font-medium mb-3">Steam Reviews: <span id="reviews-display" class="text-primary-500">10,000</span></label>
-                            <input type="range" id="reviews-slider" min="0" max="36" value="10" step="1" class="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer">
-                            <div class="relative text-secondary text-xs mt-2 h-4">
-                                <span class="absolute left-0">0</span>
-                                <span class="absolute" style="left: calc(27.78% + 4px); transform: translateX(-50%);">10k</span>
-                                <span class="absolute" style="left: 55.56%; transform: translateX(-50%);">20k</span>
-                                <span class="absolute right-0">100k</span>
-                            </div>
+                    <!-- Game Price -->
+                    <div class="mb-6">
+                        <label class="block text-white font-medium mb-3">Your game's price</label>
+                        <div class="flex gap-2 flex-wrap items-center">
+                            <button class="price-btn px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all" data-price="5">$5</button>
+                            <button class="price-btn px-4 py-2 rounded-lg border border-white/40 bg-white/20 text-white hover:bg-white/10 transition-all active" data-price="10">$10</button>
+                            <button class="price-btn px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all" data-price="20">$20</button>
+                            <button class="price-btn px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all" data-price="30">$30</button>
+                            <button class="price-btn px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all" data-price="50">$50</button>
+                            <span class="text-secondary text-sm ml-1">or $</span>
+                            <input type="number" id="custom-price" min="1" max="100" placeholder="custom" class="w-20 px-3 py-2 rounded-lg bg-white/5 border border-white/20 text-white text-sm">
                         </div>
                     </div>
 
                     <!-- Tier Selection -->
                     <div class="mb-8">
-                        <label class="block text-white font-medium mb-3">Select Tier</label>
+                        <label class="block text-white font-medium mb-3">Tier</label>
                         <div class="grid grid-cols-3 gap-3">
                             <button class="tier-btn px-4 py-3 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all text-center" data-coefficient="0">
                                 <span class="block font-semibold">Community</span>
-                                <span class="text-xs text-secondary">0%</span>
+                                <span class="text-xs text-secondary">Free</span>
                             </button>
                             <button class="tier-btn px-4 py-3 rounded-lg border border-primary-500/50 bg-primary-500/10 text-white transition-all text-center active" data-coefficient="0.05">
                                 <span class="block font-semibold">Companion</span>
-                                <span class="text-xs text-secondary">5%</span>
+                                <span class="text-xs text-secondary">5% of game price</span>
                             </button>
                             <button class="tier-btn px-4 py-3 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all text-center" data-coefficient="0.10">
                                 <span class="block font-semibold">Engine</span>
-                                <span class="text-xs text-secondary">10%</span>
+                                <span class="text-xs text-secondary">10% of game price</span>
                             </button>
                         </div>
                     </div>
 
                     <!-- Result -->
                     <div class="text-center p-6 rounded-xl bg-white/5 border border-white/10">
-                        <p class="text-secondary mb-2">One-time price</p>
-                        <p class="text-5xl font-bold text-white mb-2" style="font-family: 'JetBrains Mono', monospace;">$<span id="calculated-price">5,000</span></p>
-                        <p class="text-secondary text-sm mb-2"><span id="reviews-count">10,000</span> reviews × $<span id="price-display">10</span> × <span id="coefficient-display">5%</span></p>
-                        <p class="text-primary-500 text-sm mb-4">Unlimited tokens per user: <span class="font-bold" style="font-family: 'JetBrains Mono', monospace;">$<span id="cost-per-user">0.01</span></span>/user</p>
+                        <p class="text-secondary mb-2">You pay per copy sold</p>
+                        <p class="text-5xl font-bold text-white mb-1" style="font-family: 'JetBrains Mono', monospace;">$<span id="calc-per-copy">0.50</span></p>
+                        <p class="text-secondary text-sm mb-4"><span id="calc-coefficient">5%</span> × $<span id="calc-game-price">10</span> game price</p>
                         <div class="pt-4 border-t border-white/10">
-                            <p class="text-secondary text-sm mb-1">Estimated copies sold</p>
-                            <p class="text-xl font-bold text-white mb-3" style="font-family: 'JetBrains Mono', monospace;"><span id="estimated-copies">500,000</span></p>
-                            <p class="text-secondary text-sm mb-1">Estimated game revenue</p>
-                            <p class="text-2xl font-bold text-green-400" style="font-family: 'JetBrains Mono', monospace;">$<span id="estimated-revenue">5,000,000</span></p>
-                            <p class="text-secondary text-xs mt-1">Based on 1 review ≈ 50 sales</p>
+                            <p class="text-secondary text-xs mb-3">Example: sell 10,000 copies</p>
+                            <div class="flex justify-center gap-8">
+                                <div>
+                                    <p class="text-secondary text-xs mb-1">Your revenue</p>
+                                    <p class="text-xl font-bold text-green-400" style="font-family: 'JetBrains Mono', monospace;">$<span id="calc-revenue">100,000</span></p>
+                                </div>
+                                <div>
+                                    <p class="text-secondary text-xs mb-1">Tryll fee</p>
+                                    <p class="text-xl font-bold text-white" style="font-family: 'JetBrains Mono', monospace;">$<span id="calc-fee">5,000</span></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2942,42 +2931,21 @@
             // Price Calculator functionality
             const priceButtons = document.querySelectorAll('.price-btn');
             const tierButtons = document.querySelectorAll('.tier-btn');
-            const reviewsSlider = document.getElementById('reviews-slider');
             const customPriceInput = document.getElementById('custom-price');
-            const reviewsDisplay = document.getElementById('reviews-display');
-            const calculatedPrice = document.getElementById('calculated-price');
-            const reviewsCount = document.getElementById('reviews-count');
-            const priceDisplay = document.getElementById('price-display');
-            const coefficientDisplay = document.getElementById('coefficient-display');
 
             let currentPrice = 10;
-            let currentReviews = 10000;
             let currentCoefficient = 0.05;
 
-            // Custom review values: 0-20k step 1k, then 25k-100k step 5k
-            const reviewValues = [
-                0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000,
-                11000, 12000, 13000, 14000, 15000, 16000, 17000, 18000, 19000, 20000,
-                25000, 30000, 35000, 40000, 45000, 50000, 55000, 60000, 65000, 70000,
-                75000, 80000, 85000, 90000, 95000, 100000
-            ];
-
-            const estimatedRevenue = document.getElementById('estimated-revenue');
-            const estimatedCopies = document.getElementById('estimated-copies');
-            const costPerUser = document.getElementById('cost-per-user');
-
             function updateCalculator() {
-                const total = currentReviews * currentPrice * currentCoefficient;
-                const copies = currentReviews * 50;
-                const revenue = copies * currentPrice;
-                const perUser = copies > 0 ? total / copies : 0;
-                calculatedPrice.textContent = total.toLocaleString();
-                reviewsCount.textContent = currentReviews.toLocaleString();
-                priceDisplay.textContent = currentPrice;
-                coefficientDisplay.textContent = (currentCoefficient * 100) + '%';
-                estimatedCopies.textContent = copies.toLocaleString();
-                estimatedRevenue.textContent = revenue.toLocaleString();
-                costPerUser.textContent = perUser < 0.01 ? perUser.toFixed(3) : perUser.toFixed(2);
+                const perCopy = currentPrice * currentCoefficient;
+                const exampleCopies = 10000;
+                const exampleRevenue = exampleCopies * currentPrice;
+                const exampleFee = exampleCopies * perCopy;
+                document.getElementById('calc-per-copy').textContent = perCopy % 1 === 0 ? perCopy.toFixed(0) : perCopy.toFixed(2);
+                document.getElementById('calc-coefficient').textContent = (currentCoefficient * 100) + '%';
+                document.getElementById('calc-game-price').textContent = currentPrice;
+                document.getElementById('calc-revenue').textContent = exampleRevenue.toLocaleString();
+                document.getElementById('calc-fee').textContent = exampleFee.toLocaleString();
             }
 
             // Price button clicks
@@ -3006,14 +2974,6 @@
                     });
                     updateCalculator();
                 }
-            });
-
-            // Reviews slider with custom step values
-            reviewsSlider.addEventListener('input', function() {
-                const index = parseInt(this.value);
-                currentReviews = reviewValues[index];
-                reviewsDisplay.textContent = currentReviews.toLocaleString();
-                updateCalculator();
             });
 
             // Tier button clicks

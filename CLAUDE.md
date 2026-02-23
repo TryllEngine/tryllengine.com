@@ -12,16 +12,21 @@ TryllEngine is a static marketing website for a gaming AI product. The site prom
 TryllEngine.com/
 ├── index.html              # Main landing page with embedded JavaScript
 ├── boscotryll.html         # BoscoTryll mod showcase page
+├── tryll-assistant.html    # Tryll Assistant product page
 ├── privacy-policy.html     # Privacy policy page
-├── style.css              # Legacy styles (mostly unused as site uses Tailwind CSS)
+├── blog.html               # Blog listing page
+├── blog/                   # Blog posts and templates
 ├── STYLE_GUIDE.md         # Design system documentation
 ├── robots.txt             # Search engine crawling rules
 ├── sitemap.xml            # XML sitemap for search engines
+├── llms.txt               # LLM-readable site description
 ├── CNAME                  # GitHub Pages custom domain
 └── assets/
+    ├── blog/              # Blog post images
+    ├── docs/              # Legal documents
     ├── favicon/           # Favicon files in various formats
-    ├── logo/              # Logo assets (SVG)
-    └── team_photos/       # Team member photos (unused)
+    ├── images/            # Feature showcase images
+    └── logo/              # Logo assets (SVG)
 ```
 
 ## Key Technologies

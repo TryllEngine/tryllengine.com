@@ -4,6 +4,7 @@
 User-agent: *
 Allow: /
 Disallow: /test-redesign.html
+Disallow: /preview/
 
 # Sitemap location
 Sitemap: https://tryllengine.com/sitemap.xml

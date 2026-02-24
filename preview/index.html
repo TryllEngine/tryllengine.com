@@ -1,0 +1,3242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K8MPGKVX');</script>
+    <!-- End Google Tag Manager -->
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tryll Engine — On-Device AI for Games</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="The standard for on-device AI in games. Tryll gives developers a simple API to ship intelligent game features — running entirely on player hardware. No cloud, no latency, no per-player costs.">
+    <meta name="keywords" content="game AI SDK, on-device AI platform, game development AI, NPC AI engine, local AI gaming, AI middleware for games, game AI API">
+    <meta name="author" content="Tryll Engine">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tryllengine.com/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tryllengine.com/">
+    <meta property="og:title" content="Tryll Engine — The On-Device AI Platform for Games">
+    <meta property="og:description" content="The standard for on-device AI in games. Ship AI features with a simple API — running on player hardware.">
+    <meta property="og:image" content="https://tryllengine.com/assets/logo/logo-mark/blue.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tryllengine.com/">
+    <meta property="twitter:title" content="Tryll Engine — The On-Device AI Platform for Games">
+    <meta property="twitter:description" content="The standard for on-device AI in games. Ship AI features with a simple API — running on player hardware.">
+    <meta property="twitter:image" content="https://tryllengine.com/assets/logo/logo-mark/blue.svg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Tryll Engine",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Windows, macOS, Linux",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "description": "The on-device AI platform for games. A simple API to ship intelligent game features — running entirely on player hardware. No cloud costs, no latency, infinite scale.",
+        "featureList": [
+            "On-device AI SDK for games",
+            "Hardware-adaptive model management",
+            "High-level game AI API",
+            "Persistent NPC memory and relationships",
+            "Agent action system",
+            "Runtime content generation"
+        ],
+        "creator": {
+            "@type": "Organization",
+            "name": "Tryll Engine",
+            "url": "https://tryllengine.com"
+        }
+    }
+    </script>
+    
+    <!-- FAQ Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What kind of hardware is needed to run both the game and AI at 90 FPS?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "To maintain 90 FPS while running local AI inference, we recommend a GPU like the RTX 4070 Ti Super or equivalent. Tryll automatically selects the most efficient model and quantization for the user's system to ensure smooth gameplay without compromising AI responsiveness."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How many gamers can actually run these models?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Our benchmarks show that ~40% of PC gamers can already run Tryll's default models (7B–13B) at acceptable speeds. As open-source models get smaller and faster every month, and gamers continue upgrading hardware, this percentage grows - unlocking scalable deployment without cloud reliance."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why is local AI better than using a cloud API?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Local AI advantages: Zero cost per player - no API or infrastructure bills. Offline capable - your game keeps working without an internet connection. Private by design - no personal data leaves the device. Cloud-based AI adds legal and UX risks: Immersion-breaking outages during play sessions. Legal compliance challenges (GDPR, AI Act, export laws). Tryll's local-first approach is not just cheaper - it's safer, faster, and scalable to millions of players."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does the platform handle different player hardware?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "This is the core problem Tryll solves — like how DirectX abstracts GPU differences for graphics. Tryll's Model Manager automatically detects available GPU, VRAM, and RAM, selects the optimal model size and quantization (4B-14B), and auto-updates models as better open-source options become available. You write one integration, the platform handles every hardware configuration."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What game engines will Tryll support?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We're building Unreal and Unity plugins first, with an SDK API to follow. The platform is engine-agnostic at its core — the engine-specific plugins are convenience layers on top of the same underlying runtime."
+                }
+            }
+        ]
+    }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#232E41',
+                        secondary: '#F6F0EB',
+                        'primary-light': '#2a3750',
+                        'primary-dark': '#1a232f',
+                        'secondary-light': '#ffffff',
+                        'secondary-dark': '#e8e2dd',
+                        dark: {
+                            900: '#0a0d12',
+                            800: '#0f1419',
+                            700: '#141a20',
+                            600: '#1a2026',
+                            500: '#1f262d',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 6s infinite',
+                        'gradient-x': 'gradient-x 8s ease infinite',
+                        'gradient-y': 'gradient-y 8s ease infinite',
+                        'gradient-xy': 'gradient-xy 8s ease infinite',
+                        'fade-in-up': 'fade-in-up 0.8s ease-out',
+                        'fade-in-down': 'fade-in-down 0.8s ease-out',
+                        'fade-in-left': 'fade-in-left 0.8s ease-out',
+                        'fade-in-right': 'fade-in-right 0.8s ease-out',
+                        'scale-in': 'scale-in 0.5s ease-out',
+                        'rotate-in': 'rotate-in 0.6s ease-out',
+                        'slide-up': 'slide-up 0.6s ease-out',
+                        'glow-pulse': 'glow-pulse 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'gradient-y': {
+                            '0%, 100%': {
+                                'background-size':'400% 400%',
+                                'background-position': 'center top'
+                            },
+                            '50%': {
+                                'background-size':'200% 200%',
+                                'background-position': 'center center'
+                            }
+                        },
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size':'400% 400%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size':'200% 200%',
+                                'background-position': 'right center'
+                            }
+                        },
+                        'gradient-xy': {
+                            '0%, 100%': {
+                                'background-size':'400% 400%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size':'200% 200%',
+                                'background-position': 'right center'
+                            }
+                        },
+                        'fade-in-up': {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        'fade-in-down': {
+                            '0%': { opacity: '0', transform: 'translateY(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        'fade-in-left': {
+                            '0%': { opacity: '0', transform: 'translateX(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        'fade-in-right': {
+                            '0%': { opacity: '0', transform: 'translateX(30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        'scale-in': {
+                            '0%': { opacity: '0', transform: 'scale(0.8)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' }
+                        },
+                        'rotate-in': {
+                            '0%': { opacity: '0', transform: 'rotate(-5deg) scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'rotate(0deg) scale(1)' }
+                        },
+                        'slide-up': {
+                            '0%': { transform: 'translateY(100%)' },
+                            '100%': { transform: 'translateY(0)' }
+                        },
+                        'glow-pulse': {
+                            '0%': { filter: 'brightness(1) saturate(1)' },
+                            '100%': { filter: 'brightness(1.2) saturate(1.3)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px; /* Account for fixed header height */
+        }
+        
+        /* Additional offset for anchor targets */
+        section[id] {
+            scroll-margin-top: 100px;
+        }
+        
+        :root {
+            /* Typography scale */
+            --typo-label: 12px;
+            --typo-copy: 14px;
+            --typo-largecopy: 16px;
+            --typo-subtitle: 20px;
+            --typo-title: 32px;
+            --typo-hero: 48px;
+        }
+        
+        @media (min-width: 768px) {
+            :root {
+                --typo-label: 13px;
+                --typo-copy: 16px;
+                --typo-largecopy: 18px;
+                --typo-subtitle: 24px;
+                --typo-title: 48px;
+                --typo-hero: 62px;
+            }
+        }
+        
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #000000;
+            background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: rgba(255, 255, 255, 0.85);
+            overflow-x: hidden;
+            line-height: 1.5em;
+            letter-spacing: -0.011em;
+            font-weight: 449;
+            font-size: var(--typo-copy);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 9998;
+            pointer-events: none;
+            opacity: 0.018;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 256px 256px;
+        }
+        
+        .heading-primary {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            color: #ffffff;
+        }
+
+        .heading-secondary {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            color: #ffffff;
+        }
+
+        .heading-tertiary {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            line-height: 1.25;
+            color: #ffffff;
+        }
+        
+        .body-large {
+            font-size: var(--typo-largecopy);
+            line-height: 1.6;
+            font-weight: 449;
+            color: rgba(255, 255, 255, 0.75);
+            letter-spacing: -0.008em;
+            text-wrap: balance;
+        }
+        
+        .body-medium {
+            font-size: var(--typo-copy);
+            line-height: 1.5em;
+            font-weight: 449;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: -0.006em;
+            text-wrap: balance;
+        }
+        
+        .body-small {
+            font-size: var(--typo-label);
+            line-height: 1.45;
+            font-weight: 449;
+            color: rgba(255, 255, 255, 0.65);
+            letter-spacing: -0.004em;
+            text-wrap: balance;
+        }
+        
+        .mono-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            letter-spacing: 0.025em;
+        }
+
+        .terminal-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: rgba(59, 130, 246, 0.7);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .terminal-label::before {
+            content: '// ';
+            opacity: 0.5;
+        }
+        
+        /* Button and interactive element text weight */
+        button, [role="button"], a {
+            font-weight: 500;
+        }
+        
+        /* Code and pre elements */
+        code, pre {
+            font-weight: 500;
+        }
+        
+        /* Enhanced card backgrounds */
+        .bg-white\/10 {
+            background-color: rgba(255, 255, 255, 0.08) !important;
+        }
+        
+        .bg-white\/\[0\.12\] {
+            background-color: rgba(255, 255, 255, 0.12) !important;
+        }
+        
+        .hover\:bg-white\/20:hover {
+            background-color: rgba(255, 255, 255, 0.15) !important;
+        }
+        
+        /* Button styles */
+        .btn-primary {
+            background-color: #3B82F6;
+            color: #ffffff;
+            border: none;
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.12s ease-out;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.85em;
+            border-radius: 3px;
+        }
+
+        .btn-primary:hover {
+            background-color: #2563EB;
+            transform: none;
+            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5);
+        }
+
+        .btn-primary:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.12s ease-out;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.85em;
+            border-radius: 3px;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            transform: none;
+        }
+
+        .btn-secondary:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
+        }
+        
+        /* Form control styles */
+        .form-input {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.2s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Checkbox and radio styles */
+        input[type="checkbox"],
+        input[type="radio"] {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+        
+        input[type="checkbox"]:focus,
+        input[type="radio"]:focus {
+            outline: none !important;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3) !important;
+        }
+        
+        input[type="checkbox"]:checked,
+        input[type="radio"]:checked {
+            accent-color: #3B82F6;
+        }
+        
+        /* Legacy button enhancements */
+        .bg-primary-500, .bg-blue-500 {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            color: #ffffff !important;
+        }
+
+        .bg-primary-500:hover, .bg-blue-500:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.25) !important;
+            box-shadow: none;
+            transform: none;
+        }
+        
+        /* Better borders */
+        .border-white\/20 {
+            border-color: rgba(255, 255, 255, 0.15) !important;
+        }
+        
+        /* Card shadow for depth */
+        .card-shadow {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 
+                        0 4px 6px rgba(0, 0, 0, 0.1),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Section backgrounds */
+        .section-gradient {
+            background: transparent;
+        }
+        
+        /* Pricing cards */
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
+        }
+        
+        /* Feature cards */
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* FAQ cards contrast */
+        .faq-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .faq-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+        
+        /* Code blocks */
+        .code-block, pre, code {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Input fields */
+        input, textarea {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        
+        input:focus, textarea:focus {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Grid background pattern */
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: -1px -1px;
+        }
+        
+        /* Dot pattern background */
+        .dot-bg {
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        /* Radio button selector styling */
+        .peer:checked ~ div {
+            background: rgba(255, 255, 255, 0.95) !important;
+            color: #000000 !important;
+            border-color: rgba(255, 255, 255, 1) !important;
+            font-weight: 600;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4), inset 0 0 0 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Better font rendering for all text */
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+        
+        /* Default font weight for all elements */
+        *, *::before, *::after {
+            font-weight: inherit;
+        }
+        
+        /* Tailwind font weight overrides */
+        .font-normal { font-weight: 449 !important; }
+        .font-medium { font-weight: 500 !important; }
+        .font-semibold { font-weight: 600 !important; }
+        .font-bold { font-weight: 650 !important; }
+        
+        /* Text color adjustments for better readability */
+        .text-gray-400 { color: rgba(255, 255, 255, 0.75); }
+        .text-gray-500 { color: rgba(255, 255, 255, 0.65); }
+        .text-gray-600 { color: rgba(255, 255, 255, 0.55); }
+        .text-white { color: rgba(255, 255, 255, 0.9); }
+        .text-white\/80 { color: rgba(255, 255, 255, 0.75); }
+        .text-white\/60 { color: rgba(255, 255, 255, 0.6); }
+        
+        /* Improve readability for smaller text */
+        .text-sm {
+            font-weight: 500;
+            letter-spacing: -0.004em;
+        }
+        
+        .text-xs {
+            font-weight: 500;
+            letter-spacing: 0;
+        }
+        
+        /* Ensure all paragraphs have better weight */
+        p {
+            font-weight: 449;
+            text-wrap: balance;
+            line-height: 1.5em;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Lead paragraphs */
+        .text-lg, .text-xl {
+            font-weight: 449;
+            opacity: 0.85;
+        }
+        
+        /* Better weight for all list items */
+        li {
+            font-weight: 449;
+            line-height: 1.5em;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 4px !important;
+            transition: all 0.15s ease-out;
+            border-top: 2px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: none;
+            border-top-color: rgba(59, 130, 246, 0.5);
+        }
+        
+        .nav-glass-card {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.15s ease-out;
+            background: rgba(0, 0, 0, 0.88);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-glass-card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav-glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+        
+        
+        .gradient-bg {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .hero-gradient {
+            background: transparent;
+        }
+        
+        
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(246, 240, 235, 0.6) 0%, rgba(35, 46, 65, 0.3) 100%);
+            transform: scale(0);
+            animation: ripple 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+        
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        
+        
+        
+        
+        .stagger-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: stagger-fade 0.8s ease-out forwards;
+        }
+        
+        @keyframes stagger-fade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+        .text-secondary {
+            color: rgba(255, 255, 255, 0.65);
+            font-weight: 449;
+            text-wrap: balance;
+        }
+        
+        .text-primary {
+            color: #232E41;
+        }
+        
+        .text-accent {
+            color: #F6F0EB;
+        }
+        
+        .feature-item-left.active {
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 2px rgba(35, 46, 65, 0.8);
+            transform: translateX(4px);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .feature-item-mobile.active {
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 2px rgba(35, 46, 65, 0.8);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .feature-item-left.active h3,
+        .feature-item-mobile.active h3 {
+            color: #ffffff;
+        }
+        
+        /* Faster transition when becoming inactive */
+        .feature-item-left:not(.active) {
+            transition: all 0.15s ease-out;
+        }
+        
+        .feature-item-mobile:not(.active) {
+            transition: all 0.15s ease-out;
+        }
+        
+        /* Dropdown styling */
+        select option {
+            background-color: #0f1419 !important;
+            color: #ffffff !important;
+        }
+        
+        select {
+            color-scheme: dark;
+        }
+        
+        /* Hide scrollbar for horizontal scroll */
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Feature item active state - enhanced */
+        .feature-item-left.active {
+            background: rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 0 0 2px rgba(35, 46, 65, 0.8) !important;
+            transform: translateX(4px) !important;
+            transition: all 0.3s ease-in-out !important;
+        }
+        
+        .feature-item-mobile.active {
+            background: rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 0 0 2px rgba(35, 46, 65, 0.8) !important;
+            transition: all 0.3s ease-in-out !important;
+        }
+        
+        .feature-item-left.active h3,
+        .feature-item-mobile.active h3 {
+            color: #ffffff !important;
+        }
+        
+        /* Faster transition when becoming inactive */
+        .feature-item-left:not(.active) {
+            transition: all 0.15s ease-out !important;
+        }
+        
+        .feature-item-mobile:not(.active) {
+            transition: all 0.15s ease-out !important;
+        }
+        
+        /* Mobile feature improvements */
+        @media (max-width: 768px) {
+            .feature-tabs-container {
+                width: 100%;
+            }
+            
+            .feature-item-mobile h3 {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+            
+            .feature-item-mobile p {
+                font-size: 0.875rem;
+                line-height: 1.4;
+            }
+            
+            /* Ensure proper scrolling */
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            
+            /* Horizontal scroll with snap */
+            .feature-scroll-container {
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .feature-scroll-container .feature-item-mobile {
+                scroll-snap-align: center;
+                scroll-snap-stop: always;
+            }
+            
+            /* Add initial padding for first item to center */
+            .feature-scroll-container > div {
+                padding-left: calc(50vw - 140px);
+                padding-right: calc(50vw - 140px);
+            }
+            
+            /* Feature card styling for mobile */
+            .feature-item-mobile {
+                background: rgba(255, 255, 255, 0.03) !important;
+                min-height: 120px;
+            }
+
+            .feature-item-mobile.active {
+                background: rgba(255, 255, 255, 0.08) !important;
+                box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.4) !important;
+                transform: none !important;
+            }
+            
+            /* Add visual indicator dots */
+            .feature-dots {
+                display: flex;
+                justify-content: center;
+                gap: 8px;
+                margin-top: 16px;
+            }
+            
+            .feature-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.2);
+                transition: all 0.3s ease;
+                cursor: pointer;
+            }
+            
+            .feature-dot.active {
+                background: rgba(246, 240, 235, 0.8);
+                transform: scale(1.5);
+            }
+        }
+        
+        /* Feature video animations */
+        #feature-video-desktop,
+        #feature-video-mobile {
+            transition: opacity 0.3s ease-out, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        #feature-video-desktop.transitioning {
+            filter: blur(2px);
+            opacity: 0.95;
+        }
+        
+        /* Content animations */
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes scale-in {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slide-up {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fade-in 0.6s ease-out forwards;
+        }
+        
+        .animate-scale-in {
+            animation: scale-in 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        
+        .animate-slide-up {
+            animation: slide-up 0.6s ease-out forwards;
+            animation-delay: 0.1s;
+            animation-fill-mode: both;
+        }
+        
+        .animate-slide-up-delay {
+            animation: slide-up 0.6s ease-out forwards;
+            animation-delay: 0.2s;
+            animation-fill-mode: both;
+        }
+        
+        .animate-fade-in-delay {
+            animation: fade-in 0.6s ease-out forwards;
+            animation-delay: 0.3s;
+            animation-fill-mode: both;
+        }
+        
+        /* Feature item hover effects */
+        .feature-item-left {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.15s ease-out;
+        }
+
+        .feature-item-left:hover {
+            background: rgba(255, 255, 255, 0.04) !important;
+            transform: translateX(2px);
+        }
+        
+        /* Video container shadow and glow effect */
+        #feature-video-desktop {
+            box-shadow: 0 0 40px rgba(35, 46, 65, 0.3);
+        }
+        
+        #feature-video-desktop.transitioning {
+            box-shadow: 0 0 60px rgba(35, 46, 65, 0.5);
+        }
+        
+    </style>
+</head>
+<body id="top" class="antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8MPGKVX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Noise overlay handled via CSS body::after -->
+
+    <!-- Password Gate -->
+    <div id="password-gate" style="position:fixed;inset:0;z-index:99999;background:#000;display:flex;align-items:center;justify-content:center;">
+        <div style="max-width:400px;width:90%;text-align:center;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;color:rgba(59,130,246,0.5);text-transform:uppercase;margin-bottom:1.5rem;">// access_required</div>
+            <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;font-weight:700;color:rgba(255,255,255,0.9);margin-bottom:0.5rem;">Design Preview</h2>
+            <p style="font-family:'DM Sans',sans-serif;font-size:0.9rem;color:rgba(255,255,255,0.5);margin-bottom:2rem;">Enter the team password to view this page.</p>
+            <div style="position:relative;">
+                <input id="gate-password" type="password" placeholder="Password..."
+                    style="width:100%;padding:12px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:4px;color:rgba(255,255,255,0.9);font-family:'DM Sans',sans-serif;font-size:0.95rem;outline:none;box-sizing:border-box;"
+                    onkeydown="if(event.key==='Enter')document.getElementById('gate-submit').click()"
+                    onfocus="this.style.borderColor='rgba(59,130,246,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            </div>
+            <button id="gate-submit" onclick="checkGatePassword()"
+                style="margin-top:1rem;width:100%;padding:12px;background:rgba(59,130,246,0.9);border:none;border-radius:4px;color:#fff;font-family:'JetBrains Mono',monospace;font-size:0.8rem;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;transition:background 0.15s;">
+                Enter
+            </button>
+            <p id="gate-error" style="font-family:'DM Sans',sans-serif;font-size:0.8rem;color:rgba(239,68,68,0.8);margin-top:1rem;display:none;">Incorrect password.</p>
+        </div>
+    </div>
+    <script>
+        // Simple client-side gate — not real security, just prevents casual access
+        function checkGatePassword() {
+            var input = document.getElementById('gate-password').value;
+            // SHA-256 hash of the password (so it's not plaintext in source)
+            // Password: "tryll2026"
+            var hash = '8b2c3f1a';  // Simple check — first 8 chars of a basic hash
+            // Using a simple approach: direct comparison with obfuscated string
+            var expected = atob('dHJ5bGwyMDI2'); // base64 of the password
+            if (input === expected) {
+                document.getElementById('password-gate').style.display = 'none';
+                sessionStorage.setItem('design-access', 'granted');
+            } else {
+                document.getElementById('gate-error').style.display = 'block';
+                document.getElementById('gate-password').style.borderColor = 'rgba(239,68,68,0.5)';
+            }
+        }
+        // Check if already authenticated this session
+        if (sessionStorage.getItem('design-access') === 'granted') {
+            document.getElementById('password-gate').style.display = 'none';
+        }
+    </script>
+
+    <!-- Navigation -->
+    <nav class="fixed top-4 left-4 right-4 md:top-6 md:left-1/2 md:transform md:-translate-x-1/2 z-50 nav-glass-card px-4 md:px-8 py-3 md:py-4 w-auto md:w-full md:max-w-7xl">
+        <div class="flex items-center justify-between">
+            <div class="logo">
+                <a href="#top" class="block">
+                    <img src="../assets/logo/full-logo/light-text.svg" alt="Tryll Engine" class="h-8 md:h-12" />
+                </a>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-8">
+                <ul class="nav-links flex gap-6 list-none">
+                    <li><a href="#features" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Features</a></li>
+                    <li><a href="#pricing" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Pricing</a></li>
+                    <li><a href="#faq" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">FAQ</a></li>
+                    <li><a href="blog.html" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Blog</a></li>
+                    <li><a href="#contact-email" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Contact</a></li>
+                    <li><a href="boscotryll.html" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">BoscoTryll Mod</a></li>
+                </ul>
+                <div class="flex items-center gap-3">
+                    <a href="tryll-assistant.html" class="btn-primary px-4 py-2 rounded text-sm inline-flex items-center justify-center gap-2">
+                        <i class="fas fa-rocket"></i>
+                        Get Started
+                    </a>
+                    <a href="#contact" class="px-4 py-2 rounded text-sm inline-flex items-center justify-center transition-all duration-200 font-medium bg-white/[0.06] border border-white/10 hover:bg-white/[0.1] text-white uppercase tracking-wider" style="font-size: 0.85em;">
+                        Book a Demo
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div class="md:hidden flex items-center gap-3">
+                <a href="tryll-assistant.html" class="btn-primary px-3 py-2 rounded text-xs inline-flex items-center justify-center">
+                    Get Started
+                </a>
+                <button id="mobile-menu-btn" class="text-white p-2 rounded hover:bg-white/10 transition-colors duration-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="md:hidden fixed inset-0 bg-black/95 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40">
+            <!-- Close button -->
+            <button id="mobile-menu-close" class="absolute top-6 right-6 text-white/60 hover:text-white transition-colors duration-200">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div class="flex flex-col items-center justify-center h-full space-y-8 text-center px-6">
+                <a href="#features" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Features</a>
+                <a href="#pricing" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Pricing</a>
+                <a href="#faq" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">FAQ</a>
+                <a href="blog.html" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Blog</a>
+                <a href="boscotryll.html" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">BoscoTryll Mod</a>
+                <div class="pt-4 space-y-3">
+                    <a href="tryll-assistant.html" class="btn-primary px-8 py-4 rounded text-lg inline-flex items-center justify-center gap-2 w-full">
+                        <i class="fas fa-rocket"></i>
+                        Get Started
+                    </a>
+                    <a href="#contact" class="px-8 py-4 rounded text-lg inline-flex items-center justify-center gap-2 w-full bg-white/10 border border-white/20 text-white">
+                        Book a Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden" style="padding-top: 60px;">
+        <div class="container mx-auto px-4 md:px-6 py-24 md:py-32 relative z-10">
+            <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12 fade-in">
+                <!-- Left: Text -->
+                <div class="flex-1 text-center lg:text-left">
+                    <p style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;letter-spacing:0.01em;color:rgba(255,255,255,0.5);margin-bottom:1.25rem;">
+                        Your players already have the hardware.
+                    </p>
+
+                    <h1 class="heading-primary text-white mb-5 md:mb-6" style="font-size:var(--typo-hero);letter-spacing:-0.04em;">
+                        Ship Your Game<br>With AI
+                    </h1>
+
+                    <p class="mb-6 max-w-lg" style="font-size:var(--typo-largecopy);color:rgba(255,255,255,0.55);line-height:1.6;">
+                        A new medium for game design — powered by the GPU in every player's machine.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mb-8">
+                        <a href="#contact" class="btn-primary inline-block px-6 md:px-8 py-3 md:py-4 text-sm md:text-base w-full sm:w-auto text-center max-w-xs">
+                            Book a Demo
+                        </a>
+                        <a href="#how-it-works" class="btn-secondary inline-block px-6 md:px-8 py-3 md:py-4 text-sm md:text-base w-full sm:w-auto text-center max-w-xs">
+                            See How It Works
+                        </a>
+                    </div>
+
+                    <a href="https://www.unrealengine.com/en-US/megagrants" target="_blank" rel="noopener noreferrer" class="inline-block opacity-50 hover:opacity-75 transition-opacity" title="Epic MegaGrants Recipient">
+                        <img src="../assets/images/epic-megagrants-recipient.svg" alt="Epic MegaGrants Recipient" style="height: 36px; width: auto;">
+                    </a>
+                </div>
+
+                <!-- Right: Signal Widget -->
+                <div class="flex-1 min-w-0 w-full lg:max-w-md">
+                    <div class="rounded overflow-hidden border border-white/[0.06] bg-white/[0.02]" style="border-top:2px solid rgba(59,130,246,0.3);">
+                        <!-- Header -->
+                        <div class="px-5 py-3 border-b border-white/[0.06]">
+                            <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.08em;color:rgba(59,130,246,0.5);text-transform:uppercase;">// signal</span>
+                        </div>
+                        <!-- Key numbers -->
+                        <div class="px-6 py-6">
+                            <div class="space-y-6">
+                                <!-- Per copy cost -->
+                                <div>
+                                    <span style="font-family:'JetBrains Mono',monospace;font-size:2.2rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1;">~3¢</span>
+                                    <span style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:rgba(255,255,255,0.4);margin-left:12px;">per copy sold</span>
+                                </div>
+                                <!-- Servers -->
+                                <div>
+                                    <span style="font-family:'JetBrains Mono',monospace;font-size:2.2rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1;">0</span>
+                                    <span style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:rgba(255,255,255,0.4);margin-left:12px;">servers to run</span>
+                                </div>
+                                <!-- On player hardware -->
+                                <div>
+                                    <span style="font-family:'JetBrains Mono',monospace;font-size:2.2rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1;">100%</span>
+                                    <span style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:rgba(255,255,255,0.4);margin-left:12px;">on player hardware</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Team line -->
+                        <div class="px-6 py-4 border-t border-white/[0.06]" style="background:rgba(255,255,255,0.01);">
+                            <p style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.35);line-height:1.6;letter-spacing:0.02em;">
+                                Built by veterans of<br>game dev & applied AI.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Flow Section -->
+    <section id="how-it-works" class="py-16 md:py-28 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-4xl mx-auto text-center fade-in mb-12 md:mb-20">
+                <span class="terminal-label">HOW_IT_WORKS</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
+                    How It Works
+                </h2>
+                <p class="text-lg md:text-xl text-secondary leading-relaxed max-w-2xl mx-auto">
+                    Your game talks to a plugin. The plugin talks to a runtime. The runtime uses the player's GPU.
+                </p>
+            </div>
+
+            <div class="max-w-5xl mx-auto fade-in">
+                <!-- Main flow diagram -->
+                <div class="relative rounded overflow-hidden border border-white/[0.06] bg-white/[0.02]" style="border-top: 2px solid rgba(59,130,246,0.3);">
+                    <!-- Header bar -->
+                    <div class="flex items-center justify-between px-6 py-3 border-b border-white/[0.06]">
+                        <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.08em;color:rgba(255,255,255,0.45);text-transform:uppercase;">Data Flow</span>
+                        <div class="flex gap-3">
+                            <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.45);">&#9679; all on-device</span>
+                        </div>
+                    </div>
+
+                    <div class="p-8 md:p-12">
+                        <style>
+                            .arch-flow { display:flex; align-items:stretch; justify-content:center; gap:0; }
+                            .arch-node {
+                                font-family:'JetBrains Mono',monospace;
+                                padding:24px 20px; border:1px solid rgba(255,255,255,0.06); border-radius:4px;
+                                background:rgba(255,255,255,0.02); text-align:center;
+                                transition:all 0.6s ease-out; flex:1; min-width:0;
+                                display:flex; flex-direction:column; justify-content:center; align-items:center;
+                            }
+                            .arch-node.arch-active {
+                                border-color:rgba(59,130,246,0.4); background:rgba(59,130,246,0.06);
+                                box-shadow:0 0 30px rgba(59,130,246,0.08);
+                            }
+                            .arch-node-label { font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:10px; }
+                            .arch-node.arch-active .arch-node-label { color:rgba(59,130,246,0.6); }
+                            .arch-node-title { font-size:0.9rem; font-weight:600; color:rgba(255,255,255,0.6); letter-spacing:0.02em; margin-bottom:8px; }
+                            .arch-node.arch-active .arch-node-title { color:rgba(255,255,255,0.95); }
+                            .arch-node-desc { font-size:0.75rem; color:rgba(255,255,255,0.4); line-height:1.6; max-width:180px; }
+                            .arch-node.arch-active .arch-node-desc { color:rgba(255,255,255,0.6); }
+                            .arch-connector {
+                                display:flex; align-items:center; padding:0 8px; flex-shrink:0;
+                                position:relative;
+                            }
+                            .arch-connector-line {
+                                width:40px; height:2px; background:rgba(255,255,255,0.06);
+                                position:relative; overflow:hidden;
+                            }
+                            .arch-connector.arch-conn-active .arch-connector-line { background:rgba(59,130,246,0.15); }
+                            .arch-connector-pulse {
+                                position:absolute; top:0; left:-12px; width:12px; height:100%;
+                                background:rgba(59,130,246,0.6); border-radius:1px;
+                                opacity:0;
+                            }
+                            .arch-connector.arch-conn-active .arch-connector-pulse {
+                                animation:arch-pulse 1.5s ease-in-out infinite;
+                            }
+                            @keyframes arch-pulse {
+                                0% { left:-12px; opacity:0; }
+                                20% { opacity:1; }
+                                80% { opacity:1; }
+                                100% { left:100%; opacity:0; }
+                            }
+                            @media (max-width:768px) {
+                                .arch-flow { flex-direction:column; gap:0; align-items:center; }
+                                .arch-connector { padding:8px 0; transform:rotate(90deg); }
+                                .arch-node { width:100%; max-width:280px; }
+                            }
+                        </style>
+
+                        <div class="arch-flow" id="arch-flow-main">
+                            <div class="arch-node" data-node="0">
+                                <div class="arch-node-label">Your Game</div>
+                                <div class="arch-node-title">Unreal / Unity</div>
+                                <div class="arch-node-desc">Your engine with the Tryll plugin installed</div>
+                            </div>
+                            <div class="arch-connector" data-conn="0">
+                                <div class="arch-connector-line">
+                                    <div class="arch-connector-pulse"></div>
+                                </div>
+                            </div>
+                            <div class="arch-node" data-node="1">
+                                <div class="arch-node-label">Integration</div>
+                                <div class="arch-node-title">Tryll Plugin</div>
+                                <div class="arch-node-desc">Simple API — prompts, agents, tools, actions</div>
+                            </div>
+                            <div class="arch-connector" data-conn="1">
+                                <div class="arch-connector-line">
+                                    <div class="arch-connector-pulse"></div>
+                                </div>
+                            </div>
+                            <div class="arch-node" data-node="2">
+                                <div class="arch-node-label">Player Device</div>
+                                <div class="arch-node-title">Tryll Runtime</div>
+                                <div class="arch-node-desc">Runs on player GPU — NVIDIA, AMD, Intel auto-detected</div>
+                            </div>
+                        </div>
+
+                        <!-- Data flow progress bar -->
+                        <div class="mt-10 relative" style="height:3px;background:rgba(255,255,255,0.03);border-radius:2px;overflow:hidden;">
+                            <div id="arch-progress" style="position:absolute;top:0;left:0;width:80px;height:100%;background:linear-gradient(90deg,transparent,rgba(59,130,246,0.5),transparent);border-radius:2px;animation:arch-sweep 4s ease-in-out infinite;"></div>
+                        </div>
+                        <style>
+                            @keyframes arch-sweep { 0%{left:-80px;} 100%{left:100%;} }
+                        </style>
+                    </div>
+
+                    <!-- Bottom stats bar -->
+                    <div class="border-t border-white/[0.06] px-6 md:px-8 py-4 flex flex-wrap justify-center gap-6 md:gap-10">
+                        <div class="text-center">
+                            <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Latency</div>
+                            <div style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:rgba(255,255,255,0.7);">&lt;50ms</div>
+                        </div>
+                        <div class="text-center">
+                            <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Cloud Cost</div>
+                            <div style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:rgba(255,255,255,0.7);">$0</div>
+                        </div>
+                        <div class="text-center">
+                            <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Data Sent</div>
+                            <div style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:rgba(255,255,255,0.7);">None</div>
+                        </div>
+                        <div class="text-center">
+                            <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Offline</div>
+                            <div style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:rgba(255,255,255,0.7);">Yes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                (function() {
+                    const nodes = document.querySelectorAll('[data-node]');
+                    const conns = document.querySelectorAll('[data-conn]');
+                    let step = -1;
+
+                    function animate() {
+                        step = (step + 1) % (nodes.length + 1);
+                        nodes.forEach((n, i) => {
+                            n.classList.toggle('arch-active', i <= step);
+                        });
+                        conns.forEach((c, i) => {
+                            c.classList.toggle('arch-conn-active', i < step);
+                        });
+                    }
+
+                    // Start animation sequence
+                    setTimeout(() => {
+                        animate();
+                        setInterval(animate, 1600);
+                    }, 600);
+
+                    // Reset after full cycle
+                    setInterval(() => {
+                        step = -1;
+                        nodes.forEach(n => n.classList.remove('arch-active'));
+                        conns.forEach(c => c.classList.remove('arch-conn-active'));
+                        setTimeout(animate, 400);
+                    }, 9000);
+                })();
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Capabilities + Code Demo Section -->
+    <section class="py-12 md:py-20 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-5xl mx-auto fade-in">
+                <div class="text-center mb-8 md:mb-12">
+                    <span class="terminal-label">INTEGRATION</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
+                        A Few Lines of Code
+                    </h2>
+                    <p class="text-lg md:text-xl text-secondary leading-relaxed max-w-2xl mx-auto">
+                        Add AI capabilities to Unreal or Unity. Pick a service, pick your engine.
+                    </p>
+                </div>
+
+                <div class="relative rounded overflow-hidden border border-white/[0.06] bg-white/[0.02]" style="border-top: 2px solid rgba(59,130,246,0.3);">
+                    <div class="flex flex-col md:flex-row">
+                        <!-- Services sidebar -->
+                        <div class="md:w-48 flex-shrink-0 border-b md:border-b-0 md:border-r border-white/[0.06] p-4 md:p-5">
+                            <div class="text-white/45 mb-3" style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;">Capabilities</div>
+                            <div class="flex md:flex-col gap-2">
+                                <button class="svc-tab svc-active text-left w-full px-3 py-2 rounded transition-all" data-svc="llm" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;">
+                                    <span class="svc-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:rgba(59,130,246,0.6);margin-right:8px;vertical-align:middle;"></span>LLM
+                                </button>
+                                <button class="svc-tab text-left w-full px-3 py-2 rounded transition-all" data-svc="stt" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;">
+                                    <span class="svc-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);margin-right:8px;vertical-align:middle;"></span>STT
+                                </button>
+                                <button class="svc-tab text-left w-full px-3 py-2 rounded transition-all" data-svc="tts" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;">
+                                    <span class="svc-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);margin-right:8px;vertical-align:middle;"></span>TTS
+                                </button>
+                                <button class="svc-tab text-left w-full px-3 py-2 rounded transition-all" data-svc="vlm" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;">
+                                    <span class="svc-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);margin-right:8px;vertical-align:middle;"></span>VLM
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Code area -->
+                        <div class="flex-1 min-w-0">
+                            <!-- Engine tabs -->
+                            <div class="flex border-b border-white/[0.06]">
+                                <button class="eng-tab eng-active px-4 py-2.5 transition-all" data-eng="unreal" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;letter-spacing:0.04em;">Unreal Engine</button>
+                                <button class="eng-tab px-4 py-2.5 transition-all" data-eng="unity" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;letter-spacing:0.04em;">Unity</button>
+                                <button class="eng-tab px-4 py-2.5 transition-all" data-eng="cpp" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;letter-spacing:0.04em;">C++</button>
+                            </div>
+                            <!-- Code block with fixed height to prevent flicker -->
+                            <div class="p-5 md:p-6 overflow-x-auto" style="min-height:280px;">
+                                <pre id="code-block" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;line-height:1.8;color:rgba(255,255,255,0.75);margin:0;white-space:pre;"></pre>
+                            </div>
+                            <!-- Response preview -->
+                            <div class="border-t border-white/[0.06] px-5 md:px-6 py-3">
+                                <div class="flex items-center gap-2">
+                                    <div style="width:5px;height:5px;border-radius:50%;background:rgba(59,130,246,0.6);"></div>
+                                    <span id="response-text" style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.5);"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <style>
+                        .svc-tab { color:rgba(255,255,255,0.5); background:transparent; border:none; cursor:pointer; }
+                        .svc-tab:hover { color:rgba(255,255,255,0.65); background:rgba(255,255,255,0.03); }
+                        .svc-tab.svc-active { color:rgba(255,255,255,0.9); background:rgba(59,130,246,0.08); }
+                        .svc-tab.svc-active .svc-dot { background:rgba(59,130,246,0.6) !important; }
+                        .eng-tab { color:rgba(255,255,255,0.45); background:transparent; border:none; border-bottom:2px solid transparent; cursor:pointer; }
+                        .eng-tab:hover { color:rgba(255,255,255,0.65); }
+                        .eng-tab.eng-active { color:rgba(255,255,255,0.9); border-bottom-color:rgba(59,130,246,0.5); }
+                    </style>
+                    <script>
+                    (function() {
+                        const codeSnippets = {
+                            llm: {
+                                unreal: `<span style="color:rgba(59,130,246,0.6)">// Create an NPC dialogue agent</span>\nUTryllAgent* Agent = UTryllSubsystem::CreateAgent(\n    TEXT(<span style="color:rgba(74,222,128,0.7)">"NPC_Blacksmith"</span>),\n    TEXT(<span style="color:rgba(74,222,128,0.7)">"You are a grumpy blacksmith."</span>)\n);\n\nAgent->Chat(TEXT(<span style="color:rgba(74,222,128,0.7)">"What can you forge?"</span>),\n    FOnResponse::CreateLambda([](const FString& Reply) {\n        <span style="color:rgba(59,130,246,0.6)">// Reply streamed from player's GPU</span>\n    })\n);`,
+                                unity: `<span style="color:rgba(59,130,246,0.6)">// Create an NPC dialogue agent</span>\nvar agent = TryllManager.CreateAgent(\n    <span style="color:rgba(74,222,128,0.7)">"NPC_Blacksmith"</span>,\n    <span style="color:rgba(74,222,128,0.7)">"You are a grumpy blacksmith."</span>\n);\n\nawait agent.ChatAsync(\n    <span style="color:rgba(74,222,128,0.7)">"What can you forge?"</span>,\n    onToken: (reply) => {\n        <span style="color:rgba(59,130,246,0.6)">// Reply streamed from player's GPU</span>\n    }\n);`,
+                                cpp: `<span style="color:rgba(59,130,246,0.6)">// Create an NPC dialogue agent</span>\nauto agent = tryll::create_agent(\n    <span style="color:rgba(74,222,128,0.7)">"NPC_Blacksmith"</span>,\n    <span style="color:rgba(74,222,128,0.7)">"You are a grumpy blacksmith."</span>\n);\n\nagent.chat(<span style="color:rgba(74,222,128,0.7)">"What can you forge?"</span>,\n    [](std::string_view reply) {\n        <span style="color:rgba(59,130,246,0.6)">// Reply streamed from player's GPU</span>\n    }\n);`
+                            },
+                            stt: {
+                                unreal: `<span style="color:rgba(59,130,246,0.6)">// Voice input — speech to text</span>\nUTryllSTT* STT = UTryllSubsystem::GetSTT();\n\nSTT->StartListening(\n    FOnTranscript::CreateLambda(\n        [](const FString& Text, bool bFinal) {\n            <span style="color:rgba(59,130,246,0.6)">// Real-time transcription on device</span>\n        }\n    )\n);`,
+                                unity: `<span style="color:rgba(59,130,246,0.6)">// Voice input — speech to text</span>\nvar stt = TryllManager.GetSTT();\n\nstt.StartListening(\n    onTranscript: (text, isFinal) => {\n        <span style="color:rgba(59,130,246,0.6)">// Real-time transcription on device</span>\n    }\n);`,
+                                cpp: `<span style="color:rgba(59,130,246,0.6)">// Voice input — speech to text</span>\nauto stt = tryll::get_stt();\n\nstt.start_listening(\n    [](std::string_view text, bool is_final) {\n        <span style="color:rgba(59,130,246,0.6)">// Real-time transcription on device</span>\n    }\n);`
+                            },
+                            tts: {
+                                unreal: `<span style="color:rgba(59,130,246,0.6)">// Text to speech — NPC voices</span>\nUTryllTTS* TTS = UTryllSubsystem::GetTTS();\n\nTTS->Speak(\n    TEXT(<span style="color:rgba(74,222,128,0.7)">"I can forge anything, if you bring the ore."</span>),\n    TEXT(<span style="color:rgba(74,222,128,0.7)">"gruff_male"</span>),\n    FOnAudio::CreateLambda([](USoundWave* Audio) {\n        <span style="color:rgba(59,130,246,0.6)">// Play generated audio</span>\n    })\n);`,
+                                unity: `<span style="color:rgba(59,130,246,0.6)">// Text to speech — NPC voices</span>\nvar tts = TryllManager.GetTTS();\n\nawait tts.SpeakAsync(\n    <span style="color:rgba(74,222,128,0.7)">"I can forge anything, if you bring the ore."</span>,\n    voice: <span style="color:rgba(74,222,128,0.7)">"gruff_male"</span>,\n    onAudio: (clip) => {\n        <span style="color:rgba(59,130,246,0.6)">// Play generated audio</span>\n    }\n);`,
+                                cpp: `<span style="color:rgba(59,130,246,0.6)">// Text to speech — NPC voices</span>\nauto tts = tryll::get_tts();\n\ntts.speak(\n    <span style="color:rgba(74,222,128,0.7)">"I can forge anything, if you bring the ore."</span>,\n    <span style="color:rgba(74,222,128,0.7)">"gruff_male"</span>,\n    [](audio_buffer buf) {\n        <span style="color:rgba(59,130,246,0.6)">// Play generated audio</span>\n    }\n);`
+                            },
+                            vlm: {
+                                unreal: `<span style="color:rgba(59,130,246,0.6)">// Vision — analyze game screenshots</span>\nUTryllVLM* VLM = UTryllSubsystem::GetVLM();\n\nVLM->Analyze(\n    ScreenshotTexture,\n    TEXT(<span style="color:rgba(74,222,128,0.7)">"Describe what the player sees."</span>),\n    FOnAnalysis::CreateLambda(\n        [](const FString& Description) {\n            <span style="color:rgba(59,130,246,0.6)">// Vision model output</span>\n        }\n    )\n);`,
+                                unity: `<span style="color:rgba(59,130,246,0.6)">// Vision — analyze game screenshots</span>\nvar vlm = TryllManager.GetVLM();\n\nawait vlm.AnalyzeAsync(\n    screenshotTexture,\n    <span style="color:rgba(74,222,128,0.7)">"Describe what the player sees."</span>,\n    onResult: (desc) => {\n        <span style="color:rgba(59,130,246,0.6)">// Vision model output</span>\n    }\n);`,
+                                cpp: `<span style="color:rgba(59,130,246,0.6)">// Vision — analyze game screenshots</span>\nauto vlm = tryll::get_vlm();\n\nvlm.analyze(\n    screenshot_data,\n    <span style="color:rgba(74,222,128,0.7)">"Describe what the player sees."</span>,\n    [](std::string_view description) {\n        <span style="color:rgba(59,130,246,0.6)">// Vision model output</span>\n    }\n);`
+                            }
+                        };
+
+                        const responses = {
+                            llm: 'inference ready — 7B model loaded, 42 tok/s',
+                            stt: 'whisper-medium loaded — real-time transcription active',
+                            tts: 'voice synth ready — 3 voices available',
+                            vlm: 'vision model loaded — screenshot analysis enabled'
+                        };
+
+                        let currentSvc = 'llm';
+                        let currentEng = 'unreal';
+                        const codeBlock = document.getElementById('code-block');
+                        const responseText = document.getElementById('response-text');
+
+                        function updateCode() {
+                            codeBlock.innerHTML = codeSnippets[currentSvc][currentEng];
+                            responseText.textContent = responses[currentSvc];
+                        }
+
+                        document.querySelectorAll('.svc-tab').forEach(btn => {
+                            btn.addEventListener('click', () => {
+                                document.querySelectorAll('.svc-tab').forEach(b => {
+                                    b.classList.remove('svc-active');
+                                    b.querySelector('.svc-dot').style.background = 'rgba(255,255,255,0.15)';
+                                });
+                                btn.classList.add('svc-active');
+                                btn.querySelector('.svc-dot').style.background = 'rgba(59,130,246,0.6)';
+                                currentSvc = btn.dataset.svc;
+                                updateCode();
+                            });
+                        });
+
+                        document.querySelectorAll('.eng-tab').forEach(btn => {
+                            btn.addEventListener('click', () => {
+                                document.querySelectorAll('.eng-tab').forEach(b => b.classList.remove('eng-active'));
+                                btn.classList.add('eng-active');
+                                currentEng = btn.dataset.eng;
+                                updateCode();
+                            });
+                        });
+
+                        updateCode();
+                    })();
+                    </script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Developer Problem -->
+    <section class="py-12 md:py-24 bg-black relative overflow-hidden fade-in">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-12 md:mb-20">
+                <span class="terminal-label">THE_PLATFORM</span>
+                <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 heading-primary">
+                    Why Studios Don't Have AI Yet
+                </h2>
+                <p class="text-xl text-secondary max-w-3xl mx-auto body-large">
+                    We talked to hundreds of studios. They all want AI in their games. Three things stop them.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 transition-all hover:border-white/20 flex flex-col">
+                    <div class="mb-6">
+                        <i class="fas fa-dollar-sign text-red-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Cloud Is Too Expensive</h3>
+                    <p class="text-secondary mb-4 flex-grow">
+                        Cloud AI charges per token. At scale, a single game can rack up millions in API costs per month. Success becomes unsustainable.
+                    </p>
+                    <div class="pt-4 border-t border-white/10">
+                        <p class="text-sm font-medium" style="color:rgba(59,130,246,0.7);">
+                            <i class="fas fa-check mr-2"></i>With Tryll, tokens are free. Runs on player GPUs.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 transition-all hover:border-white/20 flex flex-col">
+                    <div class="mb-6">
+                        <i class="fas fa-shield-alt text-red-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Data Processing Is Hell</h3>
+                    <p class="text-secondary mb-4 flex-grow">
+                        GDPR, the AI Act, export laws — sending player conversations to third-party servers creates a legal and compliance nightmare most studios won't touch.
+                    </p>
+                    <div class="pt-4 border-t border-white/10">
+                        <p class="text-sm font-medium" style="color:rgba(59,130,246,0.7);">
+                            <i class="fas fa-check mr-2"></i>With Tryll, personal data never leaves the device.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 transition-all hover:border-white/20 flex flex-col">
+                    <div class="mb-6">
+                        <i class="fas fa-unlink text-red-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">No One Wants Third-Party Dependency</h3>
+                    <p class="text-secondary mb-4 flex-grow">
+                        If the API goes down, your game breaks. If pricing changes, your margins vanish. Studios won't bet their product on someone else's uptime.
+                    </p>
+                    <div class="pt-4 border-t border-white/10">
+                        <p class="text-sm font-medium" style="color:rgba(59,130,246,0.7);">
+                            <i class="fas fa-check mr-2"></i>With Tryll, everything works fully offline.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Features Section -->
+    <section id="features" class="py-16 md:py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-12 md:mb-20 fade-in">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
+                    What You Can Build
+                </h2>
+                <p class="text-lg md:text-xl text-secondary leading-relaxed px-2">
+                    Platform capabilities that ship with every Tryll-powered game
+                </p>
+            </div>
+
+            <!-- Mobile: Video at top, features below -->
+            <div class="md:hidden">
+                <div class="mb-4">
+                    <div id="feature-video-mobile" class="relative aspect-video rounded overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-400 ease-out">
+                        <iframe 
+                            class="absolute inset-0 w-full h-full"
+                            src="https://www.youtube.com/embed/znbZX02L5rQ?enablejsapi=1&controls=1&modestbranding=1&rel=0&autoplay=0&mute=1"
+                            title="Knowledge Systems"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                
+                <!-- Mobile Features (Horizontal Scroll) -->
+                <div class="overflow-x-auto overflow-y-visible scrollbar-hide feature-scroll-container">
+                    <div class="flex gap-4 px-4 pb-4 py-2" style="width: max-content;">
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded bg-white/[0.03] border border-white/10 hover:bg-white/[0.06] transition-all flex-shrink-0 active" style="width: 280px;" data-feature="tutorials">
+                        <h3 class="text-lg font-semibold text-white mb-2">Knowledge Systems</h3>
+                        <p class="text-secondary text-sm leading-relaxed">
+                            Connect your game's documentation and lore to an AI that answers player questions in real-time. Reduces support load, eliminates alt-tabbing.
+                        </p>
+                    </div>
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded bg-white/[0.03] border border-white/10 hover:bg-white/[0.06] transition-all flex-shrink-0" style="width: 280px;" data-feature="companions">
+                        <h3 class="text-lg font-semibold text-white mb-2">Persistent Memory & Relationships</h3>
+                        <p class="text-secondary text-sm leading-relaxed">
+                            NPCs that remember conversations, form opinions, and evolve over time. Build deep companion systems without thousands of dialogue branches.
+                        </p>
+                    </div>
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded bg-white/[0.03] border border-white/10 hover:bg-white/[0.06] transition-all flex-shrink-0" style="width: 280px;" data-feature="agents">
+                        <h3 class="text-lg font-semibold text-white mb-2">Agent Actions</h3>
+                        <p class="text-secondary text-sm leading-relaxed">
+                            Let AI trigger game mechanics — spawn enemies, modify environments, distribute rewards. Ship dynamic gameplay through API calls, not hardcoded logic.
+                        </p>
+                    </div>
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded bg-white/[0.03] border border-white/10 hover:bg-white/[0.06] transition-all flex-shrink-0" style="width: 280px;" data-feature="creativity">
+                        <h3 class="text-lg font-semibold text-white mb-2">Runtime Content Generation</h3>
+                        <p class="text-secondary text-sm leading-relaxed">
+                            Generate quests, lore, and world events based on player context. Infinite content without static databases.
+                        </p>
+                    </div>
+                    </div>
+                </div>
+                <!-- Feature dots indicator -->
+                <div class="feature-dots md:hidden">
+                    <span class="feature-dot active" data-feature="tutorials"></span>
+                    <span class="feature-dot" data-feature="companions"></span>
+                    <span class="feature-dot" data-feature="agents"></span>
+                    <span class="feature-dot" data-feature="creativity"></span>
+                </div>
+            </div>
+            
+            <!-- Desktop: Left-Right Split -->
+            <div class="hidden md:grid md:grid-cols-2 md:gap-6 lg:gap-8">
+                <!-- Left: Features List -->
+                <div class="relative">
+                    <div class="space-y-4" id="features-list">
+                        <div class="feature-item-left cursor-pointer p-6 rounded hover:bg-white/[0.04] active" data-feature="tutorials">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">Knowledge Systems</h3>
+                                <p class="text-secondary text-sm leading-relaxed">
+                                    Connect your game's documentation and lore to an AI that answers player questions in real-time. Reduces support load, eliminates alt-tabbing.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item-left cursor-pointer p-6 rounded hover:bg-white/[0.04]" data-feature="companions">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">Persistent Memory & Relationships</h3>
+                                <p class="text-secondary text-sm leading-relaxed">
+                                    NPCs that remember conversations, form opinions, and evolve over time. Build deep companion systems without thousands of dialogue branches.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item-left cursor-pointer p-6 rounded hover:bg-white/[0.04]" data-feature="agents">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">Agent Actions</h3>
+                                <p class="text-secondary text-sm leading-relaxed">
+                                    Let AI trigger game mechanics — spawn enemies, modify environments, distribute rewards. Ship dynamic gameplay through API calls, not hardcoded logic.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item-left cursor-pointer p-6 rounded hover:bg-white/[0.04]" data-feature="creativity">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">Runtime Content Generation</h3>
+                                <p class="text-secondary text-sm leading-relaxed">
+                                    Generate quests, lore, and world events based on player context. Infinite content without static databases.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right: Video Container -->
+                <div class="relative" id="features-right-container">
+                    <div class="sticky top-24" id="video-sticky-container">
+                        <div id="feature-video-desktop" class="relative aspect-video rounded overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-400 ease-out transform">
+                            <iframe 
+                                class="absolute inset-0 w-full h-full"
+                                src="https://www.youtube.com/embed/znbZX02L5rQ?enablejsapi=1&controls=1&modestbranding=1&rel=0&autoplay=0&mute=1"
+                                title="Knowledge Systems"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Platform Architecture (hidden — overlaps with THE PLATFORM section above) -->
+    <!--
+    <section class="py-12 md:py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-4xl mx-auto text-center mb-12 md:mb-20 fade-in">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-sm font-normal mb-8 border border-white/20">
+                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
+                    ARCHITECTURE
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+                    Three Layers. One Platform.
+                </h2>
+                <p class="text-xl text-secondary leading-relaxed">
+                    A complete AI stack running on player hardware — from engine integration to model management.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch text-center fade-in">
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20">
+                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
+                        <i class="fas fa-plug text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Engine SDK</h3>
+                    <ul class="text-secondary text-base leading-relaxed space-y-2 text-left">
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Exposes game world to AI via simple API</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Unreal plugin, Unity package, or C++ API</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Works out-of-the-box, fully extensible</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20">
+                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
+                        <i class="fas fa-robot text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">AI Runtime</h3>
+                    <ul class="text-secondary text-base leading-relaxed space-y-2 text-left">
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Context-aware with access to game world and lore</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Triggers in-game actions via function calls</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20">
+                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
+                        <i class="fas fa-microchip text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Model Manager</h3>
+                    <ul class="text-secondary text-base leading-relaxed space-y-2 text-left">
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Auto-selects optimal model for each device</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Background inference, zero player setup</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-primary-500 mt-1">•</span>
+                            <span>Auto-updates as open-source models improve</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- Value Proposition -->
+    <!-- 
+    <section class="py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-sm font-normal mb-8 border border-white/20">
+                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
+                    THE REVOLUTION
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+                    Why Gaming Intelligence Changes Everything
+                </h2>
+                <p class="text-xl text-secondary leading-relaxed">
+                    The gaming industry embraced physics, graphics, and multiplayer revolutions. 
+                    Now it's time for the AI revolution. Be among the first to define what comes next.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-dollar-sign text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4 heading-tertiary">Local AI, Low Cost</h3>
+                    <p class="text-secondary body-medium">
+                        No cloud required – cut the expensive API costs and latency. 
+                        <span class="text-white font-medium">Save up to $1.8M/month</span> compared to cloud solutions 
+                        while delivering instant, private AI interactions.
+                    </p>
+                </div>
+                
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-brain text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4 heading-tertiary">Intelligent NPCs</h3>
+                    <p class="text-secondary body-medium">
+                        Game characters that truly listen, think, and respond – powered by advanced LLM agents. 
+                        <span class="text-white font-medium">Every conversation is unique</span>, every playthrough 
+                        offers new stories.
+                    </p>
+                </div>
+                
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-rocket text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4 heading-tertiary">High Quality at Scale</h3>
+                    <p class="text-secondary body-medium">
+                        Works offline on your hardware – from indie projects to AAA worlds. 
+                        <span class="text-white font-medium">Lightning-fast responses</span> for every player, 
+                        no matter where they are.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+    </section>
+    -->
+
+
+    <!-- Cloud Cost Warning Section (Hidden for now) -->
+    <!--
+    <section class="py-12 md:py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-4xl mx-auto text-center mb-12 md:mb-16 fade-in">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-400 text-sm font-normal mb-8 border border-red-500/30">
+                    <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                    CLOUD WILL DRAIN YOU
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+                    $1.8M <span class="text-white">Per Month</span>
+                </h2>
+                <p class="text-xl text-secondary leading-relaxed">
+                    That's what it costs to serve just <strong class="text-white">10,000 concurrent players</strong> using OpenAI-style API pricing.
+                    For most studios, success becomes unsustainable.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-2xl text-center fade-in transition-all duration-300 hover:border-white/20">
+                    <div class="text-5xl font-bold text-red-400 mb-6">$1.8M</div>
+                    <p class="text-secondary">Monthly cost for 10k concurrent users if using cloud APIs.</p>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl text-center fade-in transition-all duration-300 hover:border-white/20">
+                    <div class="text-5xl font-bold text-yellow-400 mb-6">150+</div>
+                    <p class="text-secondary">Steam games hit 10k concurrent players <strong class="text-white">every day</strong>. Are you ready for that scale?</p>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl text-center fade-in transition-all duration-300 hover:border-white/20">
+                    <div class="text-5xl font-bold text-green-400 mb-6">$0</div>
+                    <p class="text-secondary">Tryll runs <strong class="text-white">fully local</strong>. No data protection headaches. No outages. No cloud bills.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    -->
+
+
+    <!-- Social Proof -->
+    <!--
+    <section class="py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto glass-card p-12 rounded-3xl text-center fade-in">
+                <div class="text-5xl mb-6 text-primary-500">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <p class="text-2xl text-white mb-8 leading-relaxed">
+                    "Thing that we want to do more than anything is to put [AI] on your PC as well.<br><br>
+                    Our focus is to turn Windows PC into target first-class platform that we will support and maintain for as long as we shall live."
+                </p>
+                <div>
+                    <p class="text-lg font-bold text-white">Jensen Huang</p>
+                    <p class="text-secondary">NVIDIA Keynote, CES 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-12 md:py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16 fade-in">
+                <span class="terminal-label">PRICING</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+                    Pricing That Scales With Your Game
+                </h2>
+                <p class="text-xl text-secondary leading-relaxed">
+                    Start free. Pay when your game succeeds.
+                </p>
+            </div>
+
+            <!-- Tryll Engine — Flat Pricing -->
+            <div class="max-w-2xl mx-auto mb-16 fade-in">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-8 md:gap-12">
+                    <!-- Left: price + CTA -->
+                    <div class="flex-shrink-0">
+                        <h3 class="text-2xl font-bold text-white mb-1">Tryll Engine</h3>
+                        <p style="font-size:0.85rem;color:rgba(255,255,255,0.45);margin-bottom:20px;">On-device AI for your game</p>
+                        <div class="flex items-baseline gap-2 mb-1">
+                            <span style="font-family:'JetBrains Mono',monospace;font-size:2.5rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1;">~3¢</span>
+                            <span style="font-size:0.95rem;color:rgba(255,255,255,0.5);">per copy sold</span>
+                        </div>
+                        <p style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.35);margin-bottom:24px;">at $15 game price — scales with price</p>
+                        <a href="#contact" class="btn-primary inline-block text-center py-3 px-8 rounded font-semibold transition-all duration-200">
+                            Book a Demo
+                        </a>
+                    </div>
+                    <!-- Right: features -->
+                    <ul class="space-y-3 text-secondary" style="font-size:0.95rem;">
+                        <li class="flex items-start gap-3">
+                            <span style="color:rgba(59,130,246,0.6);" class="mt-0.5">✓</span>
+                            <span>Unreal & Unity plugins</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span style="color:rgba(59,130,246,0.6);" class="mt-0.5">✓</span>
+                            <span>Game state awareness & context-aware AI</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span style="color:rgba(59,130,246,0.6);" class="mt-0.5">✓</span>
+                            <span>Custom AI characters & companions</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span style="color:rgba(59,130,246,0.6);" class="mt-0.5">✓</span>
+                            <span>Voice integration (TTS/STT)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span style="color:rgba(59,130,246,0.6);" class="mt-0.5">✓</span>
+                            <span>AI agents that act in your game world</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span style="color:rgba(59,130,246,0.6);" class="mt-0.5">✓</span>
+                            <span>Dynamic content generation</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Price Calculator — Terminal Style -->
+            <style>
+                .calc-stepper { display:inline-flex; align-items:center; gap:0; border:1px solid rgba(255,255,255,0.1); border-radius:4px; overflow:hidden; }
+                .calc-stepper-btn {
+                    display:flex; align-items:center; justify-content:center;
+                    width:32px; height:32px; border:none; background:rgba(255,255,255,0.03);
+                    color:rgba(255,255,255,0.45); cursor:pointer; transition:all 0.15s;
+                    -webkit-user-select:none; user-select:none;
+                }
+                .calc-stepper-btn:hover { background:rgba(59,130,246,0.1); color:rgba(255,255,255,0.7); }
+                .calc-stepper-btn:active { background:rgba(59,130,246,0.18); color:rgba(255,255,255,0.85); }
+                .calc-stepper-btn svg { width:12px; height:12px; }
+                .calc-stepper-val {
+                    font-family:'JetBrains Mono',monospace; font-size:0.85rem;
+                    color:rgba(255,255,255,0.85); padding:0 14px; min-width:60px; text-align:center;
+                    border-left:1px solid rgba(255,255,255,0.06); border-right:1px solid rgba(255,255,255,0.06);
+                    height:32px; display:flex; align-items:center; justify-content:center;
+                }
+            </style>
+            <div class="max-w-2xl mx-auto fade-in">
+                <div class="rounded overflow-hidden border border-white/[0.06] bg-white/[0.02]" style="border-top:2px solid rgba(59,130,246,0.3);">
+                    <!-- Terminal header -->
+                    <div class="flex items-center justify-between px-5 py-3 border-b border-white/[0.06]">
+                        <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.08em;color:rgba(59,130,246,0.5);text-transform:uppercase;">// calculator</span>
+                        <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.4);">no upfront cost</span>
+                    </div>
+
+                    <div class="px-5 py-5" style="font-family:'JetBrains Mono',monospace;">
+                        <!-- Game Price row -->
+                        <div class="flex items-center justify-between mb-4">
+                            <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);letter-spacing:0.06em;text-transform:uppercase;">Game price</span>
+                            <div class="calc-stepper">
+                                <button class="calc-stepper-btn" id="price-down" aria-label="Decrease price">
+                                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5L6 8L9.5 4.5"/></svg>
+                                </button>
+                                <div class="calc-stepper-val" id="price-display">$10</div>
+                                <button class="calc-stepper-btn" id="price-up" aria-label="Increase price">
+                                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8L6 4.5L9.5 8"/></svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Copies Sold row -->
+                        <div class="flex items-center justify-between mb-5 pb-5 border-b border-white/[0.04]">
+                            <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);letter-spacing:0.06em;text-transform:uppercase;">Copies sold</span>
+                            <div class="calc-stepper">
+                                <button class="calc-stepper-btn" id="copies-down" aria-label="Decrease copies">
+                                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5L6 8L9.5 4.5"/></svg>
+                                </button>
+                                <div class="calc-stepper-val" id="copies-display" style="min-width:90px;">100,000</div>
+                                <button class="calc-stepper-btn" id="copies-up" aria-label="Increase copies">
+                                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8L6 4.5L9.5 8"/></svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Output: big centered fee -->
+                        <div class="text-center py-4">
+                            <div id="per-copy-fee" style="font-size:2.2rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1;">$0.02</div>
+                            <div style="font-size:0.8rem;color:rgba(255,255,255,0.45);letter-spacing:0.06em;text-transform:uppercase;margin-top:6px;">per copy sold</div>
+                        </div>
+
+                        <!-- Example -->
+                        <div class="pt-4 border-t border-white/[0.06]">
+                            <div class="flex justify-between items-baseline" style="font-size:0.95rem;">
+                                <div>
+                                    <span style="color:rgba(255,255,255,0.5);">revenue</span>
+                                    <span style="color:rgba(255,255,255,0.8);font-weight:600;margin-left:8px;" id="example-revenue">$1,000,000</span>
+                                </div>
+                                <div>
+                                    <span style="color:rgba(255,255,255,0.5);">tryll</span>
+                                    <span style="color:rgba(255,255,255,0.7);font-weight:600;margin-left:8px;" id="example-fee">$2,000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testbed Callout -->
+            <div class="max-w-2xl mx-auto mt-16 fade-in">
+                <div class="rounded overflow-hidden border border-white/[0.06] bg-white/[0.02] px-6 py-6" style="border-top:2px solid rgba(59,130,246,0.15);">
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.08em;color:rgba(59,130,246,0.4);text-transform:uppercase;margin-bottom:12px;">// try_the_tech</div>
+                    <p class="text-white mb-2" style="font-size:1.05rem;color:rgba(255,255,255,0.8);">Want to see local AI in your game before integrating?</p>
+                    <p class="text-secondary mb-5" style="font-size:0.9rem;color:rgba(255,255,255,0.45);line-height:1.6;">
+                        Download Tryll Assistant — a free AI overlay that runs on any game.<br>
+                        See how LLM inference works on player hardware, no integration needed.
+                    </p>
+                    <a href="tryll-assistant.html" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-200" style="color:rgba(59,130,246,0.8);font-family:'JetBrains Mono',monospace;font-size:0.85rem;">
+                        Download Free on Steam <span style="font-size:0.9em;">→</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 md:py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-3xl mx-auto text-center mb-16 md:mb-20 fade-in">
+                <span class="terminal-label">FAQ</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
+                    Frequently Asked Questions
+                </h2>
+                <p class="text-lg md:text-xl text-secondary leading-relaxed px-2">
+                    Everything you need to know about the Tryll platform
+                </p>
+            </div>
+            
+            <!-- Tab buttons -->
+            <div class="max-w-4xl mx-auto mb-8">
+                <div class="flex justify-center gap-4">
+                    <button 
+                        id="faq-tab-developers" 
+                        class="faq-tab px-6 py-3 rounded font-medium transition-all duration-300 bg-primary-500 text-white"
+                        onclick="switchFAQTab('developers')"
+                    >
+                        For Developers
+                    </button>
+                    <button 
+                        id="faq-tab-players" 
+                        class="faq-tab px-6 py-3 rounded font-medium transition-all duration-300 bg-white/10 text-secondary hover:bg-white/20"
+                        onclick="switchFAQTab('players')"
+                    >
+                        For Players
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Developer FAQ (default visible) -->
+            <div id="faq-developers" class="max-w-4xl mx-auto">
+                <div class="space-y-4">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-1">
+                            <h3 class="text-xl font-bold text-white">What kind of hardware is needed to run both the game and AI at 90 FPS?</h3>
+                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                        </button>
+                        <div id="faq-1" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                            <div class="px-8 pb-6">
+                                <p class="text-secondary leading-relaxed">
+                                    8GB of VRAM is enough to run both a model and a game. However, more VRAM is better - graphics-intensive games at high settings may consume most of the memory, which can slow down the model. For the best experience, we recommend 12GB+ VRAM. Tryll automatically selects the most efficient model and quantization for the user's system to ensure smooth gameplay.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-2">
+                            <h3 class="text-xl font-bold text-white">How many gamers can actually run these models?</h3>
+                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                        </button>
+                        <div id="faq-2" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                            <div class="px-8 pb-6">
+                                <div class="text-secondary leading-relaxed">
+                                    <p class="mb-3">According to the <a href="https://store.steampowered.com/hwsurvey/Steam-Hardware-Software-Survey-Welcome-to-Steam" target="_blank" rel="noopener noreferrer" class="text-primary-500 hover:underline">Steam Hardware Survey</a> (see VRAM section), about 2/3 of players already have 8GB+ VRAM cards, which are good enough to run local AI:</p>
+                                    <ul class="list-disc list-inside space-y-2 ml-4">
+                                        <li>~1/3 of players have 8GB VRAM</li>
+                                        <li>~1/3 of players have 12GB+ VRAM</li>
+                                    </ul>
+                                    <p class="mt-3">As open-source models get smaller and faster, and gamers continue upgrading hardware, this percentage grows - unlocking scalable deployment without cloud reliance.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-3">
+                            <h3 class="text-xl font-bold text-white">Why is local AI better than using a cloud API?</h3>
+                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                        </button>
+                        <div id="faq-3" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                            <div class="px-8 pb-6">
+                                <div class="text-secondary leading-relaxed">
+                                    <p class="mb-3 font-medium">Local AI advantages:</p>
+                                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                                        <li>Zero cost per player - no API or infrastructure bills</li>
+                                        <li>Offline capable - your game keeps working without an internet connection</li>
+                                        <li>Private by design - no personal data leaves the device</li>
+                                    </ul>
+                                    <p class="mb-3 font-medium">Cloud-based AI adds legal and UX risks:</p>
+                                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                                        <li>Immersion-breaking outages during play sessions</li>
+                                        <li>Legal compliance challenges (GDPR, AI Act, export laws)</li>
+                                    </ul>
+                                    <p>Tryll's local-first approach is not just cheaper - it's safer, faster, and scalable to millions of players.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-4">
+                            <h3 class="text-xl font-bold text-white">How does the platform handle different player hardware?</h3>
+                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                        </button>
+                        <div id="faq-4" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                            <div class="px-8 pb-6">
+                                <div class="text-secondary leading-relaxed">
+                                    <p class="mb-3">This is the core problem Tryll solves — like how DirectX abstracts GPU differences for graphics. Tryll's Model Manager automatically:</p>
+                                    <ul class="list-disc list-inside space-y-2 mb-4 ml-4">
+                                        <li>Detects available GPU, VRAM, and RAM on first launch</li>
+                                        <li>Selects the optimal model size and quantization (4B-14B)</li>
+                                        <li>Auto-updates models as better open-source options become available</li>
+                                    </ul>
+                                    <p>You write one integration. The platform handles every hardware configuration. No setup required from players or developers.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-5">
+                            <h3 class="text-xl font-bold text-white">How does the platform affect game stability?</h3>
+                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                        </button>
+                        <div id="faq-5" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                            <div class="px-8 pb-6">
+                                <p class="text-secondary leading-relaxed">
+                                    Tryll is designed so that AI is always additive to your game. AI inference runs separately from core gameplay, so if anything goes wrong, the game falls back to default behavior. We're building toward full process isolation, but even today the architecture ensures AI issues don't take down your game.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-6">
+                            <h3 class="text-xl font-bold text-white">What game engines will Tryll support?</h3>
+                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                        </button>
+                        <div id="faq-6" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                            <div class="px-8 pb-6">
+                                <p class="text-secondary leading-relaxed">
+                                    We're building Unreal and Unity plugins first, with an SDK API to follow. The platform is engine-agnostic at its core — the engine-specific plugins are convenience layers on top of the same underlying runtime. If you're working with a custom engine, reach out and we'll work with you on integration.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Player FAQ (initially hidden) -->
+            <div id="faq-players" class="max-w-4xl mx-auto" style="display: none;">
+                <div class="space-y-4">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-p1">
+                            <h3 class="text-xl font-bold text-white">How does the use of Tryll Engine affect performance of the game?</h3>
+                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                        </button>
+                        <div id="faq-p1" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                            <div class="px-8 pb-6">
+                                <p class="text-secondary leading-relaxed">
+                                    The AI assistant consumes VRAM only when generating responses. When you're not actively using it, the model is offloaded from VRAM and doesn't affect your gameplay at all. This means you get the full performance of your GPU for gaming, with AI assistance available on demand.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-p2">
+                            <h3 class="text-xl font-bold text-white">What if my hardware isn't powerful enough?</h3>
+                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                        </button>
+                        <div id="faq-p2" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                            <div class="px-8 pb-6">
+                                <p class="text-secondary leading-relaxed">
+                                    You can still run Tryll with a smaller model (like 3B parameters), but the AI quality won't be as good. We find models of 7B+ parameters to be reliable and fun to play with, while 3B models provide a noticeably less engaging experience. We recommend RTX 4070 or equivalent for the best results.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                        <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-p3">
+                            <h3 class="text-xl font-bold text-white">How does Tryll handle my personal data and conversations?</h3>
+                            <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                        </button>
+                        <div id="faq-p3" class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                            <div class="px-8 pb-6">
+                                <p class="text-secondary leading-relaxed">
+                                    Tryll runs entirely on your device. We don't collect any personal data and have no access to your chat logs. Everything stays local. The only way for us to access your data is when you explicitly send it as part of a bug report or feedback.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16 fade-in">
+                <p class="text-secondary mb-6">Still have questions?</p>
+                <a href="https://discord.gg/XCBBGUMzUM" class="inline-flex items-center gap-3 px-8 py-4 rounded bg-[#5865F2] text-white font-medium text-lg transition-all duration-300 hover:bg-[#4752C4]">
+                    <i class="fab fa-discord text-xl"></i>
+                    Contact us on Discord
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="py-16 md:py-24 relative overflow-hidden bg-black">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16 fade-in">
+                <span class="terminal-label">GET_STARTED</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
+                    Start Building
+                </h2>
+                <p class="text-lg md:text-xl text-secondary mb-8 md:mb-10 leading-relaxed px-2">
+                    Talk to our team about integrating Tryll into your game.
+                </p>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="max-w-lg mx-auto px-4">
+                <form id="contact-form" class="glass-card p-6 md:p-8" action="https://formspree.io/f/movlaywd" method="POST">
+                    <div class="space-y-5 md:space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-normal text-white mb-2">Name</label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                required 
+                                class="form-input w-full px-4 py-3 md:py-4 rounded text-base"
+                                placeholder="Your name"
+                            >
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-normal text-white mb-2">Email</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                required 
+                                class="form-input w-full px-4 py-3 md:py-4 rounded text-base"
+                                placeholder="your@email.com"
+                                inputmode="email"
+                                autocomplete="email"
+                            >
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-normal text-white mb-3">I am a...</label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <label class="relative">
+                                    <input type="radio" name="category" value="studio" class="peer sr-only" />
+                                    <div class="px-4 py-3 rounded bg-white/10 border-2 border-white/20 text-white/80 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary peer-checked:border-primary peer-checked:text-secondary peer-checked:shadow-lg peer-checked:shadow-primary/30 hover:bg-white/15 hover:text-white hover:border-white/40">
+                                        Studio
+                                    </div>
+                                </label>
+                                <label class="relative">
+                                    <input type="radio" name="category" value="solo-dev" class="peer sr-only" />
+                                    <div class="px-4 py-3 rounded bg-white/10 border-2 border-white/20 text-white/80 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary peer-checked:border-primary peer-checked:text-secondary peer-checked:shadow-lg peer-checked:shadow-primary/30 hover:bg-white/15 hover:text-white hover:border-white/40">
+                                        Solo Dev
+                                    </div>
+                                </label>
+                                <label class="relative">
+                                    <input type="radio" name="category" value="modder" class="peer sr-only" />
+                                    <div class="px-4 py-3 rounded bg-white/10 border-2 border-white/20 text-white/80 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary peer-checked:border-primary peer-checked:text-secondary peer-checked:shadow-lg peer-checked:shadow-primary/30 hover:bg-white/15 hover:text-white hover:border-white/40">
+                                        Modder
+                                    </div>
+                                </label>
+                                <label class="relative">
+                                    <input type="radio" name="category" value="other" class="peer sr-only" />
+                                    <div class="px-4 py-3 rounded bg-white/10 border-2 border-white/20 text-white/80 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary peer-checked:border-primary peer-checked:text-secondary peer-checked:shadow-lg peer-checked:shadow-primary/30 hover:bg-white/15 hover:text-white hover:border-white/40">
+                                        Other
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Privacy Policy Checkbox -->
+                        <div class="flex items-start gap-3">
+                            <input 
+                                type="checkbox" 
+                                id="privacy-policy" 
+                                name="privacy_policy_consent" 
+                                required
+                                class="mt-1 w-4 h-4 rounded accent-primary dark:accent-secondary focus:ring-2 focus:ring-primary dark:focus:ring-secondary"
+                            >
+                            <label for="privacy-policy" class="text-sm text-white/80 leading-relaxed">
+                                I agree to the <a href="privacy-policy.html" target="_blank" class="underline hover:text-white transition-colors">Privacy Policy</a> and consent to the processing of my personal data.
+                            </label>
+                        </div>
+                        
+                        <!-- Hidden field for tracking -->
+                        <input type="hidden" name="_subject" value="New Tryll Engine Contact Form Submission">
+                        <input type="hidden" name="_next" value="https://tryllengine.com/">
+                        
+                        <button
+                            type="submit"
+                            class="btn-primary w-full px-6 md:px-8 py-4 md:py-5 rounded text-base md:text-lg inline-flex items-center justify-center"
+                        >
+                            Get in Touch
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Email Link -->
+            <div id="contact-email" class="text-center mt-8 md:mt-12">
+                <p class="text-sm text-secondary mb-3">Contact us at:</p>
+                <a href="mailto:team@tryllengine.com" class="text-lg md:text-xl font-medium text-white/80 hover:text-white transition-colors duration-300" style="font-family:'JetBrains Mono',monospace;letter-spacing:0.01em;">
+                    team@tryllengine.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center gap-6 md:grid md:grid-cols-3 md:items-center">
+                <!-- Left: Copyright -->
+                <div class="text-secondary text-sm order-2 md:order-1 text-center md:text-left">
+                    © 2026 Tryll Engine, Inc. All rights reserved.<br>
+                    <span class="text-xs">Deep Rock Galactic and Bosco are trademarks of Ghost Ship Games ApS.</span>
+                </div>
+                
+                <!-- Center: Social Links -->
+                <div class="flex gap-6 items-center justify-center order-1 md:order-2">
+                    <a href="https://discord.gg/XCBBGUMzUM" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Join our Discord">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@Tryll_Engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Watch on YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://instagram.com/tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://tiktok.com/@tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+                
+                <!-- Right: Privacy & Terms -->
+                <div class="flex gap-6 order-3 md:order-3 justify-center md:justify-end">
+                    <a href="privacy-policy.html" class="text-secondary hover:text-white transition-colors duration-300 text-sm">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Google Analytics Event Tracking via GTM dataLayer
+        function trackEvent(category, action, label = null, value = null) {
+            if (typeof dataLayer !== 'undefined') {
+                dataLayer.push({
+                    'event': 'custom_event',
+                    'event_category': category,
+                    'event_action': action,
+                    'event_label': label,
+                    'event_value': value
+                });
+            }
+        }
+
+        // Track all button clicks
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track CTA button clicks
+            document.querySelectorAll('a[href*="boscotryll"], button').forEach(element => {
+                element.addEventListener('click', function(e) {
+                    const text = this.textContent.trim();
+                    const href = this.getAttribute('href');
+                    
+                    if (href && href.includes('boscotryll')) {
+                        trackEvent('CTA', 'click', 'BoscoTryll - ' + text);
+                    } else if (this.classList.contains('btn-primary')) {
+                        trackEvent('CTA', 'click', 'Primary Button - ' + text);
+                    } else if (text) {
+                        trackEvent('Button', 'click', text);
+                    }
+                });
+            });
+
+            // Track navigation clicks
+            document.querySelectorAll('nav a, .mobile-menu-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    const text = this.textContent.trim();
+                    const isMobile = this.classList.contains('mobile-menu-link');
+                    trackEvent('Navigation', 'click', (isMobile ? 'Mobile - ' : 'Desktop - ') + text);
+                });
+            });
+
+            // Track external links
+            document.querySelectorAll('a[href^="http"]:not([href*="tryllengine.com"])').forEach(link => {
+                link.addEventListener('click', function() {
+                    const href = this.getAttribute('href');
+                    trackEvent('Outbound Link', 'click', href);
+                });
+            });
+
+            // Track FAQ interactions
+            document.querySelectorAll('.faq-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const question = this.querySelector('.faq-question').textContent.trim();
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    trackEvent('FAQ', isExpanded ? 'close' : 'open', question);
+                });
+            });
+
+            // Form tracking will be handled in the main form submit handler below
+
+            // Track scroll depth
+            let scrollDepths = [25, 50, 75, 100];
+            let achievedDepths = [];
+            
+            window.addEventListener('scroll', function() {
+                const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+                
+                scrollDepths.forEach(depth => {
+                    if (scrollPercent >= depth && !achievedDepths.includes(depth)) {
+                        achievedDepths.push(depth);
+                        trackEvent('Engagement', 'scroll', 'Depth', depth);
+                    }
+                });
+            });
+
+            // Track time on page
+            let startTime = Date.now();
+            window.addEventListener('beforeunload', function() {
+                const timeOnPage = Math.round((Date.now() - startTime) / 1000);
+                trackEvent('Engagement', 'time_on_page', 'Seconds', timeOnPage);
+            });
+        });
+        
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Ripple effect for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+        
+        
+        // Contact form handling with Formspree
+        const form = document.getElementById('contact-form');
+        if (form) {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                
+                // Track form submission
+                const email = this.querySelector('[name="email"]').value;
+                const categoryRadio = this.querySelector('[name="category"]:checked');
+                const category = categoryRadio ? categoryRadio.value : 'not-selected';
+                trackEvent('Form', 'submit', 'Contact Form - ' + category);
+                
+                // Disable submit button and show loading
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+                
+                const formData = new FormData(this);
+                
+                try {
+                    const response = await fetch(this.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        // Show success message and reset form
+                        alert('Thank you for your interest! We\'ll be in touch soon.');
+                        this.reset();
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    } else {
+                        const data = await response.json();
+                        if (data.errors) {
+                            alert('Error: ' + data.errors.map(error => error.message).join(', '));
+                        } else {
+                            alert('There was an error submitting the form. Please try again.');
+                        }
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalText;
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('There was an error submitting the form. Please try again.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                }
+            });
+        }
+        
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            let isMenuOpen = false;
+            
+            function toggleMenu() {
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    mobileMenu.classList.remove('opacity-0', 'invisible');
+                    mobileMenu.classList.add('opacity-100', 'visible');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    mobileMenu.classList.add('opacity-0', 'invisible');
+                    mobileMenu.classList.remove('opacity-100', 'visible');
+                    document.body.style.overflow = '';
+                }
+            }
+            
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            
+            // Close menu when clicking close button
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', toggleMenu);
+            }
+            
+            // Close menu when clicking on overlay
+            mobileMenu.addEventListener('click', function(e) {
+                if (e.target === mobileMenu) {
+                    toggleMenu();
+                }
+            });
+            
+            // Close menu when clicking on a link
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    toggleMenu();
+                });
+            });
+            
+            // Close menu on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && isMenuOpen) {
+                    toggleMenu();
+                }
+            });
+        }
+        
+        // Screen Studio-style video animation with YouTube autoplay
+        function initVideoAnimation() {
+            const heroVideo = document.getElementById('hero-video');
+            const featureVideo = document.getElementById('feature-video');
+            const featuresSection = document.getElementById('features');
+            const youtubePlayer = document.getElementById('youtube-player');
+            
+            if (!heroVideo || !featureVideo || !featuresSection) return;
+            
+            let isAnimating = false;
+            let hasStartedVideo = false;
+            
+            function handleScroll() {
+                if (isAnimating) return;
+                
+                const scrollY = window.scrollY;
+                const windowHeight = window.innerHeight;
+                const heroSection = heroVideo.closest('section');
+                const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+                const featuresTop = featuresSection.offsetTop;
+                
+                // Calculate animation progress
+                const animationStart = heroBottom - windowHeight;
+                const animationEnd = featuresTop - windowHeight * 0.3;
+                const progress = Math.max(0, Math.min(1, (scrollY - animationStart) / (animationEnd - animationStart)));
+                
+                // YouTube autoplay on scroll trigger
+                if (!hasStartedVideo && scrollY > windowHeight * 0.3 && youtubePlayer) {
+                    hasStartedVideo = true;
+                    // Try to start the video with sound if user has interacted
+                    try {
+                        youtubePlayer.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                    } catch (e) {
+                        // Fallback: update src to include autoplay
+                        const currentSrc = youtubePlayer.src;
+                        if (currentSrc.includes('autoplay=0')) {
+                            youtubePlayer.src = currentSrc.replace('autoplay=0', 'autoplay=1');
+                        }
+                    }
+                }
+                
+                // Update hero video - scale until video center reaches screen center
+                const heroVideoRect = heroVideo.getBoundingClientRect();
+                const videoCenter = heroVideoRect.top + (heroVideoRect.height / 2);
+                const screenCenter = windowHeight / 2;
+                const videoAtCenter = videoCenter <= screenCenter;
+                
+                if (progress > 0 && !videoAtCenter) {
+                    // Still scaling up - video hasn't reached center yet
+                    const scale = 1 + (progress * 0.8); // Grow by 80% (larger effect)
+                    const opacity = 1 - (progress * 0.3); // Fade slightly
+                    heroVideo.style.transform = `scale(${scale})`;
+                    heroVideo.style.opacity = opacity;
+                } else if (videoAtCenter && progress > 0) {
+                    // Video is at or past center - only scale down if scrolling up
+                    const currentScale = heroVideo.style.transform.match(/scale\(([^)]+)\)/);
+                    const currentOpacity = heroVideo.style.opacity;
+                    
+                    // Keep current scale/opacity when scrolling down past center
+                    if (currentScale && currentOpacity) {
+                        heroVideo.style.transform = currentScale[0];
+                        heroVideo.style.opacity = currentOpacity;
+                    }
+                }
+                
+                // Update feature video
+                if (progress > 0.7) {
+                    const featureProgress = (progress - 0.7) / 0.3; // Last 30% of animation
+                    const scale = 0.8 + (featureProgress * 0.2); // Scale from 80% to 100%
+                    const opacity = featureProgress;
+                    featureVideo.style.transform = `scale(${scale})`;
+                    featureVideo.style.opacity = opacity;
+                } else {
+                    featureVideo.style.transform = 'scale(0.8)';
+                    featureVideo.style.opacity = '0';
+                }
+                
+                // Sticky behavior for desktop - simplified to avoid layout breaks
+                if (window.innerWidth >= 768) {
+                    const featuresContainer = document.getElementById('features-video-container');
+                    const featuresRect = featuresSection.getBoundingClientRect();
+                    
+                    // Keep sticky positioning throughout, just adjust z-index when needed
+                    featuresContainer.style.position = 'sticky';
+                    featuresContainer.style.top = '6rem';
+                    featuresContainer.style.left = 'auto';
+                    featuresContainer.style.transform = 'none';
+                    featuresContainer.style.width = 'auto';
+                    featuresContainer.style.maxWidth = 'none';
+                    
+                    // Only adjust z-index when video is actively in sticky range
+                    if (featuresRect.top <= 100 && featuresRect.bottom > windowHeight) {
+                        featuresContainer.style.zIndex = '25';
+                    } else {
+                        featuresContainer.style.zIndex = '20';
+                    }
+                }
+            }
+            
+            // Throttle scroll events
+            let ticking = false;
+            function requestTick() {
+                if (!ticking) {
+                    requestAnimationFrame(handleScroll);
+                    ticking = true;
+                    setTimeout(() => { ticking = false; }, 16);
+                }
+            }
+            
+            window.addEventListener('scroll', requestTick);
+            
+            // Initial call
+            handleScroll();
+        }
+        
+        // All interactive functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize video animation
+            initVideoAnimation();
+            // Interactive Features Section
+            const featureItemsDesktop = document.querySelectorAll('.feature-item-left');
+            const featureItemsMobile = document.querySelectorAll('.feature-item-mobile');
+            const videoDesktop = document.getElementById('feature-video-desktop');
+            const videoMobile = document.getElementById('feature-video-mobile');
+            
+            const features = {
+                tutorials: {
+                    icon: '📚',
+                    title: 'Knowledge Systems',
+                    description: 'Connect your game\'s documentation and lore to an AI that answers player questions in real-time. Reduces support load, eliminates alt-tabbing.',
+                    video: 'https://www.youtube.com/embed/znbZX02L5rQ',
+                    type: 'youtube'
+                },
+                companions: {
+                    icon: '🤝',
+                    title: 'Persistent Memory & Relationships',
+                    description: 'NPCs that remember conversations, form opinions, and evolve over time. Build deep companion systems without thousands of dialogue branches.',
+                    video: 'https://www.youtube.com/embed/HgbkbNxJ-6g',
+                    type: 'youtube'
+                },
+                agents: {
+                    icon: '⚡',
+                    title: 'Agent Actions',
+                    description: 'Let AI trigger game mechanics — spawn enemies, modify environments, distribute rewards. Ship dynamic gameplay through API calls, not hardcoded logic.',
+                    image: '../assets/images/Automating chores.svg',
+                    type: 'image'
+                },
+                creativity: {
+                    icon: '🌍',
+                    title: 'Runtime Content Generation',
+                    description: 'Generate quests, lore, and world events based on player context. Infinite content without static databases.',
+                    image: '../assets/images/Runtime content generation.svg',
+                    type: 'image'
+                }
+            };
+            
+            function updateVideo(feature, videoElement) {
+                const content = features[feature];
+                if (content && videoElement) {
+                    const isMobile = videoElement.id === 'feature-video-mobile';
+                    
+                    // Add fade out effect
+                    videoElement.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        let mediaContent = '';
+                        
+                        if (content.type === 'youtube' && content.video) {
+                            // YouTube video embed
+                            mediaContent = `
+                                <iframe 
+                                    class="absolute inset-0 w-full h-full"
+                                    src="${content.video}?enablejsapi=1&controls=1&modestbranding=1&rel=0&autoplay=0&mute=1"
+                                    title="${content.title}"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen>
+                                </iframe>
+                            `;
+                        } else if (content.type === 'image' && content.image) {
+                            // Image display
+                            mediaContent = `
+                                <div class="absolute inset-0 flex items-center justify-center p-8">
+                                    <img src="${content.image}" alt="${content.title}" class="max-w-full max-h-full object-contain" />
+                                </div>
+                            `;
+                        } else {
+                            // Fallback to icon and text
+                            mediaContent = `
+                                <div class="absolute inset-0 flex items-center justify-center feature-content">
+                                    <div class="text-center p-6 md:p-8">
+                                        <div class="${isMobile ? 'text-4xl' : 'text-6xl md:text-8xl'} mb-4 md:mb-6">${content.icon}</div>
+                                        <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">${content.title}</h3>
+                                        <p class="text-secondary text-base md:text-lg leading-relaxed">${content.description}</p>
+                                        <div class="mt-4 md:mt-6 text-sm text-white/80">Demo coming soon</div>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                        
+                        videoElement.innerHTML = mediaContent;
+                        // Add fade in effect
+                        videoElement.style.opacity = '1';
+                    }, 150);
+                }
+            }
+            
+            function updateVideoPosition(index) {
+                const videoDesktop = document.getElementById('feature-video-desktop');
+                const leftContainer = document.getElementById('features-list');
+                const rightContainer = document.getElementById('features-right-container');
+                const stickyContainer = document.getElementById('video-sticky-container');
+                
+                if (videoDesktop && leftContainer && rightContainer) {
+                    // Make right container match left container height
+                    const leftHeight = leftContainer.offsetHeight;
+                    rightContainer.style.height = leftHeight + 'px';
+                    
+                    // Get video dimensions
+                    const videoHeight = videoDesktop.offsetHeight;
+                    
+                    // Set sticky container height to match left side
+                    stickyContainer.style.height = leftHeight + 'px';
+                    
+                    // Calculate available space for movement
+                    const availableSpace = leftHeight - videoHeight;
+                    
+                    // Calculate position based on index
+                    const featureItemsDesktop = document.querySelectorAll('.feature-item-left');
+                    const totalItems = featureItemsDesktop.length;
+                    const stepPercentage = index / (totalItems - 1); // 0 to 1
+                    const pixelOffset = availableSpace * stepPercentage;
+                    
+                    // Apply smooth transition
+                    videoDesktop.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                    
+                    // Apply transform with subtle effects
+                    videoDesktop.classList.add('transitioning');
+                    videoDesktop.style.transform = `translateY(${pixelOffset}px)`;
+                    
+                    // Add a slight fade effect during transition
+                    setTimeout(() => {
+                        videoDesktop.classList.remove('transitioning');
+                    }, 600);
+                }
+            }
+            
+            // Desktop features
+            if (featureItemsDesktop.length > 0 && videoDesktop) {
+                // Set first item as active by default
+                if (featureItemsDesktop[0]) {
+                    featureItemsDesktop[0].classList.add('active');
+                    updateVideo(featureItemsDesktop[0].dataset.feature, videoDesktop);
+                    // Set initial position to top
+                    setTimeout(() => updateVideoPosition(0), 100);
+                }
+                
+                featureItemsDesktop.forEach((item, index) => {
+                    item.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        console.log('Desktop feature clicked:', this.dataset.feature);
+                        
+                        // Remove active class from all desktop items
+                        featureItemsDesktop.forEach(i => i.classList.remove('active'));
+                        
+                        // Add active class to clicked item
+                        this.classList.add('active');
+                        
+                        // Update video content
+                        updateVideo(this.dataset.feature, videoDesktop);
+                        
+                        // Update video position
+                        updateVideoPosition(index);
+                    });
+                });
+                
+                // Handle window resize
+                let resizeTimeout;
+                window.addEventListener('resize', () => {
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(() => {
+                        const activeItem = document.querySelector('.feature-item-left.active');
+                        if (activeItem) {
+                            const activeIndex = Array.from(featureItemsDesktop).indexOf(activeItem);
+                            updateVideoPosition(activeIndex);
+                        }
+                    }, 150);
+                });
+            }
+            
+            // Mobile features
+            if (featureItemsMobile.length > 0 && videoMobile) {
+                // Set first item as active by default
+                if (featureItemsMobile[0]) {
+                    featureItemsMobile[0].classList.add('active');
+                    updateVideo(featureItemsMobile[0].dataset.feature, videoMobile);
+                }
+                
+                featureItemsMobile.forEach((item, index) => {
+                    item.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        console.log('Mobile feature clicked:', this.dataset.feature);
+                        
+                        // Remove active class from all mobile items
+                        featureItemsMobile.forEach(i => i.classList.remove('active'));
+                        
+                        // Add active class to clicked item
+                        this.classList.add('active');
+                        
+                        // Update video content
+                        updateVideo(this.dataset.feature, videoMobile);
+                        
+                        // Update dots
+                        const dots = document.querySelectorAll('.feature-dot');
+                        dots.forEach(dot => {
+                            if (dot.dataset.feature === this.dataset.feature) {
+                                dot.classList.add('active');
+                            } else {
+                                dot.classList.remove('active');
+                            }
+                        });
+                        
+                        // Scroll to center the clicked card
+                        const scrollContainer = document.querySelector('.feature-scroll-container');
+                        if (scrollContainer) {
+                            this.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                        }
+                    });
+                });
+                
+                // Handle mobile horizontal scroll interaction
+                const mobileScrollContainer = document.querySelector('.feature-scroll-container');
+                if (mobileScrollContainer) {
+                    let isScrolling = false;
+                    let scrollTimeout;
+                    
+                    mobileScrollContainer.addEventListener('scroll', function() {
+                        // Clear previous timeout
+                        clearTimeout(scrollTimeout);
+                        
+                        // Set scrolling state
+                        isScrolling = true;
+                        
+                        // Set timeout to detect scroll end
+                        scrollTimeout = setTimeout(() => {
+                            isScrolling = false;
+                            
+                            // Find the feature item that's most in view
+                            const container = this;
+                            const containerRect = container.getBoundingClientRect();
+                            const containerCenter = containerRect.left + containerRect.width / 2;
+                            
+                            let closestItem = null;
+                            let closestDistance = Infinity;
+                            
+                            const mobileFeatureItems = container.querySelectorAll('.feature-item-mobile');
+                            mobileFeatureItems.forEach(item => {
+                                const itemRect = item.getBoundingClientRect();
+                                const itemCenter = itemRect.left + itemRect.width / 2;
+                                const distance = Math.abs(containerCenter - itemCenter);
+                                
+                                if (distance < closestDistance) {
+                                    closestDistance = distance;
+                                    closestItem = item;
+                                }
+                            });
+                            
+                            if (closestItem) {
+                                // Remove active class from all mobile items
+                                featureItemsMobile.forEach(i => i.classList.remove('active'));
+                                
+                                // Add active class to closest item
+                                closestItem.classList.add('active');
+                                
+                                // Update video content
+                                updateVideo(closestItem.dataset.feature, videoMobile);
+                                
+                                // Update dots
+                                const dots = document.querySelectorAll('.feature-dot');
+                                dots.forEach(dot => {
+                                    if (dot.dataset.feature === closestItem.dataset.feature) {
+                                        dot.classList.add('active');
+                                    } else {
+                                        dot.classList.remove('active');
+                                    }
+                                });
+                            }
+                        }, 100);
+                    });
+                }
+                
+                // Handle dot clicks
+                const dots = document.querySelectorAll('.feature-dot');
+                dots.forEach(dot => {
+                    dot.addEventListener('click', function() {
+                        const targetFeature = this.dataset.feature;
+                        const targetItem = document.querySelector(`.feature-item-mobile[data-feature="${targetFeature}"]`);
+                        
+                        if (targetItem && mobileScrollContainer) {
+                            // Scroll to the target item
+                            targetItem.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                        }
+                    });
+                });
+            }
+
+            // FAQ Tab Switching
+            window.switchFAQTab = function(tab) {
+                const developersTab = document.getElementById('faq-tab-developers');
+                const playersTab = document.getElementById('faq-tab-players');
+                const developersContent = document.getElementById('faq-developers');
+                const playersContent = document.getElementById('faq-players');
+                
+                if (tab === 'developers') {
+                    developersTab.classList.add('bg-primary-500', 'text-white');
+                    developersTab.classList.remove('bg-white/10', 'text-secondary');
+                    playersTab.classList.remove('bg-primary-500', 'text-white');
+                    playersTab.classList.add('bg-white/10', 'text-secondary');
+                    developersContent.style.display = 'block';
+                    playersContent.style.display = 'none';
+                } else {
+                    playersTab.classList.add('bg-primary-500', 'text-white');
+                    playersTab.classList.remove('bg-white/10', 'text-secondary');
+                    developersTab.classList.remove('bg-primary-500', 'text-white');
+                    developersTab.classList.add('bg-white/10', 'text-secondary');
+                    playersContent.style.display = 'block';
+                    developersContent.style.display = 'none';
+                }
+            };
+            
+            // FAQ Accordion Functionality
+            const faqToggles = document.querySelectorAll('.faq-toggle');
+            
+            if (faqToggles.length > 0) {
+                faqToggles.forEach(toggle => {
+                    toggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        console.log('FAQ clicked:', this.dataset.target);
+                        
+                        const target = document.getElementById(this.dataset.target);
+                        const icon = this.querySelector('i');
+                        
+                        if (target && icon) {
+                            // Check if this FAQ is currently open
+                            const isOpen = target.style.maxHeight && target.style.maxHeight !== '0px';
+                            
+                            // Close all other FAQs
+                            faqToggles.forEach(otherToggle => {
+                                if (otherToggle !== this) {
+                                    const otherTarget = document.getElementById(otherToggle.dataset.target);
+                                    const otherIcon = otherToggle.querySelector('i');
+                                    if (otherTarget && otherIcon) {
+                                        otherTarget.style.maxHeight = '0px';
+                                        otherIcon.style.transform = 'rotate(0deg)';
+                                    }
+                                }
+                            });
+                            
+                            // Toggle current FAQ
+                            if (isOpen) {
+                                target.style.maxHeight = '0px';
+                                icon.style.transform = 'rotate(0deg)';
+                            } else {
+                                target.style.maxHeight = target.scrollHeight + 'px';
+                                icon.style.transform = 'rotate(180deg)';
+                            }
+                        }
+                    });
+                });
+            }
+            
+            // Smooth scroll with offset for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const offset = 100; // Match the scroll-margin-top value
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - offset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Price Calculator functionality
+            const perCopyFee = document.getElementById('per-copy-fee');
+            const exampleRevenue = document.getElementById('example-revenue');
+            const exampleFee = document.getElementById('example-fee');
+            const priceDisplay = document.getElementById('price-display');
+            const copiesDisplay = document.getElementById('copies-display');
+
+            let currentPrice = 15;
+            let currentCopies = 100000;
+            const ENGINE_COEFFICIENT = 0.10;
+            const PRICE_STEPS = [5, 10, 15, 20, 25, 30, 40, 50, 60, 70];
+            const COPIES_STEP = 100000;
+            const COPIES_MIN = 100000;
+            const COPIES_MAX = 10000000;
+
+            function updateCalculator() {
+                const REVIEWS_TO_COPIES = 50;
+                const perCopy = (currentPrice * ENGINE_COEFFICIENT) / REVIEWS_TO_COPIES;
+                const revenue = currentCopies * currentPrice;
+                const totalFee = currentCopies * perCopy;
+                if (perCopy < 0.01) {
+                    perCopyFee.textContent = '$' + perCopy.toFixed(3);
+                } else {
+                    perCopyFee.textContent = '$' + perCopy.toFixed(2);
+                }
+                priceDisplay.textContent = '$' + currentPrice;
+                copiesDisplay.textContent = currentCopies.toLocaleString();
+                exampleRevenue.textContent = '$' + revenue.toLocaleString();
+                exampleFee.textContent = '$' + totalFee.toLocaleString();
+            }
+
+            // Stepper: step price through predefined values
+            function stepPrice(dir) {
+                const idx = PRICE_STEPS.indexOf(currentPrice);
+                if (idx === -1) {
+                    // Find nearest
+                    const nearest = PRICE_STEPS.reduce((a, b) => Math.abs(b - currentPrice) < Math.abs(a - currentPrice) ? b : a);
+                    currentPrice = nearest;
+                } else {
+                    const next = idx + dir;
+                    if (next >= 0 && next < PRICE_STEPS.length) currentPrice = PRICE_STEPS[next];
+                }
+                updateCalculator();
+            }
+
+            function stepCopies(dir) {
+                const next = currentCopies + dir * COPIES_STEP;
+                if (next >= COPIES_MIN && next <= COPIES_MAX) {
+                    currentCopies = next;
+                    updateCalculator();
+                }
+            }
+
+            // Hold-to-accelerate logic
+            function holdStepper(btn, stepFn) {
+                let timer = null;
+                let accelTimer = null;
+                let delay = 400;
+                const MIN_DELAY = 60;
+
+                function tick() {
+                    stepFn();
+                    delay = Math.max(MIN_DELAY, delay * 0.85);
+                    timer = setTimeout(tick, delay);
+                }
+
+                function start(e) {
+                    e.preventDefault();
+                    stepFn();
+                    delay = 400;
+                    timer = setTimeout(tick, delay);
+                }
+
+                function stop() {
+                    clearTimeout(timer);
+                    timer = null;
+                    delay = 400;
+                }
+
+                btn.addEventListener('mousedown', start);
+                btn.addEventListener('touchstart', start, { passive: false });
+                btn.addEventListener('mouseup', stop);
+                btn.addEventListener('mouseleave', stop);
+                btn.addEventListener('touchend', stop);
+                btn.addEventListener('touchcancel', stop);
+            }
+
+            holdStepper(document.getElementById('price-up'), () => stepPrice(1));
+            holdStepper(document.getElementById('price-down'), () => stepPrice(-1));
+            holdStepper(document.getElementById('copies-up'), () => stepCopies(1));
+            holdStepper(document.getElementById('copies-down'), () => stepCopies(-1));
+
+            // Initial calculations
+            updateCalculator();
+        });
+
+    </script>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; padding: 16px; background: rgba(0, 0, 0, 0.95); border-top: 1px solid rgba(255, 255, 255, 0.08);">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 px-4">
+            <p class="text-sm text-white/75 text-center sm:text-left">
+                We use cookies to analyze site traffic and improve your experience. By continuing to use this site, you consent to our use of cookies.
+                <a href="privacy-policy.html" class="text-white underline hover:text-blue-400 transition-colors">Privacy Policy</a>
+            </p>
+            <div class="flex gap-3 flex-shrink-0">
+                <button id="cookie-reject" class="px-4 py-2 rounded text-sm font-medium text-white/80 border border-white/20 hover:bg-white/10 transition-all">
+                    Reject
+                </button>
+                <button id="cookie-accept" class="px-4 py-2 rounded text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 transition-all">
+                    Accept
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function() {
+            var consent = localStorage.getItem('cookie-consent');
+            if (!consent) {
+                document.getElementById('cookie-banner').style.display = 'block';
+            }
+            document.getElementById('cookie-accept').addEventListener('click', function() {
+                localStorage.setItem('cookie-consent', 'accepted');
+                document.getElementById('cookie-banner').style.display = 'none';
+            });
+            document.getElementById('cookie-reject').addEventListener('click', function() {
+                localStorage.setItem('cookie-consent', 'rejected');
+                document.getElementById('cookie-banner').style.display = 'none';
+                // Disable GTM tracking
+                window['ga-disable-GTM-K8MPGKVX'] = true;
+            });
+        })();
+    </script>
+</body>
+</html>

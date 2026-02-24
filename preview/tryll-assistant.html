@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K8MPGKVX');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tryll Assistant - AI Game Guide Overlay | Tryll Engine</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Tryll Assistant is a free AI overlay that answers questions about any game using local AI. Works offline, private, and free for gamers.">
+    <meta name="keywords" content="Tryll Assistant, game assistant, AI game guide, game overlay, local AI, offline AI, gaming AI">
+    <meta name="author" content="Tryll Engine">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tryllengine.com/tryll-assistant">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tryllengine.com/tryll-assistant.html">
+    <meta property="og:title" content="Tryll Assistant - AI Game Guide Overlay">
+    <meta property="og:description" content="Free AI overlay that answers questions about any game. Works offline, private, and runs on your GPU.">
+    <meta property="og:image" content="https://tryllengine.com/assets/logo/logo-mark/blue.svg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tryllengine.com/tryll-assistant.html">
+    <meta property="twitter:title" content="Tryll Assistant - AI Game Guide Overlay">
+    <meta property="twitter:description" content="Free AI overlay that answers questions about any game. Works offline, private, and runs on your GPU.">
+    <meta property="twitter:image" content="https://tryllengine.com/assets/logo/logo-mark/blue.svg">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Tryll Assistant",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Windows",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "description": "AI-powered game overlay that answers questions about any game using local AI. Works offline, private, and free.",
+        "featureList": [
+            "AI game guide overlay",
+            "Offline functionality",
+            "Local AI processing",
+            "Privacy-first design",
+            "Free for gamers"
+        ],
+        "creator": {
+            "@type": "Organization",
+            "name": "Tryll Engine",
+            "url": "https://tryllengine.com"
+        }
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#232E41',
+                        secondary: '#F6F0EB',
+                        'primary-light': '#2a3750',
+                        'primary-dark': '#1a232f',
+                        'secondary-light': '#ffffff',
+                        'secondary-dark': '#e8e2dd',
+                        dark: {
+                            900: '#0a0d12',
+                            800: '#0f1419',
+                            700: '#141a20',
+                            600: '#1a2026',
+                            500: '#1f262d',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 6s infinite',
+                        'fade-in-up': 'fade-in-up 0.8s ease-out',
+                        'fade-in-down': 'fade-in-down 0.8s ease-out',
+                        'scale-in': 'scale-in 0.5s ease-out',
+                    },
+                    keyframes: {
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'fade-in-up': {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        'fade-in-down': {
+                            '0%': { opacity: '0', transform: 'translateY(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        'scale-in': {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+        :root {
+            --typo-label: 12px;
+            --typo-copy: 14px;
+            --typo-largecopy: 16px;
+            --typo-subtitle: 20px;
+            --typo-title: 32px;
+            --typo-hero: 48px;
+        }
+
+        @media (min-width: 768px) {
+            :root {
+                --typo-label: 13px;
+                --typo-copy: 16px;
+                --typo-largecopy: 18px;
+                --typo-subtitle: 24px;
+                --typo-title: 48px;
+                --typo-hero: 62px;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        section[id] {
+            scroll-margin-top: 100px;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #000000;
+            background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: rgba(255, 255, 255, 0.85);
+            overflow-x: hidden;
+            line-height: 1.5em;
+            letter-spacing: -0.011em;
+            font-weight: 449;
+            font-size: var(--typo-copy);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 9998;
+            pointer-events: none;
+            opacity: 0.018;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 256px 256px;
+        }
+
+        .heading-primary {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            color: #ffffff;
+        }
+
+        .heading-secondary {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            color: #ffffff;
+        }
+
+        .heading-tertiary {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            line-height: 1.25;
+            color: #ffffff;
+        }
+
+        .body-large {
+            font-size: var(--typo-largecopy);
+            line-height: 1.6;
+            font-weight: 449;
+            color: rgba(255, 255, 255, 0.75);
+            letter-spacing: -0.008em;
+            text-wrap: balance;
+        }
+
+        .body-medium {
+            font-size: var(--typo-copy);
+            line-height: 1.5em;
+            font-weight: 449;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: -0.006em;
+            text-wrap: balance;
+        }
+
+        .body-small {
+            font-size: var(--typo-label);
+            line-height: 1.45;
+            font-weight: 449;
+            color: rgba(255, 255, 255, 0.65);
+            letter-spacing: -0.004em;
+            text-wrap: balance;
+        }
+
+        .mono-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            letter-spacing: 0.025em;
+        }
+
+        .terminal-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: rgba(59, 130, 246, 0.7);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .terminal-label::before {
+            content: '// ';
+            opacity: 0.5;
+        }
+
+        /* Button and interactive element text weight */
+        button, [role="button"], a {
+            font-weight: 500;
+        }
+
+        /* Code and pre elements */
+        code, pre {
+            font-weight: 500;
+        }
+
+        /* Button styles */
+        .btn-primary {
+            background-color: #3B82F6;
+            color: #ffffff;
+            border: none;
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.12s ease-out;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.85em;
+            border-radius: 3px;
+        }
+
+        .btn-primary:hover {
+            background-color: #2563EB;
+            transform: none;
+            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5);
+        }
+
+        .btn-primary:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.12s ease-out;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.85em;
+            border-radius: 3px;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            transform: none;
+        }
+
+        .btn-secondary:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
+        }
+
+        /* Form control styles */
+        .form-input {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.2s ease;
+            border-radius: 3px;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Checkbox and radio styles */
+        input[type="checkbox"],
+        input[type="radio"] {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        input[type="checkbox"]:focus,
+        input[type="radio"]:focus {
+            outline: none !important;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3) !important;
+        }
+
+        input[type="checkbox"]:checked,
+        input[type="radio"]:checked {
+            accent-color: #3B82F6;
+        }
+
+        /* Input fields */
+        input, textarea {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        input:focus, textarea:focus {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Radio button selector styling */
+        .peer:checked ~ div {
+            background: rgba(59, 130, 246, 0.12) !important;
+            border-color: rgba(59, 130, 246, 0.5) !important;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);
+        }
+
+        .peer:checked ~ div i {
+            color: rgba(59, 130, 246, 1) !important;
+        }
+
+        .peer:checked ~ div span {
+            color: rgba(255, 255, 255, 0.95) !important;
+        }
+
+        /* Dropdown styling */
+        select option {
+            background-color: #0f1419 !important;
+            color: #ffffff !important;
+        }
+
+        select {
+            color-scheme: dark;
+        }
+
+        /* Glass card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 4px !important;
+            transition: all 0.15s ease-out;
+            border-top: 2px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: none;
+            border-top-color: rgba(59, 130, 246, 0.5);
+        }
+
+        /* Nav glass card */
+        .nav-glass-card {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.15s ease-out;
+            background: rgba(0, 0, 0, 0.88);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-glass-card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav-glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .hero-gradient {
+            background: transparent;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .text-secondary {
+            color: rgba(255, 255, 255, 0.65);
+            font-weight: 449;
+            text-wrap: balance;
+        }
+
+        /* Feature cards */
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Better font rendering for all text */
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Default font weight for all elements */
+        *, *::before, *::after {
+            font-weight: inherit;
+        }
+
+        /* Restore Font Awesome icon weights (overridden by inherit rule above) */
+        .fas, .fa-solid, .fas::before, .fa-solid::before { font-weight: 900 !important; }
+        .far, .fa-regular, .far::before, .fa-regular::before { font-weight: 400 !important; }
+        .fab, .fa-brands, .fab::before, .fa-brands::before { font-weight: 400 !important; }
+
+        /* Tailwind font weight overrides */
+        .font-normal { font-weight: 449 !important; }
+        .font-medium { font-weight: 500 !important; }
+        .font-semibold { font-weight: 600 !important; }
+        .font-bold { font-weight: 650 !important; }
+
+        /* Text color adjustments for better readability */
+        .text-gray-400 { color: rgba(255, 255, 255, 0.75); }
+        .text-gray-500 { color: rgba(255, 255, 255, 0.65); }
+        .text-gray-600 { color: rgba(255, 255, 255, 0.55); }
+        .text-white { color: rgba(255, 255, 255, 0.9); }
+        .text-white\/80 { color: rgba(255, 255, 255, 0.75); }
+        .text-white\/60 { color: rgba(255, 255, 255, 0.6); }
+
+        /* Improve readability for smaller text */
+        .text-sm {
+            font-weight: 500;
+            letter-spacing: -0.004em;
+        }
+
+        .text-xs {
+            font-weight: 500;
+            letter-spacing: 0;
+        }
+
+        /* Ensure all paragraphs have better weight */
+        p {
+            font-weight: 449;
+            text-wrap: balance;
+            line-height: 1.5em;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Lead paragraphs */
+        .text-lg, .text-xl {
+            font-weight: 449;
+            opacity: 0.85;
+        }
+
+        /* Better weight for all list items */
+        li {
+            font-weight: 449;
+            line-height: 1.5em;
+        }
+
+        /* Animations */
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slide-up {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .animate-slide-up {
+            animation: slide-up 0.6s ease-out forwards;
+            animation-delay: 0.1s;
+            animation-fill-mode: both;
+        }
+
+        .animate-slide-up-delay {
+            animation: slide-up 0.6s ease-out forwards;
+            animation-delay: 0.2s;
+            animation-fill-mode: both;
+        }
+    </style>
+</head>
+<body id="top" class="antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8MPGKVX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Password Gate -->
+    <div id="password-gate" style="position:fixed;inset:0;z-index:99999;background:#000;display:flex;align-items:center;justify-content:center;">
+        <div style="max-width:400px;width:90%;text-align:center;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;color:rgba(59,130,246,0.5);text-transform:uppercase;margin-bottom:1.5rem;">// access_required</div>
+            <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;font-weight:700;color:rgba(255,255,255,0.9);margin-bottom:0.5rem;">Design Preview</h2>
+            <p style="font-family:'DM Sans',sans-serif;font-size:0.9rem;color:rgba(255,255,255,0.5);margin-bottom:2rem;">Enter the team password to view this page.</p>
+            <div style="position:relative;">
+                <input id="gate-password" type="password" placeholder="Password..."
+                    style="width:100%;padding:12px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:4px;color:rgba(255,255,255,0.9);font-family:'DM Sans',sans-serif;font-size:0.95rem;outline:none;box-sizing:border-box;"
+                    onkeydown="if(event.key==='Enter')document.getElementById('gate-submit').click()"
+                    onfocus="this.style.borderColor='rgba(59,130,246,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            </div>
+            <button id="gate-submit" onclick="checkGatePassword()"
+                style="margin-top:1rem;width:100%;padding:12px;background:rgba(59,130,246,0.9);border:none;border-radius:4px;color:#fff;font-family:'JetBrains Mono',monospace;font-size:0.8rem;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;transition:background 0.15s;">
+                Enter
+            </button>
+            <p id="gate-error" style="font-family:'DM Sans',sans-serif;font-size:0.8rem;color:rgba(239,68,68,0.8);margin-top:1rem;display:none;">Incorrect password.</p>
+        </div>
+    </div>
+    <script>
+        function checkGatePassword() {
+            var input = document.getElementById('gate-password').value;
+            var expected = atob('dHJ5bGwyMDI2');
+            if (input === expected) {
+                document.getElementById('password-gate').style.display = 'none';
+                sessionStorage.setItem('design-access', 'granted');
+            } else {
+                document.getElementById('gate-error').style.display = 'block';
+                document.getElementById('gate-password').style.borderColor = 'rgba(239,68,68,0.5)';
+            }
+        }
+        if (sessionStorage.getItem('design-access') === 'granted') {
+            document.getElementById('password-gate').style.display = 'none';
+        }
+    </script>
+
+    <!-- Navigation -->
+    <nav class="fixed top-4 left-4 right-4 md:top-6 md:left-1/2 md:transform md:-translate-x-1/2 z-50 nav-glass-card px-4 md:px-8 py-3 md:py-4 w-auto md:w-full md:max-w-7xl">
+        <div class="flex items-center justify-between">
+            <div class="logo">
+                <a href="../" class="block">
+                    <img src="../assets/logo/full-logo/light-text.svg" alt="Tryll Engine" class="h-8 md:h-12" />
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-8">
+                <ul class="nav-links flex gap-6 list-none">
+                    <li><a href="index.html#features" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Features</a></li>
+                    <li><a href="index.html#pricing" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Pricing</a></li>
+                    <li><a href="index.html#faq" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">FAQ</a></li>
+                    <li><a href="blog.html" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Blog</a></li>
+                    <li><a href="index.html#contact-email" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Contact</a></li>
+                    <li><a href="boscotryll.html" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">BoscoTryll Mod</a></li>
+                </ul>
+                <div class="flex items-center gap-3">
+                    <a href="../" class="px-4 py-2 rounded text-sm inline-flex items-center justify-center transition-all duration-200 font-medium bg-white/[0.06] border border-white/10 hover:bg-white/[0.1] text-white uppercase tracking-wider" style="font-size: 0.85em;">
+                        <i class="fas fa-code mr-2"></i>
+                        For Developers
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="md:hidden flex items-center gap-3">
+                <button id="mobile-menu-btn" class="text-white p-2 rounded hover:bg-white/10 transition-colors duration-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="md:hidden fixed inset-0 bg-black/95 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40">
+            <!-- Close button -->
+            <button id="mobile-menu-close" class="absolute top-6 right-6 text-white/60 hover:text-white transition-colors duration-200">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div class="flex flex-col items-center justify-center h-full space-y-8 text-center px-6">
+                <a href="#features" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Features</a>
+                <a href="../" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">For Developers</a>
+                <a href="blog.html" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Blog</a>
+                <a href="boscotryll.html" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">BoscoTryll Mod</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Form -->
+    <section class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden" style="padding-top: 60px;">
+        <div class="container mx-auto px-4 md:px-6 py-24 md:py-32 relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                    <!-- Left: Hero Content -->
+                    <div class="text-center lg:text-left fade-in">
+                        <span class="terminal-label">TRYLL_ASSISTANT</span>
+
+                        <h1 class="heading-primary text-white mb-5 md:mb-6" style="font-size: var(--typo-hero); letter-spacing: -0.04em;">
+                            Smart Assistants for Published Games
+                        </h1>
+
+                        <p class="mb-3 max-w-lg" style="font-size: var(--typo-subtitle); color: rgba(255,255,255,0.75); line-height: 1.4; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;">
+                            Minutes to add, zero to maintain.
+                        </p>
+
+                        <p class="mb-6 max-w-lg" style="font-size: var(--typo-largecopy); color: rgba(255,255,255,0.55); line-height: 1.6;">
+                            Add an intelligent assistant to your published game in minutes. No code, no cloud costs, no data leaving player devices. Start free, go deeper when ready.
+                        </p>
+
+                        <p class="mb-6 lg:mb-0" style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(255,255,255,0.35); letter-spacing: 0.02em;">*Availability depends on anti-cheat compatibility</p>
+                    </div>
+
+                    <!-- Right: Form -->
+                    <div class="fade-in">
+                        <div class="rounded overflow-hidden border border-white/[0.06] bg-white/[0.02]" style="border-top: 2px solid rgba(59,130,246,0.3);">
+                            <!-- Header -->
+                            <div class="px-5 py-3 border-b border-white/[0.06]">
+                                <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.08em;color:rgba(59,130,246,0.5);text-transform:uppercase;">// submit_game</span>
+                            </div>
+
+                            <!-- Form Content -->
+                            <div class="p-6 md:p-8">
+                                <h2 class="heading-tertiary text-xl md:text-2xl text-white mb-5 text-center lg:text-left">Submit a Game</h2>
+                                <form id="wishlist-form" class="space-y-4" action="https://formspree.io/f/xpwvlpdz" method="POST">
+                                    <!-- User Type -->
+                                    <div>
+                                        <label class="block text-white font-medium mb-2 text-sm">I am a...</label>
+                                        <div class="flex gap-3">
+                                            <label class="flex-1 cursor-pointer">
+                                                <input type="radio" name="user_type" value="gamer" class="peer sr-only" required>
+                                                <div class="p-3 rounded border border-white/[0.1] bg-white/[0.03] text-center transition-all duration-200 hover:bg-white/[0.06]" style="border-radius: 4px;">
+                                                    <i class="fas fa-gamepad text-lg mb-1 block" style="color: rgba(59,130,246,0.6);"></i>
+                                                    <span class="font-medium text-sm" style="color: rgba(255,255,255,0.75);">Gamer</span>
+                                                </div>
+                                            </label>
+                                            <label class="flex-1 cursor-pointer">
+                                                <input type="radio" name="user_type" value="developer" class="peer sr-only" required>
+                                                <div class="p-3 rounded border border-white/[0.1] bg-white/[0.03] text-center transition-all duration-200 hover:bg-white/[0.06]" style="border-radius: 4px;">
+                                                    <i class="fas fa-code text-lg mb-1 block" style="color: rgba(59,130,246,0.6);"></i>
+                                                    <span class="font-medium text-sm" style="color: rgba(255,255,255,0.75);">Developer</span>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Game Name -->
+                                    <div>
+                                        <label for="game_name" class="block text-white font-medium mb-2 text-sm">Game name or Steam link</label>
+                                        <input
+                                            type="text"
+                                            id="game_name"
+                                            name="game_name"
+                                            required
+                                            placeholder="e.g., Elden Ring or Steam URL..."
+                                            class="form-input w-full px-4 py-3 text-sm"
+                                        >
+                                    </div>
+
+                                    <!-- Email -->
+                                    <div>
+                                        <label for="email" class="block text-white font-medium mb-2 text-sm">Email for notification</label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            required
+                                            placeholder="your@email.com"
+                                            class="form-input w-full px-4 py-3 text-sm"
+                                        >
+                                    </div>
+
+                                    <!-- Submit Button -->
+                                    <button
+                                        type="submit"
+                                        class="btn-primary w-full px-6 py-3 rounded text-base inline-flex items-center justify-center gap-2"
+                                    >
+                                        <i class="fas fa-paper-plane"></i>
+                                        Submit Request
+                                    </button>
+
+                                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: rgba(255,255,255,0.35); text-align: center; letter-spacing: 0.02em;">We'll only email you when your game is available.</p>
+
+                                    <!-- Hidden fields for Formspree -->
+                                    <input type="hidden" name="_subject" value="New Tryll Assistant Game Request">
+                                    <input type="hidden" name="_next" value="https://tryllengine.com/tryll-assistant">
+                                </form>
+
+                                <!-- Success Message (hidden by default) -->
+                                <div id="success-message" class="hidden text-center py-6">
+                                    <div class="mb-3" style="color: rgba(59,130,246,0.8);">
+                                        <i class="fas fa-check-circle text-4xl"></i>
+                                    </div>
+                                    <h3 class="text-lg font-bold text-white mb-2 heading-tertiary">Request Submitted!</h3>
+                                    <p class="text-secondary text-sm">We'll notify you when Tryll Assistant is available for your game.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 md:py-28 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="text-center mb-12 md:mb-16 fade-in">
+                <span class="terminal-label">FEATURES</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
+                    Why Tryll Assistant?
+                </h2>
+                <p class="text-lg md:text-xl text-secondary max-w-3xl mx-auto leading-relaxed">
+                    Everything you need to master any game, right where you play.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <!-- Feature 1: In-Game Help -->
+                <div class="glass-card p-6 md:p-8 fade-in">
+                    <div class="mb-4" style="color: rgba(59,130,246,0.7);">
+                        <i class="fas fa-book-open text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl md:text-2xl text-white mb-3 heading-tertiary">Instant Answers, In-Game</h3>
+                    <p class="text-secondary leading-relaxed">
+                        Ask questions about game mechanics, quests, items, or strategies. Tryll Assistant uses game encyclopedias and guides to help you unstuck, onboard, and understand - all without alt-tabbing or leaving your game.
+                    </p>
+                </div>
+
+                <!-- Feature 2: Free -->
+                <div class="glass-card p-6 md:p-8 fade-in">
+                    <div class="mb-4" style="color: rgba(59,130,246,0.7);">
+                        <i class="fas fa-gift text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl md:text-2xl text-white mb-3 heading-tertiary">Free for Gamers & Studios</h3>
+                    <p class="text-secondary leading-relaxed">
+                        Tryll Assistant is completely free. No subscriptions, no premium tiers, no hidden costs. Studios can integrate it for their games at no charge, and gamers can use it without paying a cent.
+                    </p>
+                </div>
+
+                <!-- Feature 3: Offline -->
+                <div class="glass-card p-6 md:p-8 fade-in">
+                    <div class="mb-4" style="color: rgba(59,130,246,0.7);">
+                        <i class="fas fa-plug-circle-xmark text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl md:text-2xl text-white mb-3 heading-tertiary">Works Offline</h3>
+                    <p class="text-secondary leading-relaxed">
+                        Tryll Assistant runs Large Language Models directly on your GPU. No internet connection required after setup. Play anywhere, anytime - even on flights or in areas with poor connectivity.
+                    </p>
+                </div>
+
+                <!-- Feature 4: Privacy -->
+                <div class="glass-card p-6 md:p-8 fade-in">
+                    <div class="mb-4" style="color: rgba(59,130,246,0.7);">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl md:text-2xl text-white mb-3 heading-tertiary">Private & Secure</h3>
+                    <p class="text-secondary leading-relaxed">
+                        Your questions and gameplay data never leave your device. No personal data collected, no chat logs sent to the cloud. Everything stays local - your gaming sessions are yours alone.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center gap-6 md:grid md:grid-cols-3 md:items-center">
+                <!-- Left: Copyright -->
+                <div class="text-secondary text-sm order-2 md:order-1 text-center md:text-left">
+                    &copy; 2026 Tryll Engine, Inc. All rights reserved.
+                </div>
+
+                <!-- Center: Social Links -->
+                <div class="flex gap-6 items-center justify-center order-1 md:order-2">
+                    <a href="https://discord.gg/XCBBGUMzUM" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Join our Discord">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@Tryll_Engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Watch on YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://instagram.com/tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://tiktok.com/@tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+
+                <!-- Right: Privacy & Terms -->
+                <div class="flex gap-6 order-3 md:order-3 justify-center md:justify-end">
+                    <a href="privacy-policy.html" class="text-secondary hover:text-white transition-colors duration-300 text-sm">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Google Analytics Event Tracking via GTM dataLayer
+        function trackEvent(category, action, label = null, value = null) {
+            if (typeof dataLayer !== 'undefined') {
+                dataLayer.push({
+                    'event': 'custom_event',
+                    'event_category': category,
+                    'event_action': action,
+                    'event_label': label,
+                    'event_value': value
+                });
+            }
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('opacity-0', 'invisible');
+            mobileMenu.classList.add('opacity-100', 'visible');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('opacity-100', 'visible');
+            mobileMenu.classList.add('opacity-0', 'invisible');
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Fade-in animation on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission handling
+        const wishlistForm = document.getElementById('wishlist-form');
+        const successMessage = document.getElementById('success-message');
+
+        wishlistForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(wishlistForm);
+            const data = {
+                user_type: formData.get('user_type'),
+                game_name: formData.get('game_name'),
+                email: formData.get('email')
+            };
+
+            // Track submission event
+            trackEvent('Form', 'submit', 'Wishlist - ' + data.game_name);
+
+            try {
+                // Submit to Formspree
+                const response = await fetch(wishlistForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Hide form and show success message
+                    wishlistForm.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                } else {
+                    alert('There was an error submitting your request. Please try again.');
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                alert('There was an error submitting your request. Please try again.');
+            }
+        });
+
+        // Track CTA clicks
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a[href*="#wishlist"], button').forEach(element => {
+                element.addEventListener('click', function(e) {
+                    const text = this.textContent.trim();
+                    if (this.classList.contains('btn-primary')) {
+                        trackEvent('CTA', 'click', 'Primary Button - ' + text);
+                    }
+                });
+            });
+
+            // Track navigation clicks
+            document.querySelectorAll('nav a, .mobile-menu-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    const text = this.textContent.trim();
+                    const isMobile = this.classList.contains('mobile-menu-link');
+                    trackEvent('Navigation', 'click', (isMobile ? 'Mobile - ' : 'Desktop - ') + text);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K8MPGKVX');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoscoTryll - First AI-Powered Mod for Deep Rock Galactic | Tryll Engine</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="BoscoTryll transforms Bosco into an intelligent AI companion for Deep Rock Galactic. Free alpha release powered by Tryll Engine with local LLM installation.">
+    <meta name="keywords" content="BoscoTryll, Deep Rock Galactic mod, AI mod, Bosco AI, Tryll Engine, local LLM, gaming AI mod">
+    <meta name="author" content="Tryll Engine">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tryllengine.com/boscotryll">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tryllengine.com/boscotryll.html">
+    <meta property="og:title" content="BoscoTryll - First AI-Powered Mod for Deep Rock Galactic">
+    <meta property="og:description" content="Transform Bosco into an intelligent AI companion. Free alpha release powered by Tryll Engine with local LLM installation.">
+    <meta property="og:image" content="https://tryllengine.com/assets/logo/logo-mark/blue.svg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tryllengine.com/boscotryll.html">
+    <meta property="twitter:title" content="BoscoTryll - First AI-Powered Mod for Deep Rock Galactic">
+    <meta property="twitter:description" content="Transform Bosco into an intelligent AI companion. Free alpha release powered by Tryll Engine with local LLM installation.">
+    <meta property="twitter:image" content="https://tryllengine.com/assets/logo/logo-mark/blue.svg">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#232E41',
+                        secondary: '#F6F0EB',
+                        'primary-light': '#2a3750',
+                        'primary-dark': '#1a232f',
+                        'secondary-light': '#ffffff',
+                        'secondary-dark': '#e8e2dd',
+                        dark: {
+                            900: '#0a0d12',
+                            800: '#0f1419',
+                            700: '#141a20',
+                            600: '#1a2026',
+                            500: '#1f262d',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 6s infinite',
+                        'gradient-x': 'gradient-x 8s ease infinite',
+                        'gradient-y': 'gradient-y 8s ease infinite',
+                        'gradient-xy': 'gradient-xy 8s ease infinite',
+                        'fade-in-up': 'fade-in-up 0.8s ease-out',
+                        'fade-in-down': 'fade-in-down 0.8s ease-out',
+                        'fade-in-left': 'fade-in-left 0.8s ease-out',
+                        'fade-in-right': 'fade-in-right 0.8s ease-out',
+                        'scale-in': 'scale-in 0.5s ease-out',
+                        'rotate-in': 'rotate-in 0.6s ease-out',
+                        'slide-up': 'slide-up 0.6s ease-out',
+                        'glow-pulse': 'glow-pulse 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'gradient-y': {
+                            '0%, 100%': {
+                                'background-size':'400% 400%',
+                                'background-position': 'center top'
+                            },
+                            '50%': {
+                                'background-size':'200% 200%',
+                                'background-position': 'center center'
+                            }
+                        },
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size':'400% 400%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size':'200% 200%',
+                                'background-position': 'right center'
+                            }
+                        },
+                        'gradient-xy': {
+                            '0%, 100%': {
+                                'background-size':'400% 400%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size':'200% 200%',
+                                'background-position': 'right center'
+                            }
+                        },
+                        'fade-in-up': {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        'fade-in-down': {
+                            '0%': { opacity: '0', transform: 'translateY(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        'fade-in-left': {
+                            '0%': { opacity: '0', transform: 'translateX(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        'fade-in-right': {
+                            '0%': { opacity: '0', transform: 'translateX(30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        'scale-in': {
+                            '0%': { opacity: '0', transform: 'scale(0.8)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' }
+                        },
+                        'rotate-in': {
+                            '0%': { opacity: '0', transform: 'rotate(-5deg) scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'rotate(0deg) scale(1)' }
+                        },
+                        'slide-up': {
+                            '0%': { transform: 'translateY(100%)' },
+                            '100%': { transform: 'translateY(0)' }
+                        },
+                        'glow-pulse': {
+                            '0%': { filter: 'brightness(1) saturate(1)' },
+                            '100%': { filter: 'brightness(1.2) saturate(1.3)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        section[id] {
+            scroll-margin-top: 100px;
+        }
+
+        :root {
+            --typo-label: 12px;
+            --typo-copy: 14px;
+            --typo-largecopy: 16px;
+            --typo-subtitle: 20px;
+            --typo-title: 32px;
+            --typo-hero: 48px;
+        }
+
+        @media (min-width: 768px) {
+            :root {
+                --typo-label: 13px;
+                --typo-copy: 16px;
+                --typo-largecopy: 18px;
+                --typo-subtitle: 24px;
+                --typo-title: 48px;
+                --typo-hero: 62px;
+            }
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #000000;
+            background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: rgba(255, 255, 255, 0.85);
+            overflow-x: hidden;
+            line-height: 1.5em;
+            letter-spacing: -0.011em;
+            font-weight: 449;
+            font-size: var(--typo-copy);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 9998;
+            pointer-events: none;
+            opacity: 0.018;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 256px 256px;
+        }
+
+        .heading-primary {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            color: #ffffff;
+        }
+
+        .heading-secondary {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            color: #ffffff;
+        }
+
+        .heading-tertiary {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            line-height: 1.25;
+            color: #ffffff;
+        }
+
+        .body-large {
+            font-size: var(--typo-largecopy);
+            line-height: 1.6;
+            font-weight: 449;
+            color: rgba(255, 255, 255, 0.75);
+            letter-spacing: -0.008em;
+            text-wrap: balance;
+        }
+
+        .body-medium {
+            font-size: var(--typo-copy);
+            line-height: 1.5em;
+            font-weight: 449;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: -0.006em;
+            text-wrap: balance;
+        }
+
+        .body-small {
+            font-size: var(--typo-label);
+            line-height: 1.45;
+            font-weight: 449;
+            color: rgba(255, 255, 255, 0.65);
+            letter-spacing: -0.004em;
+            text-wrap: balance;
+        }
+
+        .mono-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            letter-spacing: 0.025em;
+        }
+
+        .terminal-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: rgba(59, 130, 246, 0.7);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .terminal-label::before {
+            content: '// ';
+            opacity: 0.5;
+        }
+
+        button, [role="button"], a {
+            font-weight: 500;
+        }
+
+        code, pre {
+            font-weight: 500;
+        }
+
+        /* Button styles */
+        .btn-primary {
+            background-color: #3B82F6;
+            color: #ffffff;
+            border: none;
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.12s ease-out;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.85em;
+            border-radius: 3px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background-color: #2563EB;
+            transform: none;
+            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5);
+        }
+
+        .btn-primary:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.12s ease-out;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.85em;
+            border-radius: 3px;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            transform: none;
+        }
+
+        .btn-secondary:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
+        }
+
+        /* Card shadow for depth */
+        .card-shadow {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3),
+                        0 4px 6px rgba(0, 0, 0, 0.1),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        /* Section backgrounds */
+        .section-gradient {
+            background: transparent;
+        }
+
+        /* Feature cards */
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Code blocks */
+        .code-block, pre, code {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Input fields */
+        input, textarea {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        input:focus, textarea:focus {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Better borders */
+        .border-white\/20 {
+            border-color: rgba(255, 255, 255, 0.15) !important;
+        }
+
+        /* Font weight overrides */
+        .font-normal { font-weight: 449 !important; }
+        .font-medium { font-weight: 500 !important; }
+        .font-semibold { font-weight: 600 !important; }
+        .font-bold { font-weight: 650 !important; }
+
+        /* Text color adjustments */
+        .text-gray-400 { color: rgba(255, 255, 255, 0.75); }
+        .text-gray-500 { color: rgba(255, 255, 255, 0.65); }
+        .text-gray-600 { color: rgba(255, 255, 255, 0.55); }
+        .text-white { color: rgba(255, 255, 255, 0.9); }
+        .text-white\/80 { color: rgba(255, 255, 255, 0.75); }
+        .text-white\/60 { color: rgba(255, 255, 255, 0.6); }
+
+        .text-sm {
+            font-weight: 500;
+            letter-spacing: -0.004em;
+        }
+
+        .text-xs {
+            font-weight: 500;
+            letter-spacing: 0;
+        }
+
+        p {
+            font-weight: 449;
+            text-wrap: balance;
+            line-height: 1.5em;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .text-lg, .text-xl {
+            font-weight: 449;
+            opacity: 0.85;
+        }
+
+        li {
+            font-weight: 449;
+            line-height: 1.5em;
+        }
+
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        *, *::before, *::after {
+            font-weight: inherit;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 4px !important;
+            transition: all 0.15s ease-out;
+            border-top: 2px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: none;
+            border-top-color: rgba(59, 130, 246, 0.5);
+        }
+
+        .nav-glass-card {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.15s ease-out;
+            background: rgba(0, 0, 0, 0.88);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-glass-card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav-glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .gradient-bg {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .hero-gradient {
+            background: transparent;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(246, 240, 235, 0.6) 0%, rgba(35, 46, 65, 0.3) 100%);
+            transform: scale(0);
+            animation: ripple 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        .stagger-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: stagger-fade 0.8s ease-out forwards;
+        }
+
+        @keyframes stagger-fade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .text-secondary {
+            color: rgba(255, 255, 255, 0.65);
+            font-weight: 449;
+            text-wrap: balance;
+        }
+
+        .text-primary {
+            color: #232E41;
+        }
+
+        .text-accent {
+            color: #F6F0EB;
+        }
+
+        /* Feature item active states */
+        .feature-item-left.active {
+            background: rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 0 0 2px rgba(35, 46, 65, 0.8) !important;
+            transform: translateX(4px) !important;
+            transition: all 0.3s ease-in-out !important;
+        }
+
+        .feature-item-mobile.active {
+            background: rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 0 0 2px rgba(35, 46, 65, 0.8) !important;
+            transition: all 0.3s ease-in-out !important;
+        }
+
+        .feature-item-left.active h3,
+        .feature-item-mobile.active h3 {
+            color: #ffffff !important;
+        }
+
+        .feature-item-left:not(.active) {
+            transition: all 0.15s ease-out !important;
+        }
+
+        .feature-item-mobile:not(.active) {
+            transition: all 0.15s ease-out !important;
+        }
+
+        /* Feature item hover effects */
+        .feature-item-left {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.15s ease-out;
+        }
+
+        .feature-item-left:hover {
+            background: rgba(255, 255, 255, 0.04) !important;
+            transform: translateX(2px);
+        }
+
+        /* Hide scrollbar for horizontal scroll */
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Feature dots */
+        .feature-dots {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 16px;
+        }
+
+        .feature-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .feature-dot.active {
+            background: rgba(246, 240, 235, 0.8);
+            transform: scale(1.5);
+        }
+
+        /* Feature video animations */
+        #feature-video-desktop,
+        #feature-video-mobile {
+            transition: opacity 0.3s ease-out, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #feature-video-desktop.transitioning {
+            filter: blur(2px);
+            opacity: 0.95;
+        }
+
+        /* Video container shadow */
+        #feature-video-desktop {
+            box-shadow: 0 0 40px rgba(35, 46, 65, 0.3);
+        }
+
+        #feature-video-desktop.transitioning {
+            box-shadow: 0 0 60px rgba(35, 46, 65, 0.5);
+        }
+
+        /* Content animations */
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scale-in {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes slide-up {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 0.6s ease-out forwards;
+        }
+
+        .animate-scale-in {
+            animation: scale-in 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .animate-slide-up {
+            animation: slide-up 0.6s ease-out forwards;
+            animation-delay: 0.1s;
+            animation-fill-mode: both;
+        }
+
+        .animate-slide-up-delay {
+            animation: slide-up 0.6s ease-out forwards;
+            animation-delay: 0.2s;
+            animation-fill-mode: both;
+        }
+
+        .animate-fade-in-delay {
+            animation: fade-in 0.6s ease-out forwards;
+            animation-delay: 0.3s;
+            animation-fill-mode: both;
+        }
+
+        /* Tab styles */
+        .tab-active {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+            color: white !important;
+        }
+
+        /* Mobile feature improvements */
+        @media (max-width: 768px) {
+            .feature-tabs-container {
+                width: 100%;
+            }
+
+            .feature-item-mobile h3 {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+
+            .feature-item-mobile p {
+                font-size: 0.875rem;
+                line-height: 1.4;
+            }
+
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+
+            .feature-scroll-container {
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .feature-scroll-container .feature-item-mobile {
+                scroll-snap-align: center;
+                scroll-snap-stop: always;
+            }
+
+            .feature-scroll-container > div {
+                padding-left: calc(50vw - 140px);
+                padding-right: calc(50vw - 140px);
+            }
+
+            .feature-item-mobile {
+                background: rgba(255, 255, 255, 0.03) !important;
+                min-height: 120px;
+            }
+
+            .feature-item-mobile.active {
+                background: rgba(255, 255, 255, 0.08) !important;
+                box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.4) !important;
+                transform: none !important;
+            }
+        }
+
+        /* Tooltip styles */
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: help;
+            transition: all 0.2s ease;
+        }
+
+        .tooltip-icon:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .tooltip-content {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 250px;
+            white-space: normal;
+            text-align: center;
+        }
+
+        .tooltip-content::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-top-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .tooltip-container:hover .tooltip-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-15px);
+        }
+
+        /* Code block styling */
+        .code-block {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: attr(data-language);
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+        }
+
+        /* Dropdown styling */
+        select option {
+            background-color: #0f1419 !important;
+            color: #ffffff !important;
+        }
+
+        select {
+            color-scheme: dark;
+        }
+    </style>
+</head>
+<body id="top" class="antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8MPGKVX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Noise overlay handled via CSS body::after -->
+
+    <!-- Password Gate -->
+    <div id="password-gate" style="position:fixed;inset:0;z-index:99999;background:#000;display:flex;align-items:center;justify-content:center;">
+        <div style="max-width:400px;width:90%;text-align:center;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;color:rgba(59,130,246,0.5);text-transform:uppercase;margin-bottom:1.5rem;">// access_required</div>
+            <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;font-weight:700;color:rgba(255,255,255,0.9);margin-bottom:0.5rem;">Design Preview</h2>
+            <p style="font-family:'DM Sans',sans-serif;font-size:0.9rem;color:rgba(255,255,255,0.5);margin-bottom:2rem;">Enter the team password to view this page.</p>
+            <div style="position:relative;">
+                <input id="gate-password" type="password" placeholder="Password..."
+                    style="width:100%;padding:12px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:4px;color:rgba(255,255,255,0.9);font-family:'DM Sans',sans-serif;font-size:0.95rem;outline:none;box-sizing:border-box;"
+                    onkeydown="if(event.key==='Enter')document.getElementById('gate-submit').click()"
+                    onfocus="this.style.borderColor='rgba(59,130,246,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            </div>
+            <button id="gate-submit" onclick="checkGatePassword()"
+                style="margin-top:1rem;width:100%;padding:12px;background:rgba(59,130,246,0.9);border:none;border-radius:4px;color:#fff;font-family:'JetBrains Mono',monospace;font-size:0.8rem;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;transition:background 0.15s;">
+                Enter
+            </button>
+            <p id="gate-error" style="font-family:'DM Sans',sans-serif;font-size:0.8rem;color:rgba(239,68,68,0.8);margin-top:1rem;display:none;">Incorrect password.</p>
+        </div>
+    </div>
+    <script>
+        function checkGatePassword() {
+            var input = document.getElementById('gate-password').value;
+            var expected = atob('dHJ5bGwyMDI2');
+            if (input === expected) {
+                document.getElementById('password-gate').style.display = 'none';
+                sessionStorage.setItem('design-access', 'granted');
+            } else {
+                document.getElementById('gate-error').style.display = 'block';
+                document.getElementById('gate-password').style.borderColor = 'rgba(239,68,68,0.5)';
+            }
+        }
+        if (sessionStorage.getItem('design-access') === 'granted') {
+            document.getElementById('password-gate').style.display = 'none';
+        }
+    </script>
+
+    <!-- Navigation -->
+    <nav class="fixed top-4 left-4 right-4 md:top-6 md:left-1/2 md:transform md:-translate-x-1/2 z-50 nav-glass-card px-4 md:px-8 py-3 md:py-4 w-auto md:w-full md:max-w-7xl">
+        <div class="flex items-center justify-between">
+            <div class="logo">
+                <a href="../" class="block">
+                    <img src="../assets/logo/full-logo/light-text.svg" alt="Tryll Engine" class="h-8 md:h-12" />
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-8">
+                <ul class="nav-links flex gap-6 list-none">
+                    <li><a href="#features" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Features</a></li>
+                    <li><a href="#installation" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Installation</a></li>
+                    <li><a href="#customization" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Customization</a></li>
+                    <li><a href="#requirements" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Requirements</a></li>
+                    <li><a href="blog.html" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Blog</a></li>
+                </ul>
+                <div class="flex items-center gap-3">
+                    <a href="../" class="btn-secondary px-4 py-2 text-sm inline-flex items-center justify-center transition-all duration-200 font-medium">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Back to Tryll
+                    </a>
+                    <a href="https://discord.gg/XCBBGUMzUM" class="btn-primary px-4 py-2 text-sm inline-flex items-center justify-center gap-2">
+                        <i class="fab fa-discord"></i>
+                        Join Discord
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="md:hidden flex items-center gap-3">
+                <a href="../" class="btn-secondary px-3 py-2 text-xs inline-flex items-center justify-center">
+                    <i class="fas fa-arrow-left mr-1"></i>
+                    Back
+                </a>
+                <button id="mobile-menu-btn" class="text-white p-2 hover:bg-white/10 transition-colors duration-200" style="border-radius:3px;">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="md:hidden fixed inset-0 bg-black/95 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40">
+        <!-- Close button -->
+        <button id="mobile-menu-close" class="absolute top-6 right-6 text-white/60 hover:text-white transition-colors duration-200">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <div class="flex flex-col items-center justify-center h-full space-y-8 text-center px-6">
+            <a href="../" class="mobile-menu-link text-white text-xl font-medium hover:text-blue-400 transition-colors duration-200">Tryll Engine</a>
+            <a href="#features" class="mobile-menu-link text-white text-xl font-medium hover:text-blue-400 transition-colors duration-200">Features</a>
+            <a href="#installation" class="mobile-menu-link text-white text-xl font-medium hover:text-blue-400 transition-colors duration-200">Installation</a>
+            <a href="#customization" class="mobile-menu-link text-white text-xl font-medium hover:text-blue-400 transition-colors duration-200">Customization</a>
+            <a href="#requirements" class="mobile-menu-link text-white text-xl font-medium hover:text-blue-400 transition-colors duration-200">Requirements</a>
+            <a href="blog.html" class="mobile-menu-link text-white text-xl font-medium hover:text-blue-400 transition-colors duration-200">Blog</a>
+            <div class="pt-4 space-y-3">
+                <a href="https://discord.gg/XCBBGUMzUM" class="btn-primary px-8 py-4 text-lg inline-flex items-center justify-center gap-2 w-full">
+                    <i class="fab fa-discord"></i>
+                    Join Discord
+                </a>
+                <a href="../" class="btn-secondary px-8 py-4 text-lg inline-flex items-center justify-center gap-2 w-full">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Tryll
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden" style="padding-top: 60px;">
+        <div class="container mx-auto px-4 md:px-6 py-24 md:py-32 relative z-10">
+            <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12 fade-in">
+                <!-- Left: Text -->
+                <div class="flex-1 text-center lg:text-left">
+                    <!-- Status indicator -->
+                    <div class="mb-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 border border-dashed border-white/20" style="border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.05em;">
+                            <span style="width:6px;height:6px;border-radius:50%;background:rgba(59,130,246,0.7);display:inline-block;"></span>
+                            <span style="color:rgba(255,255,255,0.5);text-transform:uppercase;">Live Alpha</span>
+                        </div>
+                    </div>
+
+                    <h1 class="heading-primary text-white mb-5 md:mb-6" style="font-size:var(--typo-hero);letter-spacing:-0.04em;">
+                        BoscoTryll
+                    </h1>
+
+                    <p class="mb-6 max-w-lg" style="font-size:var(--typo-largecopy);color:rgba(255,255,255,0.55);line-height:1.6;">
+                        AI meets Deep Rock Galactic
+                    </p>
+
+                    <p class="mb-8 md:mb-10 max-w-md" style="font-size:var(--typo-copy);color:rgba(255,255,255,0.4);line-height:1.5;">
+                        Live proof of concept: See how Tryll Engine transforms a simple drone into an intelligent companion.
+                        Every feature you see here can be integrated into your own game.
+                    </p>
+
+                    <!-- CTA Section -->
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mb-8">
+                        <a href="https://bit.ly/bosco-tryll"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="download-btn btn-primary inline-block px-6 md:px-8 py-3 md:py-4 text-sm md:text-base w-full sm:w-auto text-center max-w-xs inline-flex items-center justify-center gap-2">
+                            <i class="fab fa-windows"></i>
+                            <span>Download for Windows</span>
+                        </a>
+                        <a href="#features" class="btn-secondary inline-block px-6 md:px-8 py-3 md:py-4 text-sm md:text-base w-full sm:w-auto text-center max-w-xs inline-flex items-center justify-center gap-2">
+                            Explore Features
+                        </a>
+                    </div>
+
+                    <!-- Feedback prompt -->
+                    <p style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:rgba(255,255,255,0.4);margin-bottom:1rem;">
+                        Try it out and tell us what you think!
+                    </p>
+
+                    <!-- Meta info -->
+                    <div class="space-y-2" style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.35);">
+                        <div class="flex items-center justify-center lg:justify-start gap-3 flex-wrap">
+                            <span>v0.2-alpha</span>
+                            <span style="color:rgba(255,255,255,0.15);">|</span>
+                            <span>8GB download</span>
+                            <span style="color:rgba(255,255,255,0.15);">|</span>
+                            <span>RTX 3060+ recommended</span>
+                        </div>
+                        <p style="letter-spacing:0.05em;text-transform:uppercase;color:rgba(255,255,255,0.25);">
+                            Alpha Software &middot; Expect Bugs &middot; <a href="https://discord.gg/XCBBGUMzUM" class="hover:text-white/50 transition-colors">Report Issues</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right: Video -->
+                <div class="flex-1 min-w-0 w-full lg:max-w-lg">
+                    <div class="relative rounded overflow-hidden border border-white/[0.06] bg-white/[0.02]" style="border-top:2px solid rgba(59,130,246,0.3);">
+                        <!-- Header -->
+                        <div class="px-5 py-3 border-b border-white/[0.06]">
+                            <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.08em;color:rgba(59,130,246,0.5);text-transform:uppercase;">// demo</span>
+                        </div>
+                        <!-- Video container -->
+                        <div class="relative aspect-video">
+                            <iframe
+                                class="w-full h-full"
+                                src="https://www.youtube.com/embed/HgbkbNxJ-6g?controls=1&modestbranding=1&rel=0&autoplay=0&mute=0&showinfo=0&fs=1"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disclaimer Section -->
+    <section class="py-8 relative">
+        <div class="max-w-4xl mx-auto px-4 md:px-8">
+            <div class="glass-card p-6 text-center fade-in">
+                <p class="text-sm text-secondary">
+                    <strong class="text-white">Disclaimer:</strong> BoscoTryll is an unofficial mod for Deep Rock Galactic.
+                    Deep Rock Galactic and Bosco are trademarks of Ghost Ship Games ApS.
+                    This mod is not affiliated with or endorsed by Ghost Ship Games.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Features Section -->
+    <section id="features" class="py-16 md:py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-12 md:mb-20 fade-in">
+                <span class="terminal-label">FEATURES</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
+                    BoscoTryll Features
+                </h2>
+                <p class="text-lg md:text-xl text-secondary leading-relaxed px-2">
+                    Experience Deep Rock Galactic with an intelligent AI companion
+                </p>
+            </div>
+
+            <!-- Mobile: Video at top, features below -->
+            <div class="md:hidden">
+                <div class="mb-4">
+                    <div id="feature-video-mobile" class="relative aspect-video overflow-hidden border border-white/[0.06] bg-white/[0.02] transition-all duration-500 ease-out" style="border-radius:4px;border-top:2px solid rgba(59,130,246,0.3);">
+                        <!-- Content will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Mobile Features (Horizontal Scroll) -->
+                <div class="overflow-x-auto overflow-y-visible scrollbar-hide feature-scroll-container">
+                    <div class="flex gap-4 px-4 pb-4 py-2" style="width: max-content;">
+                        <div class="feature-item-mobile cursor-pointer p-4 bg-white/[0.02] border border-white/[0.06] hover:bg-white/[0.04] transition-all flex-shrink-0 active" style="width: 280px; border-radius:4px; border-top:2px solid rgba(59,130,246,0.3);" data-feature="gamecontrol">
+                            <h3 class="text-lg font-semibold text-white mb-2 heading-tertiary"><i class="fas fa-gamepad mr-2" style="color:rgba(59,130,246,0.7);"></i>AI Controls Game Mechanics <span class="text-xs" style="color:rgba(59,130,246,0.7);">NEW</span></h3>
+                            <p class="text-secondary text-sm leading-relaxed">
+                                Watch as Bosco spawns enemy waves when insulted and adjusts mineral prices based on how you treat him - all through AI decisions, not scripting.
+                            </p>
+                        </div>
+                        <div class="feature-item-mobile cursor-pointer p-4 bg-white/[0.02] border border-white/[0.06] hover:bg-white/[0.04] transition-all flex-shrink-0" style="width: 280px; border-radius:4px; border-top:2px solid rgba(59,130,246,0.3);" data-feature="memory">
+                            <h3 class="text-lg font-semibold text-white mb-2 heading-tertiary"><i class="fas fa-brain mr-2" style="color:rgba(59,130,246,0.7);"></i>Persistent Memory <span class="text-xs" style="color:rgba(59,130,246,0.7);">NEW</span></h3>
+                            <p class="text-secondary text-sm leading-relaxed">
+                                Bosco remembers how you treat him across sessions, building friendship or resentment. Your NPCs can have real memory and emotional depth.
+                            </p>
+                        </div>
+                        <div class="feature-item-mobile cursor-pointer p-4 bg-white/[0.02] border border-white/[0.06] hover:bg-white/[0.04] transition-all flex-shrink-0" style="width: 280px; border-radius:4px; border-top:2px solid rgba(59,130,246,0.3);" data-feature="shouts">
+                            <h3 class="text-lg font-semibold text-white mb-2 heading-tertiary"><i class="fas fa-microphone mr-2" style="color:rgba(59,130,246,0.7);"></i>Context-Aware Responses</h3>
+                            <p class="text-secondary text-sm leading-relaxed">
+                                Bosco understands Rock & Stone salutes vs insults. NPCs interpret player intent from any text input - no predefined commands needed.
+                            </p>
+                        </div>
+                        <div class="feature-item-mobile cursor-pointer p-4 bg-white/[0.02] border border-white/[0.06] hover:bg-white/[0.04] transition-all flex-shrink-0" style="width: 280px; border-radius:4px; border-top:2px solid rgba(59,130,246,0.3);" data-feature="tts">
+                            <h3 class="text-lg font-semibold text-white mb-2 heading-tertiary"><i class="fas fa-volume-up mr-2" style="color:rgba(59,130,246,0.7);"></i>Dynamic Voice Acting</h3>
+                            <p class="text-secondary text-sm leading-relaxed">
+                                Every Bosco line is generated in real-time. Infinite dialogue variety without recording studios or voice actor costs.
+                            </p>
+                        </div>
+                        <div class="feature-item-mobile cursor-pointer p-4 bg-white/[0.02] border border-white/[0.06] hover:bg-white/[0.04] transition-all flex-shrink-0" style="width: 280px; border-radius:4px; border-top:2px solid rgba(59,130,246,0.3);" data-feature="personality">
+                            <h3 class="text-lg font-semibold text-white mb-2 heading-tertiary"><i class="fas fa-masks-theater mr-2" style="color:rgba(59,130,246,0.7);"></i>Customizable Personalities</h3>
+                            <p class="text-secondary text-sm leading-relaxed">
+                                Choose Bosco's personality: Veteran Miner, Lazy Bot, or create your own. Let players customize NPCs without breaking immersion.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Feature dots indicator -->
+                <div class="feature-dots md:hidden">
+                    <span class="feature-dot active" data-feature="gamecontrol"></span>
+                    <span class="feature-dot" data-feature="memory"></span>
+                    <span class="feature-dot" data-feature="shouts"></span>
+                    <span class="feature-dot" data-feature="tts"></span>
+                    <span class="feature-dot" data-feature="personality"></span>
+                </div>
+            </div>
+
+            <!-- Desktop: Left-Right Split -->
+            <div class="hidden md:grid md:grid-cols-2 md:gap-6 lg:gap-8">
+                <!-- Left: Features List -->
+                <div class="relative">
+                    <div class="space-y-4" id="features-list">
+                        <div class="feature-item-left cursor-pointer p-6 hover:bg-white/[0.04] active" style="border-radius:4px;" data-feature="gamecontrol">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2 heading-tertiary"><i class="fas fa-gamepad mr-2" style="color:rgba(59,130,246,0.7);"></i>AI Controls Game Mechanics <span class="text-xs" style="color:rgba(59,130,246,0.7);">NEW</span></h3>
+                                <p class="text-secondary text-sm leading-relaxed">
+                                    Watch as Bosco spawns enemy waves when insulted and adjusts mineral prices based on how you treat him - all through AI decisions, not scripting.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item-left cursor-pointer p-6 hover:bg-white/[0.04]" style="border-radius:4px;" data-feature="memory">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2 heading-tertiary"><i class="fas fa-brain mr-2" style="color:rgba(59,130,246,0.7);"></i>Persistent Memory <span class="text-xs" style="color:rgba(59,130,246,0.7);">NEW</span></h3>
+                                <p class="text-secondary text-sm leading-relaxed">
+                                    Bosco remembers how you treat him across sessions, building friendship or resentment. Your NPCs can have real memory and emotional depth.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item-left cursor-pointer p-6 hover:bg-white/[0.04]" style="border-radius:4px;" data-feature="shouts">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2 heading-tertiary"><i class="fas fa-microphone mr-2" style="color:rgba(59,130,246,0.7);"></i>Context-Aware Responses</h3>
+                                <p class="text-secondary text-sm leading-relaxed">
+                                    Bosco understands Rock & Stone salutes vs insults. NPCs interpret player intent from any text input - no predefined commands needed.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item-left cursor-pointer p-6 hover:bg-white/[0.04]" style="border-radius:4px;" data-feature="tts">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2 heading-tertiary"><i class="fas fa-volume-up mr-2" style="color:rgba(59,130,246,0.7);"></i>Dynamic Voice Acting</h3>
+                                <p class="text-secondary text-sm leading-relaxed">
+                                    Every Bosco line is generated in real-time. Infinite dialogue variety without recording studios or voice actor costs.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item-left cursor-pointer p-6 hover:bg-white/[0.04]" style="border-radius:4px;" data-feature="personality">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2 heading-tertiary"><i class="fas fa-masks-theater mr-2" style="color:rgba(59,130,246,0.7);"></i>Customizable Personalities</h3>
+                                <p class="text-secondary text-sm leading-relaxed">
+                                    Choose Bosco's personality: Veteran Miner, Lazy Bot, or create your own. Let players customize NPCs without breaking immersion.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Video Container -->
+                <div class="relative" id="features-right-container">
+                    <div class="sticky top-32" id="video-sticky-container">
+                        <div id="feature-video-desktop" class="relative aspect-video overflow-hidden border border-white/[0.06] bg-white/[0.02] transition-all duration-500 ease-out" style="border-radius:4px;border-top:2px solid rgba(59,130,246,0.3);">
+                            <!-- Content will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Creators Address Section -->
+    <section class="py-16 md:py-24 relative">
+        <div class="max-w-4xl mx-auto px-4 md:px-8">
+            <div class="glass-card p-8 md:p-12 text-center fade-in">
+                <span class="terminal-label">COMMUNITY</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 heading-primary">
+                    Content Creators
+                </h2>
+                <p class="text-lg md:text-xl text-secondary mb-4">
+                    Share your BoscoTryll adventures with the community!
+                </p>
+                <p class="text-lg text-white font-semibold mb-8">
+                    We'll repost your best content!
+                </p>
+                <div class="p-6 border border-white/[0.06]" style="background:rgba(255,255,255,0.02);border-radius:4px;">
+                    <p class="text-white font-semibold mb-2">When uploading content, please tag us:</p>
+                    <p class="text-2xl text-white font-bold mb-4" style="font-family:'JetBrains Mono',monospace;">#tryllengine</p>
+                    <div class="flex flex-wrap gap-6 justify-center mb-4">
+                        <a href="https://instagram.com/tryll_engine" target="_blank" rel="noopener noreferrer" class="text-secondary hover:text-white transition-colors duration-300 flex items-center gap-2">
+                            <i class="fab fa-instagram text-xl"></i>
+                            <span>@tryll_engine</span>
+                        </a>
+                        <a href="https://tiktok.com/@tryll_engine" target="_blank" rel="noopener noreferrer" class="text-secondary hover:text-white transition-colors duration-300 flex items-center gap-2">
+                            <i class="fab fa-tiktok text-xl"></i>
+                            <span>@tryll_engine</span>
+                        </a>
+                        <a href="https://youtube.com/@tryll_engine" target="_blank" rel="noopener noreferrer" class="text-secondary hover:text-white transition-colors duration-300 flex items-center gap-2">
+                            <i class="fab fa-youtube text-xl"></i>
+                            <span>@tryll_engine</span>
+                        </a>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/[0.06]">
+                        <p class="text-white font-semibold mb-2">Share your content with the community:</p>
+                        <a href="https://discord.gg/PrmzvppX4a" target="_blank" rel="noopener noreferrer" class="text-secondary hover:text-white transition-colors duration-300 flex items-center gap-2 justify-center">
+                            <i class="fab fa-discord text-xl"></i>
+                            <span>Discord #content-creators</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="py-12 md:py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-3xl mx-auto text-center mb-12 md:mb-20 fade-in">
+                <span class="terminal-label">ROADMAP</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
+                    Roadmap
+                </h2>
+                <p class="text-xl text-secondary leading-relaxed">
+                    Our roadmap for making BoscoTryll the ultimate AI companion
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="relative">
+                    <!-- Vertical line -->
+                    <div class="absolute left-[56px] top-0 bottom-0 w-px" style="background:linear-gradient(to bottom, rgba(59,130,246,0.4), rgba(59,130,246,0.15), transparent);"></div>
+
+                    <div class="space-y-8">
+                    <!-- v0.1-alpha Released Features -->
+                    <div class="glass-card p-8 flex items-start gap-6 transition-all duration-300 fade-in relative">
+                        <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center text-lg font-bold text-white z-10" style="background:rgba(59,130,246,0.2);border:1px solid rgba(59,130,246,0.4);border-radius:4px;">
+                            <i class="fas fa-check" style="color:rgba(59,130,246,0.9);font-size:0.9rem;"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4 heading-secondary">Intelligent Responses <span style="color:rgba(59,130,246,0.7);font-size:0.85rem;font-weight:500;" class="ml-2">v0.1-alpha</span></h3>
+                            <p class="text-secondary body-medium">
+                                Bosco reacts dynamically to all in-game shouts and callouts. Every interaction feels unique and contextual.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8 flex items-start gap-6 transition-all duration-300 fade-in relative">
+                        <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center text-lg font-bold text-white z-10" style="background:rgba(59,130,246,0.2);border:1px solid rgba(59,130,246,0.4);border-radius:4px;">
+                            <i class="fas fa-check" style="color:rgba(59,130,246,0.9);font-size:0.9rem;"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4 heading-secondary">Voice Acting <span style="color:rgba(59,130,246,0.7);font-size:0.85rem;font-weight:500;" class="ml-2">v0.1-alpha</span></h3>
+                            <p class="text-secondary body-medium">
+                                Every response is voiced aloud with multiple voice options. Choose from different voice styles to match your preference.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8 flex items-start gap-6 transition-all duration-300 fade-in relative">
+                        <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center text-lg font-bold text-white z-10" style="background:rgba(59,130,246,0.2);border:1px solid rgba(59,130,246,0.4);border-radius:4px;">
+                            <i class="fas fa-check" style="color:rgba(59,130,246,0.9);font-size:0.9rem;"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4 heading-secondary">Customizable Personality <span style="color:rgba(59,130,246,0.7);font-size:0.85rem;font-weight:500;" class="ml-2">v0.1-alpha</span></h3>
+                            <p class="text-secondary body-medium">
+                                Press ~ in-game to open the customization UI for hot-swapping Bosco's personality and voice!
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8 flex items-start gap-6 transition-all duration-300 fade-in relative">
+                        <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center text-lg font-bold text-white z-10" style="background:rgba(59,130,246,0.2);border:1px solid rgba(59,130,246,0.4);border-radius:4px;">
+                            <i class="fas fa-check" style="color:rgba(59,130,246,0.9);font-size:0.9rem;"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4 heading-secondary">Easy Installation <span style="color:rgba(59,130,246,0.7);font-size:0.85rem;font-weight:500;" class="ml-2">v0.1-alpha</span></h3>
+                            <p class="text-secondary body-medium">
+                                Automated installer handles all setup. Get Bosco up and running in minutes without technical expertise.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- v0.2-alpha New Features -->
+
+                    <div class="glass-card p-8 flex items-start gap-6 transition-all duration-300 fade-in relative">
+                        <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center text-lg font-bold text-white z-10" style="background:rgba(59,130,246,0.2);border:1px solid rgba(59,130,246,0.4);border-radius:4px;">
+                            <i class="fas fa-check" style="color:rgba(59,130,246,0.9);font-size:0.9rem;"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4 heading-secondary">Dynamic Relationships <span class="ml-2 px-2 py-0.5 text-xs font-bold" style="background:rgba(59,130,246,0.2);color:rgba(59,130,246,0.9);border:1px solid rgba(59,130,246,0.3);border-radius:3px;">NEW</span> <span style="color:rgba(59,130,246,0.7);font-size:0.85rem;font-weight:500;" class="ml-2">v0.2-alpha</span></h3>
+                            <p class="text-secondary body-medium">
+                                Bosco can now be either friendly or antagonistic depending on how you interact with him. Your relationship affects gameplay dynamics.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8 flex items-start gap-6 transition-all duration-300 fade-in relative">
+                        <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center text-lg font-bold text-white z-10" style="background:rgba(59,130,246,0.2);border:1px solid rgba(59,130,246,0.4);border-radius:4px;">
+                            <i class="fas fa-check" style="color:rgba(59,130,246,0.9);font-size:0.9rem;"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4 heading-secondary">Enemy Waves <span class="ml-2 px-2 py-0.5 text-xs font-bold" style="background:rgba(59,130,246,0.2);color:rgba(59,130,246,0.9);border:1px solid rgba(59,130,246,0.3);border-radius:3px;">NEW</span> <span style="color:rgba(59,130,246,0.7);font-size:0.85rem;font-weight:500;" class="ml-2">v0.2-alpha</span></h3>
+                            <p class="text-secondary body-medium">
+                                Be polite to Bosco, or you might trigger enemy waves! Your behavior now has real consequences in the game.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8 flex items-start gap-6 transition-all duration-300 fade-in relative">
+                        <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center text-lg font-bold text-white z-10" style="background:rgba(59,130,246,0.2);border:1px solid rgba(59,130,246,0.4);border-radius:4px;">
+                            <i class="fas fa-check" style="color:rgba(59,130,246,0.9);font-size:0.9rem;"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4 heading-secondary">Economy Control <span class="ml-2 px-2 py-0.5 text-xs font-bold" style="background:rgba(59,130,246,0.2);color:rgba(59,130,246,0.9);border:1px solid rgba(59,130,246,0.3);border-radius:3px;">NEW</span> <span style="color:rgba(59,130,246,0.7);font-size:0.85rem;font-weight:500;" class="ml-2">v0.2-alpha</span></h3>
+                            <p class="text-secondary body-medium">
+                                If you have a good relationship with Bosco, it will affect resource drop prices. Maintain a positive relationship for better deals!
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8 flex items-start gap-6 transition-all duration-300 fade-in relative">
+                        <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center text-white z-10" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:600;">
+                            5
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4 heading-secondary">Voice Input & Commands <span style="color:rgba(255,255,255,0.4);font-size:0.85rem;font-weight:449;" class="ml-2">Coming Soon</span></h3>
+                            <p class="text-secondary body-medium">
+                                Talk to Bosco using your voice or keyboard. Command him to mine, fight, or follow with natural conversation. True hands-free gameplay.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8 flex items-start gap-6 transition-all duration-300 fade-in relative">
+                        <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center text-white z-10" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:600;">
+                            6
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4 heading-secondary">In-Game Assistant <span style="color:rgba(255,255,255,0.4);font-size:0.85rem;font-weight:449;" class="ml-2">Coming Soon</span></h3>
+                            <p class="text-secondary body-medium">
+                                Ask Bosco about game mechanics, strategies, or lore. Get instant answers without leaving the game or checking wikis.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8 flex items-start gap-6 transition-all duration-300 fade-in relative">
+                        <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center text-white z-10" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:600;">
+                            7
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4 heading-secondary">Multi-language Support <span style="color:rgba(255,255,255,0.4);font-size:0.85rem;font-weight:449;" class="ml-2">Coming Soon</span></h3>
+                            <p class="text-secondary body-medium">
+                                Experience BoscoTryll in multiple languages - expanding AI-powered NPCs to players worldwide.
+                            </p>
+                        </div>
+                    </div>
+
+
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Guide Section -->
+    <section id="installation" class="py-16 md:py-24 relative">
+        <div class="max-w-5xl mx-auto px-4 md:px-8">
+            <div class="text-center mb-12 md:mb-20 fade-in">
+                <span class="terminal-label">SETUP</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
+                    Installation Guide
+                </h2>
+            </div>
+
+            <div class="glass-card p-8 md:p-12 fade-in">
+                <h3 class="text-2xl font-bold text-white mb-6 heading-secondary">Installation</h3>
+                <ol class="space-y-4 text-lg">
+                    <li class="flex items-start">
+                        <span class="font-bold mr-3 text-xl" style="color:rgba(59,130,246,0.7);font-family:'JetBrains Mono',monospace;">1.</span>
+                        <span class="text-secondary"><strong class="text-white">Run installer.exe</strong></span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-bold mr-3 text-xl" style="color:rgba(59,130,246,0.7);font-family:'JetBrains Mono',monospace;">2.</span>
+                        <span class="text-secondary"><strong class="text-white">Allow Windows Defender</strong> when prompted</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-bold mr-3 text-xl" style="color:rgba(59,130,246,0.7);font-family:'JetBrains Mono',monospace;">3.</span>
+                        <span class="text-secondary"><strong class="text-white">Wait for automatic installation</strong> (~10-15 minutes)
+                            <ul class="mt-2 ml-6 space-y-1 text-base">
+                                <li class="flex items-start"><span class="mr-2" style="color:rgba(59,130,246,0.5);">&bull;</span>Python 3.12 with dependencies</li>
+                                <li class="flex items-start"><span class="mr-2" style="color:rgba(59,130,246,0.5);">&bull;</span>Ollama with qwen2.5:7b model (~6GB download)</li>
+                                <li class="flex items-start"><span class="mr-2" style="color:rgba(59,130,246,0.5);">&bull;</span>All required mod files</li>
+                            </ul>
+                        </span>
+                    </li>
+                </ol>
+
+                <!-- Installation Video -->
+                <div class="mt-8">
+                    <h4 class="text-lg font-semibold text-white mb-4 heading-tertiary">Video Tutorial</h4>
+                    <div class="relative aspect-video overflow-hidden border border-white/[0.06]" style="border-radius:4px;background:rgba(0,0,0,0.5);">
+                        <iframe
+                            src="https://www.youtube.com/embed/-5dhPfTnOgQ"
+                            title="BoscoTryll Installation Guide"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            class="absolute inset-0 w-full h-full"
+                        ></iframe>
+                    </div>
+                </div>
+
+                <!-- Usage section -->
+                <h3 class="text-2xl font-bold text-white mb-6 mt-12 heading-secondary">Usage</h3>
+                <ol class="space-y-4 text-lg">
+                    <li class="flex items-start">
+                        <span class="font-bold mr-3 text-xl" style="color:rgba(59,130,246,0.7);font-family:'JetBrains Mono',monospace;">1.</span>
+                        <span class="text-secondary">Run <code class="bg-white/[0.08] px-2 py-1 text-sm" style="border-radius:3px;border:1px solid rgba(255,255,255,0.1);font-family:'JetBrains Mono',monospace;">launcher.exe</code> from the desktop or from BoscoTryll folder. Keep it open.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-bold mr-3 text-xl" style="color:rgba(59,130,246,0.7);font-family:'JetBrains Mono',monospace;">2.</span>
+                        <span class="text-secondary">Launch Deep Rock Galactic</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-bold mr-3 text-xl" style="color:rgba(59,130,246,0.7);font-family:'JetBrains Mono',monospace;">3.</span>
+                        <span class="text-secondary">The mod will work automatically in any mission with Bosco</span>
+                    </li>
+                </ol>
+
+                <div class="mt-4 p-4 border" style="background:rgba(59,130,246,0.05);border-color:rgba(59,130,246,0.2);border-radius:4px;">
+                    <p class="text-white/80 text-sm">
+                        You can safely restart <code class="bg-white/[0.08] px-1 py-0.5 text-sm" style="border-radius:3px;border:1px solid rgba(255,255,255,0.1);font-family:'JetBrains Mono',monospace;">launcher.exe</code> during gameplay if needed.
+                    </p>
+                </div>
+
+                <!-- Download button -->
+                <div class="mt-8 text-center">
+                    <a href="https://bit.ly/bosco-tryll"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="download-btn btn-primary inline-flex items-center gap-3 px-8 py-4 text-base">
+                        <i class="fab fa-windows"></i>
+                        <span>Download for Windows</span>
+                        <i class="fas fa-download"></i>
+                    </a>
+                    <p class="text-sm mt-2" style="color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace;font-size:0.75rem;">8GB download &middot; v0.2-alpha</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customization Guide Section -->
+    <section id="customization" class="py-16 md:py-24 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 md:px-8">
+            <div class="text-center mb-12 md:mb-20 fade-in">
+                <span class="terminal-label">CUSTOMIZE</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
+                    Customization Guide
+                </h2>
+                <p class="text-lg md:text-xl text-secondary leading-relaxed">
+                    Make Bosco truly yours
+                </p>
+            </div>
+
+            <div class="glass-card p-8 md:p-12 fade-in">
+                <h3 class="text-2xl font-bold text-white mb-6 heading-secondary">Customize Bosco's Personality</h3>
+
+                <!-- Tab buttons -->
+                <div class="flex gap-2 mb-6">
+                    <button id="ingame-tab" class="px-6 py-3 bg-white/[0.08] text-white font-medium border border-white/[0.15] transition-all duration-300 hover:bg-white/[0.1] tab-active" style="border-radius:3px;" onclick="switchTab('ingame')">
+                        In-Game
+                    </button>
+                    <button id="config-tab" class="px-6 py-3 bg-white/[0.03] text-white/60 font-medium border border-white/[0.06] transition-all duration-300 hover:bg-white/[0.06]" style="border-radius:3px;" onclick="switchTab('config')">
+                        Config File
+                    </button>
+                </div>
+
+                <!-- In-Game tab content -->
+                <div id="ingame-content" class="tab-content">
+                    <p class="text-secondary mb-6">
+                        Press <code class="bg-white/[0.08] px-2 py-1 text-sm" style="border-radius:3px;border:1px solid rgba(255,255,255,0.1);font-family:'JetBrains Mono',monospace;">~</code> to open the customization UI
+                    </p>
+                    <h4 class="text-lg font-semibold text-white mb-3 heading-tertiary">In-Game Customization</h4>
+                    <p class="text-secondary mb-4">
+                        The in-game UI allows you to:
+                    </p>
+                    <ul class="space-y-2 text-secondary ml-6">
+                        <li class="flex items-start">
+                            <span class="mr-2" style="color:rgba(59,130,246,0.5);">&bull;</span>
+                            <span>Set a custom personality for Bosco</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2" style="color:rgba(59,130,246,0.5);">&bull;</span>
+                            <span>Pick from available voices</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2" style="color:rgba(59,130,246,0.5);">&bull;</span>
+                            <span>Preview changes instantly</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2" style="color:rgba(59,130,246,0.5);">&bull;</span>
+                            <span>Save your preferences for future sessions</span>
+                        </li>
+                    </ul>
+
+                    <div class="mt-8 p-6 border" style="background:rgba(59,130,246,0.05);border-color:rgba(59,130,246,0.2);border-radius:4px;">
+                        <h4 class="text-xl font-bold text-white mb-3 flex items-center gap-2 heading-tertiary">
+                            <i class="fas fa-users" style="color:rgba(59,130,246,0.7);"></i>
+                            Share Your Personality Prompts
+                        </h4>
+                        <p class="text-secondary mb-4">
+                            Share your best Bosco personality prompts with the community in our Discord!
+                        </p>
+                        <a href="https://discord.gg/quR73ZuBwF" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-300">
+                            <i class="fab fa-discord text-xl"></i>
+                            <span class="font-semibold">#prompt-engineering</span>
+                            <i class="fas fa-external-link-alt text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Config File tab content -->
+                <div id="config-content" class="tab-content hidden">
+                    <p class="text-secondary mb-6">
+                        Edit Bosco's personality by modifying the configuration file:
+                    </p>
+
+                    <div class="code-block mb-6" data-language="JSON">
+                        <p class="text-white/80 mb-2" style="font-size:0.8rem;">Steam\steamapps\common\Deep Rock Galactic\FSD\Mods\BoscoTryll\library\bosco_config.json:</p>
+                        <pre style="color:rgba(59,130,246,0.8);white-space:pre-wrap;word-break:break-all;font-family:'JetBrains Mono',monospace;font-size:0.85rem;">{
+  "personality": "Sad and depressed personality. Very lazy and lamenting everything. Clearly not enthusiastic to be here. Every response carries some regret and complaining but reluctingly submissive.",
+  "voice": "am_michael"
+}</pre>
+                    </div>
+
+                    <div class="mt-8">
+                        <h4 class="text-xl font-bold text-white mb-4 heading-tertiary">Voice Customization:</h4>
+                        <div class="p-4 border" style="background:rgba(255,255,255,0.02);border-color:rgba(255,255,255,0.06);border-radius:4px;">
+                            <p class="text-secondary mb-3">
+                                Change Bosco's voice by replacing <code class="bg-white/[0.08] px-2 py-1 text-sm" style="border-radius:3px;border:1px solid rgba(255,255,255,0.1);font-family:'JetBrains Mono',monospace;">"voice": "am_michael"</code> with one of the available English voices.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4 mb-2">
+                                <a href="https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md#american-english" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-300">
+                                    <i class="fas fa-list"></i>
+                                    <span>View available voices</span>
+                                    <i class="fas fa-external-link-alt text-sm"></i>
+                                </a>
+                                <a href="https://kokoroai.org/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-300">
+                                    <i class="fas fa-microphone-alt"></i>
+                                    <span>Listen to voice samples</span>
+                                    <i class="fas fa-external-link-alt text-sm"></i>
+                                </a>
+                            </div>
+                            <p class="text-xs mt-2" style="color:rgba(255,255,255,0.4);">
+                                Copy the voice name exactly as shown in the list
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 p-6 border" style="background:rgba(59,130,246,0.05);border-color:rgba(59,130,246,0.2);border-radius:4px;">
+                        <h4 class="text-xl font-bold text-white mb-3 flex items-center gap-2 heading-tertiary">
+                            <i class="fas fa-users" style="color:rgba(59,130,246,0.7);"></i>
+                            Share Your Personality Prompts
+                        </h4>
+                        <p class="text-secondary mb-4">
+                            Share your best Bosco personality prompts with the community in our Discord!
+                        </p>
+                        <a href="https://discord.gg/quR73ZuBwF" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-300">
+                            <i class="fab fa-discord text-xl"></i>
+                            <span class="font-semibold">#prompt-engineering</span>
+                            <i class="fas fa-external-link-alt text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Requirements Section -->
+    <section id="requirements" class="py-16 md:py-24 relative">
+        <div class="max-w-5xl mx-auto px-4 md:px-8">
+            <div class="text-center mb-12 md:mb-20 fade-in">
+                <span class="terminal-label">SYSTEM_REQUIREMENTS</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
+                    System Requirements
+                </h2>
+                <p class="text-lg md:text-xl text-secondary leading-relaxed">
+                    Make sure your system meets these specifications
+                </p>
+            </div>
+
+            <div class="glass-card p-8 md:p-12 fade-in">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-6 heading-secondary">Minimum Requirements</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-microchip mr-3 mt-1" style="color:rgba(59,130,246,0.7);"></i>
+                                <div>
+                                    <p class="text-white font-semibold">GPU</p>
+                                    <p class="text-secondary">12GB+ VRAM (NVIDIA recommended, RTX 3060+)</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-memory mr-3 mt-1" style="color:rgba(59,130,246,0.7);"></i>
+                                <div>
+                                    <p class="text-white font-semibold">RAM</p>
+                                    <p class="text-secondary">16GB+ system memory</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-hdd mr-3 mt-1" style="color:rgba(59,130,246,0.7);"></i>
+                                <div>
+                                    <p class="text-white font-semibold">Storage</p>
+                                    <p class="text-secondary">8GB free space</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fab fa-windows mr-3 mt-1" style="color:rgba(59,130,246,0.7);"></i>
+                                <div>
+                                    <p class="text-white font-semibold">OS</p>
+                                    <p class="text-secondary">Windows</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-gamepad mr-3 mt-1" style="color:rgba(59,130,246,0.7);"></i>
+                                <div>
+                                    <p class="text-white font-semibold">Game</p>
+                                    <p class="text-secondary">Deep Rock Galactic with English language and subtitles enabled</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-6 heading-secondary">Performance Note</h3>
+                        <div class="p-6 border" style="background:rgba(59,130,246,0.05);border-color:rgba(59,130,246,0.2);border-radius:4px;">
+                            <p class="font-semibold mb-3" style="color:rgba(59,130,246,0.9);">
+                                <i class="fas fa-exclamation-triangle mr-2"></i>
+                                Important Information
+                            </p>
+                            <p class="text-secondary mb-3">
+                                The AI model uses ~9GB VRAM at all times. Adjust graphics settings if experiencing FPS drops.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 md:py-24 relative">
+        <div class="max-w-4xl mx-auto px-4 md:px-8 text-center">
+            <div class="glass-card p-8 md:p-12 fade-in">
+                <span class="terminal-label">GET_STARTED</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 heading-primary">
+                    Ready to Transform Your Bosco?
+                </h2>
+                <p class="text-lg md:text-xl text-secondary mb-8">
+                    Join the alpha and help shape the future of AI-powered gaming
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://discord.gg/XCBBGUMzUM" class="btn-primary px-8 py-3 text-lg inline-flex items-center justify-center gap-3">
+                        <i class="fab fa-discord"></i>
+                        Join Our Discord
+                    </a>
+                    <a href="../" class="btn-secondary px-8 py-3 text-lg inline-flex items-center justify-center">
+                        Learn About Tryll Engine
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center gap-6 md:grid md:grid-cols-3 md:items-center">
+                <!-- Left: Copyright -->
+                <div class="text-secondary text-sm order-2 md:order-1 text-center md:text-left">
+                    &copy; 2026 Tryll Engine, Inc. All rights reserved.<br>
+                    <span class="text-xs">Deep Rock Galactic and Bosco are trademarks of Ghost Ship Games ApS.</span>
+                </div>
+
+                <!-- Center: Social Links -->
+                <div class="flex gap-6 items-center justify-center order-1 md:order-2">
+                    <a href="https://discord.gg/XCBBGUMzUM" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Join our Discord">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@Tryll_Engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Watch on YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://instagram.com/tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://tiktok.com/@tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+
+                <!-- Right: Privacy & Terms -->
+                <div class="flex gap-6 order-3 md:order-3 justify-center md:justify-end">
+                    <a href="privacy-policy.html" class="text-secondary hover:text-white transition-colors duration-300 text-sm">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Google Analytics Event Tracking via GTM dataLayer
+        function trackEvent(category, action, label = null, value = null) {
+            if (typeof dataLayer !== 'undefined') {
+                dataLayer.push({
+                    'event': 'custom_event',
+                    'event_category': category,
+                    'event_action': action,
+                    'event_label': label,
+                    'event_value': value
+                });
+            }
+        }
+
+        // Track all interactions on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track download button clicks
+            document.querySelectorAll('a[href*="drive.google.com"], a[href*="download"], a[href*="bit.ly"]').forEach(element => {
+                element.addEventListener('click', function() {
+                    const text = this.textContent.trim();
+                    trackEvent('Download', 'click', 'BoscoTryll Mod - ' + text);
+                });
+            });
+
+            // Track Discord links
+            document.querySelectorAll('a[href*="discord"]').forEach(link => {
+                link.addEventListener('click', function() {
+                    trackEvent('Social', 'click', 'Discord');
+                });
+            });
+
+            // Track tab switches
+            window.switchTab = function(tabName) {
+                trackEvent('Content', 'tab_switch', 'Customization - ' + tabName);
+                // Original tab switching code continues...
+                const ingameTab = document.getElementById('ingame-tab');
+                const configTab = document.getElementById('config-tab');
+                const ingameContent = document.getElementById('ingame-content');
+                const configContent = document.getElementById('config-content');
+
+                if (tabName === 'ingame') {
+                    ingameTab.classList.add('bg-white/10', 'text-white', 'border-white/20', 'tab-active');
+                    ingameTab.classList.remove('bg-white/5', 'text-white/60', 'border-white/10');
+                    configTab.classList.remove('bg-white/10', 'text-white', 'border-white/20', 'tab-active');
+                    configTab.classList.add('bg-white/5', 'text-white/60', 'border-white/10');
+                    ingameContent.classList.remove('hidden');
+                    configContent.classList.add('hidden');
+                } else {
+                    configTab.classList.add('bg-white/10', 'text-white', 'border-white/20', 'tab-active');
+                    configTab.classList.remove('bg-white/5', 'text-white/60', 'border-white/10');
+                    ingameTab.classList.remove('bg-white/10', 'text-white', 'border-white/20', 'tab-active');
+                    ingameTab.classList.add('bg-white/5', 'text-white/60', 'border-white/10');
+                    configContent.classList.remove('hidden');
+                    ingameContent.classList.add('hidden');
+                }
+            };
+
+            // Track feature showcase interactions
+            document.querySelectorAll('.feature-item').forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    const title = this.querySelector('h3').textContent.trim();
+                    trackEvent('Feature', 'view', title);
+                });
+            });
+
+            // Track video plays (if any)
+            document.querySelectorAll('video').forEach(video => {
+                video.addEventListener('play', function() {
+                    trackEvent('Media', 'play', 'Video - ' + (this.id || 'unnamed'));
+                });
+            });
+
+            // Track navigation
+            document.querySelectorAll('nav a, .mobile-menu-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    const text = this.textContent.trim();
+                    const isMobile = this.classList.contains('mobile-menu-link');
+                    trackEvent('Navigation', 'click', (isMobile ? 'Mobile - ' : 'Desktop - ') + text);
+                });
+            });
+
+            // Track scroll depth
+            let scrollDepths = [25, 50, 75, 100];
+            let achievedDepths = [];
+
+            window.addEventListener('scroll', function() {
+                const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+
+                scrollDepths.forEach(depth => {
+                    if (scrollPercent >= depth && !achievedDepths.includes(depth)) {
+                        achievedDepths.push(depth);
+                        trackEvent('Engagement', 'scroll', 'BoscoTryll Page Depth', depth);
+                    }
+                });
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('opacity-0');
+                mobileMenu.classList.toggle('invisible');
+                document.body.classList.toggle('overflow-hidden');
+            });
+
+            // Close button functionality
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', () => {
+                    mobileMenu.classList.add('opacity-0');
+                    mobileMenu.classList.add('invisible');
+                    document.body.classList.remove('overflow-hidden');
+                });
+            }
+
+            // Close mobile menu when clicking a link
+            mobileMenu.querySelectorAll('.mobile-menu-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('opacity-0');
+                    mobileMenu.classList.add('invisible');
+                    document.body.classList.remove('overflow-hidden');
+                });
+            });
+
+            // Close menu when clicking outside
+            mobileMenu.addEventListener('click', (e) => {
+                if (e.target === mobileMenu) {
+                    mobileMenu.classList.add('opacity-0');
+                    mobileMenu.classList.add('invisible');
+                    document.body.classList.remove('overflow-hidden');
+                }
+            });
+        }
+
+        // Ripple effect on buttons
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+
+                this.appendChild(ripple);
+
+                setTimeout(() => ripple.remove(), 800);
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Interactive Features Section
+        document.addEventListener('DOMContentLoaded', function() {
+            const featureItemsDesktop = document.querySelectorAll('.feature-item-left');
+            const featureItemsMobile = document.querySelectorAll('.feature-item-mobile');
+            const videoDesktop = document.getElementById('feature-video-desktop');
+            const videoMobile = document.getElementById('feature-video-mobile');
+            const featureDots = document.querySelectorAll('.feature-dot');
+
+            const features = {
+                gamecontrol: {
+                    icon: '<i class="fas fa-gamepad" style="color:rgba(59,130,246,0.7);"></i>',
+                    title: 'AI Controls Game Mechanics',
+                    description: 'Watch as Bosco spawns enemy waves when insulted and adjusts mineral prices based on how you treat him - all through AI decisions, not scripting.',
+                    isNew: true
+                },
+                memory: {
+                    icon: '<i class="fas fa-brain" style="color:rgba(59,130,246,0.7);"></i>',
+                    title: 'Persistent Memory',
+                    description: 'Bosco remembers how you treat him across sessions, building friendship or resentment. Your NPCs can have real memory and emotional depth.',
+                    isNew: true
+                },
+                shouts: {
+                    icon: '<i class="fas fa-microphone" style="color:rgba(59,130,246,0.7);"></i>',
+                    title: 'Context-Aware Responses',
+                    description: 'Bosco understands Rock & Stone salutes vs insults. NPCs interpret player intent from any text input - no predefined commands needed.'
+                },
+                tts: {
+                    icon: '<i class="fas fa-volume-up" style="color:rgba(59,130,246,0.7);"></i>',
+                    title: 'Dynamic Voice Acting',
+                    description: 'Every Bosco line is generated in real-time. Infinite dialogue variety without recording studios or voice actor costs.'
+                },
+                personality: {
+                    icon: '<i class="fas fa-masks-theater" style="color:rgba(59,130,246,0.7);"></i>',
+                    title: 'Customizable Personalities',
+                    description: 'Choose Bosco\'s personality: Veteran Miner, Lazy Bot, or create your own. Let players customize NPCs without breaking immersion.'
+                }
+            };
+
+            function updateVideo(feature, videoElement) {
+                const content = features[feature];
+                if (content && videoElement) {
+                    const isMobile = videoElement.id === 'feature-video-mobile';
+
+                    // Add fade out effect
+                    videoElement.style.opacity = '0';
+
+                    setTimeout(() => {
+                        videoElement.innerHTML = `
+                            <div class="absolute inset-0 flex items-center justify-center feature-content">
+                                <div class="text-center p-6 md:p-8 animate-fade-in">
+                                    <div class="${isMobile ? 'text-4xl' : 'text-6xl md:text-8xl'} mb-4 md:mb-6 animate-scale-in">${content.icon}</div>
+                                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4 animate-slide-up heading-secondary">${content.title}</h3>
+                                    <p class="text-secondary text-base md:text-lg leading-relaxed animate-slide-up-delay">${content.description}</p>
+                                    <div class="mt-4 md:mt-6 text-sm animate-fade-in-delay" style="color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace;font-size:0.75rem;">Demo video coming soon</div>
+                                </div>
+                            </div>
+                        `;
+                        // Add fade in effect
+                        videoElement.style.opacity = '1';
+                    }, 150);
+                }
+            }
+
+            function updateVideoPosition(index) {
+                const videoDesktop = document.getElementById('feature-video-desktop');
+                const leftContainer = document.getElementById('features-list');
+                const rightContainer = document.getElementById('features-right-container');
+                const stickyContainer = document.getElementById('video-sticky-container');
+
+                if (videoDesktop && leftContainer && rightContainer) {
+                    // Make right container match left container height
+                    const leftHeight = leftContainer.offsetHeight;
+                    rightContainer.style.height = leftHeight + 'px';
+
+                    // Get video dimensions
+                    const videoHeight = videoDesktop.offsetHeight;
+
+                    // Set sticky container height to match left side
+                    stickyContainer.style.height = leftHeight + 'px';
+
+                    // Calculate available space for movement
+                    const availableSpace = leftHeight - videoHeight;
+
+                    // Calculate position based on index
+                    const featureItemsDesktop = document.querySelectorAll('.feature-item-left');
+                    const totalItems = featureItemsDesktop.length;
+                    const stepPercentage = index / (totalItems - 1);
+                    const pixelOffset = availableSpace * stepPercentage;
+
+                    // Apply smooth transition
+                    videoDesktop.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+
+                    // Apply transform with subtle effects
+                    videoDesktop.classList.add('transitioning');
+                    videoDesktop.style.transform = `translateY(${pixelOffset}px)`;
+
+                    // Add a slight fade effect during transition
+                    setTimeout(() => {
+                        videoDesktop.classList.remove('transitioning');
+                    }, 600);
+                }
+            }
+
+            function setActiveFeature(feature) {
+                // Update desktop items
+                featureItemsDesktop.forEach(item => {
+                    if (item.dataset.feature === feature) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+
+                // Update mobile items
+                featureItemsMobile.forEach(item => {
+                    if (item.dataset.feature === feature) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+
+                // Update dots
+                featureDots.forEach(dot => {
+                    if (dot.dataset.feature === feature) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+
+                // Update videos
+                updateVideo(feature, videoDesktop);
+                updateVideo(feature, videoMobile);
+            }
+
+            // Desktop click handlers with animation
+            featureItemsDesktop.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    const feature = item.dataset.feature;
+                    setActiveFeature(feature);
+                    updateVideoPosition(index);
+                });
+            });
+
+            // Mobile click handlers
+            featureItemsMobile.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    const feature = item.dataset.feature;
+                    setActiveFeature(feature);
+
+                    // Scroll to center the clicked item
+                    const container = item.closest('.feature-scroll-container');
+                    const scrollLeft = item.offsetLeft - (container.offsetWidth / 2) + (item.offsetWidth / 2);
+                    container.scrollTo({
+                        left: scrollLeft,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Dot click handlers
+            featureDots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const feature = dot.dataset.feature;
+                    setActiveFeature(feature);
+
+                    // Find and scroll to corresponding mobile item
+                    const mobileItem = document.querySelector(`.feature-item-mobile[data-feature="${feature}"]`);
+                    if (mobileItem) {
+                        const container = mobileItem.closest('.feature-scroll-container');
+                        const scrollLeft = mobileItem.offsetLeft - (container.offsetWidth / 2) + (mobileItem.offsetWidth / 2);
+                        container.scrollTo({
+                            left: scrollLeft,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Initialize with first feature active
+            if (featureItemsDesktop.length > 0) {
+                setActiveFeature(featureItemsDesktop[0].dataset.feature);
+                // Set initial position to top (0px)
+                setTimeout(() => updateVideoPosition(0), 100);
+            }
+
+            // Handle window resize
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    const activeItem = document.querySelector('.feature-item-left.active');
+                    if (activeItem) {
+                        const activeIndex = Array.from(featureItemsDesktop).indexOf(activeItem);
+                        updateVideoPosition(activeIndex);
+                    }
+                }, 150);
+            });
+
+            // Mobile scroll observer to update active dot
+            const scrollContainer = document.querySelector('.feature-scroll-container');
+            if (scrollContainer) {
+                scrollContainer.addEventListener('scroll', () => {
+                    const containerWidth = scrollContainer.offsetWidth;
+                    const scrollLeft = scrollContainer.scrollLeft;
+                    const centerX = scrollLeft + containerWidth / 2;
+
+                    featureItemsMobile.forEach((item, index) => {
+                        const itemLeft = item.offsetLeft;
+                        const itemRight = itemLeft + item.offsetWidth;
+
+                        if (centerX >= itemLeft && centerX <= itemRight) {
+                            setActiveFeature(item.dataset.feature);
+                        }
+                    });
+                });
+            }
+
+            // Smooth scroll with offset for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const offset = 100;
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - offset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Track download clicks with Google Analytics
+            document.querySelectorAll('.download-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    trackEvent('engagement', 'download', 'boscotryll_mod');
+                });
+            });
+        });
+
+        // Tab switching handled by window.switchTab in DOMContentLoaded above
+    </script>
+</body>
+</html>

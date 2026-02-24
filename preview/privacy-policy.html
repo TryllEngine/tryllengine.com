@@ -239,6 +239,11 @@
             font-weight: inherit;
         }
 
+        /* Restore Font Awesome icon weights (overridden by inherit rule above) */
+        .fas, .fa-solid, .fas::before, .fa-solid::before { font-weight: 900 !important; }
+        .far, .fa-regular, .far::before, .fa-regular::before { font-weight: 400 !important; }
+        .fab, .fa-brands, .fab::before, .fa-brands::before { font-weight: 400 !important; }
+
         .font-normal { font-weight: 449 !important; }
         .font-medium { font-weight: 500 !important; }
         .font-semibold { font-weight: 600 !important; }

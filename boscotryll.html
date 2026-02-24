@@ -444,6 +444,11 @@
             font-weight: inherit;
         }
 
+        /* Restore Font Awesome icon weights (overridden by inherit rule above) */
+        .fas, .fa-solid, .fas::before, .fa-solid::before { font-weight: 900 !important; }
+        .far, .fa-regular, .far::before, .fa-regular::before { font-weight: 400 !important; }
+        .fab, .fa-brands, .fab::before, .fa-brands::before { font-weight: 400 !important; }
+
         .glass-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.06);

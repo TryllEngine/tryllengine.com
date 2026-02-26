@@ -11,7 +11,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tryll Engine — On-Device AI for Games</title>
+    <title>Tryll Engine — The On-Device AI Platform for Games</title>
 
     <!-- SEO Meta Tags -->
     <meta name="description" content="The standard for on-device AI in games. Tryll gives developers a simple API to ship intelligent game features — running entirely on player hardware. No cloud, no latency, no per-player costs.">
@@ -230,9 +230,8 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
         
         html {
             scroll-behavior: smooth;
@@ -266,10 +265,11 @@
         }
         
         body {
-            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', BlinkMacSystemFont, -apple-system, 'SF Pro Display', 'SF Pro', sans-serif;
             background-color: #000000;
-            background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 24px 24px;
+            background-image: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.15), transparent),
+                radial-gradient(ellipse 80% 50% at 80% 80%, rgba(147, 51, 234, 0.1), transparent);
             color: rgba(255, 255, 255, 0.85);
             overflow-x: hidden;
             line-height: 1.5em;
@@ -280,40 +280,28 @@
             -moz-osx-font-smoothing: grayscale;
             text-rendering: optimizeLegibility;
         }
-
-        body::after {
-            content: '';
-            position: fixed;
-            inset: 0;
-            z-index: 9998;
-            pointer-events: none;
-            opacity: 0.018;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            background-repeat: repeat;
-            background-size: 256px 256px;
-        }
         
         .heading-primary {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            line-height: 1.05;
+            font-family: 'Inter', BlinkMacSystemFont, -apple-system, 'SF Pro Display', sans-serif;
+            font-weight: 650;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
             color: #ffffff;
         }
-
+        
         .heading-secondary {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Inter', BlinkMacSystemFont, -apple-system, 'SF Pro Display', sans-serif;
             font-weight: 600;
-            letter-spacing: -0.02em;
-            line-height: 1.15;
+            letter-spacing: -0.018em;
+            line-height: 1.2;
             color: #ffffff;
         }
-
+        
         .heading-tertiary {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
-            letter-spacing: -0.015em;
-            line-height: 1.25;
+            font-family: 'Inter', BlinkMacSystemFont, -apple-system, 'SF Pro Display', sans-serif;
+            font-weight: 500;
+            letter-spacing: -0.012em;
+            line-height: 1.3;
             color: #ffffff;
         }
         
@@ -349,21 +337,6 @@
             font-weight: 500;
             letter-spacing: 0.025em;
         }
-
-        .terminal-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            color: rgba(59, 130, 246, 0.7);
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-        .terminal-label::before {
-            content: '// ';
-            opacity: 0.5;
-        }
         
         /* Button and interactive element text weight */
         button, [role="button"], a {
@@ -394,53 +367,43 @@
             color: #ffffff;
             border: none;
             font-weight: 600;
-            font-family: 'DM Sans', sans-serif;
-            transition: all 0.12s ease-out;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-size: 0.85em;
-            border-radius: 3px;
+            transition: all 0.2s ease;
         }
-
+        
         .btn-primary:hover {
             background-color: #2563EB;
-            transform: none;
-            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
-
+        
         .btn-primary:focus {
             outline: none;
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
         }
-
+        
         .btn-primary:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
-
+        
         .btn-secondary {
             background-color: transparent;
             color: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.2);
             font-weight: 600;
-            font-family: 'DM Sans', sans-serif;
-            transition: all 0.12s ease-out;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-size: 0.85em;
-            border-radius: 3px;
+            transition: all 0.2s ease;
         }
-
+        
         .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.25);
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
             color: #ffffff;
-            transform: none;
+            transform: translateY(-1px);
         }
-
+        
         .btn-secondary:focus {
             outline: none;
-            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
         }
         
         /* Form control styles */
@@ -479,18 +442,20 @@
             accent-color: #3B82F6;
         }
         
-        /* Legacy button enhancements */
+        /* Legacy button enhancements (to be replaced) */
         .bg-primary-500, .bg-blue-500 {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
             color: #ffffff !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
-
+        
         .bg-primary-500:hover, .bg-blue-500:hover {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(255, 255, 255, 0.25) !important;
-            box-shadow: none;
-            transform: none;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.2) 100%);
+            border-color: rgba(255, 255, 255, 0.5) !important;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
         }
         
         /* Better borders */
@@ -507,26 +472,26 @@
         
         /* Section backgrounds */
         .section-gradient {
-            background: transparent;
+            background: radial-gradient(ellipse at center top, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
         }
         
         /* Pricing cards */
         .pricing-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 4px;
+            background: linear-gradient(135deg, rgba(35, 46, 65, 0.1) 0%, rgba(35, 46, 65, 0.05) 100%);
+            border: 1px solid rgba(35, 46, 65, 0.2);
         }
         
-        /* Feature cards */
+        /* Feature cards enhanced */
         .feature-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 4px;
+            background: rgba(35, 46, 65, 0.06);
+            border: 1px solid rgba(35, 46, 65, 0.12);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
-
+        
         .feature-card:hover {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(255, 255, 255, 0.1);
+            background: rgba(35, 46, 65, 0.1);
+            border-color: rgba(35, 46, 65, 0.2);
         }
         
         /* FAQ cards contrast */
@@ -596,12 +561,7 @@
         *, *::before, *::after {
             font-weight: inherit;
         }
-
-        /* Restore Font Awesome icon weights (overridden by inherit rule above) */
-        .fas, .fa-solid, .fas::before, .fa-solid::before { font-weight: 900 !important; }
-        .far, .fa-regular, .far::before, .fa-regular::before { font-weight: 400 !important; }
-        .fab, .fa-brands, .fab::before, .fa-brands::before { font-weight: 400 !important; }
-
+        
         /* Tailwind font weight overrides */
         .font-normal { font-weight: 449 !important; }
         .font-medium { font-weight: 500 !important; }
@@ -648,56 +608,106 @@
         }
         
         .glass-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 4px !important;
-            transition: all 0.15s ease-out;
-            border-top: 2px solid rgba(59, 130, 246, 0.3);
+            background: rgba(35, 46, 65, 0.08);
+            border: 1px solid rgba(35, 46, 65, 0.15);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
-
+        
         .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.12);
-            background: rgba(255, 255, 255, 0.04);
-            box-shadow: none;
-            border-top-color: rgba(59, 130, 246, 0.5);
+            border-color: rgba(35, 46, 65, 0.25);
+            background: rgba(35, 46, 65, 0.12);
+            box-shadow: 0 0 40px rgba(35, 46, 65, 0.1);
         }
         
         .nav-glass-card {
+            --shadow-offset: 0px;
+            --shadow-blur: 20px;
+            --shadow-spread: -5px;
+            --shadow-color: rgba(255, 255, 255, 0.25);
+            --tint-color: 255, 255, 255;
+            --tint-opacity: 0.02;
+            --frost-blur: 16px;
+            --noise-frequency: 0.001;
+            --distortion-strength: 0;
+            
             position: relative;
-            border-radius: 4px;
+            border-radius: 20px;
             overflow: hidden;
-            transition: all 0.15s ease-out;
-            background: rgba(0, 0, 0, 0.88);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
         }
-
+        
+        /* Glass tint layer */
+        .nav-glass-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(var(--tint-color), var(--tint-opacity));
+            box-shadow: inset var(--shadow-offset) var(--shadow-offset) 
+                        var(--shadow-blur) var(--shadow-spread) var(--shadow-color);
+            border-radius: inherit;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* Frost blur layer */
+        .nav-glass-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            backdrop-filter: blur(var(--frost-blur));
+            -webkit-backdrop-filter: blur(var(--frost-blur));
+            border-radius: inherit;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Content layer */
         .nav-glass-card > * {
             position: relative;
             z-index: 2;
         }
-
+        
+        /* Subtle border */
+        .nav-glass-card {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2),
+                        0 1px 0 0 rgba(255, 255, 255, 0.05) inset;
+        }
+        
+        /* Hover effect */
         .nav-glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.12);
+            --tint-opacity: 0.04;
+            --shadow-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        /* Optional: Add noise filter for Chromium browsers */
+        @supports (filter: url(#noiseFilter)) {
+            .nav-glass-card::after {
+                filter: url(#noiseFilter);
+            }
         }
         
         
         .gradient-bg {
-            background: rgba(255, 255, 255, 0.06);
+            background: linear-gradient(135deg, rgba(35, 46, 65, 0.8) 0%, rgba(35, 46, 65, 0.6) 100%);
         }
-
+        
         .hero-gradient {
-            background: transparent;
+            background: radial-gradient(ellipse at 50% 20%, rgba(35, 46, 65, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
         }
         
         
         
         .fade-in {
             opacity: 0;
-            transform: translateY(12px);
-            transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
         }
-
+        
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
@@ -878,12 +888,14 @@
             /* Feature card styling for mobile */
             .feature-item-mobile {
                 background: rgba(255, 255, 255, 0.03) !important;
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
                 min-height: 120px;
             }
-
+            
             .feature-item-mobile.active {
-                background: rgba(255, 255, 255, 0.08) !important;
-                box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.4) !important;
+                background: rgba(255, 255, 255, 0.1) !important;
+                box-shadow: 0 0 0 2px rgba(246, 240, 235, 0.3), 0 0 30px rgba(246, 240, 235, 0.1) !important;
                 transform: none !important;
             }
             
@@ -979,15 +991,30 @@
             animation-fill-mode: both;
         }
         
-        /* Feature item hover effects */
+        /* Enhanced feature item hover effects */
         .feature-item-left {
             position: relative;
             overflow: hidden;
-            transition: all 0.15s ease-out;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
+        
+        .feature-item-left::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .feature-item-left:hover::before {
+            left: 100%;
+        }
+        
         .feature-item-left:hover {
-            background: rgba(255, 255, 255, 0.04) !important;
+            background: rgba(255, 255, 255, 0.05) !important;
             transform: translateX(2px);
         }
         
@@ -1007,7 +1034,13 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8MPGKVX"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <!-- Noise overlay handled via CSS body::after -->
+    <!-- SVG Noise Filter -->
+    <svg style="display: none;">
+        <filter id="noiseFilter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.001" numOctaves="1" result="turbulence"/>
+            <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+    </svg>
 
     <!-- Navigation -->
     <nav class="fixed top-4 left-4 right-4 md:top-6 md:left-1/2 md:transform md:-translate-x-1/2 z-50 nav-glass-card px-4 md:px-8 py-3 md:py-4 w-auto md:w-full md:max-w-7xl">
@@ -1029,11 +1062,11 @@
                     <li><a href="boscotryll" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">BoscoTryll Mod</a></li>
                 </ul>
                 <div class="flex items-center gap-3">
-                    <a href="tryll-assistant" class="btn-primary px-4 py-2 rounded text-sm inline-flex items-center justify-center gap-2">
+                    <a href="tryll-assistant" class="btn-primary px-4 py-2 rounded-lg text-sm inline-flex items-center justify-center gap-2">
                         <i class="fas fa-rocket"></i>
                         Get Started
                     </a>
-                    <a href="#contact" class="px-4 py-2 rounded text-sm inline-flex items-center justify-center transition-all duration-200 font-medium bg-white/[0.06] border border-white/10 hover:bg-white/[0.1] text-white uppercase tracking-wider" style="font-size: 0.85em;">
+                    <a href="#contact" class="px-4 py-2 rounded-lg text-sm inline-flex items-center justify-center transition-all duration-300 font-medium bg-white/10 border border-white/20 hover:bg-white/20 text-white">
                         Book a Demo
                     </a>
                 </div>
@@ -1041,10 +1074,10 @@
             
             <!-- Mobile Navigation -->
             <div class="md:hidden flex items-center gap-3">
-                <a href="tryll-assistant" class="btn-primary px-3 py-2 rounded text-xs inline-flex items-center justify-center">
+                <a href="tryll-assistant" class="btn-primary px-3 py-2 rounded-lg text-xs inline-flex items-center justify-center">
                     Get Started
                 </a>
-                <button id="mobile-menu-btn" class="text-white p-2 rounded hover:bg-white/10 transition-colors duration-200">
+                <button id="mobile-menu-btn" class="text-white p-2 rounded-lg hover:bg-white/10 transition-colors duration-200">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -1067,11 +1100,11 @@
                 <a href="/blog" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Blog</a>
                 <a href="boscotryll" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">BoscoTryll Mod</a>
                 <div class="pt-4 space-y-3">
-                    <a href="tryll-assistant" class="btn-primary px-8 py-4 rounded text-lg inline-flex items-center justify-center gap-2 w-full">
+                    <a href="tryll-assistant" class="btn-primary px-8 py-4 rounded-lg text-lg inline-flex items-center justify-center gap-2 w-full">
                         <i class="fas fa-rocket"></i>
                         Get Started
                     </a>
-                    <a href="#contact" class="px-8 py-4 rounded text-lg inline-flex items-center justify-center gap-2 w-full bg-white/10 border border-white/20 text-white">
+                    <a href="#contact" class="px-8 py-4 rounded-lg text-lg inline-flex items-center justify-center gap-2 w-full bg-white/10 border border-white/20 text-white">
                         Book a Demo
                     </a>
                 </div>
@@ -1082,382 +1115,143 @@
     <!-- Hero Section -->
     <section class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden" style="padding-top: 60px;">
         <div class="container mx-auto px-4 md:px-6 py-24 md:py-32 relative z-10">
-            <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12 fade-in">
-                <!-- Left: Text -->
-                <div class="flex-1 text-center lg:text-left">
-                    <p style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;letter-spacing:0.01em;color:rgba(255,255,255,0.5);margin-bottom:1.25rem;">
-                        Your players already have the hardware.
-                    </p>
-
-                    <h1 class="heading-primary text-white mb-5 md:mb-6" style="font-size:var(--typo-hero);letter-spacing:-0.04em;">
-                        Ship Your Game<br>With AI
-                    </h1>
-
-                    <p class="mb-6 max-w-lg" style="font-size:var(--typo-largecopy);color:rgba(255,255,255,0.55);line-height:1.6;">
-                        A new medium for game design — powered by the GPU in every player's machine.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mb-8">
-                        <a href="#contact" class="btn-primary inline-block px-6 md:px-8 py-3 md:py-4 text-sm md:text-base w-full sm:w-auto text-center max-w-xs">
-                            Book a Demo
-                        </a>
-                        <a href="#how-it-works" class="btn-secondary inline-block px-6 md:px-8 py-3 md:py-4 text-sm md:text-base w-full sm:w-auto text-center max-w-xs">
-                            See How It Works
-                        </a>
-                    </div>
-
-                    <a href="https://www.unrealengine.com/en-US/megagrants" target="_blank" rel="noopener noreferrer" class="inline-block opacity-50 hover:opacity-75 transition-opacity" title="Epic MegaGrants Recipient">
-                        <img src="/assets/images/epic-megagrants-recipient.svg" alt="Epic MegaGrants Recipient" style="height: 36px; width: auto;">
-                    </a>
+            <div class="max-w-4xl mx-auto text-center fade-in">
+                <div class="mb-6 md:mb-8">
+                    <img src="./assets/logo/logo-mark/blue.svg" alt="Tryll" class="w-20 h-20 md:w-30 md:h-30 mx-auto" style="width: 80px; height: 80px;" />
                 </div>
 
-                <!-- Right: Signal Widget -->
-                <div class="flex-1 min-w-0 w-full lg:max-w-md">
-                    <div class="rounded overflow-hidden border border-white/[0.06] bg-white/[0.02]" style="border-top:2px solid rgba(59,130,246,0.3);">
-                        <!-- Header -->
-                        <div class="px-5 py-3 border-b border-white/[0.06]">
-                            <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.08em;color:rgba(59,130,246,0.5);text-transform:uppercase;">// signal</span>
-                        </div>
-                        <!-- Key numbers -->
-                        <div class="px-6 py-6">
-                            <div class="space-y-6">
-                                <!-- Per copy cost -->
-                                <div>
-                                    <span style="font-family:'JetBrains Mono',monospace;font-size:2.2rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1;">~3¢</span>
-                                    <span style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:rgba(255,255,255,0.4);margin-left:12px;">per copy sold</span>
-                                </div>
-                                <!-- Servers -->
-                                <div>
-                                    <span style="font-family:'JetBrains Mono',monospace;font-size:2.2rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1;">0</span>
-                                    <span style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:rgba(255,255,255,0.4);margin-left:12px;">servers to run</span>
-                                </div>
-                                <!-- On player hardware -->
-                                <div>
-                                    <span style="font-family:'JetBrains Mono',monospace;font-size:2.2rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1;">100%</span>
-                                    <span style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:rgba(255,255,255,0.4);margin-left:12px;">on player hardware</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Team line -->
-                        <div class="px-6 py-4 border-t border-white/[0.06]" style="background:rgba(255,255,255,0.01);">
-                            <p style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.35);line-height:1.6;letter-spacing:0.02em;">
-                                Built by veterans of<br>game dev & applied AI.
-                            </p>
-                        </div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white/70 text-sm font-normal mb-6 border border-white/20">
+                    Not a single top-selling game uses AI at runtime. Yet.
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 heading-primary leading-tight text-white">
+                    The AI Platform<br class="hidden md:block"> for Games
+                </h1>
+
+                <p class="text-lg sm:text-xl md:text-2xl text-secondary mb-4 md:mb-6 max-w-3xl mx-auto body-large leading-relaxed px-2">
+                    DirectX gave every game 3D graphics. Tryll gives every game intelligence.
+                </p>
+
+                <p class="text-base sm:text-lg md:text-xl text-secondary mb-8 md:mb-12 max-w-3xl mx-auto body-large leading-relaxed px-2 opacity-80">
+                    Deploy AI models on players' graphics cards. Tokens become free, personal data stays on the device, everything works offline with zero lag.
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8 md:mb-12 px-4">
+                    <a href="tryll-assistant" class="inline-block px-6 md:px-8 py-3 md:py-4 rounded-lg bg-primary-500 text-white font-medium text-base md:text-lg transition-all duration-300 hover:bg-primary-600 w-full sm:w-auto text-center max-w-xs">
+                        <i class="fas fa-rocket mr-2"></i>
+                        Get the SDK
+                    </a>
+                    <a href="#how-it-works" class="inline-block px-6 md:px-8 py-3 md:py-4 rounded-lg bg-white/10 border border-white/20 text-white font-medium text-base md:text-lg transition-all duration-300 hover:bg-white/20 w-full sm:w-auto text-center max-w-xs">
+                        See How It Works
+                    </a>
+                </div>
+                
+                <!-- YouTube Video -->
+                <div class="mb-8 md:mb-12">
+                    <div id="hero-video" class="relative max-w-2xl mx-auto aspect-video rounded-xl overflow-hidden border border-white/20 bg-white/10 transition-all duration-700 ease-out">
+                        <iframe 
+                            id="youtube-player"
+                            class="w-full h-full"
+                            src="https://www.youtube.com/embed/poEFkKJ11Io?enablejsapi=1&controls=1&modestbranding=1&rel=0&autoplay=0&mute=1"
+                            title="Tryll Engine Demo"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4 md:gap-8 text-secondary text-sm md:text-base px-4">
+                    <div class="flex items-center justify-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-primary-500 flex-shrink-0"></div>
+                        <span>Free tokens</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-primary-500 flex-shrink-0"></div>
+                        <span>Data stays on device</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-primary-500 flex-shrink-0"></div>
+                        <span>Fully offline</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Architecture Flow Section -->
-    <section id="how-it-works" class="py-16 md:py-28 bg-black relative overflow-hidden">
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-12 md:py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-4 md:px-6">
-            <div class="max-w-4xl mx-auto text-center fade-in mb-12 md:mb-20">
-                <span class="terminal-label">HOW_IT_WORKS</span>
+            <div class="max-w-4xl mx-auto text-center fade-in mb-12 md:mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-sm font-normal mb-8 border border-white/20">
+                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
+                    HOW IT WORKS
+                </div>
+
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
-                    How It Works
+                    Ship AI Features in Minutes
                 </h2>
-                <p class="text-lg md:text-xl text-secondary leading-relaxed max-w-2xl mx-auto">
-                    Your game talks to a plugin. The plugin talks to a runtime. The runtime uses the player's GPU.
+
+                <p class="text-lg md:text-xl text-secondary leading-relaxed">
+                    Three steps from zero to intelligent gameplay.
                 </p>
             </div>
 
-            <div class="max-w-5xl mx-auto fade-in">
-                <!-- Main flow diagram -->
-                <div class="relative rounded overflow-hidden border border-white/[0.06] bg-white/[0.02]" style="border-top: 2px solid rgba(59,130,246,0.3);">
-                    <!-- Header bar -->
-                    <div class="flex items-center justify-between px-6 py-3 border-b border-white/[0.06]">
-                        <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.08em;color:rgba(255,255,255,0.45);text-transform:uppercase;">Data Flow</span>
-                        <div class="flex gap-3">
-                            <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.45);">&#9679; all on-device</span>
-                        </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto fade-in">
+                <!-- Step 1 -->
+                <div class="glass-card p-8 rounded-2xl text-center">
+                    <div class="w-16 h-16 rounded-full bg-primary-500/20 flex items-center justify-center text-2xl mb-6 mx-auto">
+                        <span class="text-primary-500 font-bold">1</span>
                     </div>
-
-                    <div class="p-8 md:p-12">
-                        <style>
-                            .arch-flow { display:flex; align-items:stretch; justify-content:center; gap:0; }
-                            .arch-node {
-                                font-family:'JetBrains Mono',monospace;
-                                padding:24px 20px; border:1px solid rgba(255,255,255,0.06); border-radius:4px;
-                                background:rgba(255,255,255,0.02); text-align:center;
-                                transition:all 0.6s ease-out; flex:1; min-width:0;
-                                display:flex; flex-direction:column; justify-content:center; align-items:center;
-                            }
-                            .arch-node.arch-active {
-                                border-color:rgba(59,130,246,0.4); background:rgba(59,130,246,0.06);
-                                box-shadow:0 0 30px rgba(59,130,246,0.08);
-                            }
-                            .arch-node-label { font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:10px; }
-                            .arch-node.arch-active .arch-node-label { color:rgba(59,130,246,0.6); }
-                            .arch-node-title { font-size:0.9rem; font-weight:600; color:rgba(255,255,255,0.6); letter-spacing:0.02em; margin-bottom:8px; }
-                            .arch-node.arch-active .arch-node-title { color:rgba(255,255,255,0.95); }
-                            .arch-node-desc { font-size:0.75rem; color:rgba(255,255,255,0.4); line-height:1.6; max-width:180px; }
-                            .arch-node.arch-active .arch-node-desc { color:rgba(255,255,255,0.6); }
-                            .arch-connector {
-                                display:flex; align-items:center; padding:0 8px; flex-shrink:0;
-                                position:relative;
-                            }
-                            .arch-connector-line {
-                                width:40px; height:2px; background:rgba(255,255,255,0.06);
-                                position:relative; overflow:hidden;
-                            }
-                            .arch-connector.arch-conn-active .arch-connector-line { background:rgba(59,130,246,0.15); }
-                            .arch-connector-pulse {
-                                position:absolute; top:0; left:-12px; width:12px; height:100%;
-                                background:rgba(59,130,246,0.6); border-radius:1px;
-                                opacity:0;
-                            }
-                            .arch-connector.arch-conn-active .arch-connector-pulse {
-                                animation:arch-pulse 1.5s ease-in-out infinite;
-                            }
-                            @keyframes arch-pulse {
-                                0% { left:-12px; opacity:0; }
-                                20% { opacity:1; }
-                                80% { opacity:1; }
-                                100% { left:100%; opacity:0; }
-                            }
-                            @media (max-width:768px) {
-                                .arch-flow { flex-direction:column; gap:0; align-items:center; }
-                                .arch-connector { padding:8px 0; transform:rotate(90deg); }
-                                .arch-node { width:100%; max-width:280px; }
-                            }
-                        </style>
-
-                        <div class="arch-flow" id="arch-flow-main">
-                            <div class="arch-node" data-node="0">
-                                <div class="arch-node-label">Your Game</div>
-                                <div class="arch-node-title">Unreal / Unity</div>
-                                <div class="arch-node-desc">Your engine with the Tryll plugin installed</div>
-                            </div>
-                            <div class="arch-connector" data-conn="0">
-                                <div class="arch-connector-line">
-                                    <div class="arch-connector-pulse"></div>
-                                </div>
-                            </div>
-                            <div class="arch-node" data-node="1">
-                                <div class="arch-node-label">Integration</div>
-                                <div class="arch-node-title">Tryll Plugin</div>
-                                <div class="arch-node-desc">Simple API — prompts, agents, tools, actions</div>
-                            </div>
-                            <div class="arch-connector" data-conn="1">
-                                <div class="arch-connector-line">
-                                    <div class="arch-connector-pulse"></div>
-                                </div>
-                            </div>
-                            <div class="arch-node" data-node="2">
-                                <div class="arch-node-label">Player Device</div>
-                                <div class="arch-node-title">Tryll Runtime</div>
-                                <div class="arch-node-desc">Runs on player GPU — NVIDIA, AMD, Intel auto-detected</div>
-                            </div>
-                        </div>
-
-                        <!-- Data flow progress bar -->
-                        <div class="mt-10 relative" style="height:3px;background:rgba(255,255,255,0.03);border-radius:2px;overflow:hidden;">
-                            <div id="arch-progress" style="position:absolute;top:0;left:0;width:80px;height:100%;background:linear-gradient(90deg,transparent,rgba(59,130,246,0.5),transparent);border-radius:2px;animation:arch-sweep 4s ease-in-out infinite;"></div>
-                        </div>
-                        <style>
-                            @keyframes arch-sweep { 0%{left:-80px;} 100%{left:100%;} }
-                        </style>
-                    </div>
-
-                    <!-- Bottom stats bar -->
-                    <div class="border-t border-white/[0.06] px-6 md:px-8 py-4 flex flex-wrap justify-center gap-6 md:gap-10">
-                        <div class="text-center">
-                            <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Latency</div>
-                            <div style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:rgba(255,255,255,0.7);">&lt;50ms</div>
-                        </div>
-                        <div class="text-center">
-                            <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Cloud Cost</div>
-                            <div style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:rgba(255,255,255,0.7);">$0</div>
-                        </div>
-                        <div class="text-center">
-                            <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Data Sent</div>
-                            <div style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:rgba(255,255,255,0.7);">None</div>
-                        </div>
-                        <div class="text-center">
-                            <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Offline</div>
-                            <div style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:rgba(255,255,255,0.7);">Yes</div>
-                        </div>
-                    </div>
-                </div>
-
-                <script>
-                (function() {
-                    const nodes = document.querySelectorAll('[data-node]');
-                    const conns = document.querySelectorAll('[data-conn]');
-                    let step = -1;
-
-                    function animate() {
-                        step = (step + 1) % (nodes.length + 1);
-                        nodes.forEach((n, i) => {
-                            n.classList.toggle('arch-active', i <= step);
-                        });
-                        conns.forEach((c, i) => {
-                            c.classList.toggle('arch-conn-active', i < step);
-                        });
-                    }
-
-                    // Start animation sequence
-                    setTimeout(() => {
-                        animate();
-                        setInterval(animate, 1600);
-                    }, 600);
-
-                    // Reset after full cycle
-                    setInterval(() => {
-                        step = -1;
-                        nodes.forEach(n => n.classList.remove('arch-active'));
-                        conns.forEach(c => c.classList.remove('arch-conn-active'));
-                        setTimeout(animate, 400);
-                    }, 9000);
-                })();
-                </script>
-            </div>
-        </div>
-    </section>
-
-    <!-- Capabilities + Code Demo Section -->
-    <section class="py-12 md:py-20 bg-black relative overflow-hidden">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="max-w-5xl mx-auto fade-in">
-                <div class="text-center mb-8 md:mb-12">
-                    <span class="terminal-label">INTEGRATION</span>
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
-                        A Few Lines of Code
-                    </h2>
-                    <p class="text-lg md:text-xl text-secondary leading-relaxed max-w-2xl mx-auto">
-                        Add AI capabilities to Unreal or Unity. Pick a service, pick your engine.
+                    <h3 class="text-xl font-bold text-white mb-4">Install the SDK</h3>
+                    <p class="text-secondary leading-relaxed">
+                        Add Tryll to your Unreal, Unity, or custom engine project. One package, one initialization call.
                     </p>
                 </div>
 
-                <div class="relative rounded overflow-hidden border border-white/[0.06] bg-white/[0.02]" style="border-top: 2px solid rgba(59,130,246,0.3);">
-                    <div class="flex flex-col md:flex-row">
-                        <!-- Services sidebar -->
-                        <div class="md:w-48 flex-shrink-0 border-b md:border-b-0 md:border-r border-white/[0.06] p-4 md:p-5">
-                            <div class="text-white/45 mb-3" style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;">Capabilities</div>
-                            <div class="flex md:flex-col gap-2">
-                                <button class="svc-tab svc-active text-left w-full px-3 py-2 rounded transition-all" data-svc="llm" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;">
-                                    <span class="svc-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:rgba(59,130,246,0.6);margin-right:8px;vertical-align:middle;"></span>LLM
-                                </button>
-                                <button class="svc-tab text-left w-full px-3 py-2 rounded transition-all" data-svc="stt" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;">
-                                    <span class="svc-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);margin-right:8px;vertical-align:middle;"></span>STT
-                                </button>
-                                <button class="svc-tab text-left w-full px-3 py-2 rounded transition-all" data-svc="tts" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;">
-                                    <span class="svc-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);margin-right:8px;vertical-align:middle;"></span>TTS
-                                </button>
-                                <button class="svc-tab text-left w-full px-3 py-2 rounded transition-all" data-svc="vlm" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;">
-                                    <span class="svc-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);margin-right:8px;vertical-align:middle;"></span>VLM
-                                </button>
-                            </div>
-                        </div>
-                        <!-- Code area -->
-                        <div class="flex-1 min-w-0">
-                            <!-- Engine tabs -->
-                            <div class="flex border-b border-white/[0.06]">
-                                <button class="eng-tab eng-active px-4 py-2.5 transition-all" data-eng="unreal" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;letter-spacing:0.04em;">Unreal Engine</button>
-                                <button class="eng-tab px-4 py-2.5 transition-all" data-eng="unity" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;letter-spacing:0.04em;">Unity</button>
-                                <button class="eng-tab px-4 py-2.5 transition-all" data-eng="cpp" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;letter-spacing:0.04em;">C++</button>
-                            </div>
-                            <!-- Code block with fixed height to prevent flicker -->
-                            <div class="p-5 md:p-6 overflow-x-auto" style="min-height:280px;">
-                                <pre id="code-block" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;line-height:1.8;color:rgba(255,255,255,0.75);margin:0;white-space:pre;"></pre>
-                            </div>
-                            <!-- Response preview -->
-                            <div class="border-t border-white/[0.06] px-5 md:px-6 py-3">
-                                <div class="flex items-center gap-2">
-                                    <div style="width:5px;height:5px;border-radius:50%;background:rgba(59,130,246,0.6);"></div>
-                                    <span id="response-text" style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.5);"></span>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Step 2 -->
+                <div class="glass-card p-8 rounded-2xl text-center">
+                    <div class="w-16 h-16 rounded-full bg-primary-500/20 flex items-center justify-center text-2xl mb-6 mx-auto">
+                        <span class="text-primary-500 font-bold">2</span>
                     </div>
-                    <style>
-                        .svc-tab { color:rgba(255,255,255,0.5); background:transparent; border:none; cursor:pointer; }
-                        .svc-tab:hover { color:rgba(255,255,255,0.65); background:rgba(255,255,255,0.03); }
-                        .svc-tab.svc-active { color:rgba(255,255,255,0.9); background:rgba(59,130,246,0.08); }
-                        .svc-tab.svc-active .svc-dot { background:rgba(59,130,246,0.6) !important; }
-                        .eng-tab { color:rgba(255,255,255,0.45); background:transparent; border:none; border-bottom:2px solid transparent; cursor:pointer; }
-                        .eng-tab:hover { color:rgba(255,255,255,0.65); }
-                        .eng-tab.eng-active { color:rgba(255,255,255,0.9); border-bottom-color:rgba(59,130,246,0.5); }
-                    </style>
-                    <script>
-                    (function() {
-                        const codeSnippets = {
-                            llm: {
-                                unreal: `<span style="color:rgba(59,130,246,0.6)">// Create an NPC dialogue agent</span>\nUTryllAgent* Agent = UTryllSubsystem::CreateAgent(\n    TEXT(<span style="color:rgba(74,222,128,0.7)">"NPC_Blacksmith"</span>),\n    TEXT(<span style="color:rgba(74,222,128,0.7)">"You are a grumpy blacksmith."</span>)\n);\n\nAgent->Chat(TEXT(<span style="color:rgba(74,222,128,0.7)">"What can you forge?"</span>),\n    FOnResponse::CreateLambda([](const FString& Reply) {\n        <span style="color:rgba(59,130,246,0.6)">// Reply streamed from player's GPU</span>\n    })\n);`,
-                                unity: `<span style="color:rgba(59,130,246,0.6)">// Create an NPC dialogue agent</span>\nvar agent = TryllManager.CreateAgent(\n    <span style="color:rgba(74,222,128,0.7)">"NPC_Blacksmith"</span>,\n    <span style="color:rgba(74,222,128,0.7)">"You are a grumpy blacksmith."</span>\n);\n\nawait agent.ChatAsync(\n    <span style="color:rgba(74,222,128,0.7)">"What can you forge?"</span>,\n    onToken: (reply) => {\n        <span style="color:rgba(59,130,246,0.6)">// Reply streamed from player's GPU</span>\n    }\n);`,
-                                cpp: `<span style="color:rgba(59,130,246,0.6)">// Create an NPC dialogue agent</span>\nauto agent = tryll::create_agent(\n    <span style="color:rgba(74,222,128,0.7)">"NPC_Blacksmith"</span>,\n    <span style="color:rgba(74,222,128,0.7)">"You are a grumpy blacksmith."</span>\n);\n\nagent.chat(<span style="color:rgba(74,222,128,0.7)">"What can you forge?"</span>,\n    [](std::string_view reply) {\n        <span style="color:rgba(59,130,246,0.6)">// Reply streamed from player's GPU</span>\n    }\n);`
-                            },
-                            stt: {
-                                unreal: `<span style="color:rgba(59,130,246,0.6)">// Voice input — speech to text</span>\nUTryllSTT* STT = UTryllSubsystem::GetSTT();\n\nSTT->StartListening(\n    FOnTranscript::CreateLambda(\n        [](const FString& Text, bool bFinal) {\n            <span style="color:rgba(59,130,246,0.6)">// Real-time transcription on device</span>\n        }\n    )\n);`,
-                                unity: `<span style="color:rgba(59,130,246,0.6)">// Voice input — speech to text</span>\nvar stt = TryllManager.GetSTT();\n\nstt.StartListening(\n    onTranscript: (text, isFinal) => {\n        <span style="color:rgba(59,130,246,0.6)">// Real-time transcription on device</span>\n    }\n);`,
-                                cpp: `<span style="color:rgba(59,130,246,0.6)">// Voice input — speech to text</span>\nauto stt = tryll::get_stt();\n\nstt.start_listening(\n    [](std::string_view text, bool is_final) {\n        <span style="color:rgba(59,130,246,0.6)">// Real-time transcription on device</span>\n    }\n);`
-                            },
-                            tts: {
-                                unreal: `<span style="color:rgba(59,130,246,0.6)">// Text to speech — NPC voices</span>\nUTryllTTS* TTS = UTryllSubsystem::GetTTS();\n\nTTS->Speak(\n    TEXT(<span style="color:rgba(74,222,128,0.7)">"I can forge anything, if you bring the ore."</span>),\n    TEXT(<span style="color:rgba(74,222,128,0.7)">"gruff_male"</span>),\n    FOnAudio::CreateLambda([](USoundWave* Audio) {\n        <span style="color:rgba(59,130,246,0.6)">// Play generated audio</span>\n    })\n);`,
-                                unity: `<span style="color:rgba(59,130,246,0.6)">// Text to speech — NPC voices</span>\nvar tts = TryllManager.GetTTS();\n\nawait tts.SpeakAsync(\n    <span style="color:rgba(74,222,128,0.7)">"I can forge anything, if you bring the ore."</span>,\n    voice: <span style="color:rgba(74,222,128,0.7)">"gruff_male"</span>,\n    onAudio: (clip) => {\n        <span style="color:rgba(59,130,246,0.6)">// Play generated audio</span>\n    }\n);`,
-                                cpp: `<span style="color:rgba(59,130,246,0.6)">// Text to speech — NPC voices</span>\nauto tts = tryll::get_tts();\n\ntts.speak(\n    <span style="color:rgba(74,222,128,0.7)">"I can forge anything, if you bring the ore."</span>,\n    <span style="color:rgba(74,222,128,0.7)">"gruff_male"</span>,\n    [](audio_buffer buf) {\n        <span style="color:rgba(59,130,246,0.6)">// Play generated audio</span>\n    }\n);`
-                            },
-                            vlm: {
-                                unreal: `<span style="color:rgba(59,130,246,0.6)">// Vision — analyze game screenshots</span>\nUTryllVLM* VLM = UTryllSubsystem::GetVLM();\n\nVLM->Analyze(\n    ScreenshotTexture,\n    TEXT(<span style="color:rgba(74,222,128,0.7)">"Describe what the player sees."</span>),\n    FOnAnalysis::CreateLambda(\n        [](const FString& Description) {\n            <span style="color:rgba(59,130,246,0.6)">// Vision model output</span>\n        }\n    )\n);`,
-                                unity: `<span style="color:rgba(59,130,246,0.6)">// Vision — analyze game screenshots</span>\nvar vlm = TryllManager.GetVLM();\n\nawait vlm.AnalyzeAsync(\n    screenshotTexture,\n    <span style="color:rgba(74,222,128,0.7)">"Describe what the player sees."</span>,\n    onResult: (desc) => {\n        <span style="color:rgba(59,130,246,0.6)">// Vision model output</span>\n    }\n);`,
-                                cpp: `<span style="color:rgba(59,130,246,0.6)">// Vision — analyze game screenshots</span>\nauto vlm = tryll::get_vlm();\n\nvlm.analyze(\n    screenshot_data,\n    <span style="color:rgba(74,222,128,0.7)">"Describe what the player sees."</span>,\n    [](std::string_view description) {\n        <span style="color:rgba(59,130,246,0.6)">// Vision model output</span>\n    }\n);`
-                            }
-                        };
-
-                        const responses = {
-                            llm: 'inference ready — 7B model loaded, 42 tok/s',
-                            stt: 'whisper-medium loaded — real-time transcription active',
-                            tts: 'voice synth ready — 3 voices available',
-                            vlm: 'vision model loaded — screenshot analysis enabled'
-                        };
-
-                        let currentSvc = 'llm';
-                        let currentEng = 'unreal';
-                        const codeBlock = document.getElementById('code-block');
-                        const responseText = document.getElementById('response-text');
-
-                        function updateCode() {
-                            codeBlock.innerHTML = codeSnippets[currentSvc][currentEng];
-                            responseText.textContent = responses[currentSvc];
-                        }
-
-                        document.querySelectorAll('.svc-tab').forEach(btn => {
-                            btn.addEventListener('click', () => {
-                                document.querySelectorAll('.svc-tab').forEach(b => {
-                                    b.classList.remove('svc-active');
-                                    b.querySelector('.svc-dot').style.background = 'rgba(255,255,255,0.15)';
-                                });
-                                btn.classList.add('svc-active');
-                                btn.querySelector('.svc-dot').style.background = 'rgba(59,130,246,0.6)';
-                                currentSvc = btn.dataset.svc;
-                                updateCode();
-                            });
-                        });
-
-                        document.querySelectorAll('.eng-tab').forEach(btn => {
-                            btn.addEventListener('click', () => {
-                                document.querySelectorAll('.eng-tab').forEach(b => b.classList.remove('eng-active'));
-                                btn.classList.add('eng-active');
-                                currentEng = btn.dataset.eng;
-                                updateCode();
-                            });
-                        });
-
-                        updateCode();
-                    })();
-                    </script>
+                    <h3 class="text-xl font-bold text-white mb-4">Call the API</h3>
+                    <p class="text-secondary leading-relaxed">
+                        Use our high-level API for conversations, knowledge queries, agent actions, and world generation. Tryll handles model selection, hardware optimization, and inference.
+                    </p>
                 </div>
+
+                <!-- Step 3 -->
+                <div class="glass-card p-8 rounded-2xl text-center">
+                    <div class="w-16 h-16 rounded-full bg-primary-500/20 flex items-center justify-center text-2xl mb-6 mx-auto">
+                        <span class="text-primary-500 font-bold">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Ship It</h3>
+                    <p class="text-secondary leading-relaxed">
+                        Players download Tryll automatically. The platform detects their hardware, selects the optimal model, and runs inference locally. Zero cloud, zero per-player cost.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 fade-in">
+                <p class="text-secondary mb-6">Want deeper integration? Explore <span class="text-white font-medium">Companion</span> for real-time game state, or <span class="text-white font-medium">Engine Integration</span> for full AI control.</p>
+                <a href="#pricing" class="text-primary-500 hover:text-primary-400 font-medium inline-flex items-center gap-2 transition-colors">
+                    See Pricing
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
+
 
     <!-- The Developer Problem -->
     <section class="py-12 md:py-24 bg-black relative overflow-hidden fade-in">
         <div class="max-w-7xl mx-auto px-4 md:px-6">
             <div class="text-center mb-12 md:mb-20">
-                <span class="terminal-label">THE_PLATFORM</span>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-sm font-normal mb-8 border border-white/20">
+                    <div class="w-2 h-2 rounded-full bg-blue-500"></div>
+                    THE PLATFORM
+                </div>
                 <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 heading-primary">
                     Why Studios Don't Have AI Yet
                 </h2>
@@ -1467,46 +1261,46 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 transition-all hover:border-white/20 flex flex-col">
-                    <div class="mb-6">
-                        <i class="fas fa-dollar-sign text-red-400 text-xl"></i>
+                <div class="glass-card rounded-2xl p-8 transition-all hover:border-white/20 flex flex-col">
+                    <div class="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-xl mb-6">
+                        <i class="fas fa-dollar-sign text-red-400"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-white">Cloud Is Too Expensive</h3>
-                    <p class="text-secondary mb-4">
+                    <p class="text-secondary mb-4 flex-grow">
                         Cloud AI charges per token. At scale, a single game can rack up millions in API costs per month. Success becomes unsustainable.
                     </p>
-                    <div class="mt-auto pt-4">
-                        <p class="text-sm font-medium" style="color:rgba(59,130,246,0.7);">
+                    <div class="pt-4 border-t border-white/10">
+                        <p class="text-green-400 text-sm font-medium">
                             <i class="fas fa-check mr-2"></i>With Tryll, tokens are free. Runs on player GPUs.
                         </p>
                     </div>
                 </div>
 
-                <div class="glass-card p-8 transition-all hover:border-white/20 flex flex-col">
-                    <div class="mb-6">
-                        <i class="fas fa-shield-alt text-red-400 text-xl"></i>
+                <div class="glass-card rounded-2xl p-8 transition-all hover:border-white/20 flex flex-col">
+                    <div class="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-xl mb-6">
+                        <i class="fas fa-shield-alt text-red-400"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-white">Data Processing Is Hell</h3>
-                    <p class="text-secondary mb-4">
+                    <p class="text-secondary mb-4 flex-grow">
                         GDPR, the AI Act, export laws — sending player conversations to third-party servers creates a legal and compliance nightmare most studios won't touch.
                     </p>
-                    <div class="mt-auto pt-4">
-                        <p class="text-sm font-medium" style="color:rgba(59,130,246,0.7);">
+                    <div class="pt-4 border-t border-white/10">
+                        <p class="text-green-400 text-sm font-medium">
                             <i class="fas fa-check mr-2"></i>With Tryll, personal data never leaves the device.
                         </p>
                     </div>
                 </div>
 
-                <div class="glass-card p-8 transition-all hover:border-white/20 flex flex-col">
-                    <div class="mb-6">
-                        <i class="fas fa-unlink text-red-400 text-xl"></i>
+                <div class="glass-card rounded-2xl p-8 transition-all hover:border-white/20 flex flex-col">
+                    <div class="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center text-xl mb-6">
+                        <i class="fas fa-unlink text-red-400"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-white">No One Wants Third-Party Dependency</h3>
-                    <p class="text-secondary mb-4">
+                    <p class="text-secondary mb-4 flex-grow">
                         If the API goes down, your game breaks. If pricing changes, your margins vanish. Studios won't bet their product on someone else's uptime.
                     </p>
-                    <div class="mt-auto pt-4">
-                        <p class="text-sm font-medium" style="color:rgba(59,130,246,0.7);">
+                    <div class="pt-4 border-t border-white/10">
+                        <p class="text-green-400 text-sm font-medium">
                             <i class="fas fa-check mr-2"></i>With Tryll, everything works fully offline.
                         </p>
                     </div>
@@ -1530,7 +1324,7 @@
             <!-- Mobile: Video at top, features below -->
             <div class="md:hidden">
                 <div class="mb-4">
-                    <div id="feature-video-mobile" class="relative aspect-video rounded overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-400 ease-out">
+                    <div id="feature-video-mobile" class="relative aspect-video rounded-xl overflow-hidden border border-white/20 bg-white/10 transition-all duration-500 ease-out">
                         <iframe 
                             class="absolute inset-0 w-full h-full"
                             src="https://www.youtube.com/embed/znbZX02L5rQ?enablejsapi=1&controls=1&modestbranding=1&rel=0&autoplay=0&mute=1"
@@ -1545,25 +1339,25 @@
                 <!-- Mobile Features (Horizontal Scroll) -->
                 <div class="overflow-x-auto overflow-y-visible scrollbar-hide feature-scroll-container">
                     <div class="flex gap-4 px-4 pb-4 py-2" style="width: max-content;">
-                        <div class="feature-item-mobile cursor-pointer p-4 rounded bg-white/[0.03] border border-white/10 hover:bg-white/[0.06] transition-all flex-shrink-0 active" style="width: 280px;" data-feature="tutorials">
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0 active" style="width: 280px;" data-feature="tutorials">
                         <h3 class="text-lg font-semibold text-white mb-2">Knowledge Systems</h3>
                         <p class="text-secondary text-sm leading-relaxed">
                             Connect your game's documentation and lore to an AI that answers player questions in real-time. Reduces support load, eliminates alt-tabbing.
                         </p>
                     </div>
-                        <div class="feature-item-mobile cursor-pointer p-4 rounded bg-white/[0.03] border border-white/10 hover:bg-white/[0.06] transition-all flex-shrink-0" style="width: 280px;" data-feature="companions">
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="companions">
                         <h3 class="text-lg font-semibold text-white mb-2">Persistent Memory & Relationships</h3>
                         <p class="text-secondary text-sm leading-relaxed">
                             NPCs that remember conversations, form opinions, and evolve over time. Build deep companion systems without thousands of dialogue branches.
                         </p>
                     </div>
-                        <div class="feature-item-mobile cursor-pointer p-4 rounded bg-white/[0.03] border border-white/10 hover:bg-white/[0.06] transition-all flex-shrink-0" style="width: 280px;" data-feature="agents">
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="agents">
                         <h3 class="text-lg font-semibold text-white mb-2">Agent Actions</h3>
                         <p class="text-secondary text-sm leading-relaxed">
                             Let AI trigger game mechanics — spawn enemies, modify environments, distribute rewards. Ship dynamic gameplay through API calls, not hardcoded logic.
                         </p>
                     </div>
-                        <div class="feature-item-mobile cursor-pointer p-4 rounded bg-white/[0.03] border border-white/10 hover:bg-white/[0.06] transition-all flex-shrink-0" style="width: 280px;" data-feature="creativity">
+                        <div class="feature-item-mobile cursor-pointer p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/10 transition-all flex-shrink-0" style="width: 280px;" data-feature="creativity">
                         <h3 class="text-lg font-semibold text-white mb-2">Runtime Content Generation</h3>
                         <p class="text-secondary text-sm leading-relaxed">
                             Generate quests, lore, and world events based on player context. Infinite content without static databases.
@@ -1585,7 +1379,7 @@
                 <!-- Left: Features List -->
                 <div class="relative">
                     <div class="space-y-4" id="features-list">
-                        <div class="feature-item-left cursor-pointer p-6 rounded hover:bg-white/[0.04] active" data-feature="tutorials">
+                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/10 active" data-feature="tutorials">
                             <div>
                                 <h3 class="text-xl font-semibold text-white mb-2">Knowledge Systems</h3>
                                 <p class="text-secondary text-sm leading-relaxed">
@@ -1594,7 +1388,7 @@
                             </div>
                         </div>
                         
-                        <div class="feature-item-left cursor-pointer p-6 rounded hover:bg-white/[0.04]" data-feature="companions">
+                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/10" data-feature="companions">
                             <div>
                                 <h3 class="text-xl font-semibold text-white mb-2">Persistent Memory & Relationships</h3>
                                 <p class="text-secondary text-sm leading-relaxed">
@@ -1603,7 +1397,7 @@
                             </div>
                         </div>
                         
-                        <div class="feature-item-left cursor-pointer p-6 rounded hover:bg-white/[0.04]" data-feature="agents">
+                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/10" data-feature="agents">
                             <div>
                                 <h3 class="text-xl font-semibold text-white mb-2">Agent Actions</h3>
                                 <p class="text-secondary text-sm leading-relaxed">
@@ -1612,7 +1406,7 @@
                             </div>
                         </div>
                         
-                        <div class="feature-item-left cursor-pointer p-6 rounded hover:bg-white/[0.04]" data-feature="creativity">
+                        <div class="feature-item-left cursor-pointer p-6 rounded-xl hover:bg-white/10" data-feature="creativity">
                             <div>
                                 <h3 class="text-xl font-semibold text-white mb-2">Runtime Content Generation</h3>
                                 <p class="text-secondary text-sm leading-relaxed">
@@ -1626,7 +1420,7 @@
                 <!-- Right: Video Container -->
                 <div class="relative" id="features-right-container">
                     <div class="sticky top-24" id="video-sticky-container">
-                        <div id="feature-video-desktop" class="relative aspect-video rounded overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-400 ease-out transform">
+                        <div id="feature-video-desktop" class="relative aspect-video rounded-xl overflow-hidden border border-white/20 bg-white/10 transition-all duration-500 ease-out transform">
                             <iframe 
                                 class="absolute inset-0 w-full h-full"
                                 src="https://www.youtube.com/embed/znbZX02L5rQ?enablejsapi=1&controls=1&modestbranding=1&rel=0&autoplay=0&mute=1"
@@ -1661,7 +1455,7 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch text-center fade-in">
-                <div class="glass-card p-8 rounded transition-all duration-300 hover:border-white/20">
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20">
                     <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
                         <i class="fas fa-plug text-white"></i>
                     </div>
@@ -1682,7 +1476,7 @@
                     </ul>
                 </div>
 
-                <div class="glass-card p-8 rounded transition-all duration-300 hover:border-white/20">
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20">
                     <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
                         <i class="fas fa-robot text-white"></i>
                     </div>
@@ -1699,7 +1493,7 @@
                     </ul>
                 </div>
 
-                <div class="glass-card p-8 rounded transition-all duration-300 hover:border-white/20">
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20">
                     <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
                         <i class="fas fa-microchip text-white"></i>
                     </div>
@@ -1743,8 +1537,8 @@
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded transition-all duration-300 hover:border-white/20 fade-in">
-                    <div class="w-16 h-16 rounded gradient-bg flex items-center justify-center text-2xl mb-6">
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6">
                         <i class="fas fa-dollar-sign text-white"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4 heading-tertiary">Local AI, Low Cost</h3>
@@ -1755,8 +1549,8 @@
                     </p>
                 </div>
                 
-                <div class="glass-card p-8 rounded transition-all duration-300 hover:border-white/20 fade-in">
-                    <div class="w-16 h-16 rounded gradient-bg flex items-center justify-center text-2xl mb-6">
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6">
                         <i class="fas fa-brain text-white"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4 heading-tertiary">Intelligent NPCs</h3>
@@ -1767,8 +1561,8 @@
                     </p>
                 </div>
                 
-                <div class="glass-card p-8 rounded transition-all duration-300 hover:border-white/20 fade-in">
-                    <div class="w-16 h-16 rounded gradient-bg flex items-center justify-center text-2xl mb-6">
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6">
                         <i class="fas fa-rocket text-white"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4 heading-tertiary">High Quality at Scale</h3>
@@ -1805,17 +1599,17 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded text-center fade-in transition-all duration-300 hover:border-white/20">
+                <div class="glass-card p-8 rounded-2xl text-center fade-in transition-all duration-300 hover:border-white/20">
                     <div class="text-5xl font-bold text-red-400 mb-6">$1.8M</div>
                     <p class="text-secondary">Monthly cost for 10k concurrent users if using cloud APIs.</p>
                 </div>
 
-                <div class="glass-card p-8 rounded text-center fade-in transition-all duration-300 hover:border-white/20">
+                <div class="glass-card p-8 rounded-2xl text-center fade-in transition-all duration-300 hover:border-white/20">
                     <div class="text-5xl font-bold text-yellow-400 mb-6">150+</div>
                     <p class="text-secondary">Steam games hit 10k concurrent players <strong class="text-white">every day</strong>. Are you ready for that scale?</p>
                 </div>
 
-                <div class="glass-card p-8 rounded text-center fade-in transition-all duration-300 hover:border-white/20">
+                <div class="glass-card p-8 rounded-2xl text-center fade-in transition-all duration-300 hover:border-white/20">
                     <div class="text-5xl font-bold text-green-400 mb-6">$0</div>
                     <p class="text-secondary">Tryll runs <strong class="text-white">fully local</strong>. No data protection headaches. No outages. No cloud bills.</p>
                 </div>
@@ -1830,7 +1624,7 @@
     <!--
     <section class="py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto glass-card p-12 rounded text-center fade-in">
+            <div class="max-w-4xl mx-auto glass-card p-12 rounded-3xl text-center fade-in">
                 <div class="text-5xl mb-6 text-primary-500">
                     <i class="fas fa-quote-left"></i>
                 </div>
@@ -1851,7 +1645,10 @@
     <section id="pricing" class="py-12 md:py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-4 md:px-6">
             <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16 fade-in">
-                <span class="terminal-label">PRICING</span>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-sm font-normal mb-8 border border-white/20">
+                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
+                    PRICING
+                </div>
                 <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
                     Pricing That Scales With Your Game
                 </h2>
@@ -1860,143 +1657,211 @@
                 </p>
             </div>
 
-            <!-- Tryll Engine — Flat Pricing -->
-            <div class="max-w-2xl mx-auto mb-16 fade-in">
-                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-8 md:gap-12">
-                    <!-- Left: price + CTA -->
-                    <div class="flex-shrink-0">
-                        <h3 class="text-2xl font-bold text-white mb-1">Tryll Engine</h3>
-                        <p style="font-size:0.85rem;color:rgba(255,255,255,0.45);margin-bottom:20px;">On-device AI for your game</p>
-                        <div class="flex items-baseline gap-2 mb-1">
-                            <span style="font-family:'JetBrains Mono',monospace;font-size:2.5rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1;">~3¢</span>
-                            <span style="font-size:0.95rem;color:rgba(255,255,255,0.5);">per copy sold</span>
-                        </div>
-                        <p style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.35);margin-bottom:24px;">at $15 game price — scales with price</p>
-                        <a href="#contact" class="btn-primary inline-block text-center py-3 px-8 rounded font-semibold transition-all duration-200">
-                            Book a Demo
-                        </a>
-                    </div>
-                    <!-- Right: features -->
-                    <ul class="space-y-3 text-secondary" style="font-size:0.95rem;">
-                        <li class="flex items-start gap-3">
-                            <span style="color:rgba(59,130,246,0.6);" class="mt-0.5">✓</span>
-                            <span>Unreal & Unity plugins</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span style="color:rgba(59,130,246,0.6);" class="mt-0.5">✓</span>
-                            <span>Game state awareness & context-aware AI</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span style="color:rgba(59,130,246,0.6);" class="mt-0.5">✓</span>
-                            <span>Custom AI characters & companions</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span style="color:rgba(59,130,246,0.6);" class="mt-0.5">✓</span>
-                            <span>Voice integration (TTS/STT)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span style="color:rgba(59,130,246,0.6);" class="mt-0.5">✓</span>
-                            <span>AI agents that act in your game world</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span style="color:rgba(59,130,246,0.6);" class="mt-0.5">✓</span>
-                            <span>Dynamic content generation</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <!-- Pricing Cards Grid -->
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-16">
 
-            <!-- Price Calculator — Terminal Style -->
-            <style>
-                .calc-stepper { display:inline-flex; align-items:center; gap:0; border:1px solid rgba(255,255,255,0.1); border-radius:4px; overflow:hidden; }
-                .calc-stepper-btn {
-                    display:flex; align-items:center; justify-content:center;
-                    width:32px; height:32px; border:none; background:rgba(255,255,255,0.03);
-                    color:rgba(255,255,255,0.45); cursor:pointer; transition:all 0.15s;
-                    -webkit-user-select:none; user-select:none;
-                }
-                .calc-stepper-btn:hover { background:rgba(59,130,246,0.1); color:rgba(255,255,255,0.7); }
-                .calc-stepper-btn:active { background:rgba(59,130,246,0.18); color:rgba(255,255,255,0.85); }
-                .calc-stepper-btn svg { width:12px; height:12px; }
-                .calc-stepper-val {
-                    font-family:'JetBrains Mono',monospace; font-size:0.85rem;
-                    color:rgba(255,255,255,0.85); padding:0 14px; min-width:60px; text-align:center;
-                    border-left:1px solid rgba(255,255,255,0.06); border-right:1px solid rgba(255,255,255,0.06);
-                    height:32px; display:flex; align-items:center; justify-content:center;
-                }
-            </style>
-            <div class="max-w-2xl mx-auto fade-in">
-                <div class="rounded overflow-hidden border border-white/[0.06] bg-white/[0.02]" style="border-top:2px solid rgba(59,130,246,0.3);">
-                    <!-- Terminal header -->
-                    <div class="flex items-center justify-between px-5 py-3 border-b border-white/[0.06]">
-                        <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.08em;color:rgba(59,130,246,0.5);text-transform:uppercase;">// calculator</span>
-                        <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.4);">no upfront cost</span>
+                <!-- Community Tier Card -->
+                <div class="glass-card rounded-2xl p-8 fade-in hover:border-primary-500/40 transition-all duration-300 flex flex-col">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Community</h3>
+                        <p class="text-secondary text-sm">AI overlay — no integration needed</p>
                     </div>
 
-                    <div class="px-5 py-5" style="font-family:'JetBrains Mono',monospace;">
-                        <!-- Game Price row -->
-                        <div class="flex items-center justify-between mb-4">
-                            <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);letter-spacing:0.06em;text-transform:uppercase;">Game price</span>
-                            <div class="calc-stepper">
-                                <button class="calc-stepper-btn" id="price-down" aria-label="Decrease price">
-                                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5L6 8L9.5 4.5"/></svg>
-                                </button>
-                                <div class="calc-stepper-val" id="price-display">$10</div>
-                                <button class="calc-stepper-btn" id="price-up" aria-label="Increase price">
-                                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8L6 4.5L9.5 8"/></svg>
-                                </button>
-                            </div>
+                    <div class="mb-8 flex-grow">
+                        <div class="flex items-baseline gap-2 mb-2">
+                            <span class="text-5xl font-bold text-white" style="font-family: 'JetBrains Mono', monospace;">$0</span>
                         </div>
-
-                        <!-- Copies Sold row -->
-                        <div class="flex items-center justify-between mb-5 pb-5 border-b border-white/[0.04]">
-                            <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);letter-spacing:0.06em;text-transform:uppercase;">Copies sold</span>
-                            <div class="calc-stepper">
-                                <button class="calc-stepper-btn" id="copies-down" aria-label="Decrease copies">
-                                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5L6 8L9.5 4.5"/></svg>
-                                </button>
-                                <div class="calc-stepper-val" id="copies-display" style="min-width:90px;">100,000</div>
-                                <button class="calc-stepper-btn" id="copies-up" aria-label="Increase copies">
-                                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8L6 4.5L9.5 8"/></svg>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Output: big centered fee -->
-                        <div class="text-center py-4">
-                            <div id="per-copy-fee" style="font-size:2.2rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1;">$0.02</div>
-                            <div style="font-size:0.8rem;color:rgba(255,255,255,0.45);letter-spacing:0.06em;text-transform:uppercase;margin-top:6px;">per copy sold</div>
-                        </div>
-
-                        <!-- Example -->
-                        <div class="pt-4 border-t border-white/[0.06]">
-                            <div class="flex justify-between items-baseline" style="font-size:0.95rem;">
-                                <div>
-                                    <span style="color:rgba(255,255,255,0.5);">revenue</span>
-                                    <span style="color:rgba(255,255,255,0.8);font-weight:600;margin-left:8px;" id="example-revenue">$1,000,000</span>
-                                </div>
-                                <div>
-                                    <span style="color:rgba(255,255,255,0.5);">tryll</span>
-                                    <span style="color:rgba(255,255,255,0.7);font-weight:600;margin-left:8px;" id="example-fee">$2,000</span>
-                                </div>
-                            </div>
-                        </div>
+                        <p class="text-secondary text-sm mb-6">Free forever</p>
+                        <ul class="space-y-3 text-secondary text-base">
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Works with any published game</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Zero integration required</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Wiki/docs knowledge base</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Source references in answers</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>100% local, private, offline</span>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-            </div>
 
-            <!-- Testbed Callout -->
-            <div class="max-w-2xl mx-auto mt-16 fade-in">
-                <div class="rounded overflow-hidden border border-white/[0.06] bg-white/[0.02] px-6 py-6" style="border-top:2px solid rgba(59,130,246,0.15);">
-                    <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.08em;color:rgba(59,130,246,0.4);text-transform:uppercase;margin-bottom:12px;">// try_the_tech</div>
-                    <p class="text-white mb-2" style="font-size:1.05rem;color:rgba(255,255,255,0.8);">Want to see local AI in your game before integrating?</p>
-                    <p class="text-secondary mb-5" style="font-size:0.9rem;color:rgba(255,255,255,0.45);line-height:1.6;">
-                        Download Tryll Assistant — a free AI overlay that runs on any game.<br>
-                        See how LLM inference works on player hardware, no integration needed.
-                    </p>
-                    <a href="tryll-assistant" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-200" style="color:rgba(59,130,246,0.8);font-family:'JetBrains Mono',monospace;font-size:0.85rem;">
-                        Download Free on Steam <span style="font-size:0.9em;">→</span>
+                    <a href="tryll-assistant" class="btn-primary text-center py-3 px-6 rounded-lg font-semibold transition-all duration-300 hover:scale-105 mt-auto">
+                        Get Started Free
                     </a>
+                </div>
+
+                <!-- Companion Tier Card -->
+                <div class="glass-card rounded-2xl p-8 fade-in flex flex-col border-2 border-white/20 relative" style="transition: border-color 0.3s;">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Companion</h3>
+                        <p class="text-secondary text-sm">Real-time game state API</p>
+                    </div>
+
+                    <div class="mb-8 flex-grow">
+                        <div class="flex items-baseline gap-2 mb-2">
+                            <span class="text-4xl font-bold text-white" style="font-family: 'JetBrains Mono', monospace;">5%</span>
+                            <span class="text-secondary text-lg">× reviews × price</span>
+                        </div>
+                        <p class="text-secondary text-sm mb-6">One-time payment</p>
+                        <p class="text-base font-semibold mb-3 text-white">Everything in Community, plus:</p>
+                        <ul class="space-y-3 text-secondary text-base">
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Real-time player state awareness</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Reads location, stats, quests, inventory</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Contextual hints, not generic answers</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Personalized onboarding & reminders</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Adapts to player behavior</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="#contact" class="btn-primary text-center py-3 px-6 rounded-lg font-semibold transition-all duration-300 hover:scale-105 mt-auto">
+                        Book a Demo
+                    </a>
+                </div>
+
+                <!-- Engine Integration Tier Card -->
+                <div class="glass-card rounded-2xl p-8 fade-in hover:border-primary-500/40 transition-all duration-300 flex flex-col">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Engine Integration</h3>
+                        <p class="text-secondary text-sm">Full platform access</p>
+                    </div>
+
+                    <div class="mb-8 flex-grow">
+                        <div class="flex items-baseline gap-2 mb-2">
+                            <span class="text-4xl font-bold text-white" style="font-family: 'JetBrains Mono', monospace;">10%</span>
+                            <span class="text-secondary text-lg">× reviews × price</span>
+                        </div>
+                        <p class="text-secondary text-sm mb-6">One-time payment</p>
+                        <p class="text-base font-semibold mb-3 text-white">Everything in Companion, plus:</p>
+                        <ul class="space-y-3 text-secondary text-base">
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Custom in-game characters</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Voice integration (TTS/STT)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>AI that takes action in-game</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Dynamic world generation</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>Relationship-building AI with memory</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <span>New mechanics: mimics, commentary</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="#contact" class="btn-primary text-center py-3 px-6 rounded-lg font-semibold transition-all duration-300 hover:scale-105 mt-auto">
+                        Book a Demo
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Price Calculator -->
+            <div class="max-w-3xl mx-auto fade-in">
+                <div class="glass-card rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold text-white mb-2 text-center">Price Calculator</h3>
+                    <p class="text-secondary text-center mb-6">Tryll scales with your success</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <!-- Game Price -->
+                        <div>
+                            <label class="block text-white font-medium mb-3">Game Price</label>
+                            <div class="flex gap-2 flex-wrap">
+                                <button class="price-btn px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all" data-price="0">$0</button>
+                                <button class="price-btn px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all" data-price="5">$5</button>
+                                <button class="price-btn px-4 py-2 rounded-lg border border-white/40 bg-white/20 text-white hover:bg-white/10 transition-all active" data-price="10">$10</button>
+                                <button class="price-btn px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all" data-price="20">$20</button>
+                                <button class="price-btn px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all" data-price="50">$50</button>
+                            </div>
+                            <div class="mt-3">
+                                <label class="text-secondary text-sm">Custom price: $</label>
+                                <input type="number" id="custom-price" min="0" max="100" placeholder="0-100" class="w-20 ml-2 px-3 py-1 rounded-lg bg-white/5 border border-white/20 text-white text-sm">
+                            </div>
+                        </div>
+
+                        <!-- Steam Reviews -->
+                        <div>
+                            <label class="block text-white font-medium mb-3">Steam Reviews: <span id="reviews-display" class="text-primary-500">10,000</span></label>
+                            <input type="range" id="reviews-slider" min="0" max="36" value="10" step="1" class="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer">
+                            <div class="relative text-secondary text-xs mt-2 h-4">
+                                <span class="absolute left-0">0</span>
+                                <span class="absolute" style="left: calc(27.78% + 4px); transform: translateX(-50%);">10k</span>
+                                <span class="absolute" style="left: 55.56%; transform: translateX(-50%);">20k</span>
+                                <span class="absolute right-0">100k</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tier Selection -->
+                    <div class="mb-8">
+                        <label class="block text-white font-medium mb-3">Select Tier</label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <button class="tier-btn px-4 py-3 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all text-center" data-coefficient="0">
+                                <span class="block font-semibold">Community</span>
+                                <span class="text-xs text-secondary">0%</span>
+                            </button>
+                            <button class="tier-btn px-4 py-3 rounded-lg border border-primary-500/50 bg-primary-500/10 text-white transition-all text-center active" data-coefficient="0.05">
+                                <span class="block font-semibold">Companion</span>
+                                <span class="text-xs text-secondary">5%</span>
+                            </button>
+                            <button class="tier-btn px-4 py-3 rounded-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all text-center" data-coefficient="0.10">
+                                <span class="block font-semibold">Engine</span>
+                                <span class="text-xs text-secondary">10%</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Result -->
+                    <div class="text-center p-6 rounded-xl bg-white/5 border border-white/10">
+                        <p class="text-secondary mb-2">One-time price</p>
+                        <p class="text-5xl font-bold text-white mb-2" style="font-family: 'JetBrains Mono', monospace;">$<span id="calculated-price">5,000</span></p>
+                        <p class="text-secondary text-sm mb-2"><span id="reviews-count">10,000</span> reviews × $<span id="price-display">10</span> × <span id="coefficient-display">5%</span></p>
+                        <p class="text-primary-500 text-sm mb-4">Unlimited tokens per user: <span class="font-bold" style="font-family: 'JetBrains Mono', monospace;">$<span id="cost-per-user">0.01</span></span>/user</p>
+                        <div class="pt-4 border-t border-white/10">
+                            <p class="text-secondary text-sm mb-1">Estimated copies sold</p>
+                            <p class="text-xl font-bold text-white mb-3" style="font-family: 'JetBrains Mono', monospace;"><span id="estimated-copies">500,000</span></p>
+                            <p class="text-secondary text-sm mb-1">Estimated game revenue</p>
+                            <p class="text-2xl font-bold text-green-400" style="font-family: 'JetBrains Mono', monospace;">$<span id="estimated-revenue">5,000,000</span></p>
+                            <p class="text-secondary text-xs mt-1">Based on 1 review ≈ 50 sales</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -2007,7 +1872,10 @@
     <section id="faq" class="py-16 md:py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-4 md:px-6">
             <div class="max-w-3xl mx-auto text-center mb-16 md:mb-20 fade-in">
-                <span class="terminal-label">FAQ</span>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-xs md:text-sm font-normal mb-6 md:mb-8 border border-white/20">
+                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
+                    FAQ
+                </div>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
                     Frequently Asked Questions
                 </h2>
@@ -2021,14 +1889,14 @@
                 <div class="flex justify-center gap-4">
                     <button 
                         id="faq-tab-developers" 
-                        class="faq-tab px-6 py-3 rounded font-medium transition-all duration-300 bg-primary-500 text-white"
+                        class="faq-tab px-6 py-3 rounded-lg font-medium transition-all duration-300 bg-primary-500 text-white"
                         onclick="switchFAQTab('developers')"
                     >
                         For Developers
                     </button>
                     <button 
                         id="faq-tab-players" 
-                        class="faq-tab px-6 py-3 rounded font-medium transition-all duration-300 bg-white/10 text-secondary hover:bg-white/20"
+                        class="faq-tab px-6 py-3 rounded-lg font-medium transition-all duration-300 bg-white/10 text-secondary hover:bg-white/20"
                         onclick="switchFAQTab('players')"
                     >
                         For Players
@@ -2039,7 +1907,7 @@
             <!-- Developer FAQ (default visible) -->
             <div id="faq-developers" class="max-w-4xl mx-auto">
                 <div class="space-y-4">
-                    <div class="glass-card rounded transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-1">
                             <h3 class="text-xl font-bold text-white">What kind of hardware is needed to run both the game and AI at 90 FPS?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
@@ -2053,7 +1921,7 @@
                         </div>
                     </div>
 
-                    <div class="glass-card rounded transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-2">
                             <h3 class="text-xl font-bold text-white">How many gamers can actually run these models?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
@@ -2072,7 +1940,7 @@
                         </div>
                     </div>
 
-                    <div class="glass-card rounded transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-3">
                             <h3 class="text-xl font-bold text-white">Why is local AI better than using a cloud API?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
@@ -2097,7 +1965,7 @@
                         </div>
                     </div>
 
-                    <div class="glass-card rounded transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-4">
                             <h3 class="text-xl font-bold text-white">How does the platform handle different player hardware?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
@@ -2116,7 +1984,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="glass-card rounded transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-5">
                             <h3 class="text-xl font-bold text-white">How does the platform affect game stability?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
@@ -2130,7 +1998,7 @@
                         </div>
                     </div>
 
-                    <div class="glass-card rounded transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-6">
                             <h3 class="text-xl font-bold text-white">What game engines will Tryll support?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
@@ -2150,7 +2018,7 @@
             <!-- Player FAQ (initially hidden) -->
             <div id="faq-players" class="max-w-4xl mx-auto" style="display: none;">
                 <div class="space-y-4">
-                    <div class="glass-card rounded transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-p1">
                             <h3 class="text-xl font-bold text-white">How does the use of Tryll Engine affect performance of the game?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
@@ -2164,7 +2032,7 @@
                         </div>
                     </div>
                     
-                    <div class="glass-card rounded transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-p2">
                             <h3 class="text-xl font-bold text-white">What if my hardware isn't powerful enough?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
@@ -2178,7 +2046,7 @@
                         </div>
                     </div>
                     
-                    <div class="glass-card rounded transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-p3">
                             <h3 class="text-xl font-bold text-white">How does Tryll handle my personal data and conversations?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
@@ -2196,7 +2064,7 @@
             
             <div class="text-center mt-16 fade-in">
                 <p class="text-secondary mb-6">Still have questions?</p>
-                <a href="https://discord.gg/XCBBGUMzUM" class="inline-flex items-center gap-3 px-8 py-4 rounded bg-[#5865F2] text-white font-medium text-lg transition-all duration-300 hover:bg-[#4752C4]">
+                <a href="https://discord.gg/XCBBGUMzUM" class="inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-[#5865F2] text-white font-medium text-lg transition-all duration-300 hover:bg-[#4752C4]">
                     <i class="fab fa-discord text-xl"></i>
                     Contact us on Discord
                 </a>
@@ -2205,21 +2073,24 @@
     </section>
 
     <!-- Contact Form -->
-    <section id="contact" class="py-16 md:py-24 relative overflow-hidden bg-black">
+    <section id="contact" class="py-16 md:py-24 relative overflow-hidden" style="background: linear-gradient(180deg, #000000 0%, #0a0a0f 50%, #000000 100%);">
         <div class="container mx-auto px-4 md:px-6">
             <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16 fade-in">
-                <span class="terminal-label">GET_STARTED</span>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-xs md:text-sm font-normal mb-6 md:mb-8 border border-white/20">
+                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
+                    GET STARTED
+                </div>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
                     Start Building
                 </h2>
                 <p class="text-lg md:text-xl text-secondary mb-8 md:mb-10 leading-relaxed px-2">
-                    Talk to our team about integrating Tryll into your game.
+                    Get SDK access or talk to our team about Companion and Engine Integration.
                 </p>
             </div>
             
             <!-- Contact Form -->
             <div class="max-w-lg mx-auto px-4">
-                <form id="contact-form" class="glass-card p-6 md:p-8" action="https://formspree.io/f/movlaywd" method="POST">
+                <form id="contact-form" class="glass-card p-6 md:p-8 rounded-2xl" action="https://formspree.io/f/movlaywd" method="POST" style="background: linear-gradient(135deg, rgba(35, 46, 65, 0.15) 0%, rgba(35, 46, 65, 0.08) 100%); backdrop-filter: blur(20px);">
                     <div class="space-y-5 md:space-y-6">
                         <div>
                             <label for="name" class="block text-sm font-normal text-white mb-2">Name</label>
@@ -2228,7 +2099,7 @@
                                 id="name" 
                                 name="name" 
                                 required 
-                                class="form-input w-full px-4 py-3 md:py-4 rounded text-base"
+                                class="form-input w-full px-4 py-3 md:py-4 rounded-lg text-base"
                                 placeholder="Your name"
                             >
                         </div>
@@ -2240,7 +2111,7 @@
                                 id="email" 
                                 name="email" 
                                 required 
-                                class="form-input w-full px-4 py-3 md:py-4 rounded text-base"
+                                class="form-input w-full px-4 py-3 md:py-4 rounded-lg text-base"
                                 placeholder="your@email.com"
                                 inputmode="email"
                                 autocomplete="email"
@@ -2252,25 +2123,25 @@
                             <div class="grid grid-cols-2 gap-3">
                                 <label class="relative">
                                     <input type="radio" name="category" value="studio" class="peer sr-only" />
-                                    <div class="px-4 py-3 rounded bg-white/10 border-2 border-white/20 text-white/80 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary peer-checked:border-primary peer-checked:text-secondary peer-checked:shadow-lg peer-checked:shadow-primary/30 hover:bg-white/15 hover:text-white hover:border-white/40">
+                                    <div class="px-4 py-3 rounded-lg bg-white/10 border-2 border-white/20 text-white/80 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary peer-checked:border-primary peer-checked:text-secondary peer-checked:shadow-lg peer-checked:shadow-primary/30 hover:bg-white/15 hover:text-white hover:border-white/40">
                                         Studio
                                     </div>
                                 </label>
                                 <label class="relative">
                                     <input type="radio" name="category" value="solo-dev" class="peer sr-only" />
-                                    <div class="px-4 py-3 rounded bg-white/10 border-2 border-white/20 text-white/80 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary peer-checked:border-primary peer-checked:text-secondary peer-checked:shadow-lg peer-checked:shadow-primary/30 hover:bg-white/15 hover:text-white hover:border-white/40">
+                                    <div class="px-4 py-3 rounded-lg bg-white/10 border-2 border-white/20 text-white/80 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary peer-checked:border-primary peer-checked:text-secondary peer-checked:shadow-lg peer-checked:shadow-primary/30 hover:bg-white/15 hover:text-white hover:border-white/40">
                                         Solo Dev
                                     </div>
                                 </label>
                                 <label class="relative">
                                     <input type="radio" name="category" value="modder" class="peer sr-only" />
-                                    <div class="px-4 py-3 rounded bg-white/10 border-2 border-white/20 text-white/80 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary peer-checked:border-primary peer-checked:text-secondary peer-checked:shadow-lg peer-checked:shadow-primary/30 hover:bg-white/15 hover:text-white hover:border-white/40">
+                                    <div class="px-4 py-3 rounded-lg bg-white/10 border-2 border-white/20 text-white/80 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary peer-checked:border-primary peer-checked:text-secondary peer-checked:shadow-lg peer-checked:shadow-primary/30 hover:bg-white/15 hover:text-white hover:border-white/40">
                                         Modder
                                     </div>
                                 </label>
                                 <label class="relative">
                                     <input type="radio" name="category" value="other" class="peer sr-only" />
-                                    <div class="px-4 py-3 rounded bg-white/10 border-2 border-white/20 text-white/80 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary peer-checked:border-primary peer-checked:text-secondary peer-checked:shadow-lg peer-checked:shadow-primary/30 hover:bg-white/15 hover:text-white hover:border-white/40">
+                                    <div class="px-4 py-3 rounded-lg bg-white/10 border-2 border-white/20 text-white/80 text-center cursor-pointer transition-all duration-300 peer-checked:bg-primary peer-checked:border-primary peer-checked:text-secondary peer-checked:shadow-lg peer-checked:shadow-primary/30 hover:bg-white/15 hover:text-white hover:border-white/40">
                                         Other
                                     </div>
                                 </label>
@@ -2297,7 +2168,7 @@
                         
                         <button
                             type="submit"
-                            class="btn-primary w-full px-6 md:px-8 py-4 md:py-5 rounded text-base md:text-lg inline-flex items-center justify-center"
+                            class="btn-primary w-full px-6 md:px-8 py-4 md:py-5 rounded-lg text-base md:text-lg inline-flex items-center justify-center"
                         >
                             Get in Touch
                         </button>
@@ -2307,8 +2178,8 @@
             
             <!-- Email Link -->
             <div id="contact-email" class="text-center mt-8 md:mt-12">
-                <p class="text-sm text-secondary mb-3">Contact us at:</p>
-                <a href="mailto:team@tryllengine.com" class="text-lg md:text-xl font-medium text-white/80 hover:text-white transition-colors duration-300" style="font-family:'JetBrains Mono',monospace;letter-spacing:0.01em;">
+                <p class="text-lg md:text-xl text-secondary mb-4">Contact us at:</p>
+                <a href="mailto:team@tryllengine.com" class="text-2xl md:text-3xl lg:text-4xl font-bold text-white hover:text-primary-500 transition-colors duration-300">
                     team@tryllengine.com
                 </a>
             </div>
@@ -2339,11 +2210,8 @@
                     <a href="https://tiktok.com/@tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on TikTok">
                         <i class="fab fa-tiktok"></i>
                     </a>
-                    <a href="https://www.linkedin.com/company/tryllengine/" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
                 </div>
-
+                
                 <!-- Right: Privacy & Terms -->
                 <div class="flex gap-6 order-3 md:order-3 justify-center md:justify-end">
                     <a href="privacy-policy" class="text-secondary hover:text-white transition-colors duration-300 text-sm">Privacy Policy</a>
@@ -3072,96 +2940,95 @@
             });
 
             // Price Calculator functionality
-            const perCopyFee = document.getElementById('per-copy-fee');
-            const exampleRevenue = document.getElementById('example-revenue');
-            const exampleFee = document.getElementById('example-fee');
+            const priceButtons = document.querySelectorAll('.price-btn');
+            const tierButtons = document.querySelectorAll('.tier-btn');
+            const reviewsSlider = document.getElementById('reviews-slider');
+            const customPriceInput = document.getElementById('custom-price');
+            const reviewsDisplay = document.getElementById('reviews-display');
+            const calculatedPrice = document.getElementById('calculated-price');
+            const reviewsCount = document.getElementById('reviews-count');
             const priceDisplay = document.getElementById('price-display');
-            const copiesDisplay = document.getElementById('copies-display');
+            const coefficientDisplay = document.getElementById('coefficient-display');
 
-            let currentPrice = 15;
-            let currentCopies = 100000;
-            const ENGINE_COEFFICIENT = 0.10;
-            const PRICE_STEPS = [5, 10, 15, 20, 25, 30, 40, 50, 60, 70];
-            const COPIES_STEP = 100000;
-            const COPIES_MIN = 100000;
-            const COPIES_MAX = 10000000;
+            let currentPrice = 10;
+            let currentReviews = 10000;
+            let currentCoefficient = 0.05;
+
+            // Custom review values: 0-20k step 1k, then 25k-100k step 5k
+            const reviewValues = [
+                0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000,
+                11000, 12000, 13000, 14000, 15000, 16000, 17000, 18000, 19000, 20000,
+                25000, 30000, 35000, 40000, 45000, 50000, 55000, 60000, 65000, 70000,
+                75000, 80000, 85000, 90000, 95000, 100000
+            ];
+
+            const estimatedRevenue = document.getElementById('estimated-revenue');
+            const estimatedCopies = document.getElementById('estimated-copies');
+            const costPerUser = document.getElementById('cost-per-user');
 
             function updateCalculator() {
-                const REVIEWS_TO_COPIES = 50;
-                const perCopy = (currentPrice * ENGINE_COEFFICIENT) / REVIEWS_TO_COPIES;
-                const revenue = currentCopies * currentPrice;
-                const totalFee = currentCopies * perCopy;
-                if (perCopy < 0.01) {
-                    perCopyFee.textContent = '$' + perCopy.toFixed(3);
-                } else {
-                    perCopyFee.textContent = '$' + perCopy.toFixed(2);
-                }
-                priceDisplay.textContent = '$' + currentPrice;
-                copiesDisplay.textContent = currentCopies.toLocaleString();
-                exampleRevenue.textContent = '$' + revenue.toLocaleString();
-                exampleFee.textContent = '$' + totalFee.toLocaleString();
+                const total = currentReviews * currentPrice * currentCoefficient;
+                const copies = currentReviews * 50;
+                const revenue = copies * currentPrice;
+                const perUser = copies > 0 ? total / copies : 0;
+                calculatedPrice.textContent = total.toLocaleString();
+                reviewsCount.textContent = currentReviews.toLocaleString();
+                priceDisplay.textContent = currentPrice;
+                coefficientDisplay.textContent = (currentCoefficient * 100) + '%';
+                estimatedCopies.textContent = copies.toLocaleString();
+                estimatedRevenue.textContent = revenue.toLocaleString();
+                costPerUser.textContent = perUser < 0.01 ? perUser.toFixed(3) : perUser.toFixed(2);
             }
 
-            // Stepper: step price through predefined values
-            function stepPrice(dir) {
-                const idx = PRICE_STEPS.indexOf(currentPrice);
-                if (idx === -1) {
-                    // Find nearest
-                    const nearest = PRICE_STEPS.reduce((a, b) => Math.abs(b - currentPrice) < Math.abs(a - currentPrice) ? b : a);
-                    currentPrice = nearest;
-                } else {
-                    const next = idx + dir;
-                    if (next >= 0 && next < PRICE_STEPS.length) currentPrice = PRICE_STEPS[next];
-                }
-                updateCalculator();
-            }
+            // Price button clicks
+            priceButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    priceButtons.forEach(b => {
+                        b.classList.remove('active', 'bg-white/20', 'border-white/40');
+                        b.classList.add('border-white/20', 'bg-white/5');
+                    });
+                    this.classList.add('active', 'bg-white/20', 'border-white/40');
+                    this.classList.remove('border-white/20', 'bg-white/5');
+                    currentPrice = parseInt(this.dataset.price);
+                    customPriceInput.value = '';
+                    updateCalculator();
+                });
+            });
 
-            function stepCopies(dir) {
-                const next = currentCopies + dir * COPIES_STEP;
-                if (next >= COPIES_MIN && next <= COPIES_MAX) {
-                    currentCopies = next;
+            // Custom price input
+            customPriceInput.addEventListener('input', function() {
+                const val = parseInt(this.value) || 0;
+                if (val >= 0 && val <= 100) {
+                    currentPrice = val;
+                    priceButtons.forEach(b => {
+                        b.classList.remove('active', 'bg-white/20', 'border-white/40');
+                        b.classList.add('border-white/20', 'bg-white/5');
+                    });
                     updateCalculator();
                 }
-            }
+            });
 
-            // Hold-to-accelerate logic
-            function holdStepper(btn, stepFn) {
-                let timer = null;
-                let accelTimer = null;
-                let delay = 400;
-                const MIN_DELAY = 60;
+            // Reviews slider with custom step values
+            reviewsSlider.addEventListener('input', function() {
+                const index = parseInt(this.value);
+                currentReviews = reviewValues[index];
+                reviewsDisplay.textContent = currentReviews.toLocaleString();
+                updateCalculator();
+            });
 
-                function tick() {
-                    stepFn();
-                    delay = Math.max(MIN_DELAY, delay * 0.85);
-                    timer = setTimeout(tick, delay);
-                }
-
-                function start(e) {
-                    e.preventDefault();
-                    stepFn();
-                    delay = 400;
-                    timer = setTimeout(tick, delay);
-                }
-
-                function stop() {
-                    clearTimeout(timer);
-                    timer = null;
-                    delay = 400;
-                }
-
-                btn.addEventListener('mousedown', start);
-                btn.addEventListener('touchstart', start, { passive: false });
-                btn.addEventListener('mouseup', stop);
-                btn.addEventListener('mouseleave', stop);
-                btn.addEventListener('touchend', stop);
-                btn.addEventListener('touchcancel', stop);
-            }
-
-            holdStepper(document.getElementById('price-up'), () => stepPrice(1));
-            holdStepper(document.getElementById('price-down'), () => stepPrice(-1));
-            holdStepper(document.getElementById('copies-up'), () => stepCopies(1));
-            holdStepper(document.getElementById('copies-down'), () => stepCopies(-1));
+            // Tier button clicks
+            tierButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    tierButtons.forEach(b => {
+                        b.classList.remove('active', 'border-primary-500/50', 'bg-primary-500/10');
+                        b.classList.add('border-white/20', 'bg-white/5');
+                    });
+                    this.classList.add('active', 'border-primary-500/50', 'bg-primary-500/10');
+                    this.classList.remove('border-white/20', 'bg-white/5');
+                    currentCoefficient = parseFloat(this.dataset.coefficient);
+                    updateCalculator();
+                });
+            });
 
             // Initial calculations
             updateCalculator();
@@ -3170,17 +3037,17 @@
     </script>
 
     <!-- Cookie Consent Banner -->
-    <div id="cookie-banner" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; padding: 16px; background: rgba(0, 0, 0, 0.95); border-top: 1px solid rgba(255, 255, 255, 0.08);">
+    <div id="cookie-banner" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; padding: 16px; background: rgba(15, 20, 25, 0.95); border-top: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 px-4">
             <p class="text-sm text-white/75 text-center sm:text-left">
                 We use cookies to analyze site traffic and improve your experience. By continuing to use this site, you consent to our use of cookies.
                 <a href="/privacy-policy" class="text-white underline hover:text-blue-400 transition-colors">Privacy Policy</a>
             </p>
             <div class="flex gap-3 flex-shrink-0">
-                <button id="cookie-reject" class="px-4 py-2 rounded text-sm font-medium text-white/80 border border-white/20 hover:bg-white/10 transition-all">
+                <button id="cookie-reject" class="px-4 py-2 rounded-lg text-sm font-medium text-white/80 border border-white/20 hover:bg-white/10 transition-all">
                     Reject
                 </button>
-                <button id="cookie-accept" class="px-4 py-2 rounded text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 transition-all">
+                <button id="cookie-accept" class="px-4 py-2 rounded-lg text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 transition-all">
                     Accept
                 </button>
             </div>

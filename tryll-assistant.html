@@ -120,17 +120,16 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
 
         :root {
-            --typo-label: 12px;
+            --typo-label: 11px;
             --typo-copy: 14px;
-            --typo-largecopy: 16px;
-            --typo-subtitle: 20px;
-            --typo-title: 32px;
-            --typo-hero: 48px;
+            --typo-largecopy: 15px;
+            --typo-subtitle: 18px;
+            --typo-title: 36px;
+            --typo-hero: 42px;
         }
 
         @media (min-width: 768px) {
@@ -154,10 +153,11 @@
         }
 
         body {
-            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', BlinkMacSystemFont, -apple-system, 'SF Pro Display', 'SF Pro', sans-serif;
             background-color: #000000;
-            background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 24px 24px;
+            background-image:
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.15), transparent),
+                radial-gradient(ellipse 80% 50% at 80% 80%, rgba(147, 51, 234, 0.1), transparent);
             color: rgba(255, 255, 255, 0.85);
             overflow-x: hidden;
             line-height: 1.5em;
@@ -169,39 +169,11 @@
             text-rendering: optimizeLegibility;
         }
 
-        body::after {
-            content: '';
-            position: fixed;
-            inset: 0;
-            z-index: 9998;
-            pointer-events: none;
-            opacity: 0.018;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            background-repeat: repeat;
-            background-size: 256px 256px;
-        }
-
         .heading-primary {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            line-height: 1.05;
-            color: #ffffff;
-        }
-
-        .heading-secondary {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            line-height: 1.15;
-            color: #ffffff;
-        }
-
-        .heading-tertiary {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
-            letter-spacing: -0.015em;
-            line-height: 1.25;
+            font-family: 'Inter', BlinkMacSystemFont, -apple-system, 'SF Pro Display', sans-serif;
+            font-weight: 650;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
             color: #ffffff;
         }
 
@@ -214,208 +186,85 @@
             text-wrap: balance;
         }
 
-        .body-medium {
-            font-size: var(--typo-copy);
-            line-height: 1.5em;
-            font-weight: 449;
-            color: rgba(255, 255, 255, 0.7);
-            letter-spacing: -0.006em;
-            text-wrap: balance;
-        }
-
-        .body-small {
-            font-size: var(--typo-label);
-            line-height: 1.45;
-            font-weight: 449;
-            color: rgba(255, 255, 255, 0.65);
-            letter-spacing: -0.004em;
-            text-wrap: balance;
-        }
-
-        .mono-text {
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 500;
-            letter-spacing: 0.025em;
-        }
-
-        .terminal-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            color: rgba(59, 130, 246, 0.7);
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-        .terminal-label::before {
-            content: '// ';
-            opacity: 0.5;
-        }
-
-        /* Button and interactive element text weight */
-        button, [role="button"], a {
-            font-weight: 500;
-        }
-
-        /* Code and pre elements */
-        code, pre {
-            font-weight: 500;
-        }
-
-        /* Button styles */
         .btn-primary {
             background-color: #3B82F6;
             color: #ffffff;
             border: none;
             font-weight: 600;
-            font-family: 'DM Sans', sans-serif;
-            transition: all 0.12s ease-out;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-size: 0.85em;
-            border-radius: 3px;
+            transition: all 0.2s ease;
         }
 
         .btn-primary:hover {
             background-color: #2563EB;
-            transform: none;
-            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5);
-        }
-
-        .btn-primary:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
-        }
-
-        .btn-primary:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
 
         .btn-secondary {
             background-color: transparent;
             color: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.2);
             font-weight: 600;
-            font-family: 'DM Sans', sans-serif;
-            transition: all 0.12s ease-out;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-size: 0.85em;
-            border-radius: 3px;
+            transition: all 0.2s ease;
         }
 
         .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.25);
-            color: #ffffff;
-            transform: none;
-        }
-
-        .btn-secondary:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
-        }
-
-        /* Form control styles */
-        .form-input {
-            background-color: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.9);
-            transition: all 0.2s ease;
-            border-radius: 3px;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: rgba(255, 255, 255, 0.4);
-            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
-        }
-
-        .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* Checkbox and radio styles */
-        input[type="checkbox"],
-        input[type="radio"] {
-            outline: none !important;
-            box-shadow: none !important;
-        }
-
-        input[type="checkbox"]:focus,
-        input[type="radio"]:focus {
-            outline: none !important;
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3) !important;
-        }
-
-        input[type="checkbox"]:checked,
-        input[type="radio"]:checked {
-            accent-color: #3B82F6;
-        }
-
-        /* Input fields */
-        input, textarea {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        input:focus, textarea:focus {
-            background: rgba(255, 255, 255, 0.12);
+            background-color: rgba(255, 255, 255, 0.1);
             border-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            transform: translateY(-1px);
         }
 
-        /* Radio button selector styling */
-        .peer:checked ~ div {
-            background: rgba(59, 130, 246, 0.12) !important;
-            border-color: rgba(59, 130, 246, 0.5) !important;
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);
-        }
-
-        .peer:checked ~ div i {
-            color: rgba(59, 130, 246, 1) !important;
-        }
-
-        .peer:checked ~ div span {
-            color: rgba(255, 255, 255, 0.95) !important;
-        }
-
-        /* Dropdown styling */
-        select option {
-            background-color: #0f1419 !important;
-            color: #ffffff !important;
-        }
-
-        select {
-            color-scheme: dark;
-        }
-
-        /* Glass card */
         .glass-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 4px !important;
-            transition: all 0.15s ease-out;
-            border-top: 2px solid rgba(59, 130, 246, 0.3);
+            background: rgba(35, 46, 65, 0.08);
+            border: 1px solid rgba(35, 46, 65, 0.15);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.12);
-            background: rgba(255, 255, 255, 0.04);
-            box-shadow: none;
-            border-top-color: rgba(59, 130, 246, 0.5);
+            border-color: rgba(35, 46, 65, 0.25);
+            background: rgba(35, 46, 65, 0.12);
+            box-shadow: 0 0 40px rgba(35, 46, 65, 0.1);
         }
 
-        /* Nav glass card */
         .nav-glass-card {
+            --shadow-offset: 0px;
+            --shadow-blur: 20px;
+            --shadow-spread: -5px;
+            --shadow-color: rgba(255, 255, 255, 0.25);
+            --tint-color: 255, 255, 255;
+            --tint-opacity: 0.02;
+            --frost-blur: 16px;
             position: relative;
-            border-radius: 4px;
+            border-radius: 20px;
             overflow: hidden;
-            transition: all 0.15s ease-out;
-            background: rgba(0, 0, 0, 0.88);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .nav-glass-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(var(--tint-color), var(--tint-opacity));
+            box-shadow: inset var(--shadow-offset) var(--shadow-offset)
+                        var(--shadow-blur) var(--shadow-spread) var(--shadow-color);
+            border-radius: inherit;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .nav-glass-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            backdrop-filter: blur(var(--frost-blur));
+            -webkit-backdrop-filter: blur(var(--frost-blur));
+            border-radius: inherit;
+            pointer-events: none;
+            z-index: 0;
         }
 
         .nav-glass-card > * {
@@ -423,18 +272,26 @@
             z-index: 2;
         }
 
+        .nav-glass-card {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2),
+                        0 1px 0 0 rgba(255, 255, 255, 0.05) inset;
+        }
+
         .nav-glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.12);
+            --tint-opacity: 0.04;
+            --shadow-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.15);
         }
 
         .hero-gradient {
-            background: transparent;
+            background: radial-gradient(ellipse at 50% 20%, rgba(35, 46, 65, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
         }
 
         .fade-in {
             opacity: 0;
-            transform: translateY(12px);
-            transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
         }
 
         .fade-in.visible {
@@ -448,61 +305,50 @@
             text-wrap: balance;
         }
 
-        /* Feature cards */
         .feature-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 4px;
+            background: rgba(35, 46, 65, 0.06);
+            border: 1px solid rgba(35, 46, 65, 0.12);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
 
         .feature-card:hover {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(255, 255, 255, 0.1);
+            background: rgba(35, 46, 65, 0.1);
+            border-color: rgba(35, 46, 65, 0.2);
         }
 
-        /* Better font rendering for all text */
-        * {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
+        .form-input {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.2s ease;
         }
 
-        /* Default font weight for all elements */
-        *, *::before, *::after {
-            font-weight: inherit;
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
         }
 
-        /* Restore Font Awesome icon weights (overridden by inherit rule above) */
-        .fas, .fa-solid, .fas::before, .fa-solid::before { font-weight: 900 !important; }
-        .far, .fa-regular, .far::before, .fa-regular::before { font-weight: 400 !important; }
-        .fab, .fa-brands, .fab::before, .fa-brands::before { font-weight: 400 !important; }
-
-        /* Tailwind font weight overrides */
-        .font-normal { font-weight: 449 !important; }
-        .font-medium { font-weight: 500 !important; }
-        .font-semibold { font-weight: 600 !important; }
-        .font-bold { font-weight: 650 !important; }
-
-        /* Text color adjustments for better readability */
-        .text-gray-400 { color: rgba(255, 255, 255, 0.75); }
-        .text-gray-500 { color: rgba(255, 255, 255, 0.65); }
-        .text-gray-600 { color: rgba(255, 255, 255, 0.55); }
-        .text-white { color: rgba(255, 255, 255, 0.9); }
-        .text-white\/80 { color: rgba(255, 255, 255, 0.75); }
-        .text-white\/60 { color: rgba(255, 255, 255, 0.6); }
-
-        /* Improve readability for smaller text */
-        .text-sm {
-            font-weight: 500;
-            letter-spacing: -0.004em;
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
         }
 
-        .text-xs {
-            font-weight: 500;
-            letter-spacing: 0;
+        /* Radio button selector styling */
+        .peer:checked ~ div {
+            background: rgba(255, 255, 255, 0.95) !important;
+            color: #000000 !important;
+            border-color: rgba(255, 255, 255, 1) !important;
+            font-weight: 600;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4), inset 0 0 0 2px rgba(0, 0, 0, 0.1);
         }
 
-        /* Ensure all paragraphs have better weight */
+        /* Dropdown styling */
+        select option {
+            background-color: #0f1419 !important;
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+
         p {
             font-weight: 449;
             text-wrap: balance;
@@ -510,43 +356,23 @@
             color: rgba(255, 255, 255, 0.8);
         }
 
-        /* Lead paragraphs */
-        .text-lg, .text-xl {
-            font-weight: 449;
-            opacity: 0.85;
+        .text-sm {
+            font-weight: 500;
+            letter-spacing: -0.004em;
         }
 
-        /* Better weight for all list items */
-        li {
-            font-weight: 449;
-            line-height: 1.5em;
+        button, [role="button"], a {
+            font-weight: 500;
         }
 
-        /* Animations */
-        @keyframes fade-in {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slide-up {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .animate-slide-up {
-            animation: slide-up 0.6s ease-out forwards;
-            animation-delay: 0.1s;
-            animation-fill-mode: both;
-        }
-
-        .animate-slide-up-delay {
-            animation: slide-up 0.6s ease-out forwards;
-            animation-delay: 0.2s;
-            animation-fill-mode: both;
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
     </style>
 </head>
-<body id="top" class="antialiased">
+<body class="bg-black text-white">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8MPGKVX"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -564,15 +390,10 @@
             <!-- Desktop Navigation -->
             <div class="hidden md:flex items-center gap-8">
                 <ul class="nav-links flex gap-6 list-none">
-                    <li><a href="/#features" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Features</a></li>
-                    <li><a href="/#pricing" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Pricing</a></li>
-                    <li><a href="/#faq" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">FAQ</a></li>
-                    <li><a href="/blog" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Blog</a></li>
-                    <li><a href="/#contact-email" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Contact</a></li>
-                    <li><a href="boscotryll" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">BoscoTryll Mod</a></li>
+                    <li><a href="#features" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Features</a></li>
                 </ul>
                 <div class="flex items-center gap-3">
-                    <a href="/" class="px-4 py-2 rounded text-sm inline-flex items-center justify-center transition-all duration-200 font-medium bg-white/[0.06] border border-white/10 hover:bg-white/[0.1] text-white uppercase tracking-wider" style="font-size: 0.85em;">
+                    <a href="/" class="px-4 py-2 rounded-lg text-sm inline-flex items-center justify-center transition-all duration-300 font-medium bg-white/10 border border-white/20 hover:bg-white/20 text-white">
                         <i class="fas fa-code mr-2"></i>
                         For Developers
                     </a>
@@ -581,7 +402,7 @@
 
             <!-- Mobile Navigation -->
             <div class="md:hidden flex items-center gap-3">
-                <button id="mobile-menu-btn" class="text-white p-2 rounded hover:bg-white/10 transition-colors duration-200">
+                <button id="mobile-menu-btn" class="text-white p-2 rounded-lg hover:bg-white/10 transition-colors duration-200">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -591,7 +412,6 @@
 
         <!-- Mobile Menu Overlay -->
         <div id="mobile-menu" class="md:hidden fixed inset-0 bg-black/95 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40">
-            <!-- Close button -->
             <button id="mobile-menu-close" class="absolute top-6 right-6 text-white/60 hover:text-white transition-colors duration-200">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -600,119 +420,107 @@
             <div class="flex flex-col items-center justify-center h-full space-y-8 text-center px-6">
                 <a href="#features" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Features</a>
                 <a href="/" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">For Developers</a>
-                <a href="/blog" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Blog</a>
-                <a href="boscotryll" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">BoscoTryll Mod</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section with Form -->
-    <section class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden" style="padding-top: 60px;">
-        <div class="container mx-auto px-4 md:px-6 py-24 md:py-32 relative z-10">
+    <section class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden" style="padding-top: 100px;">
+        <div class="container mx-auto px-4 md:px-6 py-12 md:py-16 relative z-10">
             <div class="max-w-6xl mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                     <!-- Left: Hero Content -->
                     <div class="text-center lg:text-left fade-in">
-                        <span class="terminal-label">TRYLL_ASSISTANT</span>
-
-                        <h1 class="heading-primary text-white mb-5 md:mb-6" style="font-size: var(--typo-hero); letter-spacing: -0.04em;">
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 heading-primary leading-tight text-white">
                             Smart Assistants for Published Games
                         </h1>
 
-                        <p class="mb-3 max-w-lg" style="font-size: var(--typo-subtitle); color: rgba(255,255,255,0.75); line-height: 1.4; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;">
+                        <p class="text-lg sm:text-xl md:text-2xl text-secondary mb-2 body-large leading-relaxed">
                             Minutes to add, zero to maintain.
                         </p>
 
-                        <p class="mb-6 max-w-lg" style="font-size: var(--typo-largecopy); color: rgba(255,255,255,0.7); line-height: 1.6;">
+                        <p class="text-base sm:text-lg md:text-xl text-secondary mb-6 body-large leading-relaxed opacity-80">
                             Add an intelligent assistant to your published game in minutes. No code, no cloud costs, no data leaving player devices. Start free, go deeper when ready.
                         </p>
 
-                        <p class="mb-6 lg:mb-0" style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(255,255,255,0.35); letter-spacing: 0.02em;">*Availability depends on anti-cheat compatibility</p>
+                        <p class="text-sm text-white/40 mb-6 lg:mb-0">*Availability depends on anti-cheat compatibility</p>
                     </div>
 
                     <!-- Right: Form -->
                     <div class="fade-in">
-                        <div class="rounded overflow-hidden border border-white/[0.06] bg-white/[0.02]" style="border-top: 2px solid rgba(59,130,246,0.3);">
-                            <!-- Header -->
-                            <div class="px-5 py-3 border-b border-white/[0.06]">
-                                <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.08em;color:rgba(59,130,246,0.5);text-transform:uppercase;">// submit_game</span>
-                            </div>
-
-                            <!-- Form Content -->
-                            <div class="p-6 md:p-8">
-                                <h2 class="heading-tertiary text-xl md:text-2xl text-white mb-5 text-center lg:text-left">Submit a Game</h2>
-                                <form id="wishlist-form" class="space-y-4" action="https://formspree.io/f/xpwvlpdz" method="POST">
-                                    <!-- User Type -->
-                                    <div>
-                                        <label class="block text-white font-medium mb-2 text-sm">I am a...</label>
-                                        <div class="flex gap-3">
-                                            <label class="flex-1 cursor-pointer">
-                                                <input type="radio" name="user_type" value="gamer" class="peer sr-only" required>
-                                                <div class="p-3 rounded border border-white/[0.1] bg-white/[0.03] text-center transition-all duration-200 hover:bg-white/[0.06]" style="border-radius: 4px;">
-                                                    <i class="fas fa-gamepad text-lg mb-1 block" style="color: rgba(59,130,246,0.6);"></i>
-                                                    <span class="font-medium text-sm" style="color: rgba(255,255,255,0.75);">Gamer</span>
-                                                </div>
-                                            </label>
-                                            <label class="flex-1 cursor-pointer">
-                                                <input type="radio" name="user_type" value="developer" class="peer sr-only" required>
-                                                <div class="p-3 rounded border border-white/[0.1] bg-white/[0.03] text-center transition-all duration-200 hover:bg-white/[0.06]" style="border-radius: 4px;">
-                                                    <i class="fas fa-code text-lg mb-1 block" style="color: rgba(59,130,246,0.6);"></i>
-                                                    <span class="font-medium text-sm" style="color: rgba(255,255,255,0.75);">Developer</span>
-                                                </div>
-                                            </label>
-                                        </div>
+                        <div class="glass-card p-6 md:p-8">
+                            <h2 class="text-xl md:text-2xl font-bold text-white mb-4 text-center lg:text-left">Submit a Game</h2>
+                            <form id="wishlist-form" class="space-y-4" action="https://formspree.io/f/xpwvlpdz" method="POST">
+                                <!-- User Type -->
+                                <div>
+                                    <label class="block text-white font-medium mb-2 text-sm">I am a...</label>
+                                    <div class="flex gap-3">
+                                        <label class="flex-1 cursor-pointer">
+                                            <input type="radio" name="user_type" value="gamer" class="peer sr-only" required>
+                                            <div class="p-3 rounded-lg border border-white/20 bg-white/5 text-center transition-all duration-200 hover:bg-white/10 peer-checked:bg-white peer-checked:text-black peer-checked:border-white">
+                                                <i class="fas fa-gamepad text-lg mb-1 block"></i>
+                                                <span class="font-medium text-sm">Gamer</span>
+                                            </div>
+                                        </label>
+                                        <label class="flex-1 cursor-pointer">
+                                            <input type="radio" name="user_type" value="developer" class="peer sr-only" required>
+                                            <div class="p-3 rounded-lg border border-white/20 bg-white/5 text-center transition-all duration-200 hover:bg-white/10 peer-checked:bg-white peer-checked:text-black peer-checked:border-white">
+                                                <i class="fas fa-code text-lg mb-1 block"></i>
+                                                <span class="font-medium text-sm">Developer</span>
+                                            </div>
+                                        </label>
                                     </div>
-
-                                    <!-- Game Name -->
-                                    <div>
-                                        <label for="game_name" class="block text-white font-medium mb-2 text-sm">Game name or Steam link</label>
-                                        <input
-                                            type="text"
-                                            id="game_name"
-                                            name="game_name"
-                                            required
-                                            placeholder="e.g., Elden Ring or Steam URL..."
-                                            class="form-input w-full px-4 py-3 text-sm"
-                                        >
-                                    </div>
-
-                                    <!-- Email -->
-                                    <div>
-                                        <label for="email" class="block text-white font-medium mb-2 text-sm">Email for notification</label>
-                                        <input
-                                            type="email"
-                                            id="email"
-                                            name="email"
-                                            required
-                                            placeholder="your@email.com"
-                                            class="form-input w-full px-4 py-3 text-sm"
-                                        >
-                                    </div>
-
-                                    <!-- Submit Button -->
-                                    <button
-                                        type="submit"
-                                        class="btn-primary w-full px-6 py-3 rounded text-base inline-flex items-center justify-center gap-2"
-                                    >
-                                        <i class="fas fa-paper-plane"></i>
-                                        Submit Request
-                                    </button>
-
-                                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: rgba(255,255,255,0.35); text-align: center; letter-spacing: 0.02em;">We'll only email you when your game is available.</p>
-
-                                    <!-- Hidden fields for Formspree -->
-                                    <input type="hidden" name="_subject" value="New Tryll Assistant Game Request">
-                                    <input type="hidden" name="_next" value="https://tryllengine.com/tryll-assistant">
-                                </form>
-
-                                <!-- Success Message (hidden by default) -->
-                                <div id="success-message" class="hidden text-center py-6">
-                                    <div class="mb-3" style="color: rgba(59,130,246,0.8);">
-                                        <i class="fas fa-check-circle text-4xl"></i>
-                                    </div>
-                                    <h3 class="text-lg font-bold text-white mb-2 heading-tertiary">Request Submitted!</h3>
-                                    <p class="text-secondary text-sm">We'll notify you when Tryll Assistant is available for your game.</p>
                                 </div>
+
+                                <!-- Game Name -->
+                                <div>
+                                    <label for="game_name" class="block text-white font-medium mb-2 text-sm">Game name or Steam link</label>
+                                    <input
+                                        type="text"
+                                        id="game_name"
+                                        name="game_name"
+                                        required
+                                        placeholder="e.g., Elden Ring or Steam URL..."
+                                        class="form-input w-full px-4 py-3 rounded-lg text-sm"
+                                    >
+                                </div>
+
+                                <!-- Email -->
+                                <div>
+                                    <label for="email" class="block text-white font-medium mb-2 text-sm">Email for notification</label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        required
+                                        placeholder="your@email.com"
+                                        class="form-input w-full px-4 py-3 rounded-lg text-sm"
+                                    >
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button
+                                    type="submit"
+                                    class="btn-primary w-full px-6 py-3 rounded-lg text-base inline-flex items-center justify-center gap-2"
+                                >
+                                    <i class="fas fa-paper-plane"></i>
+                                    Submit Request
+                                </button>
+
+                                <p class="text-white/40 text-xs text-center">We'll only email you when your game is available.</p>
+
+                                <!-- Hidden fields for Formspree -->
+                                <input type="hidden" name="_subject" value="New Tryll Assistant Game Request">
+                                <input type="hidden" name="_next" value="https://tryllengine.com/tryll-assistant">
+                            </form>
+
+                            <!-- Success Message (hidden by default) -->
+                            <div id="success-message" class="hidden text-center py-6">
+                                <div class="text-green-500 mb-3">
+                                    <i class="fas fa-check-circle text-4xl"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-white mb-2">Request Submitted!</h3>
+                                <p class="text-secondary text-sm">We'll notify you when Tryll Assistant is available for your game.</p>
                             </div>
                         </div>
                     </div>
@@ -722,10 +530,9 @@
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-16 md:py-28 relative overflow-hidden">
+    <section id="features" class="py-16 md:py-24 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 md:px-8">
             <div class="text-center mb-12 md:mb-16 fade-in">
-                <span class="terminal-label">FEATURES</span>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
                     Why Tryll Assistant?
                 </h2>
@@ -737,10 +544,10 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 <!-- Feature 1: In-Game Help -->
                 <div class="glass-card p-6 md:p-8 fade-in">
-                    <div class="mb-4" style="color: rgba(59,130,246,0.7);">
-                        <i class="fas fa-book-open text-2xl"></i>
+                    <div class="text-blue-500 mb-4">
+                        <i class="fas fa-book-open text-3xl"></i>
                     </div>
-                    <h3 class="text-xl md:text-2xl text-white mb-3 heading-tertiary">Instant Answers, In-Game</h3>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Instant Answers, In-Game</h3>
                     <p class="text-secondary leading-relaxed">
                         Ask questions about game mechanics, quests, items, or strategies. Tryll Assistant uses game encyclopedias and guides to help you unstuck, onboard, and understand - all without alt-tabbing or leaving your game.
                     </p>
@@ -748,10 +555,10 @@
 
                 <!-- Feature 2: Free -->
                 <div class="glass-card p-6 md:p-8 fade-in">
-                    <div class="mb-4" style="color: rgba(59,130,246,0.7);">
-                        <i class="fas fa-gift text-2xl"></i>
+                    <div class="text-green-500 mb-4">
+                        <i class="fas fa-gift text-3xl"></i>
                     </div>
-                    <h3 class="text-xl md:text-2xl text-white mb-3 heading-tertiary">Free for Gamers & Studios</h3>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Free for Gamers & Studios</h3>
                     <p class="text-secondary leading-relaxed">
                         Tryll Assistant is completely free. No subscriptions, no premium tiers, no hidden costs. Studios can integrate it for their games at no charge, and gamers can use it without paying a cent.
                     </p>
@@ -759,10 +566,10 @@
 
                 <!-- Feature 3: Offline -->
                 <div class="glass-card p-6 md:p-8 fade-in">
-                    <div class="mb-4" style="color: rgba(59,130,246,0.7);">
-                        <i class="fas fa-plug-circle-xmark text-2xl"></i>
+                    <div class="text-purple-500 mb-4">
+                        <i class="fas fa-plug-circle-xmark text-3xl"></i>
                     </div>
-                    <h3 class="text-xl md:text-2xl text-white mb-3 heading-tertiary">Works Offline</h3>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Works Offline</h3>
                     <p class="text-secondary leading-relaxed">
                         Tryll Assistant runs Large Language Models directly on your GPU. No internet connection required after setup. Play anywhere, anytime - even on flights or in areas with poor connectivity.
                     </p>
@@ -770,10 +577,10 @@
 
                 <!-- Feature 4: Privacy -->
                 <div class="glass-card p-6 md:p-8 fade-in">
-                    <div class="mb-4" style="color: rgba(59,130,246,0.7);">
-                        <i class="fas fa-shield-alt text-2xl"></i>
+                    <div class="text-red-500 mb-4">
+                        <i class="fas fa-shield-alt text-3xl"></i>
                     </div>
-                    <h3 class="text-xl md:text-2xl text-white mb-3 heading-tertiary">Private & Secure</h3>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Private & Secure</h3>
                     <p class="text-secondary leading-relaxed">
                         Your questions and gameplay data never leave your device. No personal data collected, no chat logs sent to the cloud. Everything stays local - your gaming sessions are yours alone.
                     </p>
@@ -788,7 +595,7 @@
             <div class="flex flex-col items-center gap-6 md:grid md:grid-cols-3 md:items-center">
                 <!-- Left: Copyright -->
                 <div class="text-secondary text-sm order-2 md:order-1 text-center md:text-left">
-                    &copy; 2026 Tryll Engine, Inc. All rights reserved.
+                    © 2026 Tryll Engine, Inc. All rights reserved.
                 </div>
 
                 <!-- Center: Social Links -->
@@ -804,9 +611,6 @@
                     </a>
                     <a href="https://tiktok.com/@tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on TikTok">
                         <i class="fab fa-tiktok"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/company/tryllengine/" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on LinkedIn">
-                        <i class="fab fa-linkedin"></i>
                     </a>
                 </div>
 

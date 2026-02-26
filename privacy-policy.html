@@ -8,29 +8,29 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-K8MPGKVX');</script>
     <!-- End Google Tag Manager -->
-
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - Tryll Engine</title>
-
+    
     <!-- SEO Meta Tags -->
     <meta name="description" content="Tryll Engine Privacy Policy. Learn how we protect your data and respect your privacy while delivering revolutionary AI gaming technology.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://tryllengine.com/privacy-policy">
-
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tryllengine.com/privacy-policy">
     <meta property="og:title" content="Privacy Policy - Tryll Engine">
     <meta property="og:description" content="Learn how Tryll Engine protects your data and respects your privacy.">
-
+    
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
     <link rel="manifest" href="/assets/favicon/site.webmanifest">
-
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -38,18 +38,13 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#232E41',
-                        secondary: '#F6F0EB',
-                        'primary-light': '#2a3750',
-                        'primary-dark': '#1a232f',
-                        'secondary-light': '#ffffff',
-                        'secondary-dark': '#e8e2dd',
+                        primary: {
+                            500: '#232E41',
+                            600: '#1d2637',
+                        },
                         dark: {
                             900: '#0a0d12',
                             800: '#0f1419',
-                            700: '#141a20',
-                            600: '#1a2026',
-                            500: '#1f262d',
                         }
                     }
                 }
@@ -57,427 +52,76 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 100px;
-        }
-
-        :root {
-            --typo-label: 12px;
-            --typo-copy: 14px;
-            --typo-largecopy: 16px;
-            --typo-subtitle: 20px;
-            --typo-title: 32px;
-            --typo-hero: 48px;
-        }
-
-        @media (min-width: 768px) {
-            :root {
-                --typo-label: 13px;
-                --typo-copy: 16px;
-                --typo-largecopy: 18px;
-                --typo-subtitle: 24px;
-                --typo-title: 48px;
-                --typo-hero: 62px;
-            }
-        }
-
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
         body {
-            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: #000000;
-            background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 24px 24px;
-            color: rgba(255, 255, 255, 0.85);
-            overflow-x: hidden;
-            line-height: 1.5em;
-            letter-spacing: -0.011em;
-            font-weight: 449;
-            font-size: var(--typo-copy);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
+            color: #9ca3af;
         }
-
-        body::after {
-            content: '';
-            position: fixed;
-            inset: 0;
-            z-index: 9998;
-            pointer-events: none;
-            opacity: 0.018;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            background-repeat: repeat;
-            background-size: 256px 256px;
-        }
-
-        .heading-primary {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            line-height: 1.05;
-            color: #ffffff;
-        }
-
-        .heading-secondary {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            line-height: 1.15;
-            color: #ffffff;
-        }
-
-        .heading-tertiary {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
-            letter-spacing: -0.015em;
-            line-height: 1.25;
-            color: #ffffff;
-        }
-
-        .body-large {
-            font-size: var(--typo-largecopy);
-            line-height: 1.6;
-            font-weight: 449;
-            color: rgba(255, 255, 255, 0.75);
-            letter-spacing: -0.008em;
-            text-wrap: balance;
-        }
-
-        .body-medium {
-            font-size: var(--typo-copy);
-            line-height: 1.5em;
-            font-weight: 449;
-            color: rgba(255, 255, 255, 0.7);
-            letter-spacing: -0.006em;
-            text-wrap: balance;
-        }
-
-        .body-small {
-            font-size: var(--typo-label);
-            line-height: 1.45;
-            font-weight: 449;
-            color: rgba(255, 255, 255, 0.65);
-            letter-spacing: -0.004em;
-            text-wrap: balance;
-        }
-
-        .mono-text {
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 500;
-            letter-spacing: 0.025em;
-        }
-
-        .terminal-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            color: rgba(59, 130, 246, 0.7);
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-        .terminal-label::before {
-            content: '// ';
-            opacity: 0.5;
-        }
-
-        button, [role="button"], a {
-            font-weight: 500;
-        }
-
-        .btn-primary {
-            background-color: #3B82F6;
-            color: #ffffff;
-            border: none;
-            font-weight: 600;
-            font-family: 'DM Sans', sans-serif;
-            transition: all 0.12s ease-out;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-size: 0.85em;
-            border-radius: 3px;
-        }
-
-        .btn-primary:hover {
-            background-color: #2563EB;
-            transform: none;
-            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            font-weight: 600;
-            font-family: 'DM Sans', sans-serif;
-            transition: all 0.12s ease-out;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-size: 0.85em;
-            border-radius: 3px;
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.25);
-            color: #ffffff;
-            transform: none;
-        }
-
-        * {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
-        }
-
-        *, *::before, *::after {
-            font-weight: inherit;
-        }
-
-        /* Restore Font Awesome icon weights (overridden by inherit rule above) */
-        .fas, .fa-solid, .fas::before, .fa-solid::before { font-weight: 900 !important; }
-        .far, .fa-regular, .far::before, .fa-regular::before { font-weight: 400 !important; }
-        .fab, .fa-brands, .fab::before, .fa-brands::before { font-weight: 400 !important; }
-
-        .font-normal { font-weight: 449 !important; }
-        .font-medium { font-weight: 500 !important; }
-        .font-semibold { font-weight: 600 !important; }
-        .font-bold { font-weight: 650 !important; }
-
-        .text-secondary {
-            color: rgba(255, 255, 255, 0.65);
-            font-weight: 449;
-            text-wrap: balance;
-        }
-
-        p {
-            font-weight: 449;
-            text-wrap: balance;
-            line-height: 1.5em;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        li {
-            font-weight: 449;
-            line-height: 1.5em;
-        }
-
+        
         .glass-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 4px !important;
-            transition: all 0.15s ease-out;
-            border-top: 2px solid rgba(59, 130, 246, 0.3);
-        }
-
-        .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.12);
-            background: rgba(255, 255, 255, 0.04);
-            box-shadow: none;
-            border-top-color: rgba(59, 130, 246, 0.5);
-        }
-
-        .nav-glass-card {
-            position: relative;
-            border-radius: 4px;
-            overflow: hidden;
-            transition: all 0.15s ease-out;
-            background: rgba(0, 0, 0, 0.88);
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
         }
-
-        .nav-glass-card > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        .nav-glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.12);
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(12px);
-            transition: opacity 0.35s ease-out, transform 0.35s ease-out;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Prose styling for privacy policy content */
+        
         .prose h2 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            line-height: 1.05;
             color: #ffffff;
-            font-size: var(--typo-subtitle);
+            font-weight: 600;
             margin-top: 2.5rem;
             margin-bottom: 1rem;
         }
-
+        
         .prose h3 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            line-height: 1.15;
-            color: #ffffff;
-            font-size: var(--typo-largecopy);
+            color: #e5e7eb;
+            font-weight: 500;
             margin-top: 2rem;
             margin-bottom: 0.75rem;
         }
-
-        .prose p {
-            color: rgba(255, 255, 255, 0.7);
+        
+        .prose p, .prose li {
+            color: #9ca3af;
             line-height: 1.75;
-            font-size: var(--typo-copy);
-            font-weight: 449;
-            margin-bottom: 1rem;
         }
-
-        .prose li {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.75;
-            font-size: var(--typo-copy);
-            font-weight: 449;
-        }
-
+        
         .prose a {
-            color: #3B82F6;
-            text-decoration: none;
-            transition: color 0.15s ease-out;
-        }
-
-        .prose a:hover {
             color: #60a5fa;
+            text-decoration: none;
+        }
+        
+        .prose a:hover {
             text-decoration: underline;
         }
-
+        
         .prose ul {
             list-style-type: disc;
             padding-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .prose ul ul {
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .prose strong {
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 600;
-        }
-
-        .prose li {
-            margin-bottom: 0.35rem;
-        }
-
-        .text-sm {
-            font-weight: 500;
-            letter-spacing: -0.004em;
         }
     </style>
 </head>
-<body id="top" class="antialiased">
+<body class="antialiased">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8MPGKVX"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-
-    <!-- Navigation -->
-    <nav class="fixed top-4 left-4 right-4 md:top-6 md:left-1/2 md:transform md:-translate-x-1/2 z-50 nav-glass-card px-4 md:px-8 py-3 md:py-4 w-auto md:w-full md:max-w-7xl">
-        <div class="flex items-center justify-between">
-            <div class="logo">
-                <a href="/" class="block">
-                    <img src="./assets/logo/full-logo/light-text.svg" alt="Tryll Engine" class="h-8 md:h-12" />
-                </a>
-            </div>
-
-            <!-- Desktop Navigation -->
-            <div class="hidden md:flex items-center gap-8">
-                <ul class="nav-links flex gap-6 list-none">
-                    <li><a href="/#features" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Features</a></li>
-                    <li><a href="/#pricing" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Pricing</a></li>
-                    <li><a href="/#faq" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">FAQ</a></li>
-                    <li><a href="/blog" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Blog</a></li>
-                    <li><a href="/#contact-email" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Contact</a></li>
-                    <li><a href="boscotryll" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">BoscoTryll Mod</a></li>
-                </ul>
-                <div class="flex items-center gap-3">
-                    <a href="tryll-assistant" class="btn-primary px-4 py-2 rounded text-sm inline-flex items-center justify-center gap-2">
-                        <i class="fas fa-rocket"></i>
-                        Get Started
-                    </a>
-                    <a href="/#contact" class="px-4 py-2 rounded text-sm inline-flex items-center justify-center transition-all duration-200 font-medium bg-white/[0.06] border border-white/10 hover:bg-white/[0.1] text-white uppercase tracking-wider" style="font-size: 0.85em;">
-                        Book a Demo
-                    </a>
-                </div>
-            </div>
-
-            <!-- Mobile Navigation -->
-            <div class="md:hidden flex items-center gap-3">
-                <a href="tryll-assistant" class="btn-primary px-3 py-2 rounded text-xs inline-flex items-center justify-center">
-                    Get Started
-                </a>
-                <button id="mobile-menu-btn" class="text-white p-2 rounded hover:bg-white/10 transition-colors duration-200">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="md:hidden fixed inset-0 bg-black/95 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40">
-            <!-- Close button -->
-            <button id="mobile-menu-close" class="absolute top-6 right-6 text-white/60 hover:text-white transition-colors duration-200">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-            <div class="flex flex-col items-center justify-center h-full space-y-8 text-center px-6">
-                <a href="/#features" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Features</a>
-                <a href="/#pricing" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Pricing</a>
-                <a href="/#faq" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">FAQ</a>
-                <a href="/blog" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Blog</a>
-                <a href="boscotryll" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">BoscoTryll Mod</a>
-                <div class="pt-4 space-y-3">
-                    <a href="tryll-assistant" class="btn-primary px-8 py-4 rounded text-lg inline-flex items-center justify-center gap-2 w-full">
-                        <i class="fas fa-rocket"></i>
-                        Get Started
-                    </a>
-                    <a href="/#contact" class="px-8 py-4 rounded text-lg inline-flex items-center justify-center gap-2 w-full bg-white/10 border border-white/20 text-white">
-                        Book a Demo
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Privacy Policy Content -->
-    <section class="min-h-screen relative overflow-hidden" style="padding-top: 120px; padding-bottom: 80px;">
-        <div class="container mx-auto px-4 md:px-6 relative z-10 max-w-4xl">
-
-            <div class="glass-card p-6 md:p-10 lg:p-12">
-                <span class="terminal-label">PRIVACY_POLICY</span>
-
-                <h1 class="heading-primary mb-4" style="font-size: var(--typo-title);">
+    <section class="min-h-screen py-16 relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10 max-w-4xl">
+            <!-- Back to Home -->
+            <a href="/" class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+            
+            <div class="glass-card p-8 md:p-12 rounded-2xl">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-white">
                     Privacy Policy
                 </h1>
-
-                <p class="body-medium mb-8" style="color: rgba(255, 255, 255, 0.5);">
+                
+                <p class="text-gray-400 mb-8">
                     Tryll Engine Inc.
                 </p>
-
+                
                 <div class="prose max-w-none">
                     <h2>1. General Provisions</h2>
                     <p>
@@ -492,7 +136,7 @@
                     <p>
                         This policy of Tryll in relation to processing of personal data (hereinafter - the Policy) applies to all information that Tryll can receive about visitors to the website tryllengine.com.
                     </p>
-
+                    
                     <h2>2. Main terms used in the Policy</h2>
                     <p>
                         <strong>Automated processing of personal data</strong> - processing of personal data using computer equipment;<br>
@@ -511,7 +155,7 @@
                         <strong>Cross-border transfer of personal data</strong> - transfer of personal data to the territory of a foreign state, to the authority of foreign state, foreign natural or foreign legal entity;<br>
                         <strong>Destruction of personal data</strong> - any actions that result in personal data being irretrievably destroyed, with impossibility of further restoring the content of personal data in personal data information system and (or) as the result of which physical media of personal data are destroyed.
                     </p>
-
+                    
                     <h2>3. Tryll can process the following personal data of the User</h2>
                     <p>
                         Email address (if the user gave it to Tryll);<br>
@@ -536,7 +180,7 @@
                     <p>
                         The above data is used by Tryll for safe and stable operation of our website. In particular, to ensure high-quality connectivity, comfortable use of the website, as well as to assess stability and security.
                     </p>
-
+                    
                     <h2>4. Cookies</h2>
                     <p>
                         Along with the data mentioned in article 3 above, using tryllengine.com website, cookies can be stored on the user's device.
@@ -563,7 +207,7 @@
                     <p>
                         Browsers are usually set to accept cookies. However, you can disable cookies by configuring your browser settings. You can also configure your browser settings to enable certain cookies or notify you each time a new cookie is stored on your computer so that you can decide whether to accept or reject the cookie. Various resources are available to manage your use of cookies, for example, Help section in your browser.
                     </p>
-
+                    
                     <h2>5. Purposes of personal data processing Additional functions of website/Integration of third-party services</h2>
                     <p>
                         Purpose of User personal data processing is to inform the User about news in subject areas, in which Tryll Company operates, as well as about company news by sending e-mails.
@@ -619,7 +263,7 @@
                     <p>
                         Tryll is not responsible for the method third-party services used by Tryll collect and process user data. Own conditions of data processing adopted by the appropriate services can be applied to data processing.
                     </p>
-
+                    
                     <h2>6. Legal basis of personal data processing</h2>
                     <p>
                         Tryll processes the User's personal data only if it is filled out and/or sent by the User independently through special forms located at tryllengine.com or via email. By filling out the appropriate forms and/or sending your personal data to Tryll, the User agrees with this Policy.
@@ -627,7 +271,7 @@
                     <p>
                         Tryll processes impersonal data about the User, if it is allowed in the settings of the User's browser (preservation of cookies and use of JavaScript technology are enabled).
                     </p>
-
+                    
                     <h2>7. Rights of the user in relation to his personal data</h2>
                     <p>
                         In accordance with this Policy, any user of tryllengine.com has the following rights with respect to personal data relating to this user:
@@ -654,7 +298,7 @@
                     <p>
                         The user can exercise any of his rights listed above by making a request to Tryll at privacy@tryllengine.com
                     </p>
-
+                    
                     <h2>8. Order of collection, storage, transfer and other types of personal data processing</h2>
                     <p>
                         Security of personal data that is processed by Tryll is ensured by implementing the legal, organizational and technical measures necessary to fully implement the requirements of the applicable law in the field of personal data protection.
@@ -680,7 +324,7 @@
                     <p>
                         The term for processing of personal data, unless otherwise specified in other articles of this Policy, is unlimited. The user may at any time withdraw his consent to the processing of personal data by sending a notification via e-mail to Tryll address privacy@tryllengine.com with the note "Withdrawal of consent to the processing of personal data".
                     </p>
-
+                    
                     <h2>9. Cross-border transfer of personal data</h2>
                     <p>
                         Tryll, prior to commencement of cross-border transfer of personal data, is obliged to ensure that the foreign state, to which territory it is intended to transfer personal data, ensures reliable protection of the rights of personal data subjects.
@@ -688,7 +332,7 @@
                     <p>
                         Cross-border transfer of personal data at the territory of foreign countries that does not meet the above requirements can only be carried out if there is a written consent of the subject of personal data on the cross-border transfer of his personal data and/or performance of the contract, to which the subject of personal data is a party.
                     </p>
-
+                    
                     <h2>10. Final provisions</h2>
                     <p>
                         The user can receive any clarification on issues of interest related to processing of his personal data by contacting Tryll via email privacy@tryllengine.com.
@@ -706,121 +350,5 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="py-8 border-t border-white/20">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col items-center gap-6 md:grid md:grid-cols-3 md:items-center">
-                <!-- Left: Copyright -->
-                <div class="text-secondary text-sm order-2 md:order-1 text-center md:text-left">
-                    &copy; 2026 Tryll Engine, Inc. All rights reserved.<br>
-                    <span class="text-xs">Deep Rock Galactic and Bosco are trademarks of Ghost Ship Games ApS.</span>
-                </div>
-
-                <!-- Center: Social Links -->
-                <div class="flex gap-6 items-center justify-center order-1 md:order-2">
-                    <a href="https://discord.gg/XCBBGUMzUM" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Join our Discord">
-                        <i class="fab fa-discord"></i>
-                    </a>
-                    <a href="https://www.youtube.com/@Tryll_Engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Watch on YouTube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="https://instagram.com/tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://tiktok.com/@tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on TikTok">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                </div>
-
-                <!-- Right: Privacy & Terms -->
-                <div class="flex gap-6 order-3 md:order-3 justify-center md:justify-end">
-                    <a href="privacy-policy" class="text-secondary hover:text-white transition-colors duration-300 text-sm">Privacy Policy</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Mobile Menu Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileMenuClose = document.getElementById('mobile-menu-close');
-
-            if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    mobileMenu.classList.remove('opacity-0', 'invisible');
-                    mobileMenu.classList.add('opacity-100', 'visible');
-                    document.body.style.overflow = 'hidden';
-                });
-            }
-
-            function closeMenu() {
-                if (mobileMenu) {
-                    mobileMenu.classList.add('opacity-0', 'invisible');
-                    mobileMenu.classList.remove('opacity-100', 'visible');
-                    document.body.style.overflow = '';
-                }
-            }
-
-            if (mobileMenuClose) {
-                mobileMenuClose.addEventListener('click', closeMenu);
-            }
-
-            // Close menu when clicking links
-            document.querySelectorAll('.mobile-menu-link').forEach(function(link) {
-                link.addEventListener('click', closeMenu);
-            });
-
-            // Fade-in observer
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.fade-in').forEach(function(el) {
-                observer.observe(el);
-            });
-        });
-    </script>
-
-    <!-- Cookie Consent Banner -->
-    <div id="cookie-banner" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; padding: 16px; background: rgba(0, 0, 0, 0.95); border-top: 1px solid rgba(255, 255, 255, 0.08);">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 px-4">
-            <p class="text-sm text-white/75 text-center sm:text-left">
-                We use cookies to analyze site traffic and improve your experience. By continuing to use this site, you consent to our use of cookies.
-                <a href="/privacy-policy" class="text-white underline hover:text-blue-400 transition-colors">Privacy Policy</a>
-            </p>
-            <div class="flex gap-3 flex-shrink-0">
-                <button id="cookie-reject" class="px-4 py-2 rounded text-sm font-medium text-white/80 border border-white/20 hover:bg-white/10 transition-all">
-                    Reject
-                </button>
-                <button id="cookie-accept" class="px-4 py-2 rounded text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 transition-all">
-                    Accept
-                </button>
-            </div>
-        </div>
-    </div>
-    <script>
-        (function() {
-            var consent = localStorage.getItem('cookie-consent');
-            if (!consent) {
-                document.getElementById('cookie-banner').style.display = 'block';
-            }
-            document.getElementById('cookie-accept').addEventListener('click', function() {
-                localStorage.setItem('cookie-consent', 'accepted');
-                document.getElementById('cookie-banner').style.display = 'none';
-            });
-            document.getElementById('cookie-reject').addEventListener('click', function() {
-                localStorage.setItem('cookie-consent', 'rejected');
-                document.getElementById('cookie-banner').style.display = 'none';
-                window['ga-disable-GTM-K8MPGKVX'] = true;
-            });
-        })();
-    </script>
 </body>
 </html>

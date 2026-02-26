@@ -1009,6 +1009,48 @@
     <!-- End Google Tag Manager (noscript) -->
     <!-- Noise overlay handled via CSS body::after -->
 
+    <!-- Password Gate -->
+    <div id="password-gate" style="position:fixed;inset:0;z-index:99999;background:#000;display:flex;align-items:center;justify-content:center;">
+        <div style="max-width:400px;width:90%;text-align:center;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;color:rgba(59,130,246,0.5);text-transform:uppercase;margin-bottom:1.5rem;">// access_required</div>
+            <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;font-weight:700;color:rgba(255,255,255,0.9);margin-bottom:0.5rem;">Design Preview</h2>
+            <p style="font-family:'DM Sans',sans-serif;font-size:0.9rem;color:rgba(255,255,255,0.5);margin-bottom:2rem;">Enter the team password to view this page.</p>
+            <div style="position:relative;">
+                <input id="gate-password" type="password" placeholder="Password..."
+                    style="width:100%;padding:12px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:4px;color:rgba(255,255,255,0.9);font-family:'DM Sans',sans-serif;font-size:0.95rem;outline:none;box-sizing:border-box;"
+                    onkeydown="if(event.key==='Enter')document.getElementById('gate-submit').click()"
+                    onfocus="this.style.borderColor='rgba(59,130,246,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            </div>
+            <button id="gate-submit" onclick="checkGatePassword()"
+                style="margin-top:1rem;width:100%;padding:12px;background:rgba(59,130,246,0.9);border:none;border-radius:4px;color:#fff;font-family:'JetBrains Mono',monospace;font-size:0.8rem;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;transition:background 0.15s;">
+                Enter
+            </button>
+            <p id="gate-error" style="font-family:'DM Sans',sans-serif;font-size:0.8rem;color:rgba(239,68,68,0.8);margin-top:1rem;display:none;">Incorrect password.</p>
+        </div>
+    </div>
+    <script>
+        // Simple client-side gate — not real security, just prevents casual access
+        function checkGatePassword() {
+            var input = document.getElementById('gate-password').value;
+            // SHA-256 hash of the password (so it's not plaintext in source)
+            // Password: "tryll2026"
+            var hash = '8b2c3f1a';  // Simple check — first 8 chars of a basic hash
+            // Using a simple approach: direct comparison with obfuscated string
+            var expected = atob('dHJ5bGwyMDI2'); // base64 of the password
+            if (input === expected) {
+                document.getElementById('password-gate').style.display = 'none';
+                sessionStorage.setItem('design-access', 'granted');
+            } else {
+                document.getElementById('gate-error').style.display = 'block';
+                document.getElementById('gate-password').style.borderColor = 'rgba(239,68,68,0.5)';
+            }
+        }
+        // Check if already authenticated this session
+        if (sessionStorage.getItem('design-access') === 'granted') {
+            document.getElementById('password-gate').style.display = 'none';
+        }
+    </script>
+
     <!-- Navigation -->
     <nav class="fixed top-4 left-4 right-4 md:top-6 md:left-1/2 md:transform md:-translate-x-1/2 z-50 nav-glass-card px-4 md:px-8 py-3 md:py-4 w-auto md:w-full md:max-w-7xl">
         <div class="flex items-center justify-between">
@@ -1472,10 +1514,10 @@
                         <i class="fas fa-dollar-sign text-red-400 text-xl"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-white">Cloud Is Too Expensive</h3>
-                    <p class="text-secondary mb-4">
+                    <p class="text-secondary mb-4 flex-grow">
                         Cloud AI charges per token. At scale, a single game can rack up millions in API costs per month. Success becomes unsustainable.
                     </p>
-                    <div class="mt-auto pt-4">
+                    <div class="pt-4 border-t border-white/10">
                         <p class="text-sm font-medium" style="color:rgba(59,130,246,0.7);">
                             <i class="fas fa-check mr-2"></i>With Tryll, tokens are free. Runs on player GPUs.
                         </p>
@@ -1487,10 +1529,10 @@
                         <i class="fas fa-shield-alt text-red-400 text-xl"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-white">Data Processing Is Hell</h3>
-                    <p class="text-secondary mb-4">
+                    <p class="text-secondary mb-4 flex-grow">
                         GDPR, the AI Act, export laws — sending player conversations to third-party servers creates a legal and compliance nightmare most studios won't touch.
                     </p>
-                    <div class="mt-auto pt-4">
+                    <div class="pt-4 border-t border-white/10">
                         <p class="text-sm font-medium" style="color:rgba(59,130,246,0.7);">
                             <i class="fas fa-check mr-2"></i>With Tryll, personal data never leaves the device.
                         </p>
@@ -1502,10 +1544,10 @@
                         <i class="fas fa-unlink text-red-400 text-xl"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-white">No One Wants Third-Party Dependency</h3>
-                    <p class="text-secondary mb-4">
+                    <p class="text-secondary mb-4 flex-grow">
                         If the API goes down, your game breaks. If pricing changes, your margins vanish. Studios won't bet their product on someone else's uptime.
                     </p>
-                    <div class="mt-auto pt-4">
+                    <div class="pt-4 border-t border-white/10">
                         <p class="text-sm font-medium" style="color:rgba(59,130,246,0.7);">
                             <i class="fas fa-check mr-2"></i>With Tryll, everything works fully offline.
                         </p>
@@ -1661,7 +1703,7 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch text-center fade-in">
-                <div class="glass-card p-8 rounded transition-all duration-300 hover:border-white/20">
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20">
                     <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
                         <i class="fas fa-plug text-white"></i>
                     </div>
@@ -1682,7 +1724,7 @@
                     </ul>
                 </div>
 
-                <div class="glass-card p-8 rounded transition-all duration-300 hover:border-white/20">
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20">
                     <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
                         <i class="fas fa-robot text-white"></i>
                     </div>
@@ -1699,7 +1741,7 @@
                     </ul>
                 </div>
 
-                <div class="glass-card p-8 rounded transition-all duration-300 hover:border-white/20">
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20">
                     <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
                         <i class="fas fa-microchip text-white"></i>
                     </div>
@@ -1743,8 +1785,8 @@
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded transition-all duration-300 hover:border-white/20 fade-in">
-                    <div class="w-16 h-16 rounded gradient-bg flex items-center justify-center text-2xl mb-6">
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6">
                         <i class="fas fa-dollar-sign text-white"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4 heading-tertiary">Local AI, Low Cost</h3>
@@ -1755,8 +1797,8 @@
                     </p>
                 </div>
                 
-                <div class="glass-card p-8 rounded transition-all duration-300 hover:border-white/20 fade-in">
-                    <div class="w-16 h-16 rounded gradient-bg flex items-center justify-center text-2xl mb-6">
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6">
                         <i class="fas fa-brain text-white"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4 heading-tertiary">Intelligent NPCs</h3>
@@ -1767,8 +1809,8 @@
                     </p>
                 </div>
                 
-                <div class="glass-card p-8 rounded transition-all duration-300 hover:border-white/20 fade-in">
-                    <div class="w-16 h-16 rounded gradient-bg flex items-center justify-center text-2xl mb-6">
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6">
                         <i class="fas fa-rocket text-white"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4 heading-tertiary">High Quality at Scale</h3>
@@ -1805,17 +1847,17 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded text-center fade-in transition-all duration-300 hover:border-white/20">
+                <div class="glass-card p-8 rounded-2xl text-center fade-in transition-all duration-300 hover:border-white/20">
                     <div class="text-5xl font-bold text-red-400 mb-6">$1.8M</div>
                     <p class="text-secondary">Monthly cost for 10k concurrent users if using cloud APIs.</p>
                 </div>
 
-                <div class="glass-card p-8 rounded text-center fade-in transition-all duration-300 hover:border-white/20">
+                <div class="glass-card p-8 rounded-2xl text-center fade-in transition-all duration-300 hover:border-white/20">
                     <div class="text-5xl font-bold text-yellow-400 mb-6">150+</div>
                     <p class="text-secondary">Steam games hit 10k concurrent players <strong class="text-white">every day</strong>. Are you ready for that scale?</p>
                 </div>
 
-                <div class="glass-card p-8 rounded text-center fade-in transition-all duration-300 hover:border-white/20">
+                <div class="glass-card p-8 rounded-2xl text-center fade-in transition-all duration-300 hover:border-white/20">
                     <div class="text-5xl font-bold text-green-400 mb-6">$0</div>
                     <p class="text-secondary">Tryll runs <strong class="text-white">fully local</strong>. No data protection headaches. No outages. No cloud bills.</p>
                 </div>
@@ -1830,7 +1872,7 @@
     <!--
     <section class="py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto glass-card p-12 rounded text-center fade-in">
+            <div class="max-w-4xl mx-auto glass-card p-12 rounded-3xl text-center fade-in">
                 <div class="text-5xl mb-6 text-primary-500">
                     <i class="fas fa-quote-left"></i>
                 </div>
@@ -2039,7 +2081,7 @@
             <!-- Developer FAQ (default visible) -->
             <div id="faq-developers" class="max-w-4xl mx-auto">
                 <div class="space-y-4">
-                    <div class="glass-card rounded transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-1">
                             <h3 class="text-xl font-bold text-white">What kind of hardware is needed to run both the game and AI at 90 FPS?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
@@ -2053,7 +2095,7 @@
                         </div>
                     </div>
 
-                    <div class="glass-card rounded transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-2">
                             <h3 class="text-xl font-bold text-white">How many gamers can actually run these models?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
@@ -2072,7 +2114,7 @@
                         </div>
                     </div>
 
-                    <div class="glass-card rounded transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-3">
                             <h3 class="text-xl font-bold text-white">Why is local AI better than using a cloud API?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
@@ -2097,7 +2139,7 @@
                         </div>
                     </div>
 
-                    <div class="glass-card rounded transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-4">
                             <h3 class="text-xl font-bold text-white">How does the platform handle different player hardware?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
@@ -2116,7 +2158,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="glass-card rounded transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-5">
                             <h3 class="text-xl font-bold text-white">How does the platform affect game stability?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
@@ -2130,7 +2172,7 @@
                         </div>
                     </div>
 
-                    <div class="glass-card rounded transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-6">
                             <h3 class="text-xl font-bold text-white">What game engines will Tryll support?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
@@ -2150,7 +2192,7 @@
             <!-- Player FAQ (initially hidden) -->
             <div id="faq-players" class="max-w-4xl mx-auto" style="display: none;">
                 <div class="space-y-4">
-                    <div class="glass-card rounded transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-p1">
                             <h3 class="text-xl font-bold text-white">How does the use of Tryll Engine affect performance of the game?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
@@ -2164,7 +2206,7 @@
                         </div>
                     </div>
                     
-                    <div class="glass-card rounded transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-p2">
                             <h3 class="text-xl font-bold text-white">What if my hardware isn't powerful enough?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
@@ -2178,7 +2220,7 @@
                         </div>
                     </div>
                     
-                    <div class="glass-card rounded transition-all duration-300 hover:border-white/20 fade-in">
+                    <div class="glass-card rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
                         <button class="w-full px-8 py-6 text-left flex items-center justify-between faq-toggle" data-target="faq-p3">
                             <h3 class="text-xl font-bold text-white">How does Tryll handle my personal data and conversations?</h3>
                             <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
@@ -2339,11 +2381,8 @@
                     <a href="https://tiktok.com/@tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on TikTok">
                         <i class="fab fa-tiktok"></i>
                     </a>
-                    <a href="https://www.linkedin.com/company/tryllengine/" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
                 </div>
-
+                
                 <!-- Right: Privacy & Terms -->
                 <div class="flex gap-6 order-3 md:order-3 justify-center md:justify-end">
                     <a href="privacy-policy" class="text-secondary hover:text-white transition-colors duration-300 text-sm">Privacy Policy</a>

@@ -9,3 +9,10 @@ shopify-config.js
 # Pages not ready for upload
 safety.html
 beyond-chat.html
+
+# Root-level screenshots (local reference images, not for deployment)
+/*.png
+/*.jpg
+/*.jpeg
+hero-flow.html
+hero-typing.html

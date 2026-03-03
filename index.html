@@ -1317,138 +1317,143 @@
         </div>
     </section>
 
-    <!-- Capabilities + Code Demo Section (hidden) -->
-    <section class="py-12 md:py-20 bg-black relative overflow-hidden" style="display:none;">
+    <!-- SDK Integration Roadmap -->
+    <section class="py-12 md:py-20 bg-black relative overflow-hidden">
         <div class="container mx-auto px-4 md:px-6">
-            <div class="max-w-5xl mx-auto fade-in">
+            <div class="max-w-3xl mx-auto fade-in">
+
                 <div class="text-center mb-8 md:mb-12">
-                    <span class="terminal-label">INTEGRATION</span>
+                    <span class="terminal-label">SDK_ROADMAP</span>
                     <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
-                        A Few Lines of Code
+                        Integration Roadmap
                     </h2>
                     <p class="text-lg md:text-xl text-secondary leading-relaxed max-w-2xl mx-auto">
-                        Add AI capabilities to Unreal or Unity. Pick a service, pick your engine.
+                        The Tryll SDK ships first for Unreal Engine.
+                        Get early access before we open the waitlist.
                     </p>
                 </div>
 
-                <div class="relative rounded overflow-hidden border border-white/[0.06] bg-white/[0.02]" style="border-top: 2px solid rgba(59,130,246,0.3);">
-                    <div class="flex flex-col md:flex-row">
-                        <!-- Services sidebar -->
-                        <div class="md:w-48 flex-shrink-0 border-b md:border-b-0 md:border-r border-white/[0.06] p-4 md:p-5">
-                            <div class="text-white/45 mb-3" style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;">Capabilities</div>
-                            <div class="flex md:flex-col gap-2">
-                                <button class="svc-tab svc-active text-left w-full px-3 py-2 rounded transition-all" data-svc="llm" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;">
-                                    <span class="svc-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:rgba(59,130,246,0.6);margin-right:8px;vertical-align:middle;"></span>LLM
-                                </button>
-                                <button class="svc-tab text-left w-full px-3 py-2 rounded transition-all" data-svc="stt" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;">
-                                    <span class="svc-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);margin-right:8px;vertical-align:middle;"></span>STT
-                                </button>
-                                <button class="svc-tab text-left w-full px-3 py-2 rounded transition-all" data-svc="tts" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;">
-                                    <span class="svc-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);margin-right:8px;vertical-align:middle;"></span>TTS
-                                </button>
-                                <button class="svc-tab text-left w-full px-3 py-2 rounded transition-all" data-svc="vlm" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;">
-                                    <span class="svc-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);margin-right:8px;vertical-align:middle;"></span>VLM
-                                </button>
-                            </div>
-                        </div>
-                        <!-- Code area -->
-                        <div class="flex-1 min-w-0">
-                            <!-- Engine tabs -->
-                            <div class="flex border-b border-white/[0.06]">
-                                <button class="eng-tab eng-active px-4 py-2.5 transition-all" data-eng="unreal" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;letter-spacing:0.04em;">Unreal Engine</button>
-                                <button class="eng-tab px-4 py-2.5 transition-all" data-eng="unity" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;letter-spacing:0.04em;">Unity</button>
-                                <button class="eng-tab px-4 py-2.5 transition-all" data-eng="cpp" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;letter-spacing:0.04em;">C++</button>
-                            </div>
-                            <!-- Code block with fixed height to prevent flicker -->
-                            <div class="p-5 md:p-6 overflow-x-auto" style="min-height:280px;">
-                                <pre id="code-block" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;line-height:1.8;color:rgba(255,255,255,0.75);margin:0;white-space:pre;"></pre>
-                            </div>
-                            <!-- Response preview -->
-                            <div class="border-t border-white/[0.06] px-5 md:px-6 py-3">
-                                <div class="flex items-center gap-2">
-                                    <div style="width:5px;height:5px;border-radius:50%;background:rgba(59,130,246,0.6);"></div>
-                                    <span id="response-text" style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.5);"></span>
-                                </div>
-                            </div>
+                <!-- Terminal window -->
+                <div class="relative rounded overflow-hidden border border-white/[0.06]" style="border-top: 2px solid rgba(59,130,246,0.3);">
+
+                    <!-- Window chrome -->
+                    <div class="flex items-center gap-2 px-4 py-3 border-b border-white/[0.06]" style="background:rgba(255,255,255,0.015);">
+                        <div style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.08);"></div>
+                        <div style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.08);"></div>
+                        <div style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.08);"></div>
+                        <span style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:rgba(255,255,255,0.22);margin-left:10px;">tryll-sdk &mdash; release-schedule</span>
+                        <div style="margin-left:auto;display:flex;align-items:center;gap:6px;">
+                            <div style="width:6px;height:6px;border-radius:50%;background:rgba(59,130,246,0.5);animation:sdk-pulse 2s ease-in-out infinite;"></div>
+                            <span style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:rgba(59,130,246,0.5);">LIVE</span>
                         </div>
                     </div>
+
+                    <!-- Terminal body -->
+                    <div class="px-6 md:px-8 pt-6 pb-3" style="background:rgba(0,0,0,0.45);">
+
+                        <!-- Shell prompt -->
+                        <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.18);margin-bottom:22px;">
+                            <span style="color:rgba(59,130,246,0.35);">$</span> tryll sdk status --all-engines
+                        </div>
+
+                        <!-- Roadmap entries -->
+                        <div>
+
+                            <!-- Entry 1: Unreal Engine (ACTIVE) -->
+                            <div class="flex gap-4 md:gap-5">
+                                <div class="flex flex-col items-center" style="width:18px;flex-shrink:0;padding-top:3px;">
+                                    <div style="width:12px;height:12px;border-radius:50%;background:rgba(59,130,246,0.85);flex-shrink:0;animation:sdk-pulse 2s ease-in-out infinite;"></div>
+                                    <div style="width:1px;flex:1;background:linear-gradient(to bottom,rgba(59,130,246,0.2),rgba(255,255,255,0.04));margin-top:7px;min-height:56px;"></div>
+                                </div>
+                                <div class="pb-8 flex-1 min-w-0">
+                                    <div class="flex flex-wrap items-center gap-2 mb-2">
+                                        <span style="font-family:'JetBrains Mono',monospace;font-size:0.9rem;font-weight:600;color:rgba(255,255,255,0.9);">Unreal Engine</span>
+                                        <span style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.09em;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.28);color:rgba(59,130,246,0.95);padding:2px 7px;border-radius:3px;text-transform:uppercase;">Active</span>
+                                    </div>
+                                    <div style="font-family:'JetBrains Mono',monospace;font-size:0.73rem;color:rgba(255,255,255,0.3);margin-bottom:7px;letter-spacing:0.02em;">
+                                        LLM &nbsp;&middot;&nbsp; STT &nbsp;&middot;&nbsp; TTS &nbsp;&middot;&nbsp; VLM &nbsp;&middot;&nbsp; Agents
+                                    </div>
+                                    <div style="font-family:'JetBrains Mono',monospace;font-size:0.73rem;color:rgba(74,222,128,0.65);">
+                                        &#8594; Alpha access available &mdash; request below
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Entry 2: Unity (NEXT) -->
+                            <div class="flex gap-4 md:gap-5">
+                                <div class="flex flex-col items-center" style="width:18px;flex-shrink:0;padding-top:3px;">
+                                    <div style="width:12px;height:12px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.15);background:transparent;flex-shrink:0;"></div>
+                                    <div style="width:1px;flex:1;background:rgba(255,255,255,0.04);margin-top:7px;min-height:56px;"></div>
+                                </div>
+                                <div class="pb-8 flex-1 min-w-0">
+                                    <div class="flex flex-wrap items-center gap-2 mb-2">
+                                        <span style="font-family:'JetBrains Mono',monospace;font-size:0.9rem;font-weight:600;color:rgba(255,255,255,0.4);">Unity</span>
+                                        <span style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.09em;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.09);color:rgba(255,255,255,0.28);padding:2px 7px;border-radius:3px;text-transform:uppercase;">Next</span>
+                                    </div>
+                                    <div style="font-family:'JetBrains Mono',monospace;font-size:0.73rem;color:rgba(255,255,255,0.32);margin-bottom:7px;letter-spacing:0.02em;">
+                                        LLM &nbsp;&middot;&nbsp; STT &nbsp;&middot;&nbsp; TTS &nbsp;&middot;&nbsp; VLM &nbsp;&middot;&nbsp; Agents
+                                    </div>
+                                    <div style="font-family:'JetBrains Mono',monospace;font-size:0.73rem;color:rgba(255,255,255,0.32);">
+                                        &#8594; Full capability parity with Unreal
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Entry 3: C++ (PLANNED) -->
+                            <div class="flex gap-4 md:gap-5">
+                                <div class="flex flex-col items-center" style="width:18px;flex-shrink:0;padding-top:3px;">
+                                    <div style="width:12px;height:12px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.07);background:transparent;flex-shrink:0;"></div>
+                                </div>
+                                <div class="pb-4 flex-1 min-w-0">
+                                    <div class="flex flex-wrap items-center gap-2 mb-2">
+                                        <span style="font-family:'JetBrains Mono',monospace;font-size:0.9rem;font-weight:600;color:rgba(255,255,255,0.4);">C++ / Native</span>
+                                        <span style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.09em;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.3);padding:2px 7px;border-radius:3px;text-transform:uppercase;">Planned</span>
+                                    </div>
+                                    <div style="font-family:'JetBrains Mono',monospace;font-size:0.73rem;color:rgba(255,255,255,0.28);margin-bottom:7px;letter-spacing:0.02em;">
+                                        LLM &nbsp;&middot;&nbsp; STT &nbsp;&middot;&nbsp; TTS &nbsp;&middot;&nbsp; VLM &nbsp;&middot;&nbsp; Agents
+                                    </div>
+                                    <div style="font-family:'JetBrains Mono',monospace;font-size:0.73rem;color:rgba(255,255,255,0.28);">
+                                        &#8594; Engine-agnostic, for custom builds
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Blinking cursor -->
+                        <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.18);padding-bottom:18px;margin-top:4px;">
+                            <span style="color:rgba(59,130,246,0.35);">$</span>
+                            <span style="display:inline-block;width:7px;height:13px;background:rgba(59,130,246,0.45);vertical-align:middle;margin-left:4px;animation:sdk-blink 1.2s step-end infinite;"></span>
+                        </div>
+                    </div>
+
+                    <!-- CTA bar -->
+                    <div class="border-t border-white/[0.06] px-5 md:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3" style="background:rgba(255,255,255,0.01);">
+                        <div style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:rgba(255,255,255,0.25);line-height:1.6;">
+                            <span style="color:rgba(74,222,128,0.5);">&#10003;</span>&nbsp; 1 API surface &nbsp;&middot;&nbsp; 0 cloud dependencies &nbsp;&middot;&nbsp; runs on player GPU
+                        </div>
+                        <a href="#contact" class="btn-primary" style="white-space:nowrap;font-size:0.82rem;padding:8px 22px;flex-shrink:0;">
+                            Request Early Access
+                        </a>
+                    </div>
+
+                    <!-- Progress bar — 1 of 3 engines done -->
+                    <div style="height:2px;background:rgba(255,255,255,0.03);">
+                        <div style="width:33.3%;height:100%;background:linear-gradient(90deg,rgba(59,130,246,0.45),rgba(59,130,246,0.08));"></div>
+                    </div>
+
                     <style>
-                        .svc-tab { color:rgba(255,255,255,0.5); background:transparent; border:none; cursor:pointer; }
-                        .svc-tab:hover { color:rgba(255,255,255,0.65); background:rgba(255,255,255,0.03); }
-                        .svc-tab.svc-active { color:rgba(255,255,255,0.9); background:rgba(59,130,246,0.08); }
-                        .svc-tab.svc-active .svc-dot { background:rgba(59,130,246,0.6) !important; }
-                        .eng-tab { color:rgba(255,255,255,0.45); background:transparent; border:none; border-bottom:2px solid transparent; cursor:pointer; }
-                        .eng-tab:hover { color:rgba(255,255,255,0.65); }
-                        .eng-tab.eng-active { color:rgba(255,255,255,0.9); border-bottom-color:rgba(59,130,246,0.5); }
-                    </style>
-                    <script>
-                    (function() {
-                        const codeSnippets = {
-                            llm: {
-                                unreal: `<span style="color:rgba(59,130,246,0.6)">// Create an NPC dialogue agent</span>\nUTryllAgent* Agent = UTryllSubsystem::CreateAgent(\n    TEXT(<span style="color:rgba(74,222,128,0.7)">"NPC_Blacksmith"</span>),\n    TEXT(<span style="color:rgba(74,222,128,0.7)">"You are a grumpy blacksmith."</span>)\n);\n\nAgent->Chat(TEXT(<span style="color:rgba(74,222,128,0.7)">"What can you forge?"</span>),\n    FOnResponse::CreateLambda([](const FString& Reply) {\n        <span style="color:rgba(59,130,246,0.6)">// Reply streamed from player's GPU</span>\n    })\n);`,
-                                unity: `<span style="color:rgba(59,130,246,0.6)">// Create an NPC dialogue agent</span>\nvar agent = TryllManager.CreateAgent(\n    <span style="color:rgba(74,222,128,0.7)">"NPC_Blacksmith"</span>,\n    <span style="color:rgba(74,222,128,0.7)">"You are a grumpy blacksmith."</span>\n);\n\nawait agent.ChatAsync(\n    <span style="color:rgba(74,222,128,0.7)">"What can you forge?"</span>,\n    onToken: (reply) => {\n        <span style="color:rgba(59,130,246,0.6)">// Reply streamed from player's GPU</span>\n    }\n);`,
-                                cpp: `<span style="color:rgba(59,130,246,0.6)">// Create an NPC dialogue agent</span>\nauto agent = tryll::create_agent(\n    <span style="color:rgba(74,222,128,0.7)">"NPC_Blacksmith"</span>,\n    <span style="color:rgba(74,222,128,0.7)">"You are a grumpy blacksmith."</span>\n);\n\nagent.chat(<span style="color:rgba(74,222,128,0.7)">"What can you forge?"</span>,\n    [](std::string_view reply) {\n        <span style="color:rgba(59,130,246,0.6)">// Reply streamed from player's GPU</span>\n    }\n);`
-                            },
-                            stt: {
-                                unreal: `<span style="color:rgba(59,130,246,0.6)">// Voice input — speech to text</span>\nUTryllSTT* STT = UTryllSubsystem::GetSTT();\n\nSTT->StartListening(\n    FOnTranscript::CreateLambda(\n        [](const FString& Text, bool bFinal) {\n            <span style="color:rgba(59,130,246,0.6)">// Real-time transcription on device</span>\n        }\n    )\n);`,
-                                unity: `<span style="color:rgba(59,130,246,0.6)">// Voice input — speech to text</span>\nvar stt = TryllManager.GetSTT();\n\nstt.StartListening(\n    onTranscript: (text, isFinal) => {\n        <span style="color:rgba(59,130,246,0.6)">// Real-time transcription on device</span>\n    }\n);`,
-                                cpp: `<span style="color:rgba(59,130,246,0.6)">// Voice input — speech to text</span>\nauto stt = tryll::get_stt();\n\nstt.start_listening(\n    [](std::string_view text, bool is_final) {\n        <span style="color:rgba(59,130,246,0.6)">// Real-time transcription on device</span>\n    }\n);`
-                            },
-                            tts: {
-                                unreal: `<span style="color:rgba(59,130,246,0.6)">// Text to speech — NPC voices</span>\nUTryllTTS* TTS = UTryllSubsystem::GetTTS();\n\nTTS->Speak(\n    TEXT(<span style="color:rgba(74,222,128,0.7)">"I can forge anything, if you bring the ore."</span>),\n    TEXT(<span style="color:rgba(74,222,128,0.7)">"gruff_male"</span>),\n    FOnAudio::CreateLambda([](USoundWave* Audio) {\n        <span style="color:rgba(59,130,246,0.6)">// Play generated audio</span>\n    })\n);`,
-                                unity: `<span style="color:rgba(59,130,246,0.6)">// Text to speech — NPC voices</span>\nvar tts = TryllManager.GetTTS();\n\nawait tts.SpeakAsync(\n    <span style="color:rgba(74,222,128,0.7)">"I can forge anything, if you bring the ore."</span>,\n    voice: <span style="color:rgba(74,222,128,0.7)">"gruff_male"</span>,\n    onAudio: (clip) => {\n        <span style="color:rgba(59,130,246,0.6)">// Play generated audio</span>\n    }\n);`,
-                                cpp: `<span style="color:rgba(59,130,246,0.6)">// Text to speech — NPC voices</span>\nauto tts = tryll::get_tts();\n\ntts.speak(\n    <span style="color:rgba(74,222,128,0.7)">"I can forge anything, if you bring the ore."</span>,\n    <span style="color:rgba(74,222,128,0.7)">"gruff_male"</span>,\n    [](audio_buffer buf) {\n        <span style="color:rgba(59,130,246,0.6)">// Play generated audio</span>\n    }\n);`
-                            },
-                            vlm: {
-                                unreal: `<span style="color:rgba(59,130,246,0.6)">// Vision — analyze game screenshots</span>\nUTryllVLM* VLM = UTryllSubsystem::GetVLM();\n\nVLM->Analyze(\n    ScreenshotTexture,\n    TEXT(<span style="color:rgba(74,222,128,0.7)">"Describe what the player sees."</span>),\n    FOnAnalysis::CreateLambda(\n        [](const FString& Description) {\n            <span style="color:rgba(59,130,246,0.6)">// Vision model output</span>\n        }\n    )\n);`,
-                                unity: `<span style="color:rgba(59,130,246,0.6)">// Vision — analyze game screenshots</span>\nvar vlm = TryllManager.GetVLM();\n\nawait vlm.AnalyzeAsync(\n    screenshotTexture,\n    <span style="color:rgba(74,222,128,0.7)">"Describe what the player sees."</span>,\n    onResult: (desc) => {\n        <span style="color:rgba(59,130,246,0.6)">// Vision model output</span>\n    }\n);`,
-                                cpp: `<span style="color:rgba(59,130,246,0.6)">// Vision — analyze game screenshots</span>\nauto vlm = tryll::get_vlm();\n\nvlm.analyze(\n    screenshot_data,\n    <span style="color:rgba(74,222,128,0.7)">"Describe what the player sees."</span>,\n    [](std::string_view description) {\n        <span style="color:rgba(59,130,246,0.6)">// Vision model output</span>\n    }\n);`
-                            }
-                        };
-
-                        const responses = {
-                            llm: 'inference ready — 7B model loaded, 42 tok/s',
-                            stt: 'whisper-medium loaded — real-time transcription active',
-                            tts: 'voice synth ready — 3 voices available',
-                            vlm: 'vision model loaded — screenshot analysis enabled'
-                        };
-
-                        let currentSvc = 'llm';
-                        let currentEng = 'unreal';
-                        const codeBlock = document.getElementById('code-block');
-                        const responseText = document.getElementById('response-text');
-
-                        function updateCode() {
-                            codeBlock.innerHTML = codeSnippets[currentSvc][currentEng];
-                            responseText.textContent = responses[currentSvc];
+                        @keyframes sdk-pulse {
+                            0%, 100% { box-shadow: 0 0 0 3px rgba(59,130,246,0.1), 0 0 10px rgba(59,130,246,0.3); }
+                            50%       { box-shadow: 0 0 0 5px rgba(59,130,246,0.06), 0 0 20px rgba(59,130,246,0.5); }
                         }
-
-                        document.querySelectorAll('.svc-tab').forEach(btn => {
-                            btn.addEventListener('click', () => {
-                                document.querySelectorAll('.svc-tab').forEach(b => {
-                                    b.classList.remove('svc-active');
-                                    b.querySelector('.svc-dot').style.background = 'rgba(255,255,255,0.15)';
-                                });
-                                btn.classList.add('svc-active');
-                                btn.querySelector('.svc-dot').style.background = 'rgba(59,130,246,0.6)';
-                                currentSvc = btn.dataset.svc;
-                                updateCode();
-                            });
-                        });
-
-                        document.querySelectorAll('.eng-tab').forEach(btn => {
-                            btn.addEventListener('click', () => {
-                                document.querySelectorAll('.eng-tab').forEach(b => b.classList.remove('eng-active'));
-                                btn.classList.add('eng-active');
-                                currentEng = btn.dataset.eng;
-                                updateCode();
-                            });
-                        });
-
-                        updateCode();
-                    })();
-                    </script>
+                        @keyframes sdk-blink {
+                            0%, 100% { opacity: 1; }
+                            50%       { opacity: 0; }
+                        }
+                    </style>
                 </div>
+
             </div>
         </div>
     </section>
@@ -2321,8 +2326,7 @@
             <div class="flex flex-col items-center gap-6 md:grid md:grid-cols-3 md:items-center">
                 <!-- Left: Copyright -->
                 <div class="text-secondary text-sm order-2 md:order-1 text-center md:text-left">
-                    © 2026 Tryll Engine, Inc. All rights reserved.<br>
-                    <span class="text-xs">Deep Rock Galactic and Bosco are trademarks of Ghost Ship Games ApS.</span>
+                    © 2026 Tryll Engine, Inc. All rights reserved.
                 </div>
                 
                 <!-- Center: Social Links -->
@@ -2338,6 +2342,9 @@
                     </a>
                     <a href="https://tiktok.com/@tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on TikTok">
                         <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/tryllengine/" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on LinkedIn">
+                        <i class="fab fa-linkedin"></i>
                     </a>
                 </div>
                 

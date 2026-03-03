@@ -1,5 +1,27 @@
 [
   {
+    "slug": "tryll-assistant-v0-0-8-cuda-hip-support",
+    "title": "Tryll Assistant v0.0.8 — CUDA & HIP Support",
+    "excerpt": "v0.0.8 adds NVIDIA CUDA and AMD HIP backends alongside the existing Vulkan support. Both are available as optional DLCs on Steam.",
+    "category": "news",
+    "date": "2026-02-23",
+    "readTime": 2,
+    "image": "/assets/blog/cuda-hip.jpeg",
+    "icon": "fa-microchip",
+    "author": "Tryll Engine Team"
+  },
+  {
+    "slug": "welcome-alexander-stojanovic-as-advisor",
+    "title": "Welcome Alexander Stojanovic as Advisor",
+    "excerpt": "Alexander Stojanovic, VP of NEXT AI R&D at Microsoft GenAI, joins Tryll Engine as Advisor.",
+    "category": "news",
+    "date": "2026-02-21",
+    "readTime": 2,
+    "image": "/assets/blog/circles.png",
+    "icon": "fa-handshake",
+    "author": "Tryll Engine Team"
+  },
+  {
     "slug": "tryll-assistant-live-on-steam",
     "title": "Tryll Assistant Is Live on Steam",
     "excerpt": "Our on-device gaming assistant is now available on Steam. Press a hotkey in-game, ask your question, get a clear answer, and continue playing.",
@@ -15,7 +37,7 @@
     "title": "How We Catch Prompt Injections and Hallucinations",
     "excerpt": "A deep dive into the three-layer security pipeline behind Tryll Assistant — from regex-based injection filters to RAG and semantic similarity checks.",
     "category": "engineering",
-    "date": "2026-02-10",
+    "date": "2026-02-12",
     "readTime": 4,
     "image": "/assets/blog/stripes.png",
     "icon": "fa-shield-halved",
@@ -26,7 +48,7 @@
     "title": "We've Received an Epic MegaGrant from Unreal Engine",
     "excerpt": "Tryll Engine has been awarded an Epic MegaGrant to bring on-device AI into Unreal Engine games.",
     "category": "news",
-    "date": "2026-01-12",
+    "date": "2026-02-10",
     "readTime": 2,
     "image": "/assets/blog/polygon.png",
     "icon": "fa-award",
@@ -37,21 +59,10 @@
     "title": "Welcome Vladimir Belyaev as CTO",
     "excerpt": "Vladimir Belyaev joins Tryll Engine as CTO, bringing 30 years of gaming industry experience including 11 years in senior leadership roles at Playrix.",
     "category": "news",
-    "date": "2025-12-05",
+    "date": "2026-01-14",
     "readTime": 2,
     "image": "/assets/blog/head.png",
     "icon": "fa-user-tie",
-    "author": "Tryll Engine Team"
-  },
-  {
-    "slug": "welcome-alexander-stojanovic-as-advisor",
-    "title": "Welcome Alexander Stojanovic as Advisor",
-    "excerpt": "Alexander Stojanovic, VP of NEXT AI R&D at Microsoft GenAI, joins Tryll Engine as Advisor.",
-    "category": "news",
-    "date": "2025-11-15",
-    "readTime": 2,
-    "image": "/assets/blog/circles.png",
-    "icon": "fa-handshake",
     "author": "Tryll Engine Team"
   }
 ]

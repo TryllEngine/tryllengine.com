@@ -1123,7 +1123,7 @@
                             <div class="space-y-6">
                                 <!-- Per copy cost -->
                                 <div>
-                                    <span style="font-family:'JetBrains Mono',monospace;font-size:2.2rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1;">~3¢</span>
+                                    <span style="font-family:'JetBrains Mono',monospace;font-size:2.2rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1;">~8¢</span>
                                     <span style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:rgba(255,255,255,0.4);margin-left:12px;">per copy sold</span>
                                 </div>
                                 <!-- Servers -->
@@ -1873,7 +1873,7 @@
                         <h3 class="text-2xl font-bold text-white mb-1">Tryll Engine</h3>
                         <p style="font-size:0.85rem;color:rgba(255,255,255,0.45);margin-bottom:20px;">On-device AI for your game</p>
                         <div class="flex items-baseline gap-2 mb-1">
-                            <span style="font-family:'JetBrains Mono',monospace;font-size:2.5rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1;">~3¢</span>
+                            <span style="font-family:'JetBrains Mono',monospace;font-size:2.5rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1;">~8¢</span>
                             <span style="font-size:0.95rem;color:rgba(255,255,255,0.5);">per copy sold</span>
                         </div>
                         <p style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.35);margin-bottom:24px;">at $15 game price — scales with price</p>
@@ -1969,7 +1969,7 @@
 
                         <!-- Output: big centered fee -->
                         <div class="text-center py-4">
-                            <div id="per-copy-fee" style="font-size:2.2rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1;">$0.02</div>
+                            <div id="per-copy-fee" style="font-size:2.2rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1;">$0.08</div>
                             <div style="font-size:0.8rem;color:rgba(255,255,255,0.45);letter-spacing:0.06em;text-transform:uppercase;margin-top:6px;">per copy sold</div>
                         </div>
 
@@ -3082,9 +3082,9 @@
             const priceDisplay = document.getElementById('price-display');
             const copiesDisplay = document.getElementById('copies-display');
 
-            let currentPrice = 15;
+            let currentPrice = 10;
             let currentCopies = 100000;
-            const ENGINE_COEFFICIENT = 0.10;
+            const ENGINE_COEFFICIENT = 0.25;
             const PRICE_STEPS = [5, 10, 15, 20, 25, 30, 40, 50, 60, 70];
             const COPIES_STEP = 100000;
             const COPIES_MIN = 100000;

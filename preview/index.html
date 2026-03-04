@@ -979,6 +979,21 @@
             animation-fill-mode: both;
         }
         
+        /* NPC dialogue typing cursor */
+        .npc-cursor {
+            display: inline-block;
+            width: 7px;
+            height: 14px;
+            background: rgba(59,130,246,0.5);
+            vertical-align: middle;
+            margin-left: 2px;
+            animation: npc-blink 1s step-end infinite;
+        }
+        @keyframes npc-blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
         /* Feature item hover effects */
         .feature-item-left {
             position: relative;
@@ -1153,38 +1168,25 @@
                     </a>
                 </div>
 
-                <!-- Right: Signal Widget -->
+                <!-- Right: NPC Dialogue Widget -->
                 <div class="flex-1 min-w-0 w-full lg:max-w-md">
                     <div class="rounded overflow-hidden border border-white/[0.06] bg-white/[0.02]" style="border-top:2px solid rgba(59,130,246,0.3);">
                         <!-- Header -->
-                        <div class="px-5 py-3 border-b border-white/[0.06]">
-                            <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.08em;color:rgba(59,130,246,0.5);text-transform:uppercase;">// signal</span>
+                        <div class="px-5 py-3 border-b border-white/[0.06] flex items-center justify-between">
+                            <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.08em;color:rgba(59,130,246,0.5);text-transform:uppercase;">// npc_dialogue</span>
+                            <span id="npc-status" style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:rgba(59,130,246,0.35);">live</span>
                         </div>
-                        <!-- Key numbers -->
-                        <div class="px-6 py-6">
-                            <div class="space-y-6">
-                                <!-- Per copy cost -->
-                                <div>
-                                    <span style="font-family:'JetBrains Mono',monospace;font-size:2.2rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1;">~3¢</span>
-                                    <span style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:rgba(255,255,255,0.4);margin-left:12px;">per copy sold</span>
-                                </div>
-                                <!-- Servers -->
-                                <div>
-                                    <span style="font-family:'JetBrains Mono',monospace;font-size:2.2rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1;">0</span>
-                                    <span style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:rgba(255,255,255,0.4);margin-left:12px;">servers to run</span>
-                                </div>
-                                <!-- On player hardware -->
-                                <div>
-                                    <span style="font-family:'JetBrains Mono',monospace;font-size:2.2rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1;">100%</span>
-                                    <span style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:rgba(255,255,255,0.4);margin-left:12px;">on player hardware</span>
-                                </div>
+                        <!-- Dialogue area -->
+                        <div class="px-6 py-5" style="min-height:180px;">
+                            <div id="npc-dialogue" style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;line-height:1.7;"></div>
+                        </div>
+                        <!-- Context tags -->
+                        <div id="npc-context" class="px-6 py-4 border-t border-white/[0.06]" style="background:rgba(255,255,255,0.01);opacity:0;transition:opacity 0.5s ease;">
+                            <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:rgba(255,255,255,0.3);line-height:1.8;letter-spacing:0.02em;">
+                                <span id="npc-ctx-1"></span><br>
+                                <span id="npc-ctx-2"></span><br>
+                                <span id="npc-ctx-3"></span>
                             </div>
-                        </div>
-                        <!-- Team line -->
-                        <div class="px-6 py-4 border-t border-white/[0.06]" style="background:rgba(255,255,255,0.01);">
-                            <p style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.35);line-height:1.6;letter-spacing:0.02em;">
-                                Built by veterans of<br>game dev & applied AI.
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -3205,6 +3207,116 @@
             // Initial calculations
             updateCalculator();
         });
+
+        // NPC Dialogue Typewriter
+        (function() {
+            const scenarios = [
+                {
+                    player: "Where's the dragon?",
+                    npc: "Guard",
+                    response: "Last I heard, it fled north after you wounded it at the bridge. Be careful\u2009\u2014\u2009it remembers your face.",
+                    ctx: ["\u2500 context: wounded_dragon", "\u2500 memory: player_encounter", "\u2500 mood: cautious"]
+                },
+                {
+                    player: "Can I trust you?",
+                    npc: "Merchant",
+                    response: "I sold you a faulty blade last time... I owe you one. Take this\u2009\u2014\u2009on the house.",
+                    ctx: ["\u2500 context: prior_transaction", "\u2500 memory: sold_faulty_blade", "\u2500 mood: guilt"]
+                },
+                {
+                    player: "What happened here?",
+                    npc: "Villager",
+                    response: "Raiders came at dawn. We fought them off, but my brother\u2009\u2014\u2009he didn't make it. He was protecting the well.",
+                    ctx: ["\u2500 context: raid_aftermath", "\u2500 memory: brother_killed", "\u2500 mood: grieving"]
+                }
+            ];
+
+            let current = 0;
+            const dialogueEl = document.getElementById('npc-dialogue');
+            const contextEl = document.getElementById('npc-context');
+            const ctx1 = document.getElementById('npc-ctx-1');
+            const ctx2 = document.getElementById('npc-ctx-2');
+            const ctx3 = document.getElementById('npc-ctx-3');
+
+            function typeText(el, text, speed, callback) {
+                let i = 0;
+                const cursor = document.createElement('span');
+                cursor.className = 'npc-cursor';
+                el.appendChild(cursor);
+
+                function tick() {
+                    if (i < text.length) {
+                        cursor.before(document.createTextNode(text[i]));
+                        i++;
+                        setTimeout(tick, speed);
+                    } else {
+                        cursor.remove();
+                        if (callback) callback();
+                    }
+                }
+                tick();
+            }
+
+            function playScenario() {
+                const s = scenarios[current];
+                dialogueEl.innerHTML = '';
+                contextEl.style.opacity = '0';
+                ctx1.textContent = '';
+                ctx2.textContent = '';
+                ctx3.textContent = '';
+
+                // Player line
+                const playerLabel = document.createElement('span');
+                playerLabel.style.cssText = 'color:rgba(59,130,246,0.7);';
+                playerLabel.textContent = 'Player: ';
+                dialogueEl.appendChild(playerLabel);
+
+                const playerQuote = document.createElement('span');
+                playerQuote.style.cssText = 'color:rgba(255,255,255,0.6);';
+                playerQuote.textContent = '"' + s.player + '"';
+                dialogueEl.appendChild(playerQuote);
+
+                dialogueEl.appendChild(document.createElement('br'));
+                dialogueEl.appendChild(document.createElement('br'));
+
+                // NPC label
+                setTimeout(function() {
+                    const npcLabel = document.createElement('span');
+                    npcLabel.style.cssText = 'color:rgba(59,130,246,0.7);';
+                    npcLabel.textContent = s.npc + ': ';
+                    dialogueEl.appendChild(npcLabel);
+
+                    const quoteOpen = document.createElement('span');
+                    quoteOpen.style.cssText = 'color:rgba(255,255,255,0.85);';
+                    quoteOpen.textContent = '\u201C';
+                    dialogueEl.appendChild(quoteOpen);
+
+                    // Type out NPC response
+                    const responseEl = document.createElement('span');
+                    responseEl.style.cssText = 'color:rgba(255,255,255,0.85);';
+                    dialogueEl.appendChild(responseEl);
+
+                    typeText(responseEl, s.response + '\u201D', 30, function() {
+                        // Show context tags
+                        setTimeout(function() {
+                            ctx1.textContent = s.ctx[0];
+                            ctx2.textContent = s.ctx[1];
+                            ctx3.textContent = s.ctx[2];
+                            contextEl.style.opacity = '1';
+
+                            // Next scenario
+                            setTimeout(function() {
+                                current = (current + 1) % scenarios.length;
+                                playScenario();
+                            }, 4000);
+                        }, 400);
+                    });
+                }, 800);
+            }
+
+            // Start after page load
+            setTimeout(playScenario, 1200);
+        })();
 
     </script>
 

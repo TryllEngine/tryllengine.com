@@ -57,32 +57,34 @@ From the `browser_snapshot`, extract:
 
 If the LinkedIn post contains images (photos of people, screenshots, diagrams):
 
-1. Use Playwright to extract the image's `src` URL from the page. Use `browser_evaluate` with JavaScript like:
-   ```js
-   document.querySelector('article img[src*="media.licdn.com"]')?.src
-   ```
-   Or find the image element in the snapshot and use its ref to get the source URL.
+1. Use Playwright to find the post image. **Click the image** to open LinkedIn's lightbox — it loads a higher-res variant (`feedshare-shrink_2048_1536` or `feedshare-shrink_1280` instead of the default `feedshare-shrink_800`).
 
-2. **Download the full-resolution image** using `curl`:
+2. Extract the higher-res image URL from the lightbox using `browser_evaluate`:
+   ```js
+   Array.from(document.querySelectorAll('img[src*="media.licdn.com"]'))
+     .map(img => ({src: img.src, width: img.naturalWidth}))
+     .sort((a, b) => b.width - a.width)[0]?.src
+   ```
+
+3. **Download the image** using `curl`:
    ```bash
-   curl -L -o "assets/blog/{slug}-inline.jpg" "IMAGE_URL"
+   curl -L -o "assets/blog/{slug}-inline-1.jpg" "IMAGE_URL"
    ```
    LinkedIn image URLs from `media.licdn.com` are publicly accessible and don't require authentication.
 
-3. Check the actual file type with `file` command and use the correct extension (`.jpg`, `.png`, etc.).
+4. Check the actual file type with `file` command and use the correct extension (`.jpg`, `.png`, etc.).
 
-4. **Compress inline images** to keep them under ~300 KB. Use Python/Pillow:
+5. **Compress inline images** if larger than 300 KB. Use Python/Pillow:
    ```python
    from PIL import Image
    img = Image.open("assets/blog/{slug}-inline-1.jpg")
-   # Resize if wider than 800px (preserving aspect ratio)
-   if img.width > 800:
-       ratio = 800 / img.width
-       img = img.resize((800, int(img.height * ratio)), Image.LANCZOS)
+   if img.width > 1200:
+       ratio = 1200 / img.width
+       img = img.resize((1200, int(img.height * ratio)), Image.LANCZOS)
    img.save("assets/blog/{slug}-inline-1.jpg", optimize=True, quality=85)
    ```
 
-**Important**: Do NOT use `browser_take_screenshot` on image elements — this produces a low-resolution capture of what's rendered on screen. Always download the original image from its source URL for full quality.
+**Important**: Do NOT use `browser_take_screenshot` on image elements — this produces a low-resolution capture of what's rendered on screen. Always download the original source image URL. The default `feedshare-shrink_800` variant is low quality — always try to get `feedshare-shrink_2048_1536` or `feedshare-shrink_1280` by opening the lightbox first.
 
 If you cannot extract the image URL automatically, ask the user to right-click the image on LinkedIn, copy the image URL, and provide it.
 

@@ -9,6 +9,7 @@ shopify-config.js
 # Pages not ready for upload
 safety.html
 beyond-chat.html
+/ai-for-games.html
 
 # Root-level screenshots (local reference images, not for deployment)
 /*.png

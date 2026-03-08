@@ -1,4 +1,4 @@
-![Pierre Moisan](/assets/blog/PIERRE%20MOISAN.png)
+![Pierre Moisan](/assets/blog/welcome-pierre-moisan.png)
 
 **We're excited to welcome [Pierre Moisan](https://www.linkedin.com/in/pierre-moisan-2431272/) to Tryll Engine!**
 

@@ -4,7 +4,7 @@ We are building Tryll Assistant for gamers, and it works directly inside the gam
 
 Here is how our pipeline works:
 
-![Security Pipeline](/assets/blog/how-we-catch-prompt-injections.png)
+![Security Pipeline](/assets/blog/how-we-catch-prompt-injections-and-hallucinations-inline.png)
 
 **User Input → Injection Filter → System Prompt → LLM + RAG → Semantic Filter → Response**
 

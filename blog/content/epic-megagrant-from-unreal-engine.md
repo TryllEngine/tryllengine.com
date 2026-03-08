@@ -1,4 +1,4 @@
-![Epic MegaGrant from Unreal Engine](/assets/blog/epic-megagrant-from-unreal-engine.png)
+![Epic MegaGrant from Unreal Engine](/assets/blog/epic-megagrant-from-unreal-engine-inline.png)
 
 Under the leadership of our CTO, Vladimir Belyaev, we are working to bring on-device AI into Unreal Engine games.
 

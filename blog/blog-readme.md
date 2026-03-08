@@ -10,6 +10,10 @@ blog/
 ├── content/
 │   └── {slug}.md           # Markdown body for each post
 └── {slug}.html             # HTML page for each post
+
+assets/blog/
+├── {slug}.{ext}            # Card/thumbnail image (used in posts.json + HTML hero)
+└── {slug}-inline.{ext}     # In-article image (used in markdown body, optional)
 ```
 
 ## Steps to add a new post
@@ -18,13 +22,21 @@ blog/
 
 Create `blog/content/{slug}.md`. The file is **pure markdown** — no front-matter. It gets fetched at runtime and rendered with `marked.js`.
 
-- Use absolute paths for images: `/assets/blog/my-image.png`
-- URL-encode spaces in filenames: `/assets/blog/PIERRE%20MOISAN.png`
+- Use absolute paths for images: `/assets/blog/{slug}-inline.png`
 - Add hyperlinks for people (`[Name](linkedin-url)`) and products (`[Tryll Assistant](steam-url)`)
 
-### 2. Add the hero image
+### 2. Add images
 
-Place the image in `assets/blog/`. Any format works (png, jpg, jpeg). The filename becomes part of the URL, so keep it simple.
+Place images in `assets/blog/`. All filenames must start with the post slug:
+
+- **Card/thumbnail** (required): `{slug}.{ext}` — shown on the blog grid and as the hero image in the post HTML
+- **Inline content** (optional): `{slug}-inline.{ext}` — additional images embedded in the markdown body
+
+Examples for a post with slug `welcome-pierre-moisan`:
+- `assets/blog/welcome-pierre-moisan.png` — card image
+- `assets/blog/welcome-pierre-moisan-inline.png` — in-article image (if different from card)
+
+If the card and inline image are the same, just use `{slug}.{ext}` for both references.
 
 ### 3. Create the HTML page
 
@@ -54,7 +66,7 @@ Add a new entry **at the top** of the array in `blog/posts.json` (newest first):
   "category": "news",
   "date": "2026-03-06",
   "readTime": 2,
-  "image": "/assets/blog/PIERRE%20MOISAN.png",
+  "image": "/assets/blog/welcome-pierre-moisan.png",
   "icon": "fa-handshake",
   "author": "Tryll Engine Team"
 }
@@ -82,6 +94,8 @@ Add a `<url>` entry for the new post in `sitemap.xml`.
 ## Conventions
 
 - **Slugs** are lowercase, hyphen-separated: `welcome-pierre-moisan`
+- **Image naming** — all images use the slug as prefix: `{slug}.ext` for card, `{slug}-inline.ext` for in-article
+- **No spaces or uppercase** in filenames — use hyphens
 - **Posts are sorted by date** (newest first) in `posts.json` — keep this order
 - **Markdown content** should not include the post title (it's in the HTML page header)
 - **LinkedIn links** for team members should go on the first mention of their name

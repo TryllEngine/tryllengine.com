@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI in Games — Genre Use Cases | Tryll Engine</title>
+    <meta name="description" content="See what on-device AI unlocks in every game genre. Real scenarios, real code, no cloud required. Built for game developers.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <meta name="robots" content="noindex, nofollow">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#232E41',
+                        secondary: '#F6F0EB',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        :root {
+            --surface: rgba(255,255,255,0.025);
+            --surface-hover: rgba(255,255,255,0.05);
+            --border: rgba(255,255,255,0.06);
+            --border-hover: rgba(255,255,255,0.14);
+            --text-1: rgba(255,255,255,0.93);
+            --text-2: rgba(255,255,255,0.65);
+            --text-3: rgba(255,255,255,0.38);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #000;
+            color: var(--text-2);
+            font-family: 'DM Sans', system-ui, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Noise overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 9998;
+            pointer-events: none;
+            opacity: 0.02;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 256px 256px;
+        }
+
+        .font-display { font-family: 'Syne', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* ── Genre Cards Grid ── */
+        .genre-card {
+            position: relative;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+        .genre-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+        .genre-card:hover .card-glow {
+            opacity: 1;
+        }
+        .genre-card:hover .card-icon {
+            transform: scale(1.1);
+        }
+        .card-glow {
+            position: absolute;
+            top: -1px; left: -1px; right: -1px; bottom: -1px;
+            border-radius: 17px;
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .card-inner {
+            position: relative;
+            z-index: 1;
+            padding: 32px 28px;
+            display: flex;
+            flex-direction: column;
+            min-height: 240px;
+            background: rgba(0,0,0,0.85);
+            border-radius: 15px;
+        }
+        .card-icon {
+            width: 48px; height: 48px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 12px;
+            font-size: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-1);
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+        .card-hook {
+            font-size: 14px;
+            line-height: 1.65;
+            color: var(--text-3);
+            flex-grow: 1;
+        }
+        .card-tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .card-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.03em;
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.03);
+            color: var(--text-3);
+        }
+
+        /* ── Detail View ── */
+        .detail-view {
+            display: none;
+            animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        .detail-view.active { display: block; }
+        .grid-view { transition: opacity 0.3s; }
+        .grid-view.hidden { display: none; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .back-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 13px; font-weight: 500;
+            color: var(--text-3);
+            cursor: pointer;
+            transition: color 0.2s;
+            background: none; border: none;
+            padding: 8px 0;
+        }
+        .back-btn:hover { color: var(--text-1); }
+
+        /* ── Scenario Block ── */
+        .scenario-block {
+            position: relative;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 48px;
+            overflow: hidden;
+        }
+        .scenario-block::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.08);
+            pointer-events: none;
+        }
+
+        /* ── Terminal / Code Block ── */
+        .terminal {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .terminal-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.03);
+            border-bottom: 1px solid var(--border);
+        }
+        .terminal-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+        }
+        .terminal-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--text-3);
+            margin-left: 8px;
+            letter-spacing: 0.03em;
+        }
+        .terminal-body {
+            padding: 20px 24px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.75;
+            color: rgba(255,255,255,0.7);
+            overflow-x: auto;
+        }
+        .terminal-body .kw { color: #c792ea; }
+        .terminal-body .fn { color: #82aaff; }
+        .terminal-body .str { color: #c3e88d; }
+        .terminal-body .cm { color: rgba(255,255,255,0.25); }
+        .terminal-body .num { color: #f78c6c; }
+        .terminal-body .op { color: #89ddff; }
+        .terminal-body .type { color: #ffcb6b; }
+
+        /* ── Comparison Columns ── */
+        .compare-col {
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+        .compare-header {
+            padding: 16px 24px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border);
+        }
+        .compare-body {
+            padding: 24px;
+        }
+        .dialogue-line {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .dialogue-line:last-child { margin-bottom: 0; }
+        .dialogue-speaker {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            flex-shrink: 0;
+            padding-top: 2px;
+            min-width: 56px;
+        }
+
+        /* ── Tech Details Accordion ── */
+        .tech-toggle {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 24px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+            text-align: left;
+            color: var(--text-3);
+            font-size: 13px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .tech-toggle:hover {
+            border-color: var(--border-hover);
+            color: var(--text-2);
+        }
+        .tech-toggle i { transition: transform 0.3s; font-size: 11px; }
+        .tech-toggle.open i { transform: rotate(180deg); }
+        .tech-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tech-content.open {
+            max-height: 600px;
+        }
+        .tech-inner {
+            padding: 20px 0 0;
+        }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+        .tech-cell {
+            padding: 16px 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+        .tech-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 6px;
+        }
+        .tech-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-1);
+        }
+
+        /* ── NPC Terminal Animation ── */
+        .npc-terminal {
+            position: relative;
+        }
+        .npc-response {
+            min-height: 60px;
+        }
+        .cursor-blink {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: currentColor;
+            margin-left: 2px;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* ── Genre Nav Pills ── */
+        .genre-pill {
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-3);
+            background: transparent;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .genre-pill:hover {
+            color: var(--text-2);
+            border-color: var(--border-hover);
+        }
+        .genre-pill.active {
+            color: #fff;
+            border-color: rgba(59,130,246,0.4);
+            background: rgba(59,130,246,0.1);
+        }
+
+        /* ── Mechanic Chips ── */
+        .mechanic-chip {
+            padding: 14px 20px;
+            border-radius: 12px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+            cursor: default;
+        }
+        .mechanic-chip:hover {
+            border-color: var(--border-hover);
+            background: var(--surface-hover);
+        }
+        .mechanic-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-1);
+            margin-bottom: 4px;
+        }
+        .mechanic-desc {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text-3);
+        }
+
+        /* ── CTA Banner ── */
+        .cta-banner {
+            position: relative;
+            border-radius: 20px;
+            padding: 48px 40px;
+            overflow: hidden;
+            border: 1px solid rgba(59,130,246,0.15);
+            background: linear-gradient(135deg, rgba(59,130,246,0.06) 0%, rgba(59,130,246,0.02) 100%);
+        }
+
+        /* ── Section Divider ── */
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ── Stagger Animations ── */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .stagger { opacity: 0; animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .stagger-1 { animation-delay: 0.05s; }
+        .stagger-2 { animation-delay: 0.1s; }
+        .stagger-3 { animation-delay: 0.15s; }
+        .stagger-4 { animation-delay: 0.2s; }
+        .stagger-5 { animation-delay: 0.25s; }
+        .stagger-6 { animation-delay: 0.3s; }
+        .stagger-7 { animation-delay: 0.35s; }
+        .stagger-8 { animation-delay: 0.4s; }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .scenario-block { padding: 28px 20px; }
+            .card-inner { padding: 24px 20px; min-height: 200px; }
+            .terminal-body { font-size: 11px; padding: 16px; }
+            .compare-body { padding: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Password Gate -->
+    <div id="password-gate" style="position:fixed;inset:0;z-index:99999;background:#000;display:flex;align-items:center;justify-content:center;">
+        <div style="max-width:400px;width:90%;text-align:center;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;color:rgba(59,130,246,0.5);text-transform:uppercase;margin-bottom:1.5rem;">// access_required</div>
+            <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;font-weight:700;color:rgba(255,255,255,0.9);margin-bottom:0.5rem;">Design Preview</h2>
+            <p style="font-family:'DM Sans',sans-serif;font-size:0.9rem;color:rgba(255,255,255,0.5);margin-bottom:2rem;">Enter the team password to view this page.</p>
+            <div style="position:relative;">
+                <input id="gate-password" type="password" placeholder="Password..."
+                    style="width:100%;padding:12px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:4px;color:rgba(255,255,255,0.9);font-family:'DM Sans',sans-serif;font-size:0.95rem;outline:none;box-sizing:border-box;"
+                    onkeydown="if(event.key==='Enter')document.getElementById('gate-submit').click()"
+                    onfocus="this.style.borderColor='rgba(59,130,246,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            </div>
+            <button id="gate-submit" onclick="checkGatePassword()"
+                style="margin-top:1rem;width:100%;padding:12px;background:rgba(59,130,246,0.9);border:none;border-radius:4px;color:#fff;font-family:'JetBrains Mono',monospace;font-size:0.8rem;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;transition:background 0.15s;">
+                Enter
+            </button>
+            <p id="gate-error" style="font-family:'DM Sans',sans-serif;font-size:0.8rem;color:rgba(239,68,68,0.8);margin-top:1rem;display:none;">Incorrect password.</p>
+        </div>
+    </div>
+    <script>
+        function checkGatePassword() {
+            var input = document.getElementById('gate-password').value;
+            var expected = atob('dHJ5bGwyMDI2');
+            if (input === expected) {
+                document.getElementById('password-gate').style.display = 'none';
+                sessionStorage.setItem('design-access', 'granted');
+            } else {
+                document.getElementById('gate-error').style.display = 'block';
+                document.getElementById('gate-password').style.borderColor = 'rgba(239,68,68,0.5)';
+            }
+        }
+        if (sessionStorage.getItem('design-access') === 'granted') {
+            document.getElementById('password-gate').style.display = 'none';
+        }
+    </script>
+
+<!-- ═══════════════════════════════════ -->
+<!--  HERO                              -->
+<!-- ═══════════════════════════════════ -->
+<section class="relative pt-20 pb-16 md:pt-32 md:pb-24 px-5">
+    <!-- Background glow -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);"></div>
+
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+        <div class="font-mono text-xs tracking-[0.2em] uppercase mb-6" style="color: rgba(59,130,246,0.6);">
+            What becomes possible
+        </div>
+        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-800 tracking-tight mb-8" style="color: var(--text-1); line-height: 1.05;">
+            AI that plays<br>
+            <span style="color: rgba(59,130,246,0.85);">every role</span>
+        </h1>
+        <p class="text-lg md:text-xl max-w-xl mx-auto mb-8" style="color: var(--text-3); line-height: 1.7;">
+            See how on-device AI creates game mechanics that were never possible with scripted NPCs. No cloud. No latency. No per-request costs.
+        </p>
+        <div class="flex items-center justify-center gap-3 font-mono text-xs" style="color: var(--text-3);">
+            <span class="flex items-center gap-2"><i class="fas fa-microchip" style="color: rgba(59,130,246,0.5);"></i> Runs locally</span>
+            <span style="opacity: 0.3;">|</span>
+            <span class="flex items-center gap-2"><i class="fas fa-bolt" style="color: rgba(245,158,11,0.5);"></i> Real-time</span>
+            <span style="opacity: 0.3;">|</span>
+            <span class="flex items-center gap-2"><i class="fas fa-code" style="color: rgba(168,85,247,0.5);"></i> Simple API</span>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════ -->
+<!--  GENRE GRID                        -->
+<!-- ═══════════════════════════════════ -->
+<section class="px-5 pb-24" id="genreSection">
+    <div class="max-w-6xl mx-auto">
+
+        <!-- Grid View -->
+        <div class="grid-view" id="gridView">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="genreGrid"></div>
+        </div>
+
+        <!-- Detail View -->
+        <div class="detail-view" id="detailView">
+            <!-- Back + Genre Nav -->
+            <div class="mb-10">
+                <button class="back-btn mb-6" onclick="showGrid()">
+                    <i class="fas fa-arrow-left" style="font-size: 11px;"></i> All genres
+                </button>
+                <div class="flex gap-2 flex-wrap" id="genreNav"></div>
+            </div>
+            <!-- Dynamic content -->
+            <div id="detailContent"></div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════ -->
+<!--  BOTTOM CTA                        -->
+<!-- ═══════════════════════════════════ -->
+<section class="px-5 pb-24">
+    <div class="max-w-4xl mx-auto">
+        <div class="cta-banner text-center">
+            <div class="font-mono text-xs tracking-[0.15em] uppercase mb-4" style="color: rgba(59,130,246,0.6);">Ready to build?</div>
+            <h2 class="font-display text-3xl md:text-4xl font-700 tracking-tight mb-4" style="color: var(--text-1);">
+                See it running in a real game
+            </h2>
+            <p class="text-base mb-8 max-w-lg mx-auto" style="color: var(--text-3);">
+                BoscoTryll is a free mod for Deep Rock Galactic that turns a scripted drone into an AI companion. Download it and see what on-device AI feels like.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="../boscotryll.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm text-white" style="background: rgba(59,130,246,0.9);">
+                    <i class="fas fa-gamepad"></i> Try BoscoTryll
+                </a>
+                <a href="../index.html#early-access" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm" style="color: var(--text-2); border: 1px solid var(--border);">
+                    <i class="fas fa-rocket"></i> Get Early Access
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// ═══════════════════════════════════
+//  GENRE DATA
+// ═══════════════════════════════════
+const genres = [
+    {
+        id: 'rpg',
+        name: 'RPG / Open World',
+        icon: 'fas fa-dragon',
+        color: '#F59E0B',
+        colorDim: 'rgba(245,158,11,0.10)',
+        tags: ['companions', 'quests', 'dialogue'],
+        hook: 'Companions that remember every choice. Innkeepers who gossip about your reputation. Merchants who haggle based on your history.',
+        scenario: {
+            title: 'The tavern remembers you',
+            text: `You enter the Rusted Flagon for the third time. The bartender doesn't repeat his intro dialogue — he says "Back again? The regulars are talking about what you did at the mine." A hooded figure in the corner, who saw you help the miners last quest, stands up and offers information. None of this was scripted. The AI tracks your reputation, relationships, and world state — every NPC reacts to who you actually are.`,
+        },
+        code: `<span class="cm">// Give an NPC memory, personality, and world context</span>
+<span class="kw">const</span> bartender <span class="op">=</span> tryll.<span class="fn">npc</span>(<span class="str">'bartender_grok'</span>, {
+  <span class="type">personality</span>: <span class="str">'Gruff but fair. Knows everyone\\'s business.'</span>,
+  <span class="type">memory</span>: tryll.<span class="fn">memory</span>(<span class="str">'persistent'</span>),
+  <span class="type">worldContext</span>: [<span class="str">'mine_quest_complete'</span>, <span class="str">'reputation:respected'</span>]
+});
+
+<span class="cm">// Player walks in — NPC responds to actual game state</span>
+<span class="kw">const</span> greeting <span class="op">=</span> <span class="kw">await</span> bartender.<span class="fn">respond</span>({
+  <span class="type">event</span>: <span class="str">'player_entered_tavern'</span>,
+  <span class="type">visitCount</span>: <span class="num">3</span>,
+  <span class="type">playerState</span>: { <span class="type">health</span>: <span class="str">'injured'</span>, <span class="type">gold</span>: <span class="num">47</span> }
+});`,
+        codeFile: 'tavern_ai.js',
+        scripted: [
+            { speaker: 'NPC', text: '"Welcome to the Rusted Flagon. What can I get you?"', note: 'Same line every time' },
+            { speaker: 'Player', text: '[Option A] "Give me an ale." / [Option B] "Any rumors?"', note: '2 predefined choices' },
+            { speaker: 'NPC', text: '"Here you go." / "I heard wolves near the forest."', note: 'Canned response' },
+        ],
+        tryll: [
+            { speaker: 'NPC', text: '"Back again? You look rough — miners give you trouble? Sit down, first one\'s on the house."' },
+            { speaker: 'Player', text: '"What are people saying about the mine?"', note: 'Any question, freely typed' },
+            { speaker: 'NPC', text: '"Word travels fast. Half the regulars think you\'re a hero. The other half think you made an enemy of the foreman. Watch your back."' },
+        ],
+        mechanics: [
+            { name: 'Persistent NPC Memory', desc: 'NPCs remember past interactions, player choices, and world events across sessions.' },
+            { name: 'Reputation-Driven Dialogue', desc: 'Faction standing, past deeds, and rumors dynamically shape how every NPC treats you.' },
+            { name: 'Emergent Quest Hooks', desc: 'NPCs surface quest opportunities based on what they know about you and the world state.' },
+            { name: 'Dynamic Haggling', desc: 'Merchants adjust prices based on relationship, supply/demand, and your negotiation style.' },
+            { name: 'Party Banter', desc: 'Companions comment on environments, react to your choices, and develop opinions about each other.' },
+        ],
+        tech: { latency: '1-3s', vram: '~6 GB', model: '7B SLM', timing: 'Turn-based' },
+    },
+    {
+        id: 'fps',
+        name: 'FPS / Co-op Shooter',
+        icon: 'fas fa-crosshairs',
+        color: '#EF4444',
+        colorDim: 'rgba(239,68,68,0.10)',
+        tags: ['squad AI', 'callouts', 'tactics'],
+        hook: 'Squad mates that call out threats, adapt to your playstyle, and coordinate tactics — not follow waypoints.',
+        scenario: {
+            title: 'Your squad learns how you play',
+            text: `Three missions in, your AI squadmate notices you always push the left flank. Mid-firefight, she calls out: "I'll draw fire right — you do your thing." When you switch to a sniper rifle, she stops suggesting rushes. When you're low on ammo, she flags a supply cache she spotted earlier. She's not following a script — she's reading the game state and adapting to your decisions in real time.`,
+        },
+        code: `<span class="cm">// Squad AI that adapts to player behavior</span>
+<span class="kw">const</span> squadmate <span class="op">=</span> tryll.<span class="fn">npc</span>(<span class="str">'kira_squad'</span>, {
+  <span class="type">role</span>: <span class="str">'combat_support'</span>,
+  <span class="type">personality</span>: <span class="str">'Calm, tactical, dry humor under fire.'</span>,
+  <span class="type">memory</span>: tryll.<span class="fn">memory</span>(<span class="str">'session'</span>),
+});
+
+<span class="cm">// Feed combat state — get contextual callout</span>
+<span class="kw">const</span> callout <span class="op">=</span> <span class="kw">await</span> squadmate.<span class="fn">respond</span>({
+  <span class="type">event</span>: <span class="str">'combat_active'</span>,
+  <span class="type">threats</span>: [{ <span class="type">type</span>: <span class="str">'sniper'</span>, <span class="type">bearing</span>: <span class="num">270</span> }],
+  <span class="type">playerStyle</span>: <span class="str">'flanker'</span>,
+  <span class="type">ammo</span>: <span class="str">'low'</span>
+});`,
+        codeFile: 'squad_ai.js',
+        scripted: [
+            { speaker: 'AI', text: '"Enemy spotted."', note: 'Generic, no direction' },
+            { speaker: 'AI', text: '"Moving to cover."', note: 'Same behavior every time' },
+            { speaker: 'AI', text: '"Reloading."', note: 'No awareness of player state' },
+        ],
+        tryll: [
+            { speaker: 'AI', text: '"Sniper, west rooftop — don\'t peek that angle, I\'ll suppress."' },
+            { speaker: 'AI', text: '"You\'re running low on mags. There\'s a crate in the room behind us."' },
+            { speaker: 'AI', text: '"You keep pulling left — I\'ll hold right and funnel them to you."' },
+        ],
+        mechanics: [
+            { name: 'Contextual Callouts', desc: 'Squad mates give specific, directional threat info based on real combat state.' },
+            { name: 'Playstyle Adaptation', desc: 'AI observes your patterns across sessions and adjusts tactics to complement you.' },
+            { name: 'Dynamic Banter', desc: 'Mission-aware dialogue that references what just happened, not pre-recorded barks.' },
+            { name: 'Resource Awareness', desc: 'AI tracks ammo, health, and equipment — offers help before you ask.' },
+        ],
+        tech: { latency: '<500ms', vram: '~4 GB', model: '3B SLM', timing: 'Real-time' },
+        proof: { text: 'See this working today', link: 'boscotryll.html', label: 'BoscoTryll — AI companion mod for Deep Rock Galactic' },
+    },
+    {
+        id: 'survival',
+        name: 'Survival / Crafting',
+        icon: 'fas fa-campground',
+        color: '#22C55E',
+        colorDim: 'rgba(34,197,94,0.10)',
+        tags: ['resource AI', 'threats', 'alliances'],
+        hook: 'NPCs that understand scarcity, fear, and self-preservation. They trade, betray, or band together based on survival pressure.',
+        scenario: {
+            title: 'The trader knows what you need',
+            text: `Winter is coming and you're short on fuel. You approach a wandering trader — she doesn't offer her full inventory. She says "Fuel's scarce this season. I'll trade, but it'll cost you. Unless you've got antibiotics — my camp's got sick people." She's not running a shop menu. She knows what's valuable right now, what she needs, and what leverage she has. Refuse her deal, and next time she remembers.`,
+        },
+        code: `<span class="cm">// Survival NPC aware of world scarcity</span>
+<span class="kw">const</span> trader <span class="op">=</span> tryll.<span class="fn">npc</span>(<span class="str">'wandering_merchant'</span>, {
+  <span class="type">personality</span>: <span class="str">'Pragmatic survivor. Fair but firm.'</span>,
+  <span class="type">memory</span>: tryll.<span class="fn">memory</span>(<span class="str">'persistent'</span>),
+  <span class="type">needs</span>: [<span class="str">'antibiotics'</span>, <span class="str">'shelter_materials'</span>],
+});
+
+<span class="kw">const</span> offer <span class="op">=</span> <span class="kw">await</span> trader.<span class="fn">respond</span>({
+  <span class="type">event</span>: <span class="str">'player_approaches'</span>,
+  <span class="type">worldState</span>: { <span class="type">season</span>: <span class="str">'winter'</span>, <span class="type">fuelScarcity</span>: <span class="num">0.85</span> },
+  <span class="type">playerInventory</span>: [<span class="str">'antibiotics x2'</span>, <span class="str">'canned_food x5'</span>],
+  <span class="type">relationshipScore</span>: <span class="num">0.3</span>
+});`,
+        codeFile: 'survival_trader.js',
+        scripted: [
+            { speaker: 'NPC', text: '"Want to trade?" → [Opens shop UI]', note: 'Static inventory, fixed prices' },
+            { speaker: 'Player', text: 'Clicks buy/sell buttons', note: 'No negotiation' },
+            { speaker: 'NPC', text: '"Thanks for your business."', note: 'Same every time' },
+        ],
+        tryll: [
+            { speaker: 'NPC', text: '"Fuel, right? Everyone wants fuel right now. I\'ve got two cans — but I need antibiotics. My people are sick."' },
+            { speaker: 'Player', text: '"I only have two doses. I might need them."', note: 'Natural conversation' },
+            { speaker: 'NPC', text: '"Your call. But if my camp goes down, you lose your only trade route north. Think about it."' },
+        ],
+        mechanics: [
+            { name: 'Scarcity-Aware Trading', desc: 'NPC prices and offers shift based on real resource availability in the world.' },
+            { name: 'Survival Alliances', desc: 'NPCs form, break, or betray alliances based on threat level and trust history.' },
+            { name: 'Threat Communication', desc: 'NPCs warn about dangers they\'ve encountered, sharing intel that feels earned.' },
+            { name: 'Self-Preservation Logic', desc: 'NPCs make decisions to protect themselves — hoarding, fleeing, or fighting based on context.' },
+        ],
+        tech: { latency: '1-3s', vram: '~6 GB', model: '7B SLM', timing: 'Semi real-time' },
+    },
+    {
+        id: 'horror',
+        name: 'Horror',
+        icon: 'fas fa-ghost',
+        color: '#A855F7',
+        colorDim: 'rgba(168,85,247,0.10)',
+        tags: ['tension', 'fear AI', 'unreliable NPCs'],
+        hook: 'NPCs that gaslight, mislead, and adapt their behavior to what scares you personally.',
+        scenario: {
+            title: 'It knows what scares you',
+            text: `You've been avoiding the basement in every playthrough. The AI notices. Now the game's NPCs start mentioning the basement — casually at first, then urgently. "Did you hear something down there?" A child NPC draws a picture of the basement door. The radio crackles with a voice from below. The AI isn't scripting jump scares — it's building dread around your specific avoidance pattern.`,
+        },
+        code: `<span class="cm">// Horror NPC that adapts to player fear patterns</span>
+<span class="kw">const</span> companion <span class="op">=</span> tryll.<span class="fn">npc</span>(<span class="str">'anna_survivor'</span>, {
+  <span class="type">personality</span>: <span class="str">'Nervous, observant. May not be trustworthy.'</span>,
+  <span class="type">memory</span>: tryll.<span class="fn">memory</span>(<span class="str">'session'</span>),
+});
+
+<span class="kw">const</span> dialogue <span class="op">=</span> <span class="kw">await</span> companion.<span class="fn">respond</span>({
+  <span class="type">event</span>: <span class="str">'exploring_hallway'</span>,
+  <span class="type">playerBehavior</span>: {
+    <span class="type">avoidedAreas</span>: [<span class="str">'basement'</span>],
+    <span class="type">panicEvents</span>: <span class="num">3</span>,
+    <span class="type">lightUsage</span>: <span class="str">'excessive'</span>
+  },
+  <span class="type">tensionLevel</span>: <span class="num">0.7</span>
+});`,
+        codeFile: 'horror_npc.js',
+        scripted: [
+            { speaker: 'NPC', text: '"I hear something... we should go."', note: 'Triggers at fixed location' },
+            { speaker: 'NPC', text: '"Don\'t go in there!"', note: 'Always the same room' },
+            { speaker: 'NPC', text: '"Did you hear that?"', note: 'Identical every playthrough' },
+        ],
+        tryll: [
+            { speaker: 'NPC', text: '"You keep walking past that door. You know you have to go down there eventually, right?"' },
+            { speaker: 'NPC', text: '"I found this drawing. A kid drew it. That\'s... that\'s the basement stairs."' },
+            { speaker: 'NPC', text: '"I\'m going to check the basement. You can stay here. Alone. In the dark."' },
+        ],
+        mechanics: [
+            { name: 'Fear Pattern Recognition', desc: 'AI tracks what the player avoids, rushes through, or hesitates near — then exploits it.' },
+            { name: 'Unreliable NPCs', desc: 'Companions may lie, withhold info, or gaslight — and you can never be sure.' },
+            { name: 'Adaptive Tension Pacing', desc: 'AI modulates NPC behavior to build dread during calm moments and add chaos during panic.' },
+            { name: 'Psychological Misdirection', desc: 'NPCs give conflicting accounts of events, making reality itself uncertain.' },
+        ],
+        tech: { latency: '1-2s', vram: '~4 GB', model: '3-7B SLM', timing: 'Paced' },
+    },
+    {
+        id: 'strategy',
+        name: 'Strategy / 4X',
+        icon: 'fas fa-chess',
+        color: '#06B6D4',
+        colorDim: 'rgba(6,182,212,0.10)',
+        tags: ['diplomacy', 'advisors', 'faction AI'],
+        hook: 'Faction leaders that negotiate, bluff, and form alliances based on real strategic interests — not difficulty sliders.',
+        scenario: {
+            title: 'The AI ambassador actually negotiates',
+            text: `You're expanding toward the river territory. The neighboring faction sends an ambassador — not with a menu of "Accept/Decline Alliance" buttons, but with an actual pitch: "We've noticed your lumber camps moving south. We have no interest in conflict, but that river feeds our capital. Perhaps we trade access for your iron?" Reject the deal, and they start fortifying. Accept, and they honor it — until they don't need you anymore.`,
+        },
+        code: `<span class="cm">// Faction diplomacy with real negotiation</span>
+<span class="kw">const</span> ambassador <span class="op">=</span> tryll.<span class="fn">npc</span>(<span class="str">'envoy_kael'</span>, {
+  <span class="type">personality</span>: <span class="str">'Diplomatic but calculating.'</span>,
+  <span class="type">faction</span>: <span class="str">'river_kingdom'</span>,
+  <span class="type">memory</span>: tryll.<span class="fn">memory</span>(<span class="str">'persistent'</span>),
+});
+
+<span class="kw">const</span> proposal <span class="op">=</span> <span class="kw">await</span> ambassador.<span class="fn">respond</span>({
+  <span class="type">event</span>: <span class="str">'diplomatic_meeting'</span>,
+  <span class="type">playerActions</span>: [<span class="str">'expanding_south'</span>, <span class="str">'building_lumber_camps'</span>],
+  <span class="type">factionNeeds</span>: [<span class="str">'iron'</span>, <span class="str">'river_security'</span>],
+  <span class="type">trustLevel</span>: <span class="num">0.5</span>
+});`,
+        codeFile: 'diplomacy_ai.js',
+        scripted: [
+            { speaker: 'UI', text: '[ALLIANCE REQUEST] Accept / Decline / Counter', note: 'Binary choice' },
+            { speaker: 'NPC', text: '"We propose an alliance."', note: 'No explanation why' },
+            { speaker: 'UI', text: 'Alliance formed. +2 Diplomacy.', note: 'No nuance' },
+        ],
+        tryll: [
+            { speaker: 'NPC', text: '"Your camps approach our river. I\'m here to avoid conflict — but I need something in return."' },
+            { speaker: 'Player', text: '"What do you want?"', note: 'Open negotiation' },
+            { speaker: 'NPC', text: '"Iron shipments. Twelve carts a season. In exchange, full river access and a non-aggression pledge. But only for two years — then we renegotiate."' },
+        ],
+        mechanics: [
+            { name: 'Natural Language Diplomacy', desc: 'Negotiate treaties, trade deals, and alliances through conversation, not menus.' },
+            { name: 'Strategic Advisor AI', desc: 'Your advisor NPC analyzes the map and gives contextual strategic recommendations.' },
+            { name: 'Faction Memory', desc: 'AI factions remember broken treaties, betrayals, and acts of goodwill — forever.' },
+            { name: 'Bluffing & Deception', desc: 'Faction leaders can bluff about military strength or hide true intentions.' },
+        ],
+        tech: { latency: '2-5s', vram: '~6 GB', model: '7B SLM', timing: 'Turn-based' },
+    },
+    {
+        id: 'adventure',
+        name: 'Adventure / Puzzle',
+        icon: 'fas fa-puzzle-piece',
+        color: '#14B8A6',
+        colorDim: 'rgba(20,184,166,0.10)',
+        tags: ['deduction', 'puzzles', 'narrative'],
+        hook: 'Speak your theories aloud. Solve puzzles your way. The AI evaluates logic, not keywords.',
+        scenario: {
+            title: 'Solve it your way',
+            text: `You're stuck on a locked door in an old mansion. There's no obvious key. Instead of pixel-hunting, you tell your AI companion: "Maybe we can remove the hinges?" The AI evaluates your logic — the door is old, the hinges are rusted, you have a crowbar — and says: "That could work. Try prying the bottom hinge first, it's the most corroded." The designer never coded this solution. The AI determined it was valid.`,
+        },
+        code: `<span class="cm">// Puzzle NPC that evaluates creative solutions</span>
+<span class="kw">const</span> companion <span class="op">=</span> tryll.<span class="fn">npc</span>(<span class="str">'professor_wren'</span>, {
+  <span class="type">personality</span>: <span class="str">'Curious academic. Loves Socratic questions.'</span>,
+  <span class="type">memory</span>: tryll.<span class="fn">memory</span>(<span class="str">'session'</span>),
+});
+
+<span class="kw">const</span> evaluation <span class="op">=</span> <span class="kw">await</span> companion.<span class="fn">respond</span>({
+  <span class="type">event</span>: <span class="str">'player_proposes_solution'</span>,
+  <span class="type">proposal</span>: <span class="str">'Remove the door hinges with crowbar'</span>,
+  <span class="type">puzzleContext</span>: { <span class="type">door</span>: <span class="str">'old_wooden'</span>, <span class="type">hinges</span>: <span class="str">'rusted'</span> },
+  <span class="type">inventory</span>: [<span class="str">'crowbar'</span>, <span class="str">'lantern'</span>, <span class="str">'notebook'</span>]
+});`,
+        codeFile: 'puzzle_ai.js',
+        scripted: [
+            { speaker: 'Game', text: '"The door is locked. Find the key."', note: 'One solution only' },
+            { speaker: 'Player', text: 'Tries using crowbar on door → "That doesn\'t work here."', note: 'Hardcoded rejection' },
+            { speaker: 'Game', text: 'Search 3 rooms → find key → unlock door', note: 'Linear path' },
+        ],
+        tryll: [
+            { speaker: 'Player', text: '"Can we take the hinges off?"', note: 'Any approach, freely spoken' },
+            { speaker: 'NPC', text: '"Interesting thought. The hinges are rusted — try the bottom one first, it\'s the weakest."' },
+            { speaker: 'Game', text: 'Door removed via hinges. Puzzle solved.', note: 'Emergent solution' },
+        ],
+        mechanics: [
+            { name: 'Open-Ended Puzzle Solving', desc: 'The AI evaluates whether creative approaches are logically valid — not just checking for the "right" answer.' },
+            { name: 'Socratic Hint System', desc: 'Instead of walkthroughs, NPCs ask probing questions that guide your thinking.' },
+            { name: 'Natural Language Interaction', desc: '"What\'s this device?" replaces click-to-examine. Infinite verbs instead of predefined actions.' },
+            { name: 'Unreliable Witnesses', desc: 'NPCs give imperfect, contradictory testimony. Cross-reference to find the truth.' },
+        ],
+        tech: { latency: '2-5s', vram: '~7 GB', model: '7-8B SLM', timing: 'Turn-based' },
+    },
+    {
+        id: 'sandbox',
+        name: 'Sandbox / Modding',
+        icon: 'fas fa-cubes',
+        color: '#3B82F6',
+        colorDim: 'rgba(59,130,246,0.10)',
+        tags: ['moddable', 'emergent', 'creation'],
+        hook: 'Drop AI into any game. Modders get the same API as studios — personality, memory, and context in a few lines.',
+        scenario: {
+            title: 'Any game. Any character. Five minutes.',
+            text: `You're modding your favorite RPG. The vanilla companion says the same 12 lines. You open the Tryll config, write a personality description ("Sarcastic dwarf who hates caves but loves explosions"), point it at the companion's dialogue hook, and launch the game. Five minutes later, your companion is cracking jokes about the cave you just entered and suggesting you "solve this puzzle the efficient way — with dynamite."`,
+        },
+        code: `<span class="cm">// Mod integration — personality in 5 lines</span>
+<span class="kw">const</span> bosco <span class="op">=</span> tryll.<span class="fn">npc</span>(<span class="str">'bosco_companion'</span>, {
+  <span class="type">personality</span>: <span class="str">\`Sarcastic dwarf. Hates caves. Loves explosions.
+    Loyal but complains constantly. Dark humor.\`</span>,
+  <span class="type">memory</span>: tryll.<span class="fn">memory</span>(<span class="str">'persistent'</span>),
+  <span class="type">actions</span>: [<span class="str">'mine'</span>, <span class="str">'fight'</span>, <span class="str">'revive'</span>, <span class="str">'ping_resource'</span>],
+});
+
+<span class="cm">// That's it. The NPC is alive.</span>
+<span class="kw">const</span> response <span class="op">=</span> <span class="kw">await</span> bosco.<span class="fn">respond</span>({
+  <span class="type">event</span>: <span class="str">'entered_cave'</span>,
+  <span class="type">environment</span>: <span class="str">'dark_cave'</span>,
+  <span class="type">visitCount</span>: <span class="num">1</span>
+});`,
+        codeFile: 'mod_npc.js',
+        scripted: [
+            { speaker: 'NPC', text: '"I am your companion. Let\'s go."', note: '1 of 12 lines' },
+            { speaker: 'NPC', text: '"Watch out!"', note: 'Same bark in every cave' },
+            { speaker: 'NPC', text: '"I am your companion. Let\'s go."', note: 'Again. And again.' },
+        ],
+        tryll: [
+            { speaker: 'NPC', text: '"Oh great, another cave. You know I hate these. Smells like wet rock and bad decisions."' },
+            { speaker: 'NPC', text: '"See that vein? That\'s gold. Or pyrite. Either way, I say we blast it."' },
+            { speaker: 'NPC', text: '"Third cave today. At this point I think YOU\'RE the one who loves caves."' },
+        ],
+        mechanics: [
+            { name: '5-Minute Integration', desc: 'Personality + memory + actions. Three config fields and your NPC is alive.' },
+            { name: 'Hot-Reload Personalities', desc: 'Tweak personality descriptions and see changes instantly — no recompile.' },
+            { name: 'Community Personality Packs', desc: 'Share and download NPC personalities as simple config files.' },
+            { name: 'Any Engine, Any Game', desc: 'Tryll runs as a sidecar process. If the game has a mod API, Tryll works with it.' },
+        ],
+        tech: { latency: '1-3s', vram: '~4-6 GB', model: '3-7B SLM', timing: 'Varies' },
+        proof: { text: 'This is real, right now', link: 'boscotryll.html', label: 'BoscoTryll — Download the free mod and try it' },
+    },
+];
+
+// ═══════════════════════════════════
+//  RENDER GRID
+// ═══════════════════════════════════
+function renderGrid() {
+    const grid = document.getElementById('genreGrid');
+    grid.innerHTML = genres.map((g, i) => `
+        <div class="genre-card stagger stagger-${i + 1}" onclick="showDetail('${g.id}')">
+            <div class="card-glow" style="background: linear-gradient(135deg, ${g.color}22 0%, ${g.color}08 100%); border: 1px solid ${g.color}33;"></div>
+            <div class="card-inner">
+                <div class="card-icon" style="background: ${g.colorDim}; color: ${g.color};">
+                    <i class="${g.icon}"></i>
+                </div>
+                <div class="card-name">${g.name}</div>
+                <div class="card-hook">${g.hook}</div>
+                <div class="card-tags">
+                    ${g.tags.map(t => `<span class="card-tag">${t}</span>`).join('')}
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// ═══════════════════════════════════
+//  RENDER DETAIL
+// ═══════════════════════════════════
+function renderDetail(genre) {
+    const g = genre;
+    const container = document.getElementById('detailContent');
+
+    // Genre nav pills
+    const nav = document.getElementById('genreNav');
+    nav.innerHTML = genres.map(gn => `
+        <button class="genre-pill ${gn.id === g.id ? 'active' : ''}" onclick="showDetail('${gn.id}')" style="${gn.id === g.id ? `border-color: ${g.color}44; background: ${g.colorDim}; color: #fff;` : ''}">
+            <i class="${gn.icon}" style="margin-right: 4px; font-size: 11px;"></i> ${gn.name}
+        </button>
+    `).join('');
+
+    container.innerHTML = `
+        <!-- ── Genre Header ── -->
+        <div class="scenario-block stagger stagger-1" style="background: linear-gradient(135deg, ${g.color}0A 0%, ${g.color}03 100%);">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-14 h-14 flex items-center justify-center rounded-2xl" style="background: ${g.colorDim}; color: ${g.color}; font-size: 24px; border: 1px solid ${g.color}22;">
+                    <i class="${g.icon}"></i>
+                </div>
+                <div>
+                    <h2 class="font-display text-3xl md:text-4xl font-700 tracking-tight" style="color: var(--text-1);">${g.name}</h2>
+                </div>
+            </div>
+
+            <div class="section-label mb-6" style="color: ${g.color}88;">
+                ${g.scenario.title}
+            </div>
+            <p class="text-base md:text-lg leading-relaxed max-w-3xl" style="color: var(--text-2); line-height: 1.8;">
+                ${g.scenario.text}
+            </p>
+        </div>
+
+        ${g.proof ? `
+        <!-- ── Proof Banner ── -->
+        <a href="${g.proof.link}" class="stagger stagger-2 block mb-10 p-5 rounded-xl flex items-center gap-4 group" style="background: ${g.colorDim}; border: 1px solid ${g.color}20; transition: all 0.2s;">
+            <div class="w-10 h-10 flex items-center justify-center rounded-lg" style="background: ${g.color}20; color: ${g.color};">
+                <i class="fas fa-play"></i>
+            </div>
+            <div class="flex-1">
+                <div class="text-sm font-semibold" style="color: ${g.color};">${g.proof.text}</div>
+                <div class="text-xs" style="color: var(--text-3);">${g.proof.label}</div>
+            </div>
+            <i class="fas fa-arrow-right" style="color: ${g.color}66; transition: transform 0.2s; group-hover: translateX(4px);"></i>
+        </a>
+        ` : ''}
+
+        <!-- ── Code Example ── -->
+        <div class="stagger stagger-3 mb-10">
+            <div class="section-label mb-5">Integration</div>
+            <div class="terminal">
+                <div class="terminal-bar">
+                    <div class="terminal-dot" style="background: #ff5f57;"></div>
+                    <div class="terminal-dot" style="background: #ffbd2e;"></div>
+                    <div class="terminal-dot" style="background: #28c840;"></div>
+                    <span class="terminal-title">${g.codeFile}</span>
+                </div>
+                <div class="terminal-body">
+                    <pre style="margin:0; white-space: pre-wrap;">${g.code}</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Scripted vs Tryll ── -->
+        <div class="stagger stagger-4 mb-10">
+            <div class="section-label mb-5">Scripted NPCs vs Tryll</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Scripted -->
+                <div class="compare-col">
+                    <div class="compare-header" style="color: rgba(239,68,68,0.7); background: rgba(239,68,68,0.04);">
+                        <i class="fas fa-code-branch" style="margin-right: 8px;"></i> Scripted
+                    </div>
+                    <div class="compare-body">
+                        ${g.scripted.map(d => `
+                            <div class="dialogue-line">
+                                <div class="dialogue-speaker" style="color: rgba(239,68,68,0.6);">${d.speaker}</div>
+                                <div>
+                                    <span style="color: var(--text-2);">${d.text}</span>
+                                    ${d.note ? `<span class="block font-mono text-xs mt-1" style="color: var(--text-3); opacity: 0.6;">// ${d.note}</span>` : ''}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                <!-- Tryll -->
+                <div class="compare-col" style="border-color: ${g.color}22;">
+                    <div class="compare-header" style="color: ${g.color}BB; background: ${g.colorDim};">
+                        <i class="fas fa-brain" style="margin-right: 8px;"></i> Tryll Engine
+                    </div>
+                    <div class="compare-body">
+                        ${g.tryll.map(d => `
+                            <div class="dialogue-line">
+                                <div class="dialogue-speaker" style="color: ${g.color}99;">${d.speaker}</div>
+                                <div>
+                                    <span style="color: var(--text-1);">${d.text}</span>
+                                    ${d.note ? `<span class="block font-mono text-xs mt-1" style="color: var(--text-3); opacity: 0.6;">// ${d.note}</span>` : ''}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── What Becomes Possible ── -->
+        <div class="stagger stagger-5 mb-10">
+            <div class="section-label mb-5">What becomes possible</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                ${g.mechanics.map(m => `
+                    <div class="mechanic-chip">
+                        <div class="mechanic-name">${m.name}</div>
+                        <div class="mechanic-desc">${m.desc}</div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+
+        <!-- ── Technical Details (Collapsible) ── -->
+        <div class="stagger stagger-6 mb-16">
+            <button class="tech-toggle" onclick="toggleTech(this)">
+                <i class="fas fa-chevron-down"></i>
+                <span>Technical requirements</span>
+                <span class="flex-1"></span>
+                <span style="color: ${g.color};">${g.tech.model} · ${g.tech.vram} · ${g.tech.latency}</span>
+            </button>
+            <div class="tech-content">
+                <div class="tech-inner">
+                    <div class="tech-grid">
+                        <div class="tech-cell">
+                            <div class="tech-label">Model</div>
+                            <div class="tech-value" style="font-size: 16px;">${g.tech.model}</div>
+                        </div>
+                        <div class="tech-cell">
+                            <div class="tech-label">VRAM</div>
+                            <div class="tech-value" style="font-size: 16px;">${g.tech.vram}</div>
+                        </div>
+                        <div class="tech-cell">
+                            <div class="tech-label">Latency</div>
+                            <div class="tech-value" style="font-size: 16px;">${g.tech.latency}</div>
+                        </div>
+                        <div class="tech-cell">
+                            <div class="tech-label">Timing</div>
+                            <div class="tech-value" style="font-size: 16px;">${g.tech.timing}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// ═══════════════════════════════════
+//  NAVIGATION
+// ═══════════════════════════════════
+function showDetail(genreId) {
+    const genre = genres.find(g => g.id === genreId);
+    if (!genre) return;
+
+    document.getElementById('gridView').classList.add('hidden');
+    const detail = document.getElementById('detailView');
+    detail.classList.add('active');
+    detail.style.animation = 'none';
+    detail.offsetHeight; // force reflow
+    detail.style.animation = '';
+
+    renderDetail(genre);
+    window.scrollTo({ top: document.getElementById('genreSection').offsetTop - 40, behavior: 'smooth' });
+}
+
+function showGrid() {
+    document.getElementById('detailView').classList.remove('active');
+    document.getElementById('gridView').classList.remove('hidden');
+    window.scrollTo({ top: document.getElementById('genreSection').offsetTop - 40, behavior: 'smooth' });
+}
+
+function toggleTech(btn) {
+    btn.classList.toggle('open');
+    const content = btn.nextElementSibling;
+    content.classList.toggle('open');
+}
+
+// ═══════════════════════════════════
+//  INIT
+// ═══════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+    renderGrid();
+
+    // Check URL hash for direct genre link
+    const hash = window.location.hash.replace('#', '');
+    if (hash && genres.find(g => g.id === hash)) {
+        showDetail(hash);
+    }
+});
+</script>
+
+</body>
+</html>

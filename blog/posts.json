@@ -6,7 +6,7 @@
     "category": "news",
     "date": "2026-03-06",
     "readTime": 2,
-    "image": "/assets/blog/PIERRE%20MOISAN.png",
+    "image": "/assets/blog/welcome-pierre-moisan.png",
     "icon": "fa-handshake",
     "author": "Tryll Engine Team"
   },
@@ -17,7 +17,7 @@
     "category": "news",
     "date": "2026-02-23",
     "readTime": 2,
-    "image": "/assets/blog/cuda-hip.jpeg",
+    "image": "/assets/blog/tryll-assistant-v0-0-8-cuda-hip-support.jpeg",
     "icon": "fa-microchip",
     "author": "Tryll Engine Team"
   },
@@ -28,7 +28,7 @@
     "category": "news",
     "date": "2026-02-21",
     "readTime": 2,
-    "image": "/assets/blog/circles.png",
+    "image": "/assets/blog/welcome-alexander-stojanovic-as-advisor.png",
     "icon": "fa-handshake",
     "author": "Tryll Engine Team"
   },
@@ -39,7 +39,7 @@
     "category": "news",
     "date": "2026-02-14",
     "readTime": 2,
-    "image": "/assets/blog/joysticj.png",
+    "image": "/assets/blog/tryll-assistant-live-on-steam.png",
     "icon": "fa-steam",
     "author": "Tryll Engine Team"
   },
@@ -50,7 +50,7 @@
     "category": "engineering",
     "date": "2026-02-12",
     "readTime": 4,
-    "image": "/assets/blog/stripes.png",
+    "image": "/assets/blog/how-we-catch-prompt-injections-and-hallucinations.png",
     "icon": "fa-shield-halved",
     "author": "Tryll Engine Team"
   },
@@ -61,7 +61,7 @@
     "category": "news",
     "date": "2026-02-10",
     "readTime": 2,
-    "image": "/assets/blog/polygon.png",
+    "image": "/assets/blog/epic-megagrant-from-unreal-engine.png",
     "icon": "fa-award",
     "author": "Tryll Engine Team"
   },
@@ -72,7 +72,7 @@
     "category": "news",
     "date": "2026-01-14",
     "readTime": 2,
-    "image": "/assets/blog/head.png",
+    "image": "/assets/blog/welcome-vladimir-belyaev-as-cto.png",
     "icon": "fa-user-tie",
     "author": "Tryll Engine Team"
   }

@@ -1,4 +1,4 @@
-![Vladimir Belyaev](/assets/blog/welcome-vladimir-belyaev-as-cto.png)
+![Vladimir Belyaev](/assets/blog/welcome-vladimir-belyaev-as-cto-inline.png)
 
 **[Vladimir](https://www.linkedin.com/in/vladimirsbelyaev/) is an ex-Playrix Executive Technical Director with 30 years of experience across the gaming industry, including 11 years in senior leadership roles.**
 

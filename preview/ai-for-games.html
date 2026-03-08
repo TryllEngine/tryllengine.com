@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K8MPGKVX');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI for Games — 84 Ways to Add Intelligence to Your Game | Tryll Engine</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Discover 84 AI capabilities for games across 15 genres. Concrete model stacks that fit in 16GB VRAM. On-device, no cloud, no per-player costs. Built for game developers.">
+    <meta name="keywords" content="AI in games, game AI, on-device AI, NPC AI, game development AI, local AI gaming, AI model stacks, VRAM budget">
+    <meta name="author" content="Tryll Engine">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tryllengine.com/ai-for-games.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tryllengine.com/ai-for-games.html">
+    <meta property="og:title" content="AI for Games — 84 Ways to Add Intelligence to Your Game">
+    <meta property="og:description" content="Concrete AI model stacks for every game genre. On-device, no cloud, no per-player costs.">
+    <meta property="og:image" content="https://tryllengine.com/assets/logo/logo-mark/blue.svg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tryllengine.com/ai-for-games.html">
+    <meta property="twitter:title" content="AI for Games — 84 Ways to Add Intelligence to Your Game">
+    <meta property="twitter:description" content="Concrete AI model stacks for every game genre. On-device, no cloud, no per-player costs.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href=".../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href=".../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href=".../assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href=".../assets/favicon/site.webmanifest">
+    <meta name="robots" content="noindex, nofollow">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#232E41',
+                        secondary: '#F6F0EB',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+        section[id] { scroll-margin-top: 100px; }
+
+        :root {
+            --typo-label: 12px;
+            --typo-copy: 14px;
+            --typo-largecopy: 16px;
+            --typo-subtitle: 20px;
+            --typo-title: 32px;
+            --typo-hero: 48px;
+            --blue: #3B82F6;
+            --blue-dim: rgba(59,130,246,0.12);
+            --purple: #A855F7;
+            --purple-dim: rgba(168,85,247,0.10);
+            --amber: #F59E0B;
+            --amber-dim: rgba(245,158,11,0.10);
+            --green: #22C55E;
+            --green-dim: rgba(34,197,94,0.12);
+            --surface: rgba(255,255,255,0.03);
+            --surface-hover: rgba(255,255,255,0.06);
+            --border: rgba(255,255,255,0.06);
+            --border-hover: rgba(255,255,255,0.12);
+            --text-1: rgba(255,255,255,0.93);
+            --text-2: rgba(255,255,255,0.72);
+            --text-3: rgba(255,255,255,0.45);
+        }
+
+        @media (min-width: 768px) {
+            :root {
+                --typo-label: 13px;
+                --typo-copy: 16px;
+                --typo-largecopy: 18px;
+                --typo-subtitle: 24px;
+                --typo-title: 48px;
+                --typo-hero: 62px;
+            }
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #000000;
+            background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: var(--text-2);
+            overflow-x: hidden;
+            line-height: 1.5em;
+            letter-spacing: -0.011em;
+            font-weight: 449;
+            font-size: var(--typo-copy);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 9998;
+            pointer-events: none;
+            opacity: 0.018;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 256px 256px;
+        }
+
+        * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+        *, *::before, *::after { font-weight: inherit; }
+        .fas, .fa-solid, .fas::before, .fa-solid::before { font-weight: 900 !important; }
+        .far, .fa-regular, .far::before, .fa-regular::before { font-weight: 400 !important; }
+        .fab, .fa-brands, .fab::before, .fa-brands::before { font-weight: 400 !important; }
+
+        .font-normal { font-weight: 449 !important; }
+        .font-medium { font-weight: 500 !important; }
+        .font-semibold { font-weight: 600 !important; }
+        .font-bold { font-weight: 650 !important; }
+
+        .text-gray-400 { color: rgba(255, 255, 255, 0.75); }
+        .text-gray-500 { color: rgba(255, 255, 255, 0.65); }
+        .text-sm { font-weight: 500; letter-spacing: -0.004em; }
+        .text-xs { font-weight: 500; letter-spacing: 0; }
+        p { font-weight: 449; text-wrap: balance; line-height: 1.5em; color: rgba(255, 255, 255, 0.8); }
+        li { font-weight: 449; line-height: 1.5em; }
+
+        .font-serif { font-family: 'Instrument Serif', Georgia, serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .heading-primary {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            color: #ffffff;
+        }
+
+        .heading-secondary {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            color: #ffffff;
+        }
+
+        .btn-primary {
+            background-color: #3B82F6;
+            color: #ffffff;
+            border: none;
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.12s ease-out;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.85em;
+            border-radius: 3px;
+        }
+        .btn-primary:hover {
+            background-color: #2563EB;
+            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5);
+        }
+
+        .nav-glass-card {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.15s ease-out;
+            background: rgba(0, 0, 0, 0.88);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+        .nav-glass-card > * { position: relative; z-index: 2; }
+        .nav-glass-card:hover { border-color: rgba(255, 255, 255, 0.12); }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Page-specific styles ── */
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: rgba(59, 130, 246, 0.7);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .section-label::before { content: '// '; opacity: 0.5; }
+
+        .card {
+            position: relative;
+            padding: 28px 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            transition: border-color 0.3s, background 0.3s;
+        }
+        .card:hover {
+            border-color: var(--border-hover);
+            background: var(--surface-hover);
+        }
+        .card-clickable { cursor: pointer; }
+        .card-clickable:hover { transform: translateY(-1px); }
+
+        .card-icon {
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 16px;
+            flex-shrink: 0;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .badge-proven { background: var(--green-dim); color: var(--green); }
+        .badge-likely { background: var(--blue-dim); color: var(--blue); }
+        .badge-experimental { background: var(--amber-dim); color: var(--amber); }
+        .badge-speculative { background: rgba(255,255,255,0.06); color: var(--text-3); }
+
+        .badge-relevance-high { background: var(--green-dim); color: var(--green); }
+        .badge-relevance-medium-high { background: var(--blue-dim); color: var(--blue); }
+        .badge-relevance-medium { background: var(--amber-dim); color: var(--amber); }
+        .badge-relevance-low-medium { background: rgba(255,255,255,0.06); color: var(--text-3); }
+        .badge-relevance-low { background: rgba(255,255,255,0.04); color: var(--text-3); }
+
+        .genre-pill {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-3);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .genre-pill:hover { border-color: var(--border-hover); color: var(--text-2); }
+        .genre-pill.active {
+            background: var(--blue-dim);
+            border-color: var(--blue);
+            color: var(--blue);
+        }
+
+        .vram-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.06);
+            overflow: hidden;
+            position: relative;
+        }
+        .vram-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--blue), #60A5FA);
+            transition: width 0.5s ease-out;
+        }
+
+        .stack-row {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 80px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            font-size: 13px;
+            align-items: center;
+        }
+        .stack-row:last-child { border-bottom: none; }
+        .stack-row-header {
+            color: var(--text-3);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .wild-card {
+            padding: 32px 28px;
+            border-radius: 12px;
+            border: 1px solid rgba(168, 85, 247, 0.15);
+            background: linear-gradient(135deg, rgba(168,85,247,0.04), rgba(59,130,246,0.04));
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .wild-card:hover {
+            border-color: rgba(168, 85, 247, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .warning-card {
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid rgba(245, 158, 11, 0.15);
+            background: rgba(245, 158, 11, 0.03);
+        }
+
+        .vram-layer {
+            display: grid;
+            grid-template-columns: 140px 1fr 80px;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            font-size: 14px;
+            gap: 16px;
+        }
+        .vram-layer:last-child { border-bottom: none; }
+        .vram-layer-bar {
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255,255,255,0.06);
+            overflow: hidden;
+        }
+        .vram-layer-fill {
+            height: 100%;
+            border-radius: 3px;
+        }
+
+        .expand-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+        }
+        .expand-content.open {
+            opacity: 1;
+        }
+
+        .expand-toggle .chevron {
+            transition: transform 0.3s ease;
+        }
+        .expand-toggle.open .chevron {
+            transform: rotate(180deg);
+        }
+
+        /* Genre detail panel */
+        #genre-detail {
+            transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
+            overflow: hidden;
+        }
+
+        /* Scrollbar for genre pills */
+        .pills-scroll::-webkit-scrollbar { height: 4px; }
+        .pills-scroll::-webkit-scrollbar-track { background: transparent; }
+        .pills-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8MPGKVX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- Password Gate -->
+    <div id="password-gate" style="position:fixed;inset:0;z-index:99999;background:#000;display:flex;align-items:center;justify-content:center;">
+        <div style="max-width:400px;width:90%;text-align:center;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;color:rgba(59,130,246,0.5);text-transform:uppercase;margin-bottom:1.5rem;">// access_required</div>
+            <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;font-weight:700;color:rgba(255,255,255,0.9);margin-bottom:0.5rem;">Design Preview</h2>
+            <p style="font-family:'DM Sans',sans-serif;font-size:0.9rem;color:rgba(255,255,255,0.5);margin-bottom:2rem;">Enter the team password to view this page.</p>
+            <div style="position:relative;">
+                <input id="gate-password" type="password" placeholder="Password..."
+                    style="width:100%;padding:12px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:4px;color:rgba(255,255,255,0.9);font-family:'DM Sans',sans-serif;font-size:0.95rem;outline:none;box-sizing:border-box;"
+                    onkeydown="if(event.key==='Enter')document.getElementById('gate-submit').click()"
+                    onfocus="this.style.borderColor='rgba(59,130,246,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            </div>
+            <button id="gate-submit" onclick="checkGatePassword()"
+                style="margin-top:1rem;width:100%;padding:12px;background:rgba(59,130,246,0.9);border:none;border-radius:4px;color:#fff;font-family:'JetBrains Mono',monospace;font-size:0.8rem;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;transition:background 0.15s;">
+                Enter
+            </button>
+            <p id="gate-error" style="font-family:'DM Sans',sans-serif;font-size:0.8rem;color:rgba(239,68,68,0.8);margin-top:1rem;display:none;">Incorrect password.</p>
+        </div>
+    </div>
+    <script>
+        function checkGatePassword() {
+            var input = document.getElementById('gate-password').value;
+            var expected = atob('dHJ5bGwyMDI2');
+            if (input === expected) {
+                document.getElementById('password-gate').style.display = 'none';
+                sessionStorage.setItem('design-access', 'granted');
+            } else {
+                document.getElementById('gate-error').style.display = 'block';
+                document.getElementById('gate-password').style.borderColor = 'rgba(239,68,68,0.5)';
+            }
+        }
+        if (sessionStorage.getItem('design-access') === 'granted') {
+            document.getElementById('password-gate').style.display = 'none';
+        }
+    </script>
+
+    <!-- Navigation -->
+    <nav class="fixed top-4 left-4 right-4 md:top-6 md:left-1/2 md:transform md:-translate-x-1/2 z-50 nav-glass-card px-4 md:px-8 py-3 md:py-4 w-auto md:w-full md:max-w-7xl">
+        <div class="flex items-center justify-between">
+            <div class="logo">
+                <a href="../index.html" class="block">
+                    <img src="../assets/logo/full-logo/light-text.svg" alt="Tryll Engine" class="h-8 md:h-12" />
+                </a>
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <ul class="nav-links flex gap-6 list-none">
+                    <li><a href="../index.html#features" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Features</a></li>
+                    <li><a href="../index.html#pricing" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Pricing</a></li>
+                    <li><a href="../blog.html" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Blog</a></li>
+                    <li><a href="ai-for-games.html" class="text-white hover:text-white transition-colors duration-200 font-medium text-sm">AI for Games</a></li>
+                    <li><a href="../boscotryll.html" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">BoscoTryll Mod</a></li>
+                </ul>
+                <div class="flex items-center gap-3">
+                    <a href="../tryll-assistant.html" class="btn-primary px-4 py-2 rounded text-sm inline-flex items-center justify-center gap-2">
+                        <i class="fas fa-rocket"></i>
+                        Get Started
+                    </a>
+                </div>
+            </div>
+            <div class="md:hidden flex items-center gap-3">
+                <a href="../tryll-assistant.html" class="btn-primary px-3 py-2 rounded text-xs inline-flex items-center justify-center">Get Started</a>
+                <button id="mobile-menu-btn" class="text-white p-2 rounded hover:bg-white/10 transition-colors duration-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="md:hidden fixed inset-0 bg-black/95 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40">
+            <button id="mobile-menu-close" class="absolute top-6 right-6 text-white/60 hover:text-white transition-colors duration-200">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="flex flex-col items-center justify-center h-full space-y-8 text-center px-6">
+                <a href="../index.html#features" class="mobile-menu-link text-white text-xl font-medium">Features</a>
+                <a href="../index.html#pricing" class="mobile-menu-link text-white text-xl font-medium">Pricing</a>
+                <a href="../blog.html" class="mobile-menu-link text-white text-xl font-medium">Blog</a>
+                <a href="ai-for-games.html" class="mobile-menu-link text-white text-xl font-medium">AI for Games</a>
+                <a href="../boscotryll.html" class="mobile-menu-link text-white text-xl font-medium">BoscoTryll Mod</a>
+                <div class="pt-4 space-y-3">
+                    <a href="../tryll-assistant.html" class="btn-primary px-8 py-4 rounded text-lg inline-flex items-center justify-center gap-2 w-full">
+                        <i class="fas fa-rocket"></i> Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 1: HERO -->
+    <!-- ================================================================== -->
+    <section class="min-h-screen flex items-center justify-center relative" style="padding-top: 80px;">
+        <div class="container mx-auto px-4 md:px-6 py-24 md:py-32 relative z-10">
+            <div class="max-w-4xl mx-auto text-center fade-in">
+                <p class="font-mono text-sm mb-6" style="color: rgba(59,130,246,0.7); letter-spacing: 0.05em;">
+                    // THE DEVELOPER'S GUIDE TO AI IN GAMES
+                </p>
+                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl mb-6" style="color: var(--text-1); line-height: 1.05;">
+                    What if every NPC<br>could <em>think</em>?
+                </h1>
+                <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto" style="color: var(--text-2);">
+                    84 AI capabilities. 15 genres analyzed. 11 ready-to-use model stacks.
+                    A practical guide to shipping AI features that run on player hardware.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#genres" class="btn-primary px-8 py-4 rounded text-base inline-flex items-center justify-center gap-2">
+                        <i class="fas fa-gamepad"></i> Find Your AI Stack
+                    </a>
+                    <a href="#recipes" class="px-8 py-4 rounded text-base inline-flex items-center justify-center gap-2 border border-white/10 hover:bg-white/[0.06] text-white transition-all duration-200 font-medium" style="font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.05em;">
+                        Browse Recipes
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 2: POSSIBILITIES OVERVIEW -->
+    <!-- ================================================================== -->
+    <section id="possibilities" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="text-center mb-12 fade-in">
+                <span class="section-label">Capabilities</span>
+                <h2 class="heading-secondary text-3xl md:text-4xl mb-4">84 ways AI transforms gameplay</h2>
+                <p style="color: var(--text-2); max-width: 600px; margin: 0 auto;">From proven NPC dialogue to experimental dream sequences. Click a category to explore every capability.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="capabilities-grid">
+                <!-- Populated by JS -->
+            </div>
+
+            <!-- Expanded detail panel -->
+            <div id="capability-detail" class="mt-6 card" style="display: none;">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 id="capability-detail-title" class="heading-secondary text-xl"></h3>
+                    <button onclick="closeCategoryDetail()" class="text-white/40 hover:text-white transition-colors p-1">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                <div id="capability-detail-list" class="space-y-3"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 3: GENRE FINDER -->
+    <!-- ================================================================== -->
+    <section id="genres" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="text-center mb-12 fade-in">
+                <span class="section-label">Genre Finder</span>
+                <h2 class="heading-secondary text-3xl md:text-4xl mb-4">Which AI fits your game?</h2>
+                <p style="color: var(--text-2); max-width: 600px; margin: 0 auto;">Select your genre to see the AI capabilities that matter most and a recommended model stack.</p>
+            </div>
+
+            <!-- Genre pills -->
+            <div class="flex gap-2 overflow-x-auto pb-4 mb-8 pills-scroll fade-in" id="genre-pills">
+                <!-- Populated by JS -->
+            </div>
+
+            <!-- Genre summary table (default view) -->
+            <div id="genre-table" class="fade-in">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left" style="min-width: 600px;">
+                        <thead>
+                            <tr class="font-mono text-xs uppercase tracking-wider" style="color: var(--text-3);">
+                                <th class="pb-3 pr-4">Genre</th>
+                                <th class="pb-3 pr-4">AI Relevance</th>
+                                <th class="pb-3 pr-4">Latency Class</th>
+                                <th class="pb-3">VRAM</th>
+                            </tr>
+                        </thead>
+                        <tbody id="genre-table-body">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Genre detail panel -->
+            <div id="genre-detail" class="mt-6 card" style="display: none;">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-3">
+                        <span id="genre-detail-icon" class="card-icon" style="margin-bottom: 0;"></span>
+                        <h3 id="genre-detail-title" class="heading-secondary text-xl"></h3>
+                    </div>
+                    <button onclick="closeGenreDetail()" class="text-white/40 hover:text-white transition-colors p-1">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                <p id="genre-detail-desc" class="mb-6" style="color: var(--text-2);"></p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-mono text-xs uppercase tracking-wider mb-3" style="color: var(--text-3);">Top AI Mechanics</h4>
+                        <ul id="genre-detail-mechanics" class="space-y-2"></ul>
+                    </div>
+                    <div>
+                        <h4 class="font-mono text-xs uppercase tracking-wider mb-3" style="color: var(--text-3);">Recommended Stack</h4>
+                        <div id="genre-detail-recipe" class="card" style="padding: 16px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 4: MODEL STACK RECIPES -->
+    <!-- ================================================================== -->
+    <section id="recipes" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="text-center mb-12 fade-in">
+                <span class="section-label">Model Stacks</span>
+                <h2 class="heading-secondary text-3xl md:text-4xl mb-4">Pick a recipe. Ship AI features.</h2>
+                <p style="color: var(--text-2); max-width: 600px; margin: 0 auto;">Concrete model combinations that fit in 16 GB VRAM alongside your game. Copy, adapt, ship.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="recipes-grid">
+                <!-- Populated by JS -->
+            </div>
+
+            <!-- Show more recipes -->
+            <div class="mt-8 text-center">
+                <button id="show-more-recipes" class="expand-toggle inline-flex items-center gap-2 px-6 py-3 rounded border border-white/10 hover:bg-white/[0.06] text-white/60 hover:text-white transition-all font-medium text-sm" onclick="toggleMoreRecipes()">
+                    See all 11 recipes <i class="fas fa-chevron-down chevron text-xs"></i>
+                </button>
+            </div>
+            <div id="more-recipes" class="expand-content mt-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="more-recipes-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 5: WILD IDEAS -->
+    <!-- ================================================================== -->
+    <section id="wild-ideas" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="text-center mb-12 fade-in">
+                <span class="section-label">Vision</span>
+                <h2 class="heading-secondary text-3xl md:text-4xl mb-4">Games that could only exist with on-device AI</h2>
+                <p style="color: var(--text-2); max-width: 600px; margin: 0 auto;">These aren't incremental improvements. They're entirely new categories of interactive experience.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="wild-ideas-grid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 6: ANTI-PATTERNS -->
+    <!-- ================================================================== -->
+    <section id="antipatterns" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="text-center mb-12 fade-in">
+                <span class="section-label" style="color: rgba(245,158,11,0.7);">Honest Advice</span>
+                <h2 class="heading-secondary text-3xl md:text-4xl mb-4">Where AI hurts gameplay</h2>
+                <p style="color: var(--text-2); max-width: 600px; margin: 0 auto;">Not every AI application makes a game better. Knowing when <em>not</em> to use AI is just as important.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="antipatterns-grid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 7: TECHNOLOGY FOUNDATION -->
+    <!-- ================================================================== -->
+    <section id="tech" class="py-16 md:py-24">
+        <div class="max-w-6xl mx-auto px-4 md:px-8">
+            <div class="text-center mb-12 fade-in">
+                <span class="section-label">Technology</span>
+                <h2 class="heading-secondary text-3xl md:text-4xl mb-4">What fits in 16 GB VRAM</h2>
+                <p style="color: var(--text-2); max-width: 600px; margin: 0 auto;">Modern AI models are small enough to run alongside your game. Here's what the budget looks like.</p>
+            </div>
+
+            <div class="card fade-in" style="padding: 32px;">
+                <!-- VRAM layer visualization -->
+                <div class="mb-8" id="vram-layers">
+                    <!-- Populated by JS -->
+                </div>
+
+                <!-- Key callout -->
+                <div class="card" style="padding: 20px; background: var(--blue-dim); border-color: rgba(59,130,246,0.15);">
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-bolt" style="color: var(--blue); margin-top: 2px;"></i>
+                        <div>
+                            <p class="font-medium" style="color: var(--text-1); margin-bottom: 4px;">The universal stack fits in ~7-8 GB</p>
+                            <p style="color: var(--text-2); font-size: 14px;">SLM + TTS + STT + Embeddings leaves 8+ GB free for rendering. Every genre benefits from this combination.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Breakthroughs -->
+                <div class="mt-8">
+                    <h4 class="font-mono text-xs uppercase tracking-wider mb-4" style="color: var(--text-3);">Recent Breakthroughs Making This Possible</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="flex items-start gap-3" style="font-size: 14px;">
+                            <i class="fas fa-check" style="color: var(--green); margin-top: 3px; font-size: 11px;"></i>
+                            <span style="color: var(--text-2);"><strong style="color: var(--text-1);">Speculative decoding</strong> &mdash; 2-3x throughput with no quality loss</span>
+                        </div>
+                        <div class="flex items-start gap-3" style="font-size: 14px;">
+                            <i class="fas fa-check" style="color: var(--green); margin-top: 3px; font-size: 11px;"></i>
+                            <span style="color: var(--text-2);"><strong style="color: var(--text-1);">LoRA hot-swapping</strong> &mdash; dozens of NPC personalities from one base model</span>
+                        </div>
+                        <div class="flex items-start gap-3" style="font-size: 14px;">
+                            <i class="fas fa-check" style="color: var(--green); margin-top: 3px; font-size: 11px;"></i>
+                            <span style="color: var(--text-2);"><strong style="color: var(--text-1);">Q4_K_M quantization</strong> &mdash; 7B models in 5 GB instead of 14 GB</span>
+                        </div>
+                        <div class="flex items-start gap-3" style="font-size: 14px;">
+                            <i class="fas fa-check" style="color: var(--green); margin-top: 3px; font-size: 11px;"></i>
+                            <span style="color: var(--text-2);"><strong style="color: var(--text-1);">Real-time TTS</strong> &mdash; sub-100ms speech synthesis at &lt;0.5 GB</span>
+                        </div>
+                        <div class="flex items-start gap-3" style="font-size: 14px;">
+                            <i class="fas fa-check" style="color: var(--green); margin-top: 3px; font-size: 11px;"></i>
+                            <span style="color: var(--text-2);"><strong style="color: var(--text-1);">Continuous batching</strong> &mdash; 5-10 NPCs thinking concurrently</span>
+                        </div>
+                        <div class="flex items-start gap-3" style="font-size: 14px;">
+                            <i class="fas fa-check" style="color: var(--green); margin-top: 3px; font-size: 11px;"></i>
+                            <span style="color: var(--text-2);"><strong style="color: var(--text-1);">NVIDIA ACE + NVIGI</strong> &mdash; purpose-built SDK for in-game AI inference</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 8: CONVERSION -->
+    <!-- ================================================================== -->
+    <section id="cta" class="py-16 md:py-24">
+        <div class="max-w-4xl mx-auto px-4 md:px-8 text-center fade-in">
+            <h2 class="heading-secondary text-3xl md:text-4xl mb-4">Start building with AI</h2>
+            <p class="text-lg mb-8" style="color: var(--text-2); max-width: 500px; margin: 0 auto 2rem;">
+                Tryll Engine gives you a simple API to ship these capabilities. On-device, no cloud costs, infinite scale.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="../index.html#contact" class="btn-primary px-8 py-4 rounded text-base inline-flex items-center justify-center gap-2">
+                    <i class="fas fa-rocket"></i> Get Early Access
+                </a>
+                <a href="../boscotryll.html" class="px-8 py-4 rounded text-base inline-flex items-center justify-center gap-2 border border-white/10 hover:bg-white/[0.06] text-white transition-all duration-200 font-medium" style="font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.05em;">
+                    <i class="fas fa-play"></i> See It in Action
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center gap-6 md:grid md:grid-cols-3 md:items-center">
+                <div class="text-secondary text-sm order-2 md:order-1 text-center md:text-left" style="color: var(--text-3);">
+                    &copy; 2026 Tryll Engine, Inc. All rights reserved.
+                </div>
+                <div class="flex gap-6 items-center justify-center order-1 md:order-2">
+                    <a href="https://discord.gg/XCBBGUMzUM" class="text-secondary hover:text-white transition-colors duration-300 text-xl" style="color: var(--text-3);" title="Join our Discord"><i class="fab fa-discord"></i></a>
+                    <a href="https://www.youtube.com/@Tryll_Engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" style="color: var(--text-3);" title="Watch on YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://instagram.com/tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" style="color: var(--text-3);" title="Follow on Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://tiktok.com/@tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" style="color: var(--text-3);" title="Follow on TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.linkedin.com/company/tryllengine/" class="text-secondary hover:text-white transition-colors duration-300 text-xl" style="color: var(--text-3);" title="Follow on LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <div class="flex gap-6 order-3 md:order-3 justify-center md:justify-end">
+                    <a href="../privacy-policy.html" class="text-secondary hover:text-white transition-colors duration-300 text-sm" style="color: var(--text-3);">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================================================================== -->
+    <!-- JAVASCRIPT: ALL DATA + INTERACTIONS -->
+    <!-- ================================================================== -->
+    <script>
+    // ── DATA ──
+
+    const categories = [
+        {
+            name: 'Dialogue & Conversation',
+            icon: 'fa-comments',
+            color: 'blue',
+            count: 11,
+            highlights: ['Dynamic NPC dialogue', 'Persuasion as gameplay', 'Natural language negotiation'],
+            items: [
+                { name: 'Dynamic NPC dialogue (free-form conversation)', feasibility: 'Proven' },
+                { name: 'Voiced NPC conversation (TTS on generated dialogue)', feasibility: 'Proven' },
+                { name: 'Player voice input for dialogue (STT)', feasibility: 'Proven' },
+                { name: 'Persuasion as gameplay (convince NPCs through argument quality)', feasibility: 'Likely' },
+                { name: 'Interrogation / deception detection', feasibility: 'Likely' },
+                { name: 'Social engineering (maintain cover through conversation)', feasibility: 'Likely' },
+                { name: 'Natural language negotiation (trade, diplomacy)', feasibility: 'Likely' },
+                { name: 'Multi-agent conversation (NPCs talking to each other)', feasibility: 'Likely' },
+                { name: 'Conversational combat resolution (talk instead of fight)', feasibility: 'Experimental' },
+                { name: 'Treaty / contract language manipulation', feasibility: 'Experimental' },
+                { name: 'Language barrier mechanic (progressive translation)', feasibility: 'Experimental' },
+            ]
+        },
+        {
+            name: 'Narration & Storytelling',
+            icon: 'fa-book-open',
+            color: 'purple',
+            count: 13,
+            highlights: ['Procedural quest generation', 'Dynamic lore', 'Environmental narrator'],
+            items: [
+                { name: 'Dynamic room/scene narration', feasibility: 'Proven' },
+                { name: 'Procedural quest/mission generation', feasibility: 'Likely' },
+                { name: 'Dynamic lore generation (books, journals, inscriptions)', feasibility: 'Likely' },
+                { name: 'Consequence narrator (comments on player choices)', feasibility: 'Likely' },
+                { name: 'Historian/chronicler AI (writes playthrough history)', feasibility: 'Likely' },
+                { name: 'Survival diary / journal generation', feasibility: 'Likely' },
+                { name: 'Dynamic news/media generation', feasibility: 'Likely' },
+                { name: 'Environmental narrator (literary-quality scene descriptions)', feasibility: 'Likely' },
+                { name: 'War correspondence (generated letters between leaders)', feasibility: 'Likely' },
+                { name: 'Unreliable narrator (controlled distortion)', feasibility: 'Experimental' },
+                { name: 'Death retrospective (narrative autopsy of a failed run)', feasibility: 'Likely' },
+                { name: 'Run-has-a-story (thematic narrative for procedural runs)', feasibility: 'Experimental' },
+                { name: 'Documentary generation (retrospective narration)', feasibility: 'Experimental' },
+            ]
+        },
+        {
+            name: 'NPC Behavior & Personality',
+            icon: 'fa-user-group',
+            color: 'green',
+            count: 12,
+            highlights: ['Persistent NPC memory', 'LoRA-driven personalities', 'Autonomous NPC agents'],
+            items: [
+                { name: 'Persistent NPC memory (remember past interactions)', feasibility: 'Proven' },
+                { name: 'LoRA-driven personality differentiation', feasibility: 'Proven' },
+                { name: 'Autonomous NPC agents (self-directed goals)', feasibility: 'Likely' },
+                { name: 'Emotional state modeling (mood affects behavior)', feasibility: 'Likely' },
+                { name: 'Living schedules with personality variance', feasibility: 'Likely' },
+                { name: 'Personality drift over time (character evolution)', feasibility: 'Experimental' },
+                { name: 'NPC gossip/rumor network (information degradation)', feasibility: 'Experimental' },
+                { name: 'Multi-agent faction politics (emergent alliances)', feasibility: 'Experimental' },
+                { name: 'Guard reasoning about suspicion (non-binary awareness)', feasibility: 'Experimental' },
+                { name: 'Adaptive AI personality evolution', feasibility: 'Experimental' },
+                { name: 'Apprentice NPCs (learn from player instruction)', feasibility: 'Speculative' },
+                { name: 'Faction emergence (NPCs self-organize)', feasibility: 'Speculative' },
+            ]
+        },
+        {
+            name: 'Voice & Audio',
+            icon: 'fa-microphone',
+            color: 'amber',
+            count: 10,
+            highlights: ['Full voice acting for unlimited dialogue', 'Voice-commanded gameplay', 'Player emotion detection'],
+            items: [
+                { name: 'Full voice acting for unlimited dynamic dialogue', feasibility: 'Proven' },
+                { name: 'Voice-commanded gameplay actions', feasibility: 'Proven' },
+                { name: 'Dynamic game commentary', feasibility: 'Likely' },
+                { name: 'Voice emotion detection (stress, sincerity)', feasibility: 'Likely' },
+                { name: 'Personalized narrator voice (voice cloning)', feasibility: 'Likely' },
+                { name: 'Multi-language support without localization', feasibility: 'Experimental' },
+                { name: 'Voice modulation awareness (whisper vs. shout)', feasibility: 'Experimental' },
+                { name: 'Spell incantation via voice (pronunciation-based magic)', feasibility: 'Experimental' },
+                { name: 'Language learning through gameplay', feasibility: 'Experimental' },
+                { name: 'Voice mirroring (character picks up player speech patterns)', feasibility: 'Speculative' },
+            ]
+        },
+        {
+            name: 'Adaptive Gameplay',
+            icon: 'fa-sliders',
+            color: 'blue',
+            count: 9,
+            highlights: ['Adaptive difficulty', 'Dynamic coaching', 'Player behavior clustering'],
+            items: [
+                { name: 'Adaptive difficulty (RL-based)', feasibility: 'Proven' },
+                { name: 'Adaptive opponent AI (learns player patterns)', feasibility: 'Proven' },
+                { name: 'Dynamic coaching (personalized tactical advice)', feasibility: 'Likely' },
+                { name: 'Dynamic tutorial generation (context-aware help)', feasibility: 'Likely' },
+                { name: 'Player behavior clustering for matchmaking', feasibility: 'Likely' },
+                { name: 'Biometric-driven fear adaptation (webcam/mic)', feasibility: 'Experimental' },
+                { name: 'Psychological profiling (learn what challenges each player)', feasibility: 'Experimental' },
+                { name: 'Procedural level design that learns player preferences', feasibility: 'Experimental' },
+                { name: 'Dynamic economy balancing', feasibility: 'Experimental' },
+            ]
+        },
+        {
+            name: 'Visual & Image',
+            icon: 'fa-image',
+            color: 'purple',
+            count: 10,
+            highlights: ['Dynamic character portraits', 'Webcam emotion detection', 'Gesture-based input'],
+            items: [
+                { name: 'Webcam facial emotion detection', feasibility: 'Likely' },
+                { name: 'Player-described character/item visualization', feasibility: 'Likely' },
+                { name: 'Evidence/document generation (photos, newspapers)', feasibility: 'Likely' },
+                { name: 'Dynamic character portraits/expressions', feasibility: 'Experimental' },
+                { name: 'Procedural environment textures', feasibility: 'Experimental' },
+                { name: 'Art as gameplay mechanic (create/judge images)', feasibility: 'Experimental' },
+                { name: 'Gesture-based input (hand tracking for abilities)', feasibility: 'Experimental' },
+                { name: 'Real-time expression mapping to avatar', feasibility: 'Experimental' },
+                { name: 'Screen reading for coaching overlay', feasibility: 'Experimental' },
+                { name: 'Mixed-reality object recognition', feasibility: 'Speculative' },
+            ]
+        },
+        {
+            name: 'Music & Sound',
+            icon: 'fa-music',
+            color: 'green',
+            count: 8,
+            highlights: ['Procedural music generation', 'Adaptive soundtrack', 'Character theme music'],
+            items: [
+                { name: 'Procedural music generation from text prompts', feasibility: 'Proven' },
+                { name: 'Adaptive soundtrack (responds to game state)', feasibility: 'Likely' },
+                { name: 'Character theme music generation', feasibility: 'Experimental' },
+                { name: 'Player-composed music as gameplay', feasibility: 'Experimental' },
+                { name: 'Generative sound effects', feasibility: 'Experimental' },
+                { name: 'Dynamic crowd audio (responsive spectators)', feasibility: 'Experimental' },
+                { name: 'Collaborative jam session (AI band member)', feasibility: 'Speculative' },
+                { name: 'Emotion-reactive game music (biofeedback loop)', feasibility: 'Speculative' },
+            ]
+        },
+        {
+            name: 'Meta / Cross-Genre',
+            icon: 'fa-layer-group',
+            color: 'amber',
+            count: 10,
+            highlights: ['In-game knowledge assistant', 'Accessibility layer', 'Semantic crafting'],
+            items: [
+                { name: 'Full game voicing for accessibility (all text to speech)', feasibility: 'Proven' },
+                { name: 'In-game search engine / knowledge assistant', feasibility: 'Likely' },
+                { name: 'SLM as accessibility layer (natural language to game actions)', feasibility: 'Likely' },
+                { name: 'Player wellness (posture/fatigue detection)', feasibility: 'Likely' },
+                { name: 'Semantic search in game world ("where did I leave X?")', feasibility: 'Likely' },
+                { name: 'AI fill-in players (replace missing multiplayer humans)', feasibility: 'Likely' },
+                { name: 'AI moderation/refereeing', feasibility: 'Likely' },
+                { name: 'Semantic crafting (embedding-based combination)', feasibility: 'Experimental' },
+                { name: 'Fourth-wall-breaking AI (references real-world context)', feasibility: 'Experimental' },
+                { name: 'Collaborative puzzle/content design (player + AI co-create)', feasibility: 'Experimental' },
+            ]
+        }
+    ];
+
+    const genres = [
+        { name: 'RPG', icon: 'fa-hat-wizard', relevance: 'HIGH', latency: 'Mixed', vram: '~8 GB',
+          desc: 'Massive surface area for AI: NPC dialogue, quest generation, companion AI, adaptive storytelling, and dynamic world reactions. The genre most naturally suited to language model integration.',
+          mechanics: ['Dynamic NPC dialogue with persistent memory', 'Procedural quest generation', 'Companion AI with personality via LoRA', 'Multi-agent faction politics'],
+          recipe: 'The Talking NPC Kit', recipeVram: '7.8 GB' },
+        { name: 'Visual Novel', icon: 'fa-heart', relevance: 'HIGH', latency: 'Turn-based', vram: '~8-12 GB',
+          desc: 'The entire game is conversation. SLMs replace scripted dialogue trees with infinite branching. TTS voices every line. The most direct AI application in gaming.',
+          mechanics: ['Infinite branching dialogue', 'Dynamic character portraits via image gen', 'Voice-cloned character voices', 'Emotional sincerity detection from player voice'],
+          recipe: 'The Full Romance', recipeVram: '9.0 GB' },
+        { name: 'Horror', icon: 'fa-ghost', relevance: 'HIGH', latency: 'Near-real-time', vram: '~8 GB',
+          desc: 'AI that adapts to player fear responses via webcam and voice. Procedural scares that never repeat. A dynamic antagonist that learns player habits.',
+          mechanics: ['Biometric-driven fear adaptation', 'Unreliable narrator that distorts descriptions', 'Entity AI that speaks and remembers', 'Procedural scares personalized to each player'],
+          recipe: 'The Adaptive Horror', recipeVram: '7.8 GB' },
+        { name: 'Survival / Sandbox', icon: 'fa-campground', relevance: 'HIGH', latency: 'Mixed', vram: '~8 GB',
+          desc: 'Procedural narrative for a world without scripts. NPC communities with emergent behavior, voice-driven crafting, adaptive ecosystems, and dynamic events.',
+          mechanics: ['NPC communities with emergent social dynamics', 'Voice-commanded actions and crafting', 'Dynamic event generation', 'Adaptive background music via MusicGen'],
+          recipe: 'The Living World', recipeVram: '6.3 GB' },
+        { name: 'Life Sim', icon: 'fa-house-chimney', relevance: 'HIGH', latency: 'Near-RT to Async', vram: '~8 GB',
+          desc: 'Sim characters with genuine personality and memory. Natural language management commands, AI advisors, and emergent social dynamics between AI-driven agents.',
+          mechanics: ['Characters with persistent personality and memory', 'Natural language management commands', 'Emergent social dynamics between agents', 'Dynamic news and media generation'],
+          recipe: 'The Talking NPC Kit', recipeVram: '7.8 GB' },
+        { name: 'Strategy', icon: 'fa-chess', relevance: 'MEDIUM-HIGH', latency: 'Turn-based / Near-RT', vram: '~7 GB',
+          desc: 'AI opponents that reason and explain their moves. Diplomatic AI that negotiates in natural language. Adaptive difficulty and strategic advisor NPCs.',
+          mechanics: ['Diplomatic AI with distinct leader personalities', 'Natural language negotiation and treaties', 'Strategic advisor that explains complex systems', 'Adaptive opponent that evolves based on experience'],
+          recipe: 'The Diplomat', recipeVram: '8.4 GB' },
+        { name: 'Adventure / Puzzle', icon: 'fa-puzzle-piece', relevance: 'MEDIUM-HIGH', latency: 'Turn-based', vram: '~7 GB',
+          desc: 'Natural language object interaction, conversational NPCs for investigation, adaptive hint systems, and puzzles with multiple solutions the designer never coded.',
+          mechanics: ['Natural language object interaction ("use rope on lever")', 'Adaptive hint system that understands player thinking', 'Open-ended puzzle solutions evaluated by SLM', 'Investigation through conversation, not pixel-hunting'],
+          recipe: 'The Talking NPC Kit', recipeVram: '7.8 GB' },
+        { name: 'Stealth', icon: 'fa-user-secret', relevance: 'MEDIUM-HIGH', latency: 'Near-real-time', vram: '~5 GB',
+          desc: 'Guards that reason about suspicious events in natural language. NPCs with memory of player actions across missions. Voice-commanded ally coordination.',
+          mechanics: ['Guards that reason about suspicion (non-binary awareness)', 'NPCs with memory of player actions across missions', 'Voice-commanded ally coordination', 'Social engineering to maintain cover'],
+          recipe: 'The Squad Commander', recipeVram: '4.6 GB' },
+        { name: 'Roguelike', icon: 'fa-skull', relevance: 'MEDIUM', latency: 'Mixed', vram: '~7 GB',
+          desc: 'AI narration over procedural content. SLM-narrated runs, adaptive difficulty, dynamic item lore, and an AI dungeon master that responds to player choices.',
+          mechanics: ['AI dungeon master narrator with voice', 'Dynamic item and ability lore generation', 'Death retrospective (narrative autopsy of failed runs)', 'Run-has-a-story thematic narrative arc'],
+          recipe: 'The Dungeon Master', recipeVram: '6.1 GB' },
+        { name: 'FPS / Shooter', icon: 'fa-crosshairs', relevance: 'MEDIUM', latency: 'Real-time + Near-RT', vram: '~5 GB',
+          desc: 'Real-time combat is too fast for SLMs, but voice-commanded squad AI, dynamic mission briefings, NPC banter during downtime, and adaptive enemy patterns all fit.',
+          mechanics: ['Voice-commanded squad tactics', 'Dynamic mission briefings and debriefs', 'Teammate banter and personality', 'Post-match analysis and coaching'],
+          recipe: 'The Squad Commander', recipeVram: '4.6 GB' },
+        { name: 'Social / Party', icon: 'fa-people-group', relevance: 'MEDIUM', latency: 'Near-real-time', vram: '~7 GB',
+          desc: 'AI game host, fill-in players for missing humans, real-time translation, and social games where emotional honesty detection creates new mechanics.',
+          mechanics: ['AI game host that manages rounds and prompts', 'Fill-in players that replace missing humans', 'Lie detection game mechanics via voice emotion', 'Real-time translation between players'],
+          recipe: 'The Party Host', recipeVram: '7.3 GB' },
+        { name: 'Fighting', icon: 'fa-hand-fist', relevance: 'LOW-MEDIUM', latency: 'Real-time', vram: '~5 GB',
+          desc: 'Core gameplay too fast for inference, but adaptive training partners that learn your patterns, voice-controlled training mode, and dynamic fight commentary.',
+          mechanics: ['Adaptive training partner that exploits your weaknesses', 'Voice-controlled training mode and frame data', 'Dynamic fight commentary with TTS', 'Personality-driven AI opponents via LoRA'],
+          recipe: 'The Squad Commander', recipeVram: '4.6 GB' },
+        { name: 'Sports', icon: 'fa-futbol', relevance: 'LOW-MEDIUM', latency: 'Real-time + Turn-based', vram: '~5 GB',
+          desc: 'Real-time play too fast for LLMs, but AI coach with voice advice, dynamic commentary, natural language team management, and scouting reports.',
+          mechanics: ['AI coach that gives voice advice during timeouts', 'Dynamic contextual commentary', 'Natural language team management', 'Generated scouting reports'],
+          recipe: 'The Squad Commander', recipeVram: '4.6 GB' },
+        { name: 'Racing', icon: 'fa-flag-checkered', relevance: 'LOW', latency: 'Real-time', vram: '~5 GB',
+          desc: 'Core gameplay too fast for LLMs. Niche uses: voice-commanded pit stop strategy, dynamic race commentary, AI co-driver in rally games.',
+          mechanics: ['Voice-interactive race engineer', 'AI co-driver with adaptive pace notes', 'Post-race telemetry analysis', 'Dynamic race commentary'],
+          recipe: 'The Race Engineer', recipeVram: '4.5 GB' },
+        { name: 'Rhythm / Music', icon: 'fa-headphones', relevance: 'LOW', latency: 'Real-time', vram: '~6 GB',
+          desc: 'Core gameplay needs audio precision, not AI inference. But MusicGen for procedural track generation, adaptive difficulty, and AI DJ responding to player mood.',
+          mechanics: ['Procedural track generation via MusicGen', 'Adaptive difficulty based on performance', 'AI DJ that responds to player mood', 'Voice-controlled song selection'],
+          recipe: 'The Dungeon Master', recipeVram: '6.1 GB' },
+    ];
+
+    const recipes = [
+        {
+            name: 'The Talking NPC Kit',
+            vram: 7.8, bestFor: ['RPG', 'Adventure', 'Visual Novel'],
+            featured: true,
+            components: [
+                { model: 'Qwen3-8B Q4_K_M', purpose: 'Language', vram: '5.5 GB' },
+                { model: 'Faster-Whisper Small', purpose: 'Speech-to-Text', vram: '1.0 GB' },
+                { model: 'Kokoro 82M', purpose: 'Text-to-Speech', vram: '0.5 GB' },
+                { model: 'nomic-embed-text v1.5', purpose: 'Memory', vram: '0.3 GB' },
+                { model: '3-5 LoRA adapters', purpose: 'Personalities', vram: '0.5 GB' },
+            ],
+            desc: 'Full voice conversation with NPCs, persistent memory, multiple personalities via LoRA hot-swap. The baseline for any narrative game.'
+        },
+        {
+            name: 'The Adaptive Horror',
+            vram: 7.8, bestFor: ['Horror'],
+            featured: true,
+            components: [
+                { model: 'Qwen3-8B Q4_K_M', purpose: 'Language', vram: '5.5 GB' },
+                { model: 'Kokoro 82M', purpose: 'Text-to-Speech', vram: '0.5 GB' },
+                { model: 'MediaPipe + emotion CNN', purpose: 'Fear Detection (face)', vram: '0.3 GB' },
+                { model: 'Audio classifier', purpose: 'Fear Detection (voice)', vram: '0.3 GB' },
+                { model: 'RL policy network', purpose: 'Entity AI', vram: '0.1 GB' },
+                { model: 'Faster-Whisper Small', purpose: 'Speech-to-Text', vram: '1.0 GB' },
+            ],
+            desc: 'Entity that speaks, adapts to player fear level, remembers encounters, and listens for player sounds. Webcam fear detection drives adaptive difficulty.'
+        },
+        {
+            name: 'The Living World',
+            vram: 6.3, bestFor: ['Survival', 'Sandbox'],
+            featured: true,
+            components: [
+                { model: 'Qwen3-4B Q4_K_M', purpose: 'Language', vram: '3.0 GB' },
+                { model: 'Piper (ultra-light)', purpose: 'Text-to-Speech', vram: '0.2 GB' },
+                { model: 'Faster-Whisper Small', purpose: 'Speech-to-Text', vram: '1.0 GB' },
+                { model: 'nomic-embed-text v1.5', purpose: 'Memory', vram: '0.3 GB' },
+                { model: 'Policy networks (10 types)', purpose: 'NPC Behavior', vram: '0.3 GB' },
+                { model: 'MusicGen Small', purpose: 'Adaptive Music', vram: '1.5 GB' },
+            ],
+            desc: 'Multiple NPCs with dialogue via continuous batching, voice I/O, adaptive music, and behavioral AI. Smaller 4B model prioritizes speed for many concurrent NPCs.'
+        },
+        {
+            name: 'The Squad Commander',
+            vram: 4.6, bestFor: ['FPS', 'Tactical Shooter'],
+            featured: true,
+            components: [
+                { model: 'Qwen3-4B Q4_K_M', purpose: 'Language', vram: '3.0 GB' },
+                { model: 'Faster-Whisper Small', purpose: 'Speech-to-Text', vram: '1.0 GB' },
+                { model: 'Kokoro 82M', purpose: 'Text-to-Speech', vram: '0.5 GB' },
+                { model: 'Policy networks', purpose: 'Tactical AI', vram: '0.1 GB' },
+            ],
+            desc: 'Voice-commanded squad tactics, teammate banter, mission briefing Q&A. The 4B model prioritizes speed. Minimal VRAM preserves GPU for high-fidelity rendering.'
+        },
+        {
+            name: 'The Dungeon Master',
+            vram: 6.1, bestFor: ['Roguelike', 'Roguelite'],
+            featured: true,
+            components: [
+                { model: 'Qwen3-8B Q4_K_M', purpose: 'Language', vram: '5.5 GB' },
+                { model: 'Kokoro 82M', purpose: 'Text-to-Speech (DM voice)', vram: '0.5 GB' },
+                { model: 'MiniLM-L6', purpose: 'Run Memory', vram: '0.1 GB' },
+            ],
+            desc: 'Rich narration, AI narrator with voice, item lore generation, death retrospectives. The simplest recipe — just language and voice.'
+        },
+        {
+            name: 'The Full Romance',
+            vram: 9.0, bestFor: ['Dating Sim', 'Visual Novel'],
+            featured: true,
+            components: [
+                { model: 'Llama 3.1 8B Q4_K_M', purpose: 'Language', vram: '5.5 GB' },
+                { model: 'Faster-Whisper Small', purpose: 'Speech-to-Text', vram: '1.0 GB' },
+                { model: 'XTTS v2 (voice cloning)', purpose: 'Text-to-Speech', vram: '1.5 GB' },
+                { model: 'nomic-embed-text v1.5', purpose: 'Memory', vram: '0.3 GB' },
+                { model: 'Audio emotion classifier', purpose: 'Emotion Detection', vram: '0.3 GB' },
+                { model: '2-3 character LoRAs', purpose: 'Personalities', vram: '0.4 GB' },
+            ],
+            desc: 'Full voice conversation with voice-cloned character voices, emotional sincerity detection, persistent relationship memory. Portrait gen available via VRAM-swapping.'
+        },
+        // Additional recipes (hidden by default)
+        {
+            name: 'The Diplomat',
+            vram: 8.4, bestFor: ['4X Strategy', 'Grand Strategy'],
+            featured: false,
+            components: [
+                { model: 'Qwen3-8B Q4_K_M (8K ctx)', purpose: 'Language', vram: '7.0 GB' },
+                { model: 'Kokoro 82M', purpose: 'Leader Voices', vram: '0.5 GB' },
+                { model: '6-8 leader LoRAs', purpose: 'Personalities', vram: '0.8 GB' },
+                { model: 'e5-small', purpose: 'Game State', vram: '0.1 GB' },
+            ],
+            desc: 'Full diplomatic conversations with multiple AI leaders, each with distinct personality. Extended 8K context window fits compressed game state.'
+        },
+        {
+            name: 'The Race Engineer',
+            vram: 4.5, bestFor: ['Sim Racing', 'Rally'],
+            featured: false,
+            components: [
+                { model: 'Qwen3-4B Q4_K_M', purpose: 'Language', vram: '3.0 GB' },
+                { model: 'Faster-Whisper Small', purpose: 'Speech-to-Text', vram: '1.0 GB' },
+                { model: 'Kokoro 82M', purpose: 'Engineer Voice', vram: '0.5 GB' },
+            ],
+            desc: 'Voice-interactive race engineer, co-driver with adaptive pace notes, post-race telemetry analysis. Minimalist stack for a rendering-heavy genre.'
+        },
+        {
+            name: 'The Immersive Theater',
+            vram: 10.1, bestFor: ['Visual Novel', 'Sandbox Creative'],
+            featured: false,
+            components: [
+                { model: 'Llama 3.1 8B Q4_K_M', purpose: 'Language', vram: '5.5 GB' },
+                { model: 'LCM (SD 1.5) + LoRA', purpose: 'Image Generation', vram: '4.0 GB' },
+                { model: 'Kokoro 82M', purpose: 'Text-to-Speech', vram: '0.5 GB' },
+                { model: 'MiniLM-L6', purpose: 'Memory', vram: '0.1 GB' },
+            ],
+            desc: 'Dynamic dialogue + dynamic image generation for character portraits, scene illustrations, or in-game documents. Best for games with modest rendering requirements.'
+        },
+        {
+            name: 'The Maximum AI',
+            vram: 12.8, bestFor: ['Interactive Fiction', 'Management Sim'],
+            featured: false,
+            components: [
+                { model: 'Llama 3.1 14B Q4_K_M', purpose: 'Language', vram: '9.5 GB' },
+                { model: 'Faster-Whisper Medium', purpose: 'Speech-to-Text', vram: '1.5 GB' },
+                { model: 'XTTS v2 (voice cloning)', purpose: 'Text-to-Speech', vram: '1.5 GB' },
+                { model: 'nomic-embed-text v1.5', purpose: 'Memory', vram: '0.3 GB' },
+            ],
+            desc: 'The highest quality dialogue possible on 16 GB. 14B model produces noticeably better reasoning and creativity. Reserved for text-heavy games with simple rendering.'
+        },
+        {
+            name: 'The Party Host',
+            vram: 7.3, bestFor: ['Social Games', 'Party Games'],
+            featured: false,
+            components: [
+                { model: 'Qwen3-8B Q4_K_M', purpose: 'Language', vram: '5.5 GB' },
+                { model: 'Faster-Whisper Small', purpose: 'Speech-to-Text', vram: '1.0 GB' },
+                { model: 'Kokoro 82M (multi-voice)', purpose: 'Text-to-Speech', vram: '0.5 GB' },
+                { model: 'Audio classifier', purpose: 'Voice Emotion', vram: '0.3 GB' },
+            ],
+            desc: 'AI game host, fill-in players, prompt generation, real-time translation, lie detection mechanics. Voice emotion enables social games where honesty matters.'
+        },
+    ];
+
+    const wildIdeas = [
+        {
+            name: 'The Infinite Sitcom',
+            concept: 'A Sims-like game where 4-6 AI characters live together and their interactions create an emergent sitcom. Each character has a distinct personality, goals, and relationships. TTS voices every line. The show develops its own continuity, callbacks, and character arcs over weeks of play.',
+            why: 'When the characters develop inside jokes that you find genuinely funny. When they reference events from 20 episodes ago. When a character arc makes you emotional.',
+            vram: '~9 GB',
+            icon: 'fa-tv'
+        },
+        {
+            name: 'Permadeath Has Consequences',
+            concept: 'A roguelike where your dead characters become NPCs in future runs. They remember dying and what killed them. They might help you or resent you. Over many runs, the dungeon populates with ghosts of your past failures.',
+            why: 'Turns roguelike meta-progression from unlocking items into accumulating characters with memories and opinions. The game\'s cast grows organically from your failures.',
+            vram: '~7 GB',
+            icon: 'fa-skull-crossbones'
+        },
+        {
+            name: 'The Dream Machine',
+            concept: 'When the player character sleeps, multi-modal AI generates a dream reflecting recent events, relationships, and unresolved threads — distorted, symbolic, and surreal. Image gen creates visuals. SLM writes narration. MusicGen scores it.',
+            why: 'The SLM\'s tendency to hallucinate becomes a feature — dreams should be nonsensical with hidden meaning. The dream might contain clues about upcoming events.',
+            vram: '~12 GB',
+            icon: 'fa-cloud-moon'
+        },
+        {
+            name: 'The AI DM for Physical Tabletop',
+            concept: 'A camera pointed at a physical tabletop RPG setup. A vision model recognizes the board state. Players speak naturally. The AI serves as a real DM: narrating scenes, voicing NPCs, tracking rules. No screen needed.',
+            why: 'Four friends around a table, playing D&D with an AI Dungeon Master that can see the board, hear the players, and speak in character voices. Physical social experience meets infinite AI creativity.',
+            vram: '~10 GB',
+            icon: 'fa-dice-d20'
+        },
+        {
+            name: 'The Game That Knows You',
+            concept: 'A game that builds a model of you across all modalities — face, voice, decisions, play patterns. Over time, it crafts narrative themes that resonate, challenges calibrated to your psychology, NPCs that push your emotional buttons.',
+            why: 'Not "dynamic difficulty" but a game that understands who you are and crafts an experience for you specifically. Every player\'s game is fundamentally different.',
+            vram: '~9 GB',
+            icon: 'fa-brain'
+        }
+    ];
+
+    const antiPatterns = [
+        {
+            title: 'Latency in time-critical gameplay',
+            icon: 'fa-clock',
+            summary: 'Inserting SLM inference (even 200ms) into a loop that requires <16ms response time breaks the game. Fighting games, racing, rhythm — no SLM in the critical path.',
+            mitigation: 'Reserve SLM for pauses, transitions, and non-time-critical channels like narration or post-match analysis.'
+        },
+        {
+            title: 'The uncanny valley of conversation',
+            icon: 'fa-masks-theater',
+            summary: 'NPCs that are "almost" human but occasionally say something wrong or anachronistic create an experience worse than clearly scripted NPCs.',
+            mitigation: 'Strong system prompts with knowledge boundaries, LoRA fine-tuning on your writing style, and graceful fallbacks for edge cases.'
+        },
+        {
+            title: 'VRAM starvation of rendering',
+            icon: 'fa-memory',
+            summary: 'AI models consuming too much VRAM degrades visual quality, frame rate, and stability. Players with RTX 4090s expect beautiful, smooth games.',
+            mitigation: 'Conservative VRAM budgets — leave 8+ GB for rendering in graphically demanding games. Graceful degradation before frame drops.'
+        },
+        {
+            title: 'AI fatigue — when everything talks',
+            icon: 'fa-volume-xmark',
+            summary: 'If every object, NPC, and UI element is AI-powered, players suffer from content overload. Not everything should speak. Silence is a game mechanic too.',
+            mitigation: 'AI features should be opt-in and depth-on-demand. Quick interaction paths for efficiency. Pace AI content with quiet moments.'
+        },
+        {
+            title: 'The jailbreak problem',
+            icon: 'fa-shield-halved',
+            summary: 'Players will attempt to make NPCs say things outside the game\'s scope. Every SLM-powered NPC is a potential content generation vulnerability.',
+            mitigation: 'Output filtering, character boundaries in system prompts, and mechanical limits on what persuasion can actually achieve in game systems.'
+        },
+        {
+            title: 'Privacy and trust violations',
+            icon: 'fa-eye-slash',
+            summary: 'Webcam/microphone monitoring — even for beneficial features — can feel invasive. One viral "this game watches you" headline can destroy a game\'s reputation.',
+            mitigation: 'Always require explicit opt-in. Make on-device processing transparent. Never reference detected information in ways that feel intrusive.'
+        }
+    ];
+
+    const vramLayers = [
+        { name: 'Language (SLM)', min: 1.5, max: 10, color: 'var(--blue)', example: 'Qwen3-8B @ 5.5 GB' },
+        { name: 'Text-to-Speech', min: 0.1, max: 2, color: 'var(--green)', example: 'Kokoro @ 0.5 GB' },
+        { name: 'Speech-to-Text', min: 0.5, max: 4, color: 'var(--purple)', example: 'Whisper Small @ 1.0 GB' },
+        { name: 'Vision Models', min: 0.5, max: 5, color: '#F97316', example: 'SmolVLM @ 2.5 GB' },
+        { name: 'Image Generation', min: 3, max: 12, color: '#EC4899', example: 'LCM (SD 1.5) @ 4.0 GB' },
+        { name: 'Music Generation', min: 1, max: 5, color: 'var(--amber)', example: 'MusicGen Small @ 1.5 GB' },
+        { name: 'RL / Behavioral', min: 0, max: 0.5, color: '#14B8A6', example: 'Policy nets @ <0.1 GB' },
+        { name: 'Embeddings', min: 0, max: 0.3, color: '#8B5CF6', example: 'MiniLM-L6 @ <0.1 GB' },
+    ];
+
+
+    // ── RENDER FUNCTIONS ──
+
+    function getColorVar(color) {
+        const map = { blue: 'var(--blue)', purple: 'var(--purple)', amber: 'var(--amber)', green: 'var(--green)' };
+        return map[color] || 'var(--blue)';
+    }
+    function getColorDim(color) {
+        const map = { blue: 'var(--blue-dim)', purple: 'var(--purple-dim)', amber: 'var(--amber-dim)', green: 'var(--green-dim)' };
+        return map[color] || 'var(--blue-dim)';
+    }
+
+    function renderCapabilities() {
+        const grid = document.getElementById('capabilities-grid');
+        grid.innerHTML = categories.map((cat, i) => `
+            <div class="card card-clickable fade-in" onclick="toggleCategoryDetail(${i})" style="transition-delay: ${i * 0.05}s;" data-cat-index="${i}">
+                <div class="card-icon" style="background: ${getColorDim(cat.color)}; color: ${getColorVar(cat.color)};">
+                    <i class="fas ${cat.icon}"></i>
+                </div>
+                <div style="font-size: 16px; font-weight: 600; color: var(--text-1); margin-bottom: 6px;">${cat.name}</div>
+                <div class="font-mono" style="font-size: 11px; color: ${getColorVar(cat.color)}; margin-bottom: 10px;">${cat.count} capabilities</div>
+                <div style="font-size: 13px; color: var(--text-3); line-height: 1.5;">
+                    ${cat.highlights.join(' &middot; ')}
+                </div>
+            </div>
+        `).join('');
+    }
+
+    let activeCategoryIndex = -1;
+    function toggleCategoryDetail(index) {
+        const panel = document.getElementById('capability-detail');
+        if (activeCategoryIndex === index) {
+            closeCategoryDetail();
+            return;
+        }
+        activeCategoryIndex = index;
+        const cat = categories[index];
+        document.getElementById('capability-detail-title').textContent = cat.name;
+        document.getElementById('capability-detail-list').innerHTML = cat.items.map(item => {
+            const badgeClass = 'badge-' + item.feasibility.toLowerCase();
+            return `<div class="flex items-start justify-between gap-3 py-1">
+                <span style="color: var(--text-2); font-size: 14px;">${item.name}</span>
+                <span class="badge ${badgeClass}" style="flex-shrink: 0;">${item.feasibility}</span>
+            </div>`;
+        }).join('');
+        panel.style.display = 'block';
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        // Highlight active card
+        document.querySelectorAll('[data-cat-index]').forEach(el => {
+            el.style.borderColor = el.dataset.catIndex == index ? getColorVar(cat.color) : '';
+        });
+    }
+    function closeCategoryDetail() {
+        document.getElementById('capability-detail').style.display = 'none';
+        activeCategoryIndex = -1;
+        document.querySelectorAll('[data-cat-index]').forEach(el => el.style.borderColor = '');
+    }
+
+    function getRelevanceBadgeClass(relevance) {
+        if (relevance === 'HIGH') return 'badge-relevance-high';
+        if (relevance === 'MEDIUM-HIGH') return 'badge-relevance-medium-high';
+        if (relevance === 'MEDIUM') return 'badge-relevance-medium';
+        if (relevance === 'LOW-MEDIUM') return 'badge-relevance-low-medium';
+        return 'badge-relevance-low';
+    }
+
+    function renderGenres() {
+        // Pills
+        const pills = document.getElementById('genre-pills');
+        pills.innerHTML = genres.map((g, i) => `
+            <button class="genre-pill" data-genre="${i}" onclick="selectGenre(${i})">
+                <i class="fas ${g.icon}" style="margin-right: 6px;"></i>${g.name}
+            </button>
+        `).join('');
+
+        // Table
+        const tbody = document.getElementById('genre-table-body');
+        tbody.innerHTML = genres.map((g, i) => `
+            <tr class="cursor-pointer hover:bg-white/[0.03] transition-colors" onclick="selectGenre(${i})" style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+                <td class="py-3 pr-4" style="color: var(--text-1); font-weight: 500;">
+                    <i class="fas ${g.icon}" style="color: var(--blue); margin-right: 8px; width: 16px; text-align: center;"></i>${g.name}
+                </td>
+                <td class="py-3 pr-4"><span class="badge ${getRelevanceBadgeClass(g.relevance)}">${g.relevance}</span></td>
+                <td class="py-3 pr-4" style="color: var(--text-3); font-size: 13px;">${g.latency}</td>
+                <td class="py-3 font-mono" style="color: var(--text-3); font-size: 12px;">${g.vram}</td>
+            </tr>
+        `).join('');
+    }
+
+    let activeGenre = -1;
+    function selectGenre(index) {
+        const panel = document.getElementById('genre-detail');
+        if (activeGenre === index) {
+            closeGenreDetail();
+            return;
+        }
+        activeGenre = index;
+        const g = genres[index];
+
+        // Update pills
+        document.querySelectorAll('.genre-pill').forEach((pill, i) => {
+            pill.classList.toggle('active', i === index);
+        });
+
+        // Update detail
+        document.getElementById('genre-detail-icon').innerHTML = `<i class="fas ${g.icon}"></i>`;
+        document.getElementById('genre-detail-icon').style.cssText = `background: var(--blue-dim); color: var(--blue); margin-bottom: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px; font-size: 16px;`;
+        document.getElementById('genre-detail-title').textContent = g.name;
+        document.getElementById('genre-detail-desc').textContent = g.desc;
+        document.getElementById('genre-detail-mechanics').innerHTML = g.mechanics.map(m =>
+            `<li class="flex items-start gap-2" style="font-size: 14px; color: var(--text-2);">
+                <i class="fas fa-chevron-right" style="color: var(--blue); font-size: 9px; margin-top: 5px;"></i>
+                <span>${m}</span>
+            </li>`
+        ).join('');
+        document.getElementById('genre-detail-recipe').innerHTML = `
+            <div style="font-weight: 600; color: var(--text-1); margin-bottom: 4px;">${g.recipe}</div>
+            <div class="font-mono" style="font-size: 12px; color: var(--blue); margin-bottom: 8px;">${g.recipeVram} VRAM</div>
+            <div class="vram-bar">
+                <div class="vram-bar-fill" style="width: ${(parseFloat(g.recipeVram) / 16 * 100)}%;"></div>
+            </div>
+            <div class="flex justify-between mt-1 font-mono" style="font-size: 10px; color: var(--text-3);">
+                <span>AI: ${g.recipeVram}</span>
+                <span>Rendering: ${(16 - parseFloat(g.recipeVram)).toFixed(1)} GB</span>
+            </div>
+        `;
+
+        panel.style.display = 'block';
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    function closeGenreDetail() {
+        document.getElementById('genre-detail').style.display = 'none';
+        activeGenre = -1;
+        document.querySelectorAll('.genre-pill').forEach(p => p.classList.remove('active'));
+    }
+
+    function renderRecipeCard(recipe) {
+        const percent = (recipe.vram / 16 * 100).toFixed(0);
+        const headroom = (16 - recipe.vram).toFixed(1);
+        return `
+            <div class="card fade-in">
+                <div style="font-size: 18px; font-weight: 600; color: var(--text-1); margin-bottom: 6px;">${recipe.name}</div>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    ${recipe.bestFor.map(t => `<span class="font-mono" style="font-size: 10px; color: var(--blue); background: var(--blue-dim); padding: 2px 8px; border-radius: 3px;">${t}</span>`).join('')}
+                </div>
+
+                <!-- VRAM bar -->
+                <div class="mb-1">
+                    <div class="vram-bar">
+                        <div class="vram-bar-fill" style="width: ${percent}%;"></div>
+                    </div>
+                    <div class="flex justify-between mt-1 font-mono" style="font-size: 10px; color: var(--text-3);">
+                        <span>AI: ${recipe.vram} GB</span>
+                        <span>Headroom: ${headroom} GB</span>
+                    </div>
+                </div>
+
+                <!-- Component table -->
+                <div class="mt-4 mb-4">
+                    <div class="stack-row stack-row-header">
+                        <span>Component</span><span>Model</span><span style="text-align: right;">VRAM</span>
+                    </div>
+                    ${recipe.components.map(c => `
+                        <div class="stack-row">
+                            <span style="color: var(--text-3);">${c.purpose}</span>
+                            <span style="color: var(--text-2);">${c.model}</span>
+                            <span class="font-mono" style="text-align: right; color: var(--blue); font-size: 12px;">${c.vram}</span>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <p style="font-size: 13px; color: var(--text-3); margin-bottom: 16px;">${recipe.desc}</p>
+
+                <a href="../index.html#contact" class="inline-flex items-center gap-2 text-sm font-medium" style="color: var(--blue);">
+                    Build this with Tryll <i class="fas fa-arrow-right" style="font-size: 11px;"></i>
+                </a>
+            </div>
+        `;
+    }
+
+    function renderRecipes() {
+        const featured = recipes.filter(r => r.featured);
+        const more = recipes.filter(r => !r.featured);
+        document.getElementById('recipes-grid').innerHTML = featured.map(r => renderRecipeCard(r)).join('');
+        document.getElementById('more-recipes-grid').innerHTML = more.map(r => renderRecipeCard(r)).join('');
+    }
+
+    function toggleMoreRecipes() {
+        const el = document.getElementById('more-recipes');
+        const btn = document.getElementById('show-more-recipes');
+        const isOpen = el.classList.contains('open');
+        if (isOpen) {
+            el.style.maxHeight = '0';
+            el.classList.remove('open');
+            btn.classList.remove('open');
+            btn.innerHTML = 'See all 11 recipes <i class="fas fa-chevron-down chevron text-xs"></i>';
+        } else {
+            el.style.maxHeight = el.scrollHeight + 'px';
+            el.classList.add('open');
+            btn.classList.add('open');
+            btn.innerHTML = 'Show fewer <i class="fas fa-chevron-down chevron text-xs"></i>';
+            // Trigger fade-in for newly visible cards
+            el.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+        }
+    }
+
+    function renderWildIdeas() {
+        const grid = document.getElementById('wild-ideas-grid');
+        grid.innerHTML = wildIdeas.map((idea, i) => `
+            <div class="wild-card fade-in" ${i === wildIdeas.length - 1 && wildIdeas.length % 2 !== 0 ? 'style="grid-column: 1 / -1; max-width: 50%;"' : ''}>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="card-icon" style="background: var(--purple-dim); color: var(--purple); margin-bottom: 0;">
+                        <i class="fas ${idea.icon}"></i>
+                    </div>
+                    <span class="font-mono" style="font-size: 11px; color: var(--purple);">${idea.vram} VRAM</span>
+                </div>
+                <h3 class="font-serif text-2xl mb-3" style="color: var(--text-1); font-style: italic;">${idea.name}</h3>
+                <p style="color: var(--text-2); font-size: 14px; margin-bottom: 12px;">${idea.concept}</p>
+                <p style="color: var(--text-3); font-size: 13px; font-style: italic;">${idea.why}</p>
+            </div>
+        `).join('');
+    }
+
+    function renderAntiPatterns() {
+        const grid = document.getElementById('antipatterns-grid');
+        grid.innerHTML = antiPatterns.map(ap => `
+            <div class="warning-card fade-in">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fas ${ap.icon}" style="color: var(--amber); font-size: 16px;"></i>
+                    <h3 style="font-size: 15px; font-weight: 600; color: var(--text-1);">${ap.title}</h3>
+                </div>
+                <p style="font-size: 13px; color: var(--text-2); margin-bottom: 10px;">${ap.summary}</p>
+                <p style="font-size: 12px; color: var(--amber);"><strong>Mitigation:</strong> ${ap.mitigation}</p>
+            </div>
+        `).join('');
+    }
+
+    function renderVramLayers() {
+        const container = document.getElementById('vram-layers');
+        container.innerHTML = vramLayers.map(layer => {
+            const maxPercent = (layer.max / 16 * 100).toFixed(0);
+            return `
+                <div class="vram-layer">
+                    <span style="color: var(--text-2); font-size: 13px; font-weight: 500;">${layer.name}</span>
+                    <div>
+                        <div class="vram-layer-bar">
+                            <div class="vram-layer-fill" style="width: ${maxPercent}%; background: ${layer.color};"></div>
+                        </div>
+                    </div>
+                    <span class="font-mono" style="font-size: 11px; color: var(--text-3); text-align: right;">${layer.min}-${layer.max} GB</span>
+                </div>
+            `;
+        }).join('');
+    }
+
+
+    // ── INIT ──
+
+    document.addEventListener('DOMContentLoaded', () => {
+        renderCapabilities();
+        renderGenres();
+        renderRecipes();
+        renderWildIdeas();
+        renderAntiPatterns();
+        renderVramLayers();
+
+        // Fade-in observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Mobile menu
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const closeBtn = document.getElementById('mobile-menu-close');
+
+        if (menuBtn && menu) {
+            menuBtn.addEventListener('click', () => {
+                menu.classList.remove('opacity-0', 'invisible');
+                menu.classList.add('opacity-100', 'visible');
+            });
+        }
+        if (closeBtn && menu) {
+            closeBtn.addEventListener('click', () => {
+                menu.classList.add('opacity-0', 'invisible');
+                menu.classList.remove('opacity-100', 'visible');
+            });
+        }
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-menu-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (menu) {
+                    menu.classList.add('opacity-0', 'invisible');
+                    menu.classList.remove('opacity-100', 'visible');
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>

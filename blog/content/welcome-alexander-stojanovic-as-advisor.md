@@ -1,3 +1,5 @@
+![Alexander Stojanovic](/assets/blog/welcome-alexander-stojanovic-as-advisor-inline-1.jpg)
+
 [Alexander](https://www.linkedin.com/in/stojanovic/) is Vice President of NEXT AI R&D at Microsoft GenAI. Previously, he served as VP / CTO of ML & AI at eBay, Cisco, and Oracle and more.
 
 We first met in Belgrade in October, and since then have stayed in close contact. Over time, Alexander has been supporting us with product insight and strategic advice.

@@ -1,3 +1,5 @@
+![Tryll Assistant v0.0.8 — CUDA & HIP Support](/assets/blog/tryll-assistant-v0-0-8-cuda-hip-support-inline-1.jpeg)
+
 Tryll Assistant v0.0.8 is out, adding two new GPU backends alongside the existing Vulkan support: **NVIDIA CUDA** and **AMD HIP**.
 
 ## What's New

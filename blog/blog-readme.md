@@ -54,6 +54,7 @@ Copy `blog/posts/_template.html` to `blog/posts/{slug}.html` and replace all `PO
 | `POST_CATEGORY_LABEL` | Display text: `News`, `Tutorial`, `Engineering`, `Case Study` |
 | `POST_READ_TIME` | Number only, e.g. `2` |
 | `POST_IMAGE` | Path to cover image, e.g. `/assets/blog/welcome-pierre-moisan-cover.png` |
+| `POST_LINKEDIN_URL` | LinkedIn post URL, e.g. `https://www.linkedin.com/feed/update/urn:li:activity:...` |
 
 ### 4. Register in posts.json
 
@@ -69,7 +70,8 @@ Add a new entry **at the top** of the array in `blog/posts.json` (newest first):
   "readTime": 2,
   "image": "/assets/blog/welcome-pierre-moisan-cover.png",
   "icon": "fa-handshake",
-  "author": "Tryll Engine Team"
+  "author": "Tryll Engine Team",
+  "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:activity:..."
 }
 ```
 
@@ -78,6 +80,7 @@ Add a new entry **at the top** of the array in `blog/posts.json` (newest first):
 - `category` — one of: `news`, `engineering`, `tutorial`, `case-study`
 - `icon` — Font Awesome class, used as fallback when no image loads
 - `date` — ISO format `YYYY-MM-DD`, determines sort order
+- `linkedinUrl` — original LinkedIn post URL (displayed as a link in the post metadata)
 
 ### 5. Update sitemap.xml
 

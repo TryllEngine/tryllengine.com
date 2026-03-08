@@ -198,6 +198,7 @@ Then replace these placeholders in the new file:
 | `POST_CATEGORY_LABEL` | Display text: `News`, `Tutorial`, `Engineering`, or `Case Study` |
 | `POST_READ_TIME` | Number only, e.g., `2` |
 | `POST_IMAGE` | Path to hero image, e.g., `/assets/blog/{slug}-cover.png` |
+| `POST_LINKEDIN_URL` | LinkedIn post URL (e.g., `https://www.linkedin.com/feed/update/urn:li:activity:...`) |
 
 **Important**: `POST_CATEGORY` and `POST_CATEGORY_LABEL` appear together in a single HTML element:
 ```html
@@ -226,7 +227,8 @@ Add a new entry **at the top** of the array in `blog/posts.json`:
   "readTime": {number},
   "image": "/assets/blog/{slug}-cover.png",
   "icon": "fa-{icon}",
-  "author": "Tryll Engine Team"
+  "author": "Tryll Engine Team",
+  "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:activity:..."
 }
 ```
 

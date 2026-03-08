@@ -8,7 +8,8 @@
     "readTime": 2,
     "image": "/assets/blog/welcome-pierre-moisan-cover.png",
     "icon": "fa-handshake",
-    "author": "Tryll Engine Team"
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7435703538858708993"
   },
   {
     "slug": "tryll-assistant-v0-0-8-cuda-hip-support",
@@ -19,7 +20,8 @@
     "readTime": 2,
     "image": "/assets/blog/tryll-assistant-v0-0-8-cuda-hip-support-cover.png",
     "icon": "fa-microchip",
-    "author": "Tryll Engine Team"
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7431706912683003905"
   },
   {
     "slug": "welcome-alexander-stojanovic-as-advisor",
@@ -30,7 +32,8 @@
     "readTime": 2,
     "image": "/assets/blog/welcome-alexander-stojanovic-as-advisor.png",
     "icon": "fa-handshake",
-    "author": "Tryll Engine Team"
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7430884046831992832"
   },
   {
     "slug": "tryll-assistant-live-on-steam",
@@ -41,7 +44,8 @@
     "readTime": 2,
     "image": "/assets/blog/tryll-assistant-live-on-steam.png",
     "icon": "fa-steam",
-    "author": "Tryll Engine Team"
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7428483177981210624"
   },
   {
     "slug": "how-we-catch-prompt-injections-and-hallucinations",
@@ -52,7 +56,8 @@
     "readTime": 4,
     "image": "/assets/blog/how-we-catch-prompt-injections-and-hallucinations.png",
     "icon": "fa-shield-halved",
-    "author": "Tryll Engine Team"
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7427800958115454976"
   },
   {
     "slug": "epic-megagrant-from-unreal-engine",
@@ -63,7 +68,8 @@
     "readTime": 2,
     "image": "/assets/blog/epic-megagrant-from-unreal-engine.png",
     "icon": "fa-award",
-    "author": "Tryll Engine Team"
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7426897849084329984"
   },
   {
     "slug": "welcome-vladimir-belyaev-as-cto",
@@ -74,6 +80,7 @@
     "readTime": 2,
     "image": "/assets/blog/welcome-vladimir-belyaev-as-cto.png",
     "icon": "fa-user-tie",
-    "author": "Tryll Engine Team"
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7417229910672396290"
   }
 ]

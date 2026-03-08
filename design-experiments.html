@@ -3207,41 +3207,5 @@
         });
 
     </script>
-
-    <!-- Cookie Consent Banner -->
-    <div id="cookie-banner" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; padding: 16px; background: rgba(0, 0, 0, 0.95); border-top: 1px solid rgba(255, 255, 255, 0.08);">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 px-4">
-            <p class="text-sm text-white/75 text-center sm:text-left">
-                We use cookies to analyze site traffic and improve your experience. By continuing to use this site, you consent to our use of cookies.
-                <a href="/privacy-policy" class="text-white underline hover:text-blue-400 transition-colors">Privacy Policy</a>
-            </p>
-            <div class="flex gap-3 flex-shrink-0">
-                <button id="cookie-reject" class="px-4 py-2 rounded text-sm font-medium text-white/80 border border-white/20 hover:bg-white/10 transition-all">
-                    Reject
-                </button>
-                <button id="cookie-accept" class="px-4 py-2 rounded text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 transition-all">
-                    Accept
-                </button>
-            </div>
-        </div>
-    </div>
-    <script>
-        (function() {
-            var consent = localStorage.getItem('cookie-consent');
-            if (!consent) {
-                document.getElementById('cookie-banner').style.display = 'block';
-            }
-            document.getElementById('cookie-accept').addEventListener('click', function() {
-                localStorage.setItem('cookie-consent', 'accepted');
-                document.getElementById('cookie-banner').style.display = 'none';
-            });
-            document.getElementById('cookie-reject').addEventListener('click', function() {
-                localStorage.setItem('cookie-consent', 'rejected');
-                document.getElementById('cookie-banner').style.display = 'none';
-                // Disable GTM tracking
-                window['ga-disable-GTM-K8MPGKVX'] = true;
-            });
-        })();
-    </script>
 </body>
 </html>

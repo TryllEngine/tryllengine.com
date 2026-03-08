@@ -89,13 +89,24 @@ def generate_image(prompt, api_key, output_path):
         print(f"Connection error: {e.reason}", file=sys.stderr)
         sys.exit(1)
 
-    # Decode and save
+    # Decode, resize to 512x512, and save
     b64_data = data["data"][0]["b64_json"]
     image_bytes = base64.b64decode(b64_data)
 
     output = Path(output_path)
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_bytes(image_bytes)
+
+    # Resize from 1024x1024 to 512x512 to keep file size reasonable (~300-400 KB)
+    try:
+        from PIL import Image
+        import io
+        img = Image.open(io.BytesIO(image_bytes))
+        img = img.resize((512, 512), Image.LANCZOS)
+        img.save(output, "PNG", optimize=True)
+    except ImportError:
+        # Fallback: save full-size if Pillow not available
+        output.write_bytes(image_bytes)
+        print("Warning: Pillow not installed, saved full 1024x1024 image. Run 'pip install Pillow' for auto-resize.")
 
     revised_prompt = data["data"][0].get("revised_prompt", "")
     print(f"Image saved to: {output}")

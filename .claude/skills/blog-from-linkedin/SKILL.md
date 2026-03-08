@@ -71,6 +71,17 @@ If the LinkedIn post contains images (photos of people, screenshots, diagrams):
 
 3. Check the actual file type with `file` command and use the correct extension (`.jpg`, `.png`, etc.).
 
+4. **Compress inline images** to keep them under ~300 KB. Use Python/Pillow:
+   ```python
+   from PIL import Image
+   img = Image.open("assets/blog/{slug}-inline-1.jpg")
+   # Resize if wider than 800px (preserving aspect ratio)
+   if img.width > 800:
+       ratio = 800 / img.width
+       img = img.resize((800, int(img.height * ratio)), Image.LANCZOS)
+   img.save("assets/blog/{slug}-inline-1.jpg", optimize=True, quality=85)
+   ```
+
 **Important**: Do NOT use `browser_take_screenshot` on image elements — this produces a low-resolution capture of what's rendered on screen. Always download the original image from its source URL for full quality.
 
 If you cannot extract the image URL automatically, ask the user to right-click the image on LinkedIn, copy the image URL, and provide it.
@@ -140,7 +151,7 @@ Minimal flat editorial illustration, square format 1:1 ratio. Deep navy blue bac
 python scripts/generate_hero_image.py --prompt "YOUR_PROMPT" --output "assets/blog/{slug}-cover.png"
 ```
 
-The script generates a 1024x1024 image via DALL-E 3 and saves it to `assets/blog/{slug}-cover.png`.
+The script generates a 1024x1024 image via DALL-E 3, resizes it to 512x512, and saves it to `assets/blog/{slug}-cover.png` (~300-400 KB).
 
 If the script fails (API error, missing key), inform the user and provide the prompt so they can generate manually.
 

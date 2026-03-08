@@ -12,29 +12,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>How We Catch Prompt Injections and Hallucinations - Tryll Engine Blog</title>
+    <title>Tryll Assistant v0.0.8 — CUDA &amp; HIP Support - Tryll Engine Blog</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="A deep dive into the three-layer security pipeline behind Tryll Assistant — from regex-based injection filters to RAG and semantic similarity checks.">
+    <meta name="description" content="v0.0.8 adds NVIDIA CUDA and AMD HIP backends alongside the existing Vulkan support. Both are available as optional DLCs on Steam.">
     <meta name="author" content="Tryll Engine">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://tryllengine.com/blog/how-we-catch-prompt-injections-and-hallucinations">
+    <link rel="canonical" href="https://tryllengine.com/blog/posts/tryll-assistant-v0-0-8-cuda-hip-support">
 
     <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://tryllengine.com/blog/how-we-catch-prompt-injections-and-hallucinations">
-    <meta property="og:title" content="How We Catch Prompt Injections and Hallucinations">
-    <meta property="og:description" content="A deep dive into the three-layer security pipeline behind Tryll Assistant — from regex-based injection filters to RAG and semantic similarity checks.">
-    <meta property="og:image" content="https://tryllengine.com/assets/blog/security-pipeline.jpg">
+    <meta property="og:url" content="https://tryllengine.com/blog/posts/tryll-assistant-v0-0-8-cuda-hip-support">
+    <meta property="og:title" content="Tryll Assistant v0.0.8 — CUDA &amp; HIP Support">
+    <meta property="og:description" content="v0.0.8 adds NVIDIA CUDA and AMD HIP backends alongside the existing Vulkan support. Both are available as optional DLCs on Steam.">
+    <meta property="og:image" content="https://tryllengine.com/assets/blog/tryll-assistant-v0-0-8-cuda-hip-support-cover.png">
     <meta property="og:site_name" content="Tryll Engine">
-    <meta property="article:published_time" content="2026-02-12">
+    <meta property="article:published_time" content="2026-02-23">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://tryllengine.com/blog/how-we-catch-prompt-injections-and-hallucinations">
-    <meta property="twitter:title" content="How We Catch Prompt Injections and Hallucinations">
-    <meta property="twitter:description" content="A deep dive into the three-layer security pipeline behind Tryll Assistant — from regex-based injection filters to RAG and semantic similarity checks.">
-    <meta property="twitter:image" content="https://tryllengine.com/assets/blog/security-pipeline.jpg">
+    <meta property="twitter:url" content="https://tryllengine.com/blog/posts/tryll-assistant-v0-0-8-cuda-hip-support">
+    <meta property="twitter:title" content="Tryll Assistant v0.0.8 — CUDA &amp; HIP Support">
+    <meta property="twitter:description" content="v0.0.8 adds NVIDIA CUDA and AMD HIP backends alongside the existing Vulkan support. Both are available as optional DLCs on Steam.">
+    <meta property="twitter:image" content="https://tryllengine.com/assets/blog/tryll-assistant-v0-0-8-cuda-hip-support-cover.png">
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -372,20 +372,20 @@
 
             <!-- Hero image -->
             <div class="rounded-xl overflow-hidden mb-6 w-[168px] h-[168px]">
-                <img src="/assets/blog/how-we-catch-prompt-injections-and-hallucinations.png" alt="How We Catch Prompt Injections and Hallucinations" class="w-full h-full object-cover" />
+                <img src="/assets/blog/tryll-assistant-v0-0-8-cuda-hip-support-cover.png" alt="Tryll Assistant v0.0.8 — CUDA &amp; HIP Support" class="w-full h-full object-cover" />
             </div>
 
             <!-- Title -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl heading-primary mb-6">
-                How We Catch Prompt Injections and Hallucinations
+                Tryll Assistant v0.0.8 — CUDA &amp; HIP Support
             </h1>
 
             <!-- Article metadata -->
             <div class="flex items-center gap-3 mb-10">
-                <span class="category-badge engineering">Engineering</span>
-                <span class="text-sm text-secondary">6 min read</span>
+                <span class="category-badge news">News</span>
+                <span class="text-sm text-secondary">2 min read</span>
                 <span class="text-sm text-secondary">&middot;</span>
-                <span class="text-sm text-secondary">Feb 12, 2026</span>
+                <span class="text-sm text-secondary">Feb 23, 2026</span>
             </div>
 
             <!-- Markdown content renders here -->
@@ -452,7 +452,7 @@
         mobileMenuLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
 
         // Fetch and render markdown content
-        const slug = 'how-we-catch-prompt-injections-and-hallucinations';
+        const slug = 'tryll-assistant-v0-0-8-cuda-hip-support';
         fetch(`/blog/content/${slug}.md`)
             .then(r => {
                 if (!r.ok) throw new Error('Failed to load article');

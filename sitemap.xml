@@ -30,44 +30,44 @@
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
-    <url>
-        <loc>https://tryllengine.com/blog/welcome-pierre-moisan.html</loc>
+<url>
+        <loc>https://tryllengine.com/blog/posts/welcome-pierre-moisan.html</loc>
         <lastmod>2026-03-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://tryllengine.com/blog/tryll-assistant-v0-0-8-cuda-hip-support.html</loc>
+        <loc>https://tryllengine.com/blog/posts/tryll-assistant-v0-0-8-cuda-hip-support.html</loc>
         <lastmod>2026-02-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://tryllengine.com/blog/welcome-alexander-stojanovic-as-advisor.html</loc>
+        <loc>https://tryllengine.com/blog/posts/welcome-alexander-stojanovic-as-advisor.html</loc>
         <lastmod>2026-02-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://tryllengine.com/blog/tryll-assistant-live-on-steam.html</loc>
+        <loc>https://tryllengine.com/blog/posts/tryll-assistant-live-on-steam.html</loc>
         <lastmod>2026-02-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://tryllengine.com/blog/how-we-catch-prompt-injections-and-hallucinations.html</loc>
+        <loc>https://tryllengine.com/blog/posts/how-we-catch-prompt-injections-and-hallucinations.html</loc>
         <lastmod>2026-02-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://tryllengine.com/blog/epic-megagrant-from-unreal-engine.html</loc>
+        <loc>https://tryllengine.com/blog/posts/epic-megagrant-from-unreal-engine.html</loc>
         <lastmod>2026-02-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://tryllengine.com/blog/welcome-vladimir-belyaev-as-cto.html</loc>
+        <loc>https://tryllengine.com/blog/posts/welcome-vladimir-belyaev-as-cto.html</loc>
         <lastmod>2026-01-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>

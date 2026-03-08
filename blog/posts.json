@@ -2,11 +2,11 @@
   {
     "slug": "welcome-pierre-moisan",
     "title": "Welcome Pierre Moisan to Tryll Engine",
-    "excerpt": "Pierre Moisan, a pioneer of the Canadian video game industry with 30 years of experience, joins Tryll Engine to support strategic growth.",
+    "excerpt": "Pierre Moisan, a pioneer of the Canadian video game industry with 30 years of experience, joins Tryll Engine as strategic advisor.",
     "category": "news",
     "date": "2026-03-06",
     "readTime": 2,
-    "image": "/assets/blog/welcome-pierre-moisan.png",
+    "image": "/assets/blog/welcome-pierre-moisan-cover.png",
     "icon": "fa-handshake",
     "author": "Tryll Engine Team"
   },
@@ -17,7 +17,7 @@
     "category": "news",
     "date": "2026-02-23",
     "readTime": 2,
-    "image": "/assets/blog/tryll-assistant-v0-0-8-cuda-hip-support.jpeg",
+    "image": "/assets/blog/tryll-assistant-v0-0-8-cuda-hip-support-cover.png",
     "icon": "fa-microchip",
     "author": "Tryll Engine Team"
   },

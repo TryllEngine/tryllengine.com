@@ -12,42 +12,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- ============================================
-         REPLACE all POST_* placeholders below:
-         POST_SLUG          - URL slug (e.g. "my-post-title")
-         POST_TITLE         - Full post title
-         POST_EXCERPT        - 1-2 sentence summary for social previews
-         POST_DATE_ISO       - ISO date (e.g. "2026-03-15")
-         POST_DATE_FORMATTED - Display date (e.g. "Mar 15, 2026")
-         POST_CATEGORY       - CSS class: news, tutorial, engineering, case-study
-         POST_CATEGORY_LABEL - Display text: News, Tutorial, Engineering, Case Study
-         POST_READ_TIME      - Number only (e.g. "8")
-         POST_IMAGE          - Full URL or path to hero image (or remove the img tag)
-         ============================================ -->
-
-    <title>POST_TITLE - Tryll Engine Blog</title>
+    <title>How We Catch Prompt Injections and Hallucinations - Tryll Engine Blog</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="POST_EXCERPT">
+    <meta name="description" content="A deep dive into the three-layer security pipeline behind Tryll Assistant — from regex-based injection filters to RAG and semantic similarity checks.">
     <meta name="author" content="Tryll Engine">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://tryllengine.com/blog/POST_SLUG">
+    <link rel="canonical" href="https://tryllengine.com/blog/posts/how-we-catch-prompt-injections-and-hallucinations">
 
     <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://tryllengine.com/blog/POST_SLUG">
-    <meta property="og:title" content="POST_TITLE">
-    <meta property="og:description" content="POST_EXCERPT">
-    <meta property="og:image" content="POST_IMAGE">
+    <meta property="og:url" content="https://tryllengine.com/blog/posts/how-we-catch-prompt-injections-and-hallucinations">
+    <meta property="og:title" content="How We Catch Prompt Injections and Hallucinations">
+    <meta property="og:description" content="A deep dive into the three-layer security pipeline behind Tryll Assistant — from regex-based injection filters to RAG and semantic similarity checks.">
+    <meta property="og:image" content="https://tryllengine.com/assets/blog/security-pipeline.jpg">
     <meta property="og:site_name" content="Tryll Engine">
-    <meta property="article:published_time" content="POST_DATE_ISO">
+    <meta property="article:published_time" content="2026-02-12">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://tryllengine.com/blog/POST_SLUG">
-    <meta property="twitter:title" content="POST_TITLE">
-    <meta property="twitter:description" content="POST_EXCERPT">
-    <meta property="twitter:image" content="POST_IMAGE">
+    <meta property="twitter:url" content="https://tryllengine.com/blog/posts/how-we-catch-prompt-injections-and-hallucinations">
+    <meta property="twitter:title" content="How We Catch Prompt Injections and Hallucinations">
+    <meta property="twitter:description" content="A deep dive into the three-layer security pipeline behind Tryll Assistant — from regex-based injection filters to RAG and semantic similarity checks.">
+    <meta property="twitter:image" content="https://tryllengine.com/assets/blog/security-pipeline.jpg">
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -385,20 +372,20 @@
 
             <!-- Hero image -->
             <div class="rounded-xl overflow-hidden mb-6 w-[168px] h-[168px]">
-                <img src="POST_IMAGE" alt="POST_TITLE" class="w-full h-full object-cover" />
+                <img src="/assets/blog/how-we-catch-prompt-injections-and-hallucinations.png" alt="How We Catch Prompt Injections and Hallucinations" class="w-full h-full object-cover" />
             </div>
 
             <!-- Title -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl heading-primary mb-6">
-                POST_TITLE
+                How We Catch Prompt Injections and Hallucinations
             </h1>
 
             <!-- Article metadata -->
             <div class="flex items-center gap-3 mb-10">
-                <span class="category-badge POST_CATEGORY">POST_CATEGORY_LABEL</span>
-                <span class="text-sm text-secondary">POST_READ_TIME min read</span>
+                <span class="category-badge engineering">Engineering</span>
+                <span class="text-sm text-secondary">6 min read</span>
                 <span class="text-sm text-secondary">&middot;</span>
-                <span class="text-sm text-secondary">POST_DATE_FORMATTED</span>
+                <span class="text-sm text-secondary">Feb 12, 2026</span>
             </div>
 
             <!-- Markdown content renders here -->
@@ -465,7 +452,7 @@
         mobileMenuLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
 
         // Fetch and render markdown content
-        const slug = 'POST_SLUG';
+        const slug = 'how-we-catch-prompt-injections-and-hallucinations';
         fetch(`/blog/content/${slug}.md`)
             .then(r => {
                 if (!r.ok) throw new Error('Failed to load article');

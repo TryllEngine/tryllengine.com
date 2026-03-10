@@ -1945,7 +1945,7 @@
                                 <button class="calc-stepper-btn" id="price-down" aria-label="Decrease price">
                                     <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5L6 8L9.5 4.5"/></svg>
                                 </button>
-                                <div class="calc-stepper-val" id="price-display">$10</div>
+                                <div class="calc-stepper-val" id="price-display">$15</div>
                                 <button class="calc-stepper-btn" id="price-up" aria-label="Increase price">
                                     <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8L6 4.5L9.5 8"/></svg>
                                 </button>
@@ -1977,11 +1977,11 @@
                             <div class="flex justify-between items-baseline" style="font-size:0.95rem;">
                                 <div>
                                     <span style="color:rgba(255,255,255,0.5);">revenue</span>
-                                    <span style="color:rgba(255,255,255,0.8);font-weight:600;margin-left:8px;" id="example-revenue">$1,000,000</span>
+                                    <span style="color:rgba(255,255,255,0.8);font-weight:600;margin-left:8px;" id="example-revenue">$1,500,000</span>
                                 </div>
                                 <div>
                                     <span style="color:rgba(255,255,255,0.5);">tryll</span>
-                                    <span style="color:rgba(255,255,255,0.7);font-weight:600;margin-left:8px;" id="example-fee">$2,000</span>
+                                    <span style="color:rgba(255,255,255,0.7);font-weight:600;margin-left:8px;" id="example-fee">$8,000</span>
                                 </div>
                             </div>
                         </div>
@@ -3081,7 +3081,7 @@
             const priceDisplay = document.getElementById('price-display');
             const copiesDisplay = document.getElementById('copies-display');
 
-            let currentPrice = 10;
+            let currentPrice = 15;
             let currentCopies = 100000;
             const ENGINE_COEFFICIENT = 0.25;
             const PRICE_STEPS = [5, 10, 15, 20, 25, 30, 40, 50, 60, 70];
@@ -3091,7 +3091,7 @@
 
             function updateCalculator() {
                 const REVIEWS_TO_COPIES = 50;
-                const perCopy = (currentPrice * ENGINE_COEFFICIENT) / REVIEWS_TO_COPIES;
+                const perCopy = Math.round((currentPrice * ENGINE_COEFFICIENT) / REVIEWS_TO_COPIES * 100) / 100;
                 const revenue = currentCopies * currentPrice;
                 const totalFee = currentCopies * perCopy;
                 if (perCopy < 0.01) {

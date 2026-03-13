@@ -143,7 +143,8 @@ If the user provides screenshots:
 ### Step 6: Create the HTML page
 
 ```bash
-cp blog/posts/_template.html blog/posts/{slug}.html
+mkdir -p blog/posts/{slug}
+cp blog/posts/_template.html blog/posts/{slug}/index.html
 ```
 
 Replace all `POST_*` placeholders. For changelog posts:
@@ -151,7 +152,7 @@ Replace all `POST_*` placeholders. For changelog posts:
 - `POST_CATEGORY_LABEL` → `News`
 - `POST_LINKEDIN_URL` → If no LinkedIn post exists, use the Steam store page URL
 
-Verify: `grep -c "POST_" blog/posts/{slug}.html` should return 0.
+Verify: `grep -c "POST_" blog/posts/{slug}/index.html` should return 0.
 
 ### Step 7: Update posts.json
 
@@ -178,7 +179,7 @@ Add before existing blog post entries:
 
 ```xml
 <url>
-    <loc>https://tryllengine.com/blog/posts/{slug}.html</loc>
+    <loc>https://tryllengine.com/blog/posts/{slug}</loc>
     <lastmod>{YYYY-MM-DD}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -195,7 +196,7 @@ Add before existing blog post entries:
 ### Step 10: Final checklist
 
 - [ ] `blog/content/{slug}.md` exists, no `POST_*` placeholders, no title heading
-- [ ] `blog/posts/{slug}.html` exists, zero `POST_*` placeholders
+- [ ] `blog/posts/{slug}/index.html` exists, zero `POST_*` placeholders
 - [ ] `blog/posts.json` has the new entry at the top, valid JSON
 - [ ] Cover image exists at `assets/blog/{slug}-cover.png`
 - [ ] Any inline images compressed and in `assets/blog/`

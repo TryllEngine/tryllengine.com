@@ -10,7 +10,8 @@ blog/
 │   └── {slug}.md           # Markdown body for each post
 └── posts/
     ├── _template.html      # HTML template for new post pages
-    └── {slug}.html         # HTML page for each post
+    └── {slug}/
+        └── index.html      # HTML page for each post (clean URLs)
 
 assets/blog/
 ├── {slug}-cover.png        # DALL-E generated cover (used in posts.json + HTML hero)
@@ -41,7 +42,7 @@ Examples for a post with slug `welcome-pierre-moisan`:
 
 ### 3. Create the HTML page
 
-Copy `blog/posts/_template.html` to `blog/posts/{slug}.html` and replace all `POST_*` placeholders:
+Create a directory `blog/posts/{slug}/`, copy `blog/posts/_template.html` to `blog/posts/{slug}/index.html`, and replace all `POST_*` placeholders:
 
 | Placeholder | Example |
 |---|---|
@@ -76,7 +77,7 @@ Add a new entry **at the top** of the array in `blog/posts.json` (newest first):
 ```
 
 **Fields:**
-- `slug` — must match the `.html` and `.md` filenames
+- `slug` — must match the directory name and `.md` filename
 - `category` — one of: `news`, `engineering`, `tutorial`, `case-study`
 - `icon` — Font Awesome class, used as fallback when no image loads
 - `date` — ISO format `YYYY-MM-DD`, determines sort order

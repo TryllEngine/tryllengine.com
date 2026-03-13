@@ -195,7 +195,8 @@ Create `blog/content/{slug}.md` following these rules:
 Copy the template and replace all placeholders:
 
 ```bash
-cp blog/posts/_template.html blog/posts/{slug}.html
+mkdir -p blog/posts/{slug}
+cp blog/posts/_template.html blog/posts/{slug}/index.html
 ```
 
 Then replace these placeholders in the new file:
@@ -223,7 +224,7 @@ Also clean up the placeholder comment block at the top of the file (lines 15-26)
 
 Verify all placeholders are replaced:
 ```bash
-grep -c "POST_" blog/posts/{slug}.html  # Should be 0
+grep -c "POST_" blog/posts/{slug}/index.html  # Should be 0
 ```
 
 ### Step 6: Update posts.json
@@ -253,7 +254,7 @@ Add a `<url>` entry for the new post in `sitemap.xml`, before the first existing
 
 ```xml
 <url>
-    <loc>https://tryllengine.com/blog/posts/{slug}.html</loc>
+    <loc>https://tryllengine.com/blog/posts/{slug}</loc>
     <lastmod>{YYYY-MM-DD}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

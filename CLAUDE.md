@@ -55,7 +55,7 @@ python -m http.server 8000
 ### Main Landing Page (index.html)
 1. **Navigation**: Fixed header with unified menu across all pages (Product, Integrate, Pricing, Blog, Showcase + Get Early Access button)
 2. **Hero Section**: "Drag-Drop AI Into Your Game Engine" — DirectX analogy, Unreal screenshot + code snippet
-3. **Numbers Bar**: Trust metrics strip (~8¢, 0 servers, 100% on-device, <50ms latency)
+3. **Numbers Bar**: Trust metrics strip (~8¢, 0 servers, 100% on-device)
 4. **Proof — Already Running**: BoscoTryll video + Tryll Assistant card — shipping proof on Steam
 5. **Integration — Three Steps**: Step-by-step with Unreal Editor screenshots (component, tools, blueprint)
 6. **Capabilities**: 5-modality icon grid (LLM, STT, TTS, VLM, Agents) + 2×2 use case cards

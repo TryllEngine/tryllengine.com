@@ -556,7 +556,6 @@
                             <tr class="font-mono text-xs uppercase tracking-wider" style="color: var(--text-3);">
                                 <th class="pb-3 pr-4">Genre</th>
                                 <th class="pb-3 pr-4">AI Relevance</th>
-                                <th class="pb-3 pr-4">Latency Class</th>
                                 <th class="pb-3">VRAM</th>
                             </tr>
                         </thead>
@@ -924,63 +923,63 @@
     ];
 
     const genres = [
-        { name: 'RPG', icon: 'fa-hat-wizard', relevance: 'HIGH', latency: 'Mixed', vram: '~8 GB',
+        { name: 'RPG', icon: 'fa-hat-wizard', relevance: 'HIGH', vram: '~8 GB',
           desc: 'Massive surface area for AI: NPC dialogue, quest generation, companion AI, adaptive storytelling, and dynamic world reactions. The genre most naturally suited to language model integration.',
           mechanics: ['Dynamic NPC dialogue with persistent memory', 'Procedural quest generation', 'Companion AI with personality via LoRA', 'Multi-agent faction politics'],
           recipe: 'The Talking NPC Kit', recipeVram: '7.8 GB' },
-        { name: 'Visual Novel', icon: 'fa-heart', relevance: 'HIGH', latency: 'Turn-based', vram: '~8-12 GB',
+        { name: 'Visual Novel', icon: 'fa-heart', relevance: 'HIGH', vram: '~8-12 GB',
           desc: 'The entire game is conversation. SLMs replace scripted dialogue trees with infinite branching. TTS voices every line. The most direct AI application in gaming.',
           mechanics: ['Infinite branching dialogue', 'Dynamic character portraits via image gen', 'Voice-cloned character voices', 'Emotional sincerity detection from player voice'],
           recipe: 'The Full Romance', recipeVram: '9.0 GB' },
-        { name: 'Horror', icon: 'fa-ghost', relevance: 'HIGH', latency: 'Near-real-time', vram: '~8 GB',
+        { name: 'Horror', icon: 'fa-ghost', relevance: 'HIGH', vram: '~8 GB',
           desc: 'AI that adapts to player fear responses via webcam and voice. Procedural scares that never repeat. A dynamic antagonist that learns player habits.',
           mechanics: ['Biometric-driven fear adaptation', 'Unreliable narrator that distorts descriptions', 'Entity AI that speaks and remembers', 'Procedural scares personalized to each player'],
           recipe: 'The Adaptive Horror', recipeVram: '7.8 GB' },
-        { name: 'Survival / Sandbox', icon: 'fa-campground', relevance: 'HIGH', latency: 'Mixed', vram: '~8 GB',
+        { name: 'Survival / Sandbox', icon: 'fa-campground', relevance: 'HIGH', vram: '~8 GB',
           desc: 'Procedural narrative for a world without scripts. NPC communities with emergent behavior, voice-driven crafting, adaptive ecosystems, and dynamic events.',
           mechanics: ['NPC communities with emergent social dynamics', 'Voice-commanded actions and crafting', 'Dynamic event generation', 'Adaptive background music via MusicGen'],
           recipe: 'The Living World', recipeVram: '6.3 GB' },
-        { name: 'Life Sim', icon: 'fa-house-chimney', relevance: 'HIGH', latency: 'Near-RT to Async', vram: '~8 GB',
+        { name: 'Life Sim', icon: 'fa-house-chimney', relevance: 'HIGH', vram: '~8 GB',
           desc: 'Sim characters with genuine personality and memory. Natural language management commands, AI advisors, and emergent social dynamics between AI-driven agents.',
           mechanics: ['Characters with persistent personality and memory', 'Natural language management commands', 'Emergent social dynamics between agents', 'Dynamic news and media generation'],
           recipe: 'The Talking NPC Kit', recipeVram: '7.8 GB' },
-        { name: 'Strategy', icon: 'fa-chess', relevance: 'MEDIUM-HIGH', latency: 'Turn-based / Near-RT', vram: '~7 GB',
+        { name: 'Strategy', icon: 'fa-chess', relevance: 'MEDIUM-HIGH', vram: '~7 GB',
           desc: 'AI opponents that reason and explain their moves. Diplomatic AI that negotiates in natural language. Adaptive difficulty and strategic advisor NPCs.',
           mechanics: ['Diplomatic AI with distinct leader personalities', 'Natural language negotiation and treaties', 'Strategic advisor that explains complex systems', 'Adaptive opponent that evolves based on experience'],
           recipe: 'The Diplomat', recipeVram: '8.4 GB' },
-        { name: 'Adventure / Puzzle', icon: 'fa-puzzle-piece', relevance: 'MEDIUM-HIGH', latency: 'Turn-based', vram: '~7 GB',
+        { name: 'Adventure / Puzzle', icon: 'fa-puzzle-piece', relevance: 'MEDIUM-HIGH', vram: '~7 GB',
           desc: 'Natural language object interaction, conversational NPCs for investigation, adaptive hint systems, and puzzles with multiple solutions the designer never coded.',
           mechanics: ['Natural language object interaction ("use rope on lever")', 'Adaptive hint system that understands player thinking', 'Open-ended puzzle solutions evaluated by SLM', 'Investigation through conversation, not pixel-hunting'],
           recipe: 'The Talking NPC Kit', recipeVram: '7.8 GB' },
-        { name: 'Stealth', icon: 'fa-user-secret', relevance: 'MEDIUM-HIGH', latency: 'Near-real-time', vram: '~5 GB',
+        { name: 'Stealth', icon: 'fa-user-secret', relevance: 'MEDIUM-HIGH', vram: '~5 GB',
           desc: 'Guards that reason about suspicious events in natural language. NPCs with memory of player actions across missions. Voice-commanded ally coordination.',
           mechanics: ['Guards that reason about suspicion (non-binary awareness)', 'NPCs with memory of player actions across missions', 'Voice-commanded ally coordination', 'Social engineering to maintain cover'],
           recipe: 'The Squad Commander', recipeVram: '4.6 GB' },
-        { name: 'Roguelike', icon: 'fa-skull', relevance: 'MEDIUM', latency: 'Mixed', vram: '~7 GB',
+        { name: 'Roguelike', icon: 'fa-skull', relevance: 'MEDIUM', vram: '~7 GB',
           desc: 'AI narration over procedural content. SLM-narrated runs, adaptive difficulty, dynamic item lore, and an AI dungeon master that responds to player choices.',
           mechanics: ['AI dungeon master narrator with voice', 'Dynamic item and ability lore generation', 'Death retrospective (narrative autopsy of failed runs)', 'Run-has-a-story thematic narrative arc'],
           recipe: 'The Dungeon Master', recipeVram: '6.1 GB' },
-        { name: 'FPS / Shooter', icon: 'fa-crosshairs', relevance: 'MEDIUM', latency: 'Real-time + Near-RT', vram: '~5 GB',
+        { name: 'FPS / Shooter', icon: 'fa-crosshairs', relevance: 'MEDIUM', vram: '~5 GB',
           desc: 'Real-time combat is too fast for SLMs, but voice-commanded squad AI, dynamic mission briefings, NPC banter during downtime, and adaptive enemy patterns all fit.',
           mechanics: ['Voice-commanded squad tactics', 'Dynamic mission briefings and debriefs', 'Teammate banter and personality', 'Post-match analysis and coaching'],
           recipe: 'The Squad Commander', recipeVram: '4.6 GB' },
-        { name: 'Social / Party', icon: 'fa-people-group', relevance: 'MEDIUM', latency: 'Near-real-time', vram: '~7 GB',
+        { name: 'Social / Party', icon: 'fa-people-group', relevance: 'MEDIUM', vram: '~7 GB',
           desc: 'AI game host, fill-in players for missing humans, real-time translation, and social games where emotional honesty detection creates new mechanics.',
           mechanics: ['AI game host that manages rounds and prompts', 'Fill-in players that replace missing humans', 'Lie detection game mechanics via voice emotion', 'Real-time translation between players'],
           recipe: 'The Party Host', recipeVram: '7.3 GB' },
-        { name: 'Fighting', icon: 'fa-hand-fist', relevance: 'LOW-MEDIUM', latency: 'Real-time', vram: '~5 GB',
+        { name: 'Fighting', icon: 'fa-hand-fist', relevance: 'LOW-MEDIUM', vram: '~5 GB',
           desc: 'Core gameplay too fast for inference, but adaptive training partners that learn your patterns, voice-controlled training mode, and dynamic fight commentary.',
           mechanics: ['Adaptive training partner that exploits your weaknesses', 'Voice-controlled training mode and frame data', 'Dynamic fight commentary with TTS', 'Personality-driven AI opponents via LoRA'],
           recipe: 'The Squad Commander', recipeVram: '4.6 GB' },
-        { name: 'Sports', icon: 'fa-futbol', relevance: 'LOW-MEDIUM', latency: 'Real-time + Turn-based', vram: '~5 GB',
+        { name: 'Sports', icon: 'fa-futbol', relevance: 'LOW-MEDIUM', vram: '~5 GB',
           desc: 'Real-time play too fast for LLMs, but AI coach with voice advice, dynamic commentary, natural language team management, and scouting reports.',
           mechanics: ['AI coach that gives voice advice during timeouts', 'Dynamic contextual commentary', 'Natural language team management', 'Generated scouting reports'],
           recipe: 'The Squad Commander', recipeVram: '4.6 GB' },
-        { name: 'Racing', icon: 'fa-flag-checkered', relevance: 'LOW', latency: 'Real-time', vram: '~5 GB',
+        { name: 'Racing', icon: 'fa-flag-checkered', relevance: 'LOW', vram: '~5 GB',
           desc: 'Core gameplay too fast for LLMs. Niche uses: voice-commanded pit stop strategy, dynamic race commentary, AI co-driver in rally games.',
           mechanics: ['Voice-interactive race engineer', 'AI co-driver with adaptive pace notes', 'Post-race telemetry analysis', 'Dynamic race commentary'],
           recipe: 'The Race Engineer', recipeVram: '4.5 GB' },
-        { name: 'Rhythm / Music', icon: 'fa-headphones', relevance: 'LOW', latency: 'Real-time', vram: '~6 GB',
+        { name: 'Rhythm / Music', icon: 'fa-headphones', relevance: 'LOW', vram: '~6 GB',
           desc: 'Core gameplay needs audio precision, not AI inference. But MusicGen for procedural track generation, adaptive difficulty, and AI DJ responding to player mood.',
           mechanics: ['Procedural track generation via MusicGen', 'Adaptive difficulty based on performance', 'AI DJ that responds to player mood', 'Voice-controlled song selection'],
           recipe: 'The Dungeon Master', recipeVram: '6.1 GB' },
@@ -1167,11 +1166,6 @@
 
     const antiPatterns = [
         {
-            title: 'Latency in time-critical gameplay',
-            icon: 'fa-clock',
-            summary: 'Inserting SLM inference (even 200ms) into a loop that requires <16ms response time breaks the game. Fighting games, racing, rhythm — no SLM in the critical path.',
-            mitigation: 'Reserve SLM for pauses, transitions, and non-time-critical channels like narration or post-match analysis.'
-        },
         {
             title: 'The uncanny valley of conversation',
             icon: 'fa-masks-theater',
@@ -1299,7 +1293,6 @@
                     <i class="fas ${g.icon}" style="color: var(--blue); margin-right: 8px; width: 16px; text-align: center;"></i>${g.name}
                 </td>
                 <td class="py-3 pr-4"><span class="badge ${getRelevanceBadgeClass(g.relevance)}">${g.relevance}</span></td>
-                <td class="py-3 pr-4" style="color: var(--text-3); font-size: 13px;">${g.latency}</td>
                 <td class="py-3 font-mono" style="color: var(--text-3); font-size: 12px;">${g.vram}</td>
             </tr>
         `).join('');

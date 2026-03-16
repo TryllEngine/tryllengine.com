@@ -72,7 +72,7 @@ Tryll Engine is a gaming intelligence platform that brings AI-powered game syste
 - **No Cloud Dependency**: Unlike Convai or Inworld AI
 - **Zero Per-Player Costs**: Scales infinitely without API fees
 - **Privacy Compliant**: GDPR/AI Act ready by design
-- **Offline Capable**: No service outages or latency issues
+- **Offline Capable**: No service outages, works without internet
 - **Open Model Support**: Use any compatible LLM
 
 ## Contact

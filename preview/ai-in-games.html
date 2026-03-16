@@ -492,7 +492,7 @@
             <span style="color: rgba(59,130,246,0.85);">every role</span>
         </h1>
         <p class="text-lg md:text-xl max-w-xl mx-auto mb-8" style="color: var(--text-3); line-height: 1.7;">
-            See how on-device AI creates game mechanics that were never possible with scripted NPCs. No cloud. No latency. No per-request costs.
+            See how on-device AI creates game mechanics that were never possible with scripted NPCs. No cloud. No per-request costs.
         </p>
         <div class="flex items-center justify-center gap-3 font-mono text-xs" style="color: var(--text-3);">
             <span class="flex items-center gap-2"><i class="fas fa-microchip" style="color: rgba(59,130,246,0.5);"></i> Runs locally</span>
@@ -604,7 +604,7 @@ const genres = [
             { name: 'Dynamic Haggling', desc: 'Merchants adjust prices based on relationship, supply/demand, and your negotiation style.' },
             { name: 'Party Banter', desc: 'Companions comment on environments, react to your choices, and develop opinions about each other.' },
         ],
-        tech: { latency: '1-3s', vram: '~6 GB', model: '7B SLM', timing: 'Turn-based' },
+        tech: { vram: '~6 GB', model: '7B SLM', timing: 'Turn-based' },
     },
     {
         id: 'fps',
@@ -649,7 +649,7 @@ const genres = [
             { name: 'Dynamic Banter', desc: 'Mission-aware dialogue that references what just happened, not pre-recorded barks.' },
             { name: 'Resource Awareness', desc: 'AI tracks ammo, health, and equipment — offers help before you ask.' },
         ],
-        tech: { latency: '<500ms', vram: '~4 GB', model: '3B SLM', timing: 'Real-time' },
+        tech: { vram: '~4 GB', model: '3B SLM', timing: 'Real-time' },
         proof: { text: 'See this working today', link: 'boscotryll.html', label: 'BoscoTryll — AI companion mod for Deep Rock Galactic' },
     },
     {
@@ -694,7 +694,7 @@ const genres = [
             { name: 'Threat Communication', desc: 'NPCs warn about dangers they\'ve encountered, sharing intel that feels earned.' },
             { name: 'Self-Preservation Logic', desc: 'NPCs make decisions to protect themselves — hoarding, fleeing, or fighting based on context.' },
         ],
-        tech: { latency: '1-3s', vram: '~6 GB', model: '7B SLM', timing: 'Semi real-time' },
+        tech: { vram: '~6 GB', model: '7B SLM', timing: 'Semi real-time' },
     },
     {
         id: 'horror',
@@ -740,7 +740,7 @@ const genres = [
             { name: 'Adaptive Tension Pacing', desc: 'AI modulates NPC behavior to build dread during calm moments and add chaos during panic.' },
             { name: 'Psychological Misdirection', desc: 'NPCs give conflicting accounts of events, making reality itself uncertain.' },
         ],
-        tech: { latency: '1-2s', vram: '~4 GB', model: '3-7B SLM', timing: 'Paced' },
+        tech: { vram: '~4 GB', model: '3-7B SLM', timing: 'Paced' },
     },
     {
         id: 'strategy',
@@ -784,7 +784,7 @@ const genres = [
             { name: 'Faction Memory', desc: 'AI factions remember broken treaties, betrayals, and acts of goodwill — forever.' },
             { name: 'Bluffing & Deception', desc: 'Faction leaders can bluff about military strength or hide true intentions.' },
         ],
-        tech: { latency: '2-5s', vram: '~6 GB', model: '7B SLM', timing: 'Turn-based' },
+        tech: { vram: '~6 GB', model: '7B SLM', timing: 'Turn-based' },
     },
     {
         id: 'adventure',
@@ -827,7 +827,7 @@ const genres = [
             { name: 'Natural Language Interaction', desc: '"What\'s this device?" replaces click-to-examine. Infinite verbs instead of predefined actions.' },
             { name: 'Unreliable Witnesses', desc: 'NPCs give imperfect, contradictory testimony. Cross-reference to find the truth.' },
         ],
-        tech: { latency: '2-5s', vram: '~7 GB', model: '7-8B SLM', timing: 'Turn-based' },
+        tech: { vram: '~7 GB', model: '7-8B SLM', timing: 'Turn-based' },
     },
     {
         id: 'sandbox',
@@ -872,7 +872,7 @@ const genres = [
             { name: 'Community Personality Packs', desc: 'Share and download NPC personalities as simple config files.' },
             { name: 'Any Engine, Any Game', desc: 'Tryll runs as a sidecar process. If the game has a mod API, Tryll works with it.' },
         ],
-        tech: { latency: '1-3s', vram: '~4-6 GB', model: '3-7B SLM', timing: 'Varies' },
+        tech: { vram: '~4-6 GB', model: '3-7B SLM', timing: 'Varies' },
         proof: { text: 'This is real, right now', link: 'boscotryll.html', label: 'BoscoTryll — Download the free mod and try it' },
     },
 ];
@@ -1024,7 +1024,7 @@ function renderDetail(genre) {
                 <i class="fas fa-chevron-down"></i>
                 <span>Technical requirements</span>
                 <span class="flex-1"></span>
-                <span style="color: ${g.color};">${g.tech.model} · ${g.tech.vram} · ${g.tech.latency}</span>
+                <span style="color: ${g.color};">${g.tech.model} · ${g.tech.vram}</span>
             </button>
             <div class="tech-content">
                 <div class="tech-inner">
@@ -1036,10 +1036,6 @@ function renderDetail(genre) {
                         <div class="tech-cell">
                             <div class="tech-label">VRAM</div>
                             <div class="tech-value" style="font-size: 16px;">${g.tech.vram}</div>
-                        </div>
-                        <div class="tech-cell">
-                            <div class="tech-label">Latency</div>
-                            <div class="tech-value" style="font-size: 16px;">${g.tech.latency}</div>
                         </div>
                         <div class="tech-cell">
                             <div class="tech-label">Timing</div>

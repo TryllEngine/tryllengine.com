@@ -53,15 +53,15 @@ python -m http.server 8000
 ## Architecture Notes
 
 ### Main Landing Page (index.html)
-1. **Navigation**: Fixed header with responsive mobile menu
+1. **Navigation**: Fixed header with unified menu across all pages (How It Works, Features, Pricing, FAQ, Blog + Try Free / Book a Demo buttons)
 2. **Hero Section**: Main value proposition with CTA buttons
-3. **Interactive Features**: Developer-focused feature showcase with smooth animations
-4. **"The Old Way is Dead"**: Comparison section highlighting advantages
-5. **Cost Analysis**: Visual comparison of cloud vs local costs
-6. **Target Audiences**: Studios, Solo Developers, Modders
-7. **FAQ Section**: Collapsible accordion-style questions
-8. **Pricing Tiers**: Free and Commercial options
-9. **Contact Form**: Early access signup
+3. **The Problem**: "Why Studios Don't Have AI Yet" — cloud cost, data complexity, third-party dependency
+4. **How It Works**: Architecture flow (Game → Plugin → Runtime) + SDK Integration Roadmap (Unreal/Unity/C++)
+5. **What You Can Build**: Interactive feature showcase (Knowledge Systems, Memory, Agent Actions, Content Generation)
+6. **Pricing**: Revenue-based calculator
+7. **Tryll Assistant — See It Working**: Proof of concept section — on-device AI app on Steam, RAG, end-to-end pipeline, privacy
+8. **FAQ Section**: Collapsible accordion with Developer and Player tabs
+9. **Contact Form**: Book a Demo / Get in Touch
 
 ### BoscoTryll Showcase (boscotryll.html)
 1. **Hero Section**: Mod introduction with download CTA

@@ -1020,17 +1020,16 @@
             <!-- Desktop Navigation -->
             <div class="hidden md:flex items-center gap-8">
                 <ul class="nav-links flex gap-6 list-none">
+                    <li><a href="#how-it-works" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">How It Works</a></li>
                     <li><a href="#features" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Features</a></li>
                     <li><a href="#pricing" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Pricing</a></li>
                     <li><a href="#faq" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">FAQ</a></li>
                     <li><a href="blog.html" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Blog</a></li>
-                    <li><a href="#contact-email" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Contact</a></li>
-                    <li><a href="boscotryll.html" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">BoscoTryll Mod</a></li>
                 </ul>
                 <div class="flex items-center gap-3">
-                    <a href="tryll-assistant.html" class="btn-primary px-4 py-2 rounded text-sm inline-flex items-center justify-center gap-2">
+                    <a href="#tryll-assistant" class="btn-primary px-4 py-2 rounded text-sm inline-flex items-center justify-center gap-2">
                         <i class="fas fa-rocket"></i>
-                        Get Started
+                        Try Free
                     </a>
                     <a href="#contact" class="px-4 py-2 rounded text-sm inline-flex items-center justify-center transition-all duration-200 font-medium bg-white/[0.06] border border-white/10 hover:bg-white/[0.1] text-white uppercase tracking-wider" style="font-size: 0.85em;">
                         Book a Demo
@@ -1040,8 +1039,8 @@
             
             <!-- Mobile Navigation -->
             <div class="md:hidden flex items-center gap-3">
-                <a href="tryll-assistant.html" class="btn-primary px-3 py-2 rounded text-xs inline-flex items-center justify-center">
-                    Get Started
+                <a href="#tryll-assistant" class="btn-primary px-3 py-2 rounded text-xs inline-flex items-center justify-center">
+                    Try Free
                 </a>
                 <button id="mobile-menu-btn" class="text-white p-2 rounded hover:bg-white/10 transition-colors duration-200">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1060,15 +1059,15 @@
                 </svg>
             </button>
             <div class="flex flex-col items-center justify-center h-full space-y-8 text-center px-6">
+                <a href="#how-it-works" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">How It Works</a>
                 <a href="#features" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Features</a>
                 <a href="#pricing" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Pricing</a>
                 <a href="#faq" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">FAQ</a>
                 <a href="blog.html" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">Blog</a>
-                <a href="boscotryll.html" class="mobile-menu-link text-white text-xl font-medium hover:text-primary-500 transition-colors duration-200">BoscoTryll Mod</a>
                 <div class="pt-4 space-y-3">
-                    <a href="tryll-assistant.html" class="btn-primary px-8 py-4 rounded text-lg inline-flex items-center justify-center gap-2 w-full">
+                    <a href="#tryll-assistant" class="btn-primary px-8 py-4 rounded text-lg inline-flex items-center justify-center gap-2 w-full">
                         <i class="fas fa-rocket"></i>
-                        Get Started
+                        Try Free
                     </a>
                     <a href="#contact" class="px-8 py-4 rounded text-lg inline-flex items-center justify-center gap-2 w-full bg-white/10 border border-white/20 text-white">
                         Book a Demo
@@ -1143,6 +1142,68 @@
                                 Built by veterans of<br>game dev & applied AI.
                             </p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Developer Problem -->
+    <section class="py-12 md:py-24 bg-black relative overflow-hidden fade-in">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-12 md:mb-20">
+                <span class="terminal-label">THE_PLATFORM</span>
+                <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 heading-primary">
+                    Why Studios Don't Have AI Yet
+                </h2>
+                <p class="text-xl text-secondary max-w-3xl mx-auto body-large">
+                    We talked to hundreds of studios. They all want AI in their games. Three things stop them.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 transition-all hover:border-white/20 flex flex-col">
+                    <div class="mb-6">
+                        <i class="fas fa-dollar-sign text-red-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Cloud Is Too Expensive</h3>
+                    <p class="text-secondary mb-4 flex-grow">
+                        Cloud AI charges per token. At scale, a single game can rack up millions in API costs per month. Success becomes unsustainable.
+                    </p>
+                    <div class="pt-4 border-t border-white/10">
+                        <p class="text-sm font-medium" style="color:rgba(59,130,246,0.7);">
+                            <i class="fas fa-check mr-2"></i>With Tryll, tokens are free. Runs on player GPUs.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 transition-all hover:border-white/20 flex flex-col">
+                    <div class="mb-6">
+                        <i class="fas fa-shield-alt text-red-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Data Processing Is Hell</h3>
+                    <p class="text-secondary mb-4 flex-grow">
+                        GDPR, the AI Act, export laws — sending player conversations to third-party servers creates a legal and compliance nightmare most studios won't touch.
+                    </p>
+                    <div class="pt-4 border-t border-white/10">
+                        <p class="text-sm font-medium" style="color:rgba(59,130,246,0.7);">
+                            <i class="fas fa-check mr-2"></i>With Tryll, personal data never leaves the device.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 transition-all hover:border-white/20 flex flex-col">
+                    <div class="mb-6">
+                        <i class="fas fa-unlink text-red-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">No One Wants Third-Party Dependency</h3>
+                    <p class="text-secondary mb-4 flex-grow">
+                        If the API goes down, your game breaks. If pricing changes, your margins vanish. Studios won't bet their product on someone else's uptime.
+                    </p>
+                    <div class="pt-4 border-t border-white/10">
+                        <p class="text-sm font-medium" style="color:rgba(59,130,246,0.7);">
+                            <i class="fas fa-check mr-2"></i>With Tryll, everything works fully offline.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1457,68 +1518,6 @@
         </div>
     </section>
 
-    <!-- The Developer Problem -->
-    <section class="py-12 md:py-24 bg-black relative overflow-hidden fade-in">
-        <div class="max-w-7xl mx-auto px-4 md:px-6">
-            <div class="text-center mb-12 md:mb-20">
-                <span class="terminal-label">THE_PLATFORM</span>
-                <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 heading-primary">
-                    Why Studios Don't Have AI Yet
-                </h2>
-                <p class="text-xl text-secondary max-w-3xl mx-auto body-large">
-                    We talked to hundreds of studios. They all want AI in their games. Three things stop them.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 transition-all hover:border-white/20 flex flex-col">
-                    <div class="mb-6">
-                        <i class="fas fa-dollar-sign text-red-400 text-xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Cloud Is Too Expensive</h3>
-                    <p class="text-secondary mb-4 flex-grow">
-                        Cloud AI charges per token. At scale, a single game can rack up millions in API costs per month. Success becomes unsustainable.
-                    </p>
-                    <div class="pt-4 border-t border-white/10">
-                        <p class="text-sm font-medium" style="color:rgba(59,130,246,0.7);">
-                            <i class="fas fa-check mr-2"></i>With Tryll, tokens are free. Runs on player GPUs.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="glass-card p-8 transition-all hover:border-white/20 flex flex-col">
-                    <div class="mb-6">
-                        <i class="fas fa-shield-alt text-red-400 text-xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Data Processing Is Hell</h3>
-                    <p class="text-secondary mb-4 flex-grow">
-                        GDPR, the AI Act, export laws — sending player conversations to third-party servers creates a legal and compliance nightmare most studios won't touch.
-                    </p>
-                    <div class="pt-4 border-t border-white/10">
-                        <p class="text-sm font-medium" style="color:rgba(59,130,246,0.7);">
-                            <i class="fas fa-check mr-2"></i>With Tryll, personal data never leaves the device.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="glass-card p-8 transition-all hover:border-white/20 flex flex-col">
-                    <div class="mb-6">
-                        <i class="fas fa-unlink text-red-400 text-xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">No One Wants Third-Party Dependency</h3>
-                    <p class="text-secondary mb-4 flex-grow">
-                        If the API goes down, your game breaks. If pricing changes, your margins vanish. Studios won't bet their product on someone else's uptime.
-                    </p>
-                    <div class="pt-4 border-t border-white/10">
-                        <p class="text-sm font-medium" style="color:rgba(59,130,246,0.7);">
-                            <i class="fas fa-check mr-2"></i>With Tryll, everything works fully offline.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Interactive Features Section -->
     <section id="features" class="py-16 md:py-24 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 md:px-8">
@@ -1646,210 +1645,6 @@
             
         </div>
     </section>
-
-    <!-- Platform Architecture (hidden — overlaps with THE PLATFORM section above) -->
-    <!--
-    <section class="py-12 md:py-24 bg-black relative overflow-hidden">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="max-w-4xl mx-auto text-center mb-12 md:mb-20 fade-in">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-sm font-normal mb-8 border border-white/20">
-                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
-                    ARCHITECTURE
-                </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
-                    Three Layers. One Platform.
-                </h2>
-                <p class="text-xl text-secondary leading-relaxed">
-                    A complete AI stack running on player hardware — from engine integration to model management.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch text-center fade-in">
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
-                        <i class="fas fa-plug text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Engine SDK</h3>
-                    <ul class="text-secondary text-base leading-relaxed space-y-2 text-left">
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Exposes game world to AI via simple API</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Unreal plugin, Unity package, or C++ API</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Works out-of-the-box, fully extensible</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
-                        <i class="fas fa-robot text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">AI Runtime</h3>
-                    <ul class="text-secondary text-base leading-relaxed space-y-2 text-left">
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Context-aware with access to game world and lore</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Triggers in-game actions via function calls</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20">
-                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-3xl mb-6 mx-auto">
-                        <i class="fas fa-microchip text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Model Manager</h3>
-                    <ul class="text-secondary text-base leading-relaxed space-y-2 text-left">
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Auto-selects optimal model for each device</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Background inference, zero player setup</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-primary-500 mt-1">•</span>
-                            <span>Auto-updates as open-source models improve</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    -->
-
-    <!-- Value Proposition -->
-    <!-- 
-    <section class="py-24 bg-black relative overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="max-w-3xl mx-auto text-center mb-20 fade-in">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-sm font-normal mb-8 border border-white/20">
-                    <div class="w-2 h-2 rounded-full bg-primary-500"></div>
-                    THE REVOLUTION
-                </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
-                    Why Gaming Intelligence Changes Everything
-                </h2>
-                <p class="text-xl text-secondary leading-relaxed">
-                    The gaming industry embraced physics, graphics, and multiplayer revolutions. 
-                    Now it's time for the AI revolution. Be among the first to define what comes next.
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
-                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6">
-                        <i class="fas fa-dollar-sign text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4 heading-tertiary">Local AI, Low Cost</h3>
-                    <p class="text-secondary body-medium">
-                        No cloud required – cut the expensive API costs and latency. 
-                        <span class="text-white font-medium">Save up to $1.8M/month</span> compared to cloud solutions 
-                        while delivering instant, private AI interactions.
-                    </p>
-                </div>
-                
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
-                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6">
-                        <i class="fas fa-brain text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4 heading-tertiary">Intelligent NPCs</h3>
-                    <p class="text-secondary body-medium">
-                        Game characters that truly listen, think, and respond – powered by advanced LLM agents. 
-                        <span class="text-white font-medium">Every conversation is unique</span>, every playthrough 
-                        offers new stories.
-                    </p>
-                </div>
-                
-                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-white/20 fade-in">
-                    <div class="w-16 h-16 rounded-xl gradient-bg flex items-center justify-center text-2xl mb-6">
-                        <i class="fas fa-rocket text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4 heading-tertiary">High Quality at Scale</h3>
-                    <p class="text-secondary body-medium">
-                        Works offline on your hardware – from indie projects to AAA worlds. 
-                        <span class="text-white font-medium">Lightning-fast responses</span> for every player, 
-                        no matter where they are.
-                    </p>
-                </div>
-            </div>
-        </div>
-        
-        </div>
-    </section>
-    -->
-
-
-    <!-- Cloud Cost Warning Section (Hidden for now) -->
-    <!--
-    <section class="py-12 md:py-24 bg-black relative overflow-hidden">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="max-w-4xl mx-auto text-center mb-12 md:mb-16 fade-in">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-400 text-sm font-normal mb-8 border border-red-500/30">
-                    <div class="w-2 h-2 rounded-full bg-red-500"></div>
-                    CLOUD WILL DRAIN YOU
-                </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 heading-primary">
-                    $1.8M <span class="text-white">Per Month</span>
-                </h2>
-                <p class="text-xl text-secondary leading-relaxed">
-                    That's what it costs to serve just <strong class="text-white">10,000 concurrent players</strong> using OpenAI-style API pricing.
-                    For most studios, success becomes unsustainable.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded-2xl text-center fade-in transition-all duration-300 hover:border-white/20">
-                    <div class="text-5xl font-bold text-red-400 mb-6">$1.8M</div>
-                    <p class="text-secondary">Monthly cost for 10k concurrent users if using cloud APIs.</p>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl text-center fade-in transition-all duration-300 hover:border-white/20">
-                    <div class="text-5xl font-bold text-yellow-400 mb-6">150+</div>
-                    <p class="text-secondary">Steam games hit 10k concurrent players <strong class="text-white">every day</strong>. Are you ready for that scale?</p>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl text-center fade-in transition-all duration-300 hover:border-white/20">
-                    <div class="text-5xl font-bold text-green-400 mb-6">$0</div>
-                    <p class="text-secondary">Tryll runs <strong class="text-white">fully local</strong>. No data protection headaches. No outages. No cloud bills.</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    -->
-
-
-    <!-- Social Proof -->
-    <!--
-    <section class="py-24 bg-black relative overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto glass-card p-12 rounded-3xl text-center fade-in">
-                <div class="text-5xl mb-6 text-primary-500">
-                    <i class="fas fa-quote-left"></i>
-                </div>
-                <p class="text-2xl text-white mb-8 leading-relaxed">
-                    "Thing that we want to do more than anything is to put [AI] on your PC as well.<br><br>
-                    Our focus is to turn Windows PC into target first-class platform that we will support and maintain for as long as we shall live."
-                </p>
-                <div>
-                    <p class="text-lg font-bold text-white">Jensen Huang</p>
-                    <p class="text-secondary">NVIDIA Keynote, CES 2025</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    -->
 
     <!-- Pricing Section -->
     <section id="pricing" class="py-12 md:py-24 bg-black relative overflow-hidden">
@@ -1989,25 +1784,77 @@
                 </div>
             </div>
 
-            <!-- Testbed Callout -->
-            <div class="max-w-2xl mx-auto mt-16 fade-in">
-                <div class="rounded overflow-hidden border border-white/[0.06] bg-white/[0.02] px-6 py-6" style="border-top:2px solid rgba(59,130,246,0.15);">
-                    <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.08em;color:rgba(59,130,246,0.4);text-transform:uppercase;margin-bottom:12px;">// try_the_tech</div>
-                    <p class="text-white mb-2" style="font-size:1.05rem;color:rgba(255,255,255,0.8);">Want to see local AI in your game before integrating?</p>
-                    <p class="text-secondary mb-5" style="font-size:0.9rem;color:rgba(255,255,255,0.45);line-height:1.6;">
-                        Download Tryll Assistant — a free AI overlay that runs on any game.<br>
-                        See how LLM inference works on player hardware, no integration needed.
+        </div>
+    </section>
+
+    <!-- Tryll Assistant - See It Working -->
+    <section id="tryll-assistant" class="py-12 md:py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16 fade-in">
+                <span class="terminal-label">ALREADY_LIVE</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
+                    See It Working Today
+                </h2>
+                <p class="text-lg md:text-xl text-secondary leading-relaxed">
+                    Tryll Assistant is a real application powered by Tryll Engine — the first free on-device AI app on Steam. See what your players will experience.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+                <div class="glass-card p-6 md:p-8 fade-in">
+                    <div class="text-blue-500 mb-4">
+                        <i class="fas fa-microchip text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Runs on Player Hardware</h3>
+                    <p class="text-secondary leading-relaxed">
+                        Full LLM inference on the player's GPU. No cloud, no latency, no per-user costs. This is what on-device AI looks like in production.
                     </p>
-                    <a href="tryll-assistant.html" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-200" style="color:rgba(59,130,246,0.8);font-family:'JetBrains Mono',monospace;font-size:0.85rem;">
-                        Download Free on Steam <span style="font-size:0.9em;">→</span>
-                    </a>
+                </div>
+
+                <div class="glass-card p-6 md:p-8 fade-in">
+                    <div class="text-green-500 mb-4">
+                        <i class="fas fa-database text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">RAG-Powered Knowledge</h3>
+                    <p class="text-secondary leading-relaxed">
+                        Connect any data source — game wikis, lore databases, internal docs. The AI answers questions grounded in your game's actual content.
+                    </p>
+                </div>
+
+                <div class="glass-card p-6 md:p-8 fade-in">
+                    <div class="text-purple-500 mb-4">
+                        <i class="fas fa-puzzle-piece text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">End-to-End Pipeline</h3>
+                    <p class="text-secondary leading-relaxed">
+                        From development to deployment — model selection, driver management, automatic updates. Ship once, stay current as models improve.
+                    </p>
+                </div>
+
+                <div class="glass-card p-6 md:p-8 fade-in">
+                    <div class="text-red-500 mb-4">
+                        <i class="fas fa-shield-alt text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Private by Design</h3>
+                    <p class="text-secondary leading-relaxed">
+                        Zero data leaves the player's device. No chat logs, no telemetry, no cloud dependency. Full compliance out of the box.
+                    </p>
                 </div>
             </div>
 
+            <div class="max-w-3xl mx-auto mt-12 text-center fade-in">
+                <p class="text-secondary mb-6">
+                    Want to see it in a real game? <a href="boscotryll.html" class="text-blue-400 hover:text-blue-300 transition-colors underline">BoscoTryll</a> is a mod for Deep Rock Galactic built entirely on Tryll Engine.
+                </p>
+                <a href="tryll-assistant.html" class="btn-primary inline-block px-6 md:px-8 py-3 md:py-4 text-sm md:text-base">
+                    See Tryll Assistant on Steam
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
+
     <section id="faq" class="py-16 md:py-24 bg-black relative overflow-hidden">
         <div class="container mx-auto px-4 md:px-6">
             <div class="max-w-3xl mx-auto text-center mb-16 md:mb-20 fade-in">
@@ -2349,6 +2196,7 @@
                 
                 <!-- Right: Privacy & Terms -->
                 <div class="flex gap-6 order-3 md:order-3 justify-center md:justify-end">
+                    <a href="boscotryll.html" class="text-secondary hover:text-white transition-colors duration-300 text-sm">BoscoTryll Mod</a>
                     <a href="privacy-policy.html" class="text-secondary hover:text-white transition-colors duration-300 text-sm">Privacy Policy</a>
                 </div>
             </div>

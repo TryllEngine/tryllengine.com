@@ -53,11 +53,13 @@ python -m http.server 8000
 ## Architecture Notes
 
 ### Main Landing Page (index.html)
-1. **Navigation**: Fixed header with unified menu across all pages (How It Works, Features, Pricing, FAQ, Blog + Try Free / Book a Demo buttons)
-2. **Hero Section**: Main value proposition with CTA buttons
-3. **The Problem**: "Why Studios Don't Have AI Yet" — cloud cost, data complexity, third-party dependency
-4. **How It Works**: Architecture flow (Game → Plugin → Runtime) + SDK Integration Roadmap (Unreal/Unity/C++)
-5. **What You Can Build**: Interactive feature showcase (Knowledge Systems, Memory, Agent Actions, Content Generation)
+1. **Navigation**: Fixed header with unified menu across all pages (Product, Integrate, Pricing, Blog, Showcase + Get Early Access button)
+2. **Hero Section**: "Drag-Drop AI Into Your Game Engine" — DirectX analogy, Unreal screenshot + code snippet
+3. **Numbers Bar**: Trust metrics strip (~8¢, 0 servers, 100% on-device, <50ms latency)
+4. **Proof — Already Running**: BoscoTryll video + Tryll Assistant card — shipping proof on Steam
+5. **Integration — Three Steps**: Step-by-step with Unreal Editor screenshots (component, tools, blueprint)
+6. **Capabilities**: 5-modality icon grid (LLM, STT, TTS, VLM, Agents) + 2×2 use case cards
+7. **Why On-Device**: "Cloud AI Breaks Games" — cost, compliance, dependency (moved from position 2 to 7)
 6. **Pricing**: Revenue-based calculator
 7. **Tryll Assistant — See It Working**: Proof of concept section — on-device AI app on Steam, RAG, end-to-end pipeline, privacy
 8. **FAQ Section**: Collapsible accordion with Developer and Player tabs

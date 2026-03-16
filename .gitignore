@@ -21,3 +21,9 @@ beyond-chat.html
 /*.jpeg
 hero-flow.html
 hero-typing.html
+
+# Build/tool artifacts
+_screenshot.js
+node_modules/
+package-lock.json
+package.json

@@ -1,5 +1,17 @@
 [
   {
+    "slug": "tryll-assistant-v0-0-10",
+    "title": "Tryll Assistant v0.0.10 — New Onboarding and 9 More Games",
+    "excerpt": "v0.0.10 ships a 5-step setup wizard, dialogue memory, real-time download progress, and support for 9 new games.",
+    "category": "news",
+    "date": "2026-03-17",
+    "readTime": 2,
+    "image": "/assets/blog/tryll-assistant-v0-0-10-cover.png",
+    "icon": "fa-rocket",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7437897673564766208"
+  },
+  {
     "slug": "welcome-pierre-moisan",
     "title": "Welcome Pierre Moisan to Tryll Engine",
     "excerpt": "Pierre Moisan, a pioneer of the Canadian video game industry with 30 years of experience, joins Tryll Engine as strategic advisor.",

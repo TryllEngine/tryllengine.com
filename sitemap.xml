@@ -31,6 +31,12 @@
         <priority>0.7</priority>
     </url>
 <url>
+        <loc>https://tryllengine.com/blog/posts/tryll-assistant-v0-0-10</loc>
+        <lastmod>2026-03-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://tryllengine.com/blog/posts/welcome-pierre-moisan</loc>
         <lastmod>2026-03-06</lastmod>
         <changefreq>monthly</changefreq>

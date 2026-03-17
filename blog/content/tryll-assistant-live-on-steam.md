@@ -4,4 +4,4 @@ It's an on-device gaming assistant that runs locally on your PC. Press a hotkey 
 
 **[Install now on Steam](https://store.steampowered.com/app/4193780/Tryll_Assistant)**
 
-**[Share your feedback on Discord](https://discord.gg/FfnwDpEWE9)**
+**[Share your feedback on Discord](https://discord.gg/EujjpZTfz)**

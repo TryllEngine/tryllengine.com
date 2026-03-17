@@ -117,13 +117,13 @@ Changes are automatically deployed via GitHub Pages.
 ## 🤝 Contributing
 
 This is the official Tryll Engine website. For questions or suggestions:
-- Join our [Discord](https://discord.gg/XCBBGUMzUM)
+- Join our [Discord](https://discord.gg/EujjpZTfz)
 - Email: Contact through the website form
 
 ## 🔗 Links
 
 - **Website**: [tryllengine.com](https://tryllengine.com)
-- **Discord**: [Join Community](https://discord.gg/XCBBGUMzUM)
+- **Discord**: [Join Community](https://discord.gg/EujjpZTfz)
 - **BoscoTryll Mod**: [View Showcase](https://tryllengine.com/boscotryll.html)
 
 ---

@@ -1,5 +1,17 @@
 [
   {
+    "slug": "back-from-gdc-2026",
+    "title": "Back from GDC 2026 — AI Optimism Has Skyrocketed",
+    "excerpt": "Our team is back from GDC 2026 Festival of Gaming. The vibe has shifted — studios are moving past experiments and asking for production-ready on-device AI.",
+    "category": "news",
+    "date": "2026-04-05",
+    "readTime": 2,
+    "image": "/assets/blog/back-from-gdc-2026-cover.png",
+    "icon": "fa-chart-line",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7445858958839521280"
+  },
+  {
     "slug": "tryll-assistant-v0-0-10",
     "title": "Tryll Assistant v0.0.10 — New Onboarding and 9 More Games",
     "excerpt": "v0.0.10 ships a 5-step setup wizard, dialogue memory, real-time download progress, and support for 9 new games.",

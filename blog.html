@@ -352,6 +352,28 @@
             border-top-color: rgba(59, 130, 246, 0.5);
         }
 
+        .form-input {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        select.form-input option {
+            background-color: #14161b;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
         /* Blog card image */
         .blog-card-image {
             aspect-ratio: 4 / 3;
@@ -493,47 +515,96 @@
         </div>
     </nav>
 
-    <!-- Header + Filters -->
+    <!-- Hero with inline subscribe -->
     <section class="pt-32 md:pt-40 pb-10 md:pb-14 px-4">
         <div class="max-w-5xl mx-auto fade-in">
-            <span class="terminal-label">Blog</span>
-            <h1 class="heading-primary mb-4" style="font-size: var(--typo-title);">
-                Insights & Updates
-            </h1>
-            <p class="body-large mb-10 max-w-2xl">
-                Engineering deep-dives, product updates, and tutorials from the Tryll Engine team.
-            </p>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
-            <!-- Category filters -->
-            <div class="flex flex-wrap gap-x-6 gap-y-3" id="category-filters">
-                <button class="category-link active" data-category="all">All</button>
-                <button class="category-link" data-category="news">News</button>
-                <button class="category-link" data-category="engineering">Engineering</button>
-                <button class="category-link" data-category="tutorial">Tutorials</button>
-                <button class="category-link" data-category="case-study">Case Studies</button>
-            </div>
-        </div>
-    </section>
+                <!-- Left: hero text + filters -->
+                <div class="lg:col-span-7">
+                    <span class="terminal-label">Blog</span>
+                    <h1 class="heading-primary mb-4" style="font-size: var(--typo-title);">
+                        Insights &amp; Updates
+                    </h1>
+                    <p class="body-large mb-8 max-w-xl">
+                        Engineering deep-dives, product updates, and tutorials from the Tryll Engine team.
+                    </p>
 
-    <!-- Newsletter Subscription Block -->
-    <section class="pb-10 md:pb-14 px-4">
-        <div class="max-w-5xl mx-auto fade-in">
-            <div class="rounded overflow-hidden border border-white/[0.06] bg-white/[0.02] px-6 md:px-10 py-7 md:py-8" style="border-top:2px solid rgba(59,130,246,0.3);">
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5 md:gap-8">
-                    <div class="md:max-w-md">
-                        <span class="terminal-label" style="margin-bottom: 0.6rem;">SUBSCRIBE</span>
-                        <h2 class="heading-tertiary mb-2" style="font-size: var(--typo-largecopy);">
-                            Get new posts in your inbox
-                        </h2>
-                        <p class="body-small" style="color: rgba(255, 255, 255, 0.55);">
-                            Product releases, engine roadmap, studio use cases, and company updates. No spam. Unsubscribe anytime.
-                        </p>
-                    </div>
-                    <div class="md:flex-shrink-0 md:min-w-[280px]">
-                        <!-- MailerLite form: TY - Blog Signup -->
-                        <div class="ml-embedded" data-form="uQeO91"></div>
+                    <!-- Category filters (existing handlers preserved) -->
+                    <div class="flex flex-wrap gap-x-6 gap-y-3" id="category-filters">
+                        <button class="category-link active" data-category="all">All</button>
+                        <button class="category-link" data-category="news">News</button>
+                        <button class="category-link" data-category="engineering">Engineering</button>
+                        <button class="category-link" data-category="tutorial">Tutorials</button>
+                        <button class="category-link" data-category="case-study">Case Studies</button>
                     </div>
                 </div>
+
+                <!-- Right: compact subscribe form -->
+                <div class="lg:col-span-5">
+                    <form
+                        id="blog-subscribe-form"
+                        class="glass-card p-5"
+                        data-form-id="185451758358627764"
+                        data-source="blog"
+                        novalidate
+                    >
+                        <div class="mb-4">
+                            <h3 class="heading-tertiary mb-1" style="font-size: var(--typo-largecopy);">
+                                Subscribe
+                            </h3>
+                            <p class="text-xs text-white/60">
+                                Quarterly updates. No spam.
+                            </p>
+                        </div>
+
+                        <div class="space-y-2.5">
+                            <input type="email" id="ml-email" name="email" required
+                                autocomplete="email" inputmode="email"
+                                class="form-input w-full px-3 py-2.5 rounded text-sm"
+                                placeholder="Email">
+
+                            <div class="grid grid-cols-2 gap-2.5">
+                                <input type="text" id="ml-name" name="name" required
+                                    autocomplete="given-name"
+                                    class="form-input w-full px-3 py-2.5 rounded text-sm"
+                                    placeholder="Name">
+                                <input type="text" id="ml-company" name="company" required
+                                    autocomplete="organization"
+                                    class="form-input w-full px-3 py-2.5 rounded text-sm"
+                                    placeholder="Studio">
+                            </div>
+
+                            <!-- Honeypot — bots fill it, humans don't see it -->
+                            <div style="position:absolute;left:-9999px;" aria-hidden="true">
+                                <input type="text" name="website" tabindex="-1" autocomplete="off">
+                            </div>
+
+                            <button type="submit"
+                                class="btn-primary w-full px-4 py-2.5 rounded text-sm inline-flex items-center justify-center mt-1">
+                                <span class="ml-btn-label">Get Updates</span>
+                                <span class="ml-btn-spinner hidden ml-2">
+                                    <svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                                    </svg>
+                                </span>
+                            </button>
+
+                            <p class="text-[11px] text-white/40 leading-relaxed pt-1">
+                                By subscribing, you agree to our <a href="privacy-policy.html" class="underline hover:text-white">Privacy Policy</a>.
+                            </p>
+
+                            <p class="ml-form-error hidden text-xs text-red-400 text-center"></p>
+                        </div>
+                    </form>
+
+                    <div id="blog-subscribe-success" class="glass-card p-5 text-center hidden">
+                        <h3 class="heading-tertiary mb-1" style="font-size: var(--typo-largecopy);">You're in.</h3>
+                        <p class="text-xs text-white/60">Check your inbox to confirm.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -703,6 +774,128 @@
             .catch(() => {
                 loadingState.innerHTML = '<p style="color: rgba(59, 130, 246, 0.7);">Failed to load posts. Please try refreshing.</p>';
             });
+    </script>
+
+    <!-- MailerLite custom subscribe handler (no backend) -->
+    <script>
+    (function () {
+        const ACCOUNT_ID = '2274886';
+        const ENDPOINT = (formId) => `https://assets.mailerlite.com/jsonp/${ACCOUNT_ID}/forms/${formId}/subscribe`;
+
+        function trackEvent(category, action, label) {
+            if (typeof window.dataLayer !== 'undefined') {
+                window.dataLayer.push({
+                    event: 'custom_event',
+                    event_category: category,
+                    event_action: action,
+                    event_label: label
+                });
+            }
+        }
+
+        async function submitToMailerLite(formEl) {
+            const formId = formEl.dataset.formId;
+            const source = formEl.dataset.source || 'unknown';
+            if (!formId) {
+                console.error('[MailerLite] Form ID is missing on', formEl);
+                return { ok: false, error: 'Form is misconfigured. Please contact us at team@tryllengine.com.' };
+            }
+
+            // Honeypot — silently succeed if bot
+            const honeypot = formEl.querySelector('input[name="website"]');
+            if (honeypot && honeypot.value.trim() !== '') {
+                return { ok: true, silent: true };
+            }
+
+            const data = new URLSearchParams();
+            const email = formEl.querySelector('[name="email"]')?.value?.trim();
+            const name = formEl.querySelector('[name="name"]')?.value?.trim();
+            const company = formEl.querySelector('[name="company"]')?.value?.trim();
+            const role = formEl.querySelector('[name="role"]')?.value?.trim();
+
+            if (!email) return { ok: false, error: 'Email is required.' };
+
+            data.append('fields[email]', email);
+            if (name) data.append('fields[name]', name);
+            if (company) data.append('fields[company]', company);
+            if (role) data.append('fields[role]', role);
+            data.append('fields[signup_source]', source);
+            data.append('ml-submit', '1');
+            data.append('anticsrf', 'true');
+
+            try {
+                const response = await fetch(ENDPOINT(formId), {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: data.toString()
+                });
+                const json = await response.json().catch(() => ({}));
+                if (response.ok && (json.success === true || json.success === undefined)) {
+                    return { ok: true };
+                }
+                return { ok: false, error: json?.errors?.fields?.email?.[0] || 'Subscription failed. Please try again.' };
+            } catch (err) {
+                // CORS or network — fall back to no-cors fire-and-forget
+                try {
+                    await fetch(ENDPOINT(formId), {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: data.toString(),
+                        mode: 'no-cors'
+                    });
+                    return { ok: true, optimistic: true };
+                } catch (e2) {
+                    return { ok: false, error: 'Network error. Please try again.' };
+                }
+            }
+        }
+
+        function attach(formEl, onSuccess) {
+            formEl.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                if (!formEl.checkValidity()) { formEl.reportValidity(); return; }
+
+                const btn = formEl.querySelector('button[type="submit"]');
+                const label = formEl.querySelector('.ml-btn-label');
+                const spinner = formEl.querySelector('.ml-btn-spinner');
+                const errorEl = formEl.querySelector('.ml-form-error');
+
+                btn.disabled = true;
+                label?.classList.add('opacity-60');
+                spinner?.classList.remove('hidden');
+                errorEl?.classList.add('hidden');
+
+                const result = await submitToMailerLite(formEl);
+
+                btn.disabled = false;
+                label?.classList.remove('opacity-60');
+                spinner?.classList.add('hidden');
+
+                if (result.ok) {
+                    const source = formEl.dataset.source || 'unknown';
+                    const role = formEl.querySelector('[name="role"]')?.value;
+                    const label = role ? `Subscribe - ${source} - ${role}` : `Subscribe - ${source}`;
+                    trackEvent('Form', 'submit', label);
+                    onSuccess?.(formEl);
+                } else if (errorEl) {
+                    errorEl.textContent = result.error || 'Something went wrong.';
+                    errorEl.classList.remove('hidden');
+                }
+            });
+        }
+
+        // Blog subscribe form
+        const blogForm = document.getElementById('blog-subscribe-form');
+        if (blogForm) {
+            attach(blogForm, () => {
+                blogForm.classList.add('hidden');
+                document.getElementById('blog-subscribe-success')?.classList.remove('hidden');
+            });
+        }
+
+        // Expose for other pages (homepage dual-submit, etc.)
+        window.tryllML = { submitToMailerLite, trackEvent };
+    })();
     </script>
 </body>
 </html>

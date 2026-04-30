@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>84 Ways to Use AI in Games — Tryll Engine</title>
+    <meta name="description" content="An interactive atlas of 84 AI-powered game mechanics you can ship with Tryll. Filter by genre, status, and VRAM budget.">
+    <link rel="canonical" href="https://tryllengine.com/use-cases.html">
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#232E41',
+                        secondary: '#F6F0EB',
+                        dark: { 900: '#0a0d12', 800: '#0f1419', 700: '#141a20' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+        html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+        :root {
+            --typo-label: 12px; --typo-copy: 14px; --typo-largecopy: 16px;
+            --typo-subtitle: 20px; --typo-title: 32px; --typo-hero: 48px;
+            --blue: #3B82F6; --blue-hover: #2563EB;
+        }
+        @media (min-width: 768px) {
+            :root {
+                --typo-label: 13px; --typo-copy: 16px; --typo-largecopy: 18px;
+                --typo-subtitle: 24px; --typo-title: 48px; --typo-hero: 62px;
+            }
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #000;
+            background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: rgba(255,255,255,0.85);
+            overflow-x: hidden;
+            line-height: 1.5em;
+            letter-spacing: -0.011em;
+            font-size: var(--typo-copy);
+            -webkit-font-smoothing: antialiased;
+        }
+        body::after {
+            content: ''; position: fixed; inset: 0; z-index: 9998; pointer-events: none; opacity: 0.018;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 256px 256px;
+        }
+
+        .heading-primary { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; color: #fff; }
+        .heading-secondary { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; color: #fff; }
+        .heading-tertiary { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; letter-spacing: -0.015em; line-height: 1.25; color: #fff; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .terminal-label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; color: rgba(59,130,246,0.7); text-transform: uppercase; display: inline-block; }
+        .terminal-label::before { content: '// '; opacity: 0.5; }
+
+        /* NAV ------------------------------------------------------------ */
+        .nav-glass-card {
+            position: relative; border-radius: 4px; overflow: hidden;
+            background: rgba(0,0,0,0.88);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+        }
+        .nav-links a, .footer-link { color: rgba(246,240,235,0.7); transition: color 0.2s; }
+        .nav-links a:hover, .footer-link:hover { color: #fff; }
+        .btn-primary {
+            background-color: var(--blue); color: #fff; border: none; font-weight: 600;
+            font-family: 'DM Sans', sans-serif; transition: all 0.12s ease-out;
+            text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.85em; border-radius: 3px;
+        }
+        .btn-primary:hover { background-color: var(--blue-hover); box-shadow: 0 0 0 1px rgba(59,130,246,0.5); }
+        .btn-secondary {
+            background-color: transparent; color: rgba(255,255,255,0.9);
+            border: 1px solid rgba(255,255,255,0.15); font-weight: 600;
+            font-family: 'DM Sans', sans-serif; transition: all 0.12s ease-out;
+            text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.85em; border-radius: 3px;
+        }
+        .btn-secondary:hover { background-color: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.25); color: #fff; }
+
+        /* HERO ----------------------------------------------------------- */
+        .hero-grid {
+            background-image:
+                radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,130,246,0.18), transparent 70%),
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 100% 100%, 48px 48px, 48px 48px;
+        }
+        .hero-num {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.055em;
+            line-height: 0.85;
+            background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.6) 60%, rgba(59,130,246,0.7) 100%);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+        .hero-stripe {
+            height: 1px; background: linear-gradient(90deg, transparent, rgba(59,130,246,0.6), transparent);
+        }
+
+        /* MODE SWITCH ---------------------------------------------------- */
+        .mode-switch {
+            display: inline-flex; gap: 2px; padding: 3px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 6px;
+        }
+        .mode-btn {
+            padding: 8px 16px; border-radius: 4px; font-family: 'JetBrains Mono', monospace;
+            font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+            color: rgba(255,255,255,0.55); cursor: pointer; transition: all 0.15s ease-out;
+            border: none; background: transparent;
+        }
+        .mode-btn:hover { color: rgba(255,255,255,0.85); }
+        .mode-btn.active { background: rgba(59,130,246,0.18); color: #fff; box-shadow: inset 0 0 0 1px rgba(59,130,246,0.4); }
+
+        /* SHARED CARDS --------------------------------------------------- */
+        .card-base {
+            background: rgba(255,255,255,0.025);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 6px;
+            transition: border-color 0.15s, background 0.15s, transform 0.15s;
+        }
+        .card-base:hover { border-color: rgba(255,255,255,0.18); background: rgba(255,255,255,0.04); }
+
+        .badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 3px 8px; border-radius: 3px; font-family: 'JetBrains Mono', monospace;
+            font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600;
+            white-space: nowrap;
+        }
+        .badge-dot { width: 6px; height: 6px; border-radius: 50%; }
+        .status-now { background: rgba(34,197,94,0.08); color: #86efac; box-shadow: inset 0 0 0 1px rgba(34,197,94,0.25); }
+        .status-now .badge-dot { background: #22c55e; box-shadow: 0 0 8px #22c55e; }
+        .status-soon { background: rgba(59,130,246,0.08); color: #93c5fd; box-shadow: inset 0 0 0 1px rgba(59,130,246,0.25); }
+        .status-soon .badge-dot { background: #3b82f6; }
+        .status-later { background: rgba(168,85,247,0.06); color: #c4b5fd; box-shadow: inset 0 0 0 1px rgba(168,85,247,0.2); }
+        .status-later .badge-dot { background: #a855f7; }
+        .status-far { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.55); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1); }
+        .status-far .badge-dot { background: rgba(255,255,255,0.4); }
+
+        .feas-proven { color: #86efac; }
+        .feas-likely { color: #93c5fd; }
+        .feas-experimental { color: #fcd34d; }
+        .feas-speculative { color: #c4b5fd; }
+
+        /* ---- VARIATION A: ATLAS ---------------------------------------- */
+        .genre-tab {
+            display: flex; align-items: center; gap: 12px;
+            width: 100%; padding: 12px 14px; border-radius: 4px;
+            text-align: left; cursor: pointer; border: 1px solid transparent;
+            color: rgba(255,255,255,0.72); transition: all 0.12s ease-out;
+            background: transparent;
+        }
+        .genre-tab:hover { background: rgba(255,255,255,0.03); color: #fff; }
+        .genre-tab.active { background: rgba(59,130,246,0.08); border-color: rgba(59,130,246,0.35); color: #fff; }
+        .genre-tab .count {
+            margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 11px;
+            color: rgba(255,255,255,0.45); letter-spacing: 0.05em;
+        }
+        .genre-tab.active .count { color: #93c5fd; }
+
+        .atlas-card { padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; }
+        .atlas-card .id { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: rgba(147,197,253,0.7); letter-spacing: 0.08em; }
+        .atlas-card h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 17px; line-height: 1.25; color: #fff; letter-spacing: -0.015em; }
+        .atlas-card p { font-size: 14px; line-height: 1.55; color: rgba(255,255,255,0.68); }
+        .atlas-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 4px; }
+        .atlas-model {
+            font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: rgba(255,255,255,0.5);
+            padding: 3px 7px; border-radius: 3px; background: rgba(255,255,255,0.04); letter-spacing: 0.04em;
+        }
+
+        /* ---- VARIATION B: CONSOLE -------------------------------------- */
+        .console-frame {
+            background: linear-gradient(180deg, rgba(10,13,18,0.95), rgba(0,0,0,0.98));
+            border: 1px solid rgba(59,130,246,0.2);
+            border-radius: 8px; overflow: hidden;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.5), 0 20px 80px rgba(59,130,246,0.07);
+            position: relative;
+        }
+        .console-frame::before {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background: repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(59,130,246,0.015) 3px, transparent 4px);
+            z-index: 1;
+        }
+        .console-head {
+            display: flex; align-items: center; gap: 10px;
+            padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.06);
+            font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em;
+            color: rgba(147,197,253,0.7); text-transform: uppercase;
+            background: rgba(59,130,246,0.03);
+        }
+        .console-dot { width: 8px; height: 8px; border-radius: 50%; }
+        .console-body { position: relative; z-index: 2; }
+
+        .console-row {
+            display: grid; grid-template-columns: 70px 1fr 120px 100px 140px;
+            gap: 16px; padding: 14px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            align-items: center; font-family: 'JetBrains Mono', monospace;
+            transition: background 0.12s;
+        }
+        .console-row:hover { background: rgba(59,130,246,0.04); }
+        .console-row .cid { font-size: 11px; color: rgba(147,197,253,0.55); letter-spacing: 0.06em; }
+        .console-row .ctitle { font-family: 'DM Sans', sans-serif; font-size: 15px; color: #fff; font-weight: 500; }
+        .console-row .cblurb { font-family: 'DM Sans', sans-serif; font-size: 13px; color: rgba(255,255,255,0.58); margin-top: 2px; line-height: 1.45; }
+        .console-row .cmodel { font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 0.04em; }
+        .console-row .cvram { font-size: 11px; color: rgba(255,255,255,0.65); text-align: right; }
+        @media (max-width: 900px) {
+            .console-row { grid-template-columns: 1fr; gap: 4px; padding: 14px; }
+            .console-row .cid, .console-row .cmodel, .console-row .cvram { font-size: 10.5px; }
+        }
+
+        .scan-line {
+            position: absolute; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(59,130,246,0.4), transparent);
+            pointer-events: none; z-index: 3;
+            animation: scanMove 6s linear infinite;
+        }
+        @keyframes scanMove { 0% { top: 0; } 100% { top: 100%; } }
+
+        /* ---- VARIATION C: PLAYGROUND ----------------------------------- */
+        .pg-panel {
+            background: linear-gradient(180deg, rgba(35,46,65,0.14), rgba(35,46,65,0.06));
+            border: 1px solid rgba(35,46,65,0.35);
+            border-radius: 10px;
+            backdrop-filter: blur(12px);
+        }
+        .pg-chip {
+            padding: 6px 12px; border-radius: 999px; font-size: 12px; font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03);
+            color: rgba(255,255,255,0.75); cursor: pointer; transition: all 0.15s;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .pg-chip:hover { border-color: rgba(255,255,255,0.25); color: #fff; }
+        .pg-chip.on { background: rgba(59,130,246,0.18); border-color: rgba(59,130,246,0.5); color: #fff; }
+
+        .slider {
+            -webkit-appearance: none; width: 100%; height: 4px;
+            background: rgba(255,255,255,0.1); border-radius: 2px; outline: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none; appearance: none;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #3b82f6; cursor: pointer; border: 2px solid #000;
+            box-shadow: 0 0 0 1px #3b82f6, 0 0 12px rgba(59,130,246,0.5);
+        }
+        .slider::-moz-range-thumb {
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #3b82f6; cursor: pointer; border: 2px solid #000;
+        }
+
+        .pg-spec {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 8px;
+        }
+        .pg-cap-row {
+            display: flex; align-items: flex-start; gap: 12px;
+            padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04);
+            transition: background 0.12s;
+        }
+        .pg-cap-row:last-child { border-bottom: none; }
+        .pg-cap-row:hover { background: rgba(255,255,255,0.02); }
+        .pg-cap-row .cat-tag {
+            flex-shrink: 0; font-family: 'JetBrains Mono', monospace; font-size: 10px;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            color: rgba(147,197,253,0.65); padding: 4px 8px;
+            background: rgba(59,130,246,0.05); border-radius: 3px;
+            min-width: 80px; text-align: center;
+        }
+
+        /* COUNTER ANIM --------------------------------------------------- */
+        @keyframes pop { 0% { transform: scale(0.95); opacity: 0.6; } 100% { transform: scale(1); opacity: 1; } }
+        .pop { animation: pop 0.25s ease-out; }
+
+        /* MOBILE --------------------------------------------------------- */
+        @media (max-width: 768px) {
+            .hero-num { font-size: 120px !important; }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "84 Ways to Use AI in Games",
+      "description": "A catalog of 84 AI-powered mechanics for games, filterable by genre, status, and VRAM budget.",
+      "url": "https://tryllengine.com/use-cases.html"
+    }
+    </script>
+</head>
+
+<body class="bg-black">
+    <!-- NAV ======================================================== -->
+    <nav class="fixed top-4 left-4 right-4 md:top-6 md:left-1/2 md:transform md:-translate-x-1/2 z-50 nav-glass-card px-4 md:px-8 py-3 md:py-4 w-auto md:w-full md:max-w-7xl">
+        <div class="flex items-center justify-between">
+            <div class="logo">
+                <a href="index.html" class="block">
+                    <img src="./assets/logo/full-logo/light-text.svg" alt="Tryll Engine" class="h-8 md:h-12" />
+                </a>
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <ul class="nav-links flex gap-6 list-none">
+                    <li><a href="index.html#features" class="font-medium text-sm">Features</a></li>
+                    <li><a href="use-cases.html" class="font-medium text-sm text-white">Use Cases</a></li>
+                    <li><a href="team.html" class="font-medium text-sm">Team</a></li>
+                    <li><a href="index.html#pricing" class="font-medium text-sm">Pricing</a></li>
+                    <li><a href="index.html#faq" class="font-medium text-sm">FAQ</a></li>
+                    <li><a href="blog.html" class="font-medium text-sm">Blog</a></li>
+                </ul>
+                <div class="flex items-center gap-3">
+                    <a href="tryll-assistant.html" class="btn-primary px-4 py-2 rounded text-sm inline-flex items-center justify-center gap-2">
+                        <i class="fas fa-rocket"></i>Get Started
+                    </a>
+                    <a href="index.html#contact" class="btn-secondary px-4 py-2 rounded text-sm inline-flex items-center justify-center">Book a Demo</a>
+                </div>
+            </div>
+            <div class="md:hidden flex items-center gap-3">
+                <a href="tryll-assistant.html" class="btn-primary px-3 py-2 rounded text-xs">Get Started</a>
+                <button id="mobile-menu-btn" class="text-white p-2 rounded hover:bg-white/10">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden fixed inset-0 bg-black/95 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40">
+            <button id="mobile-menu-close" class="absolute top-6 right-6 text-white/60 hover:text-white">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <div class="flex flex-col items-center justify-center h-full space-y-6 text-center px-6">
+                <a href="index.html#features" class="text-white text-xl font-medium">Features</a>
+                <a href="use-cases.html" class="text-white text-xl font-medium">Use Cases</a>
+                <a href="team.html" class="text-white text-xl font-medium">Team</a>
+                <a href="index.html#pricing" class="text-white text-xl font-medium">Pricing</a>
+                <a href="index.html#faq" class="text-white text-xl font-medium">FAQ</a>
+                <a href="blog.html" class="text-white text-xl font-medium">Blog</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO ======================================================= -->
+    <header class="relative pt-36 pb-16 md:pt-48 md:pb-24 hero-grid overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 md:px-8 relative">
+            <span class="terminal-label">/USE-CASES · v1.0 · Apr 2026</span>
+
+            <div class="flex flex-col lg:flex-row lg:items-end gap-10 lg:gap-16 mt-6">
+                <div class="flex-1">
+                    <h1 class="heading-primary text-[44px] sm:text-6xl md:text-7xl lg:text-[84px]">
+                        <span class="block">84 Ways</span>
+                        <span class="block">to Use AI</span>
+                        <span class="block" style="color: rgba(255,255,255,0.45);">in Games.</span>
+                    </h1>
+
+                    <div class="hero-stripe mt-10 max-w-2xl"></div>
+
+                    <p class="mt-8 text-lg md:text-xl max-w-2xl" style="color: rgba(255,255,255,0.75); line-height: 1.55;">
+                        A working atlas of what on-device AI actually lets you ship.
+                        Filter by genre, technical status, and VRAM budget — the three questions every engineer asks first.
+                    </p>
+
+                    <div class="mt-10 flex flex-wrap gap-3 items-center">
+                        <a href="#explorer" class="btn-primary px-6 py-3 rounded inline-flex items-center gap-2">
+                            <i class="fas fa-compass"></i>Open the atlas
+                        </a>
+                        <a href="index.html#contact" class="btn-secondary px-6 py-3 rounded inline-flex items-center gap-2">
+                            Book a demo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex-shrink-0 hidden lg:block">
+                    <div class="hero-num text-[260px]" style="opacity: 1">84</div>
+                    <div class="mono text-xs mt-2" style="color: rgba(147,197,253,0.6); letter-spacing: 0.15em; text-transform: uppercase;">
+                        mechanics indexed
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick stats row -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 pt-10 border-t border-white/10">
+                <div>
+                    <div class="mono text-[11px]" style="color: rgba(147,197,253,0.6); letter-spacing: 0.15em; text-transform: uppercase;">Available now</div>
+                    <div class="heading-primary text-3xl md:text-4xl mt-2" id="stat-now">—</div>
+                    <div class="text-xs mt-1" style="color: rgba(255,255,255,0.5);">SLM + embeddings + memory</div>
+                </div>
+                <div>
+                    <div class="mono text-[11px]" style="color: rgba(147,197,253,0.6); letter-spacing: 0.15em; text-transform: uppercase;">Coming soon</div>
+                    <div class="heading-primary text-3xl md:text-4xl mt-2" id="stat-soon">—</div>
+                    <div class="text-xs mt-1" style="color: rgba(255,255,255,0.5);">TTS · STT · RAG</div>
+                </div>
+                <div>
+                    <div class="mono text-[11px]" style="color: rgba(147,197,253,0.6); letter-spacing: 0.15em; text-transform: uppercase;">Experimental</div>
+                    <div class="heading-primary text-3xl md:text-4xl mt-2" id="stat-exp">—</div>
+                    <div class="text-xs mt-1" style="color: rgba(255,255,255,0.5);">Vision · image · music gen</div>
+                </div>
+                <div>
+                    <div class="mono text-[11px]" style="color: rgba(147,197,253,0.6); letter-spacing: 0.15em; text-transform: uppercase;">Genres covered</div>
+                    <div class="heading-primary text-3xl md:text-4xl mt-2" id="stat-genres">—</div>
+                    <div class="text-xs mt-1" style="color: rgba(255,255,255,0.5);">RPG · Horror · Strategy · …</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MODE SWITCH ================================================ -->
+    <section id="explorer" class="relative py-12 md:py-16">
+        <div class="max-w-7xl mx-auto px-6 md:px-8">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+                <div>
+                    <span class="terminal-label">/explorer</span>
+                    <h2 class="heading-secondary text-3xl md:text-5xl mt-3">Pick a lens.</h2>
+                    <p class="mt-3 text-base md:text-lg max-w-2xl" style="color: rgba(255,255,255,0.65);">
+                        Three ways to read the same 84 mechanics — catalog, spec sheet, or studio playground.
+                    </p>
+                </div>
+                <div class="mode-switch" role="tablist">
+                    <button class="mode-btn active" data-mode="atlas">01 · Atlas</button>
+                    <button class="mode-btn" data-mode="console">02 · Console</button>
+                    <button class="mode-btn" data-mode="playground">03 · Playground</button>
+                </div>
+            </div>
+
+            <!-- ============ VARIATION A — ATLAS ============================ -->
+            <div class="mode-panel" id="mode-atlas">
+                <div class="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-6 lg:gap-10">
+                    <!-- Genre rail -->
+                    <aside>
+                        <div class="sticky top-32">
+                            <div class="mono text-[11px] mb-3" style="color: rgba(147,197,253,0.6); letter-spacing: 0.15em; text-transform: uppercase;">Genre</div>
+                            <div id="genre-list" class="flex flex-col gap-1"></div>
+
+                            <div class="mono text-[11px] mt-8 mb-3" style="color: rgba(147,197,253,0.6); letter-spacing: 0.15em; text-transform: uppercase;">Status</div>
+                            <div class="flex flex-col gap-1">
+                                <label class="flex items-center gap-2 py-1.5 cursor-pointer text-sm" style="color: rgba(255,255,255,0.8);">
+                                    <input type="checkbox" class="atlas-status" value="now" checked> Available now
+                                </label>
+                                <label class="flex items-center gap-2 py-1.5 cursor-pointer text-sm" style="color: rgba(255,255,255,0.8);">
+                                    <input type="checkbox" class="atlas-status" value="soon" checked> Coming soon
+                                </label>
+                                <label class="flex items-center gap-2 py-1.5 cursor-pointer text-sm" style="color: rgba(255,255,255,0.8);">
+                                    <input type="checkbox" class="atlas-status" value="later" checked> Later
+                                </label>
+                                <label class="flex items-center gap-2 py-1.5 cursor-pointer text-sm" style="color: rgba(255,255,255,0.8);">
+                                    <input type="checkbox" class="atlas-status" value="far" checked> Experimental
+                                </label>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Cards -->
+                    <div>
+                        <div class="flex items-baseline justify-between mb-6">
+                            <div>
+                                <h3 id="atlas-genre-name" class="heading-tertiary text-2xl md:text-3xl"></h3>
+                                <p id="atlas-genre-blurb" class="text-sm mt-1" style="color: rgba(255,255,255,0.55);"></p>
+                            </div>
+                            <div class="mono text-xs" style="color: rgba(147,197,253,0.7);">
+                                <span id="atlas-count">0</span> / <span id="atlas-total">0</span>
+                            </div>
+                        </div>
+
+                        <div id="atlas-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============ VARIATION B — CONSOLE =========================== -->
+            <div class="mode-panel hidden" id="mode-console">
+                <div class="console-frame">
+                    <div class="console-head">
+                        <span class="console-dot" style="background: #ef4444"></span>
+                        <span class="console-dot" style="background: #f59e0b"></span>
+                        <span class="console-dot" style="background: #22c55e"></span>
+                        <span class="ml-2">tryll@capabilities ~ %</span>
+                        <span class="ml-auto hidden md:inline" id="console-query">--genre=rpg --status=all</span>
+                    </div>
+
+                    <div class="console-body">
+                        <!-- Filter bar -->
+                        <div class="p-4 md:p-6 border-b border-white/5 grid grid-cols-1 md:grid-cols-3 gap-5">
+                            <div>
+                                <div class="mono text-[10px] mb-2" style="color: rgba(147,197,253,0.6); letter-spacing: 0.15em; text-transform: uppercase;">$ --genre</div>
+                                <select id="c-genre" class="w-full bg-black/60 border border-white/10 rounded px-3 py-2 text-sm font-medium mono" style="color: rgba(255,255,255,0.9);">
+                                    <option value="all">all genres</option>
+                                </select>
+                            </div>
+                            <div>
+                                <div class="mono text-[10px] mb-2" style="color: rgba(147,197,253,0.6); letter-spacing: 0.15em; text-transform: uppercase;">$ --status</div>
+                                <select id="c-status" class="w-full bg-black/60 border border-white/10 rounded px-3 py-2 text-sm font-medium mono" style="color: rgba(255,255,255,0.9);">
+                                    <option value="all">all statuses</option>
+                                    <option value="now">available now</option>
+                                    <option value="soon">coming soon</option>
+                                    <option value="later">later</option>
+                                    <option value="far">experimental</option>
+                                </select>
+                            </div>
+                            <div>
+                                <div class="mono text-[10px] mb-2" style="color: rgba(147,197,253,0.6); letter-spacing: 0.15em; text-transform: uppercase;">$ --vram-budget · <span id="c-vram-label">16GB</span></div>
+                                <input id="c-vram" type="range" min="4" max="24" step="4" value="16" class="slider">
+                                <div class="mono text-[10px] mt-1 flex justify-between" style="color: rgba(255,255,255,0.35);">
+                                    <span>4GB</span><span>8</span><span>12</span><span>16</span><span>20</span><span>24GB</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Column header -->
+                        <div class="console-row hidden md:grid" style="background: rgba(59,130,246,0.04); border-bottom: 1px solid rgba(255,255,255,0.08); padding-top: 10px; padding-bottom: 10px;">
+                            <div class="mono text-[10px]" style="color: rgba(147,197,253,0.55); letter-spacing: 0.12em; text-transform: uppercase;">ID</div>
+                            <div class="mono text-[10px]" style="color: rgba(147,197,253,0.55); letter-spacing: 0.12em; text-transform: uppercase;">Capability</div>
+                            <div class="mono text-[10px]" style="color: rgba(147,197,253,0.55); letter-spacing: 0.12em; text-transform: uppercase;">Model</div>
+                            <div class="mono text-[10px]" style="color: rgba(147,197,253,0.55); letter-spacing: 0.12em; text-transform: uppercase;">Status</div>
+                            <div class="mono text-[10px] text-right" style="color: rgba(147,197,253,0.55); letter-spacing: 0.12em; text-transform: uppercase;">VRAM est.</div>
+                        </div>
+
+                        <div id="console-rows" style="max-height: 680px; overflow-y: auto;"></div>
+
+                        <div class="console-head" style="border-top: 1px solid rgba(255,255,255,0.06); border-bottom: none;">
+                            <span><span id="console-count">0</span> results · <span id="console-fitable">0</span> fit the VRAM budget</span>
+                            <span class="ml-auto">exec_time: <span id="console-exec">0.08</span>s</span>
+                        </div>
+                        <div class="scan-line" style="top: 40%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============ VARIATION C — PLAYGROUND ======================= -->
+            <div class="mode-panel hidden" id="mode-playground">
+                <div class="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-6">
+                    <!-- Config panel -->
+                    <div class="pg-panel p-6 md:p-8">
+                        <span class="terminal-label">Configure</span>
+                        <h3 class="heading-tertiary text-2xl mt-2">Build your game.</h3>
+                        <p class="text-sm mt-2" style="color: rgba(255,255,255,0.6);">
+                            Pick a genre and a VRAM budget. We'll spec out what Tryll gives you — today and on the roadmap.
+                        </p>
+
+                        <!-- Genre -->
+                        <div class="mt-6">
+                            <div class="mono text-[11px] mb-2" style="color: rgba(147,197,253,0.65); letter-spacing: 0.1em; text-transform: uppercase;">Genre</div>
+                            <div id="pg-genre-chips" class="flex flex-wrap gap-2"></div>
+                        </div>
+
+                        <!-- VRAM slider -->
+                        <div class="mt-7">
+                            <div class="flex items-baseline justify-between mb-3">
+                                <div class="mono text-[11px]" style="color: rgba(147,197,253,0.65); letter-spacing: 0.1em; text-transform: uppercase;">VRAM budget</div>
+                                <div class="mono text-sm" style="color: #fff;"><span id="pg-vram-label">16</span> GB</div>
+                            </div>
+                            <input id="pg-vram" type="range" min="4" max="24" step="2" value="16" class="slider">
+                            <div class="flex justify-between mt-2 mono text-[10px]" style="color: rgba(255,255,255,0.4);">
+                                <span>GTX 1660</span><span>RTX 3060</span><span>RTX 4070</span><span>RTX 4090</span>
+                            </div>
+                        </div>
+
+                        <!-- Category toggles -->
+                        <div class="mt-7">
+                            <div class="mono text-[11px] mb-2" style="color: rgba(147,197,253,0.65); letter-spacing: 0.1em; text-transform: uppercase;">Include categories</div>
+                            <div id="pg-cat-chips" class="flex flex-wrap gap-2"></div>
+                        </div>
+
+                        <!-- Readout -->
+                        <div class="mt-8 pt-6 border-t border-white/10">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <div class="mono text-[11px]" style="color: rgba(147,197,253,0.65); letter-spacing: 0.1em; text-transform: uppercase;">Total mechanics</div>
+                                    <div class="heading-primary text-4xl mt-1"><span id="pg-total">0</span></div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="mono text-[11px]" style="color: rgba(134,239,172,0.8); letter-spacing: 0.1em; text-transform: uppercase;">Shippable today</div>
+                                    <div class="heading-primary text-4xl mt-1" style="color: #86efac;"><span id="pg-now">0</span></div>
+                                </div>
+                            </div>
+                            <div class="mt-4 h-1.5 bg-white/5 rounded-full overflow-hidden">
+                                <div id="pg-bar" class="h-full" style="width: 0%; background: linear-gradient(90deg, #22c55e, #3b82f6); transition: width 0.35s ease-out;"></div>
+                            </div>
+                            <div class="mt-2 mono text-[10px]" style="color: rgba(255,255,255,0.45);">
+                                <span id="pg-pct">0</span>% of your selection is shippable right now with Tryll.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Spec sheet -->
+                    <div>
+                        <div class="flex items-baseline justify-between mb-4">
+                            <div>
+                                <span class="terminal-label">Spec sheet</span>
+                                <h3 class="heading-tertiary text-2xl mt-1">
+                                    What your <span id="pg-genre-name" style="color: #93c5fd;">RPG</span> could do.
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div id="pg-spec-container" class="pg-spec"></div>
+
+                        <div class="mt-6 flex flex-wrap gap-3">
+                            <a href="index.html#contact" class="btn-primary px-6 py-3 rounded inline-flex items-center gap-2">
+                                <i class="fas fa-handshake"></i>Talk to us about this stack
+                            </a>
+                            <a href="boscotryll.html" class="btn-secondary px-6 py-3 rounded inline-flex items-center gap-2">
+                                See it live in BoscoTryll
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEGEND / STATUS EXPLANATIONS ================================= -->
+    <section class="py-16 md:py-20 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 md:px-8">
+            <span class="terminal-label">/status-model</span>
+            <h2 class="heading-secondary text-3xl md:text-4xl mt-3 max-w-3xl">
+                What "available" means, exactly.
+            </h2>
+            <p class="mt-3 text-base md:text-lg max-w-2xl" style="color: rgba(255,255,255,0.65);">
+                Honest labeling so your eng team isn't guessing at our roadmap.
+            </p>
+
+            <div class="mt-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+                <div class="card-base p-6">
+                    <span class="badge status-now"><span class="badge-dot"></span>Available now</span>
+                    <h3 class="heading-tertiary text-lg mt-4">Shippable in 2026.</h3>
+                    <p class="mt-2 text-sm" style="color: rgba(255,255,255,0.65); line-height: 1.55;">
+                        SLM inference, embeddings, and persistent memory (semantic search). Everything you need for dynamic dialogue, NPC memory, and reasoning agents. Running on your player's GPU.
+                    </p>
+                </div>
+                <div class="card-base p-6">
+                    <span class="badge status-soon"><span class="badge-dot"></span>Coming soon</span>
+                    <h3 class="heading-tertiary text-lg mt-4">TTS, STT, RAG.</h3>
+                    <p class="mt-2 text-sm" style="color: rgba(255,255,255,0.65); line-height: 1.55;">
+                        Local voice synthesis, speech-to-text, and retrieval-augmented generation over game knowledge bases. On the near roadmap — months, not years.
+                    </p>
+                </div>
+                <div class="card-base p-6">
+                    <span class="badge status-later"><span class="badge-dot"></span>Later</span>
+                    <h3 class="heading-tertiary text-lg mt-4">Vision, image, music.</h3>
+                    <p class="mt-2 text-sm" style="color: rgba(255,255,255,0.65); line-height: 1.55;">
+                        Vision-language models, real-time image generation, and music generation. Models exist, but on-device real-time use is still maturing. Pilot-only.
+                    </p>
+                </div>
+                <div class="card-base p-6">
+                    <span class="badge status-far"><span class="badge-dot"></span>Experimental</span>
+                    <h3 class="heading-tertiary text-lg mt-4">Research-grade.</h3>
+                    <p class="mt-2 text-sm" style="color: rgba(255,255,255,0.65); line-height: 1.55;">
+                        Unproven concepts or heavy R&D: live voice cloning, adaptive RL opponents, emotional biometrics. Interesting, but not a promise.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA ======================================================== -->
+    <section class="py-20 md:py-28 border-t border-white/10 relative overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(59,130,246,0.12), transparent 70%);"></div>
+        <div class="max-w-5xl mx-auto px-6 md:px-8 text-center relative">
+            <span class="terminal-label">/next</span>
+            <h2 class="heading-primary text-4xl md:text-6xl mt-4 max-w-3xl mx-auto">
+                Which of these <span style="color: #93c5fd;">84</span> ships in your next build?
+            </h2>
+            <p class="mt-6 text-lg md:text-xl max-w-2xl mx-auto" style="color: rgba(255,255,255,0.7);">
+                If you're a studio evaluating on-device AI — pick three mechanics from the atlas and we'll prototype them on your engine within two weeks.
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-3">
+                <a href="index.html#contact" class="btn-primary px-8 py-4 rounded inline-flex items-center gap-2">
+                    <i class="fas fa-rocket"></i>Request a prototype
+                </a>
+                <a href="https://discord.gg/EujjpZTfz" class="btn-secondary px-8 py-4 rounded inline-flex items-center gap-2">
+                    <i class="fab fa-discord"></i>Join the dev Discord
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER ===================================================== -->
+    <footer class="py-8 border-t border-white/20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center gap-6 md:grid md:grid-cols-3 md:items-center">
+                <div class="footer-link text-sm order-2 md:order-1 text-center md:text-left">
+                    © 2026 Tryll Engine, Inc. All rights reserved.
+                </div>
+                <div class="flex gap-6 items-center justify-center order-1 md:order-2">
+                    <a href="https://discord.gg/EujjpZTfz" class="footer-link text-xl"><i class="fab fa-discord"></i></a>
+                    <a href="https://www.youtube.com/@Tryll_Engine" class="footer-link text-xl"><i class="fab fa-youtube"></i></a>
+                    <a href="https://instagram.com/tryll_engine" class="footer-link text-xl"><i class="fab fa-instagram"></i></a>
+                    <a href="https://tiktok.com/@tryll_engine" class="footer-link text-xl"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.linkedin.com/company/tryllengine/" class="footer-link text-xl"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <div class="flex gap-6 order-3 justify-center md:justify-end">
+                    <a href="privacy-policy.html" class="footer-link text-sm">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- DATA + LOGIC =============================================== -->
+    <script src="use-cases-data.js"></script>
+    <script src="use-cases-app.js"></script>
+</body>
+</html>

@@ -11,7 +11,7 @@
  */
 
 // ====== CONFIG ======
-const ADMIN_EMAIL = 'sasha.glotov@tryllengine.com';
+const ADMIN_EMAIL = 'evaluations@tryllengine.com';
 const FROM_NAME = 'Tryll Engine';
 const SHEET_NAME = 'Acceptances';
 // ====================

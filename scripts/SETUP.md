@@ -21,7 +21,7 @@ One-time setup, ~10 minutes. After that, inviting a new client = adding a row to
 1. In the sheet: **Extensions → Apps Script**.
 2. Delete the default `Code.gs` content and paste the entire contents of [`ela-acceptance.gs`](./ela-acceptance.gs).
 3. At the top of the file, confirm the config:
-   - `ADMIN_EMAIL` — where acceptance notifications are sent. Defaults to `sasha.glotov@tryllengine.com`.
+   - `ADMIN_EMAIL` — where acceptance notifications are sent. Defaults to `evaluations@tryllengine.com`.
    - `FROM_NAME` — sender name on outgoing emails (admin notification + receipt to evaluator).
    - `SHEET_NAME` — must match your tab name (`Acceptances`).
 4. Click the **Save** icon (or Ctrl/Cmd-S).

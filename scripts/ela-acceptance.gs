@@ -14,6 +14,7 @@
 const ADMIN_EMAIL = 'evaluations@tryllengine.com';
 const FROM_NAME = 'Tryll Engine';
 const SHEET_NAME = 'Acceptances';
+const BASE_URL = 'https://tryllengine.com/tryll-plugin-alpha.html';
 // ====================
 
 const COL = {
@@ -32,6 +33,10 @@ const COL = {
 
 function doPost(e) {
   try {
+    if (!e || !e.postData || !e.postData.contents) {
+      // Manual Run from the editor or empty request — return a friendly message instead of crashing.
+      return jsonResponse({ status: 'error', message: 'No request body. doPost is invoked by the alpha access page over HTTPS; running it manually from the Apps Script editor will hit this branch by design.' });
+    }
     const payload = JSON.parse(e.postData.contents || '{}');
     const token = (payload.token || '').toString().trim();
 
@@ -73,15 +78,14 @@ function doPost(e) {
     }
 
     // First-time acceptance — stamp the row.
+    // Note: page_url is filled at token-generation time by the custom menu, so we don't overwrite it here.
     const acceptedAtIso = (payload.acceptedAt || new Date().toISOString()).toString();
     const elaVersion = (payload.elaVersion || '').toString();
     const userAgent = (payload.userAgent || '').toString();
-    const pageUrl = (payload.pageUrl || '').toString();
 
     sheet.getRange(rowIndex, COL.ACCEPTED_AT).setValue(new Date(acceptedAtIso));
     if (elaVersion) sheet.getRange(rowIndex, COL.ELA_VERSION).setValue(elaVersion);
     if (userAgent)  sheet.getRange(rowIndex, COL.USER_AGENT).setValue(userAgent);
-    if (pageUrl)    sheet.getRange(rowIndex, COL.PAGE_URL).setValue(pageUrl);
     sheet.getRange(rowIndex, COL.STATUS).setValue('accepted');
 
     const clientName = (row[COL.CLIENT_NAME - 1] || '').toString();
@@ -196,7 +200,9 @@ function generateTokenForActiveRow() {
     const resp = ui.alert('Token already set', 'Replace the existing token?', ui.ButtonSet.YES_NO);
     if (resp !== ui.Button.YES) return;
   }
-  cell.setValue(makeToken());
+  const token = makeToken();
+  cell.setValue(token);
+  sheet.getRange(row, COL.PAGE_URL).setValue(makeInviteUrl(token));
   if (!sheet.getRange(row, COL.INVITED_AT).getValue()) {
     sheet.getRange(row, COL.INVITED_AT).setValue(new Date());
   }
@@ -219,7 +225,9 @@ function generateTokensForEmptyCells() {
       const name = sheet.getRange(rowNum, COL.CLIENT_NAME).getValue();
       const email = sheet.getRange(rowNum, COL.EMAIL).getValue();
       if (name || email) {
-        sheet.getRange(rowNum, COL.TOKEN).setValue(makeToken());
+        const token = makeToken();
+        sheet.getRange(rowNum, COL.TOKEN).setValue(token);
+        sheet.getRange(rowNum, COL.PAGE_URL).setValue(makeInviteUrl(token));
         if (!sheet.getRange(rowNum, COL.INVITED_AT).getValue()) {
           sheet.getRange(rowNum, COL.INVITED_AT).setValue(new Date());
         }
@@ -241,4 +249,8 @@ function makeToken() {
     out += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
   }
   return out;
+}
+
+function makeInviteUrl(token) {
+  return BASE_URL + '?c=' + encodeURIComponent(token);
 }

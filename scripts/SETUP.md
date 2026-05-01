@@ -67,14 +67,15 @@ Refresh the spreadsheet tab. After ~5 seconds a new menu **"Tryll ELA"** appears
    - **client_name** — e.g. "Acme Studios — Alex Kim"
    - **email** — the evaluator's work email
    - **drive_url** — the Google Drive folder URL with the build for this client
-3. Select that row's `token` cell (column C), then **Tryll ELA → Generate token for selected row**. A 16-char token is generated; `invited_at` and `status=invited` are auto-filled.
+3. Select that row's `token` cell (column C), then **Tryll ELA → Generate token for selected row**. A 16-char token is generated; `page_url` (the personal access link), `invited_at`, and `status=invited` are auto-filled in the same row.
 4. Compose the invitation email to the client. Include:
-   - Personal access link: `https://tryllengine.com/tryll-plugin-alpha.html?c=<the-token>`
+   - Personal access link: copy the URL from the `page_url` cell (column H) of that row — it already has the token baked in
    - The archive password
    - Brief instructions ("read the ELA on that page, accept, then download from the Drive link that appears")
 
 When the client accepts:
-- The sheet row gets `accepted_at`, `user_agent`, `page_url`, `status=accepted` filled in
+
+- The sheet row gets `accepted_at`, `user_agent`, `status=accepted` filled in (`page_url` was already set at token generation and is left untouched)
 - You receive an admin email notification
 - The evaluator receives an automated receipt
 

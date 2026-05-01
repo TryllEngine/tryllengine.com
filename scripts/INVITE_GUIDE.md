@@ -2,11 +2,13 @@
 
 Short reference for the Tryll team: what the alpha access system is, and how to invite a new evaluator.
 
+> **Note for the team**: this file is in the public site repo, so the actual ELA Acceptances Sheet URL is redacted below. Keep the real Sheet bookmarked or pinned in Slack / Notion. The structure and instructions stay accurate.
+
 ## What this is
 
 We give invited partners temporary alpha access to the Tryll Plugin (Unreal & Unity). Each evaluator gets a **personal access link** (a unique token in the URL). Clicking it opens the Evaluation User Agreement (ELA). When they tick "I agree" and submit:
 
-- The acceptance is logged in the [ELA Acceptances Sheet](https://docs.google.com/spreadsheets/d/1t9rMx_6xJQIIJvmZ56ut7_05WHbgoj1XugCEP2VgPAc/edit?gid=0#gid=0) with timestamp, browser info, and ELA version.
+- The acceptance is logged in the [ELA Acceptances Sheet](https://docs.google.com/spreadsheets/d/REDACTED/edit) with timestamp, browser info, and ELA version.
 - An admin notification is sent to `evaluations@tryllengine.com` so the whole team is in the loop.
 - An automated receipt is sent to the evaluator (BCC'd to `evaluations@`).
 - The page reveals the evaluator's Google Drive folder where they download the build.
@@ -28,7 +30,7 @@ You'll need:
 
 ### Steps
 
-1. Open the [ELA Acceptances Sheet](https://docs.google.com/spreadsheets/d/1t9rMx_6xJQIIJvmZ56ut7_05WHbgoj1XugCEP2VgPAc/edit?gid=0#gid=0).
+1. Open the [ELA Acceptances Sheet](https://docs.google.com/spreadsheets/d/REDACTED/edit).
 
 2. Go to a new row and fill in:
    - **Column A — `client_name`**: e.g. "Acme Studios — Alex Kim"

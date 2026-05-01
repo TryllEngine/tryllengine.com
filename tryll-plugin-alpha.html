@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K8MPGKVX');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tryll Plugin — Private Alpha Access</title>
+
+    <!-- Hidden page: do not index -->
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+
+    <meta name="description" content="Private alpha access for Tryll Engine plugin (Unreal & Unity). Evaluation builds for invited partners only.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/favicon/site.webmanifest">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#232E41',
+                        secondary: '#F6F0EB',
+                        'primary-light': '#2a3750',
+                        'primary-dark': '#1a232f',
+                        'secondary-light': '#ffffff',
+                        'secondary-dark': '#e8e2dd',
+                        dark: {
+                            900: '#0a0d12',
+                            800: '#0f1419',
+                            700: '#141a20',
+                            600: '#1a2026',
+                            500: '#1f262d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        :root {
+            --typo-label: 12px;
+            --typo-copy: 14px;
+            --typo-largecopy: 16px;
+            --typo-subtitle: 20px;
+            --typo-title: 32px;
+            --typo-hero: 48px;
+        }
+
+        @media (min-width: 768px) {
+            :root {
+                --typo-label: 13px;
+                --typo-copy: 16px;
+                --typo-largecopy: 18px;
+                --typo-subtitle: 24px;
+                --typo-title: 48px;
+                --typo-hero: 62px;
+            }
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #000000;
+            background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: rgba(255, 255, 255, 0.85);
+            overflow-x: hidden;
+            line-height: 1.5em;
+            letter-spacing: -0.011em;
+            font-weight: 449;
+            font-size: var(--typo-copy);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 9998;
+            pointer-events: none;
+            opacity: 0.018;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 256px 256px;
+        }
+
+        .heading-primary {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            color: #ffffff;
+        }
+
+        .heading-secondary {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            color: #ffffff;
+        }
+
+        .body-large {
+            font-size: var(--typo-largecopy);
+            line-height: 1.6;
+            font-weight: 449;
+            color: rgba(255, 255, 255, 0.75);
+            letter-spacing: -0.008em;
+            text-wrap: balance;
+        }
+
+        .body-medium {
+            font-size: var(--typo-copy);
+            line-height: 1.5em;
+            font-weight: 449;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: -0.006em;
+            text-wrap: balance;
+        }
+
+        .mono-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            letter-spacing: 0.025em;
+        }
+
+        .terminal-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: rgba(59, 130, 246, 0.7);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .terminal-label::before {
+            content: '// ';
+            opacity: 0.5;
+        }
+
+        button, [role="button"], a {
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background-color: #3B82F6;
+            color: #ffffff;
+            border: none;
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.12s ease-out;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.85em;
+            border-radius: 3px;
+        }
+
+        .btn-primary:hover {
+            background-color: #2563EB;
+            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5);
+        }
+
+        .btn-primary:disabled {
+            background-color: rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.3);
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.12s ease-out;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.85em;
+            border-radius: 3px;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+        }
+
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        *, *::before, *::after {
+            font-weight: inherit;
+        }
+
+        .fas, .fa-solid, .fas::before, .fa-solid::before { font-weight: 900 !important; }
+        .far, .fa-regular, .far::before, .fa-regular::before { font-weight: 400 !important; }
+        .fab, .fa-brands, .fab::before, .fa-brands::before { font-weight: 400 !important; }
+
+        .font-normal { font-weight: 449 !important; }
+        .font-medium { font-weight: 500 !important; }
+        .font-semibold { font-weight: 600 !important; }
+        .font-bold { font-weight: 650 !important; }
+
+        .text-secondary {
+            color: rgba(255, 255, 255, 0.65);
+            font-weight: 449;
+            text-wrap: balance;
+        }
+
+        p {
+            font-weight: 449;
+            text-wrap: balance;
+            line-height: 1.5em;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        li {
+            font-weight: 449;
+            line-height: 1.5em;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 4px !important;
+            transition: all 0.15s ease-out;
+            border-top: 2px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.04);
+            border-top-color: rgba(59, 130, 246, 0.5);
+        }
+
+        .nav-glass-card {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.15s ease-out;
+            background: rgba(0, 0, 0, 0.88);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-glass-card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav-glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        /* ELA prose */
+        .prose h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            color: #ffffff;
+            font-size: var(--typo-largecopy);
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .prose p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            font-size: var(--typo-copy);
+            font-weight: 449;
+            margin-bottom: 0.85rem;
+        }
+
+        .prose ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .prose li {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            font-size: var(--typo-copy);
+            font-weight: 449;
+            margin-bottom: 0.35rem;
+        }
+
+        .prose strong {
+            color: rgba(255, 255, 255, 0.92);
+            font-weight: 600;
+        }
+
+        /* Scrollable ELA box */
+        .ela-scroll {
+            max-height: 420px;
+            overflow-y: auto;
+            padding: 1.25rem 1.5rem;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
+        }
+
+        .ela-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        .ela-scroll::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.03);
+        }
+        .ela-scroll::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 4px;
+        }
+        .ela-scroll::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Custom checkbox */
+        .ela-checkbox {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 1.5px solid rgba(255, 255, 255, 0.25);
+            border-radius: 3px;
+            background: rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            position: relative;
+            flex-shrink: 0;
+            margin-top: 2px;
+            transition: all 0.12s ease-out;
+        }
+
+        .ela-checkbox:hover {
+            border-color: rgba(59, 130, 246, 0.6);
+        }
+
+        .ela-checkbox:checked {
+            background: #3B82F6;
+            border-color: #3B82F6;
+        }
+
+        .ela-checkbox:checked::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 1px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .ela-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            padding: 0.7rem 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: 'DM Sans', sans-serif;
+            font-size: var(--typo-copy);
+            transition: all 0.12s ease-out;
+        }
+
+        .ela-input:focus {
+            outline: none;
+            border-color: rgba(59, 130, 246, 0.6);
+            background: rgba(0, 0, 0, 0.55);
+        }
+
+        .ela-input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .download-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+            transition: all 0.15s ease-out;
+        }
+
+        .download-row:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .credential-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px dashed rgba(255, 255, 255, 0.12);
+            border-radius: 3px;
+        }
+
+        .credential-row code {
+            font-family: 'JetBrains Mono', monospace;
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 0.95em;
+            flex: 1;
+            user-select: all;
+        }
+
+        .copy-btn {
+            color: rgba(255, 255, 255, 0.5);
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            padding: 0.35rem 0.7rem;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            transition: all 0.12s ease-out;
+        }
+
+        .copy-btn:hover {
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .copy-btn.copied {
+            color: #3B82F6;
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .info-banner {
+            background: rgba(59, 130, 246, 0.06);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 3px;
+            padding: 0.85rem 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: var(--typo-copy);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+        }
+
+        .info-banner i {
+            color: rgba(59, 130, 246, 0.85);
+            margin-top: 3px;
+        }
+
+        .step-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            border-radius: 999px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(59, 130, 246, 0.95);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8MPGKVX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Navigation -->
+    <nav class="fixed top-4 left-4 right-4 md:top-6 md:left-1/2 md:transform md:-translate-x-1/2 z-50 nav-glass-card px-4 md:px-8 py-3 md:py-4 w-auto md:w-full md:max-w-7xl">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3 md:gap-4">
+                <div class="logo">
+                    <a href="/" class="block">
+                        <img src="./assets/logo/full-logo/light-text.svg" alt="Tryll Engine" class="h-8 md:h-12" />
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <span class="step-pill hidden sm:inline-flex">
+                    <i class="fas fa-lock"></i>
+                    Private Alpha
+                </span>
+                <a href="mailto:sasha.glotov@tryllengine.com" class="btn-secondary px-4 py-2 rounded text-sm inline-flex items-center justify-center gap-2">
+                    <i class="fas fa-envelope"></i>
+                    <span class="hidden sm:inline">Contact</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="min-h-screen relative overflow-hidden" style="padding-top: 120px; padding-bottom: 80px;">
+        <div class="container mx-auto px-4 md:px-6 relative z-10 max-w-3xl">
+
+            <!-- Header -->
+            <div class="mb-8">
+                <span class="terminal-label">PLUGIN_ALPHA / EVALUATION_ACCESS</span>
+                <h1 class="heading-primary mb-4" style="font-size: var(--typo-title);">
+                    Tryll Plugin — Private Alpha
+                </h1>
+                <p class="body-large" style="color: rgba(255, 255, 255, 0.7);">
+                    Evaluation builds for invited partners. Read and accept the Evaluation User Agreement below to access the download.
+                </p>
+            </div>
+
+            <!-- Invalid/missing token state -->
+            <div id="invalid-link-card" class="glass-card p-6 md:p-8 mb-6" style="display: none;">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fas fa-link-slash text-xl" style="color: rgba(239, 68, 68, 0.85);"></i>
+                    <h2 class="heading-secondary" style="font-size: var(--typo-subtitle);">
+                        Access link missing or invalid
+                    </h2>
+                </div>
+                <p class="body-medium mb-3">
+                    This page requires a personal access link sent to you by Tryll Engine. The link looks like <span class="mono-text" style="color: rgba(255, 255, 255, 0.6);">.../tryll-plugin-alpha.html?c=&lt;your-token&gt;</span>.
+                </p>
+                <p class="body-medium">
+                    If you believe you should have access, please contact <a href="mailto:sasha.glotov@tryllengine.com" style="color: #3B82F6;">sasha.glotov@tryllengine.com</a> and we'll resend your invitation.
+                </p>
+            </div>
+
+            <!-- Already-accepted state (shown via JS) -->
+            <div id="already-accepted-banner" class="info-banner mb-6" style="display: none;">
+                <i class="fas fa-circle-check"></i>
+                <div>
+                    <span id="accepted-status-text">You accepted the Evaluation User Agreement.</span>
+                    <button id="reset-acceptance" class="ml-2 underline opacity-70 hover:opacity-100">Re-read agreement</button>
+                </div>
+            </div>
+
+            <!-- ELA Card -->
+            <div id="ela-card" class="glass-card p-6 md:p-8 mb-6" style="display: none;">
+                <div class="flex items-center justify-between mb-4 flex-wrap gap-3">
+                    <h2 class="heading-secondary" style="font-size: var(--typo-subtitle);">
+                        Evaluation User Agreement
+                    </h2>
+                    <span class="mono-text text-xs" style="color: rgba(255, 255, 255, 0.4);">
+                        Version 0.1 — Draft
+                    </span>
+                </div>
+
+                <p class="body-medium mb-4">
+                    This is a placeholder document. The final Evaluation User Agreement is being prepared by Tryll Engine, Inc. and will replace the text below before general distribution. By proceeding you agree to the terms as written.
+                </p>
+
+                <div class="ela-scroll prose">
+                    <p>
+                        <strong>Tryll Engine, Inc.</strong> ("Tryll") grants you ("Evaluator") a limited, non-exclusive, non-transferable, revocable license to install and use the Tryll Plugin alpha builds (the "Software") solely for internal evaluation purposes, subject to the terms below.
+                    </p>
+
+                    <h2>1. Evaluation Period</h2>
+                    <p>
+                        The Software is licensed for an evaluation period of <strong>ninety (90) days</strong> from the date of first installation. The Software contains a built-in time-lock and will <strong>cease to function</strong> upon expiration of the evaluation period. To extend the evaluation or transition to a commercial license, contact Tryll directly.
+                    </p>
+
+                    <h2>2. Permitted Use</h2>
+                    <ul>
+                        <li>Install the Software on machines under the Evaluator's control for the purpose of evaluating its functionality and fit for the Evaluator's projects.</li>
+                        <li>Build internal prototypes and test integrations with Unreal Engine and/or Unity.</li>
+                        <li>Provide feedback to Tryll regarding the Software's behavior, performance, and design.</li>
+                    </ul>
+
+                    <h2>3. Restrictions</h2>
+                    <ul>
+                        <li><strong>No redistribution.</strong> The Software, the download archive, and the archive password may not be shared, mirrored, published, or otherwise made available to any third party.</li>
+                        <li><strong>No commercial release.</strong> The Software may not be embedded in or distributed with any commercial product, demo, or publicly released build during the evaluation period.</li>
+                        <li><strong>No reverse engineering.</strong> The Evaluator shall not decompile, disassemble, or otherwise attempt to derive source code, model weights, or proprietary algorithms from the Software, except to the extent expressly permitted by applicable law.</li>
+                        <li><strong>No removal of notices.</strong> Copyright, trademark, and attribution notices contained in the Software must remain intact.</li>
+                    </ul>
+
+                    <h2>4. Confidentiality</h2>
+                    <p>
+                        The Software, accompanying documentation, performance data, and any non-public information disclosed by Tryll in connection with this evaluation are <strong>Confidential Information</strong>. The Evaluator shall protect such information using at least the same degree of care it uses to protect its own confidential information of similar importance, and in no event less than reasonable care, for a period of three (3) years from disclosure.
+                    </p>
+
+                    <h2>5. Feedback</h2>
+                    <p>
+                        Any feedback, suggestions, bug reports, or ideas the Evaluator provides regarding the Software may be used by Tryll without restriction or compensation, including incorporation into Tryll's products and services.
+                    </p>
+
+                    <h2>6. Ownership</h2>
+                    <p>
+                        The Software is licensed, not sold. All right, title, and interest in the Software, including all intellectual property rights, remain with Tryll and its licensors. No rights are granted except as expressly set forth in this Agreement.
+                    </p>
+
+                    <h2>7. No Warranty</h2>
+                    <p>
+                        THE SOFTWARE IS PROVIDED <strong>"AS IS"</strong> WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. The Software is alpha-stage and may contain defects, instability, or incomplete features.
+                    </p>
+
+                    <h2>8. Limitation of Liability</h2>
+                    <p>
+                        TO THE MAXIMUM EXTENT PERMITTED BY LAW, TRYLL SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS, REVENUE, DATA, OR USE, ARISING OUT OF OR IN CONNECTION WITH THIS AGREEMENT OR THE USE OF THE SOFTWARE.
+                    </p>
+
+                    <h2>9. Termination</h2>
+                    <p>
+                        This Agreement terminates automatically at the end of the evaluation period. Tryll may also terminate this Agreement at any time, with or without cause, by written notice (including email). Upon termination, the Evaluator shall cease all use of the Software and destroy or return all copies in its possession.
+                    </p>
+
+                    <h2>10. Governing Law</h2>
+                    <p>
+                        This Agreement shall be governed by the laws of the State of Delaware, USA, without regard to its conflict of law principles. Any disputes shall be resolved exclusively in the state or federal courts located in Delaware.
+                    </p>
+
+                    <h2>11. Entire Agreement</h2>
+                    <p>
+                        This Agreement constitutes the entire agreement between the parties regarding the Software evaluation and supersedes all prior or contemporaneous understandings.
+                    </p>
+
+                    <p style="color: rgba(255, 255, 255, 0.45); font-size: var(--typo-label); margin-top: 1.5rem;">
+                        For questions about this agreement, contact <a href="mailto:sasha.glotov@tryllengine.com" style="color: #3B82F6;">sasha.glotov@tryllengine.com</a>.
+                    </p>
+                </div>
+
+                <!-- Acceptance form -->
+                <form id="ela-form" class="mt-6 space-y-4">
+                    <label class="flex items-start gap-3 cursor-pointer select-none" for="ela-accept">
+                        <input id="ela-accept" type="checkbox" class="ela-checkbox" />
+                        <span class="body-medium" style="color: rgba(255, 255, 255, 0.85);">
+                            I have read and agree to the <strong>Evaluation User Agreement</strong>, including the 90-day evaluation period and the restriction on sharing the build or password.
+                        </span>
+                    </label>
+
+                    <div id="submit-error" class="info-banner" style="display: none; background: rgba(239, 68, 68, 0.06); border-color: rgba(239, 68, 68, 0.3);">
+                        <i class="fas fa-circle-exclamation" style="color: rgba(239, 68, 68, 0.85);"></i>
+                        <div id="submit-error-text" style="color: rgba(255, 255, 255, 0.85);"></div>
+                    </div>
+
+                    <button
+                        id="reveal-btn"
+                        type="submit"
+                        class="btn-primary px-6 py-3 rounded inline-flex items-center justify-center gap-2"
+                        disabled
+                    >
+                        <i id="reveal-btn-icon" class="fas fa-unlock"></i>
+                        <span id="reveal-btn-label">Reveal download</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Download Card (revealed after acceptance) -->
+            <div id="download-card" class="glass-card p-6 md:p-8" style="display: none;">
+                <div class="flex items-center justify-between mb-4 flex-wrap gap-3">
+                    <h2 class="heading-secondary" style="font-size: var(--typo-subtitle);">
+                        Download
+                    </h2>
+                    <span class="mono-text text-xs" style="color: rgba(59, 130, 246, 0.85);">
+                        <i class="fas fa-circle-check mr-1"></i>
+                        ELA accepted
+                    </span>
+                </div>
+
+                <p class="body-medium mb-5">
+                    Builds are hosted on Google Drive. The archive is password-protected — the password was sent to you in a separate email along with this link.
+                </p>
+
+                <!-- Drive link (href set by JS from backend response) -->
+                <a
+                    id="drive-link"
+                    href="#"
+                    target="_blank"
+                    rel="noopener"
+                    class="download-row no-underline mb-3"
+                >
+                    <div class="flex items-center gap-3">
+                        <i class="fab fa-google-drive text-2xl" style="color: rgba(59, 130, 246, 0.85);"></i>
+                        <div>
+                            <div style="color: rgba(255, 255, 255, 0.95); font-weight: 500;">Tryll Plugin — Unreal & Unity</div>
+                            <div class="text-sm" style="color: rgba(255, 255, 255, 0.5);">Open shared Google Drive folder</div>
+                        </div>
+                    </div>
+                    <i class="fas fa-arrow-up-right-from-square" style="color: rgba(255, 255, 255, 0.4);"></i>
+                </a>
+
+                <!-- Password note -->
+                <div class="info-banner mb-4" style="background: rgba(255, 255, 255, 0.02); border-color: rgba(255, 255, 255, 0.08);">
+                    <i class="fas fa-key" style="color: rgba(255, 255, 255, 0.5);"></i>
+                    <div>
+                        <strong style="color: rgba(255, 255, 255, 0.92);">Archive password.</strong>
+                        Sent to you by email along with this access link. If you can't find it, reply to that email or contact <a href="mailto:sasha.glotov@tryllengine.com" style="color: #3B82F6;">sasha.glotov@tryllengine.com</a>.
+                    </div>
+                </div>
+
+                <!-- 90-day reminder -->
+                <div class="info-banner">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong style="color: rgba(255, 255, 255, 0.92);">90-day evaluation period.</strong>
+                        The plugin will stop functioning 90 days after first installation. Reach out to <a href="mailto:sasha.glotov@tryllengine.com" style="color: #3B82F6;">sasha.glotov@tryllengine.com</a> to extend or transition to a commercial license.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center gap-4 md:flex-row md:justify-between">
+                <div class="text-secondary text-sm text-center md:text-left">
+                    &copy; 2026 Tryll Engine, Inc. All rights reserved.
+                </div>
+                <div class="flex gap-6">
+                    <a href="privacy-policy.html" class="text-secondary hover:text-white transition-colors duration-300 text-sm">Privacy Policy</a>
+                    <a href="mailto:sasha.glotov@tryllengine.com" class="text-secondary hover:text-white transition-colors duration-300 text-sm">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            // === Configuration ===
+            // Replace with your deployed Apps Script Web App URL after step 4 of the setup.
+            const ENDPOINT_URL = 'https://script.google.com/macros/s/AKfycbxESw1QC9kjZszUBM-iLlPB6R8X9mhitex5M3ou-iSRTo38eUa2fopqqFQ6LcWUBRJ7/exec';
+            const ELA_VERSION = '0.1-draft';
+
+            // === Elements ===
+            const invalidLinkCard = document.getElementById('invalid-link-card');
+            const elaCard = document.getElementById('ela-card');
+            const downloadCard = document.getElementById('download-card');
+            const acceptedBanner = document.getElementById('already-accepted-banner');
+            const acceptedStatusText = document.getElementById('accepted-status-text');
+            const resetBtn = document.getElementById('reset-acceptance');
+            const form = document.getElementById('ela-form');
+            const checkbox = document.getElementById('ela-accept');
+            const revealBtn = document.getElementById('reveal-btn');
+            const revealBtnIcon = document.getElementById('reveal-btn-icon');
+            const revealBtnLabel = document.getElementById('reveal-btn-label');
+            const submitError = document.getElementById('submit-error');
+            const submitErrorText = document.getElementById('submit-error-text');
+            const driveLink = document.getElementById('drive-link');
+
+            // === Helpers ===
+            function getToken() {
+                const params = new URLSearchParams(window.location.search);
+                const t = (params.get('c') || '').trim();
+                return t || null;
+            }
+
+            function storageKey(token) {
+                return 'tryll_ela_acceptance_v1::' + token;
+            }
+
+            function readAcceptance(token) {
+                try {
+                    const raw = localStorage.getItem(storageKey(token));
+                    if (!raw) return null;
+                    const data = JSON.parse(raw);
+                    if (!data || !data.acceptedAt || !data.driveUrl) return null;
+                    return data;
+                } catch (e) {
+                    return null;
+                }
+            }
+
+            function writeAcceptance(token, data) {
+                try {
+                    localStorage.setItem(storageKey(token), JSON.stringify(data));
+                } catch (e) { /* ignore */ }
+            }
+
+            function clearAcceptance(token) {
+                try {
+                    localStorage.removeItem(storageKey(token));
+                } catch (e) { /* ignore */ }
+            }
+
+            function formatDate(iso) {
+                try {
+                    const d = new Date(iso);
+                    return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+                } catch (e) {
+                    return iso;
+                }
+            }
+
+            function showInvalidLinkState() {
+                invalidLinkCard.style.display = '';
+                elaCard.style.display = 'none';
+                downloadCard.style.display = 'none';
+                acceptedBanner.style.display = 'none';
+            }
+
+            function showElaState() {
+                invalidLinkCard.style.display = 'none';
+                elaCard.style.display = '';
+                downloadCard.style.display = 'none';
+                acceptedBanner.style.display = 'none';
+                checkbox.checked = false;
+                revealBtn.disabled = true;
+                submitError.style.display = 'none';
+                setSubmitting(false);
+            }
+
+            function showAcceptedState(data) {
+                invalidLinkCard.style.display = 'none';
+                elaCard.style.display = 'none';
+                downloadCard.style.display = '';
+                acceptedBanner.style.display = '';
+                driveLink.setAttribute('href', data.driveUrl);
+                const dateStr = formatDate(data.acceptedAt);
+                acceptedStatusText.textContent = 'You accepted the Evaluation User Agreement on ' + dateStr + '.';
+            }
+
+            function setSubmitting(isSubmitting) {
+                if (isSubmitting) {
+                    revealBtn.disabled = true;
+                    revealBtnIcon.className = 'fas fa-spinner fa-spin';
+                    revealBtnLabel.textContent = 'Recording acceptance…';
+                } else {
+                    revealBtnIcon.className = 'fas fa-unlock';
+                    revealBtnLabel.textContent = 'Reveal download';
+                    revealBtn.disabled = !checkbox.checked;
+                }
+            }
+
+            function showError(message) {
+                submitError.style.display = '';
+                submitErrorText.textContent = message;
+            }
+
+            // === Init ===
+            const token = getToken();
+            if (!token) {
+                showInvalidLinkState();
+                return;
+            }
+
+            const cached = readAcceptance(token);
+            if (cached) {
+                showAcceptedState(cached);
+            } else {
+                showElaState();
+            }
+
+            // === Checkbox toggles button ===
+            checkbox.addEventListener('change', function () {
+                revealBtn.disabled = !checkbox.checked;
+                submitError.style.display = 'none';
+            });
+
+            // === Submit acceptance ===
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                if (!checkbox.checked) return;
+                submitError.style.display = 'none';
+                setSubmitting(true);
+
+                const payload = {
+                    token: token,
+                    acceptedAt: new Date().toISOString(),
+                    elaVersion: ELA_VERSION,
+                    userAgent: navigator.userAgent || '',
+                    pageUrl: window.location.href
+                };
+
+                // text/plain content-type avoids CORS preflight on Apps Script Web Apps
+                fetch(ENDPOINT_URL, {
+                    method: 'POST',
+                    mode: 'cors',
+                    redirect: 'follow',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify(payload)
+                })
+                .then(function (res) { return res.json(); })
+                .then(function (response) {
+                    if (!response || response.status !== 'ok') {
+                        const msg = (response && response.message) || 'Could not record your acceptance. Please try again or contact support.';
+                        showError(msg);
+                        setSubmitting(false);
+                        return;
+                    }
+
+                    const data = {
+                        acceptedAt: response.acceptedAt || payload.acceptedAt,
+                        driveUrl: response.driveUrl,
+                        elaVersion: payload.elaVersion
+                    };
+                    writeAcceptance(token, data);
+
+                    if (window.dataLayer) {
+                        window.dataLayer.push({
+                            event: 'ela_accepted',
+                            ela_version: data.elaVersion
+                        });
+                    }
+
+                    showAcceptedState(data);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                })
+                .catch(function (err) {
+                    showError('Network error while recording your acceptance. Please check your connection and try again.');
+                    setSubmitting(false);
+                });
+            });
+
+            // === Re-read agreement (local only — does not undo backend record) ===
+            resetBtn.addEventListener('click', function () {
+                clearAcceptance(token);
+                showElaState();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
+    </script>
+</body>
+</html>

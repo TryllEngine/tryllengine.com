@@ -67,7 +67,7 @@ Refresh the spreadsheet tab. After ~5 seconds a new menu **"Tryll ELA"** appears
    - **client_name** — e.g. "Acme Studios — Alex Kim"
    - **email** — the evaluator's work email
    - **drive_url** — the Google Drive folder URL with the build for this client
-3. Select that row's `token` cell (column C), then **Tryll ELA → Generate token for selected row**. A 16-char token is generated; `page_url` (the personal access link), `invited_at`, and `status=invited` are auto-filled in the same row.
+3. Select that row's `token` cell (column C). In the top Google Sheets menu bar (the row where **File**, **Edit**, **View**, **Help** live), open the custom **Tryll ELA** menu (rightmost, after Help) → **Generate token for selected row**. A 16-char token is generated; `page_url` (the personal access link), `invited_at`, and `status=invited` are auto-filled in the same row.
 4. Compose the invitation email to the client. Include:
    - Personal access link: copy the URL from the `page_url` cell (column H) of that row — it already has the token baked in
    - The archive password

@@ -76,8 +76,12 @@ Refresh the spreadsheet tab. After ~5 seconds a new menu **"Tryll ELA"** appears
 When the client accepts:
 
 - The sheet row gets `accepted_at`, `user_agent`, `status=accepted` filled in (`page_url` was already set at token generation and is left untouched)
-- You receive an admin email notification
-- The evaluator receives an automated receipt
+- An admin notification is sent to `ADMIN_EMAIL` (currently `evaluations@tryllengine.com`)
+- An acceptance receipt is sent to the evaluator, BCC'd to `ADMIN_EMAIL` so the team has a record of the outbound message; replies from the evaluator are routed to `ADMIN_EMAIL` rather than to the script owner
+
+### Make ADMIN_EMAIL a Google Group for team visibility
+
+If `ADMIN_EMAIL` is a Google Group (e.g. `evaluations@tryllengine.com` set up via Google Workspace), every member of that group receives both the admin notification and the BCC'd receipt. Replies that land at the group address are visible to all members. To set this up: Google Workspace Admin → **Directory → Groups → Create group** → add team members → ensure the group can receive external email (Posting permissions: at minimum members + service-account senders). The Apps Script doesn't need to know it's a group — `MailApp.sendEmail({to: 'evaluations@...'})` works the same for an individual address or a group address.
 
 ## Operations
 

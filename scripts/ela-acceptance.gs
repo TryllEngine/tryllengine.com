@@ -152,6 +152,7 @@ function notifyAdmin(clientName, evaluatorEmail, token, acceptedAtIso, elaVersio
     'Reminder: send the archive password to the evaluator (and attach a PDF copy of the ELA they accepted).';
   MailApp.sendEmail({
     to: ADMIN_EMAIL,
+    replyTo: ADMIN_EMAIL,
     subject: subject,
     body: body,
     name: FROM_NAME
@@ -167,11 +168,13 @@ function sendReceipt(evaluatorEmail, clientName, acceptedAtIso, elaVersion) {
     'Evaluation User Agreement (version ' + elaVersion + ') on ' + acceptedAtIso + '.\n\n' +
     'The archive password will follow in a separate email from us. The evaluation\n' +
     'period is 90 days from first installation.\n\n' +
-    'Keep this email for your records.\n\n' +
+    'Keep this email for your records. Reply to this email if you need to reach us.\n\n' +
     'Tryll Engine, Inc.\n' +
     ADMIN_EMAIL;
   MailApp.sendEmail({
     to: evaluatorEmail,
+    bcc: ADMIN_EMAIL,         // evals team gets a silent copy of every receipt
+    replyTo: ADMIN_EMAIL,     // client replies land in the evals group, not on the script owner
     subject: subject,
     body: body,
     name: FROM_NAME

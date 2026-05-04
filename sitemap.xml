@@ -26,11 +26,17 @@
     </url>
     <url>
         <loc>https://tryllengine.com/blog.html</loc>
-        <lastmod>2026-04-05</lastmod>
+        <lastmod>2026-04-29</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
-<url>
+    <url>
+        <loc>https://tryllengine.com/blog/posts/600k-from-early-game-ventures</loc>
+        <lastmod>2026-04-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://tryllengine.com/blog/posts/back-from-gdc-2026</loc>
         <lastmod>2026-04-05</lastmod>
         <changefreq>monthly</changefreq>

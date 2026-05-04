@@ -726,12 +726,12 @@
                 : `<div class="absolute inset-0 flex items-center justify-center"><i class="fas ${post.icon} text-5xl" style="color: rgba(59, 130, 246, 0.2);"></i></div>`;
 
             return `
-                <article class="glass-card" data-category="${post.category}">
-                    <a href="/blog/posts/${post.slug}" class="block p-4">
+                <article class="glass-card h-full" data-category="${post.category}">
+                    <a href="/blog/posts/${post.slug}" class="flex flex-col h-full p-4">
                         <div class="blog-card-image mb-4">${imageHtml}</div>
                         <h2 class="heading-tertiary text-lg mb-2 leading-snug">${post.title}</h2>
                         <p class="body-small line-clamp-2 mb-3" style="color: rgba(255,255,255,0.5);">${post.excerpt}</p>
-                        <div class="flex items-center gap-3">
+                        <div class="flex items-center gap-3 mt-auto">
                             <span class="category-accent">${categoryLabels[post.category] || post.category}</span>
                             <span style="color: rgba(255,255,255,0.3);">|</span>
                             <span class="body-small">${formatDate(post.date)}</span>

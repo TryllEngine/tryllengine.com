@@ -1,5 +1,17 @@
 [
   {
+    "slug": "welcome-milos-petkovic",
+    "title": "Welcome Miloš Petković as Tech Lead",
+    "excerpt": "Miloš Petković joins Tryll Engine as Tech Lead, bringing a decade of game development experience, including 6 years at Playrix as Lead Programmer on Homescapes.",
+    "category": "news",
+    "date": "2026-05-08",
+    "readTime": 2,
+    "image": "/assets/blog/welcome-milos-petkovic-cover.png",
+    "icon": "fa-code",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7458191594874265600"
+  },
+  {
     "slug": "600k-from-early-game-ventures",
     "title": "Tryll Engine Backed by Early Game Ventures with $600K Investment",
     "excerpt": "Early Game Ventures backs Tryll Engine with a $600K investment, kicking off a long-term partnership focused on bringing on-device AI to game developers.",

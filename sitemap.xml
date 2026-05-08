@@ -26,9 +26,15 @@
     </url>
     <url>
         <loc>https://tryllengine.com/blog.html</loc>
-        <lastmod>2026-04-29</lastmod>
+        <lastmod>2026-05-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://tryllengine.com/blog/posts/welcome-milos-petkovic</loc>
+        <lastmod>2026-05-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
     </url>
     <url>
         <loc>https://tryllengine.com/blog/posts/600k-from-early-game-ventures</loc>

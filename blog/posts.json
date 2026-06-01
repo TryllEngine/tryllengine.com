@@ -1,5 +1,17 @@
 [
   {
+    "slug": "welcome-nikolay-andreev",
+    "title": "Welcome Nikolay Andreev as Head of Growth",
+    "excerpt": "Nikolay Andreev joins Tryll Engine as Head of Growth, bringing 10+ years of communications and marketing experience across gamedev, tech, and venture.",
+    "category": "news",
+    "date": "2026-05-27",
+    "readTime": 2,
+    "image": "/assets/blog/welcome-nikolay-andreev-cover.png",
+    "icon": "fa-bullhorn",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7467146756787658752"
+  },
+  {
     "slug": "welcome-milos-petkovic",
     "title": "Welcome Miloš Petković as Tech Lead",
     "excerpt": "Miloš Petković joins Tryll Engine as Tech Lead, bringing a decade of game development experience, including 6 years at Playrix as Lead Programmer on Homescapes.",

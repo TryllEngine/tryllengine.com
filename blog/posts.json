@@ -1,5 +1,17 @@
 [
   {
+    "slug": "cloud-ai-off-switch",
+    "title": "When the AI Gets Switched Off",
+    "excerpt": "On Friday, Claude Fable 5 was shut down on a government order. We unpack the two hidden costs of cloud-AI dependency in games — the off switch and the bill — and why on-device inference is our answer.",
+    "category": "engineering",
+    "date": "2026-06-16",
+    "readTime": 2,
+    "image": "/assets/blog/cloud-ai-off-switch-cover.png",
+    "icon": "fa-power-off",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7472580613397716994"
+  },
+  {
     "slug": "welcome-nikolay-andreev",
     "title": "Welcome Nikolay Andreev as Head of Growth",
     "excerpt": "Nikolay Andreev joins Tryll Engine as Head of Growth, bringing 10+ years of communications and marketing experience across gamedev, tech, and venture.",

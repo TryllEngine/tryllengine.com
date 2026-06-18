@@ -38,4 +38,4 @@ If you're not sure which backend to pick, leave it on Vulkan — it works everyw
 
 ---
 
-Download the update on [Steam](https://store.steampowered.com/app/3442530/Tryll_Assistant/) and let us know how the new backends perform on your setup.
+Download the update on [Steam](https://store.steampowered.com/app/4193780/Tryll_Assistant/) and let us know how the new backends perform on your setup.

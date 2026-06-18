@@ -12,4 +12,4 @@
 - **Redesigned pages** — Contacts, FAQ, and About pages rebuilt for clarity
 - **Better stability** — improved logging and bug fixes across the board
 
-**[Download on Steam](https://store.steampowered.com/app/3442530/Tryll_Assistant/)** and let us know what you think.
+**[Download on Steam](https://store.steampowered.com/app/4193780/Tryll_Assistant/)** and let us know what you think.

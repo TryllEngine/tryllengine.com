@@ -22,8 +22,8 @@ Use `blog/content/tryll-assistant-v0-0-8-cuda-hip-support.md` as the structural 
 
 ## Steam App IDs
 
-- **Tryll Assistant**: `3442530` → `https://store.steampowered.com/app/3442530/Tryll_Assistant/`
-- **BoscoTryll**: `4193780` → `https://store.steampowered.com/app/4193780/`
+- **Tryll Assistant**: `4193780` → `https://store.steampowered.com/app/4193780/Tryll_Assistant/`
+- **BoscoTryll**: not on Steam (mod for Deep Rock Galactic distributed via mod.io)
 
 ## Workflow
 

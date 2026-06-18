@@ -9,21 +9,21 @@ Fetch and analyze Steam user reviews for Tryll Engine products, summarize sentim
 
 ## Steam App IDs
 
-- **Tryll Assistant**: `3442530`
-- **BoscoTryll**: `4193780`
+- **Tryll Assistant**: `4193780`
+- **BoscoTryll**: not yet published on Steam (mod for Deep Rock Galactic distributed via mod.io)
 
 ## Workflow
 
 ### Step 1: Determine which product
 
-Ask the user which product, or default to Tryll Assistant (`3442530`). If "all" or "both", run for each.
+Default to Tryll Assistant (`4193780`). BoscoTryll has no Steam appid yet — if asked, tell the user reviews are not available on Steam for that product.
 
 ### Step 2: Fetch reviews
 
 The Steam Store Review API is public — no API key needed.
 
 ```bash
-curl -s "https://store.steampowered.com/appreviews/3442530?json=1&language=all&num_per_page=100&filter=recent&purchase_type=all"
+curl -s "https://store.steampowered.com/appreviews/4193780?json=1&language=all&num_per_page=100&filter=recent&purchase_type=all"
 ```
 
 **Parameters:**
@@ -38,7 +38,7 @@ curl -s "https://store.steampowered.com/appreviews/3442530?json=1&language=all&n
 
 **Pagination**: Use `cursor` from response for more pages:
 ```bash
-curl -s "https://store.steampowered.com/appreviews/3442530?json=1&language=all&num_per_page=100&filter=recent&cursor={CURSOR}"
+curl -s "https://store.steampowered.com/appreviews/4193780?json=1&language=all&num_per_page=100&filter=recent&cursor={CURSOR}"
 ```
 
 ### Step 3: Parse the response
@@ -154,4 +154,4 @@ Offer to:
 - **Privacy**: Do not include Steam user IDs or usernames — keep reviews anonymous
 - **Low playtime context**: Note reviews from users with <30 min playtime
 - **Non-English reviews**: Count in totals, focus analysis on English
-- **Steam app IDs**: Tryll Assistant = `3442530`, BoscoTryll = `4193780`
+- **Steam app IDs**: Tryll Assistant = `4193780`. BoscoTryll is not on Steam.

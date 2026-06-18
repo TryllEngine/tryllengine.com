@@ -1,5 +1,17 @@
 [
   {
+    "slug": "closed-alpha-egv-funding",
+    "title": "Closed Alpha Opens — Backed by Early Game Ventures",
+    "excerpt": "Tryll Engine opens its closed alpha at a $6M valuation, backed by a $600K pre-seed from Early Game Ventures. Six entertainment companies are already building showcase experiences.",
+    "category": "news",
+    "date": "2026-06-16",
+    "readTime": 1,
+    "image": "/assets/blog/closed-alpha-egv-funding-cover.png",
+    "icon": "fa-rocket",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/posts/tryllengine_tryll-engine-has-opened-a-closed-alpha-as-activity-7473003093044056064-yMLH"
+  },
+  {
     "slug": "cloud-ai-off-switch",
     "title": "When the AI Gets Switched Off",
     "excerpt": "On Friday, Claude Fable 5 was shut down on a government order. We unpack the two hidden costs of cloud-AI dependency in games — the off switch and the bill — and why on-device inference is our answer.",

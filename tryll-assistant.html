@@ -606,13 +606,68 @@
         <div class="container mx-auto px-6">
 
             <!-- Footer newsletter block -->
-            <div class="max-w-xl mx-auto mb-10 md:mb-12 text-center">
-                <span class="terminal-label" style="margin-bottom: 0.75rem;">STAY_UP_TO_DATE</span>
-                <p class="body-medium mb-4" style="color: rgba(255, 255, 255, 0.55);">
-                    Subscribe for product news, roadmap updates, and studio-focused announcements.
-                </p>
-                <!-- MailerLite form: TY - Footer Updates Signup -->
-                <div class="ml-embedded" data-form="sTyOx9"></div>
+            <div class="max-w-md mx-auto mb-10 md:mb-12">
+                <form
+                    id="assistant-subscribe-form"
+                    class="glass-card p-5"
+                    data-form-id="185451758358627764"
+                    data-source="tryll-assistant"
+                    novalidate
+                >
+                    <div class="mb-4">
+                        <h3 class="heading-tertiary mb-1" style="font-size: var(--typo-largecopy);">
+                            Subscribe
+                        </h3>
+                        <p class="text-xs text-white/60">
+                            Sent when we ship something worth sharing. No spam.
+                        </p>
+                    </div>
+
+                    <div class="space-y-2.5">
+                        <input type="email" name="email" required
+                            autocomplete="email" inputmode="email"
+                            class="form-input w-full px-3 py-2.5 rounded text-sm"
+                            placeholder="Email">
+
+                        <div class="grid grid-cols-2 gap-2.5">
+                            <input type="text" name="name" required
+                                autocomplete="given-name"
+                                class="form-input w-full px-3 py-2.5 rounded text-sm"
+                                placeholder="Name">
+                            <input type="text" name="company" required
+                                autocomplete="organization"
+                                class="form-input w-full px-3 py-2.5 rounded text-sm"
+                                placeholder="Company">
+                        </div>
+
+                        <!-- Honeypot — bots fill it, humans don't see it -->
+                        <div style="position:absolute;left:-9999px;" aria-hidden="true">
+                            <input type="text" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <button type="submit"
+                            class="btn-primary w-full px-4 py-2.5 rounded text-sm inline-flex items-center justify-center mt-1">
+                            <span class="ml-btn-label">Get Updates</span>
+                            <span class="ml-btn-spinner hidden ml-2">
+                                <svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                                </svg>
+                            </span>
+                        </button>
+
+                        <p class="text-[11px] text-white/40 leading-relaxed pt-1">
+                            By subscribing, you agree to our <a href="privacy-policy.html" class="underline hover:text-white">Privacy Policy</a>.
+                        </p>
+
+                        <p class="ml-form-error hidden text-xs text-red-400 text-center"></p>
+                    </div>
+                </form>
+
+                <div id="assistant-subscribe-success" class="glass-card p-5 text-center hidden">
+                    <h3 class="heading-tertiary mb-1" style="font-size: var(--typo-largecopy);">You're in.</h3>
+                    <p class="text-xs text-white/60">Check your inbox to confirm.</p>
+                </div>
             </div>
 
             <div class="pt-6 border-t border-white/[0.06] flex flex-col items-center gap-6 md:grid md:grid-cols-3 md:items-center">
@@ -765,6 +820,117 @@
                 });
             });
         });
+    </script>
+
+    <!-- MailerLite custom subscribe handler (no backend) -->
+    <script>
+    (function () {
+        const ACCOUNT_ID = '2274886';
+        const ENDPOINT = (formId) => `https://assets.mailerlite.com/jsonp/${ACCOUNT_ID}/forms/${formId}/subscribe`;
+
+        function trackEvent(category, action, label) {
+            if (typeof window.dataLayer !== 'undefined') {
+                window.dataLayer.push({
+                    event: 'custom_event',
+                    event_category: category,
+                    event_action: action,
+                    event_label: label
+                });
+            }
+        }
+
+        async function submitToMailerLite(formEl) {
+            const formId = formEl.dataset.formId;
+            const source = formEl.dataset.source || 'unknown';
+            if (!formId) {
+                return { ok: false, error: 'Form is misconfigured. Please contact us at team@tryllengine.com.' };
+            }
+
+            const honeypot = formEl.querySelector('input[name="website"]');
+            if (honeypot && honeypot.value.trim() !== '') {
+                return { ok: true, silent: true };
+            }
+
+            const data = new URLSearchParams();
+            const email = formEl.querySelector('[name="email"]')?.value?.trim();
+            const name = formEl.querySelector('[name="name"]')?.value?.trim();
+            const company = formEl.querySelector('[name="company"]')?.value?.trim();
+
+            if (!email) return { ok: false, error: 'Email is required.' };
+
+            data.append('fields[email]', email);
+            if (name) data.append('fields[name]', name);
+            if (company) data.append('fields[company]', company);
+            data.append('fields[signup_source]', source);
+            data.append('ml-submit', '1');
+            data.append('anticsrf', 'true');
+
+            try {
+                const response = await fetch(ENDPOINT(formId), {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: data.toString()
+                });
+                const json = await response.json().catch(() => ({}));
+                if (response.ok && (json.success === true || json.success === undefined)) {
+                    return { ok: true };
+                }
+                return { ok: false, error: json?.errors?.fields?.email?.[0] || 'Subscription failed. Please try again.' };
+            } catch (err) {
+                try {
+                    await fetch(ENDPOINT(formId), {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: data.toString(),
+                        mode: 'no-cors'
+                    });
+                    return { ok: true, optimistic: true };
+                } catch (e2) {
+                    return { ok: false, error: 'Network error. Please try again.' };
+                }
+            }
+        }
+
+        function attach(formEl, onSuccess) {
+            formEl.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                if (!formEl.checkValidity()) { formEl.reportValidity(); return; }
+
+                const btn = formEl.querySelector('button[type="submit"]');
+                const label = formEl.querySelector('.ml-btn-label');
+                const spinner = formEl.querySelector('.ml-btn-spinner');
+                const errorEl = formEl.querySelector('.ml-form-error');
+
+                btn.disabled = true;
+                label?.classList.add('opacity-60');
+                spinner?.classList.remove('hidden');
+                errorEl?.classList.add('hidden');
+
+                const result = await submitToMailerLite(formEl);
+
+                btn.disabled = false;
+                label?.classList.remove('opacity-60');
+                spinner?.classList.add('hidden');
+
+                if (result.ok) {
+                    const source = formEl.dataset.source || 'unknown';
+                    trackEvent('Form', 'submit', `Subscribe - ${source}`);
+                    onSuccess?.(formEl);
+                } else if (errorEl) {
+                    errorEl.textContent = result.error || 'Something went wrong.';
+                    errorEl.classList.remove('hidden');
+                }
+            });
+        }
+
+        const assistantForm = document.getElementById('assistant-subscribe-form');
+        if (assistantForm) {
+            attach(assistantForm, () => {
+                assistantForm.classList.add('hidden');
+                document.getElementById('assistant-subscribe-success')?.classList.remove('hidden');
+            });
+        }
+    })();
     </script>
 </body>
 </html>

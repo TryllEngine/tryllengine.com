@@ -31,6 +31,12 @@
         <priority>0.7</priority>
     </url>
     <url>
+        <loc>https://tryllengine.com/blog/posts/tryll-in-media</loc>
+        <lastmod>2026-06-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://tryllengine.com/blog/posts/closed-alpha-egv-funding</loc>
         <lastmod>2026-06-16</lastmod>
         <changefreq>monthly</changefreq>

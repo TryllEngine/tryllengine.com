@@ -1,5 +1,17 @@
 [
   {
+    "slug": "tryll-in-media",
+    "title": "Tryll in Media: 10+ Outlets Cover Our Closed Alpha",
+    "excerpt": "Tech.eu, Tech in Asia, Unite.AI, Mobidictum, and 10+ outlets across Europe, Asia, and North America covered our $6M valuation and closed alpha.",
+    "category": "news",
+    "date": "2026-06-23",
+    "readTime": 2,
+    "image": "/assets/blog/tryll-in-media-cover.png",
+    "icon": "fa-newspaper",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/posts/tryllengine_more-than-10-outlets-across-europe-asia-activity-7475080594595459073-27Xl"
+  },
+  {
     "slug": "closed-alpha-egv-funding",
     "title": "Closed Alpha Opens — Backed by Early Game Ventures",
     "excerpt": "Tryll Engine opens its closed alpha at a $6M valuation, backed by a $600K pre-seed from Early Game Ventures. Six entertainment companies are already building showcase experiences.",

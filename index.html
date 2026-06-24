@@ -1379,6 +1379,76 @@
         </div>
     </section>
 
+    <!-- Tryll in Media -->
+    <section id="media" class="py-16 md:py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-4xl mx-auto text-center fade-in mb-10 md:mb-14">
+                <span class="terminal-label">TRYLL_IN_MEDIA</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6 heading-primary">
+                    Tryll in Media
+                </h2>
+                <p class="text-lg md:text-xl text-secondary leading-relaxed max-w-2xl mx-auto">
+                    Covered by 10+ outlets across Europe, Asia, and North America.
+                </p>
+            </div>
+
+            <div class="max-w-6xl mx-auto fade-in">
+                <style>
+                    .media-marquee {
+                        overflow: hidden;
+                        position: relative;
+                        -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+                                mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+                    }
+                    .media-marquee-track {
+                        display: flex;
+                        align-items: center;
+                        width: max-content;
+                        animation: media-marquee 32s linear infinite;
+                    }
+                    .media-marquee-track img {
+                        height: 32px;
+                        width: auto;
+                        max-width: 200px;
+                        object-fit: contain;
+                        opacity: 0.75;
+                        transition: opacity 0.2s ease;
+                        flex-shrink: 0;
+                        margin-right: 72px;
+                    }
+                    /* opt-in: invert black-on-transparent logos to white so they're visible on dark bg */
+                    .media-marquee-track img.logo-invert { filter: brightness(0) invert(1); opacity: 0.6; }
+                    /* opt-in: stacked / compact logos get extra height to balance optical weight */
+                    .media-marquee-track img.logo-tall { height: 44px; }
+                    .media-marquee-track img:hover { opacity: 1; }
+                    @keyframes media-marquee {
+                        from { transform: translateX(0); }
+                        to   { transform: translateX(-50%); }
+                    }
+                    @media (max-width: 640px) {
+                        .media-marquee-track img { height: 26px; margin-right: 48px; }
+                    }
+                </style>
+                <div class="media-marquee">
+                    <div class="media-marquee-track">
+                        <!-- First copy -->
+                        <img src="./assets/images/media-logos/tech-in-asia.svg" alt="Tech in Asia" />
+                        <img src="./assets/images/media-logos/mobidictum.svg" alt="Mobidictum" />
+                        <img class="logo-tall" src="./assets/images/media-logos/tech-eu.svg" alt="Tech.eu" />
+                        <img src="./assets/images/media-logos/unite-ai.svg" alt="Unite.AI" />
+                        <img class="logo-invert logo-tall" src="./assets/images/media-logos/startup-rise.png" alt="Startup Rise EU" />
+                        <!-- Second copy (seamless loop) -->
+                        <img src="./assets/images/media-logos/tech-in-asia.svg" alt="Tech in Asia" aria-hidden="true" />
+                        <img src="./assets/images/media-logos/mobidictum.svg" alt="Mobidictum" aria-hidden="true" />
+                        <img class="logo-tall" src="./assets/images/media-logos/tech-eu.svg" alt="Tech.eu" aria-hidden="true" />
+                        <img src="./assets/images/media-logos/unite-ai.svg" alt="Unite.AI" aria-hidden="true" />
+                        <img class="logo-invert logo-tall" src="./assets/images/media-logos/startup-rise.png" alt="Startup Rise EU" aria-hidden="true" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- SDK Integration Roadmap -->
     <section class="py-12 md:py-20 bg-black relative overflow-hidden">
         <div class="container mx-auto px-4 md:px-6">

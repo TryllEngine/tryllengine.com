@@ -1,5 +1,17 @@
 [
   {
+    "slug": "nvidia-ace-webinar",
+    "title": "Notes from the NVIDIA ACE Webinar",
+    "excerpt": "Our take on NVIDIA ACE — a solid on-device AI piece for RTX + Unreal that we might plug into our own pipeline. What was shown vs. what a production-ready NPC stack actually needs.",
+    "category": "engineering",
+    "date": "2026-07-02",
+    "readTime": 2,
+    "image": "/assets/blog/nvidia-ace-webinar-cover.png",
+    "icon": "fa-microchip",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/posts/tryllengine_this-week-our-team-went-to-an-nvidia-webinar-activity-7478366035562172416-LP4c"
+  },
+  {
     "slug": "interrogation-catching-a-lie",
     "title": "Use Case #32: Interrogation and Catching a Lie",
     "excerpt": "How a language model inside the game could turn detective interrogations into real conversations — beyond the Truth/Doubt/Lie button picks of older detective games.",

@@ -1,5 +1,17 @@
 [
   {
+    "slug": "tryll-at-chinajoy",
+    "title": "Tryll at ChinaJoy 2026 — Shanghai, Jul 31 to Aug 3",
+    "excerpt": "We are going to ChinaJoy. Meeting studios and publishers about on-device AI integration for games. Our BD Manager Eugene Pustynnikov will be on the ground the whole show.",
+    "category": "news",
+    "date": "2026-07-07",
+    "readTime": 1,
+    "image": "/assets/blog/tryll-at-chinajoy-cover.jpg",
+    "icon": "fa-plane",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7480200478274965504"
+  },
+  {
     "slug": "nvidia-ace-webinar",
     "title": "Notes from the NVIDIA ACE Webinar",
     "excerpt": "Our take on NVIDIA ACE — a solid on-device AI piece for RTX + Unreal that we might plug into our own pipeline. What was shown vs. what a production-ready NPC stack actually needs.",

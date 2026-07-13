@@ -1,5 +1,17 @@
 [
   {
+    "slug": "ai-companions-accessibility",
+    "title": "AI Companions Are an Accessibility Play",
+    "excerpt": "The GDC 2026 Trends Report calls companionship the bigger goal of agentic AI. The most interesting reason is social, not technical — an AI teammate that never flames you opens games to more people.",
+    "category": "engineering",
+    "date": "2026-07-13",
+    "readTime": 2,
+    "image": "/assets/blog/ai-companions-accessibility-cover.jpg",
+    "icon": "fa-user-group",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7482341510072573952"
+  },
+  {
     "slug": "tryll-at-chinajoy",
     "title": "Tryll at ChinaJoy 2026 — Shanghai, Jul 31 to Aug 3",
     "excerpt": "We are going to ChinaJoy. Meeting studios and publishers about on-device AI integration for games. Our BD Manager Eugene Pustynnikov will be on the ground the whole show.",

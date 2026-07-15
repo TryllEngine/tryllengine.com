@@ -1,5 +1,17 @@
 [
   {
+    "slug": "developer-talk-1-murder-mystery",
+    "title": "Developer Talk #1 — The Murder Mystery Demo",
+    "excerpt": "Our Murder Mystery demo shows Tryll Engine powering on-device AI in games: LLM, TTS/STT, embeddings, RAG, and classification models. Watch the Dev Talk with our Tech Lead Milos Petkovic.",
+    "category": "engineering",
+    "date": "2026-07-14",
+    "readTime": 1,
+    "image": "/assets/blog/developer-talk-1-murder-mystery-cover.jpg",
+    "icon": "fa-video",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/posts/tryllengine_tryll-developer-talk-1-murder-mystery-activity-7483092475381805056-nXkg"
+  },
+  {
     "slug": "ai-companions-accessibility",
     "title": "AI Companions Are an Accessibility Play",
     "excerpt": "The GDC 2026 Trends Report calls companionship the bigger goal of agentic AI. The most interesting reason is social, not technical — an AI teammate that never flames you opens games to more people.",

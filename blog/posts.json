@@ -1,5 +1,17 @@
 [
   {
+    "slug": "games-where-ai-drives-mechanics",
+    "title": "Games Where AI Drives the Core Mechanics",
+    "excerpt": "Our team plays a lot. Four finds where AI is the core mechanic: Suck Up!, Wanderfolk, Whispers from the Star, and Death by AI — voice-driven NPCs, RAG memory, open conversation, and an AI game master.",
+    "category": "engineering",
+    "date": "2026-07-22",
+    "readTime": 2,
+    "image": "/assets/blog/games-where-ai-drives-mechanics-cover.jpg",
+    "icon": "fa-gamepad",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/posts/tryllengine_our-whole-team-plays-a-lot-and-we-always-activity-7485688297076383744-DR2M"
+  },
+  {
     "slug": "developer-talk-1-murder-mystery",
     "title": "Developer Talk #1 — The Murder Mystery Demo",
     "excerpt": "Our Murder Mystery demo shows Tryll Engine powering on-device AI in games: LLM, TTS/STT, embeddings, RAG, and classification models. Watch the Dev Talk with our Tech Lead Milos Petkovic.",

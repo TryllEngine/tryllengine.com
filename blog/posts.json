@@ -1,5 +1,17 @@
 [
   {
+    "slug": "beta-launch-illogika",
+    "title": "Beta Launches This Week — What Alpha Clients Say",
+    "excerpt": "Hervé Lange, Sr. Technical Director at iLLOGIKA, on working with Tryll Engine during the Alpha. This week we launch the Beta, adding marketing support alongside technical guidance. Spots are limited.",
+    "category": "news",
+    "date": "2026-07-28",
+    "readTime": 1,
+    "image": "/assets/blog/beta-launch-illogika-cover.jpg",
+    "icon": "fa-flag-checkered",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/posts/tryllengine_during-the-alpha-our-engineering-team-works-activity-7487823236488167424-Wupf"
+  },
+  {
     "slug": "games-where-ai-drives-mechanics",
     "title": "Games Where AI Drives the Core Mechanics",
     "excerpt": "Our team plays a lot. Four finds where AI is the core mechanic: Suck Up!, Wanderfolk, Whispers from the Star, and Death by AI — voice-driven NPCs, RAG memory, open conversation, and an AI game master.",

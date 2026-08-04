@@ -1,5 +1,17 @@
 [
   {
+    "slug": "back-from-chinajoy-2026",
+    "title": "Back from ChinaJoy — Level Up with AI",
+    "excerpt": "The industry shift at ChinaJoy 2026: nobody debates whether AI belongs in games anymore. The questions are concrete — which mechanic, what cost at scale, how to keep models under control before shipping.",
+    "category": "news",
+    "date": "2026-08-04",
+    "readTime": 1,
+    "image": "/assets/blog/back-from-chinajoy-2026-cover.jpg",
+    "icon": "fa-earth-asia",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/posts/tryllengine_we-are-back-from-chinajoy-this-years-theme-activity-7490324180018733056-K6MY"
+  },
+  {
     "slug": "beta-launch-illogika",
     "title": "Beta Launches This Week — What Alpha Clients Say",
     "excerpt": "Hervé Lange, Sr. Technical Director at iLLOGIKA, on working with Tryll Engine during the Alpha. This week we launch the Beta, adding marketing support alongside technical guidance. Spots are limited.",

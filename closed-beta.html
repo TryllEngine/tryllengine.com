@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Cookie consent + Google Consent Mode v2 - must load before GTM -->
+    <script src="/assets/js/cookie-consent.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K8MPGKVX');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tryll Engine — Closed Beta</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Apply for the Tryll Engine closed beta: free access during development, tech support from our engineers, and PR support for your demo. Applications close August 31, 2026.">
+    <meta name="author" content="Tryll Engine">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tryllengine.com/closed-beta">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tryllengine.com/closed-beta.html">
+    <meta property="og:title" content="Tryll Engine — Closed Beta">
+    <meta property="og:description" content="Apply for the Tryll Engine closed beta: free access during development, tech support from our engineers, and PR support for your demo. Applications close August 31, 2026.">
+    <meta property="og:image" content="https://tryllengine.com/assets/logo/logo-mark/blue.svg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tryllengine.com/closed-beta.html">
+    <meta property="twitter:title" content="Tryll Engine — Closed Beta">
+    <meta property="twitter:description" content="Apply for the Tryll Engine closed beta: free access during development, tech support from our engineers, and PR support for your demo. Applications close August 31, 2026.">
+    <meta property="twitter:image" content="https://tryllengine.com/assets/logo/logo-mark/blue.svg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicon/site.webmanifest">
+
+    <!-- Fonts: Space Grotesk + Space Mono (brandbook 1.0 typefaces for this page) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ---------------------------------------------------------------
+           Design tokens — Tryll brandbook 1.0 (dark/ink theme).
+           This page intentionally uses the ink + Space Grotesk system
+           rather than the site's Tailwind/Inter theme: depth comes from
+           hairline borders on ink only, with no navy surfaces.
+           --------------------------------------------------------------- */
+        :root {
+            --tryll-ink: #181716;
+            --tryll-cream: #F6F0EB;
+            --tryll-white: #FFFFFF;
+
+            --cream-a06: rgba(246, 240, 235, .06);
+            --cream-a10: rgba(246, 240, 235, .10);
+            --cream-a16: rgba(246, 240, 235, .16);
+            --cream-a32: rgba(246, 240, 235, .32);
+            --cream-a56: rgba(246, 240, 235, .56);
+            --cream-a72: rgba(246, 240, 235, .72);
+
+            --surface-page: var(--tryll-ink);
+            --text-primary: var(--tryll-cream);
+            --text-secondary: var(--cream-a72);
+            --text-muted: var(--cream-a56);
+            --text-faint: var(--cream-a32);
+            --border-default: var(--cream-a16);
+            --border-subtle: var(--cream-a10);
+            --border-strong: var(--cream-a32);
+
+            --signal-live: #57C979;
+            --signal-error: #D96B5B;
+
+            --input-bg: rgba(24, 23, 22, .6);
+
+            --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+            --font-mono: 'Space Mono', ui-monospace, monospace;
+
+            --radius-panel: 16px;
+            --radius-sm: 8px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html, body { height: 100%; }
+
+        body {
+            margin: 0;
+            background: var(--surface-page);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: var(--text-primary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Type roles — brandbook exact specs */
+        .t-title1 { font-weight: 500; line-height: 1.0; letter-spacing: 0; margin: 0; }
+        .t-title2 { font-weight: 600; line-height: 1.1; letter-spacing: -0.04em; margin: 0; }
+        .t-note   { font-family: var(--font-mono); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; }
+        .t-eyebrow {
+            font-family: var(--font-mono);
+            font-weight: 400;
+            font-size: 12px;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        /* ------------------------------ Layout ------------------------------ */
+        .page {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page__content {
+            flex: 1 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 64px;
+            align-items: center;
+            max-width: 1160px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 48px;
+        }
+
+        /* ---------------------------- Left column ---------------------------- */
+        .brand-logo {
+            height: 30px;
+            width: auto;
+            display: block;
+            margin-bottom: 40px;
+        }
+
+        .badge-row { display: flex; margin-bottom: 20px; }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border: 1px solid var(--border-default);
+            border-radius: 999px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        .badge__dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--signal-live);
+            flex: none;
+        }
+
+        .hero-title { font-size: 58px; margin: 0 0 16px; }
+
+        .hero-sub {
+            font-size: 17px;
+            line-height: 1.4;
+            color: var(--text-secondary);
+            margin: 0 0 28px;
+            max-width: 460px;
+        }
+
+        /* Terminal-style "what's included" block */
+        .includes {
+            border: 1px solid var(--border-default);
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin-bottom: 28px;
+            max-width: 460px;
+            font-family: var(--font-mono);
+        }
+
+        .includes__header {
+            font-size: 12px;
+            color: var(--text-faint);
+            margin-bottom: 12px;
+        }
+
+        .includes__row {
+            display: flex;
+            gap: 10px;
+            align-items: baseline;
+            padding: 4px 0;
+        }
+
+        /* Separates what the beta includes from what it costs after launch */
+        .includes__note {
+            font-size: 12px;
+            line-height: 1.35;
+            color: var(--text-faint);
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .includes__check { color: var(--signal-live); font-size: 13px; }
+        .includes__text  { font-size: 13px; letter-spacing: .01em; }
+        .includes__key   { color: var(--text-primary); }
+        .includes__desc  { color: var(--text-muted); }
+
+        .cta-row {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: -0.022em;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+        }
+
+        .btn--secondary {
+            display: inline-flex;
+            align-items: center;
+            height: 40px;
+            padding: 0 18px;
+            background: transparent;
+            border: 1px solid var(--border-default);
+            color: var(--text-primary);
+        }
+
+        .btn--secondary:hover {
+            border-color: var(--border-strong);
+            text-decoration: none;
+        }
+
+        .megagrant-link { display: flex; }
+
+        .megagrant-link img {
+            height: 40px;
+            width: auto;
+            opacity: .85;
+            transition: opacity 160ms ease;
+        }
+
+        .megagrant-link:hover img { opacity: 1; }
+
+        /* --------------------------- Right column --------------------------- */
+        .form-panel {
+            background: var(--cream-a06);
+            border: 1px solid var(--border-default);
+            border-radius: var(--radius-panel);
+            padding: 28px 32px;
+        }
+
+        .form-panel__eyebrow { margin: 0 0 6px; }
+        .form-panel__title { font-size: 26px; margin: 0 0 20px; }
+
+        .field { display: block; margin-bottom: 14px; }
+
+        .field__label {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .field__row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .input, .textarea {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid var(--border-default);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            font-size: 14px;
+            letter-spacing: -0.022em;
+            transition: border-color 160ms ease;
+        }
+
+        .input { height: 40px; padding: 0 12px; }
+
+        .input--mono { font-family: var(--font-mono); font-size: 13px; }
+
+        .textarea {
+            min-height: 88px;
+            padding: 10px 12px;
+            resize: vertical;
+            line-height: 1.45;
+        }
+
+        .input::placeholder, .textarea::placeholder { color: var(--text-faint); }
+
+        .input:focus, .textarea:focus {
+            outline: none;
+            border-color: var(--border-strong);
+        }
+
+        .field--textarea { margin-bottom: 18px; }
+
+        .btn--primary {
+            display: block;
+            width: 100%;
+            height: 48px;
+            background: var(--tryll-cream);
+            border: 1px solid var(--tryll-cream);
+            color: var(--tryll-ink);
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .btn--primary:hover:not(:disabled) {
+            background: var(--tryll-white);
+            border-color: var(--tryll-white);
+        }
+
+        .btn--primary:disabled { cursor: default; opacity: .7; }
+
+        .form-footnote {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            line-height: 1.4;
+            color: var(--text-muted);
+            margin: 14px 0 0;
+            text-align: center;
+        }
+
+        .form-footnote a { color: var(--text-muted); }
+        .form-footnote a:hover { color: var(--text-primary); }
+
+        .form-error {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            line-height: 1.35;
+            color: var(--signal-error);
+            margin: 0 0 10px;
+        }
+
+        /* Success state */
+        .form-success { text-align: center; padding: 48px 0; }
+
+        .form-success__flag {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--signal-live);
+            margin: 0 0 12px;
+        }
+
+        .form-success__lead {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-success__contact {
+            margin: 8px 0 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* ------------------------------ Footer ------------------------------ */
+        .site-footer {
+            flex: none;
+            border-top: 1px solid var(--border-subtle);
+            padding: 16px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .site-footer__copy {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-faint);
+        }
+
+        .site-footer__links {
+            display: flex;
+            gap: 16px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+        }
+
+        /* ---------------------------- Responsive ---------------------------- */
+        @media (max-width: 900px) {
+            .page__content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 56px 24px;
+                align-items: start;
+            }
+
+            .hero-title { font-size: 40px; }
+            .hero-sub { font-size: 16px; }
+
+            .site-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 16px 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: 34px; }
+            .form-panel { padding: 22px 20px; }
+            .includes { padding: 16px 18px; }
+            .field__row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8MPGKVX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="page">
+        <div class="page__content">
+            <!-- ------------------------ Left: the pitch ------------------------ -->
+            <div>
+                <a href="/" aria-label="Tryll Engine home">
+                    <img src="/assets/logo/full-logo/light-text.svg" alt="Tryll Engine" class="brand-logo">
+                </a>
+
+                <div class="badge-row">
+                    <span class="badge">
+                        <span class="badge__dot" aria-hidden="true"></span>
+                        CLOSED_BETA · applications open
+                    </span>
+                </div>
+
+                <h1 class="t-title1 hero-title">Ship Your Game<br>With AI.</h1>
+
+                <p class="hero-sub">On-device AI for Unity 6 and Unreal Engine 5 — NPCs that talk, remember and act, running on the player's own GPU.</p>
+
+                <div class="includes">
+                    <div class="includes__header">$ tryll beta --includes</div>
+                    <div class="includes__row">
+                        <span class="includes__check" aria-hidden="true">✓</span>
+                        <span class="includes__text"><span class="includes__key">free_access</span><span class="includes__desc"> · full tool, all of development</span></span>
+                    </div>
+                    <div class="includes__row">
+                        <span class="includes__check" aria-hidden="true">✓</span>
+                        <span class="includes__text"><span class="includes__key">tech_support</span><span class="includes__desc"> · our engineers work with your team</span></span>
+                    </div>
+                    <div class="includes__row">
+                        <span class="includes__check" aria-hidden="true">✓</span>
+                        <span class="includes__text"><span class="includes__key">pr_support</span><span class="includes__desc"> · your demo in our press and events</span></span>
+                    </div>
+                    <div class="includes__note"># after launch: ~$0.08/copy sold, scales with game price</div>
+                </div>
+
+                <div class="cta-row">
+                    <a href="https://www.youtube.com/watch?v=6r85hTAEybQ" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">Watch the Demo →</a>
+                    <a href="https://www.unrealengine.com/news/epic-megagrants-2025-recap-first-submissions-are-now-open" target="_blank" rel="noopener noreferrer" class="megagrant-link" title="Epic MegaGrants recipient">
+                        <img src="/assets/images/epic-megagrants-badge-white.png" alt="Epic MegaGrants recipient">
+                    </a>
+                </div>
+            </div>
+
+            <!-- ------------------------ Right: the form ------------------------ -->
+            <div class="form-panel">
+                <form id="beta-form">
+                    <p class="t-eyebrow form-panel__eyebrow">Apply</p>
+                    <h2 class="t-title2 form-panel__title">Join the Closed Beta</h2>
+
+                    <div class="field__row">
+                        <label class="field">
+                            <span class="field__label">Name</span>
+                            <input class="input" type="text" name="name" placeholder="Ada Lovelace" required>
+                        </label>
+                        <label class="field">
+                            <span class="field__label">Studio</span>
+                            <input class="input" type="text" name="studio" placeholder="Studio name">
+                        </label>
+                    </div>
+
+                    <label class="field">
+                        <span class="field__label">Email</span>
+                        <input class="input input--mono" type="email" name="email" placeholder="you@studio.com" required>
+                    </label>
+
+                    <label class="field field--textarea">
+                        <span class="field__label">Your Game &amp; How You'd Use AI</span>
+                        <textarea class="textarea" name="game_and_ai" placeholder="A few sentences — genre, engine, the AI mechanic you have in mind." required></textarea>
+                    </label>
+
+                    <input type="hidden" name="_subject" value="Tryll Closed Beta application">
+
+                    <p class="form-error" id="beta-error" style="display: none;">✗ something went wrong — please retry, or email team@tryllengine.com</p>
+
+                    <button class="btn btn--primary" type="submit" id="beta-submit">Apply for the Beta</button>
+
+                    <p class="form-footnote">Applications close August 31, 2026 · <a href="/privacy-policy.html">Privacy Policy</a></p>
+                </form>
+
+                <!-- Success state — swapped in for the form on a successful POST -->
+                <div class="form-success" id="beta-success" style="display: none;">
+                    <p class="form-success__flag">✓ application received</p>
+                    <p class="form-success__lead">Thanks — we'll be in touch shortly.</p>
+                    <p class="form-success__contact">Questions? <a href="mailto:team@tryllengine.com">team@tryllengine.com</a></p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="site-footer">
+            <span class="site-footer__copy">© 2026 Tryll Engine, Inc. All rights reserved.</span>
+            <span class="site-footer__links">
+                <a href="https://tryllengine.com">tryllengine.com</a>
+                <a href="/privacy-policy.html">Privacy Policy</a>
+                <a href="mailto:team@tryllengine.com">Contact</a>
+            </span>
+        </footer>
+    </div>
+
+    <script>
+        // Formspree submit handler — dedicated closed-beta form.
+        // Posts via fetch with Accept: application/json so Formspree replies with
+        // JSON instead of redirecting, letting us render the states below in place.
+        const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xppazpee';
+
+        (function () {
+            const form = document.getElementById('beta-form');
+            const success = document.getElementById('beta-success');
+            const errorMsg = document.getElementById('beta-error');
+            const submitBtn = document.getElementById('beta-submit');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                errorMsg.style.display = 'none';
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending…';
+
+                fetch(FORMSPREE_ENDPOINT, {
+                    method: 'POST',
+                    headers: { Accept: 'application/json' },
+                    body: new FormData(form)
+                })
+                    .then(function (r) {
+                        if (!r.ok) throw new Error('Request failed');
+                        form.style.display = 'none';
+                        success.style.display = 'block';
+                    })
+                    .catch(function () {
+                        errorMsg.style.display = 'block';
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Apply for the Beta';
+                    });
+            });
+        })();
+    </script>
+</body>
+</html>

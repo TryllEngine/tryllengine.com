@@ -1,5 +1,17 @@
 [
   {
+    "slug": "tryll-at-gamescom-2026",
+    "title": "Tryll at gamescom 2026 — Meet Us in Cologne",
+    "excerpt": "Our team is in Cologne all five days of gamescom, showing real use cases from alpha partners and gathering the next beta batch. Find us around the Belgian Games booth, Hall 4.1, B040g.",
+    "category": "news",
+    "date": "2026-08-10",
+    "readTime": 1,
+    "image": "/assets/blog/tryll-at-gamescom-2026-cover.jpg",
+    "icon": "fa-map-location-dot",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/posts/tryllengine_going-to-gamescom-we-at-tryll-build-an-on-device-activity-7492493475280605184-Vn43"
+  },
+  {
     "slug": "back-from-chinajoy-2026",
     "title": "Back from ChinaJoy — Level Up with AI",
     "excerpt": "The industry shift at ChinaJoy 2026: nobody debates whether AI belongs in games anymore. The questions are concrete — which mechanic, what cost at scale, how to keep models under control before shipping.",

@@ -14,3 +14,5 @@ Join studio heads, founders and executives for an unhurried evening during one o
 - **Request your spot:** [luma.com/razqrcpb](https://luma.com/razqrcpb)
 
 Capacity is strictly limited and every guest is confirmed in advance.
+
+*Artist: @kraspandochka*

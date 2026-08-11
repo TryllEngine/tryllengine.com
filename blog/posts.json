@@ -1,5 +1,17 @@
 [
   {
+    "slug": "tryll-executive-terrace-gathering",
+    "title": "Tryll Executive Terrace Gathering — Cologne, Aug 27",
+    "excerpt": "No panels, no demos, no pitches. An unhurried evening for studio heads, founders and executives during gamescom week — tech, games and art in a close circle. Capacity strictly limited.",
+    "category": "news",
+    "date": "2026-08-11",
+    "readTime": 1,
+    "image": "/assets/blog/tryll-executive-terrace-gathering-cover.jpg",
+    "icon": "fa-champagne-glasses",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7492912697886359552"
+  },
+  {
     "slug": "tryll-at-gamescom-2026",
     "title": "Tryll at gamescom 2026 — Meet Us in Cologne",
     "excerpt": "Our team is in Cologne all five days of gamescom, showing real use cases from alpha partners and gathering the next beta batch. Find us around the Belgian Games booth, Hall 4.1, B040g.",

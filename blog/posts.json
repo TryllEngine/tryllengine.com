@@ -1,5 +1,17 @@
 [
   {
+    "slug": "welcome-daria-trush",
+    "title": "Welcome Daria Trush as Business Development Manager",
+    "excerpt": "Daria joins Tryll as Business Development Manager, bringing B2B partnership experience across GameDev and EdTech. Cyberpunk 2077 devotee, Subnautica crafter, and co-op regular — welcome to the team!",
+    "category": "news",
+    "date": "2026-09-11",
+    "readTime": 2,
+    "image": "/assets/blog/welcome-daria-trush-cover.jpg",
+    "icon": "fa-user-plus",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/company/tryllengine/"
+  },
+  {
     "slug": "future-belongs-to-the-punks",
     "title": "The Future in Games Belongs to the Punks",
     "excerpt": "At Gamescom the big halls showed money and boredom — the wow was in the corners, built by the Outliers, the Disruptors, the Punks. On-device AI is the first new gameplay primitive in 20 years, and nobody has shipped a hit on it yet.",

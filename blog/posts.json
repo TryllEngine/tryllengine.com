@@ -1,5 +1,17 @@
 [
   {
+    "slug": "tryll-at-tokyo-game-show-2026",
+    "title": "Tryll at Tokyo Game Show 2026 — Arming the Punks",
+    "excerpt": "Tryll is at Tokyo Game Show both business days (September 17-18), meeting studios and publishers who want AI-driven gameplay: natural NPCs, on-device inference at $0 per interaction, and a drop-in Unity 6 / UE5 plugin stack.",
+    "category": "news",
+    "date": "2026-09-15",
+    "readTime": 1,
+    "image": "/assets/blog/tryll-at-tokyo-game-show-2026-cover.jpg",
+    "icon": "fa-torii-gate",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/company/tryllengine/"
+  },
+  {
     "slug": "welcome-daria-trush",
     "title": "Welcome Daria Trush as Business Development Manager",
     "excerpt": "Daria joins Tryll as Business Development Manager, bringing B2B partnership experience across GameDev and EdTech. Cyberpunk 2077 devotee, Subnautica crafter, and co-op regular — welcome to the team!",

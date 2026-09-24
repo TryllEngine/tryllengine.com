@@ -1,5 +1,17 @@
 [
   {
+    "slug": "back-from-tokyo-game-show-2026",
+    "title": "Back from Tokyo Game Show 2026",
+    "excerpt": "Tokyo Game Show wrapped up, and Iryna B., who represented Tryll there, shares her take: a great place to get inspired and meet talented people — and a show where new and original ideas stood out among the copycats.",
+    "category": "news",
+    "date": "2026-09-24",
+    "readTime": 1,
+    "image": "/assets/blog/back-from-tokyo-game-show-2026-cover.jpg",
+    "icon": "fa-plane-arrival",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/company/tryllengine/"
+  },
+  {
     "slug": "developer-talk-2-stability-optimization-accessibility",
     "title": "Developer Talk #2 — Stability, Optimization and Accessibility",
     "excerpt": "New Developer Talk with our Tech Lead Milos Petkovic covering three Tryll Engine features: guardrails that keep NPC behaviour consistent under jailbreak attempts, VRAM usage optimization, and hands-free voice mode.",

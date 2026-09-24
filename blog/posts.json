@@ -1,5 +1,17 @@
 [
   {
+    "slug": "developer-talk-2-stability-optimization-accessibility",
+    "title": "Developer Talk #2 — Stability, Optimization and Accessibility",
+    "excerpt": "New Developer Talk with our Tech Lead Milos Petkovic covering three Tryll Engine features: guardrails that keep NPC behaviour consistent under jailbreak attempts, VRAM usage optimization, and hands-free voice mode.",
+    "category": "engineering",
+    "date": "2026-09-16",
+    "readTime": 1,
+    "image": "/assets/blog/developer-talk-2-stability-optimization-accessibility-cover.jpg",
+    "icon": "fa-video",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://www.linkedin.com/company/tryllengine/"
+  },
+  {
     "slug": "tryll-at-tokyo-game-show-2026",
     "title": "Tryll at Tokyo Game Show 2026 — Arming the Punks",
     "excerpt": "Tryll is at Tokyo Game Show both business days (September 17-18), meeting studios and publishers who want AI-driven gameplay: natural NPCs, on-device inference at $0 per interaction, and a drop-in Unity 6 / UE5 plugin stack.",

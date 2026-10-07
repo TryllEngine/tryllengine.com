@@ -1,5 +1,17 @@
 [
   {
+    "slug": "tryll-at-saga-barcelona-game-fest",
+    "title": "Tryll at SAGA Barcelona Game Fest — Meet Us at Fira",
+    "excerpt": "Our Head of Growth Nikolay Andreev is at SAGA Barcelona Game Fest on Friday, October 9, meeting studios and publishers about AI agents that stay in character: real conversations, on-device inference at $0 per interaction, and a drop-in Unity 6 / UE5 plugin stack.",
+    "category": "news",
+    "date": "2026-10-07",
+    "readTime": 1,
+    "image": "/assets/blog/tryll-at-saga-barcelona-game-fest-cover.jpg",
+    "icon": "fa-map-location-dot",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://lnkd.in/p/esqNCvgE"
+  },
+  {
     "slug": "back-from-tokyo-game-show-2026",
     "title": "Back from Tokyo Game Show 2026",
     "excerpt": "Tokyo Game Show wrapped up, and Iryna B., who represented Tryll there, shares her take: a great place to get inspired and meet talented people — and a show where new and original ideas stood out among the copycats.",

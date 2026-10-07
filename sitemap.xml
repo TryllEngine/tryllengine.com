@@ -37,6 +37,12 @@
         <priority>0.7</priority>
     </url>
     <url>
+        <loc>https://tryllengine.com/blog/posts/tryll-at-saga-barcelona-game-fest</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://tryllengine.com/blog/posts/back-from-tokyo-game-show-2026</loc>
         <lastmod>2026-09-24</lastmod>
         <changefreq>monthly</changefreq>

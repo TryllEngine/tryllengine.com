@@ -1,5 +1,17 @@
 [
   {
+    "slug": "tryll-at-wn-yerevan-2026",
+    "title": "Tryll at WN Events Yerevan — Meet Alex Riabov",
+    "excerpt": "On October 15-16 Tryll is at WN Events in Yerevan, represented by our co-founder and CBO Alex Riabov. On Thursday he joins the roundtable on rethinking workflows, roles and skills for the AI-enabled studio.",
+    "category": "news",
+    "date": "2026-10-13",
+    "readTime": 1,
+    "image": "/assets/blog/tryll-at-wn-yerevan-2026-cover.jpg",
+    "icon": "fa-map-location-dot",
+    "author": "Tryll Engine Team",
+    "linkedinUrl": "https://lnkd.in/p/egMD_GHA"
+  },
+  {
     "slug": "tryll-at-saga-barcelona-game-fest",
     "title": "Tryll at SAGA Barcelona Game Fest — Meet Us at Fira",
     "excerpt": "Our Head of Growth Nikolay Andreev is at SAGA Barcelona Game Fest on Friday, October 9, meeting studios and publishers about AI agents that stay in character: real conversations, on-device inference at $0 per interaction, and a drop-in Unity 6 / UE5 plugin stack.",

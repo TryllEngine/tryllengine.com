@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/assets/js/cookie-consent.js"></script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K8MPGKVX');</script>
+<title>Features for Developers — Tryll Engine</title>
+<meta name="description" content="What Tryll Engine gives game developers: basic and advanced NPCs, editor tools like the Dialog Tester and Agent Log, and control over performance and memory.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://tryllengine.com/features">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tryll Engine">
+<meta property="og:url" content="https://tryllengine.com/features">
+<meta property="og:title" content="Features for Developers — Tryll Engine">
+<meta property="og:description" content="What Tryll Engine gives game developers: basic and advanced NPCs, editor tools like the Dialog Tester and Agent Log, and control over performance and memory.">
+<meta property="og:image" content="https://tryllengine.com/assets/images/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Features for Developers — Tryll Engine">
+<meta name="twitter:description" content="What Tryll Engine gives game developers: basic and advanced NPCs, editor tools like the Dialog Tester and Agent Log, and control over performance and memory.">
+<meta name="twitter:image" content="https://tryllengine.com/assets/images/og-image.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<meta name="theme-color" content="#161D29">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet" data-dc-tpl="1">
+<style>
+body{margin:0;background:#FFFFFF}
+.pg{font-family:'Space Grotesk',system-ui,sans-serif;color:#181716;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+.h1{margin:0;font:400 76px/1 'Space Grotesk',sans-serif;letter-spacing:-0.045em}
+.h2{margin:0;font:400 56px/1.04 'Space Grotesk',sans-serif;letter-spacing:-0.04em}
+
+.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:40px;height:84px}
+.tl{display:inline-flex;align-items:center;gap:10px;color:#181716;text-decoration:none;font:500 15px/1 'Space Grotesk',sans-serif}
+</style>
+<style>
+.ph{border-radius:16px;background:repeating-linear-gradient(135deg,#E6E8EC 0 10px,#EDEEF1 10px 20px);display:flex;align-items:center;justify-content:center;font:400 13px/1 'Space Grotesk',sans-serif;color:rgba(24,23,22,.45)}
+
+.pg{background:linear-gradient(#161D29,#161D29) 0 0/50% 798px no-repeat,linear-gradient(#161D29,#161D29) 0 0/100% 690px no-repeat,#FFFFFF !important;--gx:clamp(16px,3.06vw,44px);overflow-x:clip}
+.pg *{box-sizing:border-box}
+.pg{--st:0 0 0 0 transparent;--stf:none}
+.cta{display:inline-flex;align-items:center;gap:14px;height:54px;padding:0 7px 0 22px;border-radius:8px;border:0;cursor:pointer;text-decoration:none;font:500 18px/1 'Space Grotesk',sans-serif;background:#232E41;color:#FFFFFF;transition:background .2s}
+.cta:hover{background:#2B3850}
+.cta.w{background:#FFFFFF;color:#181716}
+.cta.w:hover{background:#F7F2EC}
+.cta.np{padding:0 24px}
+.nav{position:relative;z-index:3;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:88px;padding:0 var(--gx)}
+.nav .nr{justify-self:end;display:flex;align-items:center;gap:8px}
+.nav .nd{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 16px;border-radius:8px;background:rgba(255,255,255,.08);color:#FFFFFF;text-decoration:none;font:400 16px/1 'Space Grotesk',sans-serif;transition:background .2s}
+.nav .nd:hover{background:rgba(255,255,255,.14)}
+.nav .nd svg{width:16px;height:16px;flex:none}
+.nav .nb,.cta{white-space:nowrap}
+.nav .mb{display:none;width:44px;height:44px;border-radius:8px;border:0;background:rgba(255,255,255,.1);color:#FFFFFF;align-items:center;justify-content:center;cursor:pointer}
+.nav .lg img{height:32px;width:auto;display:block}
+.nav .lk{display:flex;gap:28px}
+.nav .lk a{font:400 14px/1 'Space Grotesk',sans-serif;color:#FFFFFF;opacity:.82;text-decoration:none}
+.nav .lk a:hover{opacity:1}
+.nav .nb{justify-self:end;display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#FFFFFF;color:#181716;text-decoration:none;font:500 16px/1 'Space Grotesk',sans-serif}
+@keyframes pdn{0%,30%{opacity:1;filter:blur(0)}48%,82%{opacity:0;filter:blur(4px)}100%{opacity:1;filter:blur(0)}}
+@keyframes pdl{0%,34%{opacity:0;filter:blur(4px)}52%,80%{opacity:1;filter:blur(0)}98%,100%{opacity:0;filter:blur(4px)}}
+.in{height:54px;border-radius:8px;box-shadow:inset 0 0 0 1px rgba(24,23,22,.18);background:#FFFFFF;display:flex;align-items:center;padding:0 16px;font:400 16px/1 'Space Grotesk',sans-serif;color:rgba(24,23,22,.45)}
+
+.fo{position:relative;border-top:1px solid rgba(24,23,22,.14)}
+.fr{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;padding:32px var(--gx)}
+.fr img{height:32px;width:auto}
+.fr .cp{font:400 14px/1 'Space Grotesk',sans-serif;color:rgba(24,23,22,.72)}
+.fr .fl{margin-left:auto;display:flex;flex-wrap:wrap;gap:12px 28px}
+.fr .up{flex:0 0 auto;margin-left:auto;height:44px;padding:0 14px 0 18px;gap:10px;border-radius:8px;display:inline-flex;align-items:center;font:500 16px/1 'Space Grotesk',sans-serif;text-decoration:none;background:#232E41;color:#FFFFFF;transition:background .2s}
+.fr .up:hover{background:#2B3850}
+.fr .fl a{font:400 14px/1 'Space Grotesk',sans-serif;color:#181716;text-decoration:none}
+.big{padding:56px var(--gx) 0}
+.big svg{display:block;width:100%;height:auto}
+@media (max-width:900px){
+.nav{grid-template-columns:1fr auto}
+.nav .lk{display:none}
+}
+@media (max-width:640px){
+.nav .mb{display:flex}
+.nav .nd{display:none}
+.nav{position:relative;z-index:2}
+.nav .nb{height:44px;padding:0 14px}
+.fr{flex-direction:column;align-items:flex-start;gap:20px;padding-top:40px}
+.fr .fl{margin-left:0;flex-direction:column;gap:14px}
+.fr .fl a{font-size:18px}
+.fr .fl{order:1;margin:4px 0 8px}.fr .cp{order:2}.fr .up{order:3}
+.fr .up{margin-left:0;align-self:stretch;justify-content:center;height:54px;margin-top:8px}
+.fr .fl{margin-left:0}
+}
+
+
+.pg{background:#FFFFFF !important}
+.fh{position:relative;background:#161D29;color:#FFFFFF;border-radius:0 0 100px 0;padding-bottom:96px}
+.fhc{padding:72px var(--gx) 0;display:grid;grid-template-columns:1.3fr 1fr;gap:24px 64px;align-items:end}
+.fhc h1{margin:0;font:400 clamp(44px,5.6vw,68px)/1 'Space Grotesk',sans-serif;letter-spacing:-0.045em}
+.fhc p{margin:0 0 12px;justify-self:end;max-width:440px;font:400 20px/1.5 'Space Grotesk',sans-serif;color:rgba(255,255,255,.78)}
+
+.tp{display:grid;grid-template-columns:1fr 1.25fr;gap:24px 56px;align-items:center}
+.tt h3{margin:0;font:400 clamp(30px,2.8vw,40px)/1.08 'Space Grotesk',sans-serif;letter-spacing:-0.03em}
+.tt p{margin:16px 0 0;max-width:480px;font:400 20px/1.5 'Space Grotesk',sans-serif;color:rgba(24,23,22,.72)}
+.tt .tb{display:flex;align-items:center;flex-wrap:wrap;gap:12px 28px;margin-top:28px}
+.dtk{display:inline-flex;align-items:center;gap:10px;font:500 16px/1 'Space Grotesk',sans-serif;color:#181716;text-decoration:none}
+.dtk i{width:32px;height:32px;border-radius:50%;background:#F3F4F6;display:flex;align-items:center;justify-content:center;color:#232E41;transition:background .2s}
+.dtk:hover i{background:#E6E8EC}
+.tl{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.tl li{display:flex;align-items:flex-start;gap:12px;font:400 18px/1.4 'Space Grotesk',sans-serif;color:#181716}
+.tl li i{flex:none;width:6px;height:6px;margin:10px 4px 0;border-radius:50%;background:#232E41}
+.tv{aspect-ratio:16/10;border-radius:20px;background:#1b2128 center/cover no-repeat}
+.tv.ph{background:#232E41;display:flex;align-items:center;justify-content:center}
+.tv.ph span{font:400 16px/1 'Space Grotesk',sans-serif;color:rgba(255,255,255,.55)}
+@media (max-width:900px){
+.fhc{grid-template-columns:1fr;padding-top:48px}.fhc p{justify-self:start}
+.fh{border-radius:0 0 60px 0;padding-bottom:64px}
+.tp{grid-template-columns:1fr}.tp .tv{order:-1}
+}
+
+.fx{display:grid;grid-template-columns:300px 1fr;gap:72px;padding:96px var(--gx) 120px;align-items:start}
+.side{position:sticky;top:32px;background:#F3F4F6;border-radius:24px;padding:12px;display:flex;flex-direction:column;gap:4px}
+.side a{display:flex;align-items:center;gap:14px;min-height:56px;padding:12px 16px;box-sizing:border-box;border-radius:14px;color:rgba(24,23,22,.72);text-decoration:none;font:400 18px/1.25 'Space Grotesk',sans-serif;transition:background .25s,color .25s}
+.side a b{flex:none;width:28px;font:500 16px/1 'Space Grotesk',sans-serif;color:rgba(24,23,22,.4)}
+.side a:hover{color:#181716}
+.side a.on{background:#FFFFFF;color:#181716}
+.side a.on b{color:#232E41}
+.cats{display:flex;flex-direction:column;gap:120px}
+.side .cab{display:flex;align-items:center;gap:12px;min-height:52px;margin-top:8px;padding:0 16px;border:0;border-top:1px solid rgba(24,23,22,.14);border-radius:0 0 14px 14px;background:none;cursor:pointer;font:500 16px/1 'Space Grotesk',sans-serif;color:#232E41;text-align:left;width:100%;white-space:nowrap;box-sizing:border-box}
+.cab i{position:relative;width:16px;height:16px;flex:none}
+.cab i::before,.cab i::after{content:'';position:absolute;left:0;right:0;top:7px;height:2px;border-radius:1px;background:currentColor;transition:transform .3s}
+.cab i::after{transform:rotate(90deg)}
+.cab i.x::after{transform:rotate(0deg)}
+.tt h3{position:relative}
+.tp .pm{display:none}
+.cats.cl{gap:88px}
+.cats.cl .cat .tps{margin-top:32px;border-top:1px solid rgba(24,23,22,.14)}
+.cats.cl .tp{border-bottom:1px solid rgba(24,23,22,.14)}
+.cats.cl .tp.cl{display:block}
+.cats.cl .tp.cl .tt>*:not(h3),.cats.cl .tp.cl .tv{display:none}
+.cats.cl .tp h3{display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;padding:24px 0;font-size:clamp(24px,2vw,30px)}
+.cats.cl .tp .pm{display:block;position:relative;flex:none;width:18px;height:18px}
+.cats.cl .tp .pm::before,.cats.cl .tp .pm::after{content:'';position:absolute;left:0;right:0;top:8px;height:2px;border-radius:1px;background:#232E41;transition:transform .3s}
+.cats.cl .tp.cl .pm::after{transform:rotate(90deg)}
+.cats.cl .tp{position:relative}
+.cats.cl .tt h3{position:static;padding-right:48px}
+.cats.cl .tp .pm{position:absolute;right:0;top:31px}
+.cats.cl .tp:not(.cl){align-items:start;padding-bottom:48px}
+.cats.cl .tp:not(.cl) .tv{margin-top:24px;margin-right:56px}
+.cat>h2{margin:0;font:400 clamp(40px,4.4vw,64px)/1 'Space Grotesk',sans-serif;letter-spacing:-0.045em}
+.cat>small{display:block;margin-top:14px;font:400 16px/1 'Space Grotesk',sans-serif;color:rgba(24,23,22,.55)}
+.cat .tps{display:flex;flex-direction:column;gap:0;margin-top:48px}
+.cats:not(.cl) .tp{padding:56px 0;border-top:1px solid rgba(24,23,22,.14)}
+.cats:not(.cl) .tp:last-child{border-bottom:1px solid rgba(24,23,22,.14)}
+.tp.top{align-items:start}
+.fx .tp{grid-template-columns:1fr 1.15fr;gap:24px 48px}
+@media (max-width:900px){.fx .tp{grid-template-columns:1fr}}
+@media (max-width:1100px){.fx{grid-template-columns:1fr;gap:40px}.side{flex-direction:row;overflow-x:auto;scrollbar-width:none;z-index:5}.side a,.side .cab{flex:none;min-height:48px}.side .cab{margin-top:0;border-top:0;border-left:1px solid rgba(24,23,22,.14);border-radius:0}}
+@media (max-width:640px){.fx{padding:56px var(--gx) 72px}.cats{gap:96px}.cat .tps{gap:64px;margin-top:32px}.side{top:12px;border-radius:16px;padding:8px}.side a{font-size:16px;padding:10px 14px}}
+
+
+.pg{--sy:80px;--sy-end:120px;--sh:32px}
+.pg .fx{padding-top:var(--sy) !important;padding-bottom:var(--sy) !important}
+.pg .fx{padding-bottom:var(--sy-end) !important}
+.pg .fh{padding-bottom:var(--sy) !important}
+@media (max-width:640px){
+.pg{--sy:56px;--sy-end:80px;--sh:24px}
+}
+@media (min-width:641px){.cats:not(.cl) .tp{padding:32px 0}.cats.cl .tp:not(.cl){padding-bottom:32px}}
+@media (max-width:640px){.cats:not(.cl) .tp{padding:24px 0}}
+@media (min-width:641px){.side{padding:8px}.side a{min-height:44px;padding:8px 14px}.side .cab{min-height:44px;margin-top:4px}}
+
+
+.mnav{display:none}@media (max-width:640px){.nav .mnav.on{display:block;position:fixed;inset:0;z-index:60;background:none;padding:0;box-shadow:none}.nav .mnav .mnbg{position:absolute;inset:0;background:rgba(22,29,41,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}.nav .mnav .mnc{position:absolute;top:12px;left:12px;right:12px;height:calc(100dvh - 24px);max-height:820px;box-sizing:border-box;display:flex;flex-direction:column;padding:20px 20px 20px;border-radius:24px;background:#FFFFFF;color:#181716;box-shadow:0 30px 60px rgba(0,0,0,.25)}.nav .mnav .mnh{display:flex;align-items:center;justify-content:space-between;height:44px}.nav .mnav .mnh img{height:28px;width:auto;display:block}.nav .mnav .mnx{width:44px;height:44px;margin-right:-8px;border:0;background:none;color:#181716;display:flex;align-items:center;justify-content:center;cursor:pointer}.nav .mnav .mnl{display:flex;flex-direction:column;margin-top:40px}.nav .mnav .mnl a{display:flex;align-items:center;justify-content:space-between;min-height:64px;padding:0;border-bottom:1px solid rgba(24,23,22,.14);font:400 24px/1.2 'Space Grotesk',sans-serif;color:#181716;text-decoration:none}.nav .mnav .mnl a svg{color:#232E41;opacity:.7}.nav .mnav .mnf{margin-top:auto;display:flex;align-items:center;gap:8px}.nav .mnav .mns{display:flex;align-items:center}.nav .mnav .mns a{width:44px;height:54px;display:flex;align-items:center;justify-content:center;color:#232E41;border:0;padding:0;margin:0}.nav .mnav a.mcta{flex:1;margin:0 0 0 8px;height:54px;display:flex;align-items:center;justify-content:center;padding:0 12px;white-space:nowrap;border:0;border-radius:8px;background:#232E41;color:#FFFFFF;font:500 18px/1 'Space Grotesk',sans-serif;text-decoration:none}}
+
+/* sticky top nav */
+.pg .nav{position:fixed !important;top:0;left:0;right:0;z-index:50;background:#161D29}.pg section:has(> .nav)::before{content:'';display:block;flex:none;height:var(--navh,88px)}
+
+.pg{--navh:72px}
+.pg .nav{height:72px}
+@media (max-width:640px){.pg{--navh:64px}.pg .nav{height:64px}}
+.pg .side{top:88px}
+@media (max-width:640px){.pg .side{top:76px}}
+
+/* feature visuals built in HTML (no screenshot) */
+.tv.viz{background:#F3F4F6;container-type:inline-size;display:flex;flex-direction:column;justify-content:center;box-sizing:border-box;padding:5% 7%;color:#181716}
+.tv.vf{gap:0}
+.tv.vf .vfb{display:flex;flex-direction:column;gap:4px;padding:10px 14px;border-radius:10px;background:#FFFFFF}
+.tv.vf .vfb small{font:500 14px/1.2 'Space Grotesk',sans-serif;letter-spacing:.02em;color:rgba(24,23,22,.55)}
+.tv.vf .vfb span{font:400 clamp(14px,2.7cqw,17px)/1.3 'Space Grotesk',sans-serif}
+.tv.vf .vfb.dk{background:#232E41;color:#FFFFFF}.tv.vf .vfb.dk small{color:rgba(255,255,255,.7)}
+.tv.vf .vfb.ol{background:#FFFFFF;box-shadow:inset 0 0 0 1.5px #232E41}
+.tv.vf>i{display:block;width:2px;height:14px;margin:0 auto;background:#232E41;opacity:.45}
+.tv.vs{gap:0}
+.tv.vs .vr{display:flex;align-items:baseline;gap:16px;padding:10px 0;border-bottom:1px solid rgba(24,23,22,.14)}
+.tv.vs .vr b{flex:0 0 46%;font:400 clamp(34px,8cqw,56px)/1 'Space Grotesk',sans-serif;letter-spacing:-0.04em}
+.tv.vs .vr span{font:400 16px/1.3 'Space Grotesk',sans-serif;color:rgba(24,23,22,.72)}
+.tv.vs>small{margin-top:14px;font:400 14px/1.3 'Space Grotesk',sans-serif;color:rgba(24,23,22,.55)}
+.tt h3 em{font-style:italic}
+@media (max-width:640px){.tv.viz{aspect-ratio:auto !important;padding:20px}}
+
+/* feature screenshots: fitted inside the 16:10 box, navy fills any gap */
+.tv:not(.viz):not(.ph){aspect-ratio:16/10 !important;background-color:#232E41 !important;background-size:contain !important;background-position:center !important;background-repeat:no-repeat !important}
+
+/* zoomable product screenshots */
+.zm{position:relative;cursor:zoom-in}
+.zm .zmb{position:absolute;right:12px;bottom:12px;z-index:3;width:36px;height:36px;border-radius:8px;background:rgba(22,29,41,.72);color:#FFFFFF;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s}
+.zm:hover .zmb{background:#232E41;transform:scale(1.06)}
+.zmo{position:fixed;inset:0;z-index:200;background:rgba(22,29,41,.92);display:flex;align-items:center;justify-content:center;padding:56px 24px;box-sizing:border-box;cursor:zoom-out}
+.zmo img{max-width:100%;max-height:100%;border-radius:12px;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.zmo button{position:absolute;top:16px;right:16px;width:44px;height:44px;border:0;border-radius:8px;background:rgba(255,255,255,.12);color:#FFFFFF;font:400 26px/1 'Space Grotesk',sans-serif;cursor:pointer}
+
+/* mobile menu: fits one screen */
+.nav .mnav .mnl{margin-top:24px}
+.nav .mnav .mnl a{min-height:52px;font-size:22px}
+@media (max-height:620px){.nav .mnav .mnl{margin-top:12px}.nav .mnav .mnl a{min-height:44px;font-size:20px}.nav .mnav .mnc{padding:16px 20px}}
+
+/* no hover nudge on arrows (dice still spin) */
+.svh a.svc:hover svg,.pg .hero .himg .hyt:hover svg,.hero.va .hv-yt:hover svg,.lk3:hover svg,.eng.bk .cta:hover .dt svg,.cta:hover .dt .da,.tml:hover svg,.nd:hover svg{transform:none !important}
+/* dark glass chip on pictures: same as Watch on YouTube */
+.bdg:not(.t),.ugc .ugv.pair .bdg:not(.t),.gct{background:rgba(22,29,41,.72) !important;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+
+/* text links (See it in a scene →) keep the 3px nudge */
+.lnk svg{transition:transform .2s}
+.lnk:hover svg{transform:translateX(3px)}
+@media (prefers-reduced-motion:reduce){.lnk:hover svg{transform:none}}
+@media (max-width:640px){.pg .fr{align-items:center;text-align:center}.pg .fr .fl{align-items:center}}
+@media (max-width:640px){.pg .fr .fl{gap:4px}.pg .fr .fl a{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 16px}}
+@media (max-width:640px){.pg .fhc{text-align:center;justify-items:center}.pg .fhc p{justify-self:center}.pg .side{scroll-snap-type:x proximity}.pg .side a{scroll-snap-align:start}.pg .side::after{content:'';position:sticky;right:-8px;flex:0 0 64px;margin:-8px -8px -8px -56px;align-self:stretch;border-radius:0 16px 16px 0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M6 3l5 5-5 5' fill='none' stroke='%23232E41' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") right 14px center/16px 16px no-repeat,linear-gradient(90deg,rgba(243,244,246,0),#F3F4F6 55%)}.pg .cat .tps{gap:0}.pg .tt .tb{flex-wrap:nowrap;gap:12px 20px}.pg .tt .tb>*{white-space:nowrap}}
+</style>
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8MPGKVX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div class="pg"><section class="fh" id="top"><div class="nav"><a class="lg" href="/"><img src="/assets/site/45bf7c52c7bed5168a147d85b4036d6d.svg" alt="Tryll Engine"></a><div class="lk"><a href="/features">For Developers</a><a href="/#use-cases">Use cases</a><a href="/#pricing">Pricing</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/#contact">Contact</a><a href="/demo">Demo</a></div><div class="nr"><a class="nd" href="https://docs.tryllengine.com/" target="_blank" rel="noopener">Docs <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a class="nb" href="/download">Get Tryll Engine</a><button type="button" class="mb" aria-label="Menu" aria-expanded="false" data-b-aria-expanded="navX" data-on-click="navT"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg></button></div><div class="mnav" data-b-class="navM"><div class="mnbg" data-on-click="navT"></div><div class="mnc" role="dialog" aria-label="Menu"><div class="mnh"><img src="/assets/site/3f3cf494323b0ac3405fc08289d2e760.svg" alt="Tryll Engine"><button type="button" class="mnx" aria-label="Close menu" data-on-click="navT"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg></button></div><div class="mnl"><a href="/features" data-on-click="navT">For Developers<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a href="/#use-cases" data-on-click="navT">Use cases<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a href="/#pricing" data-on-click="navT">Pricing<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a href="/blog" data-on-click="navT">Blog<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a href="/about" data-on-click="navT">About<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a href="/#contact" data-on-click="navT">Contact<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a href="https://docs.tryllengine.com/" data-on-click="navT" target="_blank" rel="noopener">Docs<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a href="/demo" data-on-click="navT">Demo<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></div><div class="mnf"><div class="mns"><a href="https://discord.gg/DTKycjPpzs" aria-label="Discord" target="_blank" rel="noopener"><svg viewBox="0 0 30 30" width="24" height="24" aria-hidden="true"><path d="M25.3963 5.19434C23.4842 4.31699 21.4337 3.6706 19.2899 3.30038C19.2508 3.29324 19.2118 3.31109 19.1917 3.3468C18.928 3.81582 18.6359 4.4277 18.4314 4.90863C16.1255 4.56342 13.8315 4.56342 11.5729 4.90863C11.3683 4.41701 11.0656 3.81582 10.8007 3.3468C10.7806 3.31228 10.7416 3.29443 10.7026 3.30038C8.55989 3.66941 6.50945 4.31581 4.59617 5.19434C4.57961 5.20149 4.56541 5.2134 4.55599 5.22887C0.66674 11.0393 -0.398688 16.707 0.123975 22.3043C0.12634 22.3317 0.141712 22.3579 0.162998 22.3745C2.72901 24.259 5.21463 25.403 7.6541 26.1613C7.69314 26.1732 7.73451 26.1589 7.75935 26.1267C8.33641 25.3387 8.8508 24.5078 9.29184 23.634C9.31787 23.5828 9.29303 23.5221 9.23983 23.5019C8.42391 23.1924 7.647 22.815 6.89966 22.3865C6.84055 22.3519 6.83582 22.2674 6.8902 22.2269C7.04746 22.1091 7.20477 21.9864 7.35494 21.8626C7.38211 21.84 7.41997 21.8353 7.45192 21.8495C12.3616 24.0911 17.6769 24.0911 22.5287 21.8495C22.5606 21.8341 22.5985 21.8389 22.6268 21.8615C22.7771 21.9853 22.9343 22.1091 23.0928 22.2269C23.1472 22.2674 23.1436 22.3519 23.0845 22.3865C22.3372 22.8233 21.5602 23.1924 20.7431 23.5007C20.6899 23.5209 20.6663 23.5828 20.6923 23.634C21.1428 24.5066 21.6572 25.3375 22.2236 26.1256C22.2473 26.1589 22.2898 26.1732 22.3289 26.1613C24.7802 25.403 27.2658 24.259 29.8318 22.3745C29.8543 22.3579 29.8685 22.3329 29.8708 22.3055C30.4964 15.8343 28.8231 10.2132 25.4353 5.23005C25.427 5.2134 25.4128 5.20149 25.3963 5.19434ZM10.025 18.8961C8.54687 18.8961 7.32892 17.539 7.32892 15.8724C7.32892 14.2058 8.52325 12.8488 10.025 12.8488C11.5386 12.8488 12.7448 14.2178 12.7211 15.8724C12.7211 17.539 11.5268 18.8961 10.025 18.8961ZM19.9934 18.8961C18.5153 18.8961 17.2974 17.539 17.2974 15.8724C17.2974 14.2058 18.4917 12.8488 19.9934 12.8488C21.507 12.8488 22.7132 14.2178 22.6895 15.8724C22.6895 17.539 21.507 18.8961 19.9934 18.8961Z" fill="currentColor"></path></svg></a><a href="https://www.youtube.com/@Tryll_Engine" aria-label="YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9L15.5 12l-5.8 3.1z"></path></svg></a><a href="https://www.linkedin.com/company/tryllengine/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M20.4 2H3.6A1.6 1.6 0 0 0 2 3.6v16.8A1.6 1.6 0 0 0 3.6 22h16.8a1.6 1.6 0 0 0 1.6-1.6V3.6A1.6 1.6 0 0 0 20.4 2zM8 18.6H5.1V9.4H8v9.2zM6.6 8.1a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4zm12.1 10.5h-2.9v-4.5c0-1.1 0-2.4-1.5-2.4s-1.7 1.1-1.7 2.3v4.6H9.7V9.4h2.7v1.3h.1a3 3 0 0 1 2.7-1.5c2.9 0 3.5 1.9 3.5 4.4v5z"></path></svg></a></div><a class="mcta" href="/download">Get Tryll Engine</a></div></div></div></div><div class="fhc"><h1>For Developers</h1><p>In-game AI that works out of the box, in Unity and Unreal Engine</p></div></section><div class="fx"><nav class="side"><a class="on" href="#cat0" data-b-class="a0" data-on-click="go0"><b>01</b>Basic NPC</a><a class="" href="#cat1" data-b-class="a1" data-on-click="go1"><b>02</b>Advanced NPC</a><a class="" href="#cat2" data-b-class="a2" data-on-click="go2"><b>03</b>Developer Tools</a><a class="" href="#cat3" data-b-class="a3" data-on-click="go3"><b>04</b>Performance &amp; Memory usage</a><button type="button" class="cab" data-on-click="ca"><i class="x" data-b-class="cai"></i><span data-t="cal">Compact view</span></button></nav><div class="cats" data-b-class="cc"><section class="cat" id="cat0"><h2>Basic NPC</h2><small>3 topics</small><div class="tps"><article id="tp0" class="tp" data-b-class="o0"><div class="tt"><h3 data-on-click="h0">Natural dialogue<i class="pm"></i></h3><p>Characters understand plain language and answer in their own voice, with no dialogue trees to script.</p><div class="tb"><a class="cta np" href="https://docs.tryllengine.com/latest/use-cases/talking-npc.html#natural-dialogue" target="_blank" rel="noopener">Read the docs</a></div></div><div class="tv zm" role="button" tabindex="0" aria-label="View full screen" style="background-image: url(&quot;/assets/site/dddef29fa0822ffe105a29801d637da7.jpg&quot;);"><span class="zmb" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L20 20M10.5 7.5v6M7.5 10.5h6"></path></svg></span></div></article><article id="tp1" class="tp" data-b-class="o1"><div class="tt"><h3 data-on-click="h1">Voice in and out<i class="pm"></i></h3><p>Speech-to-text and text-to-speech run on the player’s device, in many languages, without recording every line. The character starts talking before the reply is finished.</p><div class="tb"><a class="cta np" href="https://docs.tryllengine.com/latest/use-cases/talking-npc.html#voice-in-and-out" target="_blank" rel="noopener">Read the docs</a></div></div><div class="tv zm" role="button" tabindex="0" aria-label="View full screen" style="background-image: url(&quot;/assets/site/7b87dd515c8bef25a2a8b7d321566e31.jpg&quot;);"><span class="zmb" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L20 20M10.5 7.5v6M7.5 10.5h6"></path></svg></span></div></article><article id="tp2" class="tp" data-b-class="o2"><div class="tt"><h3 data-on-click="h2">Roleplay guardrails<i class="pm"></i></h3><p>Players will try to break your characters. A three-step guard catches jailbreaks and out-of-world questions and answers them in character, before the reply model sees them.</p><div class="tb"><a class="cta np" href="https://docs.tryllengine.com/latest/use-cases/talking-npc.html#roleplay-guardrails" target="_blank" rel="noopener">Read the docs</a></div></div><div class="tv zm" role="button" tabindex="0" aria-label="View full screen" style="background-image: url(&quot;/assets/site/e4c90c82657d9c0725ccc0e7bdda0ebc.jpg&quot;);"><span class="zmb" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L20 20M10.5 7.5v6M7.5 10.5h6"></path></svg></span></div></article></div></section><section class="cat" id="cat1"><h2>Advanced NPC</h2><small>5 topics</small><div class="tps"><article id="tp3" class="tp" data-b-class="o3"><div class="tt"><h3 data-on-click="h3">Knowledge and lore<i class="pm"></i></h3><p>Connect your world lore and quest data. Characters answer from what your world actually holds, and say so when they don’t know.</p><div class="tb"><a class="cta np" href="https://docs.tryllengine.com/latest/use-cases/talking-npc.html#knowledge-and-lore" target="_blank" rel="noopener">Read the docs</a></div></div><div class="tv zm" role="button" tabindex="0" aria-label="View full screen" style="background-image: url(&quot;/assets/site/3511668640204f91b4ef3089366192f8.jpg&quot;);"><span class="zmb" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L20 20M10.5 7.5v6M7.5 10.5h6"></path></svg></span></div></article><article id="tp4" class="tp top" data-b-class="o4"><div class="tt"><h3 data-on-click="h4">Talking <em>is</em> the gameplay<i class="pm"></i></h3><p>Flattery charms one character and annoys the next. Tryll reads each line for what your mechanic needs, such as charm, pressure or an offer, and your game decides what happens.</p><div class="tb"><a class="cta np" href="https://docs.tryllengine.com/latest/use-cases/talking-npc.html#talking-is-the-gameplay" target="_blank" rel="noopener">Read the docs</a></div></div><div class="tv viz vf"><div class="vfb"><small>Player says</small><span>“You have the kindest eyes in this whole tavern.”</span></div><i></i><div class="vfb dk"><small>Tryll scores the line</small><span>charm 0.8 · respect 0.6 · pushiness 0.1</span></div><i></i><div class="vfb ol"><small>Your game decides</small><span>Affection 42 → 47: she agrees to one dance</span></div><i></i><div class="vfb"><small>The character answers</small><span>“Sweet words from a stranger… Fine. One dance.”</span></div></div></article><article id="tp5" class="tp" data-b-class="o5"><div class="tt"><h3 data-on-click="h5">Emotions you can hear<i class="pm"></i></h3><p>Your game sets the mood, and the character carries it into what they say and how they sound. Each mood can have its own voice.</p><div class="tb"><a class="cta np" href="https://docs.tryllengine.com/latest/use-cases/talking-npc.html#emotions" target="_blank" rel="noopener">Read the docs</a></div></div><div class="tv zm" role="button" tabindex="0" aria-label="View full screen" style="background-image: url(&quot;/assets/site/6379cee645b08597874347eff0186b28.jpg&quot;);"><span class="zmb" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L20 20M10.5 7.5v6M7.5 10.5h6"></path></svg></span></div></article><article id="tp6" class="tp" data-b-class="o6"><div class="tt"><h3 data-on-click="h6">Actions and tools<i class="pm"></i></h3><p>Characters do things in your world: open doors, hand out quests, trade and follow the player. Your game checks every action before it happens.</p><div class="tb"><a class="cta np" href="https://docs.tryllengine.com/latest/use-cases/talking-npc.html#actions-and-tools" target="_blank" rel="noopener">Read the docs</a></div></div><div class="tv zm" role="button" tabindex="0" aria-label="View full screen" style="background-image: url(&quot;/assets/site/d598498412abaa8a76cbf67f6fe19eb9.jpg&quot;);"><span class="zmb" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L20 20M10.5 7.5v6M7.5 10.5h6"></path></svg></span></div></article><article id="tp7" class="tp top" data-b-class="o7"><div class="tt"><h3 data-on-click="h7">Memory and summarization<i class="pm"></i></h3><p>Characters remember. Long conversations fold into a short summary, key facts go into a memory the character can search, and both save with your game.</p><div class="tb"><a class="cta np" href="https://docs.tryllengine.com/latest/use-cases/talking-npc.html#memory-and-summarization" target="_blank" rel="noopener">Read the docs</a></div></div><div class="tv zm" role="button" tabindex="0" aria-label="View full screen" style="background-image: url(&quot;/assets/site/52413fe45266b7f9cf457356948c6520.jpg&quot;);"><span class="zmb" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L20 20M10.5 7.5v6M7.5 10.5h6"></path></svg></span></div></article></div></section><section class="cat" id="cat2"><h2>Developer Tools</h2><small>4 topics</small><div class="tps"><article id="tp8" class="tp" data-b-class="o8"><div class="tt"><h3 data-on-click="h8">Chat in the editor<i class="pm"></i></h3><p>Talk to your character inside Unity or Unreal, by text or by voice, without building the game or entering Play mode.</p><div class="tb"><a class="cta np" href="https://docs.tryllengine.com/latest/how-to/test-agent-in-editor.html" target="_blank" rel="noopener">Read the docs</a></div></div><div class="tv zm" role="button" tabindex="0" aria-label="View full screen" style="background-image: url(&quot;/assets/site/f4134f52b435305ebc44fee871e4711b.jpg&quot;);"><span class="zmb" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L20 20M10.5 7.5v6M7.5 10.5h6"></path></svg></span></div></article><article id="tp9" class="tp" data-b-class="o9"><div class="tt"><h3 data-on-click="h9">Visual workflows<i class="pm"></i></h3><p>Build a character’s logic as a graph in Unity and Unreal: look things up, classify, branch, act and speak.</p><div class="tb"><a class="cta np" href="https://docs.tryllengine.com/latest/concepts/workflows-graphs-nodes.html" target="_blank" rel="noopener">Read the docs</a></div></div><div class="tv zm" role="button" tabindex="0" aria-label="View full screen" style="background-image: url(&quot;/assets/site/4ea5293c2db0923aaebca383dff7382b.jpg&quot;);"><span class="zmb" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L20 20M10.5 7.5v6M7.5 10.5h6"></path></svg></span></div></article><article id="tp10" class="tp" data-b-class="o10"><div class="tt"><h3 data-on-click="h10">Dialog Lab<i class="pm"></i></h3><p>Run one scripted conversation across prompts, models and seeds side by side, with checks on every reply. See which change really makes the character better.</p><div class="tb"><a class="cta np" href="https://docs.tryllengine.com/latest/how-to/compare-dialog-variants.html" target="_blank" rel="noopener">Read the docs</a></div></div><div class="tv zm" role="button" tabindex="0" aria-label="View full screen" style="background-image: url(&quot;/assets/site/5c415b1fbf8ca71767e78235d9d8852f.jpg&quot;);"><span class="zmb" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L20 20M10.5 7.5v6M7.5 10.5h6"></path></svg></span></div></article><article id="tp11" class="tp" data-b-class="o11"><div class="tt"><h3 data-on-click="h11">Agent Log<i class="pm"></i></h3><p>Follow every agent while the game runs: what it heard, which path it took, how long each step took and what it said. Export the log to share a bug.</p><div class="tb"><a class="cta np" href="https://docs.tryllengine.com/latest/how-to/use-agent-log.html" target="_blank" rel="noopener">Read the docs</a></div></div><div class="tv zm" role="button" tabindex="0" aria-label="View full screen" style="background-image: url(&quot;/assets/site/101f248cd57c51dca43b0579b091c0cb.jpg&quot;);"><span class="zmb" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L20 20M10.5 7.5v6M7.5 10.5h6"></path></svg></span></div></article></div></section><section class="cat" id="cat3"><h2>Performance &amp; Memory usage</h2><small>3 topics</small><div class="tps"><article id="tp12" class="tp" data-b-class="o12"><div class="tt"><h3 data-on-click="h12">Starts at 1.6 GB<i class="pm"></i></h3><p>A talking agent fits in 1.6 GB of graphics memory, with speech running on the CPU. Want smarter characters? Pick a bigger model: the model cards show what each one costs.</p><div class="tb"><a class="cta np" href="https://docs.tryllengine.com/latest/model-benchmarks/leaderboards/vram-at-8k-context/index.html" target="_blank" rel="noopener">Read the docs</a></div></div><div class="tv viz vs"><div class="vr"><b>1.6 GB</b><span>Bonsai 8B 1-bit</span></div><div class="vr"><b>2.9 GB</b><span>Qwen 3.5 4B</span></div><div class="vr"><b>5.7 GB</b><span>Gemma 4 E4B</span></div><small>One agent, 4K context</small></div></article><article id="tp13" class="tp" data-b-class="o13"><div class="tt"><h3 data-on-click="h13">Faster than speech<i class="pm"></i></h3><p>Small models write 100 to 250 tokens a second on a gaming GPU, many times faster than a character speaks. The voice starts after the first sentence.</p><div class="tb"><a class="cta np" href="https://docs.tryllengine.com/latest/model-benchmarks/leaderboards/generation-1k-prompt/index.html" target="_blank" rel="noopener">Read the docs</a></div></div><div class="tv viz vs"><div class="vr"><b>256</b><span>tok/s · Llama 3.2 3B</span></div><div class="vr"><b>174</b><span>tok/s · Qwen 3.5 4B</span></div><div class="vr"><b>105</b><span>tok/s · Ministral 3 8B</span></div><small>Measured: 1K-token prompt, RTX 5070 Ti</small></div></article><article id="tp14" class="tp" data-b-class="o14"><div class="tt"><h3 data-on-click="h14">Check it yourself<i class="pm"></i></h3><p>Open the Memory window to see how much RAM and graphics memory your models and agents take right now, in your own project.</p><div class="tb"><a class="cta np" href="https://docs.tryllengine.com/latest/how-to/inspect-server-memory.html" target="_blank" rel="noopener">Read the docs</a></div></div><div class="tv zm" role="button" tabindex="0" aria-label="View full screen" style="background-image: url(&quot;/assets/site/9c9ceae270407492ec13bccb45c882e0.jpg&quot;);"><span class="zmb" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5L20 20M10.5 7.5v6M7.5 10.5h6"></path></svg></span></div></article></div></section></div></div><footer class="fo"><div class="fr"><img src="/assets/site/3f3cf494323b0ac3405fc08289d2e760.svg" alt="Tryll Engine"><span class="cp">© 2026 Tryll Engine, Inc. All rights reserved</span><div class="fl"><a href="https://discord.gg/DTKycjPpzs" target="_blank" rel="noopener">Discord</a><a href="https://www.youtube.com/@Tryll_Engine" target="_blank" rel="noopener">YouTube</a><a href="https://www.linkedin.com/company/tryllengine/" target="_blank" rel="noopener">LinkedIn</a><a href="/privacy-policy">Privacy Policy</a></div><span class="cp">Epic MegaGrants recipient</span><a class="up" href="#top">Back to top <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M8 13V4M4 8l4-4 4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></div><div class="big"><svg viewBox="144.191 31 291 54" aria-hidden="true"><path d="M201.191 31V41.3998H178.839V85H166.618V41.3998H144.191V31H201.191Z" fill="#232E41"></path><path d="M255.232 61.4012C254.87 61.3124 254.495 61.2355 254.101 61.1615C255.842 60.6138 257.492 59.8086 258.994 58.7667C260.624 57.6181 261.938 56.0758 262.819 54.2819C263.782 52.2009 264.248 49.9245 264.186 47.6304C264.186 43.8147 263.296 40.6324 261.549 38.1636C259.716 35.6415 257.159 33.7381 254.221 32.7109C250.748 31.512 247.094 30.9348 243.42 31.0058H207.191V85H219.325V65.5574H238.968C241.534 65.4863 244.103 65.6995 246.623 66.1938C248.24 66.5786 249.354 67.2595 249.97 68.2127C250.674 69.5329 251.004 71.0219 250.918 72.5198V85H263.052V71.7856C263.052 68.7129 262.368 66.3389 261.078 64.7285C259.551 62.9968 257.495 61.8245 255.232 61.4012ZM251.567 51.2389C251.19 52.1772 250.615 53.0209 249.878 53.7136C248.426 55.0842 246.254 55.7295 243.42 55.7295H219.325V41.6478H243.42C246.275 41.6478 248.458 42.2309 249.92 43.3765C251.381 44.5221 252.05 46.1207 252.05 48.2816C252.106 49.291 251.941 50.3005 251.567 51.2389Z" fill="#232E41"></path><path d="M379.191 74.5973V85H333.191V31H345.073V74.5973H379.191Z" fill="#232E41"></path><path d="M435.191 74.5973V85H388.191V31H400.331V74.5973H435.191Z" fill="#232E41"></path><path d="M327.191 31L326.511 32.0567L303.717 67.8534V85H291.624V67.8534L268.872 32.0567L268.191 31H282.161L282.351 31.3108L294.486 50.0172C295.477 51.4735 296.312 53.0304 296.986 54.6613C297.3 55.4663 297.529 56.301 297.664 57.1564C297.801 56.301 298.03 55.4663 298.344 54.6613C299.015 53.0304 299.854 51.4735 300.844 50.0172L313.02 31.3108L313.222 31H327.191Z" fill="#232E41"></path></svg></div></footer></div>
+<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/pages/features.js" defer></script>
+<script src="/assets/js/forms.js" defer></script>
+</body>
+</html>

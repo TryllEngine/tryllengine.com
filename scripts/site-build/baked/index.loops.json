@@ -1,0 +1,106 @@
+{
+ "L0": {
+  "list": "cd",
+  "as": "q",
+  "k": 1,
+  "parent": null,
+  "tpl": "<line stroke=\"#232E41\" stroke-width=\".07\" data-b-x1=\"q.x1\" data-b-y1=\"q.y1\" data-b-x2=\"q.x2\" data-b-y2=\"q.y2\" data-b-stroke-opacity=\"q.o\" data-loop=\"L0\" data-lk=\"0\"></line>",
+  "svg": true
+ },
+ "L1": {
+  "list": "cd",
+  "as": "q",
+  "k": 1,
+  "parent": null,
+  "tpl": "<line stroke=\"#232E41\" stroke-width=\".07\" data-b-x1=\"q.x1\" data-b-y1=\"q.y1\" data-b-x2=\"q.x2\" data-b-y2=\"q.y2\" data-b-stroke-opacity=\"q.o\" data-loop=\"L1\" data-lk=\"0\"></line>",
+  "svg": true
+ },
+ "L2": {
+  "list": "E.l",
+  "as": "l",
+  "k": 1,
+  "parent": null,
+  "tpl": "<line stroke=\"#232E41\" stroke-linecap=\"round\" data-b-x1=\"l.x1\" data-b-y1=\"l.y1\" data-b-x2=\"l.x2\" data-b-y2=\"l.y2\" data-b-stroke-opacity=\"l.o\" data-b-stroke-width=\"l.w\" data-loop=\"L2\" data-lk=\"0\"></line>",
+  "svg": true
+ },
+ "L3": {
+  "list": "E.tk",
+  "as": "k",
+  "k": 1,
+  "parent": null,
+  "tpl": "<line stroke=\"#232E41\" stroke-width=\"1.5\" stroke-linecap=\"round\" data-b-x1=\"k.x1\" data-b-y1=\"k.y1\" data-b-x2=\"k.x2\" data-b-y2=\"k.y2\" data-b-stroke-opacity=\"k.o\" data-loop=\"L3\" data-lk=\"0\"></line>",
+  "svg": true
+ },
+ "L4": {
+  "list": "E.dt",
+  "as": "d",
+  "k": 1,
+  "parent": null,
+  "tpl": "<circle r=\"5\" fill=\"#232E41\" data-b-cx=\"d.x\" data-b-cy=\"d.y\" data-loop=\"L4\" data-lk=\"0\"></circle>",
+  "svg": true
+ },
+ "L5": {
+  "list": "E.fl",
+  "as": "q",
+  "k": 1,
+  "parent": null,
+  "tpl": "<circle cx=\"720\" cy=\"500\" fill=\"none\" stroke=\"#232E41\" stroke-width=\"2\" data-b-r=\"q.r\" data-b-stroke-opacity=\"q.o\" data-loop=\"L5\" data-lk=\"0\"></circle>",
+  "svg": true
+ },
+ "L6": {
+  "list": "E.sp",
+  "as": "q",
+  "k": 1,
+  "parent": null,
+  "tpl": "<circle fill=\"#232E41\" data-b-cx=\"q.x\" data-b-cy=\"q.y\" data-b-r=\"q.r\" data-b-fill-opacity=\"q.o\" data-loop=\"L6\" data-lk=\"0\"></circle>",
+  "svg": true
+ },
+ "L7": {
+  "list": "E.g",
+  "as": "q",
+  "k": 1,
+  "parent": null,
+  "tpl": "<polygon fill=\"#3D4D6B\" stroke=\"#3D4D6B\" stroke-width=\"12\" stroke-linejoin=\"round\" data-b-points=\"q.p\" data-b-fill-opacity=\"q.o\" data-b-stroke-opacity=\"q.o\" data-loop=\"L7\" data-lk=\"0\"></polygon>",
+  "svg": true
+ },
+ "L8": {
+  "list": "E.f",
+  "as": "f",
+  "k": 1,
+  "parent": null,
+  "tpl": "<polygon stroke=\"#FFFFFF\" stroke-opacity=\".7\" stroke-width=\"1.5\" stroke-linejoin=\"round\" data-b-points=\"f.p\" data-b-fill=\"f.c\" data-loop=\"L8\" data-lk=\"0\"></polygon>",
+  "svg": true
+ },
+ "L9": {
+  "list": "E.n",
+  "as": "n",
+  "k": 1,
+  "parent": null,
+  "tpl": "<span class=\"dn\" data-b-style=\"n.st\" data-loop=\"L9\" data-lk=\"0\" data-t=\"n.t\">{{n.t}}</span>",
+  "svg": false
+ },
+ "L10": {
+  "list": "cd",
+  "as": "q",
+  "k": 1,
+  "parent": null,
+  "tpl": "<line stroke=\"#FFFFFF\" stroke-width=\".07\" data-b-x1=\"q.x1\" data-b-y1=\"q.y1\" data-b-x2=\"q.x2\" data-b-y2=\"q.y2\" data-b-stroke-opacity=\"q.o\" data-loop=\"L10\" data-lk=\"0\"></line>",
+  "svg": true
+ },
+ "L11": {
+  "list": "cd",
+  "as": "q",
+  "k": 1,
+  "parent": null,
+  "tpl": "<line stroke=\"#FFFFFF\" stroke-width=\".07\" data-b-x1=\"q.x1\" data-b-y1=\"q.y1\" data-b-x2=\"q.x2\" data-b-y2=\"q.y2\" data-b-stroke-opacity=\"q.o\" data-loop=\"L11\" data-lk=\"0\"></line>",
+  "svg": true
+ },
+ "L12": {
+  "list": "cd",
+  "as": "q",
+  "k": 1,
+  "parent": null,
+  "tpl": "<line stroke=\"#FFFFFF\" stroke-width=\".07\" data-b-x1=\"q.x1\" data-b-y1=\"q.y1\" data-b-x2=\"q.x2\" data-b-y2=\"q.y2\" data-b-stroke-opacity=\"q.o\" data-loop=\"L12\" data-lk=\"0\"></line>",
+  "svg": true
+ }
+}

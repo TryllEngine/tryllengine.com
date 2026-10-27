@@ -1,887 +1,249 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <!-- Cookie consent + Google Consent Mode v2 - must load before GTM -->
-    <script src="/assets/js/cookie-consent.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/assets/js/cookie-consent.js"></script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K8MPGKVX');</script>
+<title>Tryll Engine Blog — On-Device AI for Games</title>
+<meta name="description" content="Engineering deep-dives, product updates and event news from the Tryll Engine team: on-device AI for games, intelligent NPCs and local LLMs.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://tryllengine.com/blog">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tryll Engine">
+<meta property="og:url" content="https://tryllengine.com/blog">
+<meta property="og:title" content="Tryll Engine Blog — On-Device AI for Games">
+<meta property="og:description" content="Engineering deep-dives, product updates and event news from the Tryll Engine team: on-device AI for games, intelligent NPCs and local LLMs.">
+<meta property="og:image" content="https://tryllengine.com/assets/images/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tryll Engine Blog — On-Device AI for Games">
+<meta name="twitter:description" content="Engineering deep-dives, product updates and event news from the Tryll Engine team: on-device AI for games, intelligent NPCs and local LLMs.">
+<meta name="twitter:image" content="https://tryllengine.com/assets/images/og-image.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<meta name="theme-color" content="#161D29">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet" data-dc-tpl="1">
+<style>
+body{margin:0;background:#FFFFFF}
+.pg{font-family:'Space Grotesk',system-ui,sans-serif;color:#181716;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+.h1{margin:0;font:400 76px/1 'Space Grotesk',sans-serif;letter-spacing:-0.045em}
+.h2{margin:0;font:400 56px/1.04 'Space Grotesk',sans-serif;letter-spacing:-0.04em}
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-K8MPGKVX');</script>
-    <!-- End Google Tag Manager -->
+.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:40px;height:84px}
+.tl{display:inline-flex;align-items:center;gap:10px;color:#181716;text-decoration:none;font:500 15px/1 'Space Grotesk',sans-serif}
+</style>
+<style>
+.ph{border-radius:16px;background:repeating-linear-gradient(135deg,#E6E8EC 0 10px,#EDEEF1 10px 20px);display:flex;align-items:center;justify-content:center;font:400 13px/1 'Space Grotesk',sans-serif;color:rgba(24,23,22,.45)}
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Tryll Engine</title>
+.pg{background:linear-gradient(#161D29,#161D29) 0 0/50% 798px no-repeat,linear-gradient(#161D29,#161D29) 0 0/100% 690px no-repeat,#FFFFFF !important;--gx:clamp(16px,3.06vw,44px);overflow-x:clip}
+.pg *{box-sizing:border-box}
+.pg{--st:0 0 0 0 transparent;--stf:none}
+.cta{display:inline-flex;align-items:center;gap:14px;height:54px;padding:0 7px 0 22px;border-radius:8px;border:0;cursor:pointer;text-decoration:none;font:500 18px/1 'Space Grotesk',sans-serif;background:#232E41;color:#FFFFFF;transition:background .2s}
+.cta:hover{background:#2B3850}.cta .dt svg{transition:transform .6s cubic-bezier(.3,.7,.2,1)}.cta:hover .dt svg{transform:rotate(360deg)}@media (prefers-reduced-motion:reduce){.cta:hover .dt svg{transform:none}}
+.cta .dt{width:40px;height:40px;border-radius:6px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center}
+.cta.w{background:#FFFFFF;color:#181716}
+.cta.w:hover{background:#F7F2EC}
+.cta.w .dt{background:rgba(35,46,65,.08)}
+.cta.np{padding:0 24px}
+.nav{position:relative;z-index:3;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:88px;padding:0 var(--gx)}
+.nav .nr{justify-self:end;display:flex;align-items:center;gap:8px}
+.nav .nd{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 16px;border-radius:8px;background:rgba(255,255,255,.08);color:#FFFFFF;text-decoration:none;font:400 16px/1 'Space Grotesk',sans-serif;transition:background .2s}
+.nav .nd:hover{background:rgba(255,255,255,.14)}
+.nav .nd svg{width:16px;height:16px;flex:none}
+.nav .nb,.cta{white-space:nowrap}
+.nav .mb{display:none;width:44px;height:44px;border-radius:8px;border:0;background:rgba(255,255,255,.1);color:#FFFFFF;align-items:center;justify-content:center;cursor:pointer}
+.nav .lg img{height:32px;width:auto;display:block}
+.nav .lk{display:flex;gap:28px}
+.nav .lk a{font:400 14px/1 'Space Grotesk',sans-serif;color:#FFFFFF;opacity:.82;text-decoration:none}
+.nav .lk a:hover{opacity:1}
+.nav .nb{justify-self:end;display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#FFFFFF;color:#181716;text-decoration:none;font:500 16px/1 'Space Grotesk',sans-serif}
 
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Insights, tutorials, and updates from the Tryll Engine team. Learn about on-device AI for games, intelligent NPCs, and local AI technology.">
-    <meta name="keywords" content="game AI blog, NPC AI tutorials, local AI development, game development insights, AI gaming technology">
-    <meta name="author" content="Tryll Engine">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://tryllengine.com/blog">
+.ag{padding:96px var(--gx)}
+@keyframes pdn{0%,30%{opacity:1;filter:blur(0)}48%,82%{opacity:0;filter:blur(4px)}100%{opacity:1;filter:blur(0)}}
+@keyframes pdl{0%,34%{opacity:0;filter:blur(4px)}52%,80%{opacity:1;filter:blur(0)}98%,100%{opacity:0;filter:blur(4px)}}
+.tab{position:absolute;left:-96px;top:0;width:96px;height:96px;background:#F3F4F6;border-radius:18px 0 0 18px;display:flex;align-items:center;justify-content:center;color:#232E41}
+.tab .cc{position:absolute;right:0;top:96px}
+.f label{display:block;font:500 16px/1 'Space Grotesk',sans-serif;color:rgba(24,23,22,.72);margin-bottom:10px}
+.in{height:54px;border-radius:8px;box-shadow:inset 0 0 0 1px rgba(24,23,22,.18);background:#FFFFFF;display:flex;align-items:center;padding:0 16px;font:400 16px/1 'Space Grotesk',sans-serif;color:rgba(24,23,22,.45)}
+.in.ta{height:110px;align-items:flex-start;padding-top:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{height:40px;padding:0 16px;border-radius:999px;border:0;cursor:pointer;background:#FFFFFF;box-shadow:inset 0 0 0 1px rgba(24,23,22,.2);font:400 16px/1 'Space Grotesk',sans-serif;color:#181716}
+.chips button.on{background:#232E41;color:#FFFFFF;box-shadow:none}
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tryllengine.com/blog">
-    <meta property="og:title" content="Blog - Tryll Engine">
-    <meta property="og:description" content="Insights, tutorials, and updates from the Tryll Engine team.">
-    <meta property="og:image" content="https://tryllengine.com/assets/logo/logo-mark/blue.svg">
+.fo{position:relative;border-top:1px solid rgba(24,23,22,.14)}
+.fr{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;padding:32px var(--gx)}
+.fr img{height:32px;width:auto}
+.fr .cp{font:400 14px/1 'Space Grotesk',sans-serif;color:rgba(24,23,22,.72)}
+.fr .fl{margin-left:auto;display:flex;flex-wrap:wrap;gap:12px 28px}
+.fr .up{flex:0 0 auto;margin-left:auto;height:44px;padding:0 14px 0 18px;gap:10px;border-radius:8px;display:inline-flex;align-items:center;font:500 16px/1 'Space Grotesk',sans-serif;text-decoration:none;background:#232E41;color:#FFFFFF;transition:background .2s}
+.fr .up:hover{background:#2B3850}
+.fr .fl a{font:400 14px/1 'Space Grotesk',sans-serif;color:#181716;text-decoration:none}
+.big{padding:56px var(--gx) 0}
+.big svg{display:block;width:100%;height:auto}
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://tryllengine.com/blog">
-    <meta property="twitter:title" content="Blog - Tryll Engine">
-    <meta property="twitter:description" content="Insights, tutorials, and updates from the Tryll Engine team.">
-    <meta property="twitter:image" content="https://tryllengine.com/assets/logo/logo-mark/blue.svg">
+@media (max-width:1100px){
+.tab{display:none}
+}
+@media (max-width:900px){
+.nav{grid-template-columns:1fr auto}
+.nav .lk{display:none}
+}
+@media (max-width:640px){
+.nav .mb{display:flex}
+.nav .nd{display:none}
+.nav{position:relative;z-index:2}
+.nav .nb{height:44px;padding:0 14px}
+.ag{padding-top:72px;padding-bottom:72px}
+.fr{flex-direction:column;align-items:flex-start;gap:20px;padding-top:40px}
+.fr .fl{margin-left:0;flex-direction:column;gap:14px}
+.fr .fl a{font-size:18px}
+.fr .fl{order:1;margin:4px 0 8px}.fr .cp{order:2}.fr .up{order:3}
+.fr .up{margin-left:0;align-self:stretch;justify-content:center;height:54px;margin-top:8px}
+.f label{margin-bottom:8px}
+.fr .fl{margin-left:0}
+}
 
-    <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="./assets/favicon/site.webmanifest">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#232E41',
-                        secondary: '#F6F0EB',
-                        'primary-light': '#2a3750',
-                        'primary-dark': '#1a232f',
-                        'secondary-light': '#ffffff',
-                        'secondary-dark': '#e8e2dd',
-                        dark: {
-                            900: '#0a0d12',
-                            800: '#0f1419',
-                            700: '#141a20',
-                            600: '#1a2026',
-                            500: '#1f262d',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+.pg{background:#FFFFFF !important}
+.bh{position:relative;background:#161D29;color:#FFFFFF;border-radius:0 0 100px 0;padding-bottom:96px}
+.bhc{padding:72px var(--gx) 0;display:grid;grid-template-columns:1fr 1.15fr;gap:40px 48px;align-items:center}
+.sbw{position:relative;margin-left:96px}
+.sub{position:relative;background:#F3F4F6;color:#181716;border-radius:0 24px 24px 24px;padding:40px;display:flex;flex-direction:column;gap:20px}
+.sub .tab{left:-96px}
+.sub h2{margin:0;font:400 32px/1.1 'Space Grotesk',sans-serif;letter-spacing:-0.025em}
+.sub p.sd{margin:-8px 0 4px;font:400 20px/1.5 'Space Grotesk',sans-serif;color:rgba(24,23,22,.72)}
+.sub .ef{display:flex;align-items:center;gap:8px;height:66px;padding:0 6px 0 18px;box-sizing:border-box;border-radius:12px;background:#FFFFFF;box-shadow:inset 0 0 0 1px rgba(24,23,22,.18)}
+.sub .ef span{flex:1;min-width:0;font:400 18px/1 'Space Grotesk',sans-serif;color:rgba(24,23,22,.45);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sub .ef .cta{flex:none}
+.sub small{font:400 16px/1.4 'Space Grotesk',sans-serif;color:rgba(24,23,22,.72)}
+.sub small a{color:#181716}
+.bhc h1{margin:0;font:400 clamp(44px,5.6vw,68px)/1 'Space Grotesk',sans-serif;letter-spacing:-0.045em}
+.bhc p{margin:24px 0 0;max-width:520px;font:400 20px/1.5 'Space Grotesk',sans-serif;color:rgba(255,255,255,.78)}
 
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 100px;
-        }
+.cv{position:relative;aspect-ratio:16/10;border-radius:20px;overflow:hidden;display:flex;align-items:center;padding:0 9%;box-sizing:border-box;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.cv b{position:relative;z-index:1;font:500 clamp(26px,2.8vw,40px)/1.02 'Space Grotesk',sans-serif;letter-spacing:-0.035em;max-width:13ch}
+.cv i{position:absolute;right:-6%;bottom:-18%;width:46%;aspect-ratio:1;opacity:0;transform:translate(10%,10%) rotate(-12deg);transition:opacity .35s,transform .5s cubic-bezier(.2,.8,.2,1)}
+.pc:hover .cv i{opacity:.9;transform:none}
+.cv i svg{width:100%;height:100%;display:block}
+.cv small{position:absolute;z-index:2;left:16px;top:16px;height:30px;padding:0 12px;border-radius:6px;background:#FFFFFF;color:#181716;font:500 16px/1 'Space Grotesk',sans-serif;display:flex;align-items:center}
+.cv.tn{background:#F2EFEA;color:#181716}
+.cv.tt{background:#F3F4F6;color:#181716}
+.cv.ph{background:#1b2128 center 22%/cover no-repeat}
+.cv.ph.fit{background-color:#232E41;background-position:center;background-size:contain}
+.pc{display:block;text-decoration:none;color:inherit}
+.pc:hover .cv{transform:translateY(-4px)}
+.pc .mt{margin:20px 4px 0;font:400 16px/1.2 'Space Grotesk',sans-serif;color:rgba(24,23,22,.72)}
+.pc h3{margin:10px 4px 0;font:400 22px/1.35 'Space Grotesk',sans-serif;letter-spacing:-0.01em;color:#181716}
 
-        :root {
-            /* Typography scale */
-            --typo-label: 12px;
-            --typo-copy: 14px;
-            --typo-largecopy: 16px;
-            --typo-subtitle: 20px;
-            --typo-title: 32px;
-            --typo-hero: 48px;
-        }
+.bl{padding:96px var(--gx) 120px}
+.bbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chips button{height:44px;padding:0 18px;border:0 !important;box-shadow:none !important;border-radius:8px;background:#F3F4F6;color:#181716;font:400 16px/1 'Space Grotesk',sans-serif;cursor:pointer;transition:background .2s,color .2s}
+.chips button:hover{background:#E8EAEE}
+.chips button.on{background:#232E41;color:#FFFFFF}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px 20px;margin-top:48px}
+.pgn{display:flex;justify-content:center;gap:8px;width:max-content;margin:72px auto 0;padding:6px;background:#FFFFFF;border:1px solid rgba(24,23,22,.14);border-radius:14px}
+.pgn a{width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:#F3F4F6;color:#181716;text-decoration:none;font:400 16px/1 'Space Grotesk',sans-serif}
+.pgn a.on{background:#232E41;color:#FFFFFF}
+.pgn a.dis{opacity:.4}
+.emp{display:none;margin-top:48px;font:400 20px/1.5 'Space Grotesk',sans-serif;color:rgba(24,23,22,.72)}
+@media (max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:900px){
+.bhc{grid-template-columns:1fr;padding-top:48px}
+.bhc p{justify-self:start}
+.sbw{margin-left:0}.sub{padding:24px;border-radius:24px}
+.bh{border-radius:0 0 60px 0;padding-bottom:64px}
+}
+@media (max-width:640px){
+.sub .ef .cta .dt{display:none}
+.sub .ef .cta{padding:0 18px}
+.sub .ef{padding-left:14px}
+.sub .ef span{font-size:16px}
+.bl{padding:64px var(--gx) 72px}
+.grid{grid-template-columns:1fr;gap:40px;margin-top:32px}
+.chips{flex-wrap:nowrap;overflow-x:auto;margin:0 calc(-1 * var(--gx));padding:0 var(--gx);scrollbar-width:none}
+.chips button{flex:none}
+.cv b{font-size:28px}
+}
 
-        @media (min-width: 768px) {
-            :root {
-                --typo-label: 13px;
-                --typo-copy: 16px;
-                --typo-largecopy: 18px;
-                --typo-subtitle: 24px;
-                --typo-title: 48px;
-                --typo-hero: 62px;
-            }
-        }
 
-        body {
-            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #000000;
-            background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 24px 24px;
-            color: rgba(255, 255, 255, 0.85);
-            overflow-x: hidden;
-            line-height: 1.5em;
-            letter-spacing: -0.011em;
-            font-weight: 449;
-            font-size: var(--typo-copy);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
-        }
+.pg{--sy:80px;--sy-end:120px;--sh:32px}
+.pg .bl,.pg .fx{padding-top:var(--sy) !important;padding-bottom:var(--sy) !important}
+.pg .bl,.pg .fx{padding-bottom:var(--sy-end) !important}
+.pg .bh,.pg .fh{padding-bottom:var(--sy) !important}
+@media (max-width:640px){
+.pg{--sy:56px;--sy-end:80px;--sh:24px}
+}
 
-        body::after {
-            content: '';
-            position: fixed;
-            inset: 0;
-            z-index: 9998;
-            pointer-events: none;
-            opacity: 0.018;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            background-repeat: repeat;
-            background-size: 256px 256px;
-        }
 
-        /* Better font rendering for all text */
-        * {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
-        }
+.mnav{display:none}@media (max-width:640px){.nav .mnav.on{display:block;position:fixed;inset:0;z-index:60;background:none;padding:0;box-shadow:none}.nav .mnav .mnbg{position:absolute;inset:0;background:rgba(22,29,41,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}.nav .mnav .mnc{position:absolute;top:12px;left:12px;right:12px;height:calc(100dvh - 24px);max-height:820px;box-sizing:border-box;display:flex;flex-direction:column;padding:20px 20px 20px;border-radius:24px;background:#FFFFFF;color:#181716;box-shadow:0 30px 60px rgba(0,0,0,.25)}.nav .mnav .mnh{display:flex;align-items:center;justify-content:space-between;height:44px}.nav .mnav .mnh img{height:28px;width:auto;display:block}.nav .mnav .mnx{width:44px;height:44px;margin-right:-8px;border:0;background:none;color:#181716;display:flex;align-items:center;justify-content:center;cursor:pointer}.nav .mnav .mnl{display:flex;flex-direction:column;margin-top:40px}.nav .mnav .mnl a{display:flex;align-items:center;justify-content:space-between;min-height:64px;padding:0;border-bottom:1px solid rgba(24,23,22,.14);font:400 24px/1.2 'Space Grotesk',sans-serif;color:#181716;text-decoration:none}.nav .mnav .mnl a svg{color:#232E41;opacity:.7}.nav .mnav .mnf{margin-top:auto;display:flex;align-items:center;gap:8px}.nav .mnav .mns{display:flex;align-items:center}.nav .mnav .mns a{width:44px;height:54px;display:flex;align-items:center;justify-content:center;color:#232E41;border:0;padding:0;margin:0}.nav .mnav a.mcta{flex:1;margin:0 0 0 8px;height:54px;display:flex;align-items:center;justify-content:center;padding:0 12px;white-space:nowrap;border:0;border-radius:8px;background:#232E41;color:#FFFFFF;font:500 18px/1 'Space Grotesk',sans-serif;text-decoration:none}}
 
-        /* Default font weight for all elements */
-        *, *::before, *::after {
-            font-weight: inherit;
-        }
+/* sticky top nav */
+.pg .nav{position:fixed !important;top:0;left:0;right:0;z-index:50;background:#161D29}.pg section:has(> .nav)::before{content:'';display:block;flex:none;height:var(--navh,88px)}
 
-        /* Restore Font Awesome icon weights (overridden by inherit rule above) */
-        .fas, .fa-solid, .fas::before, .fa-solid::before { font-weight: 900 !important; }
-        .far, .fa-regular, .far::before, .fa-regular::before { font-weight: 400 !important; }
-        .fab, .fa-brands, .fab::before, .fa-brands::before { font-weight: 400 !important; }
+.pg{--navh:72px}
+.pg .nav{height:72px}
+@media (max-width:640px){.pg{--navh:64px}.pg .nav{height:64px}}
 
-        .heading-primary {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            line-height: 1.05;
-            color: #ffffff;
-        }
+/* mobile menu: fits one screen */
+.nav .mnav .mnl{margin-top:24px}
+.nav .mnav .mnl a{min-height:52px;font-size:22px}
+@media (max-height:620px){.nav .mnav .mnl{margin-top:12px}.nav .mnav .mnl a{min-height:44px;font-size:20px}.nav .mnav .mnc{padding:16px 20px}}
 
-        .heading-secondary {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            line-height: 1.15;
-            color: #ffffff;
-        }
+/* no hover nudge on arrows (dice still spin) */
+.svh a.svc:hover svg,.pg .hero .himg .hyt:hover svg,.hero.va .hv-yt:hover svg,.lk3:hover svg,.eng.bk .cta:hover .dt svg,.cta:hover .dt .da,.tml:hover svg,.nd:hover svg{transform:none !important}
+/* dark glass chip on pictures: same as Watch on YouTube */
+.bdg:not(.t),.ugc .ugv.pair .bdg:not(.t),.gct{background:rgba(22,29,41,.72) !important;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 
-        .heading-tertiary {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
-            letter-spacing: -0.015em;
-            line-height: 1.25;
-            color: #ffffff;
-        }
-
-        .body-large {
-            font-size: var(--typo-largecopy);
-            line-height: 1.6;
-            font-weight: 449;
-            color: rgba(255, 255, 255, 0.75);
-            letter-spacing: -0.008em;
-            text-wrap: balance;
-        }
-
-        .body-medium {
-            font-size: var(--typo-copy);
-            line-height: 1.5em;
-            font-weight: 449;
-            color: rgba(255, 255, 255, 0.7);
-            letter-spacing: -0.006em;
-            text-wrap: balance;
-        }
-
-        .body-small {
-            font-size: var(--typo-label);
-            line-height: 1.45;
-            font-weight: 449;
-            color: rgba(255, 255, 255, 0.65);
-            letter-spacing: -0.004em;
-            text-wrap: balance;
-        }
-
-        .mono-text {
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 500;
-            letter-spacing: 0.025em;
-        }
-
-        .terminal-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            color: rgba(59, 130, 246, 0.7);
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-        .terminal-label::before {
-            content: '// ';
-            opacity: 0.5;
-        }
-
-        /* Button and interactive element text weight */
-        button, [role="button"], a {
-            font-weight: 500;
-        }
-
-        /* Button styles */
-        .btn-primary {
-            background-color: #3B82F6;
-            color: #ffffff;
-            border: none;
-            font-weight: 600;
-            font-family: 'DM Sans', sans-serif;
-            transition: all 0.12s ease-out;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-size: 0.85em;
-            border-radius: 3px;
-        }
-
-        .btn-primary:hover {
-            background-color: #2563EB;
-            transform: none;
-            box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5);
-        }
-
-        .btn-primary:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            font-weight: 600;
-            font-family: 'DM Sans', sans-serif;
-            transition: all 0.12s ease-out;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-size: 0.85em;
-            border-radius: 3px;
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.25);
-            color: #ffffff;
-            transform: none;
-        }
-
-        .btn-secondary:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
-        }
-
-        /* Tailwind font weight overrides */
-        .font-normal { font-weight: 449 !important; }
-        .font-medium { font-weight: 500 !important; }
-        .font-semibold { font-weight: 600 !important; }
-        .font-bold { font-weight: 650 !important; }
-
-        /* Text color adjustments */
-        .text-gray-400 { color: rgba(255, 255, 255, 0.75); }
-        .text-gray-500 { color: rgba(255, 255, 255, 0.65); }
-        .text-gray-600 { color: rgba(255, 255, 255, 0.55); }
-        .text-white { color: rgba(255, 255, 255, 0.9); }
-        .text-white\/80 { color: rgba(255, 255, 255, 0.75); }
-        .text-white\/60 { color: rgba(255, 255, 255, 0.6); }
-
-        .text-sm {
-            font-weight: 500;
-            letter-spacing: -0.004em;
-        }
-
-        .text-xs {
-            font-weight: 500;
-            letter-spacing: 0;
-        }
-
-        p {
-            font-weight: 449;
-            text-wrap: balance;
-            line-height: 1.5em;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .text-secondary {
-            color: rgba(255, 255, 255, 0.65);
-            font-weight: 449;
-            text-wrap: balance;
-        }
-
-        /* Navigation glass card */
-        .nav-glass-card {
-            position: relative;
-            border-radius: 4px;
-            overflow: hidden;
-            transition: all 0.15s ease-out;
-            background: rgba(0, 0, 0, 0.88);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-        }
-
-        .nav-glass-card > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        .nav-glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.12);
-        }
-
-        /* Glass card for blog post cards */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 4px !important;
-            transition: all 0.15s ease-out;
-            border-top: 2px solid rgba(59, 130, 246, 0.3);
-        }
-
-        .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.12);
-            background: rgba(255, 255, 255, 0.04);
-            box-shadow: none;
-            border-top-color: rgba(59, 130, 246, 0.5);
-        }
-
-        .form-input {
-            background-color: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.9);
-            transition: all 0.2s ease;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: rgba(255, 255, 255, 0.4);
-            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
-        }
-
-        .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        select.form-input option {
-            background-color: #14161b;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        /* Blog card image */
-        .blog-card-image {
-            aspect-ratio: 4 / 3;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 2px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .blog-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .line-clamp-2 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        /* Category filter styling */
-        .category-link {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            color: rgba(255, 255, 255, 0.35);
-            text-transform: uppercase;
-            transition: color 0.12s ease-out;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 0.25rem 0;
-        }
-
-        .category-link:hover {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .category-link.active {
-            color: rgba(59, 130, 246, 0.85);
-        }
-
-        .category-accent {
-            font-family: 'JetBrains Mono', monospace;
-            color: rgba(59, 130, 246, 0.7);
-            font-size: 0.6875rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        /* Fade-in animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(12px);
-            transition: opacity 0.35s ease-out, transform 0.35s ease-out;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+/* text links (See it in a scene →) keep the 3px nudge */
+.lnk svg{transition:transform .2s}
+.lnk:hover svg{transform:translateX(3px)}
+@media (prefers-reduced-motion:reduce){.lnk:hover svg{transform:none}}
+@media (max-width:640px){.pg .sub h2{font-size:26px}.pg .sub p.sd{font-size:16px;margin:-10px 0 4px}}
+@media (max-width:640px){.pg .fr{align-items:center;text-align:center}.pg .fr .fl{align-items:center}}
+@media (max-width:640px){.pg .fr .fl{gap:4px}.pg .fr .fl a{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 16px}}
+@media (max-width:640px){.pg .sub .ef{flex-direction:column;align-items:stretch;height:auto;padding:0;gap:8px;background:none;box-shadow:none}.pg .sub .ef span{flex:none;display:flex;align-items:center;height:48px;padding:0 14px;box-sizing:border-box;border-radius:12px;background:#FFFFFF;box-shadow:inset 0 0 0 1px rgba(24,23,22,.18)}.pg .sub .ef .cta{height:48px;justify-content:center;font-size:16px}}
+@media (max-width:640px){.pg .chips{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 72px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 72px),transparent)}.pg .chips::after{content:'';flex:0 0 24px}}
+</style>
+<link rel="stylesheet" href="/assets/css/site.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Blog",
+ "name": "Tryll Engine Blog",
+ "url": "https://tryllengine.com/blog",
+ "publisher": {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Tryll Engine",
+  "legalName": "Tryll Engine, Inc.",
+  "url": "https://tryllengine.com/",
+  "logo": "https://tryllengine.com/assets/favicon/android-chrome-512x512.png",
+  "sameAs": [
+   "https://www.linkedin.com/company/tryllengine/",
+   "https://discord.gg/DTKycjPpzs",
+   "https://www.youtube.com/@Tryll_Engine"
+  ]
+ }
+}
+</script>
 </head>
-<body id="top" class="antialiased">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8MPGKVX"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <!-- Noise overlay handled via CSS body::after -->
-
-    <!-- Navigation -->
-    <nav class="fixed top-4 left-4 right-4 md:top-6 md:left-1/2 md:transform md:-translate-x-1/2 z-50 nav-glass-card px-4 md:px-8 py-3 md:py-4 w-auto md:w-full md:max-w-7xl">
-        <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3 md:gap-4">
-                <div class="logo">
-                    <a href="/" class="block">
-                        <img src="./assets/logo/full-logo/light-text.svg" alt="Tryll Engine" class="h-8 md:h-12" />
-                    </a>
-                </div>
-            </div>
-
-            <!-- Desktop Navigation -->
-            <div class="hidden lg:flex items-center gap-8">
-                <ul class="nav-links flex gap-6 list-none">
-                    <li><a href="index.html#features" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Features</a></li>
-                    <li><a href="index.html#pricing" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Pricing</a></li>
-                    <li><a href="index.html#faq" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">FAQ</a></li>
-                    <li><a href="blog.html" class="text-white transition-colors duration-200 font-medium text-sm">Blog</a></li>
-                    <li><a href="index.html#contact-email" class="text-secondary hover:text-white transition-colors duration-200 font-medium text-sm">Contact</a></li>
-                </ul>
-                <div class="flex items-center gap-3">
-                    <a href="index.html#contact" class="px-4 py-2 rounded text-sm inline-flex items-center justify-center transition-all duration-200 font-medium bg-white/[0.06] border border-white/10 hover:bg-white/[0.1] text-white uppercase tracking-wider whitespace-nowrap" style="font-size: 0.85em;">
-                        Book a Demo
-                    </a>
-                </div>
-            </div>
-
-            <!-- Mobile Navigation -->
-            <div class="lg:hidden flex items-center gap-3">
-                <button id="mobile-menu-btn" class="text-white p-2 rounded hover:bg-white/10 transition-colors duration-200">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="lg:hidden fixed inset-0 bg-black/95 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40">
-            <!-- Close button -->
-            <button id="mobile-menu-close" class="absolute top-6 right-6 text-white/60 hover:text-white transition-colors duration-200">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-            <div class="flex flex-col items-center justify-center h-full space-y-8 text-center px-6">
-                <a href="index.html#features" class="mobile-menu-link text-white text-xl font-medium hover:text-blue-400 transition-colors duration-200">Features</a>
-                <a href="index.html#pricing" class="mobile-menu-link text-white text-xl font-medium hover:text-blue-400 transition-colors duration-200">Pricing</a>
-                <a href="index.html#faq" class="mobile-menu-link text-white text-xl font-medium hover:text-blue-400 transition-colors duration-200">FAQ</a>
-                <a href="blog.html" class="mobile-menu-link text-blue-400 text-xl font-medium">Blog</a>
-                <a href="index.html#contact-email" class="mobile-menu-link text-white text-xl font-medium hover:text-blue-400 transition-colors duration-200">Contact</a>
-                <div class="pt-4 space-y-3">
-                    <a href="index.html#contact" class="px-8 py-4 rounded text-lg inline-flex items-center justify-center gap-2 w-full bg-white/10 border border-white/20 text-white">
-                        Book a Demo
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero with inline subscribe -->
-    <section class="pt-32 md:pt-40 pb-10 md:pb-14 px-4">
-        <div class="max-w-5xl mx-auto fade-in">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-
-                <!-- Left: hero text + filters -->
-                <div class="lg:col-span-7">
-                    <span class="terminal-label">Blog</span>
-                    <h1 class="heading-primary mb-4" style="font-size: var(--typo-title);">
-                        Insights &amp; Updates
-                    </h1>
-                    <p class="body-large mb-8 max-w-xl">
-                        Engineering deep-dives, product updates, and tutorials from the Tryll Engine team.
-                    </p>
-
-                    <!-- Category filters (existing handlers preserved) -->
-                    <div class="flex flex-wrap gap-x-6 gap-y-3" id="category-filters">
-                        <button class="category-link active" data-category="all">All</button>
-                        <button class="category-link" data-category="news">News</button>
-                        <button class="category-link" data-category="engineering">Engineering</button>
-                        <button class="category-link" data-category="tutorial">Tutorials</button>
-                        <button class="category-link" data-category="case-study">Case Studies</button>
-                    </div>
-                </div>
-
-                <!-- Right: compact subscribe form -->
-                <div class="lg:col-span-5">
-                    <form
-                        id="blog-subscribe-form"
-                        class="glass-card p-5"
-                        data-form-id="185451758358627764"
-                        data-source="blog"
-                        novalidate
-                    >
-                        <div class="mb-4">
-                            <h3 class="heading-tertiary mb-1" style="font-size: var(--typo-largecopy);">
-                                Subscribe
-                            </h3>
-                            <p class="text-xs text-white/60">
-                                Sent when we ship something worth sharing. No spam.
-                            </p>
-                        </div>
-
-                        <div class="space-y-2.5">
-                            <input type="email" id="ml-email" name="email" required
-                                autocomplete="email" inputmode="email"
-                                class="form-input w-full px-3 py-2.5 rounded text-sm"
-                                placeholder="Email">
-
-                            <div class="grid grid-cols-2 gap-2.5">
-                                <input type="text" id="ml-name" name="name" required
-                                    autocomplete="given-name"
-                                    class="form-input w-full px-3 py-2.5 rounded text-sm"
-                                    placeholder="Name">
-                                <input type="text" id="ml-company" name="company" required
-                                    autocomplete="organization"
-                                    class="form-input w-full px-3 py-2.5 rounded text-sm"
-                                    placeholder="Company">
-                            </div>
-
-                            <!-- Honeypot — bots fill it, humans don't see it -->
-                            <div style="position:absolute;left:-9999px;" aria-hidden="true">
-                                <input type="text" name="website" tabindex="-1" autocomplete="off">
-                            </div>
-
-                            <button type="submit"
-                                class="btn-primary w-full px-4 py-2.5 rounded text-sm inline-flex items-center justify-center mt-1">
-                                <span class="ml-btn-label">Get Updates</span>
-                                <span class="ml-btn-spinner hidden ml-2">
-                                    <svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
-                                    </svg>
-                                </span>
-                            </button>
-
-                            <p class="text-[11px] text-white/40 leading-relaxed pt-1">
-                                By subscribing, you agree to our <a href="privacy-policy.html" class="underline hover:text-white">Privacy Policy</a>.
-                            </p>
-
-                            <p class="ml-form-error hidden text-xs text-red-400 text-center"></p>
-                        </div>
-                    </form>
-
-                    <div id="blog-subscribe-success" class="glass-card p-5 text-center hidden">
-                        <h3 class="heading-tertiary mb-1" style="font-size: var(--typo-largecopy);">You're in.</h3>
-                        <p class="text-xs text-white/60">Check your inbox to confirm.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Posts Grid -->
-    <section class="pb-20 md:pb-32 px-4">
-        <div class="max-w-5xl mx-auto">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" id="blog-grid">
-                <!-- Cards rendered dynamically from posts.json -->
-            </div>
-
-            <!-- Empty state -->
-            <div id="empty-state" class="hidden text-center py-16">
-                <p class="body-medium">No posts found.</p>
-            </div>
-
-            <!-- Loading state -->
-            <div id="loading-state" class="text-center py-16">
-                <p class="body-medium">Loading posts...</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-8 border-t border-white/20">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col items-center gap-6 md:grid md:grid-cols-3 md:items-center">
-                <!-- Left: Copyright -->
-                <div class="text-secondary text-sm order-2 md:order-1 text-center md:text-left">
-                    &copy; 2026 Tryll Engine, Inc. All rights reserved.
-                </div>
-
-                <!-- Center: Social Links -->
-                <div class="flex gap-6 items-center justify-center order-1 md:order-2">
-                    <a href="https://discord.gg/DTKycjPpzs" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Join our Discord">
-                        <i class="fab fa-discord"></i>
-                    </a>
-                    <a href="https://www.youtube.com/@Tryll_Engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Watch on YouTube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="https://instagram.com/tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://tiktok.com/@tryll_engine" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on TikTok">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/company/tryllengine/" class="text-secondary hover:text-white transition-colors duration-300 text-xl" title="Follow on LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                </div>
-
-                <!-- Right: Privacy & Terms -->
-                <div class="flex gap-6 order-3 md:order-3 justify-center md:justify-end">
-                    <a href="privacy-policy.html" class="text-secondary hover:text-white transition-colors duration-300 text-sm">Privacy Policy</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuClose = document.getElementById('mobile-menu-close');
-        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
-
-        function openMobileMenu() {
-            mobileMenu.classList.remove('opacity-0', 'invisible');
-            mobileMenu.classList.add('opacity-100', 'visible');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMobileMenu() {
-            mobileMenu.classList.add('opacity-0', 'invisible');
-            mobileMenu.classList.remove('opacity-100', 'visible');
-            document.body.style.overflow = '';
-        }
-
-        mobileMenuBtn.addEventListener('click', openMobileMenu);
-        mobileMenuClose.addEventListener('click', closeMobileMenu);
-        mobileMenuLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
-
-        // Intersection Observer for fade-in elements
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        // Blog rendering
-        const blogGrid = document.getElementById('blog-grid');
-        const emptyState = document.getElementById('empty-state');
-        const loadingState = document.getElementById('loading-state');
-        const categoryFilters = document.querySelectorAll('.category-link[data-category]');
-
-        let allPosts = [];
-        let activeCategory = 'all';
-
-        const categoryLabels = {
-            'news': 'News',
-            'tutorial': 'Tutorial',
-            'engineering': 'Engineering',
-            'case-study': 'Case Study'
-        };
-
-        function formatDate(dateStr) {
-            const d = new Date(dateStr + 'T00:00:00');
-            return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-        }
-
-        function renderCard(post) {
-            const imageHtml = post.image
-                ? `<img src="${post.image}" alt="${post.title}" />`
-                : `<div class="absolute inset-0 flex items-center justify-center"><i class="fas ${post.icon} text-5xl" style="color: rgba(59, 130, 246, 0.2);"></i></div>`;
-
-            return `
-                <article class="glass-card h-full" data-category="${post.category}">
-                    <a href="/blog/posts/${post.slug}" class="flex flex-col h-full p-4">
-                        <div class="blog-card-image mb-4">${imageHtml}</div>
-                        <h2 class="heading-tertiary text-lg mb-2 leading-snug">${post.title}</h2>
-                        <p class="body-small line-clamp-2 mb-3" style="color: rgba(255,255,255,0.5);">${post.excerpt}</p>
-                        <div class="flex items-center gap-3 mt-auto">
-                            <span class="category-accent">${categoryLabels[post.category] || post.category}</span>
-                            <span style="color: rgba(255,255,255,0.3);">|</span>
-                            <span class="body-small">${formatDate(post.date)}</span>
-                        </div>
-                    </a>
-                </article>
-            `;
-        }
-
-        function filterAndRender() {
-            const filtered = allPosts.filter(post => {
-                return activeCategory === 'all' || post.category === activeCategory;
-            });
-
-            blogGrid.innerHTML = filtered.map(renderCard).join('');
-            emptyState.classList.toggle('hidden', filtered.length > 0);
-        }
-
-        // Category filter clicks
-        categoryFilters.forEach(filter => {
-            filter.addEventListener('click', () => {
-                categoryFilters.forEach(f => f.classList.remove('active'));
-                filter.classList.add('active');
-                activeCategory = filter.dataset.category;
-                filterAndRender();
-            });
-        });
-
-        // Load posts
-        fetch('/blog/posts.json')
-            .then(r => {
-                if (!r.ok) throw new Error('Failed to load posts');
-                return r.json();
-            })
-            .then(posts => {
-                allPosts = posts;
-                loadingState.classList.add('hidden');
-                filterAndRender();
-            })
-            .catch(() => {
-                loadingState.innerHTML = '<p style="color: rgba(59, 130, 246, 0.7);">Failed to load posts. Please try refreshing.</p>';
-            });
-    </script>
-
-    <!-- MailerLite custom subscribe handler (no backend) -->
-    <script>
-    (function () {
-        const ACCOUNT_ID = '2274886';
-        const ENDPOINT = (formId) => `https://assets.mailerlite.com/jsonp/${ACCOUNT_ID}/forms/${formId}/subscribe`;
-
-        function trackEvent(category, action, label) {
-            if (typeof window.dataLayer !== 'undefined') {
-                window.dataLayer.push({
-                    event: 'custom_event',
-                    event_category: category,
-                    event_action: action,
-                    event_label: label
-                });
-            }
-        }
-
-        async function submitToMailerLite(formEl) {
-            const formId = formEl.dataset.formId;
-            const source = formEl.dataset.source || 'unknown';
-            if (!formId) {
-                console.error('[MailerLite] Form ID is missing on', formEl);
-                return { ok: false, error: 'Form is misconfigured. Please contact us at team@tryllengine.com.' };
-            }
-
-            // Honeypot — silently succeed if bot
-            const honeypot = formEl.querySelector('input[name="website"]');
-            if (honeypot && honeypot.value.trim() !== '') {
-                return { ok: true, silent: true };
-            }
-
-            const data = new URLSearchParams();
-            const email = formEl.querySelector('[name="email"]')?.value?.trim();
-            const name = formEl.querySelector('[name="name"]')?.value?.trim();
-            const company = formEl.querySelector('[name="company"]')?.value?.trim();
-            const role = formEl.querySelector('[name="role"]')?.value?.trim();
-
-            if (!email) return { ok: false, error: 'Email is required.' };
-
-            data.append('fields[email]', email);
-            if (name) data.append('fields[name]', name);
-            if (company) data.append('fields[company]', company);
-            if (role) data.append('fields[role]', role);
-            data.append('fields[signup_source]', source);
-            data.append('ml-submit', '1');
-            data.append('anticsrf', 'true');
-
-            try {
-                const response = await fetch(ENDPOINT(formId), {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: data.toString()
-                });
-                const json = await response.json().catch(() => ({}));
-                if (response.ok && (json.success === true || json.success === undefined)) {
-                    return { ok: true };
-                }
-                return { ok: false, error: json?.errors?.fields?.email?.[0] || 'Subscription failed. Please try again.' };
-            } catch (err) {
-                // CORS or network — fall back to no-cors fire-and-forget
-                try {
-                    await fetch(ENDPOINT(formId), {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        body: data.toString(),
-                        mode: 'no-cors'
-                    });
-                    return { ok: true, optimistic: true };
-                } catch (e2) {
-                    return { ok: false, error: 'Network error. Please try again.' };
-                }
-            }
-        }
-
-        function attach(formEl, onSuccess) {
-            formEl.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                if (!formEl.checkValidity()) { formEl.reportValidity(); return; }
-
-                const btn = formEl.querySelector('button[type="submit"]');
-                const label = formEl.querySelector('.ml-btn-label');
-                const spinner = formEl.querySelector('.ml-btn-spinner');
-                const errorEl = formEl.querySelector('.ml-form-error');
-
-                btn.disabled = true;
-                label?.classList.add('opacity-60');
-                spinner?.classList.remove('hidden');
-                errorEl?.classList.add('hidden');
-
-                const result = await submitToMailerLite(formEl);
-
-                btn.disabled = false;
-                label?.classList.remove('opacity-60');
-                spinner?.classList.add('hidden');
-
-                if (result.ok) {
-                    const source = formEl.dataset.source || 'unknown';
-                    const role = formEl.querySelector('[name="role"]')?.value;
-                    const label = role ? `Subscribe - ${source} - ${role}` : `Subscribe - ${source}`;
-                    trackEvent('Form', 'submit', label);
-                    onSuccess?.(formEl);
-                } else if (errorEl) {
-                    errorEl.textContent = result.error || 'Something went wrong.';
-                    errorEl.classList.remove('hidden');
-                }
-            });
-        }
-
-        // Blog subscribe form
-        const blogForm = document.getElementById('blog-subscribe-form');
-        if (blogForm) {
-            attach(blogForm, () => {
-                blogForm.classList.add('hidden');
-                document.getElementById('blog-subscribe-success')?.classList.remove('hidden');
-            });
-        }
-
-        // Expose for other pages (homepage dual-submit, etc.)
-        window.tryllML = { submitToMailerLite, trackEvent };
-    })();
-    </script>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8MPGKVX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div class="pg"><section class="bh" id="top"><div class="nav"><a class="lg" href="/"><img src="/assets/site/45bf7c52c7bed5168a147d85b4036d6d.svg" alt="Tryll Engine"></a><div class="lk"><a href="/features">For Developers</a><a href="/#use-cases">Use cases</a><a href="/#pricing">Pricing</a><a href="/blog" style="opacity: 1;">Blog</a><a href="/about">About</a><a href="/#contact">Contact</a><a href="/demo">Demo</a></div><div class="nr"><a class="nd" href="https://docs.tryllengine.com/" target="_blank" rel="noopener">Docs <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a class="nb" href="/download">Get Tryll Engine</a><button type="button" class="mb" aria-label="Menu" aria-expanded="false" data-b-aria-expanded="navX" data-on-click="navT"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg></button></div><div class="mnav" data-b-class="navM"><div class="mnbg" data-on-click="navT"></div><div class="mnc" role="dialog" aria-label="Menu"><div class="mnh"><img src="/assets/site/3f3cf494323b0ac3405fc08289d2e760.svg" alt="Tryll Engine"><button type="button" class="mnx" aria-label="Close menu" data-on-click="navT"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg></button></div><div class="mnl"><a href="/features" data-on-click="navT">For Developers<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a href="/#use-cases" data-on-click="navT">Use cases<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a href="/#pricing" data-on-click="navT">Pricing<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a href="/blog" data-on-click="navT">Blog<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a href="/about" data-on-click="navT">About<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a href="/#contact" data-on-click="navT">Contact<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a href="https://docs.tryllengine.com/" data-on-click="navT" target="_blank" rel="noopener">Docs<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a href="/demo" data-on-click="navT">Demo<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></div><div class="mnf"><div class="mns"><a href="https://discord.gg/DTKycjPpzs" aria-label="Discord" target="_blank" rel="noopener"><svg viewBox="0 0 30 30" width="24" height="24" aria-hidden="true"><path d="M25.3963 5.19434C23.4842 4.31699 21.4337 3.6706 19.2899 3.30038C19.2508 3.29324 19.2118 3.31109 19.1917 3.3468C18.928 3.81582 18.6359 4.4277 18.4314 4.90863C16.1255 4.56342 13.8315 4.56342 11.5729 4.90863C11.3683 4.41701 11.0656 3.81582 10.8007 3.3468C10.7806 3.31228 10.7416 3.29443 10.7026 3.30038C8.55989 3.66941 6.50945 4.31581 4.59617 5.19434C4.57961 5.20149 4.56541 5.2134 4.55599 5.22887C0.66674 11.0393 -0.398688 16.707 0.123975 22.3043C0.12634 22.3317 0.141712 22.3579 0.162998 22.3745C2.72901 24.259 5.21463 25.403 7.6541 26.1613C7.69314 26.1732 7.73451 26.1589 7.75935 26.1267C8.33641 25.3387 8.8508 24.5078 9.29184 23.634C9.31787 23.5828 9.29303 23.5221 9.23983 23.5019C8.42391 23.1924 7.647 22.815 6.89966 22.3865C6.84055 22.3519 6.83582 22.2674 6.8902 22.2269C7.04746 22.1091 7.20477 21.9864 7.35494 21.8626C7.38211 21.84 7.41997 21.8353 7.45192 21.8495C12.3616 24.0911 17.6769 24.0911 22.5287 21.8495C22.5606 21.8341 22.5985 21.8389 22.6268 21.8615C22.7771 21.9853 22.9343 22.1091 23.0928 22.2269C23.1472 22.2674 23.1436 22.3519 23.0845 22.3865C22.3372 22.8233 21.5602 23.1924 20.7431 23.5007C20.6899 23.5209 20.6663 23.5828 20.6923 23.634C21.1428 24.5066 21.6572 25.3375 22.2236 26.1256C22.2473 26.1589 22.2898 26.1732 22.3289 26.1613C24.7802 25.403 27.2658 24.259 29.8318 22.3745C29.8543 22.3579 29.8685 22.3329 29.8708 22.3055C30.4964 15.8343 28.8231 10.2132 25.4353 5.23005C25.427 5.2134 25.4128 5.20149 25.3963 5.19434ZM10.025 18.8961C8.54687 18.8961 7.32892 17.539 7.32892 15.8724C7.32892 14.2058 8.52325 12.8488 10.025 12.8488C11.5386 12.8488 12.7448 14.2178 12.7211 15.8724C12.7211 17.539 11.5268 18.8961 10.025 18.8961ZM19.9934 18.8961C18.5153 18.8961 17.2974 17.539 17.2974 15.8724C17.2974 14.2058 18.4917 12.8488 19.9934 12.8488C21.507 12.8488 22.7132 14.2178 22.6895 15.8724C22.6895 17.539 21.507 18.8961 19.9934 18.8961Z" fill="currentColor"></path></svg></a><a href="https://www.youtube.com/@Tryll_Engine" aria-label="YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9L15.5 12l-5.8 3.1z"></path></svg></a><a href="https://www.linkedin.com/company/tryllengine/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M20.4 2H3.6A1.6 1.6 0 0 0 2 3.6v16.8A1.6 1.6 0 0 0 3.6 22h16.8a1.6 1.6 0 0 0 1.6-1.6V3.6A1.6 1.6 0 0 0 20.4 2zM8 18.6H5.1V9.4H8v9.2zM6.6 8.1a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4zm12.1 10.5h-2.9v-4.5c0-1.1 0-2.4-1.5-2.4s-1.7 1.1-1.7 2.3v4.6H9.7V9.4h2.7v1.3h.1a3 3 0 0 1 2.7-1.5c2.9 0 3.5 1.9 3.5 4.4v5z"></path></svg></a></div><a class="mcta" href="/download">Get Tryll Engine</a></div></div></div></div><div class="bhc"><div><h1>Insights &amp; Updates</h1><p>Engineering deep-dives, product updates, and tutorials from the Tryll Engine team</p></div><div class="sbw"><div class="sub"><div class="tab"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect><path d="M4 7l8 6 8-6"></path></svg><svg class="cc" width="18" height="18" viewBox="0 0 18 18"><path d="M0 0H18V18A18 18 0 0 0 0 0Z" fill="#F3F4F6"></path></svg></div><h2>Subscribe</h2><p class="sd">Sent when we ship something worth sharing. No spam</p><form class="ef" data-form="newsletter" data-ml-form="185451758358627764" data-source="blog" novalidate><input type="email" name="email" required autocomplete="email" placeholder="Enter your email" aria-label="Email address"><input type="text" name="website" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true"><button type="submit" class="cta">Get updates <span class="dt"><svg viewBox="-1.1 -1.1 2.2 2.2" width="26" height="26" aria-hidden="true"><line x1="-0.788" y1="-0.574" x2="-0.788" y2="0.062" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.3" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="-0.788" y1="-0.574" x2="0.199" y2="-0.902" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.95" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="-0.788" y1="-0.574" x2="-0.199" y2="-0.127" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.95" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="-0.788" y1="-0.574" x2="-0.165" y2="-0.785" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.3" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="-0.788" y1="-0.574" x2="-0.808" y2="0.469" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.95" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="-0.788" y1="0.062" x2="0.199" y2="0.127" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.3" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="-0.788" y1="0.062" x2="-0.199" y2="0.902" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.3" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="-0.788" y1="0.062" x2="-0.165" y2="-0.785" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.3" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="-0.788" y1="0.062" x2="-0.808" y2="0.469" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.3" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="0.788" y1="-0.062" x2="0.788" y2="0.574" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.95" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="0.788" y1="-0.062" x2="0.199" y2="-0.902" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.95" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="0.788" y1="-0.062" x2="-0.199" y2="-0.127" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.95" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="0.788" y1="-0.062" x2="0.808" y2="-0.469" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.95" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="0.788" y1="-0.062" x2="0.165" y2="0.785" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.95" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="0.788" y1="0.574" x2="0.199" y2="0.127" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.3" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="0.788" y1="0.574" x2="-0.199" y2="0.902" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.3" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="0.788" y1="0.574" x2="0.808" y2="-0.469" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.3" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="0.788" y1="0.574" x2="0.165" y2="0.785" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.95" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="0.199" y1="-0.902" x2="-0.199" y2="-0.127" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.95" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="0.199" y1="-0.902" x2="-0.165" y2="-0.785" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.3" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="0.199" y1="-0.902" x2="0.808" y2="-0.469" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.95" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="-0.199" y1="-0.127" x2="-0.808" y2="0.469" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.95" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="-0.199" y1="-0.127" x2="0.165" y2="0.785" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.95" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="0.199" y1="0.127" x2="-0.199" y2="0.902" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.3" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="0.199" y1="0.127" x2="-0.165" y2="-0.785" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.3" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="0.199" y1="0.127" x2="0.808" y2="-0.469" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.3" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="-0.199" y1="0.902" x2="-0.808" y2="0.469" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.3" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="-0.199" y1="0.902" x2="0.165" y2="0.785" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.95" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="-0.165" y1="-0.785" x2="0.808" y2="-0.469" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.3" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><line x1="-0.808" y1="0.469" x2="0.165" y2="0.785" stroke="#FFFFFF" stroke-width=".07" stroke-opacity="0.95" data-b-x1="q.x1" data-b-y1="q.y1" data-b-x2="q.x2" data-b-y2="q.y2" data-b-stroke-opacity="q.o" data-loop="L0" data-lk="0"></line><g data-loop-end="L0"></g></svg></span></button></form><p class="fmsg" role="status" aria-live="polite"></p><small>By subscribing, you agree to our <a href="/privacy-policy">Privacy Policy</a></small></div></div></div></section><section class="bl"><div class="bbar"><div class="chips"><button type="button" class="on" data-b-class="k0" data-on-click="t0">All</button><button type="button" class="" data-b-class="k1" data-on-click="t1">News</button><button type="button" class="" data-b-class="k2" data-on-click="t2">Engineering</button><button type="button" class="" data-b-class="k3" data-on-click="t3">Tutorials</button><button type="button" class="" data-b-class="k4" data-on-click="t4">Case Studies</button></div></div><div class="grid"><a class="pc" href="/blog/posts/tryll-at-wn-yerevan-2026/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/tryll-at-wn-yerevan-2026-cover.jpg')" role="img" aria-label="Tryll at WN Events Yerevan — Meet Alex Riabov"></div><p class="mt">News · Oct 13, 2026</p><h3>Tryll at WN Events Yerevan — Meet Alex Riabov</h3></a><a class="pc" href="/blog/posts/tryll-at-saga-barcelona-game-fest/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/tryll-at-saga-barcelona-game-fest-cover.jpg')" role="img" aria-label="Tryll at SAGA Barcelona Game Fest — Meet Us at Fira"></div><p class="mt">News · Oct 7, 2026</p><h3>Tryll at SAGA Barcelona Game Fest — Meet Us at Fira</h3></a><a class="pc" href="/blog/posts/back-from-tokyo-game-show-2026/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/back-from-tokyo-game-show-2026-cover.jpg')" role="img" aria-label="Back from Tokyo Game Show 2026"></div><p class="mt">News · Sep 24, 2026</p><h3>Back from Tokyo Game Show 2026</h3></a><a class="pc" href="/blog/posts/developer-talk-2-stability-optimization-accessibility/" data-cat="Engineering"><div class="cv ph" style="background-image:url('/assets/blog/developer-talk-2-stability-optimization-accessibility-cover.jpg')" role="img" aria-label="Developer Talk #2 — Stability, Optimization and Accessibility"></div><p class="mt">Engineering · Sep 16, 2026</p><h3>Developer Talk #2 — Stability, Optimization and Accessibility</h3></a><a class="pc" href="/blog/posts/tryll-at-tokyo-game-show-2026/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/tryll-at-tokyo-game-show-2026-cover.jpg')" role="img" aria-label="Tryll at Tokyo Game Show 2026 — Arming the Punks"></div><p class="mt">News · Sep 15, 2026</p><h3>Tryll at Tokyo Game Show 2026 — Arming the Punks</h3></a><a class="pc" href="/blog/posts/welcome-daria-trush/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/welcome-daria-trush-cover.jpg')" role="img" aria-label="Welcome Daria Trush as Business Development Manager"></div><p class="mt">News · Sep 11, 2026</p><h3>Welcome Daria Trush as Business Development Manager</h3></a><a class="pc" href="/blog/posts/future-belongs-to-the-punks/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/future-belongs-to-the-punks-cover.jpg')" role="img" aria-label="The Future in Games Belongs to the Punks"></div><p class="mt">News · Sep 3, 2026</p><h3>The Future in Games Belongs to the Punks</h3></a><a class="pc" href="/blog/posts/tryll-executive-terrace-gathering/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/tryll-executive-terrace-gathering-cover.jpg')" role="img" aria-label="Tryll Executive Terrace Gathering — Cologne, Aug 27"></div><p class="mt">News · Aug 11, 2026</p><h3>Tryll Executive Terrace Gathering — Cologne, Aug 27</h3></a><a class="pc" href="/blog/posts/tryll-at-gamescom-2026/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/tryll-at-gamescom-2026-cover.jpg')" role="img" aria-label="Tryll at gamescom 2026 — Meet Us in Cologne"></div><p class="mt">News · Aug 10, 2026</p><h3>Tryll at gamescom 2026 — Meet Us in Cologne</h3></a><a class="pc" href="/blog/posts/back-from-chinajoy-2026/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/back-from-chinajoy-2026-cover.jpg')" role="img" aria-label="Back from ChinaJoy — Level Up with AI"></div><p class="mt">News · Aug 4, 2026</p><h3>Back from ChinaJoy — Level Up with AI</h3></a><a class="pc" href="/blog/posts/beta-launch-illogika/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/beta-launch-illogika-cover.jpg')" role="img" aria-label="Beta Launches This Week — What Alpha Clients Say"></div><p class="mt">News · Jul 28, 2026</p><h3>Beta Launches This Week — What Alpha Clients Say</h3></a><a class="pc" href="/blog/posts/games-where-ai-drives-mechanics/" data-cat="Engineering"><div class="cv ph" style="background-image:url('/assets/blog/games-where-ai-drives-mechanics-cover.jpg')" role="img" aria-label="Games Where AI Drives the Core Mechanics"></div><p class="mt">Engineering · Jul 22, 2026</p><h3>Games Where AI Drives the Core Mechanics</h3></a><a class="pc" href="/blog/posts/developer-talk-1-murder-mystery/" data-cat="Engineering"><div class="cv ph" style="background-image:url('/assets/blog/developer-talk-1-murder-mystery-cover.jpg')" role="img" aria-label="Developer Talk #1 — The Murder Mystery Demo"></div><p class="mt">Engineering · Jul 15, 2026</p><h3>Developer Talk #1 — The Murder Mystery Demo</h3></a><a class="pc" href="/blog/posts/ai-companions-accessibility/" data-cat="Engineering"><div class="cv ph" style="background-image:url('/assets/blog/ai-companions-accessibility-cover.jpg')" role="img" aria-label="AI Companions Are an Accessibility Play"></div><p class="mt">Engineering · Jul 13, 2026</p><h3>AI Companions Are an Accessibility Play</h3></a><a class="pc" href="/blog/posts/tryll-at-chinajoy/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/tryll-at-chinajoy-cover.jpg')" role="img" aria-label="Tryll at ChinaJoy 2026 — Shanghai, Jul 31 to Aug 3"></div><p class="mt">News · Jul 7, 2026</p><h3>Tryll at ChinaJoy 2026 — Shanghai, Jul 31 to Aug 3</h3></a><a class="pc" href="/blog/posts/nvidia-ace-webinar/" data-cat="Engineering"><div class="cv ph" style="background-image:url('/assets/blog/nvidia-ace-webinar-cover.png')" role="img" aria-label="Notes from the NVIDIA ACE Webinar"></div><p class="mt">Engineering · Jul 2, 2026</p><h3>Notes from the NVIDIA ACE Webinar</h3></a><a class="pc" href="/blog/posts/interrogation-catching-a-lie/" data-cat="Engineering"><div class="cv ph" style="background-image:url('/assets/blog/interrogation-catching-a-lie-cover.png')" role="img" aria-label="Use Case #32: Interrogation and Catching a Lie"></div><p class="mt">Engineering · Jun 25, 2026</p><h3>Use Case #32: Interrogation and Catching a Lie</h3></a><a class="pc" href="/blog/posts/tryll-in-media/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/tryll-in-media-cover.jpg')" role="img" aria-label="Tryll in Media: 10+ Outlets Cover Our Closed Alpha"></div><p class="mt">News · Jun 23, 2026</p><h3>Tryll in Media: 10+ Outlets Cover Our Closed Alpha</h3></a><a class="pc" href="/blog/posts/closed-alpha-egv-funding/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/closed-alpha-egv-funding-cover.jpg')" role="img" aria-label="Closed Alpha Opens — Backed by Early Game Ventures"></div><p class="mt">News · Jun 16, 2026</p><h3>Closed Alpha Opens — Backed by Early Game Ventures</h3></a><a class="pc" href="/blog/posts/cloud-ai-off-switch/" data-cat="Engineering"><div class="cv ph" style="background-image:url('/assets/blog/cloud-ai-off-switch-cover.png')" role="img" aria-label="When the AI Gets Switched Off"></div><p class="mt">Engineering · Jun 16, 2026</p><h3>When the AI Gets Switched Off</h3></a><a class="pc" href="/blog/posts/welcome-nikolay-andreev/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/welcome-nikolay-andreev-cover.jpg')" role="img" aria-label="Welcome Nikolay Andreev as Head of Growth"></div><p class="mt">News · May 27, 2026</p><h3>Welcome Nikolay Andreev as Head of Growth</h3></a><a class="pc" href="/blog/posts/welcome-milos-petkovic/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/welcome-milos-petkovic-cover.jpg')" role="img" aria-label="Welcome Miloš Petković as Tech Lead"></div><p class="mt">News · May 8, 2026</p><h3>Welcome Miloš Petković as Tech Lead</h3></a><a class="pc" href="/blog/posts/600k-from-early-game-ventures/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/600k-from-early-game-ventures-cover.jpg')" role="img" aria-label="Tryll Engine Backed by Early Game Ventures with $600K Investment"></div><p class="mt">News · Apr 29, 2026</p><h3>Tryll Engine Backed by Early Game Ventures with $600K Investment</h3></a><a class="pc" href="/blog/posts/back-from-gdc-2026/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/back-from-gdc-2026-cover.jpg')" role="img" aria-label="Back from GDC 2026 — AI Optimism Has Skyrocketed"></div><p class="mt">News · Apr 5, 2026</p><h3>Back from GDC 2026 — AI Optimism Has Skyrocketed</h3></a><a class="pc" href="/blog/posts/tryll-assistant-v0-0-10/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/tryll-assistant-v0-0-10-cover.jpg')" role="img" aria-label="Tryll Assistant v0.0.10 — New Onboarding and 9 More Games"></div><p class="mt">News · Mar 17, 2026</p><h3>Tryll Assistant v0.0.10 — New Onboarding and 9 More Games</h3></a><a class="pc" href="/blog/posts/tryll-engine-at-gdc-2026/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/tryll-engine-at-gdc-2026-cover.jpg')" role="img" aria-label="Tryll Engine at GDC 2026"></div><p class="mt">News · Mar 17, 2026</p><h3>Tryll Engine at GDC 2026</h3></a><a class="pc" href="/blog/posts/welcome-pierre-moisan/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/welcome-pierre-moisan-cover.jpg')" role="img" aria-label="Welcome Pierre Moisan to Tryll Engine"></div><p class="mt">News · Mar 6, 2026</p><h3>Welcome Pierre Moisan to Tryll Engine</h3></a><a class="pc" href="/blog/posts/tryll-assistant-v0-0-8-cuda-hip-support/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/tryll-assistant-v0-0-8-cuda-hip-support-cover.jpg')" role="img" aria-label="Tryll Assistant v0.0.8 — CUDA &amp; HIP Support"></div><p class="mt">News · Feb 23, 2026</p><h3>Tryll Assistant v0.0.8 — CUDA &amp; HIP Support</h3></a><a class="pc" href="/blog/posts/welcome-alexander-stojanovic-as-advisor/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/welcome-alexander-stojanovic-as-advisor-cover.jpg')" role="img" aria-label="Welcome Alexander Stojanovic as Advisor"></div><p class="mt">News · Feb 21, 2026</p><h3>Welcome Alexander Stojanovic as Advisor</h3></a><a class="pc" href="/blog/posts/tryll-assistant-live-on-steam/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/tryll-assistant-live-on-steam-cover.jpg')" role="img" aria-label="Tryll Assistant Is Live on Steam"></div><p class="mt">News · Feb 14, 2026</p><h3>Tryll Assistant Is Live on Steam</h3></a><a class="pc" href="/blog/posts/how-we-catch-prompt-injections-and-hallucinations/" data-cat="Engineering"><div class="cv ph" style="background-image:url('/assets/blog/how-we-catch-prompt-injections-and-hallucinations-cover.jpg')" role="img" aria-label="How We Catch Prompt Injections and Hallucinations"></div><p class="mt">Engineering · Feb 12, 2026</p><h3>How We Catch Prompt Injections and Hallucinations</h3></a><a class="pc" href="/blog/posts/epic-megagrant-from-unreal-engine/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/epic-megagrant-from-unreal-engine-cover.jpg')" role="img" aria-label="We&#x27;ve Received an Epic MegaGrant from Unreal Engine"></div><p class="mt">News · Feb 10, 2026</p><h3>We&#x27;ve Received an Epic MegaGrant from Unreal Engine</h3></a><a class="pc" href="/blog/posts/welcome-vladimir-belyaev-as-cto/" data-cat="News"><div class="cv ph" style="background-image:url('/assets/blog/welcome-vladimir-belyaev-as-cto-cover.jpg')" role="img" aria-label="Welcome Vladimir Belyaev as CTO"></div><p class="mt">News · Jan 14, 2026</p><h3>Welcome Vladimir Belyaev as CTO</h3></a></div><p class="emp" style="display:none">No posts in this topic yet</p><nav class="pgn" aria-label="Blog pages"><a class="dis" href="#" aria-label="Previous"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a class="on" href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#" aria-label="Next"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></nav></section><footer class="fo"><div class="fr"><img src="/assets/site/3f3cf494323b0ac3405fc08289d2e760.svg" alt="Tryll Engine"><span class="cp">© 2026 Tryll Engine, Inc. All rights reserved</span><div class="fl"><a href="https://discord.gg/DTKycjPpzs" target="_blank" rel="noopener">Discord</a><a href="https://www.youtube.com/@Tryll_Engine" target="_blank" rel="noopener">YouTube</a><a href="https://www.linkedin.com/company/tryllengine/" target="_blank" rel="noopener">LinkedIn</a><a href="/privacy-policy">Privacy Policy</a></div><span class="cp">Epic MegaGrants recipient</span><a class="up" href="#top">Back to top <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M8 13V4M4 8l4-4 4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></div><div class="big"><svg viewBox="144.191 31 291 54" aria-hidden="true"><path d="M201.191 31V41.3998H178.839V85H166.618V41.3998H144.191V31H201.191Z" fill="#232E41"></path><path d="M255.232 61.4012C254.87 61.3124 254.495 61.2355 254.101 61.1615C255.842 60.6138 257.492 59.8086 258.994 58.7667C260.624 57.6181 261.938 56.0758 262.819 54.2819C263.782 52.2009 264.248 49.9245 264.186 47.6304C264.186 43.8147 263.296 40.6324 261.549 38.1636C259.716 35.6415 257.159 33.7381 254.221 32.7109C250.748 31.512 247.094 30.9348 243.42 31.0058H207.191V85H219.325V65.5574H238.968C241.534 65.4863 244.103 65.6995 246.623 66.1938C248.24 66.5786 249.354 67.2595 249.97 68.2127C250.674 69.5329 251.004 71.0219 250.918 72.5198V85H263.052V71.7856C263.052 68.7129 262.368 66.3389 261.078 64.7285C259.551 62.9968 257.495 61.8245 255.232 61.4012ZM251.567 51.2389C251.19 52.1772 250.615 53.0209 249.878 53.7136C248.426 55.0842 246.254 55.7295 243.42 55.7295H219.325V41.6478H243.42C246.275 41.6478 248.458 42.2309 249.92 43.3765C251.381 44.5221 252.05 46.1207 252.05 48.2816C252.106 49.291 251.941 50.3005 251.567 51.2389Z" fill="#232E41"></path><path d="M379.191 74.5973V85H333.191V31H345.073V74.5973H379.191Z" fill="#232E41"></path><path d="M435.191 74.5973V85H388.191V31H400.331V74.5973H435.191Z" fill="#232E41"></path><path d="M327.191 31L326.511 32.0567L303.717 67.8534V85H291.624V67.8534L268.872 32.0567L268.191 31H282.161L282.351 31.3108L294.486 50.0172C295.477 51.4735 296.312 53.0304 296.986 54.6613C297.3 55.4663 297.529 56.301 297.664 57.1564C297.801 56.301 298.03 55.4663 298.344 54.6613C299.015 53.0304 299.854 51.4735 300.844 50.0172L313.02 31.3108L313.222 31H327.191Z" fill="#232E41"></path></svg></div></footer></div>
+<script type="application/json" id="dc-loops">{"L0": {"list": "cd", "as": "q", "k": 1, "parent": null, "tpl": "<line stroke=\"#FFFFFF\" stroke-width=\".07\" data-b-x1=\"q.x1\" data-b-y1=\"q.y1\" data-b-x2=\"q.x2\" data-b-y2=\"q.y2\" data-b-stroke-opacity=\"q.o\" data-loop=\"L0\" data-lk=\"0\"></line>", "svg": true}}</script>
+<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/pages/blog.js" defer></script>
+<script src="/assets/js/forms.js" defer></script>
+<script src="/assets/js/blog-list.js" defer></script>
 </body>
 </html>

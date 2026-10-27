@@ -21,3 +21,5 @@ beyond-chat.html
 /*.jpeg
 hero-flow.html
 hero-typing.html
+# Python bytecode from scripts/site-build
+__pycache__/

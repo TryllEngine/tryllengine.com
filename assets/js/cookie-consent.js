@@ -64,19 +64,17 @@
         if (el) el.remove();
     }
 
+    // Matches the redesign: navy panel, white primary button, Space Grotesk.
     var BTN_BASE =
-        'padding:10px 24px;border-radius:4px;font-weight:500;font-size:13px;' +
-        'letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;' +
-        'font-family:inherit;transition:background 0.2s;white-space:nowrap;';
-    var BTN_PRIMARY = BTN_BASE + 'border:0;background:#3B82F6;color:#fff;';
+        'height:44px;padding:0 18px;border-radius:8px;font-weight:500;font-size:15px;' +
+        'cursor:pointer;font-family:inherit;transition:background 0.2s;white-space:nowrap;';
+    var BTN_PRIMARY = BTN_BASE + 'border:0;background:#FFFFFF;color:#181716;';
     var BTN_SECONDARY = BTN_BASE +
-        'border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.06);color:#fff;';
+        'border:0;background:rgba(255,255,255,0.1);color:#fff;';
     var BTN_GHOST = BTN_BASE +
         'border:0;background:transparent;color:rgba(255,255,255,0.55);' +
-        'text-decoration:underline;text-underline-offset:3px;padding:10px 8px;';
-    var MONO_LABEL =
-        'font-family:\'JetBrains Mono\',monospace;font-size:11px;' +
-        'letter-spacing:0.1em;text-transform:uppercase;color:rgba(59,130,246,0.75);';
+        'text-decoration:underline;text-underline-offset:4px;padding:0 8px;';
+    var MONO_LABEL = 'font-size:15px;font-weight:500;color:#FFFFFF;';
 
     function decide(analytics) {
         saveChoice(analytics);
@@ -88,10 +86,10 @@
         wrap.innerHTML =
             '<div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;min-height:48px;">' +
                 '<div style="flex:1;min-width:240px;">' +
-                    '<div style="' + MONO_LABEL + 'margin-bottom:3px;">// cookies</div>' +
+                    '<div style="' + MONO_LABEL + 'margin-bottom:4px;">Cookies</div>' +
                     '<div style="color:rgba(255,255,255,0.65);">We use analytics cookies to understand how the site is used. ' +
                     'No advertising, no cross-site tracking. ' +
-                    '<a href="/privacy-policy" style="color:#60a5fa;text-decoration:underline;' +
+                    '<a href="/privacy-policy" style="color:#FFFFFF;text-decoration:underline;' +
                     'text-underline-offset:2px;">Privacy Policy</a>.</div>' +
                 '</div>' +
                 '<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">' +
@@ -115,7 +113,7 @@
             'padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.06);';
 
         wrap.innerHTML =
-            '<div style="' + MONO_LABEL + 'margin-bottom:10px;">// cookie_settings</div>' +
+            '<div style="' + MONO_LABEL + 'margin-bottom:10px;">Cookie settings</div>' +
 
             '<div style="' + rowStyle + 'border-top:1px solid rgba(255,255,255,0.06);">' +
                 '<div>' +
@@ -133,7 +131,7 @@
                 '</div>' +
                 '<label style="display:inline-flex;align-items:center;cursor:pointer;">' +
                     '<input type="checkbox" id="tryll-cookie-analytics-toggle"' + (analyticsOn ? ' checked' : '') +
-                    ' style="width:18px;height:18px;accent-color:#3B82F6;cursor:pointer;">' +
+                    ' style="width:18px;height:18px;accent-color:#FFFFFF;cursor:pointer;">' +
                 '</label>' +
             '</div>' +
 
@@ -155,14 +153,13 @@
         wrap.id = BANNER_ID;
         wrap.setAttribute('role', 'dialog');
         wrap.setAttribute('aria-label', 'Cookie consent');
-        // Mirrors the fixed nav header exactly: same width, bg, border, radius, height.
         wrap.style.cssText =
             'position:fixed;left:16px;right:16px;bottom:16px;z-index:2147483000;' +
-            'margin:0 auto;max-width:80rem;padding:16px 32px;' +
-            'background:rgba(0,0,0,0.88);border:1px solid rgba(255,255,255,0.08);' +
-            'border-radius:4px;box-shadow:0 4px 16px rgba(0,0,0,0.4);' +
-            'font-family:"DM Sans",Inter,-apple-system,BlinkMacSystemFont,sans-serif;' +
-            'color:rgba(255,255,255,0.85);font-size:13px;line-height:1.5;';
+            'margin:0 auto;max-width:1352px;padding:20px 24px;box-sizing:border-box;' +
+            'background:#161D29;border:1px solid rgba(255,255,255,0.08);' +
+            'border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,0.35);' +
+            'font-family:"Space Grotesk",Inter,system-ui,sans-serif;' +
+            'color:rgba(255,255,255,0.85);font-size:15px;line-height:1.5;';
 
         document.body.appendChild(wrap);
         renderMain(wrap);

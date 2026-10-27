@@ -4,168 +4,58 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-TryllEngine is a static marketing website for a gaming AI product. The site promotes an AI engine that enables intelligent NPCs in games, running locally without cloud dependencies. The site includes a showcase mod demonstration (BoscoTryll) for Deep Rock Galactic.
+TryllEngine.com is the static marketing site for Tryll Engine: on-device AI middleware for game engines (Unity, Unreal Engine 5, proprietary engines). It is hosted on GitHub Pages from the `main` branch, with the custom domain in `CNAME`.
+
+The main pages are designed in **Claude Design** and turned into static HTML by `scripts/site-build/`. Read `scripts/site-build/README.md` before changing any page.
 
 ## Project Structure
 
 ```
-TryllEngine.com/
-├── index.html              # Main landing page with embedded JavaScript
-├── boscotryll.html         # BoscoTryll mod showcase page
-├── tryll-assistant.html    # Tryll Assistant product page
-├── privacy-policy.html     # Privacy policy page
-├── blog.html               # Blog listing page
-├── blog/                   # Blog posts and templates
-├── STYLE_GUIDE.md         # Design system documentation
-├── robots.txt             # Search engine crawling rules
-├── sitemap.xml            # XML sitemap for search engines
-├── llms.txt               # LLM-readable site description
-├── CNAME                  # GitHub Pages custom domain
-└── assets/
-    ├── blog/              # Blog post images
-    ├── docs/              # Legal documents
-    ├── favicon/           # Favicon files in various formats
-    ├── images/            # Feature showcase images
-    └── logo/              # Logo assets (SVG)
+├── index.html, features.html, download.html,     # GENERATED from the design export
+│   demo.html, about.html, blog.html               #   by scripts/site-build/build.py
+├── blog/
+│   ├── posts.json            # post index (source)
+│   ├── content/{slug}.md     # post bodies (source)
+│   └── posts/{slug}/index.html   # GENERATED
+├── tryll-assistant.html, boscotryll.html,        # old-design pages, hand-written,
+│   closed-beta.html, privacy-policy.html,         #   kept at their URLs until redesigned
+│   tryll-plugin-alpha.html
+├── scripts/site-build/       # annotate → bake → build pipeline, config.py, serve.py
+├── assets/
+│   ├── site/                 # images from the design export (hashed names)
+│   ├── js/site.js            # runtime that runs the design logic on static HTML
+│   ├── js/pages/*.js         # GENERATED: each page's design logic
+│   ├── js/forms.js           # contact (Formspree) + newsletter (MailerLite)
+│   ├── js/blog-list.js       # blog topic chips + pagination
+│   ├── js/cookie-consent.js  # cookie banner + Google Consent Mode v2
+│   ├── css/site.css          # styles the design doesn't cover
+│   ├── blog/                 # post covers and inline images
+│   └── favicon/, images/, logo/, docs/
+├── sitemap.xml               # GENERATED
+├── robots.txt, llms.txt, CNAME
 ```
-
-## Key Technologies
-
-- **HTML5** - Static website structure
-- **Tailwind CSS** - Utility-first CSS framework loaded via CDN
-- **Font Awesome** - Icon library loaded via CDN (v6.4.0)
-- **Vanilla JavaScript** - For interactive elements (animations, form handling, feature showcase)
-- **GitHub Pages** - Static hosting
 
 ## Development Commands
 
-Since this is a static website with no build process:
-
 ```bash
-# Open in browser directly
-open index.html
-
-# Or serve with any static server
-python -m http.server 8000
-# Then visit http://localhost:8000
+py -3 scripts/site-build/serve.py                 # preview at http://localhost:8000 (GitHub Pages URL rules)
+py -3 scripts/site-build/build.py                 # rebuild pages, blog, sitemap
+py -3 scripts/site-build/bake.py "<export dir>"   # bring in a new Claude Design export, then build
 ```
 
-## Architecture Notes
+Don't use `python -m http.server` to preview: it doesn't resolve `/blog` or `/features` the way GitHub Pages does.
 
-### Main Landing Page (index.html)
-1. **Navigation**: Fixed header with responsive mobile menu
-2. **Hero Section**: Main value proposition with CTA buttons
-3. **Interactive Features**: Developer-focused feature showcase with smooth animations
-4. **"The Old Way is Dead"**: Comparison section highlighting advantages
-5. **Cost Analysis**: Visual comparison of cloud vs local costs
-6. **Target Audiences**: Studios, Solo Developers, Modders
-7. **FAQ Section**: Collapsible accordion-style questions
-8. **Pricing Tiers**: Free and Commercial options
-9. **Contact Form**: Early access signup
+## Rules
 
-### BoscoTryll Showcase (boscotryll.html)
-1. **Hero Section**: Mod introduction with download CTA
-2. **Disclaimer**: Trademark notices for Ghost Ship Games
-3. **Feature Showcase**: Interactive demo of mod capabilities
-4. **Installation Guide**: Step-by-step instructions
-5. **Customization**: Personality examples and configuration
-6. **System Requirements**: Hardware specifications
-7. **Roadmap**: Planned features and improvements
-8. **Community Integration**: Discord links and feedback prompts
+- **Never hand-edit generated files** (listed above). Change the design export, `scripts/site-build/config.py`, the blog sources or the build scripts, then rebuild.
+- **SEO copy, link targets and form endpoints** live in `scripts/site-build/config.py`.
+- **Canonical URLs** have no `.html` (`https://tryllengine.com/features`); blog posts end in a slash (`/blog/posts/{slug}/`, the URL GitHub Pages serves without a redirect).
+- **Analytics**: GTM container `GTM-K8MPGKVX` (holds GA4 `G-V0BH3P7R63`, plus "Form submission" and "Clicks Download" events). `cookie-consent.js` must load before GTM; all consent defaults to denied.
+- **Forms** must stay real `<form>` elements so GTM's form-submission trigger fires.
+- **Old blog URLs must keep working**: never rename a post slug.
 
-### JavaScript Functionality
-- **Feature Showcase**: Dynamic content switching with position tracking
-- **Mobile Menu**: Toggle with close button functionality
-- **Animations**: Intersection Observer for fade-in effects
-- **FAQ Accordion**: Expand/collapse functionality
-- **Form Handling**: Validation and submission with privacy checkbox
-- **Ripple Effects**: Button click animations
+## Brand
 
-## Important Patterns
-
-### CSS Classes
-- **Glass morphism**: `.glass-card` for translucent card effects
-- **Navigation glass**: `.nav-glass-card` with enhanced frost effects
-- **Gradient text**: `.gradient-text` for branded headings
-- **Primary button**: `.btn-primary` for main CTAs
-- **Text hierarchy**: `.heading-primary`, `.text-secondary`
-- **Animations**: `.fade-in`, `.animate-slide-up`, `.animate-scale-in`
-
-### Design System
-- **Dark theme only**: Pure black (#000000) background
-- **Mobile-first**: All components responsive by default
-- **Consistent spacing**: Using Tailwind's spacing scale
-- **Typography**: Inter for UI, JetBrains Mono for code
-
-## Brand Guidelines
-
-### Colors
-- **Primary**: #232E41 (dark blue-gray)
-- **Primary Blue**: #3B82F6 (Tailwind blue-500)
-- **Secondary**: #F6F0EB (light cream)
-- **Text Colors**:
-  - Primary headings: rgba(255, 255, 255, 0.9)
-  - Body text: rgba(255, 255, 255, 0.65)
-  - Muted text: rgba(255, 255, 255, 0.4)
-
-### Voice & Tone
-- **Audience**: Game developers (technical but approachable)
-- **Style**: Professional yet conversational
-- **Focus**: Benefits over features, local-first messaging
-
-## SEO & Analytics
-
-- **Meta Tags**: Comprehensive Open Graph and Twitter cards
-- **Structured Data**: JSON-LD for better search visibility
-- **Sitemap**: XML sitemap for all pages
-- **Canonical URLs**: Properly set for all pages
-- **Robots.txt**: Configured for optimal crawling
-
-## Recent Improvements (2025-07-25)
-
-### Major Additions
-- Added BoscoTryll showcase page demonstrating Tryll Engine capabilities
-- Created STYLE_GUIDE.md for design system documentation
-- Implemented trademark disclaimers for Ghost Ship Games
-
-### UX Improvements
-- Rewrote feature descriptions to target developers instead of players
-- Updated navigation CTAs ("Try in Action", "Add AI to Your Game")
-- Added icons to navigation buttons for visual clarity
-- Simplified mobile navigation to single primary CTA
-- Added close buttons to mobile menu overlays
-
-### Technical Fixes
-- Fixed animation opacity issues with `animation-fill-mode: both`
-- Implemented proper height matching for feature showcase columns
-- Added container IDs for JavaScript functionality
-- Fixed text disappearing after animations
-- Improved contrast for secondary buttons
-
-### Content Updates
-- Renamed roadmap items for clarity (e.g., "Voice & Text Chat" instead of "NLP")
-- Added personality examples (Veteran Miner, Annoyed Old-Timer, Lazy Little Bot)
-- Updated tagline to position as showcase mod
-- Added "tell us what you think" messaging for alpha feedback
-
-## Best Practices
-
-### When Making Changes
-1. **Always use existing patterns** - Check STYLE_GUIDE.md first
-2. **Test on mobile** - Mobile-first approach is critical
-3. **Maintain consistency** - Use established color and spacing systems
-4. **Preserve animations** - Keep smooth transitions and effects
-5. **Update sitemap.xml** - When adding new pages
-
-### Code Style
-- Use semantic HTML5 elements
-- Follow Tailwind utility patterns
-- Keep JavaScript vanilla (no frameworks)
-- Comment complex animations or interactions
-- Use descriptive class names for custom styles
-
-### Git Workflow
-- Stage only relevant files (exclude test files, temp files)
-- Write clear commit messages
-- Update this file when making architectural changes
-- Test locally before pushing
+- **Design**: navy hero (`#161D29`), primary `#232E41`, white content sections, warm card `#F7F2EE`, text `#181716`
+- **Font**: Space Grotesk (400/500)
+- **Voice**: for game developers, technical but approachable; say "on-device" and "player's GPU", not "edge" or "client-side"

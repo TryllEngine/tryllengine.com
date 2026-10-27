@@ -1,107 +1,70 @@
 # Blog — How to Add a New Post
 
+Post pages, the blog listing and the sitemap are **generated** by `scripts/site-build/build.py`. You only write the markdown, add images and register the post in `posts.json`.
+
 ## File structure
 
 ```
 blog/
-├── posts.json              # Post index (drives the blog listing page)
+├── posts.json              # Post index (source of the listing, the pages and the sitemap)
 ├── blog-readme.md          # This file
 ├── content/
 │   └── {slug}.md           # Markdown body for each post
 └── posts/
-    ├── _template.html      # HTML template for new post pages
     └── {slug}/
-        └── index.html      # HTML page for each post (clean URLs)
+        └── index.html      # GENERATED — don't edit
 
 assets/blog/
-├── {slug}-cover.png        # DALL-E generated cover (used in posts.json + HTML hero)
-├── {slug}-inline-1.{ext}   # In-article image 1 (used in markdown body, optional)
-├── {slug}-inline-2.{ext}   # In-article image 2 (optional)
+├── {slug}-cover.jpg        # Cover illustration (listing card, social preview)
+├── {slug}-inline-1.{ext}   # In-article image 1 (optional)
 └── ...
 ```
 
-## Steps to add a new post
+## Steps
 
-### 1. Write the markdown content
+### 1. Write the markdown
 
-Create `blog/content/{slug}.md`. The file is **pure markdown** — no front-matter. It gets fetched at runtime and rendered with `marked.js`.
+Create `blog/content/{slug}.md`: plain markdown, no front matter, no title (the build adds it).
 
-- Use absolute paths for images: `/assets/blog/{slug}-inline-1.jpg`
-- Add hyperlinks for people (`[Name](linkedin-url)`) and products (`[Tryll Assistant](steam-url)`)
+- Use absolute image paths: `/assets/blog/{slug}-inline-1.jpg`
+- **A photo on the very first line becomes the big hero image** on the post page. Without one, the cover is used.
+- Two or more images in a row (separated only by blank lines) become a side-by-side gallery.
+- `> quote` lines become the design's quote card. End with a line `> — Name, Company` to add a caption.
+- Supported: `##`/`###` headings, **bold**, *italic*, links, lists, `code`, and raw HTML blocks (e.g. `<div class="video-embed"><iframe …></iframe></div>` for YouTube).
 
 ### 2. Add images
 
-Place images in `assets/blog/`. All filenames must start with the post slug:
+Put them in `assets/blog/`, named after the slug:
 
-- **Cover** (required): `{slug}-cover.png` — DALL-E generated abstract geometric illustration, shown on the blog grid and as the 168x168px hero image in the post HTML
-- **Inline content** (optional): `{slug}-inline-1.{ext}`, `{slug}-inline-2.{ext}`, etc. — photos, screenshots, or diagrams embedded in the markdown body
+- **Cover** (required): `{slug}-cover.jpg`, an abstract geometric illustration (see the `blog-cover-prompts` skill), shown 16:10 on the listing card
+- **Inline** (optional): `{slug}-inline-1.jpg`, `{slug}-inline-2.png`, …
 
-Examples for a post with slug `welcome-pierre-moisan`:
-- `assets/blog/welcome-pierre-moisan-cover.png` — DALL-E geometric cover
-- `assets/blog/welcome-pierre-moisan-inline-1.jpg` — photo of Pierre Moisan
+### 3. Register in posts.json
 
-### 3. Create the HTML page
-
-Create a directory `blog/posts/{slug}/`, copy `blog/posts/_template.html` to `blog/posts/{slug}/index.html`, and replace all `POST_*` placeholders:
-
-| Placeholder | Example |
-|---|---|
-| `POST_SLUG` | `welcome-pierre-moisan` |
-| `POST_TITLE` | `Welcome Pierre Moisan to Tryll Engine` |
-| `POST_EXCERPT` | 1-2 sentence summary for social previews |
-| `POST_DATE_ISO` | `2026-03-06` |
-| `POST_DATE_FORMATTED` | `Mar 6, 2026` |
-| `POST_CATEGORY` | CSS class: `news`, `tutorial`, `engineering`, `case-study` |
-| `POST_CATEGORY_LABEL` | Display text: `News`, `Tutorial`, `Engineering`, `Case Study` |
-| `POST_READ_TIME` | Number only, e.g. `2` |
-| `POST_IMAGE` | Path to cover image, e.g. `/assets/blog/welcome-pierre-moisan-cover.png` |
-| `POST_LINKEDIN_URL` | LinkedIn post URL, e.g. `https://www.linkedin.com/feed/update/urn:li:activity:...` |
-
-### 4. Register in posts.json
-
-Add a new entry **at the top** of the array in `blog/posts.json` (newest first):
+Add an entry (order doesn't matter, the build sorts by date):
 
 ```json
 {
   "slug": "welcome-pierre-moisan",
   "title": "Welcome Pierre Moisan to Tryll Engine",
-  "excerpt": "Short summary for the blog card.",
+  "excerpt": "1–2 sentences, used for the meta description and social previews.",
   "category": "news",
   "date": "2026-03-06",
   "readTime": 2,
-  "image": "/assets/blog/welcome-pierre-moisan-cover.png",
+  "image": "/assets/blog/welcome-pierre-moisan-cover.jpg",
   "icon": "fa-handshake",
   "author": "Tryll Engine Team",
   "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:activity:..."
 }
 ```
 
-**Fields:**
-- `slug` — must match the directory name and `.md` filename
-- `category` — one of: `news`, `engineering`, `tutorial`, `case-study`
-- `icon` — Font Awesome class, used as fallback when no image loads
-- `date` — ISO format `YYYY-MM-DD`, determines sort order
-- `linkedinUrl` — original LinkedIn post URL (displayed as a link in the post metadata)
+`category` is one of `news`, `engineering`, `tutorial`, `case-study` (shown as News / Engineering / Tutorials / Case Studies).
 
-### 5. Update sitemap.xml
+### 4. Build and preview
 
-Add a `<url>` entry for the new post in `sitemap.xml`.
+```bash
+py -3 scripts/site-build/build.py
+py -3 scripts/site-build/serve.py      # then open http://localhost:8000/blog/posts/{slug}/
+```
 
-## Categories
-
-| Key | Label | Use for |
-|---|---|---|
-| `news` | News | Team announcements, product launches, milestones |
-| `engineering` | Engineering | Technical deep-dives, architecture decisions |
-| `tutorial` | Tutorial | How-to guides, integration walkthroughs |
-| `case-study` | Case Study | User stories, game-specific implementations |
-
-## Conventions
-
-- **Slugs** are lowercase, hyphen-separated: `welcome-pierre-moisan`
-- **Image naming** — all images use the slug as prefix: `{slug}-cover.png` for DALL-E cover, `{slug}-inline-N.{ext}` for in-article images (numbered sequentially)
-- **No spaces or uppercase** in filenames — use hyphens
-- **Posts are sorted by date** (newest first) in `posts.json` — keep this order
-- **Markdown content** should not include the post title (it's in the HTML page header)
-- **LinkedIn links** for team members should go on the first mention of their name
-- **Product links** (Steam, Discord, etc.) should use bold markdown for CTAs
+The post's canonical URL is `https://tryllengine.com/blog/posts/{slug}/`.

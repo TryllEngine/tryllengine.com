@@ -23,7 +23,7 @@ This skill helps catch visual issues before pushing to GitHub Pages:
 ### Step 1: Start local server
 
 ```bash
-python -m http.server 8000 &
+py -3 scripts/site-build/serve.py &   # resolves /blog, /features like GitHub Pages
 ```
 
 ### Step 2: Collect page URLs

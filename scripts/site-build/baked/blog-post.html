@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en"><head><style>
+    .sc-placeholder{background:color-mix(in srgb,currentColor 8%,transparent);
+      border:1px solid color-mix(in srgb,currentColor 50%,transparent);
+      border-radius:2px;box-sizing:border-box;overflow:hidden}
+    @keyframes sc-shine{0%{background-position:100% 50%}100%{background-position:0% 50%}}
+    html.sc-dc-streaming .sc-placeholder,
+    html.sc-dc-streaming .sc-interp.sc-missing{position:relative;
+      background:color-mix(in srgb,currentColor 5%,transparent);
+      border-color:transparent}
+    html.sc-dc-streaming .sc-placeholder::before,
+    html.sc-dc-streaming .sc-interp.sc-missing::before{content:'';
+      position:absolute;inset:0;pointer-events:none;
+      background:linear-gradient(90deg,rgba(217,119,87,0) 25%,rgba(247,225,211,.95) 37%,rgba(217,119,87,0) 63%);
+      background-size:400% 100%;animation:sc-shine 1.4s ease infinite}
+    html.sc-dc-streaming .sc-placeholder:nth-child(n+9 of .sc-placeholder)::before,
+    html.sc-dc-streaming .sc-interp.sc-missing:nth-child(n+9 of .sc-interp.sc-missing)::before{animation:none;
+      background:color-mix(in srgb,currentColor 8%,transparent)}
+    .sc-placeholder-error{padding:4px 8px;font:11px/1.4 ui-monospace,monospace;
+      color:color-mix(in srgb,currentColor 70%,transparent);word-break:break-word}
+    .sc-interp.sc-missing{display:inline-block;width:2em;height:1em;overflow:hidden;
+      vertical-align:text-bottom;background:rgba(255,255,255,.3);border:1px solid rgba(0,0,0,.5);
+      border-radius:2px;box-sizing:border-box;color:transparent;
+      user-select:none}
+    .sc-interp.sc-unresolved{font-family:ui-monospace,monospace;font-size:.85em;
+      color:color-mix(in srgb,currentColor 50%,transparent);
+      background:color-mix(in srgb,currentColor 10%,transparent);border-radius:3px;
+      padding:0 3px}
+    .sc-host.sc-has-error{position:relative}
+    .sc-logic-error{position:absolute;top:8px;left:8px;z-index:2147483647;max-width:60ch;
+      padding:6px 10px;background:#b00020;color:#fff;font:12px/1.4 ui-monospace,monospace;
+      border-radius:4px;white-space:pre-wrap;pointer-events:none}
+    /* Mirrors PRINT_BASELINE_CSS in apps/web deck-stage-export.ts — keep both
+       in sync until dc-runtime regains a build step. */
+    @media print {
+      @page { margin: 0.5cm; }
+      figure, table { break-inside: avoid; }
+      #dc-root, #dc-root > .sc-host { height: auto; }
+      *, *::before, *::after {
+        print-color-adjust: exact; -webkit-print-color-adjust: exact;
+        backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+        animation-delay: -99s !important; animation-duration: .001s !important;
+        animation-iteration-count: 1 !important; animation-fill-mode: both !important;
+        animation-play-state: running !important; transition-duration: 0s !important;
+      }
+    }
+  </style><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Back from Tokyo Game Show 2026 — Tryll Engine</title><script src="./support.js"></script><style>x-dc{display:none!important}</style><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet" data-dc-tpl="1"><style data-dc-tpl="2">
+body{margin:0;background:#FFFFFF}
+.pg{font-family:'Space Grotesk',system-ui,sans-serif;color:#181716;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+.h1{margin:0;font:400 76px/1 'Space Grotesk',sans-serif;letter-spacing:-0.045em}
+.h2{margin:0;font:400 56px/1.04 'Space Grotesk',sans-serif;letter-spacing:-0.04em}
+
+.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:40px;height:84px}
+</style><style data-dc-tpl="3">
+
+.pg{background:linear-gradient(#161D29,#161D29) 0 0/50% 798px no-repeat,linear-gradient(#161D29,#161D29) 0 0/100% 690px no-repeat,#FFFFFF !important;--gx:clamp(16px,3.06vw,44px);overflow-x:clip}
+.pg *{box-sizing:border-box}
+.pg{--st:0 0 0 0 transparent;--stf:none}
+.lnk{display:inline-flex;align-items:center;gap:8px;font:500 16px/1 'Space Grotesk',sans-serif;color:#181716;text-decoration:none}
+.lnk:hover{color:#232E41}
+.nav{position:relative;z-index:3;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:88px;padding:0 var(--gx)}
+.nav .nr{justify-self:end;display:flex;align-items:center;gap:8px}
+.nav .nd{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 16px;border-radius:8px;background:rgba(255,255,255,.08);color:#FFFFFF;text-decoration:none;font:400 16px/1 'Space Grotesk',sans-serif;transition:background .2s}
+.nav .nd:hover{background:rgba(255,255,255,.14)}
+.nav .nd svg{width:16px;height:16px;flex:none}
+.nav .nb{white-space:nowrap}
+.nav .mb{display:none;width:44px;height:44px;border-radius:8px;border:0;background:rgba(255,255,255,.1);color:#FFFFFF;align-items:center;justify-content:center;cursor:pointer}
+.nav .lg img{height:32px;width:auto;display:block}
+.nav .lk{display:flex;gap:28px}
+.nav .lk a{font:400 14px/1 'Space Grotesk',sans-serif;color:#FFFFFF;opacity:.82;text-decoration:none}
+.nav .lk a:hover{opacity:1}
+.nav .nb{justify-self:end;display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#FFFFFF;color:#181716;text-decoration:none;font:500 16px/1 'Space Grotesk',sans-serif}.fo{z-index:2;background:#FFFFFF}
+@keyframes pdspin{to{transform:rotate(360deg)}}
+@keyframes pdn{0%,30%{opacity:1;filter:blur(0)}48%,82%{opacity:0;filter:blur(4px)}100%{opacity:1;filter:blur(0)}}
+@keyframes pdl{0%,34%{opacity:0;filter:blur(4px)}52%,80%{opacity:1;filter:blur(0)}98%,100%{opacity:0;filter:blur(4px)}}
+.in{height:54px;border-radius:8px;box-shadow:inset 0 0 0 1px rgba(24,23,22,.18);background:#FFFFFF;display:flex;align-items:center;padding:0 16px;font:400 16px/1 'Space Grotesk',sans-serif;color:rgba(24,23,22,.45)}
+
+.fo{position:relative;border-top:1px solid rgba(24,23,22,.14)}
+.fr{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;padding:32px var(--gx)}
+.fr img{height:32px;width:auto}
+.fr .cp{font:400 14px/1 'Space Grotesk',sans-serif;color:rgba(24,23,22,.72)}
+.fr .fl{margin-left:auto;display:flex;flex-wrap:wrap;gap:12px 28px}
+.fr .up{flex:0 0 auto;margin-left:auto;height:44px;padding:0 14px 0 18px;gap:10px;border-radius:8px;display:inline-flex;align-items:center;font:500 16px/1 'Space Grotesk',sans-serif;text-decoration:none;background:#232E41;color:#FFFFFF;transition:background .2s}
+.fr .up:hover{background:#2B3850}
+.fr .fl a{font:400 14px/1 'Space Grotesk',sans-serif;color:#181716;text-decoration:none}
+.big{padding:56px var(--gx) 0}
+.big svg{display:block;width:100%;height:auto}
+@media (max-width:900px){
+.nav{grid-template-columns:1fr auto}
+.nav .lk{display:none}
+}
+@media (max-width:640px){
+.nav .mb{display:flex}
+.nav .nd{display:none}
+.nav{position:relative;z-index:2}
+.nav .nb{height:44px;padding:0 14px}
+.fr{flex-direction:column;align-items:flex-start;gap:20px;padding-top:40px}
+.fr .fl{margin-left:0;flex-direction:column;gap:14px}
+.fr .fl a{font-size:18px}
+.fr .fl{order:1;margin:4px 0 8px}.fr .cp{order:2}.fr .up{order:3}
+.fr .up{margin-left:0;align-self:stretch;justify-content:center;height:54px;margin-top:8px}
+.fr .fl{margin-left:0}
+}
+
+
+.pg{--sy:80px;--sy-end:120px;--sh:32px}
+@media (max-width:640px){
+.pg{--sy:56px;--sy-end:80px;--sh:24px}
+}
+
+.pg{background:#FFFFFF !important}
+.pth{position:relative;background:#161D29;color:#FFFFFF;border-radius:0 0 100px 0;padding-bottom:260px}
+.phc{max-width:960px;margin:0 auto;padding:56px var(--gx) 0;text-align:center}
+.crumb{margin:0;font:400 16px/1 'Space Grotesk',sans-serif;color:#FFFFFF}
+.crumb a{color:rgba(255,255,255,.6);text-decoration:none}.crumb a:hover{color:#FFFFFF}.crumb span{color:rgba(255,255,255,.35);margin:0 4px}
+.phc h1{margin:24px 0 0;font:400 clamp(44px,5.6vw,68px)/1 'Space Grotesk',sans-serif;letter-spacing:-0.045em}
+.meta{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px 0;margin:28px 0 0;font:400 16px/1.2 'Space Grotesk',sans-serif;color:rgba(255,255,255,.7)}
+.meta>*+*::before{content:'·';margin:0 12px;color:rgba(255,255,255,.35)}
+.meta a{display:inline-flex;align-items:center;gap:6px;color:#FFFFFF;text-decoration:none}.meta a:hover{text-decoration:underline;text-underline-offset:4px}
+.meta a::before{margin-right:6px !important}
+.pimg{position:relative;max-width:1100px;margin:-200px auto 0;padding:0 var(--gx)}
+.pimg img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center 35%;border-radius:24px}
+.pa{display:grid;grid-template-columns:1fr minmax(0,680px) 1fr;column-gap:40px;padding:72px var(--gx) var(--sy-end,120px)}
+.prog{position:sticky;top:160px;align-self:start;justify-self:start;display:flex;flex-direction:column;gap:12px;font:400 16px/1 'Space Grotesk',sans-serif;color:rgba(24,23,22,.55)}
+.prog b{font-weight:400;font-variant-numeric:tabular-nums}
+.prog .tk{display:flex;flex-direction:column;gap:9px}
+.prog .tk i{display:block;width:12px;height:1.5px;border-radius:1px;background:rgba(24,23,22,.2);transition:background .2s,width .2s}
+.prog .tk i.on{background:#181716;width:16px}
+.pb{grid-column:2;font:400 20px/1.6 'Space Grotesk',sans-serif;color:#181716}
+.pb p{margin:0 0 24px}
+.pb a{color:#181716;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;text-decoration-color:rgba(24,23,22,.35)}
+.pb a:hover{text-decoration-color:#181716}
+.pub{display:flex;gap:10px;padding-bottom:24px;margin-bottom:32px !important;border-bottom:1px solid rgba(24,23,22,.14);font-size:16px !important;line-height:1.2 !important}
+.pub span{color:rgba(24,23,22,.55)}
+blockquote{margin:40px 0 48px;padding:36px 40px 32px;background:#F7F2EE;border-radius:24px 24px 60px 24px}
+blockquote i{display:flex;color:#232E41;margin-bottom:20px}
+blockquote p{margin:0 !important;font:400 clamp(22px,2vw,26px)/1.4 'Space Grotesk',sans-serif;letter-spacing:-0.015em}
+blockquote cite{display:block;margin-top:20px;font:400 16px/1 'Space Grotesk',sans-serif;font-style:normal;color:rgba(24,23,22,.72)}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:48px -110px}
+.gal img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px}
+.end{margin-top:8px !important}
+.pfoot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;margin-top:48px;padding-top:24px;border-top:1px solid rgba(24,23,22,.14)}
+.pfoot a{display:inline-flex;align-items:center;gap:8px;font:500 16px/1 'Space Grotesk',sans-serif;text-decoration:none !important}
+.pfoot a:hover{text-decoration:underline !important}
+@media (max-width:1100px){.gal{margin:48px 0}.pa{grid-template-columns:0 minmax(0,680px) 1fr}.prog{display:none}}
+@media (max-width:640px){
+.pth{border-radius:0 0 60px 0;padding-bottom:120px}.phc{padding-top:32px;text-align:left}.meta{justify-content:flex-start}
+.phc h1{font-size:40px}.meta a::before{display:none}.meta a{margin-left:16px}
+.pimg{margin-top:-80px}.pimg img{aspect-ratio:4/3;border-radius:16px}
+.pa{display:block;padding-top:48px;padding-bottom:var(--sy-end,80px)}
+.pb{font-size:18px}
+blockquote{padding:28px 24px;border-radius:20px 20px 40px 20px}
+.gal{grid-template-columns:1fr}
+}
+
+
+.mnav{display:none}@media (max-width:640px){.nav .mnav.on{display:block;position:fixed;inset:0;z-index:60;background:none;padding:0;box-shadow:none}.nav .mnav .mnbg{position:absolute;inset:0;background:rgba(22,29,41,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}.nav .mnav .mnc{position:absolute;top:12px;left:12px;right:12px;height:calc(100dvh - 24px);max-height:820px;box-sizing:border-box;display:flex;flex-direction:column;padding:20px 20px 20px;border-radius:24px;background:#FFFFFF;color:#181716;box-shadow:0 30px 60px rgba(0,0,0,.25)}.nav .mnav .mnh{display:flex;align-items:center;justify-content:space-between;height:44px}.nav .mnav .mnh img{height:28px;width:auto;display:block}.nav .mnav .mnx{width:44px;height:44px;margin-right:-8px;border:0;background:none;color:#181716;display:flex;align-items:center;justify-content:center;cursor:pointer}.nav .mnav .mnl{display:flex;flex-direction:column;margin-top:40px}.nav .mnav .mnl a{display:flex;align-items:center;justify-content:space-between;min-height:64px;padding:0;border-bottom:1px solid rgba(24,23,22,.14);font:400 24px/1.2 'Space Grotesk',sans-serif;color:#181716;text-decoration:none}.nav .mnav .mnl a svg{color:#232E41;opacity:.7}.nav .mnav .mnf{margin-top:auto;display:flex;align-items:center;gap:8px}.nav .mnav .mns{display:flex;align-items:center}.nav .mnav .mns a{width:44px;height:54px;display:flex;align-items:center;justify-content:center;color:#232E41;border:0;padding:0;margin:0}.nav .mnav a.mcta{flex:1;margin:0 0 0 8px;height:54px;display:flex;align-items:center;justify-content:center;padding:0 12px;white-space:nowrap;border:0;border-radius:8px;background:#232E41;color:#FFFFFF;font:500 18px/1 'Space Grotesk',sans-serif;text-decoration:none}}
+
+/* sticky top nav */
+.pg .nav{position:fixed !important;top:0;left:0;right:0;z-index:50;background:#161D29}.pg section:has(> .nav)::before{content:'';display:block;flex:none;height:var(--navh,88px)}
+
+.pg{--navh:72px}
+.pg .nav{height:72px}
+@media (max-width:640px){.pg{--navh:64px}.pg .nav{height:64px}}
+
+/* mobile menu: fits one screen */
+.nav .mnav .mnl{margin-top:24px}
+.nav .mnav .mnl a{min-height:52px;font-size:22px}
+@media (max-height:620px){.nav .mnav .mnl{margin-top:12px}.nav .mnav .mnl a{min-height:44px;font-size:20px}.nav .mnav .mnc{padding:16px 20px}}
+
+/* no hover nudge on arrows (dice still spin) */
+.svh a.svc:hover svg,.pg .hero .himg .hyt:hover svg,.hero.va .hv-yt:hover svg,.lk3:hover svg,.eng.bk .cta:hover .dt svg,.cta:hover .dt .da,.tml:hover svg,.nd:hover svg{transform:none !important}
+/* dark glass chip on pictures: same as Watch on YouTube */
+.bdg:not(.t),.ugc .ugv.pair .bdg:not(.t),.gct{background:rgba(22,29,41,.72) !important;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+
+/* text links (See it in a scene →) keep the 3px nudge */
+.lnk svg{transition:transform .2s}
+.lnk:hover svg{transform:translateX(3px)}
+@media (prefers-reduced-motion:reduce){.lnk:hover svg{transform:none}}
+@media (max-width:640px){.pg .fr{align-items:center;text-align:center}.pg .fr .fl{align-items:center}}
+@media (max-width:640px){.pg .fr .fl{gap:4px}.pg .fr .fl a{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 16px}}
+@media (max-width:640px){.phc{text-align:center !important}.meta{justify-content:center !important}}
+</style></head><body>
+<div id="dc-root"><div class="sc-host" data-sc-name="blog-post"><div data-dc-tpl="4" class="pg"><section data-dc-tpl="5" class="pth" id="top"><div data-dc-tpl="6" class="nav"><a data-dc-tpl="7" class="lg" href="index.html"><img data-dc-tpl="8" src="assets/45bf7c52c7bed5168a147d85b4036d6d.svg" alt="Tryll Engine"></a><div data-dc-tpl="9" class="lk"><a data-dc-tpl="10" href="features.html">For Developers</a><a data-dc-tpl="11" href="index.html#use-cases">Use cases</a><a data-dc-tpl="12" href="index.html#pricing">Pricing</a><a data-dc-tpl="13" href="blog.html" style="opacity: 1;">Blog</a><a data-dc-tpl="14" href="about.html">About</a><a data-dc-tpl="15" href="index.html#contact">Contact</a><a data-dc-tpl="16" href="demo.html">Demo</a></div><div data-dc-tpl="17" class="nr"><a data-dc-tpl="18" class="nd" href="#">Docs <svg data-dc-tpl="19" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path data-dc-tpl="20" d="M5 11L11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a data-dc-tpl="21" class="nb" href="download.html">Get Tryll Engine</a><button data-dc-tpl="22" type="button" class="mb" aria-label="Menu" aria-expanded="false" data-b-aria-expanded="navX" data-on-click="navT"><svg data-dc-tpl="23" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path data-dc-tpl="24" d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg></button></div><div data-dc-tpl="25" class="mnav" data-b-class="navM"><div data-dc-tpl="26" class="mnbg" data-on-click="navT"></div><div data-dc-tpl="27" class="mnc" role="dialog" aria-label="Menu"><div data-dc-tpl="28" class="mnh"><img data-dc-tpl="29" src="assets/3f3cf494323b0ac3405fc08289d2e760.svg" alt="Tryll Engine"><button data-dc-tpl="30" type="button" class="mnx" aria-label="Close menu" data-on-click="navT"><svg data-dc-tpl="31" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path data-dc-tpl="32" d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg></button></div><div data-dc-tpl="33" class="mnl"><a data-dc-tpl="34" href="features.html" data-on-click="navT">For Developers<svg data-dc-tpl="35" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path data-dc-tpl="36" d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a data-dc-tpl="37" href="index.html#use-cases" data-on-click="navT">Use cases<svg data-dc-tpl="38" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path data-dc-tpl="39" d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a data-dc-tpl="40" href="index.html#pricing" data-on-click="navT">Pricing<svg data-dc-tpl="41" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path data-dc-tpl="42" d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a data-dc-tpl="43" href="blog.html" data-on-click="navT">Blog<svg data-dc-tpl="44" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path data-dc-tpl="45" d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a data-dc-tpl="46" href="about.html" data-on-click="navT">About<svg data-dc-tpl="47" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path data-dc-tpl="48" d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a data-dc-tpl="49" href="index.html#contact" data-on-click="navT">Contact<svg data-dc-tpl="50" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path data-dc-tpl="51" d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a data-dc-tpl="52" href="#" data-on-click="navT">Docs<svg data-dc-tpl="53" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path data-dc-tpl="54" d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><a data-dc-tpl="55" href="demo.html" data-on-click="navT">Demo<svg data-dc-tpl="56" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path data-dc-tpl="57" d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></div><div data-dc-tpl="58" class="mnf"><div data-dc-tpl="59" class="mns"><a data-dc-tpl="60" href="#" aria-label="Discord"><svg data-dc-tpl="61" viewBox="0 0 30 30" width="24" height="24" aria-hidden="true"><path data-dc-tpl="62" d="M25.3963 5.19434C23.4842 4.31699 21.4337 3.6706 19.2899 3.30038C19.2508 3.29324 19.2118 3.31109 19.1917 3.3468C18.928 3.81582 18.6359 4.4277 18.4314 4.90863C16.1255 4.56342 13.8315 4.56342 11.5729 4.90863C11.3683 4.41701 11.0656 3.81582 10.8007 3.3468C10.7806 3.31228 10.7416 3.29443 10.7026 3.30038C8.55989 3.66941 6.50945 4.31581 4.59617 5.19434C4.57961 5.20149 4.56541 5.2134 4.55599 5.22887C0.66674 11.0393 -0.398688 16.707 0.123975 22.3043C0.12634 22.3317 0.141712 22.3579 0.162998 22.3745C2.72901 24.259 5.21463 25.403 7.6541 26.1613C7.69314 26.1732 7.73451 26.1589 7.75935 26.1267C8.33641 25.3387 8.8508 24.5078 9.29184 23.634C9.31787 23.5828 9.29303 23.5221 9.23983 23.5019C8.42391 23.1924 7.647 22.815 6.89966 22.3865C6.84055 22.3519 6.83582 22.2674 6.8902 22.2269C7.04746 22.1091 7.20477 21.9864 7.35494 21.8626C7.38211 21.84 7.41997 21.8353 7.45192 21.8495C12.3616 24.0911 17.6769 24.0911 22.5287 21.8495C22.5606 21.8341 22.5985 21.8389 22.6268 21.8615C22.7771 21.9853 22.9343 22.1091 23.0928 22.2269C23.1472 22.2674 23.1436 22.3519 23.0845 22.3865C22.3372 22.8233 21.5602 23.1924 20.7431 23.5007C20.6899 23.5209 20.6663 23.5828 20.6923 23.634C21.1428 24.5066 21.6572 25.3375 22.2236 26.1256C22.2473 26.1589 22.2898 26.1732 22.3289 26.1613C24.7802 25.403 27.2658 24.259 29.8318 22.3745C29.8543 22.3579 29.8685 22.3329 29.8708 22.3055C30.4964 15.8343 28.8231 10.2132 25.4353 5.23005C25.427 5.2134 25.4128 5.20149 25.3963 5.19434ZM10.025 18.8961C8.54687 18.8961 7.32892 17.539 7.32892 15.8724C7.32892 14.2058 8.52325 12.8488 10.025 12.8488C11.5386 12.8488 12.7448 14.2178 12.7211 15.8724C12.7211 17.539 11.5268 18.8961 10.025 18.8961ZM19.9934 18.8961C18.5153 18.8961 17.2974 17.539 17.2974 15.8724C17.2974 14.2058 18.4917 12.8488 19.9934 12.8488C21.507 12.8488 22.7132 14.2178 22.6895 15.8724C22.6895 17.539 21.507 18.8961 19.9934 18.8961Z" fill="currentColor"></path></svg></a><a data-dc-tpl="63" href="#" aria-label="YouTube"><svg data-dc-tpl="64" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path data-dc-tpl="65" fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9L15.5 12l-5.8 3.1z"></path></svg></a><a data-dc-tpl="66" href="https://www.linkedin.com/company/tryllengine/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg data-dc-tpl="67" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path data-dc-tpl="68" fill="currentColor" d="M20.4 2H3.6A1.6 1.6 0 0 0 2 3.6v16.8A1.6 1.6 0 0 0 3.6 22h16.8a1.6 1.6 0 0 0 1.6-1.6V3.6A1.6 1.6 0 0 0 20.4 2zM8 18.6H5.1V9.4H8v9.2zM6.6 8.1a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4zm12.1 10.5h-2.9v-4.5c0-1.1 0-2.4-1.5-2.4s-1.7 1.1-1.7 2.3v4.6H9.7V9.4h2.7v1.3h.1a3 3 0 0 1 2.7-1.5c2.9 0 3.5 1.9 3.5 4.4v5z"></path></svg></a></div><a data-dc-tpl="69" class="mcta" href="download.html">Get Tryll Engine</a></div></div></div></div><div data-dc-tpl="70" class="phc"><p data-dc-tpl="71" class="crumb"><a data-dc-tpl="72" href="blog.html">Blog</a> <span data-dc-tpl="73">/</span> News</p><h1 data-dc-tpl="74">Back from Tokyo Game Show 2026</h1><p data-dc-tpl="75" class="meta"><span data-dc-tpl="76">News</span><span data-dc-tpl="77">1 min read</span><span data-dc-tpl="78">Sep 24, 2026</span><a data-dc-tpl="79" href="https://www.linkedin.com/company/tryllengine/" target="_blank" rel="noopener"><svg data-dc-tpl="80" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path data-dc-tpl="81" fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"></path></svg> LinkedIn</a></p></div></section><div data-dc-tpl="82" class="pimg"><img data-dc-tpl="83" src="assets/1b8b7fed984c2bfa8a8261e1f958e598.jpg" alt="Iryna from Tryll with Matteo Sosso and a guest at the Italy Pavilion, Tokyo Game Show 2026"></div><div data-dc-tpl="84" class="pa"><aside data-dc-tpl="85" class="prog" aria-hidden="true"><b data-dc-tpl="86" data-t="pt.p"><span class="sc-interp">0%</span></b><div data-dc-tpl="87" class="tk"><i data-dc-tpl="88" class="on" data-b-class="pt.k0"></i><i data-dc-tpl="89" class="" data-b-class="pt.k1"></i><i data-dc-tpl="90" class="" data-b-class="pt.k2"></i><i data-dc-tpl="91" class="" data-b-class="pt.k3"></i><i data-dc-tpl="92" class="" data-b-class="pt.k4"></i><i data-dc-tpl="93" class="" data-b-class="pt.k5"></i><i data-dc-tpl="94" class="" data-b-class="pt.k6"></i><i data-dc-tpl="95" class="" data-b-class="pt.k7"></i><i data-dc-tpl="96" class="" data-b-class="pt.k8"></i><i data-dc-tpl="97" class="" data-b-class="pt.k9"></i><i data-dc-tpl="98" class="" data-b-class="pt.k10"></i><i data-dc-tpl="99" class="" data-b-class="pt.k11"></i><i data-dc-tpl="100" class="" data-b-class="pt.k12"></i><i data-dc-tpl="101" class="" data-b-class="pt.k13"></i><i data-dc-tpl="102" class="" data-b-class="pt.k14"></i><i data-dc-tpl="103" class="" data-b-class="pt.k15"></i></div></aside><article data-dc-tpl="104" class="pb"><p data-dc-tpl="105" class="pub"><span data-dc-tpl="106">Published</span> Sep 24, 2026</p><p data-dc-tpl="107">Tokyo Game Show wrapped up last week, and <a data-dc-tpl="108" href="https://www.linkedin.com/in/iryna-b-1a5478127/" target="_blank" rel="noopener">Iryna B.</a> who was there representing Tryll, shared a few thoughts on the event.</p><p data-dc-tpl="109">Her take on the show:</p><blockquote data-dc-tpl="110"><i data-dc-tpl="111"><svg data-dc-tpl="112" viewBox="0 0 32 24" width="32" height="24" aria-hidden="true"><path data-dc-tpl="113" fill="currentColor" d="M0 24V14.4C0 6.6 3.9 1.8 11.4 0l1.4 3.2C8.6 4.6 6.6 7.4 6.4 11.2H12V24H0zm19.2 0V14.4C19.2 6.6 23.1 1.8 30.6 0L32 3.2c-4.2 1.4-6.2 4.2-6.4 8H31.2V24H19.2z"></path></svg></i><p data-dc-tpl="114">It’s a great place to get inspired and see lots of creative ideas in one place. You get to meet really talented people, play their games, share feedback and hopefully help them grow. But more and more games are starting to look the same. There are more copycat projects every year and sometimes it was hard to tell which studio made which game. That’s why the new and original ideas really caught the eye</p><cite data-dc-tpl="115">Iryna B., Tryll</cite></blockquote><div data-dc-tpl="116" class="gal"><img data-dc-tpl="117" src="assets/a0745d52f4c45154f9a0f7b65dc89df4.jpg" alt="Iryna with Felipe Méndez at the Tokyo Game Show"><img data-dc-tpl="118" src="assets/99de4074d0590ec4acc5e98d95ec9e15.jpg" alt="Iryna with Ryan Wolf at the Delve Survivors booth"></div><p data-dc-tpl="119">And a few special thank-yous: to <a data-dc-tpl="120" href="https://www.linkedin.com/in/mrcroww/" target="_blank" rel="noopener">Felipe Méndez</a>, <a data-dc-tpl="121" href="https://www.linkedin.com/in/matteo-sosso-0770829a/" target="_blank" rel="noopener">Matteo Sosso</a>, and <a data-dc-tpl="122" href="https://www.linkedin.com/in/ulf-dev/" target="_blank" rel="noopener">Ryan Wolf</a> for the conversations about what AI can bring to games and the great time together. And to everyone else we got to meet and say hi to.</p><p data-dc-tpl="123" class="end">See you next time, Tokyo</p><div data-dc-tpl="124" class="pfoot"><a data-dc-tpl="125" class="lnk" href="blog.html"><svg data-dc-tpl="126" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path data-dc-tpl="127" d="M13 8H4M8 4l-4 4 4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Back to blog</a><a data-dc-tpl="128" href="https://www.linkedin.com/company/tryllengine/" target="_blank" rel="noopener"><svg data-dc-tpl="129" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path data-dc-tpl="130" fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"></path></svg> Follow Tryll on LinkedIn</a></div></article></div><footer data-dc-tpl="131" class="fo"><div data-dc-tpl="132" class="fr"><img data-dc-tpl="133" src="assets/3f3cf494323b0ac3405fc08289d2e760.svg" alt="Tryll Engine"><span data-dc-tpl="134" class="cp">© 2026 Tryll Engine, Inc. All rights reserved</span><div data-dc-tpl="135" class="fl"><a data-dc-tpl="136" href="#">Discord</a><a data-dc-tpl="137" href="#">YouTube</a><a data-dc-tpl="138" href="https://www.linkedin.com/company/tryllengine/" target="_blank" rel="noopener">LinkedIn</a><a data-dc-tpl="139" href="#">Privacy Policy</a></div><span data-dc-tpl="140" class="cp">Epic MegaGrants recipient</span><a data-dc-tpl="141" class="up" href="#top">Back to top <svg data-dc-tpl="142" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path data-dc-tpl="143" d="M8 13V4M4 8l4-4 4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></div><div data-dc-tpl="144" class="big"><svg data-dc-tpl="145" viewBox="144.191 31 291 54" aria-hidden="true"><path data-dc-tpl="146" d="M201.191 31V41.3998H178.839V85H166.618V41.3998H144.191V31H201.191Z" fill="#232E41"></path><path data-dc-tpl="147" d="M255.232 61.4012C254.87 61.3124 254.495 61.2355 254.101 61.1615C255.842 60.6138 257.492 59.8086 258.994 58.7667C260.624 57.6181 261.938 56.0758 262.819 54.2819C263.782 52.2009 264.248 49.9245 264.186 47.6304C264.186 43.8147 263.296 40.6324 261.549 38.1636C259.716 35.6415 257.159 33.7381 254.221 32.7109C250.748 31.512 247.094 30.9348 243.42 31.0058H207.191V85H219.325V65.5574H238.968C241.534 65.4863 244.103 65.6995 246.623 66.1938C248.24 66.5786 249.354 67.2595 249.97 68.2127C250.674 69.5329 251.004 71.0219 250.918 72.5198V85H263.052V71.7856C263.052 68.7129 262.368 66.3389 261.078 64.7285C259.551 62.9968 257.495 61.8245 255.232 61.4012ZM251.567 51.2389C251.19 52.1772 250.615 53.0209 249.878 53.7136C248.426 55.0842 246.254 55.7295 243.42 55.7295H219.325V41.6478H243.42C246.275 41.6478 248.458 42.2309 249.92 43.3765C251.381 44.5221 252.05 46.1207 252.05 48.2816C252.106 49.291 251.941 50.3005 251.567 51.2389Z" fill="#232E41"></path><path data-dc-tpl="148" d="M379.191 74.5973V85H333.191V31H345.073V74.5973H379.191Z" fill="#232E41"></path><path data-dc-tpl="149" d="M435.191 74.5973V85H388.191V31H400.331V74.5973H435.191Z" fill="#232E41"></path><path data-dc-tpl="150" d="M327.191 31L326.511 32.0567L303.717 67.8534V85H291.624V67.8534L268.872 32.0567L268.191 31H282.161L282.351 31.3108L294.486 50.0172C295.477 51.4735 296.312 53.0304 296.986 54.6613C297.3 55.4663 297.529 56.301 297.664 57.1564C297.801 56.301 298.03 55.4663 298.344 54.6613C299.015 53.0304 299.854 51.4735 300.844 50.0172L313.02 31.3108L313.222 31H327.191Z" fill="#232E41"></path></svg></div></footer></div></div></div>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:2973}}">
+
+class Component extends DCLogic {
+  renderVals() { const o = this._rv() || {}; const m = !!(this.state && this.state.navOpen); o.navM = 'mnav' + (m ? ' on' : ''); o.navX = m ? 'true' : 'false'; o.navT = () => this.setState({ navOpen: !m }); return o; }
+  componentDidMount() {
+    this._on = () => { const el = document.querySelector('.pb'); if (!el) return; const r = el.getBoundingClientRect(), vh = window.innerHeight || 1;
+      const p = Math.max(0, Math.min(1, (vh * 0.5 - r.top) / Math.max(1, r.height))); this.setState({ p }); };
+    window.addEventListener('scroll', this._on, { passive: true }); this._on();
+  }
+  componentWillUnmount() { window.removeEventListener('scroll', this._on); }
+  _rv() {
+    const p = (this.state && this.state.p) || 0, n = Math.round(p * 16), pt = { p: Math.round(p * 100) + '%' };
+    for (let i = 0; i < 16; i++) pt['k' + i] = i < Math.max(1, n) ? 'on' : '';
+    return { pt, cd: [] };
+  }
+}
+
+</script>
+</body></html>

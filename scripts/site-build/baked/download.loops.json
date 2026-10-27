@@ -1,0 +1,10 @@
+{
+ "L0": {
+  "list": "cd",
+  "as": "q",
+  "k": 1,
+  "parent": null,
+  "tpl": "<line stroke=\"#FFFFFF\" stroke-width=\".07\" data-b-x1=\"q.x1\" data-b-y1=\"q.y1\" data-b-x2=\"q.x2\" data-b-y2=\"q.y2\" data-b-stroke-opacity=\"q.o\" data-loop=\"L0\" data-lk=\"0\"></line>",
+  "svg": true
+ }
+}

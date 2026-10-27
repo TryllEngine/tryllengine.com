@@ -18,8 +18,8 @@ The main pages are designed in **Claude Design** and turned into static HTML by 
 │   ├── content/{slug}.md     # post bodies (source)
 │   └── posts/{slug}/index.html   # GENERATED
 ├── tryll-assistant.html, boscotryll.html,        # old-design pages, hand-written,
-│   closed-beta.html, privacy-policy.html,         #   kept at their URLs until redesigned
-│   tryll-plugin-alpha.html
+│   privacy-policy.html, tryll-plugin-alpha.html   #   kept at their URLs until redesigned
+├── closed-beta.html          # GENERATED redirect to /download (see REDIRECTS in config.py)
 ├── scripts/site-build/       # annotate → bake → build pipeline, config.py, serve.py
 ├── assets/
 │   ├── site/                 # images from the design export (hashed names)
@@ -52,7 +52,7 @@ Don't use `python -m http.server` to preview: it doesn't resolve `/blog` or `/fe
 - **Canonical URLs** have no `.html` (`https://tryllengine.com/features`); blog posts end in a slash (`/blog/posts/{slug}/`, the URL GitHub Pages serves without a redirect).
 - **Analytics**: GTM container `GTM-K8MPGKVX` (holds GA4 `G-V0BH3P7R63`, plus "Form submission" and "Clicks Download" events). `cookie-consent.js` must load before GTM; all consent defaults to denied.
 - **Forms** must stay real `<form>` elements so GTM's form-submission trigger fires.
-- **Old blog URLs must keep working**: never rename a post slug.
+- **Old URLs must keep working**: never rename a post slug; when a page is retired, add it to `REDIRECTS` in `config.py` instead of deleting it.
 
 ## Brand
 

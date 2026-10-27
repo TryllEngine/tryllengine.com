@@ -19,6 +19,14 @@ LINKEDIN = 'https://www.linkedin.com/company/tryllengine/'
 DOCS = 'https://docs.tryllengine.com/'
 DOCS_V = 'https://docs.tryllengine.com/v0.9/'   # bump with each docs release
 
+# Team preview (preview.py): GitHub Pages project site, no analytics, noindex.
+# Only the password's SHA-256 is stored; change it with  preview.py --password NEW
+PREVIEW = {
+    'repo': 'TryllEngine/site-preview',
+    'base': '/site-preview',
+    'password_sha256': '6d22b8a2d2f6d1a4a70df5975665aa970eab7a9c9c53b0d7baa8ff258ae97439',
+}
+
 TODO = 'TODO:'   # prefix: link stays href="#" with data-todo, build prints it
 
 # Placeholder links in the design (href="#"), keyed by link text, or by
@@ -134,9 +142,14 @@ PAGES = {
 LEGACY_PAGES = [
     ('/tryll-assistant', '2025-12-01', '0.7'),
     ('/boscotryll', '2025-07-22', '0.5'),
-    ('/closed-beta', '2026-08-05', '0.5'),
     ('/privacy-policy', '2025-07-18', '0.3'),
 ]
+
+# Retired URLs. GitHub Pages can't send real redirects, so the build writes a
+# small page per entry that forwards instantly and tells Google where it moved.
+REDIRECTS = {
+    '/closed-beta': '/download',   # closed beta ended; the engine is free to download
+}
 
 SOFTWARE_LD = {
     '@context': 'https://schema.org',

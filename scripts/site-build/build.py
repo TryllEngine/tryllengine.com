@@ -391,6 +391,18 @@ def main():
               page_html(meta, baked, body, 'blog-post', ld))
         out_pages.append((path, p['date'], '0.6'))
 
+    # Retired URLs: an instant meta refresh, which Google treats as a permanent
+    # redirect, plus a canonical to the new page. Not listed in the sitemap.
+    for old, new in C.REDIRECTS.items():
+        write(os.path.join(ROOT, old.strip('/') + '.html'), (
+            '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
+            f'<title>Moved — Tryll Engine</title>\n'
+            f'<link rel="canonical" href="{C.SITE}{new}">\n'
+            f'<meta http-equiv="refresh" content="0; url={new}">\n'
+            f'<script>location.replace({json.dumps(new)} + location.hash)</script>\n'
+            f'</head>\n<body>\n<p>This page has moved to <a href="{new}">{C.SITE}{new}</a>.</p>\n'
+            '</body>\n</html>\n'))
+
     # Sitemap: new pages, kept legacy pages, then posts (newest first).
     urls = out_pages[:len(C.PAGES)] + [(p, d, pr) for p, d, pr in C.LEGACY_PAGES] + out_pages[len(C.PAGES):]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',

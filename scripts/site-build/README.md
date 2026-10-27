@@ -30,7 +30,7 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 
 | What | Where |
 |---|---|
-| SEO titles/descriptions, link targets, form endpoints, GTM ID | `config.py` |
+| SEO titles/descriptions, link targets, redirects, form endpoints, GTM ID | `config.py` |
 | Contact form → Formspree, newsletter → MailerLite | `assets/js/forms.js` |
 | Blog topic chips + pagination | `assets/js/blog-list.js` |
 | Cookie banner + Google Consent Mode v2 | `assets/js/cookie-consent.js` |
@@ -41,7 +41,9 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 
 `index.html`, `features.html`, `download.html`, `demo.html`, `about.html`, `blog.html`, `blog/posts/*/index.html`, `assets/js/pages/*.js` and `sitemap.xml` are rewritten by `build.py`. Change the design, `config.py` or the blog sources instead.
 
-Hand-written pages from the old design still live at their URLs and are untouched by the build: `tryll-assistant.html`, `boscotryll.html`, `closed-beta.html`, `privacy-policy.html` and `tryll-plugin-alpha.html`.
+Hand-written pages from the old design still live at their URLs and are untouched by the build: `tryll-assistant.html`, `boscotryll.html`, `privacy-policy.html` and `tryll-plugin-alpha.html`.
+
+Retired URLs go in `REDIRECTS` in `config.py`. GitHub Pages can't do server redirects, so the build writes a small page that forwards instantly with a canonical to the new URL, which Google treats as a permanent move. `/closed-beta` → `/download` works this way.
 
 ## Open links
 

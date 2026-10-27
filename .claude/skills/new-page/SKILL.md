@@ -57,4 +57,4 @@ The build prints any links still waiting for a URL.
 
 - **Canonical URLs have no `.html`**: `https://tryllengine.com/pricing`. Internal links use the same form.
 - **Never edit generated files** (`index.html`, `features.html`, …, `blog/posts/*/index.html`, `assets/js/pages/*`, `sitemap.xml`) — change the design, `config.py` or the build and rebuild.
-- **Old-design pages** (`tryll-assistant.html`, `boscotryll.html`, `closed-beta.html`, `privacy-policy.html`, `tryll-plugin-alpha.html`) are still hand-written HTML; when one is redesigned, remove it from `LEGACY_PAGES` in `config.py`.
+- **Old-design pages** (`tryll-assistant.html`, `boscotryll.html`, `privacy-policy.html`, `tryll-plugin-alpha.html`) are still hand-written HTML; when one is redesigned, remove it from `LEGACY_PAGES` in `config.py`. To retire a page, add it to `REDIRECTS` in `config.py` instead of deleting it.

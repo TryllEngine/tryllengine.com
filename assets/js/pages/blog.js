@@ -11,7 +11,7 @@ function ctaDie(T) { const a = 0.6 + T * 0.9, b = 0.4 + Math.sin(T * 0.6) * 0.5 
 const CH = ["All", "News", "Engineering", "Tutorials", "Case Studies"], TOPS = ["News", "Tutorials", "Case Studies", "News", "News", "News"];
 class Component extends DCLogic {
   renderVals() { const o = this._rv() || {}; const m = !!(this.state && this.state.navOpen); o.navM = 'mnav' + (m ? ' on' : ''); o.navX = m ? 'true' : 'false'; o.navT = () => this.setState({ navOpen: !m }); return o; }
-  componentDidMount() { this._t = window.tryllClock(dt => this.setState({ T: ((this.state && this.state.T) || 0) + dt })); }
+  componentDidMount() { this._t = (window.tryllClock || (f => setInterval(() => f(0.04), 40)))(dt => this.setState({ T: ((this.state && this.state.T) || 0) + dt })); }
   componentWillUnmount() { clearInterval(this._t); }
   _rv() {
     const st = this.state || {}, f = st.f || 0, out = {}; let n = 0;

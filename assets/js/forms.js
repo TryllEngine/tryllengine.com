@@ -1,7 +1,7 @@
 /**
  * Tryll Engine — forms on the redesign pages.
  *
- * Contact (#contact-form)  -> Formspree, same inbox as the old site.
+ * Contact (#contact-form)  -> HubSpot (data-provider="hubspot"), else Formspree.
  * Newsletter ([data-ml-form]) -> MailerLite, same group as the old blog form.
  *
  * Both are real <form> submits, so GTM's "Form submission" trigger keeps
@@ -29,6 +29,40 @@
         el.className = 'fmsg ' + (ok ? 'ok' : 'err');
     }
 
+    // HubSpot Forms API: fields are contact properties, and the one Name field
+    // becomes first + last name. The consent text is stored with the contact.
+    function hubspotRequest(form) {
+        var f = form.elements;
+        var name = f['name'].value.trim().split(/\s+/);
+        var fields = [
+            ['email', f['email'].value.trim()],
+            ['firstname', name.shift()],
+            ['lastname', name.join(' ')],
+            ['company', f['company'].value.trim()],
+            ['message', f['message'].value.trim()]
+        ].filter(function (x) { return x[1]; }).map(function (x) {
+            return { objectTypeId: '0-1', name: x[0], value: x[1] };
+        });
+        return {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({
+                fields: fields,
+                context: { pageUri: location.href, pageName: document.title },
+                legalConsentOptions: { consent: {
+                    consentToProcess: true,
+                    text: 'I accept the privacy policy: https://tryllengine.com/privacy-policy'
+                } }
+            })
+        };
+    }
+
+    function errorText(j) {
+        var e = j.errors && j.errors[0] || {};
+        if (e.errorType === 'INVALID_EMAIL') return 'Please check your email address.';
+        return e.message && !e.errorType ? e.message : 'Something went wrong.';   // Formspree's are readable
+    }
+
     // --- Contact ---------------------------------------------------------
     var cf = document.getElementById('contact-form');
     if (cf) {
@@ -50,14 +84,20 @@
                 consent.focus();
                 return;
             }
-            var data = new FormData(cf);
-            data.append('privacy_policy_consent', 'accepted');
+            var req;
+            if (cf.getAttribute('data-provider') === 'hubspot') {
+                req = hubspotRequest(cf);
+            } else {
+                var data = new FormData(cf);
+                data.append('privacy_policy_consent', 'accepted');
+                req = { method: 'POST', body: data, headers: { Accept: 'application/json' } };
+            }
             btn.disabled = true;
             status(msg, 'Sending…', true);
-            fetch(cf.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
+            fetch(cf.action, req)
                 .then(function (r) {
                     if (!r.ok) return r.json().catch(function () { return {}; }).then(function (j) {
-                        throw new Error(j.errors && j.errors[0] && j.errors[0].message || 'Something went wrong.');
+                        throw new Error(errorText(j));
                     });
                     cf.reset();
                     if (consent.classList.contains('on')) consent.click();

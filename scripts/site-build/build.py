@@ -291,7 +291,8 @@ def write_logic(name, baked):
 # --------------------------------------------------------------------- forms
 
 def contact_form(body):
-    """The design's contact card is a picture of a form; make it a real one."""
+    """The design's contact card is a picture of a form; make it a real one. It posts to
+    HubSpot once config.HUBSPOT has a form, to Formspree until then (assets/js/forms.js)."""
     def field(label, name, ph, kind='input', required=False, auto=''):
         fid = 'cf-' + name
         req = ' required' if required else ''
@@ -312,11 +313,17 @@ def contact_form(body):
     ok_inner = ok_inner.replace('<u>privacy policy</u>',
                                 '<u><a href="/privacy-policy" target="_blank">privacy policy</a></u>')
     ok_tag = ok_tag.replace('<button', '<button role="checkbox" aria-checked="false" data-consent')
+    if C.HUBSPOT['form']:
+        action = (f'https://api.hsforms.com/submissions/v3/integration/submit/'
+                  f'{C.HUBSPOT["portal"]}/{C.HUBSPOT["form"]}')
+        extra, hidden = ' data-provider="hubspot"', ''
+    else:
+        action, extra = C.FORMS['contact'], ''
+        hidden = ('<input type="hidden" name="_subject" value="New Tryll Engine contact form submission">'
+                  '<input type="hidden" name="source" value="tryllengine.com/#contact">')
     form = (
-        f'<form class="fcard" id="contact-form" action="{C.FORMS["contact"]}" method="POST" '
-        f'data-form="contact" novalidate>{tab}'
-        '<input type="hidden" name="_subject" value="New Tryll Engine contact form submission">'
-        '<input type="hidden" name="source" value="tryllengine.com/#contact">'
+        f'<form class="fcard" id="contact-form" action="{action}" method="POST" '
+        f'data-form="contact"{extra} novalidate>{tab}{hidden}'
         '<input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">'
         '<div class="two">' + field('Name*', 'name', 'Your name', required=True, auto='name') +
         field('Studio (optional)', 'company', 'Studio or company', auto='organization') + '</div>' +
@@ -622,6 +629,8 @@ def main():
             print(f'WARN COPY: "{old}" is no longer in the design; remove it from config.py')
     if not downloads:
         print(f'downloads not live: download buttons say "Coming soon" and lead to {C.COMING_SOON["href"]}')
+    if not C.HUBSPOT['form']:
+        print("contact form posts to Formspree until config.HUBSPOT['form'] is set")
     if todos:
         print('\nLinks still waiting for a real URL (left as href="#" with data-todo):')
         for t in sorted(set(todos)):

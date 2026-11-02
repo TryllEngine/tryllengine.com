@@ -10,6 +10,10 @@ OG_IMAGE = '/assets/images/og-image.png'
 # Forms — the same endpoints the old site used, so submissions keep landing
 # in the same Formspree inbox and MailerLite group.
 FORMS = {'contact': 'https://formspree.io/f/movlaywd'}
+# Contact form -> HubSpot once HUBSPOT['form'] is set: each message becomes a contact in
+# the CRM (EU account) with its "message", and HubSpot sends the notification email.
+# Until then it keeps going to Formspree. "form" is the form's ID in HubSpot (Marketing > Forms).
+HUBSPOT = {'portal': '149410362', 'form': ''}
 MAILERLITE_ACCOUNT = '2274886'
 MAILERLITE_FORM = '185451758358627764'   # "blog" signup form
 
@@ -36,6 +40,10 @@ COMING_SOON = {
 COPY = [
     ('$500k', '$200k'),   # pricing threshold
 ]
+if HUBSPOT['form']:   # the privacy policy names the contact form's processor
+    COPY.append(('<b>Formspree</b> (contact form processing) - Formspree, Inc., USA.',
+                 '<b>HubSpot</b> (contact forms and customer records) - HubSpot, Inc., USA; '
+                 'our account is hosted in the EU.'))
 
 # Media logos on the homepage link to their articles, keyed by the logo's alt
 # text (or its text, for a text-only logo) in the design.

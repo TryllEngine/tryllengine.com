@@ -26,7 +26,7 @@ The main pages are designed in **Claude Design** and turned into static HTML by 
 │   ├── site/                 # images from the design export (hashed names)
 │   ├── js/site.js            # runtime that runs the design logic on static HTML
 │   ├── js/pages/*.js         # GENERATED: each page's design logic
-│   ├── js/forms.js           # contact (Formspree) + newsletter (MailerLite)
+│   ├── js/forms.js           # contact (HubSpot, or Formspree until config.HUBSPOT is set) + newsletter (MailerLite)
 │   ├── js/clips.js           # trailer clips: lazy load, pause off screen, sound buttons
 │   ├── js/marquee.js         # media logos highlight (the row scrolls via CSS)
 │   ├── video/                # trailer clips + posters, cut by scripts/site-build/clips.py

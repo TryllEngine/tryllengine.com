@@ -41,7 +41,7 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 | Homepage use-case card pictures that replace the design's (Real Talk, Dynamic worlds) | `CARD_PICTURES` in `config.py`, images in `assets/images/` (16:10, 1152×720) |
 | Clip playback: lazy loading, pause off screen, the sound buttons | `assets/js/clips.js` (posters only with reduced motion or Save-Data) |
 | Media logos row: scrolls with a CSS animation (`tryll-logos` in `site.css`), not the design's 25 fps tick | `assets/js/marquee.js` keeps the "on" highlight in step |
-| Contact form → Formspree, newsletter → MailerLite | `assets/js/forms.js` |
+| Contact form → HubSpot once `HUBSPOT['form']` is set in `config.py` (Formspree until then), newsletter → MailerLite | `assets/js/forms.js` |
 | Blog topic chips + pagination | `assets/js/blog-list.js` |
 | Cookie banner + Google Consent Mode v2 | `assets/js/cookie-consent.js` |
 | CSS the design doesn't cover (inputs, article headings, lists, video) | `assets/css/site.css` |

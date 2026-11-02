@@ -361,6 +361,24 @@ def trailer_clips(body):
     return body
 
 
+def card_pictures(body):
+    """Use-case cards get their picture from config.CARD_PICTURES instead of the design."""
+    def card(m):
+        h = re.search(r'<h3>(.*?)</h3>', m.group(0))
+        pic = h and C.CARD_PICTURES.get(html.unescape(h.group(1)))
+        if not pic:
+            return m.group(0)
+        url, alt = pic
+        tag = f'<div class="ugv" style="background-image: url(&quot;{url}&quot;);" role="img" aria-label="{esc(alt)}"></div>'
+        new, n = re.subn(r'<div class="ugv(?: ph)?"(?: style="[^"]*")?>(?:<span>[^<]*</span>)?</div>',
+                         lambda _: tag, m.group(0), count=1)
+        if not n:
+            print(f'WARN no picture in the "{h.group(1)}" use-case card')
+        return new
+
+    return re.sub(r'<article class="ugc">.*?</article>', card, body, flags=re.S)
+
+
 def get_started_cta(body):
     """The design's "How to get started" steps end without a button: add the
     pricing card's "Get Tryll Engine" after them, with a still copy of its die."""
@@ -489,6 +507,7 @@ def main():
             body = contact_form(body)
             body = get_started_cta(body)
             body = trailer_clips(body)
+            body = card_pictures(body)
             scripts.append('/assets/js/clips.js')
             ld = [org_ld(), C.SOFTWARE_LD,
                   {'@context': 'https://schema.org', '@type': 'WebSite', 'name': 'Tryll Engine',

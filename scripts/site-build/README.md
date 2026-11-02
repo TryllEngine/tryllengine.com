@@ -36,6 +36,7 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 | "How to build" videos (YouTube playlists, titles, lengths) | `VIDEO_LISTS` in `config.py`; thumbnails are saved to `assets/images/videos/` |
 | "Coming soon" instead of downloads | `DOWNLOADS_LIVE` and `COMING_SOON` in `config.py` (see below) |
 | Trailer clips: which seconds, crops, sizes; the trailer's YouTube link | `CLIPS`, `TRAILER_URL` in `config.py`; `clips.py` writes `assets/video/` |
+| Homepage use-case card pictures that replace the design's (Real Talk, Dynamic worlds) | `CARD_PICTURES` in `config.py`, images in `assets/images/` (16:10, 1152×720) |
 | Clip playback: lazy loading, pause off screen, the sound buttons | `assets/js/clips.js` (posters only with reduced motion or Save-Data) |
 | Contact form → Formspree, newsletter → MailerLite | `assets/js/forms.js` |
 | Blog topic chips + pagination | `assets/js/blog-list.js` |

@@ -49,6 +49,14 @@ VIDEO_LISTS = {
     ]),
 }
 
+# Homepage use-case cards whose picture replaces the design's, keyed by the card's
+# heading: (image, description for screen readers). Images are 16:10, 1152x720.
+CARD_PICTURES = {
+    'Real Talk': ('/assets/images/real-talk.jpg',
+                  'A player talks to a settler by voice; the conversation appears on screen'),
+    'Dynamic worlds': ('/assets/images/dynamic-worlds.jpg', 'A colony village seen from above'),
+}
+
 # Clips cut from the trailer by clips.py (needs ffmpeg), then placed by build.py:
 #   py -3 scripts/site-build/clips.py "C:/path/to/trailer.mp4"
 # A shot is (start s, end s, ffmpeg crop "w:h:x:y" in the 1920x1080 trailer); x can

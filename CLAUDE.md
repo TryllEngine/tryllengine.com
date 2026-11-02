@@ -27,6 +27,8 @@ The main pages are designed in **Claude Design** and turned into static HTML by 
 │   ├── js/site.js            # runtime that runs the design logic on static HTML
 │   ├── js/pages/*.js         # GENERATED: each page's design logic
 │   ├── js/forms.js           # contact (Formspree) + newsletter (MailerLite)
+│   ├── js/clips.js           # trailer clips: lazy load, pause off screen, sound buttons
+│   ├── video/                # trailer clips + posters, cut by scripts/site-build/clips.py
 │   ├── js/blog-list.js       # blog topic chips + pagination
 │   ├── js/cookie-consent.js  # cookie banner + Google Consent Mode v2
 │   ├── css/site.css          # styles the design doesn't cover
@@ -43,6 +45,7 @@ py -3 scripts/site-build/serve.py                 # preview at http://localhost:
 py -3 scripts/site-build/build.py                 # rebuild pages, blog, sitemap
 py -3 scripts/site-build/bake.py "<export dir>"   # bring in a new Claude Design export, then build
 py -3 scripts/site-build/preview.py --publish     # team preview at tryllengine.github.io/site-preview
+py -3 scripts/site-build/clips.py "<trailer.mp4>" # re-cut the hero / Smart NPCs clips (config.CLIPS), then build
 ```
 
 Don't use `python -m http.server` to preview: it doesn't resolve `/blog` or `/features` the way GitHub Pages does.

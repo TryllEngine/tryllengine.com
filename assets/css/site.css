@@ -44,6 +44,23 @@ input.in:focus, textarea.in:focus { box-shadow: inset 0 0 0 1.5px #232E41; }
     }
 }
 
+/* Trailer clips (build.py + assets/js/clips.js): the video sits under the design's
+   gradients and chips, and replaces the still picture. */
+.clip { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 50%; }
+.pg .hero.va .hv-vid.has-clip { background-image: none; }
+.ugc .ugv.pair i.has-clip { overflow: hidden; }
+.ugc .ugv.pair i.has-clip .clip { object-position: 50% 50%; }
+.ugc .ugv.pair .bdg { z-index: 1; }
+.snd {
+    position: absolute; z-index: 1; top: 10px; right: 10px; display: flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; color: #FFFFFF; cursor: pointer;
+    background: rgba(22, 29, 41, .72); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.snd:hover { background: rgba(22, 29, 41, .9); }
+.snd:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 2px; }
+.snd .on, .snd[aria-pressed="true"] .off { display: none; }
+.snd[aria-pressed="true"] .on { display: inline; }
+
 /* "How to get started" ends with a button (added by build.py). */
 .gsw .gcta { display: flex; justify-content: center; margin-top: 48px; }
 @media (max-width: 640px) { .gsw .gcta { margin-top: 32px; } }

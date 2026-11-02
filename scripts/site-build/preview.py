@@ -78,7 +78,7 @@ def site_files():
 
 
 def rebase_html(s, base):
-    s = re.sub(r'((?:href|src|action|poster)=["\'])/(?!/)', r'\1' + base + '/', s)
+    s = re.sub(r'((?:href|src|action|poster|data-src-small)=["\'])/(?!/)', r'\1' + base + '/', s)
     s = re.sub(r'(url\((?:["\']|&quot;)?)/(?!/)', r'\1' + base + '/', s)
     s = s.replace('\\"/assets/', '\\"' + base + '/assets/')          # loop templates (JSON)
     s = re.sub(r'(content="0; url=)/', r'\1' + base + '/', s)          # redirect pages

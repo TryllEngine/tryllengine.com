@@ -12,6 +12,7 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 | Rebuild after editing `config.py`, a blog post or `posts.json` | `py -3 scripts/site-build/build.py` |
 | Bring in a new design export | `py -3 scripts/site-build/bake.py "C:/path/to/export"` then `build.py` |
 | Publish the team preview | `py -3 scripts/site-build/preview.py --publish` → https://tryllengine.github.io/site-preview/ |
+| Re-cut the trailer clips (hero, Smart NPCs) | edit `CLIPS` in `config.py`, then `py -3 scripts/site-build/clips.py "C:/path/to/trailer.mp4"` and `build.py` (needs ffmpeg) |
 
 `serve.py` resolves URLs the way GitHub Pages does (`/features` → `features.html`, `/blog/posts/x` → `/blog/posts/x/`), so links behave like production. `python -m http.server` does not.
 
@@ -34,6 +35,8 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 | SEO titles/descriptions, link targets, redirects, form endpoints, GTM ID | `config.py` |
 | "How to build" videos (YouTube playlists, titles, lengths) | `VIDEO_LISTS` in `config.py`; thumbnails are saved to `assets/images/videos/` |
 | "Coming soon" instead of downloads | `DOWNLOADS_LIVE` and `COMING_SOON` in `config.py` (see below) |
+| Trailer clips: which seconds, crops, sizes; the trailer's YouTube link | `CLIPS`, `TRAILER_URL` in `config.py`; `clips.py` writes `assets/video/` |
+| Clip playback: lazy loading, pause off screen, the sound buttons | `assets/js/clips.js` (posters only with reduced motion or Save-Data) |
 | Contact form → Formspree, newsletter → MailerLite | `assets/js/forms.js` |
 | Blog topic chips + pagination | `assets/js/blog-list.js` |
 | Cookie banner + Google Consent Mode v2 | `assets/js/cookie-consent.js` |

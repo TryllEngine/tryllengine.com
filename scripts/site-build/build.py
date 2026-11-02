@@ -329,6 +329,38 @@ def contact_form(body):
     return body[:m.start()] + form + body[m.end():]
 
 
+SOUND_ICON = ('<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" '
+              'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z">'
+              '</path><path class="off" d="M16 9.5l5 5M21 9.5l-5 5"></path>'
+              '<path class="on" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"></path></svg>')
+
+
+def clip_tag(name, start):
+    """<video> for a clip made by clips.py; assets/js/clips.js loads and plays it."""
+    c = C.CLIPS[name]
+    small = f' data-src-small="/assets/video/{name}-small.mp4"' if c.get('small') else ''
+    label = f' aria-label="{esc(c["label"])}"' if c.get('label') else ' aria-hidden="true"'
+    return (f'<video class="clip" muted loop playsinline preload="none" poster="/assets/video/{name}.jpg" '
+            f'data-src="/assets/video/{name}.mp4"{small} data-start="{start}"{label}></video>')
+
+
+def trailer_clips(body):
+    """The hero picture and the Smart NPCs "Before / With Tryll" pictures become
+    trailer clips (config.CLIPS), each with a button to hear the NPC."""
+    body, n = re.subn(r'<div class="hv-vid" role="img" aria-label="[^"]*">',
+                      lambda m: '<div class="hv-vid has-clip">' + clip_tag('hero', 'load'), body, count=1)
+    assert n == 1, 'hero picture not found in index'
+    snd = f'<button type="button" class="snd" aria-label="Play with sound" aria-pressed="false">{SOUND_ICON}</button>'
+    body, n = re.subn(r'<div class="ugv pair"><i style="[^"]*">(<span class="bdg">[^<]*</span>)</i>'
+                      r'<i style="[^"]*">(<span class="bdg t">[^<]*</span>)</i></div>',
+                      lambda m: ('<div class="ugv pair">'
+                                 f'<i class="has-clip">{clip_tag("npc-before", "view")}{m.group(1)}{snd}</i>'
+                                 f'<i class="has-clip">{clip_tag("npc-after", "view")}{m.group(2)}{snd}</i></div>'),
+                      body, count=1)
+    assert n == 1, 'Smart NPCs pictures not found in index'
+    return body
+
+
 def get_started_cta(body):
     """The design's "How to get started" steps end without a button: add the
     pricing card's "Get Tryll Engine" after them, with a still copy of its die."""
@@ -456,6 +488,8 @@ def main():
         if name == 'index':
             body = contact_form(body)
             body = get_started_cta(body)
+            body = trailer_clips(body)
+            scripts.append('/assets/js/clips.js')
             ld = [org_ld(), C.SOFTWARE_LD,
                   {'@context': 'https://schema.org', '@type': 'WebSite', 'name': 'Tryll Engine',
                    'url': C.SITE + '/'}]

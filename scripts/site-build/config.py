@@ -49,6 +49,31 @@ VIDEO_LISTS = {
     ]),
 }
 
+# Clips cut from the trailer by clips.py (needs ffmpeg), then placed by build.py:
+#   py -3 scripts/site-build/clips.py "C:/path/to/trailer.mp4"
+# A shot is (start s, end s, ffmpeg crop "w:h:x:y" in the 1920x1080 trailer); x can
+# be an expression of t, seconds into the shot, to pan. "poster": seconds into the clip.
+TRAILER_URL = YOUTUBE   # hero "Watch on YouTube"; set to the trailer's own link once it's up
+CLIPS = {
+    # Hero: three tavern close-ups (1:21.8-1:30.1), each reframed so the face clears the headline.
+    'hero': {'size': (1152, 720), 'small': (640, 400), 'crf': 27, 'poster': 0, 'shots': [
+        (81.84, 85.80, '1344:840:0:120'),
+        (85.88, 88.48, '1344:840:330:120'),
+        (88.56, 90.12, '1344:840:367:120'),
+    ]},
+    # Smart NPCs, "Before": "Nice weather, huh?" in the storm (0:13.8-0:15.7).
+    'npc-before': {'size': (576, 720), 'crf': 28, 'audio': True, 'poster': 1.0,
+                   'label': 'Before: an NPC in a storm says "Nice weather, huh?"', 'shots': [
+        (13.76, 15.72, '694:868:573:106'),
+    ]},
+    # Smart NPCs, "With Tryll": he points everyone to the tavern (0:51.7-0:54.1);
+    # the crop follows him to the right while he points, then back.
+    'npc-after': {'size': (576, 720), 'crf': 28, 'audio': True, 'poster': 1.2,
+                  'label': 'With Tryll: an NPC in the storm points the way to the tavern', 'shots': [
+        (51.72, 54.12, "592:740:'if(lt(t,1.65),734+150*(1-cos(PI*t/1.65)),1034-170*(1-cos(PI*min((t-1.65)/0.75,1))))':150"),
+    ]},
+}
+
 # Team preview (preview.py): GitHub Pages project site, no analytics, noindex.
 # Only the password's SHA-256 is stored; change it with  preview.py --password NEW
 PREVIEW = {
@@ -68,7 +93,7 @@ COMMON_LINKS = {
     'Discord Never build alone. Join us on Discord': DISCORD,
     'YouTube': YOUTUBE,
     'LinkedIn': LINKEDIN,
-    'Watch on YouTube': YOUTUBE,   # homepage hero; the video lists use VIDEO_LISTS
+    'Watch on YouTube': TRAILER_URL,   # homepage hero; the video lists use VIDEO_LISTS
     'Documentation API reference and guides, on docs.tryllengine.com': DOCS,
 }
 

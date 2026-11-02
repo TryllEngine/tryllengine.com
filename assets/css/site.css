@@ -117,9 +117,9 @@ input.hp { position: absolute !important; left: -9999px !important; width: 1px; 
 /* Blog articles: elements the design sample post didn't use. */
 .pb h2 { margin: 48px 0 20px; font: 400 32px/1.15 'Space Grotesk', sans-serif; letter-spacing: -0.025em; }
 .pb h3 { margin: 36px 0 16px; font: 500 24px/1.25 'Space Grotesk', sans-serif; letter-spacing: -0.015em; }
-.pb ul, .pb ol { margin: 0 0 24px; padding-left: 1.3em; }
-.pb li { margin: 0 0 10px; padding-left: .2em; }
-.pb li::marker { color: rgba(24, 23, 22, .45); }
+.pb.post ul, .pb.post ol { margin: 0 0 24px; padding-left: 1.3em; }
+.pb.post li { margin: 0 0 10px; padding-left: .2em; }
+.pb.post li::marker { color: rgba(24, 23, 22, .45); }
 .pb strong { font-weight: 500; }
 .pb code { font: 400 .9em/1 ui-monospace, SFMono-Regular, Menlo, monospace; background: #F3F4F6; padding: 2px 6px; border-radius: 6px; }
 .pb .fig { margin: 40px 0; }

@@ -171,7 +171,9 @@
     // --- Footer "Cookie Settings" link -----------------------------------
     function injectFooterLink() {
         if (document.getElementById('tryll-cookie-settings-link')) return;
-        var privacyLink = document.querySelector('footer a[href*="privacy-policy"]');
+        // The last one: some footers hold a newsletter form whose fine print links the policy too.
+        var links = document.querySelectorAll('footer a[href*="privacy-policy"]');
+        var privacyLink = links[links.length - 1];
         if (!privacyLink) return;
         var link = document.createElement('a');
         link.id = 'tryll-cookie-settings-link';

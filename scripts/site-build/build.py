@@ -539,7 +539,7 @@ def blog_post(tpl_body, post, md, blockquote_icon):
                f'<div class="pimg"><img src="{esc(hero_src)}" alt="{esc(hero_alt)}" fetchpriority="high"></div>',
                b, count=1)
     b = re.sub(r'<article class="pb">.*?(<div class="pfoot">)',
-               lambda m: f'<article class="pb"><p class="pub"><span>Published</span> {when}</p>{article}' + m.group(1),
+               lambda m: f'<article class="pb post"><p class="pub"><span>Published</span> {when}</p>{article}' + m.group(1),
                b, count=1, flags=re.S)
     return b
 

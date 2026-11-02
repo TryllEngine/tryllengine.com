@@ -69,6 +69,13 @@ input.in:focus, textarea.in:focus { box-shadow: inset 0 0 0 1.5px #232E41; }
 }
 .pg .mtrack { animation: tryll-logos 17.857s linear infinite; will-change: transform; }
 @media (prefers-reduced-motion: reduce) { .pg .mtrack { animation: none; } }
+/* The logos link to their articles (build.py): the row holds still under the pointer,
+   and the logo you point at lights up like the highlighted one. */
+.mtrack a.logo { text-decoration: none; }
+.marq:hover .mtrack { animation-play-state: paused; }
+.pg .mtrack a.logo:hover, .pg .mtrack a.logo:focus-visible { box-shadow: inset 0 0 0 1.5px #232E41; outline: none; }
+.pg .mtrack a.logo:hover img, .pg .mtrack a.logo:focus-visible img { filter: none; opacity: 1; }
+.pg .mtrack a.logo:hover b, .pg .mtrack a.logo:focus-visible b { color: #181716; opacity: 1; }
 
 /* "How to get started" ends with a button (added by build.py). */
 .gsw .gcta { display: flex; justify-content: center; margin-top: 48px; }

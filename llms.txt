@@ -30,8 +30,8 @@
 
 ## Pricing
 
-- **Free** until a shipped game passes $500k USD in gross revenue; then a 1% royalty. No seats, no per-token fees.
-- Free for game developers, individuals and small businesses under $500k, and for educators and schools with no revenue limit
+- **Free** until a shipped game passes $200k USD in gross revenue; then a 1% royalty. No seats, no per-token fees.
+- Free for game developers, individuals and small businesses under $200k, and for educators and schools with no revenue limit
 - **Extra services** (custom pricing): forward-deployed engineering, QA and evals, security guardrails, custom AI components
 
 ## System requirements

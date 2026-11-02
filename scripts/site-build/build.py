@@ -76,9 +76,9 @@ class Baked:
     def clean(self):
         b = re.sub(r' data-dc-tpl="\d+"', '', self.body)
         b = re.sub(r'<span class="sc-interp">([^<]*)</span>', r'\1', b)
-        self.body = fix_assets(b)
+        self.body = fix_copy(fix_assets(b))
         self.styles = [fix_assets(s) for s in self.styles]
-        self.logic = fix_assets(self.logic)
+        self.logic = fix_copy(fix_assets(self.logic))
         for loop in self.loops.values():
             loop['tpl'] = fix_assets(loop['tpl'])
         return self
@@ -361,6 +361,37 @@ def trailer_clips(body):
     return body
 
 
+copy_used = set()
+
+
+def fix_copy(text):
+    """Wording changed since the design export (config.COPY)."""
+    for old, new in C.COPY:
+        if old in text:
+            copy_used.add(old)
+            text = text.replace(old, new)
+    return text
+
+
+def media_links(body):
+    """Each media logo links to its article (config.MEDIA_LINKS). The row repeats the
+    logos so it can loop; only the first set is reachable by keyboard and screen readers."""
+    seen = {}
+
+    def logo(m):
+        attrs, inner = m.groups()
+        key = re.search(r'alt="([^"]*)"', inner) or re.search(r'<b>([^<]*)</b>', inner)
+        url = C.MEDIA_LINKS.get(html.unescape(key.group(1)))
+        if not url:
+            print(f'WARN no MEDIA_LINKS entry for the "{key.group(1)}" media logo')
+            return m.group(0)
+        seen[url] = seen.get(url, 0) + 1
+        hidden = '' if seen[url] == 1 else ' tabindex="-1" aria-hidden="true"'
+        return f'<a{attrs} href="{esc(url)}" target="_blank" rel="noopener"{hidden}>{inner}</a>'
+
+    return re.sub(r'<div( class="logo(?: on)?")>(<img [^>]*>|<b>[^<]*</b>)</div>', logo, body)
+
+
 def smooth_logos(body):
     """The design scrolls the media logos from its 25 fps logic tick, which stutters.
     Unbind the row: site.css scrolls it with a CSS animation and marquee.js keeps the
@@ -517,7 +548,7 @@ def main():
             body = get_started_cta(body)
             body = trailer_clips(body)
             body = card_pictures(body)
-            body = smooth_logos(body)
+            body = media_links(smooth_logos(body))
             scripts += ['/assets/js/clips.js', '/assets/js/marquee.js']
             ld = [org_ld(), C.SOFTWARE_LD,
                   {'@context': 'https://schema.org', '@type': 'WebSite', 'name': 'Tryll Engine',
@@ -586,6 +617,9 @@ def main():
     write(os.path.join(ROOT, 'sitemap.xml'), '\n'.join(sm) + '\n')
 
     print(f'built {len(C.PAGES)} pages, {len(posts)} posts, sitemap with {len(urls)} urls')
+    for old, _ in C.COPY:
+        if old not in copy_used:
+            print(f'WARN COPY: "{old}" is no longer in the design; remove it from config.py')
     if not downloads:
         print(f'downloads not live: download buttons say "Coming soon" and lead to {C.COMING_SOON["href"]}')
     if todos:

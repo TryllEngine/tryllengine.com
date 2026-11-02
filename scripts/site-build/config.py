@@ -31,6 +31,23 @@ COMING_SOON = {
     'href': '/blog#subscribe',
 }
 
+# Wording changed since the design export, swapped in on every design page:
+# (text in the design, text on the site). Drop an entry once the design has it.
+COPY = [
+    ('$500k', '$200k'),   # pricing threshold
+]
+
+# Media logos on the homepage link to their articles, keyed by the logo's alt
+# text (or its text, for a text-only logo) in the design.
+MEDIA_LINKS = {
+    'mobidictum': 'https://mobidictum.com/tryll-engine-valued-6m-opens-closed-alpha/',
+    'Tech in Asia': 'https://www.techinasia.com/news/us-ai-gaming-startup-tryll-valued-at-6m-launches-alpha',
+    'tech.eu': 'https://tech.eu/2026/06/17/tryll-launches-ai-gaming-engine-alpha-and-secures-600k-pre-seed-funding/',
+    'unite.ai': 'https://www.unite.ai/tryll-engine-raises-600k-pre-seed-at-6m-valuation-to-bring-on-device-ai-'
+                'characters-and-conversations-to-games/',
+    'startup-rise': 'https://startuprise.co.uk/tryll-raises-600k-in-pre-seed-round-led-by-early-game-ventures/',
+}
+
 # "How to build" video lists (homepage and /download), keyed by the list's
 # heading in the design: the YouTube playlist behind "Watch on YouTube", then
 # one (video id, length, title) per card. The build saves each thumbnail to
@@ -171,9 +188,9 @@ PAGES = {
         'out': 'download.html', 'path': '/download', 'priority': '0.9',
         'title': 'Get Tryll Engine for Unity and Unreal Engine',
         'description': 'Download the Tryll plugin for Unity 6+ or Unreal Engine 5.7+. Free until '
-                       'your game earns $500k. System requirements, install guides and tutorials.',
+                       'your game earns $200k. System requirements, install guides and tutorials.',
         'description_soon': 'The Tryll plugin for Unity 6+ and Unreal Engine 5.7+ is coming soon. Free '
-                            'until your game earns $500k. System requirements, install guides and tutorials.',
+                            'until your game earns $200k. System requirements, install guides and tutorials.',
     },
     'demo': {
         'out': 'demo.html', 'path': '/demo', 'priority': '0.8',
@@ -227,5 +244,5 @@ SOFTWARE_LD = {
                    "language, remember and act, running locally on the player's GPU.",
     'url': SITE + '/',
     'offers': {'@type': 'Offer', 'price': '0', 'priceCurrency': 'USD',
-               'description': 'Free until a shipped game passes $500k USD gross revenue, then a 1% royalty.'},
+               'description': 'Free until a shipped game passes $200k USD gross revenue, then a 1% royalty.'},
 }

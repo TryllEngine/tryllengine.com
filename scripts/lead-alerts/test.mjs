@@ -52,4 +52,14 @@ assert.equal(r.status, 429, 'sixth within 10 minutes is refused');
 r = await worker.fetch(req(lead, { ip: '192.0.2.1' }), {});
 assert.equal(r.status, 500, 'no webhook configured');
 
+// Workflow Builder webhook: the fields go as its variables, mentions broken up.
+const wf = { SLACK_WEBHOOK_URL: 'https://hooks.slack.com/triggers/T000/123/abc' };
+r = await worker.fetch(req({ ...lead, company: '' }, { ip: '192.0.2.2' }), wf);
+assert.equal(r.status, 204);
+const body = posted.at(-1).body;
+assert.deepEqual(Object.keys(body).sort(), ['company', 'email', 'message', 'name', 'page']);
+assert.equal(body.name, 'Ada Lovelace');
+assert.equal(body.company, '-', 'empty field shows a dash');
+assert.ok(body.message.includes('<​!channel>') && !body.message.includes('<!channel>'));
+
 console.log(`lead-alerts worker: all checks passed (${posted.length} Slack posts stubbed)`);

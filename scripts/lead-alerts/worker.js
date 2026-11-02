@@ -7,7 +7,9 @@
  * use it to post to the channel.
  *
  * Settings (Cloudflare > this Worker > Settings > Variables and Secrets):
- *   SLACK_WEBHOOK_URL  secret, https://hooks.slack.com/services/...
+ *   SLACK_WEBHOOK_URL  secret: a Slack Workflow Builder webhook (https://hooks.slack.com/triggers/...,
+ *                      variables name, company, email, message, page) or an app's incoming
+ *                      webhook (https://hooks.slack.com/services/...)
  *   ALLOWED_ORIGINS    optional, comma-separated; default: tryllengine.com and the team preview
  *
  * Setup and deploy: README.md next to this file. Self-check: node scripts/lead-alerts/test.mjs
@@ -19,6 +21,11 @@ const recent = new Map();   // IP -> times of its recent alerts (per Worker inst
 // Slack reads <...> as links and mentions (<!channel>, <@U123>): escape so a visitor can't ping anyone.
 function slack(s) {
     return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// Workflow Builder shows variables as they are, so break up <...> without changing how it reads.
+function plain(s) {
+    return s.replace(/</g, '<​');
 }
 
 export default {
@@ -61,10 +68,16 @@ export default {
             f.message && `*Message:*\n>${slack(f.message).replace(/\n/g, '\n>')}`,
             f.page && `_Sent from ${slack(f.page)}_`,
         ].filter(Boolean).join('\n');
+        // A Workflow Builder webhook takes the fields as its variables and lays out the message
+        // in Slack; an app's incoming webhook takes the finished text.
+        const workflow = /\/(triggers|workflows)\//.test(env.SLACK_WEBHOOK_URL);
+        const body = workflow
+            ? Object.fromEntries(Object.keys(LIMITS).map(k => [k, plain(f[k]) || '-']))
+            : { text, unfurl_links: false, unfurl_media: false };
         const r = await fetch(env.SLACK_WEBHOOK_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ text, unfurl_links: false, unfurl_media: false }),
+            body: JSON.stringify(body),
         });
         return new Response(null, { status: r.ok ? 204 : 502, headers: cors });
     },

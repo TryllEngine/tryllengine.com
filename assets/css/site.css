@@ -77,6 +77,18 @@ input.in:focus, textarea.in:focus { box-shadow: inset 0 0 0 1.5px #232E41; }
 .pg .mtrack a.logo:hover img, .pg .mtrack a.logo:focus-visible img { filter: none; opacity: 1; }
 .pg .mtrack a.logo:hover b, .pg .mtrack a.logo:focus-visible b { color: #181716; opacity: 1; }
 
+/* Use-case cards: when the text column was taller, the design stretched the 16:10 picture to
+   the row height, which made it wider than its column and pushed it over the text. Keep it
+   16:10 at the column's width, centred next to the text. */
+.pg .ugr.st .ugc .ugv { align-self: center; width: 100%; }
+
+/* "How to get started": the design fixes the screenshot column at 538px, so on narrower
+   screens the text shrank to a few words per line. Split the row in proportion instead
+   (the screenshot is still about 538px at the default width). */
+@media (min-width: 901px) {
+    .pg .gs .gin { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) !important; }
+}
+
 /* "How to get started" ends with a button (added by build.py). */
 .gsw .gcta { display: flex; justify-content: center; margin-top: 48px; }
 @media (max-width: 640px) { .gsw .gcta { margin-top: 32px; } }

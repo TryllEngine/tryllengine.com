@@ -314,8 +314,7 @@ def contact_form(body):
                                 '<u><a href="/privacy-policy" target="_blank">privacy policy</a></u>')
     ok_tag = ok_tag.replace('<button', '<button role="checkbox" aria-checked="false" data-consent')
     if C.HUBSPOT['form']:
-        action = (f'https://api.hsforms.com/submissions/v3/integration/submit/'
-                  f'{C.HUBSPOT["portal"]}/{C.HUBSPOT["form"]}')
+        action = f'{C.HUBSPOT["api"]}/submissions/v3/integration/submit/{C.HUBSPOT["portal"]}/{C.HUBSPOT["form"]}'
         extra, hidden = ' data-provider="hubspot"', ''
     else:
         action, extra = C.FORMS['contact'], ''

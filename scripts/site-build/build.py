@@ -532,7 +532,7 @@ def client_quotes(body):
     shots = re.findall(r'<article class="card">(<div class="shot[^>]*></div>)', sec)
 
     def ext(url, text):
-        return f'<a href="{esc(url)}" target="_blank" rel="noopener">{esc(text)}</a>'
+        return f'<a href="{esc(url)}" target="_blank" rel="noopener">{esc(text)}</a>' if url else esc(text)
 
     cards = []
     for i, q in enumerate(C.CLIENT_QUOTES):
@@ -547,6 +547,29 @@ def client_quotes(body):
     sec, n = re.subn(r'(?:<article class="card">.*?</article>)+', lambda _: ''.join(cards), sec, count=1, flags=re.S)
     assert n == 1, 'client quote cards not found in index'
     return body[:a] + sec + body[b:]
+
+
+def badge_links(body):
+    """The hero's Epic MegaGrants and Early Game Ventures badges, and the footer's "Epic
+    MegaGrants recipient", link out (config.EPIC_MEGAGRANT, EGV_SITE, EGV_NEWS). A badge's
+    logo and text become two links, so EGV's logo can go to their site."""
+    epic = esc(C.EPIC_MEGAGRANT)
+    body = re.sub(r'<span>(<img [^>]*>)(Epic MegaGrants<br>recipient)</span>',
+                  lambda m: f'<span><a class="hbl" href="{epic}" tabindex="-1" aria-hidden="true">{m.group(1)}</a>'
+                            f'<a href="{epic}">{m.group(2)}</a></span>', body)
+    body = re.sub(r'<span>(<img [^>]*?)alt=""([^>]*>)(Funded by<br>Early Game Ventures)</span>',
+                  lambda m: f'<span><a class="hbl" href="{esc(C.EGV_SITE)}" target="_blank" rel="noopener">'
+                            f'{m.group(1)}alt="Early Game Ventures"{m.group(2)}</a>'
+                            f'<a href="{esc(C.EGV_NEWS)}" target="_blank" rel="noopener">{m.group(3)}</a></span>', body)
+    return body.replace('<span class="cp">Epic MegaGrants recipient</span>',
+                        f'<a class="cp" href="{epic}">Epic MegaGrants recipient</a>')
+
+
+def topic_titles(body):
+    """/features: each topic title's text goes in one <span>. The heading lays out its
+    children in a row with space between, which spread "Talking <em>is</em> the gameplay"
+    across the full width."""
+    return re.sub(r'(<h3 data-on-click="h\d+">)(.*?)(<i class="pm"></i></h3>)', r'\1<span>\2</span>\3', body)
 
 
 def speech_row(body):
@@ -752,13 +775,14 @@ def main():
             ld = [{'@context': 'https://schema.org', '@type': 'Blog', 'name': 'Tryll Engine Blog',
                    'url': C.SITE + '/blog', 'publisher': org_ld()}]
         if name == 'features':
-            body = speech_row(body)
+            body = topic_titles(speech_row(body))
             baked.logic = features_logic(baked.logic)
         if name == 'demo':
             body = demo_page(body)
             baked.logic = demo_logic(baked.logic)
         if not downloads:
             body = coming_soon(body)
+        body = badge_links(body)
         write_logic(name, baked)
         html_files.append(os.path.join(ROOT, meta['out']))
         write(html_files[-1], page_html(meta, baked, body, name, ld, scripts))
@@ -769,6 +793,7 @@ def main():
     tpl_body = rewrite_links('blog-post', baked.body)
     if not downloads:
         tpl_body = coming_soon(tpl_body)
+    tpl_body = badge_links(tpl_body)
     icon = BLOCKQUOTE_ICON_RE.search(tpl_body).group(1)
     write_logic('blog-post', baked)
     for p in posts:

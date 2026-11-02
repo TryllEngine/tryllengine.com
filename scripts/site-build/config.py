@@ -118,16 +118,16 @@ DEMO_SHOTS = [
 DEMO_ABOUT = 'demo-about.md'   # in scripts/site-build/
 DEMO_DROP_TAGS = ['Simulation']   # design tags left out ("Colony sim" says it)
 
-# "What clients are saying" on the homepage: one card per quote, in order ('role' may be
-# empty). 'picture' is a 16:9 image shown whole (1152x648, assets/images/clients/); without
-# one, the card keeps the design's picture in its place. An empty list leaves the
-# section's heading and carousel out; "Media about us" below it stays.
+# "What clients are saying" on the homepage: one card per quote, in order ('role', 'site'
+# and 'linkedin' may be empty: no link then). 'picture' is a 16:9 image shown whole
+# (1152x648, assets/images/clients/); without one, the card keeps the design's picture in
+# its place. An empty list leaves the section's heading and carousel out; "Media about
+# us" below it stays.
 CLIENT_QUOTES = [
     {'studio': 'Studios iLLOGIKA', 'site': 'https://www.illogika.com/en',
      'name': 'Hervé Lange', 'linkedin': 'https://www.linkedin.com/in/herv%C3%A9-lange-782b361/',
      'role': 'Sr. Technical Director',
-     'picture': ('/assets/images/clients/herve-lange.jpg',
-                 'Hervé Lange, Sr. Technical Director at Studios iLLOGIKA, next to his quote about Tryll Engine'),
+     'picture': ('/assets/images/clients/illogika.jpg', 'Studios iLLOGIKA logo'),
      'quote': 'Language models represent the next major leap for interactive experiences. With Tryll '
               'Engine, I finally found technology that actually works for game developers, backed by an '
               'outstanding team whose support has been invaluable in navigating this new world.'},
@@ -143,7 +143,22 @@ CLIENT_QUOTES = [
               'the knowledge defined by our writers. It’s technology that empowers our writers rather '
               'than replaces them, giving us the freedom to create experiences that traditional dialogue '
               'systems simply couldn’t deliver.'},
+    {'studio': 'Meant Well Games', 'site': '', 'name': 'Sergey Plyaka', 'linkedin': '', 'role': '',
+     'picture': ('/assets/images/clients/voice-heist.jpg',
+                 'Voice Heist mockup: the player’s robot points at an opened door and says '
+                 '“It’s open now, Boss. I used my head!”'),
+     'quote': 'While developing Voice Heist, a game where players control a robot using natural voice '
+              'commands, one of my biggest challenges was making speech recognition and intent '
+              'understanding work together to create a seamless gameplay experience. Tryll helped me '
+              'experiment with different AI models, quickly identify issues, compare what worked best, '
+              'and iterate faster, allowing me to focus on making the robot feel responsive and alive.'},
 ]
+
+# The hero's badges and the footer's "Epic MegaGrants recipient" link out (build.py
+# badge_links): the grant's blog post; EGV's logo to their site, its text to the news.
+EPIC_MEGAGRANT = '/blog/posts/epic-megagrant-from-unreal-engine/'
+EGV_SITE = 'https://earlygame.vc/'
+EGV_NEWS = MEDIA_LINKS['tech.eu']
 
 # "Faster than speech" on /features ends with a row to compare with: people talk at
 # about 150 words a minute, and at ~1.3 tokens a word that is ~3 tokens a second.

@@ -146,6 +146,27 @@ input.hp { position: absolute !important; left: -9999px !important; width: 1px; 
     .pg .gab p, .pg .gab li { font-size: 16px; }
 }
 
+/* Wide screens: content stops at 1600px and centres, while backgrounds still run edge to edge.
+   The design only set the side margin (--gx), so on an ultrawide screen everything,
+   pictures included, stretched across the whole window. */
+.pg { --gx0: clamp(16px, 3.06vw, 44px); --gx: max(var(--gx0), calc((100vw - 1600px) / 2)); }
+/* Blocks with their own max-width keep the design's margin: inside one, the wider margin
+   would only squeeze the content ("How to get started", /download requirements, the
+   privacy and post headers, a post's lead picture). */
+.pg .gsw, .pg .rq, .pg .phc, .pg .pimg { --gx: var(--gx0); }
+/* ...and the homepage hero keeps its 1440 layout inside that width: its video ended at the
+   window's edge, drifting away from the text; it now ends with the content and fades out. */
+@media (min-width: 1689px) {
+    .pg .hero.va.ue .hv-vid { right: calc((100vw - 1600px) / 2 - 44px); left: calc(100% - 1156px - ((100vw - 1600px) / 2 - 44px)); }
+    .pg .hero.va.ue .hv-vid::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+        background: linear-gradient(270deg, #161D29 0%, rgba(22, 29, 41, 0) 16%); }
+}
+
+/* The hero's badges and the footer's "Epic MegaGrants recipient" are links (build.py badge_links). */
+.pg .hv-bd a, .pg .fr a.cp { color: inherit; text-decoration: none; }
+.pg .hv-bd a:not(.hbl):hover, .pg .fr a.cp:hover { text-decoration: underline; text-underline-offset: 3px; }
+.pg .hv-bd .hbl { display: flex; }
+
 /* Phones (the Smart NPCs clips are about 145px wide there): the "Before" / "With Tryll" label
    and the sound button shrink so they no longer cover the top of the clips. */
 @media (max-width: 640px) {

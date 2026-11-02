@@ -22,7 +22,7 @@ class Component extends DCLogic {
   }
   componentWillUnmount() { window.removeEventListener('scroll', this._s); window.removeEventListener('resize', this._m); }
   _rv() {
-    const st = this.state || {}, a = st.a || 0, out = {}, col = !!st.col, op = st.op || {};
+    const st = this.state || {}, a = st.a || 0, out = {}, col = st.col != null ? !!st.col : matchMedia('(max-width: 640px)').matches, op = st.op || {};
     out.cc = 'cats' + (col ? ' cl' : '');
     out.cal = col ? 'Full view' : 'Compact view'; out.cai = col ? '' : 'x';
     out.ca = () => this.setState({ col: !col, op: {} });

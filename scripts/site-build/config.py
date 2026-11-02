@@ -116,6 +116,7 @@ DEMO_SHOTS = [
     ('trade-talk', 'Trading with the seed merchant and haggling with her in plain words'),
 ]
 DEMO_ABOUT = 'demo-about.md'   # in scripts/site-build/
+DEMO_DROP_TAGS = ['Simulation']   # design tags left out ("Colony sim" says it)
 
 # "What clients are saying" on the homepage: one card per quote, in order ('role' may be
 # empty). 'picture' is a 16:9 image shown whole (1152x648, assets/images/clients/); without

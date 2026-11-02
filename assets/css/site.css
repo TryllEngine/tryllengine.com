@@ -146,6 +146,40 @@ input.hp { position: absolute !important; left: -9999px !important; width: 1px; 
     .pg .gab p, .pg .gab li { font-size: 16px; }
 }
 
+/* Phones (the Smart NPCs clips are about 145px wide there): the "Before" / "With Tryll" label
+   and the sound button shrink so they no longer cover the top of the clips. */
+@media (max-width: 640px) {
+    .ugc .ugv.pair .bdg { left: 6px; top: 6px; height: 22px; padding: 0 7px; border-radius: 5px; font-size: 12px; line-height: 22px; }
+    .ugc .ugv.pair .snd { top: 6px; right: 6px; width: 24px; height: 24px; border-radius: 6px; }
+    .ugc .ugv.pair .snd svg { width: 14px; height: 14px; }
+}
+
+/* "Media about us" on phones: "Latest news" goes under the heading instead of squeezing both
+   onto two lines side by side. */
+@media (max-width: 640px) {
+    .pg .media .mh { flex-wrap: wrap; gap: 8px 24px; }
+    .pg .media .mh a { white-space: nowrap; }
+}
+
+/* Pricing card on narrow phones: "Coming soon · Get notified" is longer than the design's label
+   and ran past the card; a little less padding and a smaller label keep it inside. */
+@media (max-width: 400px) {
+    .pg .prw .pf { padding-left: 20px; padding-right: 20px; }
+    .pg .prw .pf .cta { max-width: 100%; gap: 12px; padding-left: 18px; font-size: 16px; }
+}
+
+/* /demo gallery: a fixed 16:9 view, like a store page. The design sized it by the window's
+   height, so on shorter screens it was wider than the screenshots and cropped them. */
+.pg .gmain { aspect-ratio: 16 / 9 !important; height: auto !important; }
+.pg .gmain .gim { object-fit: contain; }
+.pg .gth .gtb { height: auto !important; aspect-ratio: 16 / 9 !important; }
+/* The design hid the sidebar's logo picture and tags on short screens to fit its height-capped
+   gallery; at 16:9 the sidebar is as tall as the gallery, so they stay. */
+@media (min-width: 901px) and (max-height: 820px) {
+    .pg .gsd .gcap { display: block; }
+    .pg .gsd .gtags { display: flex; }
+}
+
 /* Client quotes (config.CLIENT_QUOTES): with two cards, two share the row on wide screens
    too (the design shows three); studio and person names link out. */
 @media (min-width: 1101px) { .pg .cls:not(:has(.track > .card:nth-child(3))) { --v: 2; } }

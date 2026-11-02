@@ -57,24 +57,46 @@
     if (saved) applyChoice(!!saved.analytics);
 
     // --- Banner UI ------------------------------------------------------
+    // Small and out of the way: one sentence with the links, then "Reject all" and
+    // "Accept all" as identical buttons, so saying no is as easy as saying yes. On phones
+    // it is a slim sheet at the bottom: the sentence, then both buttons in one row.
+    // Its own CSS, because the old-design pages load this script without site.css.
     var BANNER_ID = 'tryll-cookie-banner';
+    var B = '#' + BANNER_ID;
+    var FONT = '"Space Grotesk",Inter,system-ui,sans-serif';
+    var CSS =
+        B + '{position:fixed;left:16px;right:16px;bottom:16px;z-index:2147483000;margin:0 auto;max-width:1352px;' +
+            'padding:14px 14px 14px 24px;box-sizing:border-box;background:#161D29;border:1px solid rgba(255,255,255,.1);' +
+            'border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.35);font:15px/1.5 ' + FONT + ';color:rgba(255,255,255,.72)}' +
+        B + ' p{margin:0}' +
+        B + ' b{color:#fff;font-weight:500}' +
+        B + ' .tcc{display:flex;align-items:center;gap:24px}' +
+        B + ' .tcc>p{flex:1}' +
+        B + ' a,' + B + ' .tcc-link{color:#fff;text-decoration:underline;text-underline-offset:2px}' +
+        B + ' .tcc-link{padding:0;border:0;background:none;font:inherit;cursor:pointer}' +
+        B + ' .tcc-act{display:flex;align-items:center;gap:8px;flex-shrink:0}' +
+        B + ' .tcc-btn{height:44px;padding:0 20px;border:0;border-radius:8px;background:#fff;color:#181716;' +
+            'font:500 15px/1 ' + FONT + ';cursor:pointer;white-space:nowrap}' +
+        B + ' .tcc-btn:hover{background:#F7F2EC}' +
+        B + ' button:focus-visible,' + B + ' a:focus-visible,' + B + ' input:focus-visible{outline:2px solid #fff;outline-offset:2px}' +
+        B + ' .tcc-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0;' +
+            'border-top:1px solid rgba(255,255,255,.08)}' +
+        B + ' .tcc-row small{display:block;font-size:13px;line-height:1.4;color:rgba(255,255,255,.5)}' +
+        B + ' .tcc-on{font-size:13px;color:rgba(255,255,255,.5);white-space:nowrap}' +
+        B + ' input{width:18px;height:18px;flex-shrink:0;accent-color:#fff;cursor:pointer}' +
+        B + ' .tcc-end{justify-content:flex-end;gap:16px;margin-top:6px}' +
+        '@media (max-width:640px){' +
+            B + '{left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px));padding:12px;border-radius:14px;' +
+                'font-size:14px;line-height:1.4}' +
+            B + ' .tcc{flex-direction:column;align-items:stretch;gap:10px}' +
+            B + ' .tcc-act{display:grid;grid-template-columns:1fr 1fr}' +
+            B + ' .tcc-btn{height:42px;padding:0 12px}' +
+        '}';
 
     function closeBanner() {
         var el = document.getElementById(BANNER_ID);
         if (el) el.remove();
     }
-
-    // Matches the redesign: navy panel, white primary button, Space Grotesk.
-    var BTN_BASE =
-        'height:44px;padding:0 18px;border-radius:8px;font-weight:500;font-size:15px;' +
-        'cursor:pointer;font-family:inherit;transition:background 0.2s;white-space:nowrap;';
-    var BTN_PRIMARY = BTN_BASE + 'border:0;background:#FFFFFF;color:#181716;';
-    var BTN_SECONDARY = BTN_BASE +
-        'border:0;background:rgba(255,255,255,0.1);color:#fff;';
-    var BTN_GHOST = BTN_BASE +
-        'border:0;background:transparent;color:rgba(255,255,255,0.55);' +
-        'text-decoration:underline;text-underline-offset:4px;padding:0 8px;';
-    var MONO_LABEL = 'font-size:15px;font-weight:500;color:#FFFFFF;';
 
     function decide(analytics) {
         saveChoice(analytics);
@@ -84,18 +106,13 @@
 
     function renderMain(wrap) {
         wrap.innerHTML =
-            '<div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;min-height:48px;">' +
-                '<div style="flex:1;min-width:240px;">' +
-                    '<div style="' + MONO_LABEL + 'margin-bottom:4px;">Cookies</div>' +
-                    '<div style="color:rgba(255,255,255,0.65);">We use analytics cookies to understand how the site is used. ' +
-                    'No advertising, no cross-site tracking. ' +
-                    '<a href="/privacy-policy" style="color:#FFFFFF;text-decoration:underline;' +
-                    'text-underline-offset:2px;">Privacy Policy</a>.</div>' +
-                '</div>' +
-                '<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">' +
-                    '<button id="tryll-cookie-customize" style="' + BTN_GHOST + '">Customize</button>' +
-                    '<button id="tryll-cookie-reject" style="' + BTN_SECONDARY + '">Reject all</button>' +
-                    '<button id="tryll-cookie-accept" style="' + BTN_PRIMARY + '">Accept all</button>' +
+            '<div class="tcc">' +
+                '<p><b>Cookies.</b> We use analytics cookies to see how the site is used. No ads, no cross-site ' +
+                'tracking. <a href="/privacy-policy">Privacy Policy</a> · ' +
+                '<button type="button" class="tcc-link" id="tryll-cookie-customize">Customize</button></p>' +
+                '<div class="tcc-act">' +
+                    '<button type="button" class="tcc-btn" id="tryll-cookie-reject">Reject all</button>' +
+                    '<button type="button" class="tcc-btn" id="tryll-cookie-accept">Accept all</button>' +
                 '</div>' +
             '</div>';
 
@@ -108,36 +125,19 @@
         var saved = readChoice();
         var analyticsOn = saved ? !!saved.analytics : false;
 
-        var rowStyle =
-            'display:flex;align-items:center;justify-content:space-between;gap:16px;' +
-            'padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.06);';
-
         wrap.innerHTML =
-            '<div style="' + MONO_LABEL + 'margin-bottom:10px;">Cookie settings</div>' +
-
-            '<div style="' + rowStyle + 'border-top:1px solid rgba(255,255,255,0.06);">' +
-                '<div>' +
-                    '<div style="color:#fff;font-weight:500;">Strictly necessary</div>' +
-                    '<div style="color:rgba(255,255,255,0.45);font-size:13px;">Required for the site to function. Cannot be disabled.</div>' +
-                '</div>' +
-                '<span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;letter-spacing:0.08em;' +
-                    'text-transform:uppercase;color:rgba(255,255,255,0.45);white-space:nowrap;">Always on</span>' +
+            '<p style="margin-bottom:6px"><b>Cookie settings</b></p>' +
+            '<div class="tcc-row">' +
+                '<div><b>Strictly necessary</b><small>Required for the site to work.</small></div>' +
+                '<span class="tcc-on">Always on</span>' +
             '</div>' +
-
-            '<div style="' + rowStyle + '">' +
-                '<div>' +
-                    '<div style="color:#fff;font-weight:500;">Analytics</div>' +
-                    '<div style="color:rgba(255,255,255,0.45);font-size:13px;">Google Analytics — aggregated usage statistics. No advertising use.</div>' +
-                '</div>' +
-                '<label style="display:inline-flex;align-items:center;cursor:pointer;">' +
-                    '<input type="checkbox" id="tryll-cookie-analytics-toggle"' + (analyticsOn ? ' checked' : '') +
-                    ' style="width:18px;height:18px;accent-color:#FFFFFF;cursor:pointer;">' +
-                '</label>' +
-            '</div>' +
-
-            '<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:flex-end;margin-top:16px;">' +
-                '<button id="tryll-cookie-back" style="' + BTN_GHOST + '">Back</button>' +
-                '<button id="tryll-cookie-save" style="' + BTN_PRIMARY + '">Save preferences</button>' +
+            '<label class="tcc-row" for="tryll-cookie-analytics-toggle">' +
+                '<div><b>Analytics</b><small>Google Analytics: usage statistics, never used for ads.</small></div>' +
+                '<input type="checkbox" id="tryll-cookie-analytics-toggle"' + (analyticsOn ? ' checked' : '') + '>' +
+            '</label>' +
+            '<div class="tcc-act tcc-end">' +
+                '<button type="button" class="tcc-link" id="tryll-cookie-back">Back</button>' +
+                '<button type="button" class="tcc-btn" id="tryll-cookie-save">Save preferences</button>' +
             '</div>';
 
         document.getElementById('tryll-cookie-back').addEventListener('click', function () { renderMain(wrap); });
@@ -148,19 +148,17 @@
 
     function showBanner() {
         if (document.getElementById(BANNER_ID)) return;
+        if (!document.getElementById('tryll-cookie-css')) {
+            var style = document.createElement('style');
+            style.id = 'tryll-cookie-css';
+            style.textContent = CSS;
+            document.head.appendChild(style);
+        }
 
         var wrap = document.createElement('div');
         wrap.id = BANNER_ID;
         wrap.setAttribute('role', 'dialog');
         wrap.setAttribute('aria-label', 'Cookie consent');
-        wrap.style.cssText =
-            'position:fixed;left:16px;right:16px;bottom:16px;z-index:2147483000;' +
-            'margin:0 auto;max-width:1352px;padding:20px 24px;box-sizing:border-box;' +
-            'background:#161D29;border:1px solid rgba(255,255,255,0.08);' +
-            'border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,0.35);' +
-            'font-family:"Space Grotesk",Inter,system-ui,sans-serif;' +
-            'color:rgba(255,255,255,0.85);font-size:15px;line-height:1.5;';
-
         document.body.appendChild(wrap);
         renderMain(wrap);
     }

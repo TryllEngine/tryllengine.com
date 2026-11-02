@@ -562,8 +562,9 @@ def speech_row(body):
 
 
 def demo_page(body):
-    """/demo: the gallery shows config.DEMO_SHOTS, and "About this game" (config.DEMO_ABOUT,
-    Markdown) comes before the system requirements, which get an anchor for its link."""
+    """/demo: the gallery shows config.DEMO_SHOTS, the tags in config.DEMO_DROP_TAGS are left
+    out, and "About this game" (config.DEMO_ABOUT, Markdown) comes before the system
+    requirements, which get an anchor for its link."""
     shots = C.DEMO_SHOTS
     first, alt = shots[0]
     body, n = re.subn(r'(<img class="gim" src=")[^"]*(" alt=")[^"]*"',
@@ -578,6 +579,9 @@ def demo_page(body):
                                 f'{thumbs}</div>', body, count=1, flags=re.S)
     assert n == 1, 'demo gallery thumbnails not found'
     body = re.sub(r'(<span class="gct" data-t="cnt">)1 / \d+', rf'\g<1>1 / {len(shots)}', body, count=1)
+    for tag in C.DEMO_DROP_TAGS:
+        body, n = re.subn(rf'<span>{re.escape(tag)}</span>', '', body, count=1)
+        assert n == 1, f'demo tag "{tag}" not found'
     about = md_to_html(read(os.path.join(HERE, C.DEMO_ABOUT)))
     body, n = re.subn(r'<section class="ab greq">',
                       lambda _: '<section class="ab gai gabt" id="about"><div class="gsh"><h2>About this game</h2></div>'
@@ -585,6 +589,14 @@ def demo_page(body):
                       body, count=1)
     assert n == 1, 'demo system requirements not found'
     return body
+
+
+def features_logic(logic):
+    """/features opens in its compact view on phones; the design always opened the full view."""
+    logic, n = re.subn(r'\bcol = !!st\.col\b',
+                       "col = st.col != null ? !!st.col : matchMedia('(max-width: 640px)').matches", logic, count=1)
+    assert n == 1, 'compact view flag (col) not found in the features logic'
+    return logic
 
 
 def demo_logic(logic):
@@ -741,6 +753,7 @@ def main():
                    'url': C.SITE + '/blog', 'publisher': org_ld()}]
         if name == 'features':
             body = speech_row(body)
+            baked.logic = features_logic(baked.logic)
         if name == 'demo':
             body = demo_page(body)
             baked.logic = demo_logic(baked.logic)

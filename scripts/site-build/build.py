@@ -329,6 +329,24 @@ def contact_form(body):
     return body[:m.start()] + form + body[m.end():]
 
 
+def get_started_cta(body):
+    """The design's "How to get started" steps end without a button: add the
+    pricing card's "Get Tryll Engine" after them, with a still copy of its die."""
+    sec = re.search(r'<section class="gsw">.*?</section>', body, re.S)
+    if not sec or 'class="cta' in sec.group(0):
+        return body   # section gone, or the design has its own button now
+    die = re.search(r'<a class="cta" href="/download">Get Tryll Engine <span class="dt">(<svg\b.*?</svg>)</span></a>',
+                    body, re.S)
+    if not die:
+        raise SystemExit('pricing "Get Tryll Engine" button not found in index')
+    # The original die is animated by the page logic; the copy keeps only its drawing.
+    icon = re.sub(r' data-(?:b-[\w-]+|loop|lk|t)="[^"]*"', '', die.group(1))
+    icon = re.sub(r'<g data-loop-end="[^"]*"></g>', '', icon)
+    end = sec.end() - len('</section>')
+    return (body[:end] + f'<div class="gcta"><a class="cta" href="/download">Get Tryll Engine '
+            f'<span class="dt">{icon}</span></a></div>' + body[end:])
+
+
 def subscribe_form(body):
     m = re.search(r'<div class="ef"><span>([^<]*)</span><a class="cta" href="#">(.*?)</a></div>', body, re.S)
     if not m:
@@ -437,6 +455,7 @@ def main():
         ld = []
         if name == 'index':
             body = contact_form(body)
+            body = get_started_cta(body)
             ld = [org_ld(), C.SOFTWARE_LD,
                   {'@context': 'https://schema.org', '@type': 'WebSite', 'name': 'Tryll Engine',
                    'url': C.SITE + '/'}]

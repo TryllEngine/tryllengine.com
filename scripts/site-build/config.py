@@ -47,10 +47,11 @@ COMING_SOON = {
 COPY = [
     ('$500k', '$200k'),   # pricing threshold
     ('that allows integrate in-game AI', 'that lets you integrate in-game AI'),   # hero typo
+    ('Windows 10 64-bit', 'Windows 11 64-bit'),                                   # /demo minimum OS
     ('NVIDIA GeForce RTX 3060 / AMD Radeon RX 6600 (8 GB VRAM)',                  # /demo minimum
-     'NVIDIA GeForce RTX 4070 / AMD Radeon RX 7700 XT (12 GB VRAM)'),
+     'NVIDIA GeForce RTX 4060 / AMD Radeon RX 7600 (8 GB VRAM)'),
     ('NVIDIA GeForce RTX 4060 or better (8 GB VRAM)',                             # /demo recommended
-     'NVIDIA GeForce RTX 4070 Ti SUPER / AMD Radeon RX 7800 XT (16 GB VRAM)'),
+     'NVIDIA GeForce RTX 4070 / AMD Radeon RX 7700 XT (12 GB VRAM)'),
 ]
 if HUBSPOT['form']:   # the privacy policy names the contact form's processor
     COPY += [

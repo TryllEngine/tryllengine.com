@@ -35,7 +35,9 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 | SEO titles/descriptions, link targets, redirects, form endpoints, GTM ID | `config.py` |
 | Wording changed since the design export (e.g. the $200k pricing threshold) | `COPY` in `config.py`: applied to every design page; the build warns when an entry no longer matches |
 | Media logos → coverage articles | `MEDIA_LINKS` in `config.py`, keyed by the logo's alt text |
-| "What clients are saying" on the homepage (off for now) | `CLIENT_QUOTES` in `config.py` |
+| "What clients are saying" cards: studio, person, quote (an empty list hides the section) | `CLIENT_QUOTES` in `config.py` |
+| /demo: gallery screenshots and the "About this game" text | `DEMO_SHOTS` in `config.py` (images in `assets/images/demo/`, 1600×900 plus a 400×225 `-thumb`), `demo-about.md` here |
+| Docs links: deep links follow the docs' `latest`, so a docs release needs no change here | `DOCS_V` in `config.py`; the build checks every docs page opens, and links one that `latest` lacks to the version behind `latest` until it has it |
 | /features "Faster than speech": the row for how fast people talk | `SPEECH_ROW` in `config.py` |
 | Animation clock of the design logic (dice, dial): animation frames instead of the design's 25 steps a second | `tryllClock` in `assets/js/site.js`, swapped in by `write_logic` in `build.py` |
 | "How to build" videos (YouTube playlists, titles, lengths) | `VIDEO_LISTS` in `config.py`; thumbnails are saved to `assets/images/videos/` |

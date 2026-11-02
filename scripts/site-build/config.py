@@ -26,7 +26,9 @@ DISCORD = 'https://discord.gg/DTKycjPpzs'
 YOUTUBE = 'https://www.youtube.com/@Tryll_Engine'
 LINKEDIN = 'https://www.linkedin.com/company/tryllengine/'
 DOCS = 'https://docs.tryllengine.com/'
-DOCS_V = 'https://docs.tryllengine.com/v0.9/'   # bump with each docs release
+# Deep links into the docs follow "latest", which the docs site moves to each new release,
+# so they never need a version bump. The docs home stays DOCS ("latest/" alone has no page).
+DOCS_V = DOCS + 'latest/'
 
 # Until the plugin and the demo game can be downloaded, every download and
 # "Get Tryll Engine" button says "Coming soon" and leads to the newsletter
@@ -45,6 +47,10 @@ COMING_SOON = {
 COPY = [
     ('$500k', '$200k'),   # pricing threshold
     ('that allows integrate in-game AI', 'that lets you integrate in-game AI'),   # hero typo
+    ('NVIDIA GeForce RTX 3060 / AMD Radeon RX 6600 (8 GB VRAM)',                  # /demo minimum
+     'NVIDIA GeForce RTX 4070 / AMD Radeon RX 7700 XT (12 GB VRAM)'),
+    ('NVIDIA GeForce RTX 4060 or better (8 GB VRAM)',                             # /demo recommended
+     'NVIDIA GeForce RTX 4070 Ti SUPER / AMD Radeon RX 7800 XT (16 GB VRAM)'),
 ]
 if HUBSPOT['form']:   # the privacy policy names the contact form's processor
     COPY += [
@@ -99,9 +105,38 @@ CARD_PICTURES = {
                    'A twenty-sided die opening up with light inside, joined to other dice by threads'),
 }
 
-# "What clients are saying" (the homepage's carousel of client quotes); False leaves
-# it out, and "Media about us" below it stays.
-CLIENT_QUOTES = False
+# /demo (Tryll Colony): the gallery in order, as (image in assets/images/demo/, which also
+# has a -thumb copy; description for screen readers), and "About this game" in Markdown.
+DEMO_SHOTS = [
+    ('tavern-talk', 'A settler outside the Black Bear tavern says: I tended the sheep and the cows all morning.'),
+    ('settler-stats', 'Greta Lark’s stats: skills, needs and mood'),
+    ('village-night', 'The village at night, lit by lanterns and windows'),
+    ('village-day', 'The village from above: cottages, the tavern, market stalls and fields'),
+    ('work-schedule', 'The work schedule: sleep, work and rest hours for each settler'),
+    ('trade-talk', 'Trading with the seed merchant and haggling with her in plain words'),
+]
+DEMO_ABOUT = 'demo-about.md'   # in scripts/site-build/
+
+# "What clients are saying" on the homepage: one card per quote, in order, each keeping
+# the design's picture in its place ('role' may be empty). An empty list leaves the
+# section's heading and carousel out; "Media about us" below it stays.
+CLIENT_QUOTES = [
+    {'studio': 'Studios iLLOGIKA', 'site': 'https://www.illogika.com/en',
+     'name': 'Hervé Lange', 'linkedin': 'https://www.linkedin.com/in/herv%C3%A9-lange-782b361/',
+     'role': 'Sr. Technical Director',
+     'quote': 'Language models represent the next major leap for interactive experiences. With Tryll '
+              'Engine, I finally found technology that actually works for game developers, backed by an '
+              'outstanding team whose support has been invaluable in navigating this new world.'},
+    {'studio': 'GunGrounds', 'site': 'https://gungrounds.com/',
+     'name': 'Kristian Macanga', 'linkedin': 'https://www.linkedin.com/in/krismacanga/', 'role': '',
+     'quote': 'Tryll Engine allows us to bring a new level of interactivity to storytelling without '
+              'sacrificing creative control. Our writers carefully craft the narrative, characters, and '
+              'dialogue content, while Tryll understands players’ questions and intentions, allowing '
+              'characters to respond naturally while staying true to the story, their personalities, and '
+              'the knowledge defined by our writers. It’s technology that empowers our writers rather '
+              'than replaces them, giving us the freedom to create experiences that traditional dialogue '
+              'systems simply couldn’t deliver.'},
+]
 
 # "Faster than speech" on /features ends with a row to compare with: people talk at
 # about 150 words a minute, and at ~1.3 tokens a word that is ~3 tokens a second.

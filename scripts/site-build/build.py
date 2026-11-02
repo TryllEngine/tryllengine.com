@@ -22,6 +22,7 @@ import re
 import sys
 import urllib.error
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -295,8 +296,64 @@ def page_html(meta, baked, body, page_js, extra_ld=(), scripts=()):
     tail.append('<script src="/assets/js/site.js" defer></script>')
     tail.append(f'<script src="/assets/js/pages/{page_js}.js" defer></script>')
     tail += [f'<script src="{s}" defer></script>' for s in scripts]
-    return ('<!doctype html>\n<html lang="en">\n<head>\n' + head(meta, baked, extra_ld) +
-            '\n</head>\n<body>\n' + GTM_BODY + '\n' + body + '\n' + '\n'.join(tail) + '\n</body>\n</html>\n')
+    return docs_latest('<!doctype html>\n<html lang="en">\n<head>\n' + head(meta, baked, extra_ld) +
+                       '\n</head>\n<body>\n' + GTM_BODY + '\n' + body + '\n' + '\n'.join(tail) + '\n</body>\n</html>\n')
+
+
+# Docs links follow "latest" (config.DOCS_V): a version that a design export or a post
+# pins is swapped for it, and the build checks that every docs page linked still opens.
+DOCS_PINNED = re.compile(r'https://docs\.tryllengine\.com/v\d+(?:\.\d+)*/')
+docs_links = set()
+
+
+def docs_latest(text):
+    text = DOCS_PINNED.sub(C.DOCS_V, text)
+    docs_links.update(u.split('#')[0] for u in re.findall(r'https://docs\.tryllengine\.com/[^"\'\s<>)]*', text))
+    return text
+
+
+def url_status(url):
+    req = urllib.request.Request(url, method='HEAD', headers={'User-Agent': 'tryll-site-build'})
+    try:
+        with urllib.request.urlopen(req, timeout=15) as r:
+            return r.status
+    except urllib.error.HTTPError as e:
+        return e.code
+    except OSError:
+        return None
+
+
+def check_docs_links(files):
+    """Every docs page the site links to opens. "latest" on the docs site is a set of pages
+    that forward to the newest version, and a docs release can leave some out: such links
+    go to the version behind "latest" (the docs' versions.json) until "latest" has them."""
+    urls = sorted(docs_links)
+    with ThreadPoolExecutor(8) as pool:
+        status = dict(zip(urls, pool.map(url_status, urls)))
+    if all(s is None for s in status.values()):
+        print('docs links not checked: no connection to docs.tryllengine.com')
+        return
+    broken = [u for u in urls if status[u] != 200]
+    current = None
+    if any(u.startswith(C.DOCS_V) for u in broken):
+        try:
+            with urllib.request.urlopen(C.DOCS + 'versions.json', timeout=15) as r:
+                current = next(v['version'] for v in json.load(r) if 'latest' in v.get('aliases', []))
+        except (OSError, ValueError, StopIteration):
+            pass
+    swaps = {}
+    for u in broken:
+        alt = current and u.replace(C.DOCS_V, f'{C.DOCS}{current}/', 1)
+        if alt and alt != u and url_status(alt) == 200:
+            swaps[u] = alt
+            print(f'NOTE docs "latest" has no {u[len(C.DOCS_V):]}: linked to {current} until it does')
+        else:
+            print(f'WARN docs link {u} answers {status[u] or "nothing"}: fix it in config.py or the page')
+    for path in files if swaps else ():
+        text = read(path)
+        for u, alt in swaps.items():
+            text = re.sub(re.escape(u) + r'(?=["#])', alt, text)
+        write(path, text)
 
 
 # The design logic's clock steps 25 times a second (setInterval, 40 ms), which shows on
@@ -460,14 +517,32 @@ def card_pictures(body):
 
 
 def client_quotes(body):
-    """Without config.CLIENT_QUOTES the homepage leaves out "What clients are saying"
-    (its heading and the quote carousel); "Media about us" after it stays."""
-    if C.CLIENT_QUOTES:
+    """"What clients are saying" shows config.CLIENT_QUOTES, one card each, with the design's
+    pictures kept in their places. With none, its heading and carousel are left out and
+    "Media about us" after it stays."""
+    if not C.CLIENT_QUOTES:
+        body, n = re.subn(r'<div class="th"><h2>What clients are saying</h2></div>.*?(?=<div class="media">)',
+                          '', body, count=1, flags=re.S)
+        assert n == 1, '"What clients are saying" not found in index'
         return body
-    body, n = re.subn(r'<div class="th"><h2>What clients are saying</h2></div>.*?(?=<div class="media">)',
-                      '', body, count=1, flags=re.S)
-    assert n == 1, '"What clients are saying" not found in index'
-    return body
+    a = body.find('<section class="sec cls">')
+    b = body.find('</section>', a)
+    assert a >= 0 and b > a, '"What clients are saying" not found in index'
+    sec = body[a:b]
+    shots = re.findall(r'<article class="card">(<div class="shot[^>]*></div>)', sec)
+
+    def ext(url, text):
+        return f'<a href="{esc(url)}" target="_blank" rel="noopener">{esc(text)}</a>'
+
+    cards = []
+    for i, q in enumerate(C.CLIENT_QUOTES):
+        shot = shots[i] if i < len(shots) else '<div class="shot"></div>'
+        who = ext(q['linkedin'], q['name']) + (f' · {esc(q["role"])}' if q['role'] else '')
+        cards.append(f'<article class="card">{shot}<h3>{ext(q["site"], q["studio"])}</h3><p class="m">{who}</p>'
+                     f'<p class="q">“{esc(q["quote"])}”</p></article>')
+    sec, n = re.subn(r'(?:<article class="card">.*?</article>)+', lambda _: ''.join(cards), sec, count=1, flags=re.S)
+    assert n == 1, 'client quote cards not found in index'
+    return body[:a] + sec + body[b:]
 
 
 def speech_row(body):
@@ -480,6 +555,41 @@ def speech_row(body):
                       body, count=1, flags=re.S)
     assert n == 1, '"Faster than speech" rows not found in features'
     return body
+
+
+def demo_page(body):
+    """/demo: the gallery shows config.DEMO_SHOTS, and "About this game" (config.DEMO_ABOUT,
+    Markdown) comes before the system requirements, which get an anchor for its link."""
+    shots = C.DEMO_SHOTS
+    first, alt = shots[0]
+    body, n = re.subn(r'(<img class="gim" src=")[^"]*(" alt=")[^"]*"',
+                      lambda m: f'{m.group(1)}/assets/images/demo/{first}.jpg{m.group(2)}{esc(alt)}"',
+                      body, count=1)
+    assert n == 1, 'demo gallery picture not found'
+    thumbs = ''.join(f'<button type="button" class="gtb{" on" if i == 0 else ""}" aria-label="Show slide {i + 1}" '
+                     f'data-b-class="t{i}" data-on-click="g{i}"><img src="/assets/images/demo/{name}-thumb.jpg" alt="">'
+                     '</button>' for i, (name, _) in enumerate(shots))
+    body, n = re.subn(r'<div class="gth">.*?</div>',
+                      lambda _: f'<div class="gth" style="grid-template-columns:repeat({len(shots)},minmax(0,1fr))">'
+                                f'{thumbs}</div>', body, count=1, flags=re.S)
+    assert n == 1, 'demo gallery thumbnails not found'
+    body = re.sub(r'(<span class="gct" data-t="cnt">)1 / \d+', rf'\g<1>1 / {len(shots)}', body, count=1)
+    about = md_to_html(read(os.path.join(HERE, C.DEMO_ABOUT)))
+    body, n = re.subn(r'<section class="ab greq">',
+                      lambda _: '<section class="ab gai gabt" id="about"><div class="gsh"><h2>About this game</h2></div>'
+                                f'<div class="gab">{about}</div></section><section class="ab greq" id="requirements">',
+                      body, count=1)
+    assert n == 1, 'demo system requirements not found'
+    return body
+
+
+def demo_logic(logic):
+    """The gallery's slides in the design logic (const GS) follow config.DEMO_SHOTS."""
+    gs = [{'src': f'/assets/images/demo/{name}.jpg', 'alt': alt} for name, alt in C.DEMO_SHOTS]
+    logic, n = re.subn(r'const GS = \[.*?\];', lambda _: f'const GS = {json.dumps(gs, ensure_ascii=False)};',
+                       logic, count=1, flags=re.S)
+    assert n == 1, 'demo gallery slides (const GS) not found in the design logic'
+    return logic
 
 
 def get_started_cta(body):
@@ -598,6 +708,7 @@ def main():
     downloads = C.DOWNLOADS_LIVE or '--downloads-live' in sys.argv[1:]
     posts = load_posts()
     out_pages = []
+    html_files = []   # pages and posts written, for the docs link check
 
     for name, meta in C.PAGES.items():
         if not downloads and 'description_soon' in meta:
@@ -626,10 +737,14 @@ def main():
                    'url': C.SITE + '/blog', 'publisher': org_ld()}]
         if name == 'features':
             body = speech_row(body)
+        if name == 'demo':
+            body = demo_page(body)
+            baked.logic = demo_logic(baked.logic)
         if not downloads:
             body = coming_soon(body)
         write_logic(name, baked)
-        write(os.path.join(ROOT, meta['out']), page_html(meta, baked, body, name, ld, scripts))
+        html_files.append(os.path.join(ROOT, meta['out']))
+        write(html_files[-1], page_html(meta, baked, body, name, ld, scripts))
         out_pages.append((meta['path'], date.today().isoformat(), meta.get('priority', '0.8')))
 
     # Blog posts share the blog-post design page.
@@ -656,8 +771,8 @@ def main():
                 {'@type': 'ListItem', 'position': 1, 'name': 'Blog', 'item': C.SITE + '/blog'},
                 {'@type': 'ListItem', 'position': 2, 'name': p['title'], 'item': C.SITE + path}],
         }]
-        write(os.path.join(ROOT, 'blog', 'posts', p['slug'], 'index.html'),
-              page_html(meta, baked, body, 'blog-post', ld))
+        html_files.append(os.path.join(ROOT, 'blog', 'posts', p['slug'], 'index.html'))
+        write(html_files[-1], page_html(meta, baked, body, 'blog-post', ld))
         out_pages.append((path, p['date'], '0.6'))
 
     # Retired URLs: an instant meta refresh, which Google treats as a permanent
@@ -690,6 +805,7 @@ def main():
         print(f'downloads not live: download buttons say "Coming soon" and lead to {C.COMING_SOON["href"]}')
     if not C.HUBSPOT['form']:
         print("contact form posts to Formspree until config.HUBSPOT['form'] is set")
+    check_docs_links(html_files)
     if todos:
         print('\nLinks still waiting for a real URL (left as href="#" with data-todo):')
         for t in sorted(set(todos)):

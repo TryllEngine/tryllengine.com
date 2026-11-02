@@ -124,12 +124,52 @@ input.hp { position: absolute !important; left: -9999px !important; width: 1px; 
     .pg .tv.vs .vr b { min-width: 0; }
     .pg .tv.vs > small { grid-column: 1 / -1; }
 }
+/* /demo "About this game" (build.py demo_page): the design's game-section layout, split like
+   the system requirements below it: heading on the left, the text in the wider column. */
+.pg .ab.gabt { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+.pg .gab { max-width: 760px; }
+.pg .gab h3 { margin: 48px 0 14px; font: 500 26px/1.2 'Space Grotesk', sans-serif; letter-spacing: -0.02em; color: #181716; }
+.pg .gab h3:first-child { margin-top: 0; }
+.pg .gab p, .pg .gab li { font: 400 18px/1.55 'Space Grotesk', sans-serif; color: rgba(24, 23, 22, .72); }
+.pg .gab p { margin: 0 0 16px; }
+.pg .gab ul { margin: 0 0 16px; padding-left: 1.2em; }
+.pg .gab li { margin: 0 0 10px; padding-left: .2em; }
+.pg .gab li::marker { color: rgba(24, 23, 22, .4); }
+.pg .gab strong { font-weight: 500; color: #181716; }
+.pg .gab a { color: #181716; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 900px) {
+    .pg .ab.gabt { display: block; }
+    .pg .ab.gabt .gsh { position: static; padding-right: 0; margin-bottom: var(--sh); }
+}
+@media (max-width: 640px) {
+    .pg .gab h3 { margin-top: 36px; font-size: 22px; }
+    .pg .gab p, .pg .gab li { font-size: 16px; }
+}
+
+/* Client quotes (config.CLIENT_QUOTES): with two cards, two share the row on wide screens
+   too (the design shows three); studio and person names link out. */
+@media (min-width: 1101px) { .pg .cls:not(:has(.track > .card:nth-child(3))) { --v: 2; } }
+.pg .cls .card h3 a, .pg .cls .card .m a { color: inherit; text-decoration: none; }
+.pg .cls .card h3 a:hover, .pg .cls .card .m a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
 /* Without the client quotes (config.CLIENT_QUOTES), "Media about us" opens its section: drop
    the design's double gap that kept it apart from the quote carousel. */
 .pg .cls > .media:first-child { margin-top: 0 !important; }
 
 /* The row to compare with (build.py speech_row) is muted: it isn't a model. */
 .pg .tv.vs .vr.ref b, .pg .tv.vs .vr.ref span { color: rgba(24, 23, 22, .45); }
+
+/* Blog listing: the covers are 4:3 (a few are square). The design's 16:10 box filled with
+   them cut off their top and bottom, often the headline; the box takes their shape and
+   shows each cover whole, on the design's navy where a cover has another shape. */
+.pg .pc .cv.ph { aspect-ratio: 4 / 3; background-color: #232E41; background-position: center; background-size: contain; background-repeat: no-repeat; }
+
+/* Blog posts: the lead picture (16:9, 4:3 on phones) and the galleries (4:3) were cropped
+   to fill their boxes, cutting off banner text and tall photos. Show each image whole at
+   its own shape; a tall one is capped in height and centred. */
+.pg .pimg img { width: auto; max-width: 100%; height: auto; max-height: min(720px, 80vh); margin: 0 auto; aspect-ratio: auto; object-fit: contain; }
+.pg .gal { align-items: start; }
+.pg .gal img { height: auto; aspect-ratio: auto; object-fit: contain; }
 
 /* Blog articles: elements the design sample post didn't use. */
 .pb h2 { margin: 48px 0 20px; font: 400 32px/1.15 'Space Grotesk', sans-serif; letter-spacing: -0.025em; }

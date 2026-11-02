@@ -9,7 +9,7 @@ function ctaDie(T) { const a = 0.6 + T * 0.9, b = 0.4 + Math.sin(T * 0.6) * 0.5 
   return CE.map(([i, j]) => ({ x1: P[i][0].toFixed(3), y1: P[i][1].toFixed(3), x2: P[j][0].toFixed(3), y2: P[j][1].toFixed(3), o: (P[i][2] + P[j][2]) / 2 > 0 ? '0.95' : '0.3' })); }
 const NT = 15;
 
-const GS = [{"src": "/assets/site/164dea959f22ac77b514fc6bf9994422.jpg", "alt": "Tryll Colony village key art"}, {"src": "/assets/site/c20d613f2d3e9479f6b7d86aadadd3f3.jpg", "alt": "Tryll Colony gameplay: settlers panel and village map"}, {"src": "/assets/site/ac1112bd02663e6a9fa1bb67f94d4051.jpg", "alt": "Tryll Colony logo over the village"}, {"src": "", "alt": "Screenshot placeholder"}, {"src": "", "alt": "Screenshot placeholder"}];
+const GS = [{"src": "/assets/images/demo/tavern-talk.jpg", "alt": "A settler outside the Black Bear tavern says: I tended the sheep and the cows all morning."}, {"src": "/assets/images/demo/settler-stats.jpg", "alt": "Greta Lark’s stats: skills, needs and mood"}, {"src": "/assets/images/demo/village-night.jpg", "alt": "The village at night, lit by lanterns and windows"}, {"src": "/assets/images/demo/village-day.jpg", "alt": "The village from above: cottages, the tavern, market stalls and fields"}, {"src": "/assets/images/demo/work-schedule.jpg", "alt": "The work schedule: sleep, work and rest hours for each settler"}, {"src": "/assets/images/demo/trade-talk.jpg", "alt": "Trading with the seed merchant and haggling with her in plain words"}];
 class Component extends DCLogic {
   renderVals() { const st = this.state || {}, m = !!st.navOpen, o = {}, N = GS.length, k = ((st.k || 0) % N + N) % N, s = GS[k];
     o.navM = 'mnav' + (m ? ' on' : ''); o.navX = m ? 'true' : 'false'; o.navT = () => this.setState({ navOpen: !m });

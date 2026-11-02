@@ -5,22 +5,20 @@
  * Newsletter ([data-ml-form]) -> MailerLite, same group as the old blog form.
  *
  * Both are real <form> submits, so GTM's "Form submission" trigger keeps
- * firing. A dataLayer custom_event is pushed on success, in the same shape
- * the old site used.
+ * firing on every attempt. Only once the service has accepted the form does
+ * GA4 get generate_lead (contact) or sign_up (newsletter).
  */
 (function () {
     'use strict';
 
     var ML_ACCOUNT = '2274886';
+    var GA4 = 'G-V0BH3P7R63';   // the GA4 property GTM loads
 
-    function track(action, label) {
+    // GTM's Google tag only takes events from the page when they name its property (send_to).
+    function ga4(name, params) {
+        params.send_to = GA4;
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-            event: 'custom_event',
-            event_category: 'form',
-            event_action: action,
-            event_label: label
-        });
+        (function () { window.dataLayer.push(arguments); })('event', name, params);
     }
 
     function status(el, text, ok) {
@@ -102,7 +100,7 @@
                     cf.reset();
                     if (consent.classList.contains('on')) consent.click();
                     status(msg, 'Thanks! We got your message and will get back to you soon.', true);
-                    track('submit', 'contact');
+                    ga4('generate_lead', { form_name: 'contact' });
                 })
                 .catch(function (err) {
                     status(msg, err.message + ' You can also email us at support@tryllengine.com.', false);
@@ -132,7 +130,7 @@
             function done() {
                 form.reset();
                 status(msg, 'You’re subscribed. Check your inbox to confirm.', true);
-                track('subscribe', form.getAttribute('data-source') || 'newsletter');
+                ga4('sign_up', { method: 'newsletter', form_name: form.getAttribute('data-source') || 'newsletter' });
             }
 
             fetch(url, opts)

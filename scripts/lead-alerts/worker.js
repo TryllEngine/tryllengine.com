@@ -25,7 +25,7 @@ function slack(s) {
 
 // Workflow Builder shows variables as they are, so break up <...> without changing how it reads.
 function plain(s) {
-    return s.replace(/</g, '<​');
+    return s.replace(/</g, '<\u200b');
 }
 
 export default {

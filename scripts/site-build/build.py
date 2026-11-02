@@ -78,10 +78,28 @@ class Baked:
         b = re.sub(r'<span class="sc-interp">([^<]*)</span>', r'\1', b)
         self.body = fix_copy(fix_assets(b))
         self.styles = [fix_assets(s) for s in self.styles]
+        self.styles += [s for s in [tablet_menu(self.styles)] if s]
         self.logic = fix_copy(fix_assets(self.logic))
         for loop in self.loops.values():
             loop['tpl'] = fix_assets(loop['tpl'])
         return self
+
+
+def tablet_menu(styles):
+    """The design has its menu button and panel only up to 640px and hides the header links
+    from 900px down, so 641-1100px had either no navigation or links wrapping onto two
+    lines. Repeat the design's own phone menu rules there (site.css hides the links)."""
+    rules, stack = [], []
+    for css in styles:
+        for m in re.finditer(r'(@media[^{]*)\{|([^{}]+)\{([^{}]*)\}|\}', css):
+            if m.group(1):
+                stack.append(re.sub(r'\s+', '', m.group(1)))
+            elif m.group(2) is not None:
+                if stack and stack[-1] == '@media(max-width:640px)' and re.search(r'\.mnav|\.nav \.mb\b', m.group(2)):
+                    rules.append(m.group(2).strip() + '{' + m.group(3) + '}')
+            elif stack:
+                stack.pop()
+    return '@media (min-width:641px) and (max-width:1100px){' + ''.join(rules) + '}' if rules else ''
 
 
 def fix_assets(s):

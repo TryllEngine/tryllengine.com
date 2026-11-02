@@ -117,18 +117,24 @@ DEMO_SHOTS = [
 ]
 DEMO_ABOUT = 'demo-about.md'   # in scripts/site-build/
 
-# "What clients are saying" on the homepage: one card per quote, in order, each keeping
-# the design's picture in its place ('role' may be empty). An empty list leaves the
+# "What clients are saying" on the homepage: one card per quote, in order ('role' may be
+# empty). 'picture' is a 16:9 image shown whole (1152x648, assets/images/clients/); without
+# one, the card keeps the design's picture in its place. An empty list leaves the
 # section's heading and carousel out; "Media about us" below it stays.
 CLIENT_QUOTES = [
     {'studio': 'Studios iLLOGIKA', 'site': 'https://www.illogika.com/en',
      'name': 'Hervé Lange', 'linkedin': 'https://www.linkedin.com/in/herv%C3%A9-lange-782b361/',
      'role': 'Sr. Technical Director',
+     'picture': ('/assets/images/clients/herve-lange.jpg',
+                 'Hervé Lange, Sr. Technical Director at Studios iLLOGIKA, next to his quote about Tryll Engine'),
      'quote': 'Language models represent the next major leap for interactive experiences. With Tryll '
               'Engine, I finally found technology that actually works for game developers, backed by an '
               'outstanding team whose support has been invaluable in navigating this new world.'},
     {'studio': 'GunGrounds', 'site': 'https://gungrounds.com/',
      'name': 'Kristian Macanga', 'linkedin': 'https://www.linkedin.com/in/krismacanga/', 'role': '',
+     'picture': ('/assets/images/clients/gungrounds.jpg',
+                 'A scene from a GunGrounds murder mystery: questioning LUCE, the intelligence '
+                 'that operates Barbeta Lighthouse'),
      'quote': 'Tryll Engine allows us to bring a new level of interactivity to storytelling without '
               'sacrificing creative control. Our writers carefully craft the narrative, characters, and '
               'dialogue content, while Tryll understands players’ questions and intentions, allowing '

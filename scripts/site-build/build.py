@@ -517,9 +517,9 @@ def card_pictures(body):
 
 
 def client_quotes(body):
-    """"What clients are saying" shows config.CLIENT_QUOTES, one card each, with the design's
-    pictures kept in their places. With none, its heading and carousel are left out and
-    "Media about us" after it stays."""
+    """"What clients are saying" shows config.CLIENT_QUOTES, one card each, with its own
+    picture or the design's in its place. With none, its heading and carousel are left out
+    and "Media about us" after it stays."""
     if not C.CLIENT_QUOTES:
         body, n = re.subn(r'<div class="th"><h2>What clients are saying</h2></div>.*?(?=<div class="media">)',
                           '', body, count=1, flags=re.S)
@@ -536,7 +536,11 @@ def client_quotes(body):
 
     cards = []
     for i, q in enumerate(C.CLIENT_QUOTES):
-        shot = shots[i] if i < len(shots) else '<div class="shot"></div>'
+        if q.get('picture'):
+            src, alt = q['picture']
+            shot = f'<div class="shot pic"><img src="{esc(src)}" alt="{esc(alt)}" loading="lazy"></div>'
+        else:
+            shot = shots[i] if i < len(shots) else '<div class="shot"></div>'
         who = ext(q['linkedin'], q['name']) + (f' · {esc(q["role"])}' if q['role'] else '')
         cards.append(f'<article class="card">{shot}<h3>{ext(q["site"], q["studio"])}</h3><p class="m">{who}</p>'
                      f'<p class="q">“{esc(q["quote"])}”</p></article>')

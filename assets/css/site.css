@@ -149,6 +149,10 @@ input.hp { position: absolute !important; left: -9999px !important; width: 1px; 
 /* Client quotes (config.CLIENT_QUOTES): with two cards, two share the row on wide screens
    too (the design shows three); studio and person names link out. */
 @media (min-width: 1101px) { .pg .cls:not(:has(.track > .card:nth-child(3))) { --v: 2; } }
+/* A card's own picture ('picture', 16:9) is shown whole, not as the design's cropped strip. */
+.pg .cls .track > .card:nth-child(n) .shot.pic { height: auto !important; aspect-ratio: 16 / 9; overflow: hidden; background: #232E41 !important; }
+.pg .cls .track > .card:nth-child(n) .shot.pic::before { content: none; }
+.pg .cls .shot.pic img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .pg .cls .card h3 a, .pg .cls .card .m a { color: inherit; text-decoration: none; }
 .pg .cls .card h3 a:hover, .pg .cls .card .m a:hover { text-decoration: underline; text-underline-offset: 3px; }
 

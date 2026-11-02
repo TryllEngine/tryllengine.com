@@ -33,6 +33,8 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 | What | Where |
 |---|---|
 | SEO titles/descriptions, link targets, redirects, form endpoints, GTM ID | `config.py` |
+| Wording changed since the design export (e.g. the $200k pricing threshold) | `COPY` in `config.py`: applied to every design page; the build warns when an entry no longer matches |
+| Media logos → coverage articles | `MEDIA_LINKS` in `config.py`, keyed by the logo's alt text |
 | "How to build" videos (YouTube playlists, titles, lengths) | `VIDEO_LISTS` in `config.py`; thumbnails are saved to `assets/images/videos/` |
 | "Coming soon" instead of downloads | `DOWNLOADS_LIVE` and `COMING_SOON` in `config.py` (see below) |
 | Trailer clips: which seconds, crops, sizes; the trailer's YouTube link | `CLIPS`, `TRAILER_URL` in `config.py`; `clips.py` writes `assets/video/` |

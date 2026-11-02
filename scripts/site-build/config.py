@@ -18,7 +18,7 @@ HUBSPOT = {'api': 'https://api-eu1.hsforms.com', 'portal': '147726156',
 # Accepted contact messages also go to the team's Slack channel through a Cloudflare
 # Worker (scripts/lead-alerts): its URL, e.g. https://tryll-lead-alerts.<account>.workers.dev.
 # Empty = off.
-LEAD_ALERTS = ''
+LEAD_ALERTS = 'https://tryll-lead-alerts.sasha-glotov.workers.dev'
 MAILERLITE_ACCOUNT = '2274886'
 MAILERLITE_FORM = '185451758358627764'   # "blog" signup form
 

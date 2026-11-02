@@ -180,6 +180,22 @@
 
     window.DCLogic = DCLogic;
 
+    /**
+     * Animation clock for the design logic. build.py swaps it in for the design's
+     * setInterval of 40 ms, whose 25 steps a second showed on the dice. Calls
+     * tick(seconds since the last call) on animation frames, at most every 10 ms;
+     * like any animation frame, it pauses while the tab is hidden.
+     */
+    window.tryllClock = function (tick) {
+        var last = null;
+        function frame(now) {
+            if (last === null) last = now;
+            if (now - last >= 10) { tick(Math.min((now - last) / 1000, 0.1)); last = now; }
+            requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+    };
+
     /** Called by /assets/js/pages/<page>.js with the page's Component class. */
     window.tryllBoot = function (Component, propsMeta) {
         var props = {};

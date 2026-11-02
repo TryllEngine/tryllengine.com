@@ -95,7 +95,18 @@ CARD_PICTURES = {
     'Real Talk': ('/assets/images/real-talk.jpg',
                   'A player talks to a settler by voice; the conversation appears on screen'),
     'Dynamic worlds': ('/assets/images/dynamic-worlds.jpg', 'A colony village seen from above'),
+    'New genres': ('/assets/images/new-genres.jpg',
+                   'A twenty-sided die opening up with light inside, joined to other dice by threads'),
 }
+
+# "What clients are saying" (the homepage's carousel of client quotes); False leaves
+# it out, and "Media about us" below it stays.
+CLIENT_QUOTES = False
+
+# "Faster than speech" on /features ends with a row to compare with: people talk at
+# about 150 words a minute, and at ~1.3 tokens a word that is ~3 tokens a second.
+# (number, label, sentence added to the footnote)
+SPEECH_ROW = ('~3', 'tok/s · People talking', 'People talk at about 150 words a minute.')
 
 # Clips cut from the trailer by clips.py (needs ffmpeg), then placed by build.py:
 #   py -3 scripts/site-build/clips.py "C:/path/to/trailer.mp4"

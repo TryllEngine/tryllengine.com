@@ -114,6 +114,23 @@ input.hp { position: absolute !important; left: -9999px !important; width: 1px; 
 .gsw .gcta { display: flex; justify-content: center; margin-top: 48px; }
 @media (max-width: 640px) { .gsw .gcta { margin-top: 32px; } }
 
+/* /features number rows ("Starts at 1.6 GB", "Faster than speech"): the design gave each
+   number 46% of the row, which left the labels far off. The numbers share one column
+   instead, as wide as the widest of them. */
+.pg .tv.vs .vr b { flex: 0 0 auto; min-width: 2.2em; }
+@supports (grid-template-columns: subgrid) {
+    .pg .tv.vs { display: grid; grid-template-columns: max-content 1fr; align-content: center; }
+    .pg .tv.vs .vr { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; column-gap: 20px; }
+    .pg .tv.vs .vr b { min-width: 0; }
+    .pg .tv.vs > small { grid-column: 1 / -1; }
+}
+/* Without the client quotes (config.CLIENT_QUOTES), "Media about us" opens its section: drop
+   the design's double gap that kept it apart from the quote carousel. */
+.pg .cls > .media:first-child { margin-top: 0 !important; }
+
+/* The row to compare with (build.py speech_row) is muted: it isn't a model. */
+.pg .tv.vs .vr.ref b, .pg .tv.vs .vr.ref span { color: rgba(24, 23, 22, .45); }
+
 /* Blog articles: elements the design sample post didn't use. */
 .pb h2 { margin: 48px 0 20px; font: 400 32px/1.15 'Space Grotesk', sans-serif; letter-spacing: -0.025em; }
 .pb h3 { margin: 36px 0 16px; font: 500 24px/1.25 'Space Grotesk', sans-serif; letter-spacing: -0.015em; }

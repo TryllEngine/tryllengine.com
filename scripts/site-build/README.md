@@ -35,10 +35,13 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 | SEO titles/descriptions, link targets, redirects, form endpoints, GTM ID | `config.py` |
 | Wording changed since the design export (e.g. the $200k pricing threshold) | `COPY` in `config.py`: applied to every design page; the build warns when an entry no longer matches |
 | Media logos → coverage articles | `MEDIA_LINKS` in `config.py`, keyed by the logo's alt text |
+| "What clients are saying" on the homepage (off for now) | `CLIENT_QUOTES` in `config.py` |
+| /features "Faster than speech": the row for how fast people talk | `SPEECH_ROW` in `config.py` |
+| Animation clock of the design logic (dice, dial): animation frames instead of the design's 25 steps a second | `tryllClock` in `assets/js/site.js`, swapped in by `write_logic` in `build.py` |
 | "How to build" videos (YouTube playlists, titles, lengths) | `VIDEO_LISTS` in `config.py`; thumbnails are saved to `assets/images/videos/` |
 | "Coming soon" instead of downloads | `DOWNLOADS_LIVE` and `COMING_SOON` in `config.py` (see below) |
 | Trailer clips: which seconds, crops, sizes; the trailer's YouTube link (empty: no "Watch on YouTube" on the hero) | `CLIPS`, `TRAILER_URL` in `config.py`; `clips.py` writes `assets/video/` |
-| Homepage use-case card pictures that replace the design's (Real Talk, Dynamic worlds) | `CARD_PICTURES` in `config.py`, images in `assets/images/` (16:10, 1152×720) |
+| Homepage use-case card pictures that replace the design's (Real Talk, Dynamic worlds, New genres) | `CARD_PICTURES` in `config.py`, images in `assets/images/` (16:10, 1152×720) |
 | Clip playback: lazy loading, pause off screen, the sound buttons | `assets/js/clips.js` (posters only with reduced motion or Save-Data) |
 | Media logos row: scrolls with a CSS animation (`tryll-logos` in `site.css`), not the design's 25 fps tick | `assets/js/marquee.js` keeps the "on" highlight in step |
 | Contact form → HubSpot once `HUBSPOT['form']` is set in `config.py` (Formspree until then), newsletter → MailerLite | `assets/js/forms.js` |

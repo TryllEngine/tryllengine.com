@@ -47,7 +47,7 @@ py -3 scripts/site-build/serve.py                 # preview at http://localhost:
 py -3 scripts/site-build/build.py                 # rebuild pages, blog, sitemap
 py -3 scripts/site-build/bake.py "<export dir>"   # bring in a new Claude Design export, then build
 py -3 scripts/site-build/preview.py --publish     # team preview at tryllengine.github.io/site-preview
-py -3 scripts/site-build/clips.py "<trailer.mp4>" # re-cut the hero / Smart NPCs clips (config.CLIPS), then build
+py -3 scripts/site-build/clips.py "<trailer with subtitles>.mp4" "<trailer without>.mp4"   # re-cut the hero / Smart NPCs clips (config.CLIPS), then build
 ```
 
 Don't use `python -m http.server` to preview: it doesn't resolve `/blog` or `/features` the way GitHub Pages does.

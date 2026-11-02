@@ -68,6 +68,30 @@
         v.addEventListener('ended', function () { quiet(v); });
     });
 
+    // A clip cut without its subtitles (data-captions: [from s, to s, line], from
+    // config.CLIPS) shows the line being spoken in the .cap next to it, checked on every
+    // frame while it plays.
+    clips.forEach(function (v) {
+        var cap = v.parentNode.querySelector('.cap');
+        if (!cap || !v.getAttribute('data-captions')) return;
+        var cues = JSON.parse(v.getAttribute('data-captions'));
+        var line = cap.firstChild, shown = -1;
+        function update() {
+            var t = v.currentTime, at = -1;
+            for (var i = 0; i < cues.length; i++) if (t >= cues[i][0] && t < cues[i][1]) at = i;
+            if (at === shown) return;
+            shown = at;
+            if (at >= 0) line.textContent = cues[at][2];
+            cap.classList.toggle('on', at >= 0);
+        }
+        function tick() {
+            update();
+            if (!v.paused) requestAnimationFrame(tick);
+        }
+        v.addEventListener('play', function () { requestAnimationFrame(tick); });
+        v.addEventListener('seeked', update);
+    });
+
     document.addEventListener('click', function (e) {
         var b = e.target.closest && e.target.closest('.snd');
         if (!b) return;

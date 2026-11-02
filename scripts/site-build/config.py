@@ -173,29 +173,40 @@ EGV_NEWS = MEDIA_LINKS['tech.eu']
 SPEECH_ROW = ('~3', 'tok/s · People talking', 'People talk at about 150 words a minute.')
 
 # Clips cut from the trailer by clips.py (needs ffmpeg), then placed by build.py:
-#   py -3 scripts/site-build/clips.py "C:/path/to/trailer.mp4"
-# A shot is (start s, end s, ffmpeg crop "w:h:x:y" in the 1920x1080 trailer); x can
-# be an expression of t, seconds into the shot, to pan. "poster": seconds into the clip.
+#   py -3 scripts/site-build/clips.py "C:/path/to/Tryll_Main_Sub.mp4" "C:/path/to/Tryll_Main_final.mp4"
+# The first file is the trailer with its subtitles drawn in, so each crop keeps its subtitle
+# inside the frame; the second is the same trailer without them, for clips marked "clean".
+# A shot is (start s, end s, ffmpeg crop "w:h:x:y" in the 1920x1080 trailer); x can be an
+# expression of t, seconds into the shot, to pan. "poster": seconds into the clip; "hold":
+# seconds the last frame stays, in silence; "captions": (from s, to s, line) in the clip.
 TRAILER_URL = ''   # hero "Watch on YouTube": empty leaves it out; set to the trailer's own link once it's up
 CLIPS = {
-    # Hero: three tavern close-ups (1:21.8-1:30.1), each reframed so the face clears the headline.
-    'hero': {'size': (1152, 720), 'small': (640, 400), 'crf': 27, 'poster': 0, 'shots': [
-        (81.84, 85.80, '1344:840:0:120'),
-        (85.88, 88.48, '1344:840:330:120'),
-        (88.56, 90.12, '1344:840:367:120'),
+    # Hero: three tavern close-ups (1:31.6-1:39.9), each reframed so the face clears the
+    # headline. Its box changes shape from screen to screen and would cut drawn-in subtitles,
+    # so it is cut "clean" and its lines show as captions over the video (assets/js/clips.js).
+    'hero': {'size': (1152, 720), 'small': (640, 400), 'crf': 27, 'poster': 0, 'clean': True,
+             'captions': [(1.40, 4.80, 'Careful, he still thinks he’s the main character'),
+                          (4.84, 6.48, 'That’s adorable'),
+                          (6.72, 8.12, 'He’s a total noob!')],
+             'shots': [
+        (91.60, 95.56, '1344:840:0:120'),
+        (95.64, 98.20, '1344:840:330:120'),
+        (98.28, 99.88, '1344:840:367:120'),
     ]},
-    # Smart NPCs, "Before": "Nice weather, huh?" in the storm, then a boulder knocks his
-    # head aside and the frame freezes (0:13.8-0:17.4); the crop follows his head left.
-    'npc-before': {'size': (576, 720), 'crf': 28, 'audio': True, 'poster': 1.0,
+    # Smart NPCs, "Before": "Nice weather, huh?" in the storm, then a boulder knocks his head
+    # aside (0:16.4-0:18.4) and that frame holds, before the trailer's flash and pause screen.
+    'npc-before': {'size': (576, 720), 'crf': 28, 'audio': True, 'poster': 1.0, 'hold': 0.9,
                    'label': 'Before: an NPC in a storm says "Nice weather, huh?" and a boulder hits his head',
                    'shots': [
-        (13.76, 17.40, "694:868:'if(lt(t,2),573,max(0,573-573*(t-2)/0.16))':106"),
+        (16.40, 18.38, '694:868:573:106'),
     ]},
-    # Smart NPCs, "With Tryll": he points everyone to the tavern (0:51.7-0:54.1);
-    # the crop follows him to the right while he points, then back.
-    'npc-after': {'size': (576, 720), 'crf': 28, 'audio': True, 'poster': 1.2,
-                  'label': 'With Tryll: an NPC in the storm points the way to the tavern', 'shots': [
-        (51.72, 54.12, "592:740:'if(lt(t,1.65),734+150*(1-cos(PI*t/1.65)),1034-170*(1-cos(PI*min((t-1.65)/0.75,1))))':150"),
+    # Smart NPCs, "With Tryll": asked "Which way to the tavern?", he points the way
+    # (1:00.8-1:02.4). It ends before his two-line answer, too wide for a portrait crop;
+    # the crop keeps the question whole and leaves out the item icons and the compass.
+    'npc-after': {'size': (576, 720), 'crf': 28, 'audio': True, 'poster': 0.9,
+                  'label': 'With Tryll: asked "Which way to the tavern?", an NPC in the storm points the way',
+                  'shots': [
+        (60.80, 62.44, '720:900:600:95'),
     ]},
 }
 

@@ -1,11 +1,13 @@
 """Cut the website's video clips from the trailer (needs ffmpeg on PATH).
 
-    py -3 scripts/site-build/clips.py "C:/path/to/trailer.mp4"
+    py -3 scripts/site-build/clips.py "C:/path/to/trailer-with-subtitles.mp4" "C:/path/to/trailer.mp4"
 
 For every clip in config.CLIPS it writes assets/video/<name>.mp4 (plus
 <name>-small.mp4 when the clip has a "small" size) and a <name>.jpg poster.
-Then run build.py. Clips are H.264 with +faststart; only clips marked
-"audio" keep their sound.
+Clips are cut from the first file, which has the subtitles drawn in; clips
+marked "clean" from the second, the same trailer without them (their lines
+show as captions on the page instead). Then run build.py. Clips are H.264
+with +faststart; only clips marked "audio" keep their sound.
 """
 import os
 import subprocess
@@ -33,7 +35,13 @@ def graph(clip, w, h):
                          f'afade=t=out:st={end - start - 0.08:.2f}:d=0.08[a{i}]')
             labels += f'[a{i}]'
     n = len(clip['shots'])
-    parts.append(f'{labels}concat=n={n}:v=1:a={int(audio)}[v]' + ('[a]' if audio else ''))
+    hold = clip.get('hold')   # seconds the last frame stays on screen, in silence
+    v, a = ('[vj]', '[aj]') if hold else ('[v]', '[a]')
+    parts.append(f'{labels}concat=n={n}:v=1:a={int(audio)}{v}' + (a if audio else ''))
+    if hold:
+        parts.append(f'[vj]tpad=stop_mode=clone:stop_duration={hold}[v]')
+        if audio:
+            parts.append(f'[aj]apad=pad_dur={hold}[a]')
     return ';'.join(parts)
 
 
@@ -46,13 +54,19 @@ def encode(src, clip, size, dst):
     subprocess.run(cmd + [dst], check=True)
 
 
-def main(src):
+def main(src, clean=None):
     os.makedirs(OUT, exist_ok=True)
     for name, clip in C.CLIPS.items():
+        if clip.get('clean'):
+            if not clean:
+                raise SystemExit(f'{name} is cut from the trailer without subtitles: pass that file second')
+            src_of = clean
+        else:
+            src_of = src
         mp4 = os.path.join(OUT, name + '.mp4')
-        encode(src, clip, clip['size'], mp4)
+        encode(src_of, clip, clip['size'], mp4)
         if clip.get('small'):
-            encode(src, clip, clip['small'], os.path.join(OUT, name + '-small.mp4'))
+            encode(src_of, clip, clip['small'], os.path.join(OUT, name + '-small.mp4'))
         subprocess.run(['ffmpeg', '-v', 'error', '-y', '-ss', str(clip.get('poster', 0)), '-i', mp4,
                         '-frames:v', '1', '-q:v', '3', os.path.join(OUT, name + '.jpg')], check=True)
         sizes = ', '.join(f'{f} {os.path.getsize(os.path.join(OUT, f)) // 1024} KB'
@@ -62,4 +76,4 @@ def main(src):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1])
+    main(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else None)

@@ -434,8 +434,11 @@ def clip_tag(name, start):
     c = C.CLIPS[name]
     small = f' data-src-small="/assets/video/{name}-small.mp4"' if c.get('small') else ''
     label = f' aria-label="{esc(c["label"])}"' if c.get('label') else ' aria-hidden="true"'
+    # A clip cut without its subtitles carries its lines; clips.js shows them in the .cap.
+    caps = f' data-captions="{esc(json.dumps(c["captions"], ensure_ascii=False))}"' if c.get('captions') else ''
     return (f'<video class="clip" muted loop playsinline preload="none" poster="/assets/video/{name}.jpg" '
-            f'data-src="/assets/video/{name}.mp4"{small} data-start="{start}"{label}></video>')
+            f'data-src="/assets/video/{name}.mp4"{small} data-start="{start}"{label}{caps}></video>' +
+            ('<span class="cap" aria-hidden="true"><span></span></span>' if caps else ''))
 
 
 def trailer_clips(body):

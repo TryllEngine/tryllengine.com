@@ -190,15 +190,18 @@ input.hp { position: absolute !important; left: -9999px !important; width: 1px; 
     .pg .prw .pf .cta { max-width: 100%; gap: 12px; padding-left: 18px; font-size: 16px; }
 }
 
-/* Hero captions (assets/js/clips.js): the hero clip is cut without subtitles and its lines show
-   here, in the part of the video that stays visible at every size: right of the headline on
-   desktop, across the bottom of the card on tablets and phones. */
-.hv-vid .cap { position: absolute; z-index: 2; left: 46%; right: 32px; bottom: 28px; text-align: center;
-    pointer-events: none; opacity: 0; transition: opacity .2s; }
-.hv-vid .cap.on { opacity: 1; }
-.hv-vid .cap span { padding: 3px 10px; border-radius: 6px; background: rgba(22, 29, 41, .72);
+/* Clip captions (assets/js/clips.js): the trailer clips are cut without subtitles and their
+   lines show here. The hero's sit in the part of the video that stays visible at every size:
+   right of the headline on desktop, across the bottom of the card on tablets and phones. The
+   Smart NPCs clips' sit across their bottom. */
+.has-clip .cap { position: absolute; z-index: 2; left: 12px; right: 12px; bottom: 14px; text-align: center;
+    text-wrap: balance; pointer-events: none; opacity: 0; transition: opacity .2s; }
+.has-clip .cap.on { opacity: 1; }
+.has-clip .cap span { padding: 3px 10px; border-radius: 6px; background: rgba(22, 29, 41, .72);
     -webkit-box-decoration-break: clone; box-decoration-break: clone;
-    font: 500 20px/1.6 'Space Grotesk', sans-serif; color: #FFFFFF; }
+    font: 500 15px/1.6 'Space Grotesk', sans-serif; color: #FFFFFF; }
+.hv-vid .cap { left: 46%; right: 32px; bottom: 28px; }
+.hv-vid .cap span { font-size: 20px; }
 @media (max-width: 1100px) {
     .hv-vid .cap { left: 20px; right: 20px; bottom: 20px; }
     .hv-vid .cap span { font-size: 17px; }
@@ -206,8 +209,10 @@ input.hp { position: absolute !important; left: -9999px !important; width: 1px; 
 @media (max-width: 640px) {
     .hv-vid .cap { left: 12px; right: 12px; bottom: 12px; }
     .hv-vid .cap span { padding: 2px 8px; font-size: 14px; }
+    .ugv.pair .cap { left: 6px; right: 6px; bottom: 6px; }
+    .ugv.pair .cap span { padding: 1px 6px; border-radius: 5px; font-size: 11px; line-height: 1.55; }
 }
-@media (prefers-reduced-motion: reduce) { .hv-vid .cap { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .has-clip .cap { transition: none; } }
 
 /* /demo requirements (build.py demo_requirements): one card. A value both share spans both
    columns; on phones a row's two values stack, each with its label. */

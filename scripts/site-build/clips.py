@@ -1,15 +1,14 @@
 """Cut the website's video clips from the trailer (needs ffmpeg on PATH).
 
-    py -3 scripts/site-build/clips.py "C:/path/to/trailer-with-subtitles.mp4" "C:/path/to/trailer.mp4"
+    py -3 scripts/site-build/clips.py "C:/path/to/Tryll_Main_final.mp4"
 
 For every clip in config.CLIPS it writes assets/video/<name>.mp4 (plus
 <name>-small.mp4 when the clip has a "small" size) and a <name>.jpg poster.
-Clips are cut from the first file, which has the subtitles drawn in; clips
-marked "clean" from the second, the same trailer without them (their lines
-show as captions on the page instead); a clip with its own "source" from
-that file. --only=name[,name] cuts just those clips (no trailer needed for
-one with its own source). Then run build.py. Clips are H.264 with
-+faststart; only clips marked "audio" keep their sound.
+Clips are cut from the trailer without its subtitles (their lines show as
+captions on the page instead); a clip with its own "source" from that file.
+--only=name[,name] cuts just those clips (no trailer needed for one with its
+own source). Then run build.py. Clips are H.264 with +faststart; only clips
+marked "audio" keep their sound.
 """
 import os
 import subprocess
@@ -28,23 +27,22 @@ def graph(clip, w, h):
     parts, labels = [], ''
     audio = clip.get('audio', False)
     fps = f'fps={clip["fps"]},' if clip.get('fps') else ''   # e.g. a 60 fps screen recording at 30
-    for i, (start, end, crop) in enumerate(clip['shots']):
+    shots = clip['shots']
+    for i, (start, end, crop) in enumerate(shots):
         parts.append(f'[0:v]trim={start}:{end},setpts=PTS-STARTPTS,{fps}crop={crop},'
                      f'scale={w}:{h}:flags=lanczos,setsar=1[v{i}]')
         labels += f'[v{i}]'
         if audio:
-            # Short fades so a clip played with sound doesn't click at the cut.
-            parts.append(f'[0:a]atrim={start}:{end},asetpts=PTS-STARTPTS,afade=t=in:d=0.04,'
-                         f'afade=t=out:st={end - start - 0.08:.2f}:d=0.08[a{i}]')
+            # Short fades so a clip played with sound doesn't click at a cut; none between
+            # shots that follow on in the trailer (a reframe), where the sound carries on.
+            fades = ''
+            if i == 0 or shots[i - 1][1] != start:
+                fades += ',afade=t=in:d=0.04'
+            if i == len(shots) - 1 or shots[i + 1][0] != end:
+                fades += f',afade=t=out:st={end - start - 0.08:.2f}:d=0.08'
+            parts.append(f'[0:a]atrim={start}:{end},asetpts=PTS-STARTPTS{fades}[a{i}]')
             labels += f'[a{i}]'
-    n = len(clip['shots'])
-    hold = clip.get('hold')   # seconds the last frame stays on screen, in silence
-    v, a = ('[vj]', '[aj]') if hold else ('[v]', '[a]')
-    parts.append(f'{labels}concat=n={n}:v=1:a={int(audio)}{v}' + (a if audio else ''))
-    if hold:
-        parts.append(f'[vj]tpad=stop_mode=clone:stop_duration={hold}[v]')
-        if audio:
-            parts.append(f'[aj]apad=pad_dur={hold}[a]')
+    parts.append(f'{labels}concat=n={len(shots)}:v=1:a={int(audio)}[v]' + ('[a]' if audio else ''))
     return ';'.join(parts)
 
 
@@ -57,7 +55,7 @@ def encode(src, clip, size, dst):
     subprocess.run(cmd + [dst], check=True)
 
 
-def main(src=None, clean=None, only=None):
+def main(src=None, only=None):
     os.makedirs(OUT, exist_ok=True)
     for name, clip in C.CLIPS.items():
         if only and name not in only:
@@ -67,14 +65,10 @@ def main(src=None, clean=None, only=None):
             if not os.path.exists(src_of):
                 print(f'{name}: skipped, {src_of} not found')
                 continue
-        elif clip.get('clean'):
-            if not clean:
-                raise SystemExit(f'{name} is cut from the trailer without subtitles: pass that file second')
-            src_of = clean
-        else:
-            if not src:
-                raise SystemExit(f'{name} is cut from the trailer: pass it first (or use --only=)')
+        elif src:
             src_of = src
+        else:
+            raise SystemExit(f'{name} is cut from the trailer: pass it (or use --only=)')
         mp4 = os.path.join(OUT, name + '.mp4')
         encode(src_of, clip, clip['size'], mp4)
         if clip.get('small'):
@@ -90,4 +84,4 @@ def main(src=None, clean=None, only=None):
 if __name__ == '__main__':
     files = [a for a in sys.argv[1:] if not a.startswith('--only=')]
     only = [n for a in sys.argv[1:] if a.startswith('--only=') for n in a[7:].split(',')]
-    main(*files[:2], only=only)
+    main(*files[:1], only=only)

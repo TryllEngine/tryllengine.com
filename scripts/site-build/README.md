@@ -12,7 +12,7 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 | Rebuild after editing `config.py`, a blog post or `posts.json` | `py -3 scripts/site-build/build.py` |
 | Bring in a new design export | `py -3 scripts/site-build/bake.py "C:/path/to/export"` then `build.py` |
 | Publish the team preview | `py -3 scripts/site-build/preview.py --publish` → https://tryllengine.github.io/site-preview/ |
-| Re-cut the trailer clips (hero, Smart NPCs) | edit `CLIPS` in `config.py`, then `py -3 scripts/site-build/clips.py "C:/path/to/Tryll_Main_Sub.mp4" "C:/path/to/Tryll_Main_final.mp4"` (the trailer with its subtitles drawn in, then without) and `build.py` (needs ffmpeg) |
+| Re-cut the trailer clips (hero, Smart NPCs) | edit `CLIPS` in `config.py`, then `py -3 scripts/site-build/clips.py "C:/path/to/Tryll_Main_final.mp4"` (the trailer without its subtitles) and `build.py` (needs ffmpeg) |
 
 `serve.py` resolves URLs the way GitHub Pages does (`/features` → `features.html`, `/blog/posts/x` → `/blog/posts/x/`), so links behave like production. `python -m http.server` does not.
 
@@ -42,7 +42,7 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 | Animation clock of the design logic (dice, dial): animation frames instead of the design's 25 steps a second | `tryllClock` in `assets/js/site.js`, swapped in by `write_logic` in `build.py` |
 | "How to build" videos (YouTube playlists, titles, lengths) | `VIDEO_LISTS` in `config.py`; thumbnails are saved to `assets/images/videos/` |
 | "Coming soon" instead of downloads | `DOWNLOADS_LIVE` and `COMING_SOON` in `config.py` (see below) |
-| Trailer clips: which seconds, crops, sizes; the trailer's YouTube link (empty: no "Watch on YouTube" on the hero) | `CLIPS`, `TRAILER_URL` in `config.py`; `clips.py` writes `assets/video/`. The Smart NPCs clips keep the trailer's drawn-in subtitles inside their crops; the hero is cut without them and shows its lines as captions (`captions` in `CLIPS`, drawn by `clips.js`) |
+| Trailer clips: which seconds, crops, sizes; the trailer's YouTube link (empty: no "Watch on YouTube" on the hero) | `CLIPS`, `TRAILER_URL` in `config.py`; `clips.py` writes `assets/video/`. The clips are cut without the trailer's subtitles, which are wider than their crops and too small to read on phones, and show its lines as captions instead (`captions` in `CLIPS`, timed from the subtitled trailer, drawn by `clips.js`) |
 | Homepage use-case card pictures that replace the design's (Dynamic worlds, New genres) | `CARD_PICTURES` in `config.py`, images in `assets/images/` (16:10, 1152×720) |
 | Use-case cards that show a clip instead (Real Talk: a Tryll Colony recording) | `CARD_CLIPS` in `config.py`, the clip in `CLIPS` with its own `source`; re-cut it alone with `clips.py --only=real-talk`. Muted it loops at `loop_end`; the sound button plays it all |
 | Clip playback: lazy loading, pause off screen, the sound buttons | `assets/js/clips.js` (posters only with reduced motion or Save-Data; the small file when the player is at most ~800 device pixels wide) |

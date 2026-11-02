@@ -171,18 +171,19 @@ EGV_NEWS = MEDIA_LINKS['tech.eu']
 SPEECH_ROW = ('~3', 'tok/s · People talking', 'People talk at about 150 words a minute.')
 
 # Clips cut from the trailer by clips.py (needs ffmpeg), then placed by build.py:
-#   py -3 scripts/site-build/clips.py "C:/path/to/Tryll_Main_Sub.mp4" "C:/path/to/Tryll_Main_final.mp4"
-# The first file is the trailer with its subtitles drawn in, so each crop keeps its subtitle
-# inside the frame; the second is the same trailer without them, for clips marked "clean".
+#   py -3 scripts/site-build/clips.py "C:/path/to/Tryll_Main_final.mp4"
+# That's the trailer without its subtitles: the drawn-in lines are wider than the clips' crops
+# and too small to read on phones, so each clip's lines show over the video as "captions"
+# (assets/js/clips.js), timed from the subtitled trailer, Tryll_Main_Sub.mp4.
 # A shot is (start s, end s, ffmpeg crop "w:h:x:y" in the 1920x1080 trailer); x can be an
-# expression of t, seconds into the shot, to pan. "poster": seconds into the clip; "hold":
-# seconds the last frame stays, in silence; "captions": (from s, to s, line) in the clip.
+# expression of t, seconds into the shot, to pan. "poster": seconds into the clip;
+# "captions": (from s, to s, line) in the clip.
 TRAILER_URL = ''   # hero "Watch on YouTube": empty leaves it out; set to the trailer's own link once it's up
 CLIPS = {
     # Hero: three tavern close-ups (1:31.6-1:39.9), each reframed so the face clears the
-    # headline. Its box changes shape from screen to screen and would cut drawn-in subtitles,
-    # so it is cut "clean" and its lines show as captions over the video (assets/js/clips.js).
-    'hero': {'size': (1152, 720), 'small': (640, 400), 'crf': 27, 'poster': 0, 'clean': True,
+    # headline. Its box changes shape from screen to screen; site.css keeps its captions in
+    # the part that stays visible.
+    'hero': {'size': (1152, 720), 'small': (640, 400), 'crf': 27, 'poster': 0,
              'captions': [(1.40, 4.80, 'Careful, he still thinks he’s the main character'),
                           (4.84, 6.48, 'That’s adorable'),
                           (6.72, 8.12, 'He’s a total noob!')],
@@ -191,17 +192,23 @@ CLIPS = {
         (95.64, 98.20, '1344:840:330:120'),
         (98.28, 99.88, '1344:840:367:120'),
     ]},
-    # Smart NPCs, "Before": "Nice weather, huh?" in the storm, then a boulder knocks his head
-    # aside (0:16.4-0:18.4) and that frame holds, before the trailer's flash and pause screen.
-    'npc-before': {'size': (576, 720), 'crf': 28, 'audio': True, 'poster': 1.0, 'hold': 0.9,
-                   'label': 'Before: an NPC in a storm says "Nice weather, huh?" and a boulder hits his head',
+    # Smart NPCs, "Before": "Nice weather, huh?" in the storm, a boulder knocks his head aside,
+    # the trailer flashes white and pauses: "But you want more than that." (0:16.4-0:20.16,
+    # up to where it rewinds to the hit). At the flash the crop moves to center the pause sign.
+    'npc-before': {'size': (576, 720), 'crf': 28, 'audio': True, 'poster': 1.0,
+                   'captions': [(0.48, 1.60, 'Nice weather, huh?'),
+                                (2.24, 3.76, 'But you want more than that.')],
+                   'label': 'Before: an NPC in a storm says "Nice weather, huh?", a boulder hits his head, '
+                            'and the game pauses: "But you want more than that."',
                    'shots': [
-        (16.40, 18.38, '694:868:573:106'),
+        (16.40, 18.44, '694:868:573:106'),
+        (18.44, 20.16, '694:868:613:106'),
     ]},
     # Smart NPCs, "With Tryll": asked "Which way to the tavern?", he points the way
-    # (1:00.8-1:02.4). It ends before his two-line answer, too wide for a portrait crop;
-    # the crop keeps the question whole and leaves out the item icons and the compass.
+    # (1:00.8-1:02.4), ending before his answer. The crop leaves out the item icons and the
+    # compass.
     'npc-after': {'size': (576, 720), 'crf': 28, 'audio': True, 'poster': 0.9,
+                  'captions': [(0.12, 1.64, 'Which way to the tavern?')],
                   'label': 'With Tryll: asked "Which way to the tavern?", an NPC in the storm points the way',
                   'shots': [
         (60.80, 62.44, '720:900:600:95'),

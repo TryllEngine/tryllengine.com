@@ -69,10 +69,12 @@ CLIPS = {
         (85.88, 88.48, '1344:840:330:120'),
         (88.56, 90.12, '1344:840:367:120'),
     ]},
-    # Smart NPCs, "Before": "Nice weather, huh?" in the storm (0:13.8-0:15.7).
+    # Smart NPCs, "Before": "Nice weather, huh?" in the storm, then a boulder knocks his
+    # head aside and the frame freezes (0:13.8-0:17.4); the crop follows his head left.
     'npc-before': {'size': (576, 720), 'crf': 28, 'audio': True, 'poster': 1.0,
-                   'label': 'Before: an NPC in a storm says "Nice weather, huh?"', 'shots': [
-        (13.76, 15.72, '694:868:573:106'),
+                   'label': 'Before: an NPC in a storm says "Nice weather, huh?" and a boulder hits his head',
+                   'shots': [
+        (13.76, 17.40, "694:868:'if(lt(t,2),573,max(0,573-573*(t-2)/0.16))':106"),
     ]},
     # Smart NPCs, "With Tryll": he points everyone to the tavern (0:51.7-0:54.1);
     # the crop follows him to the right while he points, then back.

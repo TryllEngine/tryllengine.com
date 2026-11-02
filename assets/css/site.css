@@ -61,6 +61,15 @@ input.in:focus, textarea.in:focus { box-shadow: inset 0 0 0 1.5px #232E41; }
 .snd .on, .snd[aria-pressed="true"] .off { display: none; }
 .snd[aria-pressed="true"] .on { display: inline; }
 
+/* Media logos: scrolled by a CSS animation instead of the design's 25 fps logic tick,
+   so it stays smooth (same speed: 5 logos per 17.857 s). marquee.js moves the highlight. */
+@keyframes tryll-logos {
+    from { transform: translateX(calc(-1 * (5 * (var(--tw) + 16px) + var(--tw) / 2))); }
+    to { transform: translateX(calc(-1 * (10 * (var(--tw) + 16px) + var(--tw) / 2))); }
+}
+.pg .mtrack { animation: tryll-logos 17.857s linear infinite; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { .pg .mtrack { animation: none; } }
+
 /* "How to get started" ends with a button (added by build.py). */
 .gsw .gcta { display: flex; justify-content: center; margin-top: 48px; }
 @media (max-width: 640px) { .gsw .gcta { margin-top: 32px; } }

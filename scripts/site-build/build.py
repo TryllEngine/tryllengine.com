@@ -361,6 +361,15 @@ def trailer_clips(body):
     return body
 
 
+def smooth_logos(body):
+    """The design scrolls the media logos from its 25 fps logic tick, which stutters.
+    Unbind the row: site.css scrolls it with a CSS animation and marquee.js keeps the
+    design's "on" highlight in step with it."""
+    body, n = re.subn(r' data-b-style="L\.tr"', '', body)
+    assert n == 1, 'media logos row not found in index'
+    return re.sub(r' data-b-class="L\.k\d+"', '', body)
+
+
 def card_pictures(body):
     """Use-case cards get their picture from config.CARD_PICTURES instead of the design."""
     def card(m):
@@ -508,7 +517,8 @@ def main():
             body = get_started_cta(body)
             body = trailer_clips(body)
             body = card_pictures(body)
-            scripts.append('/assets/js/clips.js')
+            body = smooth_logos(body)
+            scripts += ['/assets/js/clips.js', '/assets/js/marquee.js']
             ld = [org_ld(), C.SOFTWARE_LD,
                   {'@context': 'https://schema.org', '@type': 'WebSite', 'name': 'Tryll Engine',
                    'url': C.SITE + '/'}]

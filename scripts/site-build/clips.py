@@ -6,8 +6,10 @@ For every clip in config.CLIPS it writes assets/video/<name>.mp4 (plus
 <name>-small.mp4 when the clip has a "small" size) and a <name>.jpg poster.
 Clips are cut from the first file, which has the subtitles drawn in; clips
 marked "clean" from the second, the same trailer without them (their lines
-show as captions on the page instead). Then run build.py. Clips are H.264
-with +faststart; only clips marked "audio" keep their sound.
+show as captions on the page instead); a clip with its own "source" from
+that file. --only=name[,name] cuts just those clips (no trailer needed for
+one with its own source). Then run build.py. Clips are H.264 with
++faststart; only clips marked "audio" keep their sound.
 """
 import os
 import subprocess
@@ -25,8 +27,9 @@ def graph(clip, w, h):
     """filter_complex: each shot trimmed, cropped and scaled, then joined."""
     parts, labels = [], ''
     audio = clip.get('audio', False)
+    fps = f'fps={clip["fps"]},' if clip.get('fps') else ''   # e.g. a 60 fps screen recording at 30
     for i, (start, end, crop) in enumerate(clip['shots']):
-        parts.append(f'[0:v]trim={start}:{end},setpts=PTS-STARTPTS,crop={crop},'
+        parts.append(f'[0:v]trim={start}:{end},setpts=PTS-STARTPTS,{fps}crop={crop},'
                      f'scale={w}:{h}:flags=lanczos,setsar=1[v{i}]')
         labels += f'[v{i}]'
         if audio:
@@ -54,14 +57,23 @@ def encode(src, clip, size, dst):
     subprocess.run(cmd + [dst], check=True)
 
 
-def main(src, clean=None):
+def main(src=None, clean=None, only=None):
     os.makedirs(OUT, exist_ok=True)
     for name, clip in C.CLIPS.items():
-        if clip.get('clean'):
+        if only and name not in only:
+            continue
+        if clip.get('source'):   # a recording of its own, not the trailer
+            src_of = clip['source']
+            if not os.path.exists(src_of):
+                print(f'{name}: skipped, {src_of} not found')
+                continue
+        elif clip.get('clean'):
             if not clean:
                 raise SystemExit(f'{name} is cut from the trailer without subtitles: pass that file second')
             src_of = clean
         else:
+            if not src:
+                raise SystemExit(f'{name} is cut from the trailer: pass it first (or use --only=)')
             src_of = src
         mp4 = os.path.join(OUT, name + '.mp4')
         encode(src_of, clip, clip['size'], mp4)
@@ -76,4 +88,6 @@ def main(src, clean=None):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else None)
+    files = [a for a in sys.argv[1:] if not a.startswith('--only=')]
+    only = [n for a in sys.argv[1:] if a.startswith('--only=') for n in a[7:].split(',')]
+    main(*files[:2], only=only)

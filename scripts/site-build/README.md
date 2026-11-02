@@ -43,8 +43,9 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 | "How to build" videos (YouTube playlists, titles, lengths) | `VIDEO_LISTS` in `config.py`; thumbnails are saved to `assets/images/videos/` |
 | "Coming soon" instead of downloads | `DOWNLOADS_LIVE` and `COMING_SOON` in `config.py` (see below) |
 | Trailer clips: which seconds, crops, sizes; the trailer's YouTube link (empty: no "Watch on YouTube" on the hero) | `CLIPS`, `TRAILER_URL` in `config.py`; `clips.py` writes `assets/video/`. The Smart NPCs clips keep the trailer's drawn-in subtitles inside their crops; the hero is cut without them and shows its lines as captions (`captions` in `CLIPS`, drawn by `clips.js`) |
-| Homepage use-case card pictures that replace the design's (Real Talk, Dynamic worlds, New genres) | `CARD_PICTURES` in `config.py`, images in `assets/images/` (16:10, 1152×720) |
-| Clip playback: lazy loading, pause off screen, the sound buttons | `assets/js/clips.js` (posters only with reduced motion or Save-Data) |
+| Homepage use-case card pictures that replace the design's (Dynamic worlds, New genres) | `CARD_PICTURES` in `config.py`, images in `assets/images/` (16:10, 1152×720) |
+| Use-case cards that show a clip instead (Real Talk: a Tryll Colony recording) | `CARD_CLIPS` in `config.py`, the clip in `CLIPS` with its own `source`; re-cut it alone with `clips.py --only=real-talk`. Muted it loops at `loop_end`; the sound button plays it all |
+| Clip playback: lazy loading, pause off screen, the sound buttons | `assets/js/clips.js` (posters only with reduced motion or Save-Data; the small file when the player is at most ~800 device pixels wide) |
 | Media logos row: scrolls with a CSS animation (`tryll-logos` in `site.css`), not the design's 25 fps tick | `assets/js/marquee.js` keeps the "on" highlight in step |
 | Contact form → HubSpot once `HUBSPOT['form']` is set in `config.py` (Formspree until then), newsletter → MailerLite | `assets/js/forms.js` |
 | Accepted contact messages → the team's Slack channel | `LEAD_ALERTS` in `config.py` + the Cloudflare Worker in `scripts/lead-alerts/` (setup in its README) |

@@ -51,6 +51,7 @@ input.hp { position: absolute !important; left: -9999px !important; width: 1px; 
 .ugc .ugv.pair i.has-clip { overflow: hidden; }
 .ugc .ugv.pair i.has-clip .clip { object-position: 50% 50%; }
 .ugc .ugv.pair .bdg { z-index: 1; }
+.ugc .ugv.has-clip .clip { object-position: 50% 50%; }   /* a card's own clip (CARD_CLIPS), framed 16:10 already */
 .snd {
     position: absolute; z-index: 1; top: 10px; right: 10px; display: flex; align-items: center; justify-content: center;
     width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; color: #FFFFFF; cursor: pointer;

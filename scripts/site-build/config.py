@@ -93,9 +93,7 @@ VIDEO_LISTS = {
 
 # Homepage use-case cards whose picture replaces the design's, keyed by the card's
 # heading: (image, description for screen readers). Images are 16:10, 1152x720.
-CARD_PICTURES = {
-    'Real Talk': ('/assets/images/real-talk.jpg',
-                  'A player talks to a settler by voice; the conversation appears on screen'),
+CARD_PICTURES = {   # Real Talk shows a clip instead: CARD_CLIPS below CLIPS
     'Dynamic worlds': ('/assets/images/dynamic-worlds.jpg', 'A colony village seen from above'),
     'New genres': ('/assets/images/new-genres.jpg',
                    'A twenty-sided die opening up with light inside, joined to other dice by threads'),
@@ -208,7 +206,21 @@ CLIPS = {
                   'shots': [
         (60.80, 62.44, '720:900:600:95'),
     ]},
+    # Real Talk card: a recording of Tryll Colony (its own "source", not the trailer). The
+    # player presses Mic and asks Hal Pike to build the houses, the line appears, he answers
+    # and speaks it (0:01.45-0:15.55), in real time: the waits are the real on-device
+    # latency. Same framing as the card's old still. Muted, it loops at "loop_end", soon
+    # after the answer appears; the sound button plays it all, with both voices.
+    'real-talk': {'size': (1152, 720), 'small': (640, 400), 'crf': 27, 'fps': 30, 'audio': True,
+                  'poster': 0, 'loop_end': 10.6,
+                  'source': 'C:/Users/inafa/Downloads/Telegram Desktop/real talk.mp4',
+                  'label': 'A player asks a settler out loud to build the houses; the settler answers in his own voice',
+                  'shots': [
+        (1.45, 15.55, '1626:1016:294:38'),
+    ]},
 }
+# Use-case cards whose picture is a clip from CLIPS, keyed by the card's heading.
+CARD_CLIPS = {'Real Talk': 'real-talk'}
 
 # Team preview (preview.py): GitHub Pages project site, no analytics, noindex.
 # Only the password's SHA-256 is stored; change it with  preview.py --password NEW

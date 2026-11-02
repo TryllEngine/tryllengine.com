@@ -436,6 +436,7 @@ def clip_tag(name, start):
     label = f' aria-label="{esc(c["label"])}"' if c.get('label') else ' aria-hidden="true"'
     # A clip cut without its subtitles carries its lines; clips.js shows them in the .cap.
     caps = f' data-captions="{esc(json.dumps(c["captions"], ensure_ascii=False))}"' if c.get('captions') else ''
+    caps += f' data-loop-end="{c["loop_end"]}"' if c.get('loop_end') else ''   # muted, it loops here
     return (f'<video class="clip" muted loop playsinline preload="none" poster="/assets/video/{name}.jpg" '
             f'data-src="/assets/video/{name}.mp4"{small} data-start="{start}"{label}{caps}></video>' +
             ('<span class="cap" aria-hidden="true"><span></span></span>' if caps else ''))
@@ -502,14 +503,21 @@ def smooth_logos(body):
 
 
 def card_pictures(body):
-    """Use-case cards get their picture from config.CARD_PICTURES instead of the design."""
+    """Use-case cards get their picture from config.CARD_PICTURES instead of the design,
+    or a clip from config.CARD_CLIPS (with a sound button when the clip has sound)."""
     def card(m):
         h = re.search(r'<h3>(.*?)</h3>', m.group(0))
-        pic = h and C.CARD_PICTURES.get(html.unescape(h.group(1)))
-        if not pic:
+        key = h and html.unescape(h.group(1))
+        clip, pic = C.CARD_CLIPS.get(key), C.CARD_PICTURES.get(key)
+        if clip:
+            snd = (f'<button type="button" class="snd" aria-label="Play with sound" aria-pressed="false">{SOUND_ICON}'
+                   '</button>') if C.CLIPS[clip].get('audio') else ''
+            tag = f'<div class="ugv has-clip">{clip_tag(clip, "view")}{snd}</div>'
+        elif pic:
+            url, alt = pic
+            tag = f'<div class="ugv" style="background-image: url(&quot;{url}&quot;);" role="img" aria-label="{esc(alt)}"></div>'
+        else:
             return m.group(0)
-        url, alt = pic
-        tag = f'<div class="ugv" style="background-image: url(&quot;{url}&quot;);" role="img" aria-label="{esc(alt)}"></div>'
         new, n = re.subn(r'<div class="ugv(?: ph)?"(?: style="[^"]*")?>(?:<span>[^<]*</span>)?</div>',
                          lambda _: tag, m.group(0), count=1)
         if not n:

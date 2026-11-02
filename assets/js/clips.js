@@ -4,7 +4,7 @@
  * Clips ship with a poster and no src, so they never hold up the page:
  *   data-start="load"  (hero) starts once the page has finished loading,
  *   data-start="view"  starts when it scrolls near the screen.
- * Small players get data-src-small. Clips pause off screen and don't play by
+ * Small players (in device pixels) get data-src-small. Clips pause off screen and don't play by
  * themselves with reduced motion or Save-Data. A .snd button next to a clip
  * plays it once from the start with sound, then it goes back to a silent loop.
  */
@@ -19,8 +19,11 @@
 
     function play(v) {
         if (!v.getAttribute('src')) {
+            // The small file (640 px wide) when the player is at most ~800 device pixels wide
+            // (phones); high-density screens get the full one, so text in a clip stays sharp.
             var small = v.getAttribute('data-src-small');
-            v.src = small && v.getBoundingClientRect().width <= 720 ? small : v.getAttribute('data-src');
+            var px = v.getBoundingClientRect().width * Math.min(window.devicePixelRatio || 1, 2);
+            v.src = small && px <= 800 ? small : v.getAttribute('data-src');
         }
         var p = v.play();
         if (p && p.catch) p.catch(function () {});
@@ -66,6 +69,10 @@
 
     clips.forEach(function (v) {
         v.addEventListener('ended', function () { quiet(v); });
+        // data-loop-end: a muted clip loops back from here instead of playing to the end;
+        // with sound it plays through.
+        var end = parseFloat(v.getAttribute('data-loop-end'));
+        if (end) v.addEventListener('timeupdate', function () { if (v.muted && v.currentTime >= end) v.currentTime = 0; });
     });
 
     // A clip cut without its subtitles (data-captions: [from s, to s, line], from

@@ -384,6 +384,9 @@ def trailer_clips(body):
                                  f'<i class="has-clip">{clip_tag("npc-after", "view")}{m.group(2)}{snd}</i></div>'),
                       body, count=1)
     assert n == 1, 'Smart NPCs pictures not found in index'
+    if not C.TRAILER_URL:   # no trailer link yet: the hero has no "Watch on YouTube"
+        body, n = re.subn(r'<a\b[^>]*class="hv-yt"[^>]*>.*?</a>', '', body, count=1, flags=re.S)
+        assert n == 1, 'hero "Watch on YouTube" not found in index'
     return body
 
 

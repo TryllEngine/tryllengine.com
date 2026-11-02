@@ -101,7 +101,7 @@ CARD_PICTURES = {
 #   py -3 scripts/site-build/clips.py "C:/path/to/trailer.mp4"
 # A shot is (start s, end s, ffmpeg crop "w:h:x:y" in the 1920x1080 trailer); x can
 # be an expression of t, seconds into the shot, to pan. "poster": seconds into the clip.
-TRAILER_URL = YOUTUBE   # hero "Watch on YouTube"; set to the trailer's own link once it's up
+TRAILER_URL = ''   # hero "Watch on YouTube": empty leaves it out; set to the trailer's own link once it's up
 CLIPS = {
     # Hero: three tavern close-ups (1:21.8-1:30.1), each reframed so the face clears the headline.
     'hero': {'size': (1152, 720), 'small': (640, 400), 'crf': 27, 'poster': 0, 'shots': [
@@ -143,7 +143,7 @@ COMMON_LINKS = {
     'Discord Never build alone. Join us on Discord': DISCORD,
     'YouTube': YOUTUBE,
     'LinkedIn': LINKEDIN,
-    'Watch on YouTube': TRAILER_URL,   # homepage hero; the video lists use VIDEO_LISTS
+    'Watch on YouTube': TRAILER_URL or None,   # homepage hero; the video lists use VIDEO_LISTS
     'Documentation API reference and guides, on docs.tryllengine.com': DOCS,
 }
 

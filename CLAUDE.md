@@ -22,6 +22,7 @@ The main pages are designed in **Claude Design** and turned into static HTML by 
 │   tryll-plugin-alpha.html                        #   kept at their URLs until redesigned
 ├── closed-beta.html          # GENERATED redirect to /download (see REDIRECTS in config.py)
 ├── scripts/site-build/       # annotate → bake → build pipeline, config.py, serve.py
+├── scripts/lead-alerts/      # Cloudflare Worker: accepted contact messages → Slack (config.LEAD_ALERTS)
 ├── assets/
 │   ├── site/                 # images from the design export (hashed names)
 │   ├── js/site.js            # runtime that runs the design logic on static HTML

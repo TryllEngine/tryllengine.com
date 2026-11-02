@@ -338,6 +338,8 @@ def contact_form(body):
         action, extra = C.FORMS['contact'], ''
         hidden = ('<input type="hidden" name="_subject" value="New Tryll Engine contact form submission">'
                   '<input type="hidden" name="source" value="tryllengine.com/#contact">')
+    if C.LEAD_ALERTS:   # forms.js sends accepted messages on to Slack (scripts/lead-alerts)
+        extra += f' data-alerts="{esc(C.LEAD_ALERTS)}"'
     form = (
         f'<form class="fcard" id="contact-form" action="{action}" method="POST" '
         f'data-form="contact"{extra} novalidate>{tab}{hidden}'

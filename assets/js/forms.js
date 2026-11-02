@@ -55,6 +55,23 @@
         };
     }
 
+    // A copy of an accepted message for the team's Slack channel, through the Worker in
+    // data-alerts (scripts/lead-alerts). Best effort: the visitor never waits for it.
+    function alertTeam(form) {
+        var url = form.getAttribute('data-alerts');
+        if (!url) return;
+        var f = form.elements;
+        fetch(url, {
+            method: 'POST',
+            keepalive: true,
+            headers: { 'Content-Type': 'text/plain' },   // a simple request: no CORS preflight
+            body: JSON.stringify({
+                name: f['name'].value.trim(), company: f['company'].value.trim(),
+                email: f['email'].value.trim(), message: f['message'].value.trim(), page: location.href
+            })
+        }).catch(function () {});
+    }
+
     function errorText(j) {
         var e = j.errors && j.errors[0] || {};
         if (e.errorType === 'INVALID_EMAIL') return 'Please check your email address.';
@@ -97,6 +114,7 @@
                     if (!r.ok) return r.json().catch(function () { return {}; }).then(function (j) {
                         throw new Error(errorText(j));
                     });
+                    alertTeam(cf);   // before reset: it reads the fields
                     cf.reset();
                     if (consent.classList.contains('on')) consent.click();
                     status(msg, 'Thanks! We got your message and will get back to you soon.', true);

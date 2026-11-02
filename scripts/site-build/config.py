@@ -15,6 +15,10 @@ FORMS = {'contact': 'https://formspree.io/f/movlaywd'}
 # Without a form it falls back to Formspree. "form" is the form's ID in HubSpot (Marketing > Forms).
 HUBSPOT = {'api': 'https://api-eu1.hsforms.com', 'portal': '147726156',
            'form': 'eefbc03c-966e-4e77-9d6b-ae89c11b84e1'}
+# Accepted contact messages also go to the team's Slack channel through a Cloudflare
+# Worker (scripts/lead-alerts): its URL, e.g. https://tryll-lead-alerts.<account>.workers.dev.
+# Empty = off.
+LEAD_ALERTS = ''
 MAILERLITE_ACCOUNT = '2274886'
 MAILERLITE_FORM = '185451758358627764'   # "blog" signup form
 
@@ -49,6 +53,11 @@ if HUBSPOT['form']:   # the privacy policy names the contact form's processor
         ('Last updated May 27, 2026', 'Last updated November 2, 2026'),
         ('Effective May 27, 2026', 'Effective November 2, 2026'),
     ]
+if LEAD_ALERTS:   # ...and where contact messages are passed on to
+    COPY.append(('our account is hosted in the EU.</li>',
+                 'our account is hosted in the EU.</li>'
+                 '<li><b>Slack</b> (team notifications about contact form messages) - Slack Technologies, LLC, USA.</li>'
+                 '<li><b>Cloudflare</b> (passes contact form messages on to our team chat) - Cloudflare, Inc., USA.</li>'))
 
 # Media logos on the homepage link to their articles, keyed by the logo's alt
 # text (or its text, for a text-only logo) in the design.

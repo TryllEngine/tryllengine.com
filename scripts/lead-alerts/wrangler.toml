@@ -1,0 +1,4 @@
+# Cloudflare Worker: contact form messages -> the team's Slack channel. See README.md.
+name = "tryll-lead-alerts"
+main = "worker.js"
+compatibility_date = "2025-10-01"

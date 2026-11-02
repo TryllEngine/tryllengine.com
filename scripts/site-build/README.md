@@ -42,6 +42,7 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 | Clip playback: lazy loading, pause off screen, the sound buttons | `assets/js/clips.js` (posters only with reduced motion or Save-Data) |
 | Media logos row: scrolls with a CSS animation (`tryll-logos` in `site.css`), not the design's 25 fps tick | `assets/js/marquee.js` keeps the "on" highlight in step |
 | Contact form → HubSpot once `HUBSPOT['form']` is set in `config.py` (Formspree until then), newsletter → MailerLite | `assets/js/forms.js` |
+| Accepted contact messages → the team's Slack channel | `LEAD_ALERTS` in `config.py` + the Cloudflare Worker in `scripts/lead-alerts/` (setup in its README) |
 | Blog topic chips + pagination | `assets/js/blog-list.js` |
 | Cookie banner + Google Consent Mode v2 | `assets/js/cookie-consent.js` |
 | CSS the design doesn't cover (inputs, article headings, lists, video) | `assets/css/site.css` |

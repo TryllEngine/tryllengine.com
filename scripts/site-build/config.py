@@ -47,11 +47,6 @@ COMING_SOON = {
 COPY = [
     ('$500k', '$200k'),   # pricing threshold
     ('that allows integrate in-game AI', 'that lets you integrate in-game AI'),   # hero typo
-    ('Windows 10 64-bit', 'Windows 11 64-bit'),                                   # /demo minimum OS
-    ('NVIDIA GeForce RTX 3060 / AMD Radeon RX 6600 (8 GB VRAM)',                  # /demo minimum
-     'NVIDIA GeForce RTX 4060 / AMD Radeon RX 7600 (8 GB VRAM)'),
-    ('NVIDIA GeForce RTX 4060 or better (8 GB VRAM)',                             # /demo recommended
-     'NVIDIA GeForce RTX 4070 / AMD Radeon RX 7700 XT (12 GB VRAM)'),
 ]
 if HUBSPOT['form']:   # the privacy policy names the contact form's processor
     COPY += [
@@ -118,6 +113,17 @@ DEMO_SHOTS = [
 ]
 DEMO_ABOUT = 'demo-about.md'   # in scripts/site-build/
 DEMO_DROP_TAGS = ['Simulation']   # design tags left out ("Colony sim" says it)
+# /demo system requirements, in order: (row, minimum, recommended), or (row, value) when
+# both are the same, which then shows once across both columns.
+DEMO_REQUIREMENTS = [
+    ('OS', 'Windows 11 64-bit'),
+    ('Processor', 'Intel Core i5-10400 / AMD Ryzen 5 3600', 'AMD Ryzen 5 7500F / Intel Core i5-12400'),
+    ('Memory', '16 GB RAM'),
+    ('Graphics', 'NVIDIA GeForce RTX 4060 / AMD Radeon RX 7600 (8 GB VRAM)',
+     'NVIDIA GeForce RTX 4070 / AMD Radeon RX 7700 XT (12 GB VRAM)'),
+    ('DirectX', 'Version 12'),
+    ('Storage', '8 GB available space'),
+]
 
 # "What clients are saying" on the homepage: one card per quote, in order ('role', 'site'
 # and 'linkedin' may be empty: no link then). 'picture' is a 16:9 image shown whole

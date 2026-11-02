@@ -611,6 +611,26 @@ def demo_page(body):
                                 f'<div class="gab">{about}</div></section><section class="ab greq" id="requirements">',
                       body, count=1)
     assert n == 1, 'demo system requirements not found'
+    return demo_requirements(body)
+
+
+def demo_requirements(body):
+    """/demo: the design's two cards (minimum, recommended) become one, from
+    config.DEMO_REQUIREMENTS. A value both share shows once, across both columns; on phones
+    the two values of a row stack, each labelled."""
+    def cell(v):   # "i5-10400" never breaks at its hyphen
+        return esc(re.sub(r'(?<=\w)-(?=\d)', chr(0x2011), v))
+
+    rows = ['<div class="row rqh" aria-hidden="true"><b></b><span>Minimum</span><span>Recommended</span></div>']
+    for name, *values in C.DEMO_REQUIREMENTS:
+        if len(values) == 1:
+            rows.append(f'<div class="row"><b>{esc(name)}</b><span class="all">{cell(values[0])}</span></div>')
+        else:
+            rows.append(f'<div class="row two"><b>{esc(name)}</b>'
+                        f'<span><i>Minimum</i>{cell(values[0])}</span><span><i>Recommended</i>{cell(values[1])}</span></div>')
+    card = '<div class="rqx"><div class="rqp">' + ''.join(rows) + '</div></div>'
+    body, n = re.subn(r'<div class="rqg">.*?(?=</section>)', lambda _: card, body, count=1, flags=re.S)
+    assert n == 1, 'demo requirement cards not found'
     return body
 
 

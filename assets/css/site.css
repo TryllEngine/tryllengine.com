@@ -189,6 +189,24 @@ input.hp { position: absolute !important; left: -9999px !important; width: 1px; 
     .pg .prw .pf .cta { max-width: 100%; gap: 12px; padding-left: 18px; font-size: 16px; }
 }
 
+/* /demo requirements (build.py demo_requirements): one card. A value both share spans both
+   columns; on phones a row's two values stack, each with its label. */
+.pg .greq .rqx .rqp { padding: 8px 24px 12px; border-radius: 24px; }
+.pg .greq .rqx .row { grid-template-columns: 96px minmax(0, 1fr) minmax(0, 1fr); gap: 16px; padding: 12px 0; align-items: baseline; }
+.pg .greq .rqx .row .all { grid-column: 2 / -1; }
+.pg .greq .rqx .rqh { padding: 10px 0 8px; }
+.pg .greq .rqx .rqh span { font-size: 14px; color: rgba(24, 23, 22, .55); }
+.pg .greq .rqx .row i { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 640px) {
+    .pg .greq .rqx .rqp { padding: 4px 20px 8px; }
+    .pg .greq .rqx .rqh { display: none; }
+    .pg .greq .rqx .row { grid-template-columns: 96px minmax(0, 1fr); gap: 12px; }
+    .pg .greq .rqx .row.two span { grid-column: 2; }
+    .pg .greq .rqx .row.two span + span { margin-top: -4px; }
+    .pg .greq .rqx .row i { position: static; width: auto; height: auto; overflow: visible; clip: auto; display: block;
+        font-style: normal; font-size: 13px; color: rgba(24, 23, 22, .55); }
+}
+
 /* /demo gallery: a fixed 16:9 view, like a store page. The design sized it by the window's
    height, so on shorter screens it was wider than the screenshots and cropped them. */
 .pg .gmain { aspect-ratio: 16 / 9 !important; height: auto !important; }

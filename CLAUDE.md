@@ -12,13 +12,14 @@ The main pages are designed in **Claude Design** and turned into static HTML by 
 
 ```
 ├── index.html, features.html, download.html,     # GENERATED from the design export
-│   demo.html, about.html, blog.html               #   by scripts/site-build/build.py
+│   demo.html, about.html, blog.html,              #   by scripts/site-build/build.py
+│   privacy-policy.html
 ├── blog/
 │   ├── posts.json            # post index (source)
 │   ├── content/{slug}.md     # post bodies (source)
 │   └── posts/{slug}/index.html   # GENERATED
 ├── tryll-assistant.html, boscotryll.html,        # old-design pages, hand-written,
-│   privacy-policy.html, tryll-plugin-alpha.html   #   kept at their URLs until redesigned
+│   tryll-plugin-alpha.html                        #   kept at their URLs until redesigned
 ├── closed-beta.html          # GENERATED redirect to /download (see REDIRECTS in config.py)
 ├── scripts/site-build/       # annotate → bake → build pipeline, config.py, serve.py
 ├── assets/
@@ -41,6 +42,7 @@ The main pages are designed in **Claude Design** and turned into static HTML by 
 py -3 scripts/site-build/serve.py                 # preview at http://localhost:8000 (GitHub Pages URL rules)
 py -3 scripts/site-build/build.py                 # rebuild pages, blog, sitemap
 py -3 scripts/site-build/bake.py "<export dir>"   # bring in a new Claude Design export, then build
+py -3 scripts/site-build/preview.py --publish     # team preview at tryllengine.github.io/site-preview
 ```
 
 Don't use `python -m http.server` to preview: it doesn't resolve `/blog` or `/features` the way GitHub Pages does.
@@ -49,6 +51,7 @@ Don't use `python -m http.server` to preview: it doesn't resolve `/blog` or `/fe
 
 - **Never hand-edit generated files** (listed above). Change the design export, `scripts/site-build/config.py`, the blog sources or the build scripts, then rebuild.
 - **SEO copy, link targets and form endpoints** live in `scripts/site-build/config.py`.
+- **Downloads aren't public yet**: `DOWNLOADS_LIVE = False` in `config.py` turns every download and "Get Tryll Engine" button into "Coming soon" (→ newsletter signup). The team preview always shows downloads as designed.
 - **Canonical URLs** have no `.html` (`https://tryllengine.com/features`); blog posts end in a slash (`/blog/posts/{slug}/`, the URL GitHub Pages serves without a redirect).
 - **Analytics**: GTM container `GTM-K8MPGKVX` (holds GA4 `G-V0BH3P7R63`, plus "Form submission" and "Clicks Download" events). `cookie-consent.js` must load before GTM; all consent defaults to denied.
 - **Forms** must stay real `<form>` elements so GTM's form-submission trigger fires.

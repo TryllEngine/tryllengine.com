@@ -4,6 +4,8 @@
     py -3 scripts/site-build/preview.py --password NEW ...   # use a different password
 
 The preview is a copy of the built site that:
+  - shows the download buttons as designed, even while the live site says
+    "Coming soon" (config.DOWNLOADS_LIVE),
   - drops Google Tag Manager and the cookie banner (no analytics),
   - marks every page noindex, nofollow,
   - asks for a team password before showing anything (a screen, not real
@@ -129,7 +131,9 @@ def git(args, cwd):
 
 def publish(out, repo):
     url = f'https://github.com/{repo}.git'
-    exists = subprocess.run(['gh', 'repo', 'view', repo], capture_output=True).returncode == 0
+    # The gh CLI is only needed the first time, to create the repo and turn on Pages.
+    exists = subprocess.run(['git', 'ls-remote', url], capture_output=True,
+                            env=dict(os.environ, GIT_TERMINAL_PROMPT='0')).returncode == 0
     if not exists:
         owner, name = repo.split('/')
         subprocess.run(['gh', 'repo', 'create', repo, '--public',
@@ -162,8 +166,13 @@ def main():
     pw_hash = hashlib.sha256(a.password.encode()).hexdigest() if a.password else C.PREVIEW['password_sha256']
     if a.password:
         print(f'password hash (put in config.PREVIEW to keep it): {pw_hash}')
-    subprocess.run([sys.executable, os.path.join(HERE, 'build.py')], check=True)
-    n = build_preview(a.out, C.PREVIEW['base'], pw_hash)
+    build = [sys.executable, os.path.join(HERE, 'build.py')]
+    subprocess.run(build + ['--downloads-live'], check=True)
+    try:
+        n = build_preview(a.out, C.PREVIEW['base'], pw_hash)
+    finally:
+        # Put the repo's pages back to what the live site should show.
+        subprocess.run(build, check=True, capture_output=True)
     print(f'preview: {n} files in {a.out}')
     if a.publish:
         publish(a.out, C.PREVIEW['repo'])

@@ -3,7 +3,8 @@
 Reads the browser-rendered pages in scripts/site-build/baked/ (made by
 bake.py) plus the blog content, and writes:
 
-    index.html, features.html, download.html, about.html, demo.html, blog.html
+    index.html, features.html, download.html, about.html, demo.html, blog.html,
+    privacy-policy.html
     blog/posts/<slug>/index.html   (one per entry in blog/posts.json)
     assets/js/pages/<page>.js      (the page's original design logic)
     sitemap.xml
@@ -11,12 +12,16 @@ bake.py) plus the blog content, and writes:
 Everything that is not in the design export lives in config.py: SEO
 copy, real link targets for the design's placeholder links, form
 endpoints. No third-party packages needed:  py -3 scripts/site-build/build.py
+
+    --downloads-live   build as if config.DOWNLOADS_LIVE were True (preview.py)
 """
 import html
 import json
 import os
 import re
 import sys
+import urllib.error
+import urllib.request
 from datetime import date
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -88,6 +93,7 @@ def fix_assets(s):
 INTERNAL = {
     'index.html': '/', 'features.html': '/features', 'download.html': '/download',
     'about.html': '/about', 'demo.html': '/demo', 'blog.html': '/blog',
+    'privacy.html': '/privacy-policy',
 }
 
 
@@ -129,6 +135,81 @@ def rewrite_links(page, body):
         return tag + inner + '</a>'
 
     return re.sub(r'(<a\b[^>]*href="#"[^>]*>)(.*?)</a>', placeholder, body, flags=re.S)
+
+
+def thumb(video_id):
+    """The video's YouTube thumbnail, saved under assets/images/videos/ the first time."""
+    url = f'/assets/images/videos/{video_id}.jpg'
+    path = os.path.join(ROOT, url.lstrip('/'))
+    if not os.path.exists(path):
+        for size in ('sddefault', 'hqdefault'):   # 640x480 when the upload has it
+            try:
+                with urllib.request.urlopen(f'https://i.ytimg.com/vi/{video_id}/{size}.jpg', timeout=30) as r:
+                    data = r.read()
+                break
+            except urllib.error.HTTPError:
+                continue
+        else:
+            raise SystemExit(f'no YouTube thumbnail for video {video_id}')
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, 'wb') as f:
+            f.write(data)
+    return url
+
+
+def video_lists(body):
+    """The design's "How to build" lists are placeholders; fill them from config.VIDEO_LISTS."""
+    def block(m):
+        head, title, grid, cards = m.groups()
+        title = html.unescape(title)
+        if title not in C.VIDEO_LISTS:
+            print(f'WARN no VIDEO_LISTS entry for the "{title}" video list')
+            return m.group(0)
+        playlist, videos = C.VIDEO_LISTS[title]
+        head = head.replace('<a class="lk2" href="#">',
+                            f'<a class="lk2" href="https://www.youtube.com/playlist?list={playlist}" '
+                            'target="_blank" rel="noopener">')
+        card = re.match(r'<a class="vt" href="#">(.*?)</a>', cards, re.S).group(1)
+        out = []
+        for vid, length, name in videos:
+            c = re.sub(r'url\(&quot;.*?&quot;\)', f'url(&quot;{thumb(vid)}&quot;)', card, count=1)
+            c = re.sub(r'<span>[^<]*</span></div>', f'<span>{length}</span></div>', c, count=1)
+            c = re.sub(r'<b>.*?</b>', f'<b>{esc(name)}</b>', c, count=1, flags=re.S)
+            out.append(f'<a class="vt" href="https://www.youtube.com/watch?v={vid}&amp;list={playlist}" '
+                       f'target="_blank" rel="noopener">{c}</a>')
+        return head + grid + ''.join(out) + '</div>'
+
+    return re.sub(r'(<div class="lbr"><div><h4>([^<]*)</h4>(?:<a class="lk2" href="#">.*?</a>)?</div>)'
+                  r'(<div class="lg[^"]*">)((?:<a class="vt" href="#">.*?</a>)+)</div>', block, body, flags=re.S)
+
+
+DOWNLOAD_BUTTONS = ('Get Tryll Engine', 'Download for Unity 6+', 'Download for UE 5.7+', 'Direct download')
+STORE_BUTTONS = ('Steam', 'Itch.io')
+# Envelope from the blog's Subscribe card, instead of the download arrow.
+MAIL_ICON = ('<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" '
+             'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5.5" width="17" '
+             'height="13" rx="2"></rect><path d="M4 7l8 6 8-6"></path></svg>')
+
+
+def coming_soon(body):
+    """Downloads aren't open yet (config.DOWNLOADS_LIVE): download and "Get Tryll
+    Engine" buttons say "Coming soon" and lead to the newsletter signup."""
+    def button(m):
+        tag, inner = m.group(1), m.group(2)
+        text = link_text(inner)
+        if text in STORE_BUTTONS:
+            return ''
+        if text not in DOWNLOAD_BUTTONS:
+            return m.group(0)
+        label = C.COMING_SOON['nav' if re.search(r'class="(?:nb|mcta)"', tag) else 'cta']
+        tag = re.sub(r' data-todo="[^"]*"', '', tag)
+        tag = re.sub(r'href="[^"]*"', f'href="{C.COMING_SOON["href"]}"', tag)
+        if text.startswith('Download for'):
+            inner = re.sub(r'(<span class="dt">)<svg\b.*?</svg>', r'\1' + MAIL_ICON, inner, count=1, flags=re.S)
+        return tag + inner.replace(text, esc(label), 1) + '</a>'
+
+    body = re.sub(r'(<a\b[^>]*>)(.*?)</a>', button, body, flags=re.S)
+    return body.replace('<span class="dmb">Demo available</span>', '<span class="dmb">Coming soon</span>')
 
 
 # ---------------------------------------------------------------------- head
@@ -260,8 +341,10 @@ def subscribe_form(body):
             f'<button type="submit" class="cta">{m.group(2)}</button></form>'
             '<p class="fmsg" role="status" aria-live="polite"></p>')
     body = body[:m.start()] + form + body[m.end():]
-    return body.replace('By subscribing, you agree to our <a href="#">Privacy Policy</a>',
-                        'By subscribing, you agree to our <a href="/privacy-policy">Privacy Policy</a>')
+    # Target of the "Coming soon" buttons (config.COMING_SOON).
+    body, n = re.subn(r'<div class="sub">', '<div class="sub" id="subscribe">', body, count=1)
+    assert n == 1, 'subscribe block not found in blog'
+    return body
 
 
 # ---------------------------------------------------------------------- blog
@@ -341,12 +424,15 @@ def org_ld():
 
 
 def main():
+    downloads = C.DOWNLOADS_LIVE or '--downloads-live' in sys.argv[1:]
     posts = load_posts()
     out_pages = []
 
     for name, meta in C.PAGES.items():
+        if not downloads and 'description_soon' in meta:
+            meta = dict(meta, description=meta['description_soon'])
         baked = Baked(name).clean()
-        body = rewrite_links(name, baked.body)
+        body = rewrite_links(name, video_lists(baked.body))
         scripts = ['/assets/js/forms.js']
         ld = []
         if name == 'index':
@@ -361,6 +447,8 @@ def main():
             scripts.append('/assets/js/blog-list.js')
             ld = [{'@context': 'https://schema.org', '@type': 'Blog', 'name': 'Tryll Engine Blog',
                    'url': C.SITE + '/blog', 'publisher': org_ld()}]
+        if not downloads:
+            body = coming_soon(body)
         write_logic(name, baked)
         write(os.path.join(ROOT, meta['out']), page_html(meta, baked, body, name, ld, scripts))
         out_pages.append((meta['path'], date.today().isoformat(), meta.get('priority', '0.8')))
@@ -368,6 +456,8 @@ def main():
     # Blog posts share the blog-post design page.
     baked = Baked('blog-post').clean()
     tpl_body = rewrite_links('blog-post', baked.body)
+    if not downloads:
+        tpl_body = coming_soon(tpl_body)
     icon = BLOCKQUOTE_ICON_RE.search(tpl_body).group(1)
     write_logic('blog-post', baked)
     for p in posts:
@@ -392,11 +482,12 @@ def main():
         out_pages.append((path, p['date'], '0.6'))
 
     # Retired URLs: an instant meta refresh, which Google treats as a permanent
-    # redirect, plus a canonical to the new page. Not listed in the sitemap.
+    # redirect, plus a canonical to the new page. Noindex, not in the sitemap.
     for old, new in C.REDIRECTS.items():
         write(os.path.join(ROOT, old.strip('/') + '.html'), (
             '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
             f'<title>Moved — Tryll Engine</title>\n'
+            '<meta name="robots" content="noindex">\n'
             f'<link rel="canonical" href="{C.SITE}{new}">\n'
             f'<meta http-equiv="refresh" content="0; url={new}">\n'
             f'<script>location.replace({json.dumps(new)} + location.hash)</script>\n'
@@ -413,6 +504,8 @@ def main():
     write(os.path.join(ROOT, 'sitemap.xml'), '\n'.join(sm) + '\n')
 
     print(f'built {len(C.PAGES)} pages, {len(posts)} posts, sitemap with {len(urls)} urls')
+    if not downloads:
+        print(f'downloads not live: download buttons say "Coming soon" and lead to {C.COMING_SOON["href"]}')
     if todos:
         print('\nLinks still waiting for a real URL (left as href="#" with data-todo):')
         for t in sorted(set(todos)):

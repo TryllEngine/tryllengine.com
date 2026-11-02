@@ -11,6 +11,7 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 | Preview the site locally | `py -3 scripts/site-build/serve.py` → http://localhost:8000/ |
 | Rebuild after editing `config.py`, a blog post or `posts.json` | `py -3 scripts/site-build/build.py` |
 | Bring in a new design export | `py -3 scripts/site-build/bake.py "C:/path/to/export"` then `build.py` |
+| Publish the team preview | `py -3 scripts/site-build/preview.py --publish` → https://tryllengine.github.io/site-preview/ |
 
 `serve.py` resolves URLs the way GitHub Pages does (`/features` → `features.html`, `/blog/posts/x` → `/blog/posts/x/`), so links behave like production. `python -m http.server` does not.
 
@@ -31,6 +32,8 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 | What | Where |
 |---|---|
 | SEO titles/descriptions, link targets, redirects, form endpoints, GTM ID | `config.py` |
+| "How to build" videos (YouTube playlists, titles, lengths) | `VIDEO_LISTS` in `config.py`; thumbnails are saved to `assets/images/videos/` |
+| "Coming soon" instead of downloads | `DOWNLOADS_LIVE` and `COMING_SOON` in `config.py` (see below) |
 | Contact form → Formspree, newsletter → MailerLite | `assets/js/forms.js` |
 | Blog topic chips + pagination | `assets/js/blog-list.js` |
 | Cookie banner + Google Consent Mode v2 | `assets/js/cookie-consent.js` |
@@ -39,11 +42,17 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 
 ## Generated files: don't edit by hand
 
-`index.html`, `features.html`, `download.html`, `demo.html`, `about.html`, `blog.html`, `blog/posts/*/index.html`, `assets/js/pages/*.js` and `sitemap.xml` are rewritten by `build.py`. Change the design, `config.py` or the blog sources instead.
+`index.html`, `features.html`, `download.html`, `demo.html`, `about.html`, `blog.html`, `privacy-policy.html`, `closed-beta.html`, `blog/posts/*/index.html`, `assets/js/pages/*.js` and `sitemap.xml` are rewritten by `build.py`. Change the design, `config.py` or the blog sources instead.
 
-Hand-written pages from the old design still live at their URLs and are untouched by the build: `tryll-assistant.html`, `boscotryll.html`, `privacy-policy.html` and `tryll-plugin-alpha.html`.
+Hand-written pages from the old design still live at their URLs and are untouched by the build: `tryll-assistant.html`, `boscotryll.html` and `tryll-plugin-alpha.html`.
 
-Retired URLs go in `REDIRECTS` in `config.py`. GitHub Pages can't do server redirects, so the build writes a small page that forwards instantly with a canonical to the new URL, which Google treats as a permanent move. `/closed-beta` → `/download` works this way.
+Retired URLs go in `REDIRECTS` in `config.py`. GitHub Pages can't do server redirects, so the build writes a small noindex page that forwards instantly with a canonical to the new URL, which Google treats as a permanent move. `/closed-beta` → `/download` works this way.
+
+## Coming soon
+
+While `DOWNLOADS_LIVE = False` in `config.py`, the build replaces every "Get Tryll Engine" and download button with "Coming soon" linking to the blog's newsletter signup (`/blog#subscribe`), hides the demo's Steam and Itch.io buttons, and uses the `description_soon` SEO copy. `preview.py` always builds the team preview with downloads on, as designed, then rebuilds the repo's pages for the live site.
+
+On launch day: fill in the download `TODO:` links in `config.py`, set `DOWNLOADS_LIVE = True`, run `build.py` and push.
 
 ## Open links
 

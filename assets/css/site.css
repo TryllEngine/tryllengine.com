@@ -30,6 +30,8 @@ input.in:focus, textarea.in:focus { box-shadow: inset 0 0 0 1.5px #232E41; }
 .fmsg.err { color: #B42318; }
 .fmsg.ok { color: #1E6B3A; }
 .sub .fmsg { margin-top: -8px; }
+/* "Coming soon" buttons land on /blog#subscribe: keep the card clear of the fixed nav. */
+#subscribe { scroll-margin-top: 104px; }
 
 /* Blog articles: elements the design sample post didn't use. */
 .pb h2 { margin: 48px 0 20px; font: 400 32px/1.15 'Space Grotesk', sans-serif; letter-spacing: -0.025em; }

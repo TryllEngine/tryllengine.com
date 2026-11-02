@@ -26,7 +26,8 @@
         if (topic !== 'All') p.set('topic', topic);
         if (page > 1) p.set('page', page);
         var q = p.toString();
-        history.replaceState(null, '', location.pathname + (q ? '?' + q : ''));
+        // Keep the #hash: "Coming soon" buttons link to /blog#subscribe.
+        history.replaceState(null, '', location.pathname + (q ? '?' + q : '') + location.hash);
     }
 
     function render(scroll) {

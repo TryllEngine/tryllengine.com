@@ -23,7 +23,7 @@ ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
 sys.path.insert(0, HERE)
 import annotate  # noqa: E402
 
-PAGES = ['index', 'features', 'download', 'demo', 'about', 'blog', 'blog-post']
+PAGES = ['index', 'features', 'download', 'demo', 'about', 'blog', 'blog-post', 'privacy']
 BROWSERS = [
     r'C:\Program Files\Google\Chrome\Application\chrome.exe',
     r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe',

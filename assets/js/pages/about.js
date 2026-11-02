@@ -14,7 +14,7 @@ class Component extends DCLogic {
   componentDidMount() { if (typeof window !== 'undefined' && !window.__crs) { window.__crs = 1; document.addEventListener('click', e => { const bt = e.target.closest && e.target.closest('.crb'); if (!bt) return; const tr = bt.closest('section').querySelector('.crs'); const c = tr.querySelector('.tmc'); tr.scrollBy({ left: (+bt.dataset.d) * ((c ? c.offsetWidth : 300) + 16), behavior: 'smooth' }); }); } }
   renderVals() { const st = this.state || {}, m = !!st.navOpen, k = (st.k === undefined ? -1 : st.k), f = FD[k < 0 ? 0 : k], o = {};
     o.navM = 'mnav' + (m ? ' on' : ''); o.navX = m ? 'true' : 'false'; o.navT = () => this.setState({ navOpen: !m });
-    o.ac = 'ase' + (k < 0 ? ' def' : ''); o.home = () => this.setState({ k: -1 });
+    o.ac = 'ase' + (k < 0 ? ' def' : ''); if (k !== this._lk) { this._fl = !this._fl; this._lk = k; } o.rk = 'rgt ' + (this._fl ? 'fa' : 'fb'); o.home = () => this.setState({ k: -1 });
     o.hc = 'hero2' + (f.ph ? ' hp' : ''); o.cph = f.ph || 'data:image/gif;base64,R0lGODlhAQABAAAAACw=';
     o.ci = f.i; o.cn = f.n; o.cr = f.r; o.cc = f.c; o.cb = f.b;
     FD.forEach((_, i) => { o['s' + i] = 'rt' + (i === k ? ' on' : '') + (FD[i].ph ? ' hp' : ''); o['p' + i] = () => { if (!this._r) this.setState({ k: i }); }; });

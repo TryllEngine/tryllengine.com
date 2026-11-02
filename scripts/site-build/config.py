@@ -44,6 +44,7 @@ COMING_SOON = {
 # (text in the design, text on the site). Drop an entry once the design has it.
 COPY = [
     ('$500k', '$200k'),   # pricing threshold
+    ('that allows integrate in-game AI', 'that lets you integrate in-game AI'),   # hero typo
 ]
 if HUBSPOT['form']:   # the privacy policy names the contact form's processor
     COPY += [

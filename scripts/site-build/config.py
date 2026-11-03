@@ -215,10 +215,12 @@ CLIPS = {
         (95.64, 98.20, '1344:840:330:120'),
         (98.28, 99.88, '1344:840:367:120'),
     ]},
+    # The Smart NPCs pair is silent and takes turns on the page: Before plays, then With Tryll,
+    # then Before again (build.py trailer_clips).
     # Smart NPCs, "Before": "Nice weather, huh?" in the storm, a boulder knocks his head aside,
     # the trailer flashes white and pauses: "But you want more than that." (0:16.4-0:20.16,
     # up to where it rewinds to the hit). At the flash the crop moves to center the pause sign.
-    'npc-before': {'size': (576, 720), 'crf': 28, 'audio': True, 'poster': 1.0,
+    'npc-before': {'size': (576, 720), 'crf': 28, 'poster': 1.0,
                    'captions': [(0.48, 1.60, 'Nice weather, huh?'),
                                 (2.24, 3.76, 'But you want more than that.')],
                    'label': 'Before: an NPC in a storm says "Nice weather, huh?", a boulder hits his head, '
@@ -230,7 +232,7 @@ CLIPS = {
     # Smart NPCs, "With Tryll": asked "Which way to the tavern?", he points the way and runs
     # ahead: "Right here, try not to die before we get inside." (1:00.8-1:04.64, up to where
     # the narrator comes in). The crop leaves out the item icons and the compass.
-    'npc-after': {'size': (576, 720), 'crf': 28, 'audio': True, 'poster': 0.9,
+    'npc-after': {'size': (576, 720), 'crf': 28, 'poster': 0.9,
                   'captions': [(0.12, 1.64, 'Which way to the tavern?'),
                                (1.72, 3.84, 'Right here, try not to die before we get inside.')],
                   'label': 'With Tryll: asked "Which way to the tavern?", an NPC in the storm points the way '

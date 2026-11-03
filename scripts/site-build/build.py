@@ -314,8 +314,13 @@ def docs_latest(text):
     return text
 
 
+# Requests to the docs site carry a user agent of their own: Cloudflare answers Python's
+# default one with 403.
+BUILD_UA = {'User-Agent': 'tryll-site-build'}
+
+
 def url_status(url):
-    req = urllib.request.Request(url, method='HEAD', headers={'User-Agent': 'tryll-site-build'})
+    req = urllib.request.Request(url, method='HEAD', headers=BUILD_UA)
     try:
         with urllib.request.urlopen(req, timeout=15) as r:
             return r.status
@@ -339,7 +344,8 @@ def check_docs_links(files):
     current = None
     if any(u.startswith(C.DOCS_V) for u in broken):
         try:
-            with urllib.request.urlopen(C.DOCS + 'versions.json', timeout=15) as r:
+            req = urllib.request.Request(C.DOCS + 'versions.json', headers=BUILD_UA)
+            with urllib.request.urlopen(req, timeout=15) as r:
                 current = next(v['version'] for v in json.load(r) if 'latest' in v.get('aliases', []))
         except (OSError, ValueError, StopIteration):
             pass
@@ -459,31 +465,41 @@ SOUND_ICON = ('<svg viewBox="0 0 24 24" width="18" height="18" fill="none" strok
               '<path class="on" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"></path></svg>')
 
 
-def clip_tag(name, start):
-    """<video> for a clip made by clips.py; assets/js/clips.js loads and plays it."""
+def snd_button(name):
+    """The button to hear a clip, for a clip with sound (config.CLIPS "audio")."""
+    if not C.CLIPS[name].get('audio'):
+        return ''
+    return f'<button type="button" class="snd" aria-label="Play with sound" aria-pressed="false">{SOUND_ICON}</button>'
+
+
+def clip_tag(name, start, seq=None):
+    """<video> for a clip made by clips.py; assets/js/clips.js loads and plays it. Clips with
+    the same seq take turns, each played once, instead of each looping on its own."""
     c = C.CLIPS[name]
     small = f' data-src-small="/assets/video/{name}-small.mp4"' if c.get('small') else ''
     label = f' aria-label="{esc(c["label"])}"' if c.get('label') else ' aria-hidden="true"'
     # A clip cut without its subtitles carries its lines; clips.js shows them in the .cap.
     caps = f' data-captions="{esc(json.dumps(c["captions"], ensure_ascii=False))}"' if c.get('captions') else ''
     caps += f' data-loop-end="{c["loop_end"]}"' if c.get('loop_end') else ''   # muted, it loops here
-    return (f'<video class="clip" muted loop playsinline preload="none" poster="/assets/video/{name}.jpg" '
+    loop = f' data-seq="{seq}"' if seq else ' loop'
+    return (f'<video class="clip" muted{loop} playsinline preload="none" poster="/assets/video/{name}.jpg" '
             f'data-src="/assets/video/{name}.mp4"{small} data-start="{start}"{label}{caps}></video>' +
             ('<span class="cap" aria-hidden="true"><span></span></span>' if caps else ''))
 
 
 def trailer_clips(body):
-    """The hero picture and the Smart NPCs "Before / With Tryll" pictures become
-    trailer clips (config.CLIPS), each with a button to hear the NPC."""
+    """The hero picture and the Smart NPCs "Before / With Tryll" pictures become trailer
+    clips (config.CLIPS). The Smart NPCs pair takes turns: Before plays, then With Tryll."""
     body, n = re.subn(r'<div class="hv-vid" role="img" aria-label="[^"]*">',
                       lambda m: '<div class="hv-vid has-clip">' + clip_tag('hero', 'load'), body, count=1)
     assert n == 1, 'hero picture not found in index'
-    snd = f'<button type="button" class="snd" aria-label="Play with sound" aria-pressed="false">{SOUND_ICON}</button>'
     body, n = re.subn(r'<div class="ugv pair"><i style="[^"]*">(<span class="bdg">[^<]*</span>)</i>'
                       r'<i style="[^"]*">(<span class="bdg t">[^<]*</span>)</i></div>',
                       lambda m: ('<div class="ugv pair">'
-                                 f'<i class="has-clip">{clip_tag("npc-before", "view")}{m.group(1)}{snd}</i>'
-                                 f'<i class="has-clip">{clip_tag("npc-after", "view")}{m.group(2)}{snd}</i></div>'),
+                                 f'<i class="has-clip">{clip_tag("npc-before", "view", "npc")}{m.group(1)}'
+                                 f'{snd_button("npc-before")}</i>'
+                                 f'<i class="has-clip">{clip_tag("npc-after", "view", "npc")}{m.group(2)}'
+                                 f'{snd_button("npc-after")}</i></div>'),
                       body, count=1)
     assert n == 1, 'Smart NPCs pictures not found in index'
     if not C.TRAILER_URL:   # no trailer link yet: the hero has no "Watch on YouTube"
@@ -540,9 +556,7 @@ def card_pictures(body):
         key = h and html.unescape(h.group(1))
         clip, pic = C.CARD_CLIPS.get(key), C.CARD_PICTURES.get(key)
         if clip:
-            snd = (f'<button type="button" class="snd" aria-label="Play with sound" aria-pressed="false">{SOUND_ICON}'
-                   '</button>') if C.CLIPS[clip].get('audio') else ''
-            tag = f'<div class="ugv has-clip">{clip_tag(clip, "view")}{snd}</div>'
+            tag = f'<div class="ugv has-clip">{clip_tag(clip, "view")}{snd_button(clip)}</div>'
         elif pic:
             url, alt = pic
             tag = f'<div class="ugv" style="background-image: url(&quot;{url}&quot;);" role="img" aria-label="{esc(alt)}"></div>'

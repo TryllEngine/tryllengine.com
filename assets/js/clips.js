@@ -7,6 +7,8 @@
  * Small players (in device pixels) get data-src-small. Clips pause off screen and don't play by
  * themselves with reduced motion or Save-Data. A .snd button next to a clip
  * plays it once from the start with sound, then it goes back to a silent loop.
+ * Clips with the same data-seq (the Smart NPCs pair) take turns instead of looping: each
+ * plays once, then the next one in page order starts, and the last hands back to the first.
  */
 (function () {
     'use strict';
@@ -16,21 +18,44 @@
     var still = (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) ||
         !!(navigator.connection && navigator.connection.saveData);
     var loaded = document.readyState === 'complete';
+    var turn = {};   // data-seq → the clip whose turn it is (at first, the group's first clip)
+    clips.forEach(function (v) {
+        var seq = v.getAttribute('data-seq');
+        if (seq && !turn[seq]) turn[seq] = v;
+    });
+
+    function source(v) {
+        if (v.getAttribute('src')) return;
+        // The small file (640 px wide) when the player is at most ~800 device pixels wide
+        // (phones); high-density screens get the full one, so text in a clip stays sharp.
+        var small = v.getAttribute('data-src-small');
+        var px = v.getBoundingClientRect().width * Math.min(window.devicePixelRatio || 1, 2);
+        v.src = small && px <= 800 ? small : v.getAttribute('data-src');
+    }
 
     function play(v) {
-        if (!v.getAttribute('src')) {
-            // The small file (640 px wide) when the player is at most ~800 device pixels wide
-            // (phones); high-density screens get the full one, so text in a clip stays sharp.
-            var small = v.getAttribute('data-src-small');
-            var px = v.getBoundingClientRect().width * Math.min(window.devicePixelRatio || 1, 2);
-            v.src = small && px <= 800 ? small : v.getAttribute('data-src');
-        }
+        source(v);
         var p = v.play();
         if (p && p.catch) p.catch(function () {});
     }
 
+    // The clip after v in its data-seq group, in page order; the last one hands back to the first.
+    function next(v) {
+        var seq = v.getAttribute('data-seq');
+        var group = clips.filter(function (o) { return o.getAttribute('data-seq') === seq; });
+        return group[(group.indexOf(v) + 1) % group.length];
+    }
+
     function wake(v) {
-        if (!still && v.__seen && (loaded || v.getAttribute('data-start') === 'view')) play(v);
+        var seq = v.getAttribute('data-seq');
+        if (seq && turn[seq] !== v) return;   // not its turn
+        if (still || !v.__seen || !(loaded || v.getAttribute('data-start') === 'view')) return;
+        play(v);
+        var n = seq && next(v);
+        if (n && n !== v && !n.getAttribute('src')) {   // loads while v plays, so it starts at once
+            n.preload = 'auto';
+            source(n);
+        }
     }
 
     function quiet(v) {
@@ -68,7 +93,16 @@
     }
 
     clips.forEach(function (v) {
-        v.addEventListener('ended', function () { quiet(v); });
+        v.addEventListener('ended', function () {
+            var seq = v.getAttribute('data-seq');
+            if (!seq) {
+                quiet(v);
+                return;
+            }
+            var n = turn[seq] = next(v);
+            try { n.currentTime = 0; } catch (err) { /* not loaded yet: starts at 0 anyway */ }
+            wake(n);
+        });
         // data-loop-end: a muted clip loops back from here instead of playing to the end;
         // with sound it plays through.
         var end = parseFloat(v.getAttribute('data-loop-end'));
@@ -97,6 +131,10 @@
         }
         v.addEventListener('play', function () { requestAnimationFrame(tick); });
         v.addEventListener('seeked', update);
+        v.addEventListener('ended', function () {   // a clip waiting for its turn shows no line
+            shown = -1;
+            cap.classList.remove('on');
+        });
     });
 
     document.addEventListener('click', function (e) {

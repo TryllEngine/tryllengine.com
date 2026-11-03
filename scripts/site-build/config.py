@@ -57,6 +57,31 @@ DEMO_ANCHOR = 'demo'   # id of the homepage strip that /demo and the nav point a
 COPY = [
     ('$500k', '$200k'),   # pricing threshold
     ('that allows integrate in-game AI', 'that lets you integrate in-game AI'),   # hero typo
+
+    # /about is the team page: "About" in the nav, "About us" as the heading and
+    # on the section button. The URL stays /about so nothing that links to it
+    # breaks. Both nav entries are the same markup on all eight design pages;
+    # clean() strips the design's data-dc-tpl attributes before COPY runs.
+    ('<a href="about.html">About<',
+     '<a href="about.html">Team<'),
+    ('<a href="about.html" data-on-click="navT">About<',
+     '<a href="about.html" data-on-click="navT">Team<'),
+    ('<h1>About us</h1>', '<h1>Team</h1>'),
+    ('</svg>About us</button>', '</svg>Team</button>'),
+
+    # Alex Riabov: COO, and the party class the team picked for him. Both his
+    # name card and the founder data (const FD in the design logic) carry these,
+    # and COPY is applied to the logic as well, so one entry fixes both.
+    ('"r": "CBO"', '"r": "COO"'),
+    ('Dealmaker', 'Quartermaster'),
+    ('Credited on Diablo IV, Fortnite and many other games.',
+     'Credited on Diablo IV and many other games.'),
+
+    # Daria goes by her full name on the site. The LinkedIn link is looked up by
+    # the aria-label, so PAGE_LINKS['about'] below is keyed to the new one.
+    ('<b>Dasha</b>', '<b>Daria Trush</b>'),
+    ('aria-label="Dasha on LinkedIn"', 'aria-label="Daria Trush on LinkedIn"'),
+    ('<small>Role</small>', '<small>Business Development Manager</small>'),
 ]
 if HUBSPOT['form']:   # the privacy policy names the contact form's processor
     COPY += [
@@ -103,6 +128,25 @@ VIDEO_LISTS = {
 
 # Homepage use-case cards whose picture replaces the design's, keyed by the card's
 # heading: (image, description for screen readers). Images are 16:10, 1152x720.
+# /about photos, keyed by the name on the card. Founders are transparent
+# cutouts, everyone in the Advisors and Team rows is a square. All of them are
+# produced by scripts/team-photos.py, which gives every face the same size:
+# run it whenever a new photo arrives, don't hand-crop.
+TEAM_PHOTOS = {
+    'Sasha Glotov':         '/assets/images/team/sasha-glotov.png',
+    'Vladimir Beliaev':     '/assets/images/team/vladimir-beliaev.png',
+    'Alex Riabov':          '/assets/images/team/alex-riabov.png',
+    'Maksim Makevich':      '/assets/images/team/maksim-makevich.png',
+    'Alexander Stojanovic': '/assets/images/team/alexander-stojanovic.jpg',
+    'Pierre Moisan':        '/assets/images/team/pierre-moisan.jpg',
+    'Gennadii Potapov':     '/assets/images/team/gennadii-potapov.jpg',
+    'Lidia Kozlova':        '/assets/images/team/lidia-kozlova.jpg',
+    'Miloš Petković':       '/assets/images/team/milos-petkovic.jpg',
+    'Nikolay Andreev':      '/assets/images/team/nikolay-andreev.jpg',
+    'Daria Trush':          '/assets/images/team/daria-trush.jpg',
+    'Andrei Morozov':       '/assets/images/team/andrei-morozov.jpg',
+}
+
 CARD_PICTURES = {   # Real Talk shows a clip instead: CARD_CLIPS below CLIPS
     'Dynamic worlds': ('/assets/images/dynamic-worlds.jpg', 'A colony village seen from above'),
     'New genres': ('/assets/images/new-genres.jpg',
@@ -291,7 +335,7 @@ PAGE_LINKS = {
         'Andrei Morozov on LinkedIn': 'https://www.linkedin.com/in/andreymorozov8/',
         'Miloš Petković on LinkedIn': 'https://www.linkedin.com/in/milos-petkovic-109a2098/',
         'Nikolay Andreev on LinkedIn': 'https://www.linkedin.com/in/nikolay-andreev-008802178/',
-        'Dasha on LinkedIn': 'https://www.linkedin.com/in/daria-trush-265a31369/',
+        'Daria Trush on LinkedIn': 'https://www.linkedin.com/in/daria-trush-265a31369/',
     },
     # Replaced by real controls in build.py (subscribe form, pagination).
     'blog': {k: None for k in ('Get updates', 'Previous', 'Next', '1', '2', '3')},

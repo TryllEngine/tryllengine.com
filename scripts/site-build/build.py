@@ -542,6 +542,65 @@ def smooth_logos(body):
     return re.sub(r' data-b-class="L\.k\d+"', '', body)
 
 
+def team_photos(body):
+    """/about photos come from config.TEAM_PHOTOS instead of the design export.
+
+    Founder cards: the design gave each cutout its own inline size — one a bare
+    width, one a width *and* height with object-fit: cover, one nothing at all —
+    and those inline styles override the stylesheet, which is a large part of
+    why the heads came out different sizes. They are dropped so the shared
+    `.rph` rule sizes every card the same way. A founder the design had no
+    photo for gets one inserted next to their initials.
+
+    Advisors and Team: the design leaves `<div class="tmp">` empty for the
+    people whose photo it did not have.
+    """
+    def founder(m):
+        card = m.group(0)
+        name = re.search(r'<span class="nm"><b>([^<]*)</b>', card)
+        url = name and C.TEAM_PHOTOS.get(html.unescape(name.group(1)))
+        if not url:
+            return card
+        tag = f'<img class="rph" src="{url}" alt="">'
+        card, n = re.subn(r'<img[^>]*class="rph"[^>]*>', tag, card, count=1)
+        if not n:
+            card, n = re.subn(r'(<span class="ini"[^>]*>[^<]*</span>)',
+                              lambda i: i.group(1) + tag, card, count=1)
+        if not n:
+            print(f'WARN no place for {name.group(1)}\'s photo on the founder card')
+        return card
+
+    body = re.sub(r'<button[^>]*class="rt[^"]*"[^>]*>.*?</button>', founder, body, flags=re.S)
+
+    def slot(m):
+        after = m.string[m.end():m.end() + 600]
+        name = re.search(r'<b>([^<]*)</b>', after)
+        url = name and C.TEAM_PHOTOS.get(html.unescape(name.group(1)))
+        if not url:
+            return m.group(0)
+        return f'<div class="tmp"><img src="{url}" alt=""></div>'
+
+    return re.sub(r'<div class="tmp">.*?</div>', slot, body, flags=re.S)
+
+
+def founder_logic(logic):
+    """The founder cards re-render from `const FD` in the design logic, so the
+    photos there have to match the ones in the markup (config.TEAM_PHOTOS)."""
+    def fd(m):
+        people = json.loads(m.group(1))
+        for p in people:
+            url = C.TEAM_PHOTOS.get(p.get('n', ''))
+            if url:
+                p['ph'] = url
+            else:
+                p.pop('ph', None)   # no photo: the card falls back to initials
+        return 'const FD = ' + json.dumps(people, ensure_ascii=False) + ';'
+
+    logic, n = re.subn(r'const FD = (\[.*?\]);', fd, logic, count=1, flags=re.S)
+    assert n == 1, 'founder data (const FD) not found in the design logic'
+    return logic
+
+
 def card_pictures(body):
     """Use-case cards get their picture from config.CARD_PICTURES instead of the design,
     or a clip from config.CARD_CLIPS (with a sound button when the clip has sound)."""
@@ -894,6 +953,9 @@ def main():
             scripts.append('/assets/js/blog-list.js')
             ld = [{'@context': 'https://schema.org', '@type': 'Blog', 'name': 'Tryll Engine Blog',
                    'url': C.SITE + '/blog', 'publisher': org_ld()}]
+        if name == 'about':
+            body = team_photos(body)
+            baked.logic = founder_logic(baked.logic)
         if name == 'features':
             body = compact_view(topic_titles(speech_row(body)))
             baked.logic = features_logic(baked.logic)

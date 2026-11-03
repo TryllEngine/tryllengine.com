@@ -23,3 +23,6 @@ hero-flow.html
 hero-typing.html
 # Python bytecode from scripts/site-build
 __pycache__/
+
+# YuNet face model for scripts/team-photos.py (fetch per that script, not vendored)
+scripts/yunet.onnx

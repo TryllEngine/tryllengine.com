@@ -40,7 +40,7 @@ The build prints any links still waiting for a URL.
 
 ### Step 4: Preview
 
-1. `py -3 scripts/site-build/serve.py` (background) — resolves `/pricing` like GitHub Pages does
+1. `py -3 scripts/site-build/serve.py` (background) — resolves `/pricing` like the live site does
 2. Screenshot `http://localhost:8000/pricing` at desktop (1440×900) and mobile (375×812)
 3. Check the console for errors and click through the page's interactive parts
 4. Show the screenshots to the user

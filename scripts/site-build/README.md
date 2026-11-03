@@ -1,6 +1,6 @@
 # Site build
 
-The site is designed in **Claude Design** and published as plain static HTML on GitHub Pages. These scripts turn a design export into the live pages without losing the design's animations, and add everything the design doesn't have: SEO tags, analytics, real forms, link targets and the blog.
+The site is designed in **Claude Design** and published as plain static HTML on Cloudflare Pages. These scripts turn a design export into the live pages without losing the design's animations, and add everything the design doesn't have: SEO tags, analytics, real forms, link targets and the blog.
 
 Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 
@@ -12,9 +12,10 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 | Rebuild after editing `config.py`, a blog post or `posts.json` | `py -3 scripts/site-build/build.py` |
 | Bring in a new design export | `py -3 scripts/site-build/bake.py "C:/path/to/export"` then `build.py` |
 | Publish the team preview | `py -3 scripts/site-build/preview.py --publish` → https://tryllengine.github.io/site-preview/ |
+| Publish the live site | commit and push to `main`, and Cloudflare Pages publishes it. The "Cloudflare Pages" check on the commit links to the build log |
 | Re-cut the trailer clips (hero, Smart NPCs) | edit `CLIPS` in `config.py`, then `py -3 scripts/site-build/clips.py "C:/path/to/Tryll_Main_final.mp4"` (the trailer without its subtitles) and `build.py` (needs ffmpeg) |
 
-`serve.py` resolves URLs the way GitHub Pages does (`/features` → `features.html`, `/blog/posts/x` → `/blog/posts/x/`), so links behave like production. `python -m http.server` does not.
+`serve.py` resolves URLs the way the live site on Cloudflare Pages does (`/features` → `features.html`, `/blog/posts/x` → `/blog/posts/x/`), so links behave like production. `python -m http.server` does not.
 
 ## How it works
 
@@ -26,7 +27,7 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
    - Turns the drawn contact and newsletter forms into real `<form>`s.
    - Writes each page's original design logic to `assets/js/pages/<page>.js`.
    - Generates `blog.html` and every `blog/posts/<slug>/index.html` from `blog/posts.json` and `blog/content/*.md`, then rewrites `sitemap.xml`.
-   - Adds `?v=<content hash>` to every file the pages load (CSS, scripts, pictures, clips), so a deploy reaches browsers at once instead of after GitHub Pages' 10-minute cache. The design's own images in `assets/site/` are named by their content already.
+   - Adds `?v=<content hash>` to every file the pages load (CSS, scripts, pictures, clips), so a deploy reaches browsers at once. Otherwise they would keep the old file for up to 4 hours, the time Cloudflare lets them cache it. The design's own images in `assets/site/` are named by their content already.
 4. In the browser, **assets/js/site.js** (~8 KB) runs that design logic against the static markup. Animations, carousels, menus and toggles behave as in Claude Design, but the HTML is crawlable and there's no React download or page-wide re-render loop.
 
 ## Where things live
@@ -61,7 +62,7 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 
 Hand-written pages from the old design still live at their URLs and are untouched by the build: `tryll-assistant.html`, `boscotryll.html` and `tryll-plugin-alpha.html`.
 
-Retired URLs go in `REDIRECTS` in `config.py`. GitHub Pages can't do server redirects, so the build writes a small noindex page that forwards instantly with a canonical to the new URL, which Google treats as a permanent move. `/closed-beta` → `/download` works this way.
+Retired URLs go in `REDIRECTS` in `config.py`. The build writes a small noindex page that forwards instantly with a canonical to the new URL, which Google treats as a permanent move. Cloudflare Pages could also send real 301s from a `_redirects` file. `/closed-beta` → `/download` works this way.
 
 ## Coming soon
 

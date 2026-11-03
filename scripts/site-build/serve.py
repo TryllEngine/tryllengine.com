@@ -1,4 +1,4 @@
-"""Local preview that resolves URLs like GitHub Pages does.
+"""Local preview that resolves URLs like the live site (Cloudflare Pages) does.
 
     py -3 scripts/site-build/serve.py [port]     ->  http://localhost:8000/
 

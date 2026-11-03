@@ -9,7 +9,7 @@ Scan `assets/` for oversized images, report file sizes, and compress images that
 
 ## Overview
 
-Images in `assets/` are served directly via GitHub Pages with no CDN compression. Large images slow down page loads. This skill scans, reports, and compresses oversized files.
+Images in `assets/` are served as they are: Cloudflare compresses HTML, CSS and scripts, but not images. Large images slow down page loads. This skill scans, reports, and compresses oversized files.
 
 ## Thresholds
 

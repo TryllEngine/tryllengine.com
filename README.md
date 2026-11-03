@@ -1,131 +1,41 @@
-# Tryll Engine Website
+# Tryll Engine website
 
-Official marketing website for Tryll Engine - the AI engine that brings NPCs to life in games without cloud dependencies.
+The marketing site for [Tryll Engine](https://tryllengine.com): on-device AI middleware that gives game characters realistic minds and runs on the player's GPU. It works with Unity, Unreal Engine 5 and proprietary engines.
 
-## 🚀 Overview
+## How the site is made
 
-Tryll Engine enables game developers to integrate intelligent NPCs powered by local language models. This repository contains the marketing website and BoscoTryll showcase mod demonstration.
+The main pages are designed in **Claude Design**. The scripts in [`scripts/site-build/`](scripts/site-build/README.md) turn the design export into plain static HTML. The build keeps the design's animations and adds what the design doesn't have: SEO tags, analytics, real forms, link targets and the blog.
 
-## 🎮 Live Demo
+Most HTML files in this repo are generated, for example `index.html`, `features.html`, `blog/posts/*/index.html` and `sitemap.xml`. Don't edit them by hand. Change the design export, `scripts/site-build/config.py` or the blog sources instead, then rebuild. The [site-build README](scripts/site-build/README.md) lists the generated files and where each setting lives.
 
-Visit [tryllengine.com](https://tryllengine.com) to see:
-- Product features and capabilities
-- BoscoTryll showcase mod for Deep Rock Galactic
-- Pricing and early access information
+## Working on the site
 
-## 📁 Project Structure
-
-```
-TryllEngine.com/
-├── index.html              # Main landing page
-├── boscotryll.html         # BoscoTryll mod showcase page
-├── privacy-policy.html     # Privacy policy
-├── style.css              # Legacy styles (site uses Tailwind CSS)
-├── STYLE_GUIDE.md         # Design system documentation
-├── robots.txt             # SEO crawler rules
-├── sitemap.xml            # Search engine sitemap
-├── CNAME                  # GitHub Pages custom domain
-└── assets/
-    ├── favicon/           # Favicon files
-    ├── logo/              # Brand assets (SVG)
-    └── team_photos/       # Team photos (unused)
-```
-
-## 🛠️ Technology Stack
-
-- **Frontend**: HTML5, Tailwind CSS (via CDN), Vanilla JavaScript
-- **Design**: Glass morphism, dark theme, responsive mobile-first
-- **Hosting**: GitHub Pages
-- **Icons**: Font Awesome 6.4.0
-- **Fonts**: Inter, JetBrains Mono
-
-## 🎨 Key Features
-
-### Marketing Site (index.html)
-- Interactive feature showcase with smooth animations
-- Developer-focused messaging
-- Pricing tiers (Free & Commercial)
-- FAQ section with collapsible items
-- Contact form for early access
-
-### BoscoTryll Showcase (boscotryll.html)
-- Demonstrates Tryll Engine capabilities
-- Installation and customization guides
-- Personality examples for AI companions
-- System requirements and roadmap
-- Alpha community integration
-
-## 🚦 Development
-
-### Local Development
-
-Since this is a static website, simply open files in a browser:
+You only need Python 3, with no extra packages. Baking a new design export also needs Chrome or Edge, and re-cutting the trailer clips needs ffmpeg.
 
 ```bash
-# Direct browser
-open index.html
-
-# Or use any static server
-python -m http.server 8000
-# Visit http://localhost:8000
+py -3 scripts/site-build/serve.py                 # preview at http://localhost:8000
+py -3 scripts/site-build/build.py                 # rebuild pages, blog, sitemap
+py -3 scripts/site-build/bake.py "<export dir>"   # bring in a new Claude Design export, then build
+py -3 scripts/site-build/preview.py --publish     # publish the team preview
 ```
 
-### Making Changes
+`serve.py` resolves URLs the way the live site does: `/features` → `features.html` and `/blog/posts/x` → `/blog/posts/x/`. `python -m http.server` doesn't.
 
-1. Follow the design patterns in `STYLE_GUIDE.md`
-2. Use existing Tailwind classes and custom components
-3. Test on mobile devices (mobile-first approach)
-4. Ensure all animations use the established patterns
+Blog posts are Markdown files in `blog/content/`, listed in `blog/posts.json`.
 
-### Git Workflow
+## Hosting
 
-```bash
-# Stage changes
-git add .
+- **Site:** Cloudflare Pages, connected to this repository. Every push to `main` is published. The pages are built locally with `build.py` and committed, so Cloudflare publishes the files as they are. Each commit's "Cloudflare Pages" check shows its deploy and links to the build log.
+- **DNS:** Cloudflare. `www.tryllengine.com` redirects to `tryllengine.com`.
+- **Docs:** [docs.tryllengine.com](https://docs.tryllengine.com) is a separate Cloudflare Pages project, published from [TryllEngine/docs.tryllengine.com](https://github.com/TryllEngine/docs.tryllengine.com).
+- **Team preview:** a password-protected copy on GitHub Pages at [tryllengine.github.io/site-preview](https://tryllengine.github.io/site-preview/), hidden from search engines. `preview.py --publish` updates it.
 
-# Commit with descriptive message
-git commit -m "Your change description"
+## Legal
 
-# Push to GitHub
-git push origin main
-```
+Tryll Engine is a trademark of Tryll Engine, Inc. Deep Rock Galactic and Bosco are trademarks of Ghost Ship Games ApS. BoscoTryll is an unofficial mod and is not affiliated with Ghost Ship Games.
 
-Changes are automatically deployed via GitHub Pages.
+© 2026 Tryll Engine, Inc. All rights reserved.
 
-## 📝 Content Guidelines
+## Contact
 
-### Brand Voice
-- **Tone**: Professional yet approachable
-- **Audience**: Game developers (studios, indies, modders)
-- **Focus**: Technical capabilities without jargon
-
-### SEO Optimization
-- All pages include meta descriptions and Open Graph tags
-- Structured data for better search visibility
-- Sitemap.xml for search engine discovery
-
-## ⚖️ Legal
-
-### Trademarks
-- Tryll Engine is a trademark of Tryll Engine, Inc.
-- Deep Rock Galactic and Bosco are trademarks of Ghost Ship Games ApS
-- BoscoTryll is an unofficial mod not affiliated with Ghost Ship Games
-
-### License
-© 2025 Tryll Engine, Inc. All rights reserved.
-
-## 🤝 Contributing
-
-This is the official Tryll Engine website. For questions or suggestions:
-- Join our [Discord](https://discord.gg/DTKycjPpzs)
-- Email: Contact through the website form
-
-## 🔗 Links
-
-- **Website**: [tryllengine.com](https://tryllengine.com)
-- **Discord**: [Join Community](https://discord.gg/DTKycjPpzs)
-- **BoscoTryll Mod**: [View Showcase](https://tryllengine.com/boscotryll.html)
-
----
-
-Built with ❤️ by the Tryll Engine team
+Join the [Discord](https://discord.gg/DTKycjPpzs) or use the contact form on [tryllengine.com](https://tryllengine.com/#contact).

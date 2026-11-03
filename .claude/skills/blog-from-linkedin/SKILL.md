@@ -201,7 +201,7 @@ This renders `blog/content/{slug}.md` into the redesign's blog-post layout at `b
 
 ### Step 7: Preview in browser
 
-1. Start the preview server in the background (it resolves URLs like GitHub Pages): `py -3 scripts/site-build/serve.py`
+1. Start the preview server in the background (it resolves URLs like the live site): `py -3 scripts/site-build/serve.py`
 2. Open `http://localhost:8000/blog/posts/{slug}/` and take a screenshot
 3. Open `http://localhost:8000/blog` and screenshot the card in the listing
 4. Show both to the user for approval; on changes, edit the markdown or `posts.json`, rebuild and re-preview

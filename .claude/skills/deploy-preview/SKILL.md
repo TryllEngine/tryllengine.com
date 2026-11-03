@@ -9,7 +9,7 @@ Visual pre-push check. Screenshots all pages locally and on the live site, then 
 
 ## Overview
 
-This skill helps catch visual issues before pushing to GitHub Pages:
+This skill helps catch visual issues before pushing to `main`, which Cloudflare Pages then publishes:
 1. Starts a local dev server
 2. Gets all page URLs from `sitemap.xml`
 3. Takes Playwright screenshots at desktop and mobile widths
@@ -23,7 +23,7 @@ This skill helps catch visual issues before pushing to GitHub Pages:
 ### Step 1: Start local server
 
 ```bash
-py -3 scripts/site-build/serve.py &   # resolves /blog, /features like GitHub Pages
+py -3 scripts/site-build/serve.py &   # resolves /blog, /features like the live site
 ```
 
 ### Step 2: Collect page URLs

@@ -16,7 +16,7 @@ This is a **read-only** operation — no files are modified. It starts a local d
 ### Step 1: Start local server
 
 ```bash
-py -3 scripts/site-build/serve.py &   # resolves /blog, /features like GitHub Pages
+py -3 scripts/site-build/serve.py &   # resolves /blog, /features like the live site
 ```
 
 ### Step 2: Parse sitemap.xml

@@ -358,10 +358,10 @@ def check_docs_links(files):
         write(path, text)
 
 
-# Browsers keep a file from GitHub Pages for 10 minutes, so right after a deploy a new page
-# could meet the old stylesheet, script or clip. Every file the pages load carries a hash of
-# its content (?v=…), which changes only when the file does. The design export's images
-# (assets/site/) are named by their content already.
+# Cloudflare lets browsers keep a stylesheet, script, picture or clip for 4 hours, so right
+# after a deploy a new page could meet the old file. Every file the pages load carries a
+# hash of its content (?v=…), which changes only when the file does. The design export's
+# images (assets/site/) are named by their content already.
 ASSET_URL = re.compile(r'''(?<=["'(;])/assets/(?!site/)[^"'?#()\s\\&]+(?=["')\\&\s])''')
 
 

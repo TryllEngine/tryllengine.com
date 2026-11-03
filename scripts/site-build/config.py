@@ -323,7 +323,7 @@ def placeholder_link(page, key, n):
 
 
 # One entry per design page. "out" is the file written in the repo root;
-# "path" is the canonical URL (GitHub Pages serves /features from features.html).
+# "path" is the canonical URL (Cloudflare Pages serves /features from features.html).
 PAGES = {
     'index': {
         'out': 'index.html', 'path': '/', 'priority': '1.0',
@@ -380,9 +380,9 @@ LEGACY_PAGES = [
     ('/boscotryll', '2025-07-22', '0.5'),
 ]
 
-# Retired URLs. GitHub Pages can't send real redirects, so the build writes a
-# small noindex page per entry that forwards instantly and tells Google where
-# it moved.
+# Retired URLs. The build writes a small noindex page per entry that forwards
+# instantly and tells Google where it moved. (Cloudflare Pages could also send
+# real 301s from a _redirects file.)
 REDIRECTS = {
     '/closed-beta': '/download',   # closed beta ended
 }

@@ -8,7 +8,7 @@
 - [For Developers](https://tryllengine.com/features): features for basic and advanced NPCs, developer tools, performance and memory
 - [Get Tryll Engine](https://tryllengine.com/download): plugins for Unity 6+ and Unreal Engine 5.7+, system requirements, install guides
 - [Demo game: Tryll Colony](https://tryllengine.com/demo): a short scene where you talk your way through and characters react in real time
-- [About](https://tryllengine.com/about): founders and team
+- [Team](https://tryllengine.com/about): founders, team and advisors
 - [Blog](https://tryllengine.com/blog): engineering deep-dives, product updates and event news
 - [Tryll Assistant](https://tryllengine.com/tryll-assistant): free on-device AI game guide overlay on Steam
 - [Documentation](https://docs.tryllengine.com/): API reference, how-to guides, model benchmarks

@@ -47,6 +47,19 @@ COMING_SOON = {
 COPY = [
     ('$500k', '$200k'),   # pricing threshold
     ('that allows integrate in-game AI', 'that lets you integrate in-game AI'),   # hero typo
+    # /about is the Team page: its menu link and heading (the URL stays /about)
+    ('<a href="about.html">About</a>', '<a href="about.html">Team</a>'),
+    ('<a href="about.html" data-on-click="navT">About<svg', '<a href="about.html" data-on-click="navT">Team<svg'),
+    ('<h1>About us</h1>', '<h1>Team</h1>'),
+    # founders, team and advisors
+    ('Vladimir Beliaev', 'Vladimir Belyaev'),
+    ('"r": "CBO"', '"r": "COO"'),   # Alex Riabov
+    ('Dealmaker', 'Quartermaster'),
+    ('Credited on Diablo IV, Fortnite and many other games.', 'Credited on Diablo IV and many other games.'),
+    ('<b>Dasha</b><small>Role</small>', '<b>Daria Trush</b><small>Business development manager</small>'),
+    ('Dasha on LinkedIn', 'Daria Trush on LinkedIn'),
+    ('VP AI R&amp;D at Microsoft.', 'VP at CrowdStrike Cybersecurity Superintelligence Lab. Ex-VP at Microsoft.'),
+    ('. Ported Baldur’s Gate, Stellaris and Crysis', ''),   # Gennadii Potapov, Andrei Morozov, for now
 ]
 if HUBSPOT['form']:   # the privacy policy names the contact form's processor
     COPY += [
@@ -281,7 +294,7 @@ PAGE_LINKS = {
         'Andrei Morozov on LinkedIn': 'https://www.linkedin.com/in/andreymorozov8/',
         'Miloš Petković on LinkedIn': 'https://www.linkedin.com/in/milos-petkovic-109a2098/',
         'Nikolay Andreev on LinkedIn': 'https://www.linkedin.com/in/nikolay-andreev-008802178/',
-        'Dasha on LinkedIn': 'https://www.linkedin.com/in/daria-trush-265a31369/',
+        'Daria Trush on LinkedIn': 'https://www.linkedin.com/in/daria-trush-265a31369/',
     },
     # Replaced by real controls in build.py (subscribe form, pagination).
     'blog': {k: None for k in ('Get updates', 'Previous', 'Next', '1', '2', '3')},
@@ -332,7 +345,7 @@ PAGES = {
     },
     'about': {
         'out': 'about.html', 'path': '/about', 'priority': '0.7',
-        'title': 'About Tryll Engine — The Team Behind On-Device Game AI',
+        'title': 'Tryll Engine Team — The People Behind On-Device Game AI',
         'description': 'Meet the founders and team building Tryll Engine: game developers from '
                        'Playrix, esports and AAA art production, backed by Early Game Ventures and '
                        'Epic MegaGrants.',

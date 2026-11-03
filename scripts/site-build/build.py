@@ -713,6 +713,16 @@ def demo_logic(logic):
     return logic
 
 
+def about_page(body):
+    """/about: the team comes before the advisors (the design has the advisors first)."""
+    adv = re.search(r'<section class="ab mt tm">.*?</section>', body, re.S)
+    team = re.search(r'<section class="ab gd tm"[^>]*>.*?</section>', body, re.S)
+    if not adv or not team or team.start() < adv.start():
+        raise SystemExit('about: advisors and team sections not found in that order')
+    return (body[:adv.start()] + team.group(0) + body[adv.end():team.start()] + adv.group(0)
+            + body[team.end():])
+
+
 def get_started_cta(body):
     """The design's "How to get started" steps end without a button: add the
     pricing card's "Get Tryll Engine" after them, with a still copy of its die."""
@@ -859,6 +869,8 @@ def main():
         if name == 'features':
             body = compact_view(topic_titles(speech_row(body)))
             baked.logic = features_logic(baked.logic)
+        if name == 'about':
+            body = about_page(body)
         if name == 'demo':
             body = demo_page(body)
             baked.logic = demo_logic(baked.logic)

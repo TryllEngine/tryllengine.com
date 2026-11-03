@@ -285,3 +285,24 @@ input.hp { position: absolute !important; left: -9999px !important; width: 1px; 
 .pb .fig img { display: block; width: 100%; height: auto; border-radius: 16px; }
 .pb .video-embed { display: grid; gap: 16px; margin: 40px 0; }
 .pb .video-embed iframe { display: block; width: 100%; aspect-ratio: 16 / 9; height: auto; border: 0; border-radius: 16px; background: #161D29; }
+
+/* /about team and advisor cards from 641 to 1200px: the design lays the name plate over the photo
+   and sizes it by its text, so in these narrower columns the text wraps every few words (narrower
+   still beside the LinkedIn button) and the plate covers most of the face. The design's own phone
+   layout, photo left and text beside it, carries on up to 1200px. The team section's fixed height
+   from the design fits its one desktop row only, and the advisors heading spans no rows here. */
+@media (min-width: 641px) and (max-width: 1200px) {
+    .ab.mt .crs, .ab.gd .crs { grid-template-columns: 1fr !important; gap: 12px; }
+    .ab.mt .crs .tmh { grid-row: auto; }
+    .ab.gd { height: auto !important; }
+    .ab.mt .tmc, .ab.gd .tmc {
+        height: auto !important; min-height: 160px; display: grid; grid-template-columns: 160px minmax(0, 1fr);
+        border-radius: 20px; transform: none !important;
+    }
+    .ab.mt .tmc .tmp, .ab.gd .tmc .tmp { position: relative !important; inset: auto !important; background: #E8EAEE; }
+    .ab.mt .tmc .tmp img, .ab.gd .tmc .tmp img { position: absolute; inset: 0; transform: none !important; }
+    .ab.mt .tmc .tmb, .ab.gd .tmc .tmb {
+        position: static !important; background: none !important; border-radius: 0;
+        padding: 18px 18px 18px 22px; align-items: flex-start;
+    }
+}

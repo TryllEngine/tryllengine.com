@@ -285,3 +285,44 @@ input.hp { position: absolute !important; left: -9999px !important; width: 1px; 
 .pb .fig img { display: block; width: 100%; height: auto; border-radius: 16px; }
 .pb .video-embed { display: grid; gap: 16px; margin: 40px 0; }
 .pb .video-embed iframe { display: block; width: 100%; aspect-ratio: 16 / 9; height: auto; border: 0; border-radius: 16px; background: #161D29; }
+
+/* Advisors and Team cards, between the phone layout and a wide column.
+   The design overlays the name plate on the picture and sizes the plate by its
+   own text, so a narrow column makes it grow upward over the face: measured at
+   roughly four fifths of the photo at 768px and still most of it at 1024px,
+   because the LinkedIn button takes width the text then wraps around. The
+   phone breakpoint (<=640px) already solves it by standing the picture beside
+   the text; this carries that layout up to the width where the overlay has
+   room again (checked at 1280px, where the faces are clear of the plate). */
+@media (min-width: 641px) and (max-width: 1200px) {
+  .ab.mt .crs,
+  .ab.gd .crs { grid-template-columns: 1fr !important; gap: 12px; }
+
+  .ab.mt .tmc,
+  .ab.gd .tmc {
+    height: auto !important;
+    min-height: 160px;
+    display: grid;
+    grid-template-columns: 160px minmax(0, 1fr);
+    border-radius: 20px;
+    transform: none !important;
+  }
+
+  .ab.mt .tmc .tmp,
+  .ab.gd .tmc .tmp {
+    position: relative !important;
+    inset: auto !important;
+    background: #E8EAEE;
+  }
+  .ab.mt .tmc .tmp img,
+  .ab.gd .tmc .tmp img { position: absolute; inset: 0; transform: none !important; }
+
+  .ab.mt .tmc .tmb,
+  .ab.gd .tmc .tmb {
+    position: static !important;
+    background: none !important;
+    border-radius: 0;
+    padding: 18px 18px 18px 22px;
+    align-items: flex-start;
+  }
+}

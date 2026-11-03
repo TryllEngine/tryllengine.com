@@ -82,6 +82,9 @@ COPY = [
     ('<b>Dasha</b>', '<b>Daria Trush</b>'),
     ('aria-label="Dasha on LinkedIn"', 'aria-label="Daria Trush on LinkedIn"'),
     ('<small>Role</small>', '<small>Business Development Manager</small>'),
+    ('VP AI R&amp;D at Microsoft. Ex-CTO AI &amp; ML at Oracle, Cisco and eBay',
+     'SVP at CrowdStrike Cybersecurity Superintelligence Lab. Ex-VP at Microsoft, '
+     'ex-CTO AI &amp; ML at Oracle, Cisco and eBay'),
 ]
 if HUBSPOT['form']:   # the privacy policy names the contact form's processor
     COPY += [

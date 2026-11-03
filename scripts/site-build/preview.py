@@ -5,7 +5,8 @@
 
 The preview is a copy of the built site that:
   - shows the download buttons as designed, even while the live site says
-    "Coming soon" (config.DOWNLOADS_LIVE),
+    "Coming soon" (config.DOWNLOADS_LIVE), and builds the demo page even while
+    the live site hides it (config.DEMO_LIVE),
   - drops Google Tag Manager and the cookie banner (no analytics),
   - marks every page noindex, nofollow,
   - asks for a team password before showing anything (a screen, not real
@@ -167,7 +168,7 @@ def main():
     if a.password:
         print(f'password hash (put in config.PREVIEW to keep it): {pw_hash}')
     build = [sys.executable, os.path.join(HERE, 'build.py')]
-    subprocess.run(build + ['--downloads-live'], check=True)
+    subprocess.run(build + ['--downloads-live', '--demo-live'], check=True)
     try:
         n = build_preview(a.out, C.PREVIEW['base'], pw_hash)
     finally:

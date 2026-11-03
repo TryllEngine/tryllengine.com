@@ -14,6 +14,7 @@ copy, real link targets for the design's placeholder links, form
 endpoints. No third-party packages needed:  py -3 scripts/site-build/build.py
 
     --downloads-live   build as if config.DOWNLOADS_LIVE were True (preview.py)
+    --demo-live        build as if config.DEMO_LIVE were True (preview.py)
 """
 import glob
 import hashlib
@@ -117,6 +118,10 @@ INTERNAL = {
     'privacy.html': '/privacy-policy',
 }
 
+# Set in main() from config.DEMO_LIVE. While it is off the demo page is not
+# built, so every link to it goes to the homepage's strip instead.
+demo_live = True
+
 
 def link_text(inner):
     t = re.sub(r'<svg\b.*?</svg>', ' ', inner, flags=re.S)
@@ -128,6 +133,11 @@ def rewrite_links(page, body):
     def internal(m):
         href = m.group(1)
         base, _, frag = href.partition('#')
+        if base == 'demo.html' and not demo_live:
+            # Same shape as the design's own section links: bare on the page
+            # that holds the strip, rooted everywhere else.
+            prefix = '#' if page == 'index' else '/#'
+            return f'href="{prefix}{C.DEMO_ANCHOR}"'
         if base in INTERNAL:
             url = INTERNAL[base]
             if frag:
@@ -625,6 +635,30 @@ def speech_row(body):
     return body
 
 
+def demo_strip(body, live):
+    """The homepage's "Try our demo game" strip.
+
+    It carries the anchor the nav scrolls to (config.DEMO_ANCHOR). While the
+    demo page is not published (config.DEMO_LIVE) its "Play the demo" button
+    becomes "Coming soon" and leads to the newsletter signup, like the download
+    buttons do."""
+    body, n = re.subn(r'<div class="demo">', f'<div class="demo" id="{C.DEMO_ANCHOR}">',
+                      body, count=1)
+    assert n == 1, 'homepage demo strip not found'
+    if live:
+        return body
+
+    def button(m):
+        tag, inner = m.group(1), m.group(2)
+        tag = re.sub(r'href="[^"]*"', f'href="{C.COMING_SOON["href"]}"', tag)
+        return tag + inner.replace('Play the demo', esc(C.COMING_SOON['cta']), 1) + '</a>'
+
+    body, n = re.subn(r'(<a class="cta w"[^>]*>)(Play the demo.*?)</a>',
+                      button, body, count=1, flags=re.S)
+    assert n == 1, 'homepage "Play the demo" button not found'
+    return body
+
+
 def demo_page(body):
     """/demo: the gallery shows config.DEMO_SHOTS, the tags in config.DEMO_DROP_TAGS are left
     out, and "About this game" (config.DEMO_ABOUT, Markdown) comes before the system
@@ -826,12 +860,15 @@ def org_ld():
 
 
 def main():
+    global demo_live
     downloads = C.DOWNLOADS_LIVE or '--downloads-live' in sys.argv[1:]
+    demo_live = C.DEMO_LIVE or '--demo-live' in sys.argv[1:]
+    pages = {k: v for k, v in C.PAGES.items() if k != 'demo' or demo_live}
     posts = load_posts()
     out_pages = []
     html_files = []   # pages and posts written, for the docs link check
 
-    for name, meta in C.PAGES.items():
+    for name, meta in pages.items():
         if not downloads and 'description_soon' in meta:
             meta = dict(meta, description=meta['description_soon'])
         baked = Baked(name).clean()
@@ -839,6 +876,7 @@ def main():
         scripts = ['/assets/js/forms.js']
         ld = []
         if name == 'index':
+            body = demo_strip(body, demo_live)
             body = contact_form(body)
             body = get_started_cta(body)
             body = trailer_clips(body)
@@ -901,7 +939,10 @@ def main():
 
     # Retired URLs: an instant meta refresh, which Google treats as a permanent
     # redirect, plus a canonical to the new page. Noindex, not in the sitemap.
-    for old, new in C.REDIRECTS.items():
+    redirects = dict(C.REDIRECTS)
+    if not demo_live:   # the page is not built; keep its URL working
+        redirects[C.PAGES['demo']['path']] = '/#' + C.DEMO_ANCHOR
+    for old, new in redirects.items():
         write(os.path.join(ROOT, old.strip('/') + '.html'), (
             '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
             f'<title>Moved — Tryll Engine</title>\n'
@@ -913,7 +954,7 @@ def main():
             '</body>\n</html>\n'))
 
     # Sitemap: new pages, kept legacy pages, then posts (newest first).
-    urls = out_pages[:len(C.PAGES)] + [(p, d, pr) for p, d, pr in C.LEGACY_PAGES] + out_pages[len(C.PAGES):]
+    urls = out_pages[:len(pages)] + [(p, d, pr) for p, d, pr in C.LEGACY_PAGES] + out_pages[len(pages):]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for path, mod, pr in urls:
@@ -927,6 +968,9 @@ def main():
             print(f'WARN COPY: "{old}" is no longer in the design; remove it from config.py')
     if not downloads:
         print(f'downloads not live: download buttons say "Coming soon" and lead to {C.COMING_SOON["href"]}')
+    if not demo_live:
+        print(f'demo page not live: /demo and the nav\'s "Demo" link go to the '
+              f'homepage strip, "Play the demo" leads to {C.COMING_SOON["href"]}')
     if not C.HUBSPOT['form']:
         print("contact form posts to Formspree until config.HUBSPOT['form'] is set")
     check_docs_links(html_files)

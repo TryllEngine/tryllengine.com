@@ -42,6 +42,16 @@ COMING_SOON = {
     'href': '/blog#subscribe',
 }
 
+# The demo game's own page (/demo, Tryll Colony) is not public yet. While this
+# is False the page is not built, /demo forwards to the homepage's demo strip,
+# the nav's "Demo" link scrolls to that strip instead of opening a page, and
+# its "Play the demo" button says "Coming soon" and leads to the newsletter
+# signup. preview.py builds the page as designed, so the team can still review
+# it. To publish it: set this to True, fill in the store links in
+# PAGE_LINKS['demo'], and run build.py.
+DEMO_LIVE = False
+DEMO_ANCHOR = 'demo'   # id of the homepage strip that /demo and the nav point at
+
 # Wording changed since the design export, swapped in on every design page:
 # (text in the design, text on the site). Drop an entry once the design has it.
 COPY = [

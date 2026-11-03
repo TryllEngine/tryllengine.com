@@ -43,6 +43,7 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge, `clips.
 | Wording changed since the design export (e.g. the $200k pricing threshold) | `COPY` in `config.py`: applied to every design page; the build warns when an entry no longer matches |
 | Media logos → coverage articles | `MEDIA_LINKS` in `config.py`, keyed by the logo's alt text |
 | "What clients are saying" cards: studio, person, quote (an empty list hides the section) | `CLIENT_QUOTES` in `config.py` |
+| …their carousel: on tablets and phones each card is as tall as its quote and the carousel fits the cards in view; quotes 18px on desktop | `assets/css/site.css`, `assets/js/quotes.js` |
 | /demo: gallery screenshots and the "About this game" text | `DEMO_SHOTS` in `config.py` (images in `assets/images/demo/`, 1600×900 plus a 400×225 `-thumb`), `demo-about.md` here |
 | Docs links: deep links follow the docs' `latest`, so a docs release needs no change here | `DOCS_V` in `config.py`; the build checks every docs page opens, and links one that `latest` lacks to the version behind `latest` until it has it |
 | /features "Faster than speech": the row for how fast people talk | `SPEECH_ROW` in `config.py` |

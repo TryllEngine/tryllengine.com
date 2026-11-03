@@ -30,6 +30,7 @@ The main pages are designed in **Claude Design** and turned into static HTML by 
 │   ├── js/forms.js           # contact (HubSpot, or Formspree until config.HUBSPOT is set) + newsletter (MailerLite)
 │   ├── js/clips.js           # trailer clips: lazy load, pause off screen, sound buttons
 │   ├── js/marquee.js         # media logos highlight (the row scrolls via CSS)
+│   ├── js/quotes.js          # client quotes carousel: as tall as the cards in view (tablets, phones)
 │   ├── video/                # trailer clips + posters, cut by scripts/site-build/clips.py
 │   ├── js/blog-list.js       # blog topic chips + pagination
 │   ├── js/cookie-consent.js  # cookie banner + Google Consent Mode v2

@@ -1015,7 +1015,7 @@ def main():
             body = card_pictures(body)
             body = client_quotes(body)
             body = media_links(smooth_logos(body))
-            scripts += ['/assets/js/clips.js', '/assets/js/marquee.js']
+            scripts += ['/assets/js/clips.js', '/assets/js/marquee.js', '/assets/js/quotes.js']
             ld = [org_ld(), C.SOFTWARE_LD,
                   {'@context': 'https://schema.org', '@type': 'WebSite', 'name': 'Tryll Engine',
                    'url': C.SITE + '/'}]

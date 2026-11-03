@@ -253,6 +253,16 @@ input.hp { position: absolute !important; left: -9999px !important; width: 1px; 
 .pg .cls .shot.pic img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .pg .cls .card h3 a, .pg .cls .card .m a { color: inherit; text-decoration: none; }
 .pg .cls .card h3 a:hover, .pg .cls .card .m a:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* On tablets and phones the carousel shows one or two cards at a time. The design stretched every
+   card to the longest quote, so a short one sat above a large empty card: each card is as tall as
+   its own quote now, and assets/js/quotes.js fits the carousel to the cards in view. On desktop the
+   three cards share a row at the height of the longest, with the quotes a step smaller. */
+@media (max-width: 1100px) {
+    .pg .cls .track { align-items: flex-start; }
+    .pg .cls .vclip { transition: height .3s ease; }
+}
+@media (max-width: 1100px) and (prefers-reduced-motion: reduce) { .pg .cls .vclip { transition: none; } }
+@media (min-width: 1101px) { .pg .cls .card .q { font-size: 18px; line-height: 1.5; } }
 
 /* Without the client quotes (config.CLIENT_QUOTES), "Media about us" opens its section: drop
    the design's double gap that kept it apart from the quote carousel. */

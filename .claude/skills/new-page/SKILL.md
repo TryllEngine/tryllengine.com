@@ -34,6 +34,7 @@ Ask the user for the updated Claude Design export folder (the one with `index.ht
 ```bash
 py -3 scripts/site-build/bake.py "C:/path/to/design-export"
 py -3 scripts/site-build/build.py
+py -3 scripts/site-build/images.py   # lighter WebP copies of new pictures (needs Pillow); rebuilds
 ```
 
 The build prints any links still waiting for a URL.

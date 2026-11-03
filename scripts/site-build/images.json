@@ -1,0 +1,637 @@
+{
+ "assets/blog/600k-from-early-game-ventures-cover.jpg": {
+  "sha1": "00ab20547537049953963a6bbe86f39aee33a120",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/600k-from-early-game-ventures-inline-1.jpg": {
+  "sha1": "098df6d7231562307b9f6aed8dfa1ee173d287ac",
+  "webp": "assets/blog/600k-from-early-game-ventures-inline-1.webp",
+  "quality": 60
+ },
+ "assets/blog/ai-companions-accessibility-cover.jpg": {
+  "sha1": "bd486aed12eba35be1d42d381ecc42ac3ec4f799",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/ai-companions-accessibility-inline-1.jpg": {
+  "sha1": "37bd61b2061c3837fed14cb9616ab2b005e34f82",
+  "webp": "assets/blog/ai-companions-accessibility-inline-1.webp",
+  "quality": 60
+ },
+ "assets/blog/back-from-chinajoy-2026-cover.jpg": {
+  "sha1": "48bc0ddbe7533573245d41af5e82f5ea5d81775c",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/back-from-chinajoy-2026-inline-1.jpg": {
+  "sha1": "71231af252daacc6e8cb8f082ab24832447a69e7",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/back-from-chinajoy-2026-inline-2.jpg": {
+  "sha1": "814f56e18311aa2c6d23f6123ee950859c8172ed",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/back-from-gdc-2026-cover.jpg": {
+  "sha1": "6a5b79a90c8df40c2a28aee53f778a62460f5137",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/back-from-gdc-2026-inline-1.jpg": {
+  "sha1": "ab74c84fdd9e8a6045730f17326f7f8d3a074acd",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/back-from-gdc-2026-inline-2.jpg": {
+  "sha1": "0f9a433a6a2f33454a2e682684f9d10a2040d546",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/back-from-gdc-2026-inline-3.jpg": {
+  "sha1": "ba4c8ed4c32df109714b5cef1a5b04b428899178",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/back-from-tokyo-game-show-2026-cover.jpg": {
+  "sha1": "bf3c07b85bcb73796d552aca6f8241712e5d593d",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/back-from-tokyo-game-show-2026-inline-1.jpg": {
+  "sha1": "37b9803d09e3cecae11d6b6cece3197cae5df09c",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/back-from-tokyo-game-show-2026-inline-2.jpg": {
+  "sha1": "8f33dc3c3dd6aba5bf01db13c34740270053e0b8",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/back-from-tokyo-game-show-2026-inline-3.jpg": {
+  "sha1": "0bcfd32ac4d0ed7ae6769ce6b3c7c7968b63f89f",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/beta-launch-illogika-cover.jpg": {
+  "sha1": "a73f912e73cf5669fcd66b8978b0bb64eaed169d",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/beta-launch-illogika-inline-1.jpg": {
+  "sha1": "3ab28c6b36a16b29b326b97828b80a62944fe5d4",
+  "webp": "assets/blog/beta-launch-illogika-inline-1.webp",
+  "quality": 60
+ },
+ "assets/blog/closed-alpha-egv-funding-cover.jpg": {
+  "sha1": "d667c52931e82bf436f9ce5100c41d99a048cc43",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/closed-alpha-egv-funding-inline-1.jpg": {
+  "sha1": "fc832ec661da0c86d765f249fa7a92a299b8b8ee",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/cloud-ai-off-switch-cover.png": {
+  "sha1": "ed93d6505d125e404175690874d650aec4b91c53",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/cloud-ai-off-switch-inline-1.jpg": {
+  "sha1": "ce526b2bdfe57c59ca30e61a9e17bcb59c7d47c5",
+  "webp": "assets/blog/cloud-ai-off-switch-inline-1.webp",
+  "quality": 84
+ },
+ "assets/blog/developer-talk-1-murder-mystery-cover.jpg": {
+  "sha1": "768b148d8bc54e534e0c1d63732fdba15e914e7c",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/developer-talk-2-stability-optimization-accessibility-cover.jpg": {
+  "sha1": "464697a51bba5454d21cd1f1a4fd3e2ddf2c28bd",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/epic-megagrant-from-unreal-engine-cover.jpg": {
+  "sha1": "90d0b2697c7f68afb8dddf3a7831b7525f6312ef",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/epic-megagrant-from-unreal-engine-inline.png": {
+  "sha1": "540bea918d4ecb6782dabc5e0da670102f6e26ae",
+  "webp": "assets/blog/epic-megagrant-from-unreal-engine-inline.webp",
+  "quality": 60
+ },
+ "assets/blog/future-belongs-to-the-punks-cover.jpg": {
+  "sha1": "a2abdf8bd9f6d0fac844bd32d6590c33b128bb00",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/future-belongs-to-the-punks-inline-1.jpg": {
+  "sha1": "cfe7ad994927bdd551365b409cad19171c038262",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/games-where-ai-drives-mechanics-cover.jpg": {
+  "sha1": "c979d8a5e8774bafdf99482c8d6d87e65a3cd3da",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/how-we-catch-prompt-injections-and-hallucinations-cover.jpg": {
+  "sha1": "df1123b29a4bc8cfdaef468d0bcfcfddf00f13a1",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/how-we-catch-prompt-injections-and-hallucinations-inline.png": {
+  "sha1": "3f31cc57b5469f8a35cff3ca23a9b1fa909eb76d",
+  "webp": "assets/blog/how-we-catch-prompt-injections-and-hallucinations-inline.webp",
+  "quality": 60
+ },
+ "assets/blog/interrogation-catching-a-lie-cover.png": {
+  "sha1": "948c71f386d34ca2710be096f3f136321a2be226",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/interrogation-catching-a-lie-inline-1.jpg": {
+  "sha1": "5ca3f92ddc75a9509dbc52adbfe57dfa608461bf",
+  "webp": "assets/blog/interrogation-catching-a-lie-inline-1.webp",
+  "quality": 90
+ },
+ "assets/blog/nvidia-ace-webinar-cover.png": {
+  "sha1": "c254a0aceb7851b63bbc26b4af65287a2df6fcef",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/nvidia-ace-webinar-inline-1.jpg": {
+  "sha1": "f65cf7964dbaf78d734fa1962c2c65affefa3e85",
+  "webp": "assets/blog/nvidia-ace-webinar-inline-1.webp",
+  "quality": 80
+ },
+ "assets/blog/tryll-assistant-live-on-steam-cover.jpg": {
+  "sha1": "4f7505993a8c5e7a235adabfe1c9f562448dbe54",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/tryll-assistant-live-on-steam-inline.png": {
+  "sha1": "edf7f96104d4b3723cf941569b1784a37e964e26",
+  "webp": "assets/blog/tryll-assistant-live-on-steam-inline.webp",
+  "quality": 60
+ },
+ "assets/blog/tryll-assistant-v0-0-10-cover.jpg": {
+  "sha1": "b05a655b5d777bce88d4cdd1aa70b0cdb8b8a83f",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/tryll-assistant-v0-0-10-inline-1.jpg": {
+  "sha1": "311133357422e49f9800556fedf79bc625e788af",
+  "webp": "assets/blog/tryll-assistant-v0-0-10-inline-1.webp",
+  "quality": 60
+ },
+ "assets/blog/tryll-assistant-v0-0-8-cuda-hip-support-cover.jpg": {
+  "sha1": "c77785ce870b9c4df7b69a91136b1a0ca8b81371",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/tryll-assistant-v0-0-8-cuda-hip-support-inline-1.jpeg": {
+  "sha1": "ebfe8168a65a4e60bf8ad9d75bfc8c8486cd52cb",
+  "webp": "assets/blog/tryll-assistant-v0-0-8-cuda-hip-support-inline-1.webp",
+  "quality": 60
+ },
+ "assets/blog/tryll-at-chinajoy-cover.jpg": {
+  "sha1": "a12c8d06de4233c8be1f97ae8657501f2960d45a",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/tryll-at-chinajoy-inline-1.jpg": {
+  "sha1": "644c9d653cd27b38459a04d7dfde8e1d0957a8d8",
+  "webp": "assets/blog/tryll-at-chinajoy-inline-1.webp",
+  "quality": 60
+ },
+ "assets/blog/tryll-at-gamescom-2026-cover.jpg": {
+  "sha1": "579f4cf09d1df876000890b9bf7b27bf7658ef88",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/tryll-at-gamescom-2026-inline-1.jpg": {
+  "sha1": "1ce49212db4590b962cd3c583281ac2f097f6531",
+  "webp": "assets/blog/tryll-at-gamescom-2026-inline-1.webp",
+  "quality": 85
+ },
+ "assets/blog/tryll-at-saga-barcelona-game-fest-cover.jpg": {
+  "sha1": "5ddafa480a68bb7d610ba874eec36ed057ab4220",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/tryll-at-saga-barcelona-game-fest-inline-1.jpg": {
+  "sha1": "33e5e6feddf7e38bed84eb47af2122810814fbe2",
+  "webp": "assets/blog/tryll-at-saga-barcelona-game-fest-inline-1.webp",
+  "quality": 66
+ },
+ "assets/blog/tryll-at-tokyo-game-show-2026-cover.jpg": {
+  "sha1": "650da69c96a48756309c64a9e46807eb720ff82b",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/tryll-at-tokyo-game-show-2026-inline-1.jpg": {
+  "sha1": "7038cb5fc3e02da23235107fbd6973a787f973ec",
+  "webp": "assets/blog/tryll-at-tokyo-game-show-2026-inline-1.webp",
+  "quality": 74
+ },
+ "assets/blog/tryll-at-wn-yerevan-2026-cover.jpg": {
+  "sha1": "330ab3654e2be6e00e95db8822a730c1424430d0",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/tryll-at-wn-yerevan-2026-inline-1.jpg": {
+  "sha1": "12e2275060c50a6c5f6a065fe0d0b6e3507f17fb",
+  "webp": "assets/blog/tryll-at-wn-yerevan-2026-inline-1.webp",
+  "quality": 81
+ },
+ "assets/blog/tryll-engine-at-gdc-2026-cover.jpg": {
+  "sha1": "16fe47bd57922249f1d10bb75554c28e7d01d93b",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/tryll-engine-at-gdc-2026-inline-1.jpg": {
+  "sha1": "ea72b9958fc86052a95f852b258973f72fc57d4b",
+  "webp": "assets/blog/tryll-engine-at-gdc-2026-inline-1.webp",
+  "quality": 81
+ },
+ "assets/blog/tryll-executive-terrace-gathering-cover.jpg": {
+  "sha1": "e941dda3f96ecf6fd3f7a50980ef608407e5ddef",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/tryll-in-media-cover.jpg": {
+  "sha1": "656930a10bc8a34c395a61451a4f29d5e8a6245e",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/tryll-in-media-inline-1.jpg": {
+  "sha1": "c8db2da29275eba11aeb63efa68d61a5e1fad607",
+  "webp": "assets/blog/tryll-in-media-inline-1.webp",
+  "quality": 60
+ },
+ "assets/blog/welcome-alexander-stojanovic-as-advisor-cover.jpg": {
+  "sha1": "a7accbbc7efbe0258f49ab2ca88c01b2038a0df6",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/welcome-alexander-stojanovic-as-advisor-inline-1.jpg": {
+  "sha1": "1708da339d3e791ba0da12a2c6829e206d10c2e9",
+  "webp": "assets/blog/welcome-alexander-stojanovic-as-advisor-inline-1.webp",
+  "quality": 64
+ },
+ "assets/blog/welcome-daria-trush-cover.jpg": {
+  "sha1": "1b71dd0f3c87270f401f70eb06f3c89390c7e8fe",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/welcome-daria-trush-inline-1.jpg": {
+  "sha1": "b8e4d62ebd4968387c1e3e771f0442793052ad4d",
+  "webp": "assets/blog/welcome-daria-trush-inline-1.webp",
+  "quality": 67
+ },
+ "assets/blog/welcome-milos-petkovic-cover.jpg": {
+  "sha1": "951bd383240aa3002d20b79932ed813c9af7a27a",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/welcome-milos-petkovic-inline-1.png": {
+  "sha1": "474a35ce099640002303ae554c0855a0bf26de04",
+  "webp": "assets/blog/welcome-milos-petkovic-inline-1.webp",
+  "quality": 79
+ },
+ "assets/blog/welcome-nikolay-andreev-cover.jpg": {
+  "sha1": "c3102e27a3c78b9ab3734cd1d16a271dc6d16f02",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/welcome-nikolay-andreev-inline-1.png": {
+  "sha1": "648f95f8d3090c167a3f15b5441a998422f2a312",
+  "webp": "assets/blog/welcome-nikolay-andreev-inline-1.webp",
+  "quality": 70
+ },
+ "assets/blog/welcome-pierre-moisan-cover.jpg": {
+  "sha1": "176a7dedc1338c6805ac69a25cf540e6fe859ddf",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/welcome-pierre-moisan-inline-1.jpg": {
+  "sha1": "c6ba4b73b579a4f5281d7eaffd7b2e7899040427",
+  "webp": "assets/blog/welcome-pierre-moisan-inline-1.webp",
+  "quality": 70
+ },
+ "assets/blog/welcome-vladimir-belyaev-as-cto-cover.jpg": {
+  "sha1": "ebdffb45317ac2203492fe4a7d04472446f66b24",
+  "webp": null,
+  "quality": null
+ },
+ "assets/blog/welcome-vladimir-belyaev-as-cto-inline.png": {
+  "sha1": "f5131e687171180c5d373164bad8becb63181cdd",
+  "webp": "assets/blog/welcome-vladimir-belyaev-as-cto-inline.webp",
+  "quality": 79
+ },
+ "assets/images/clients/gungrounds.jpg": {
+  "sha1": "c18a15d066c4466303ae239a090dd79add470a7f",
+  "webp": "assets/images/clients/gungrounds.webp",
+  "quality": 87
+ },
+ "assets/images/clients/illogika.jpg": {
+  "sha1": "9aec8fc024ac34eba03eb30cb8819446711f1250",
+  "webp": "assets/images/clients/illogika.webp",
+  "quality": 60
+ },
+ "assets/images/clients/voice-heist.jpg": {
+  "sha1": "a067865cdf7436f781bf4a16469efb8ea2c87cee",
+  "webp": "assets/images/clients/voice-heist.webp",
+  "quality": 88
+ },
+ "assets/images/demo/settler-stats-thumb.jpg": {
+  "sha1": "7328fb5ebffd5d5835d1506bc6de1923d1fd86be",
+  "webp": null,
+  "quality": null
+ },
+ "assets/images/demo/settler-stats.jpg": {
+  "sha1": "6da0f3866721982e2a5dc49546ba848b44722b38",
+  "webp": null,
+  "quality": null
+ },
+ "assets/images/demo/tavern-talk-thumb.jpg": {
+  "sha1": "ecb9405792d4fe2f2958f8416e7ea8f3efe60476",
+  "webp": null,
+  "quality": null
+ },
+ "assets/images/demo/tavern-talk.jpg": {
+  "sha1": "27bcc1e5c37c7f1fdfd8161f83defbedb1842c7f",
+  "webp": null,
+  "quality": null
+ },
+ "assets/images/demo/trade-talk-thumb.jpg": {
+  "sha1": "8e26195f31b46d0ad259c2e2b45bd0fa29c0f0e6",
+  "webp": null,
+  "quality": null
+ },
+ "assets/images/demo/trade-talk.jpg": {
+  "sha1": "0d539bc3a4036fbf3db41e69d449833540e3fd6a",
+  "webp": null,
+  "quality": null
+ },
+ "assets/images/demo/village-day-thumb.jpg": {
+  "sha1": "66530c6bb51bf504427077653a449df8d73490e5",
+  "webp": null,
+  "quality": null
+ },
+ "assets/images/demo/village-day.jpg": {
+  "sha1": "61055b50fa2d01e1c2d9a2d341863a4f5185e1d0",
+  "webp": null,
+  "quality": null
+ },
+ "assets/images/demo/village-night-thumb.jpg": {
+  "sha1": "a339552b0895ba0aac1e1fc18bff6aaf1d59e05c",
+  "webp": null,
+  "quality": null
+ },
+ "assets/images/demo/village-night.jpg": {
+  "sha1": "cceec75b0fcb027aa5a91fcf925368c53a665433",
+  "webp": null,
+  "quality": null
+ },
+ "assets/images/demo/work-schedule-thumb.jpg": {
+  "sha1": "687e9e6312a4789e822e827179bb2b0beba98e8b",
+  "webp": null,
+  "quality": null
+ },
+ "assets/images/demo/work-schedule.jpg": {
+  "sha1": "b91d4dfb5d1a6efeb8e7ee7a0870923242237d9c",
+  "webp": null,
+  "quality": null
+ },
+ "assets/images/dynamic-worlds.jpg": {
+  "sha1": "668c0c67d3e6aa9f8884683c9c110e3e9295e247",
+  "webp": null,
+  "quality": null
+ },
+ "assets/images/new-genres.jpg": {
+  "sha1": "6e8f852b67a1eafaa973ffc7fe49ed1715d802b0",
+  "webp": "assets/images/new-genres.webp",
+  "quality": 72
+ },
+ "assets/images/videos/6kWWgV-6BZo.jpg": {
+  "sha1": "0df6918e14bdb9a237e949133267af52c2e277a3",
+  "webp": "assets/images/videos/6kWWgV-6BZo.webp",
+  "quality": 60
+ },
+ "assets/images/videos/6r85hTAEybQ.jpg": {
+  "sha1": "47fb13d2c1ef3dde7908d63245c1ca59b8a55503",
+  "webp": "assets/images/videos/6r85hTAEybQ.webp",
+  "quality": 60
+ },
+ "assets/images/videos/CCOVxDNkvpc.jpg": {
+  "sha1": "fa75c60cc2442105d3611e401fabe1de72b807f2",
+  "webp": "assets/images/videos/CCOVxDNkvpc.webp",
+  "quality": 60
+ },
+ "assets/images/videos/_yAfJ3A2lNk.jpg": {
+  "sha1": "b8c075a574459aa193dd45f4f4a3c7cdddc20e0e",
+  "webp": "assets/images/videos/_yAfJ3A2lNk.webp",
+  "quality": 87
+ },
+ "assets/images/videos/aPr5C8NP30o.jpg": {
+  "sha1": "f438022ddf90fa504151c349fb8fafb15ae6b515",
+  "webp": "assets/images/videos/aPr5C8NP30o.webp",
+  "quality": 60
+ },
+ "assets/images/videos/e4djfzmjy3w.jpg": {
+  "sha1": "7be642f8fe55608f5e3ef1e7436301c7def68f09",
+  "webp": "assets/images/videos/e4djfzmjy3w.webp",
+  "quality": 60
+ },
+ "assets/images/videos/gQlC57ahfpc.jpg": {
+  "sha1": "663e741220b29c31c3783698e86edabcd55c5284",
+  "webp": "assets/images/videos/gQlC57ahfpc.webp",
+  "quality": 60
+ },
+ "assets/site/0279e7b780c19ef4e8e951774eda01d5.jpg": {
+  "sha1": "ee0bd17ffab7dff6b3f7de80c6fa5eaf5bd0cdd9",
+  "webp": "assets/site/0279e7b780c19ef4e8e951774eda01d5.webp",
+  "quality": 60
+ },
+ "assets/site/02c95f13c32324fd0eabb11a6abd7690.jpg": {
+  "sha1": "cfc7e52272cdb2ff48c77b5c1b2068d6506013c1",
+  "webp": "assets/site/02c95f13c32324fd0eabb11a6abd7690.webp",
+  "quality": 60
+ },
+ "assets/site/05cc018f64c4972d9e843af785d90370.jpg": {
+  "sha1": "0b4084af010ee255440e20c2775e2e136cb5100a",
+  "webp": "assets/site/05cc018f64c4972d9e843af785d90370.webp",
+  "quality": 86
+ },
+ "assets/site/101f248cd57c51dca43b0579b091c0cb.jpg": {
+  "sha1": "fd287ecc8dfe80a43b8d64f1cf8392cf9c48015e",
+  "webp": "assets/site/101f248cd57c51dca43b0579b091c0cb.webp",
+  "quality": 80
+ },
+ "assets/site/137548880bd2b538f1ddf6013a07acc9.png": {
+  "sha1": "b38551eed5b35362537c901048137fae82595233",
+  "webp": null,
+  "quality": null
+ },
+ "assets/site/164dea959f22ac77b514fc6bf9994422.jpg": {
+  "sha1": "ee43305af4c17ca8a010cd64244453b1d23b1108",
+  "webp": null,
+  "quality": null
+ },
+ "assets/site/2da4bcd0228edfafb21114d4e3c0cadb.jpg": {
+  "sha1": "1d2d223069a4a0309c4035dc85016a42b0a7c1e5",
+  "webp": null,
+  "quality": null
+ },
+ "assets/site/3511668640204f91b4ef3089366192f8.jpg": {
+  "sha1": "7feed3e67ab9ce7133d0537de9936211aa26ff2f",
+  "webp": "assets/site/3511668640204f91b4ef3089366192f8.webp",
+  "quality": 60
+ },
+ "assets/site/4ea5293c2db0923aaebca383dff7382b.jpg": {
+  "sha1": "2a5f8de1ffee0356382afb86f292bf9bf69412b2",
+  "webp": "assets/site/4ea5293c2db0923aaebca383dff7382b.webp",
+  "quality": 90
+ },
+ "assets/site/52413fe45266b7f9cf457356948c6520.jpg": {
+  "sha1": "5cd61f355f79a7dfb43e71e2f8acf8439fd858dc",
+  "webp": "assets/site/52413fe45266b7f9cf457356948c6520.webp",
+  "quality": 60
+ },
+ "assets/site/5c415b1fbf8ca71767e78235d9d8852f.jpg": {
+  "sha1": "4e630e90e19fb99dacb33d50cfefe89545d87ea3",
+  "webp": "assets/site/5c415b1fbf8ca71767e78235d9d8852f.webp",
+  "quality": 88
+ },
+ "assets/site/5e75f03497492f9554a40966afc03db4.jpg": {
+  "sha1": "963e51dc1aa595c7d62ea0fbca31fb29f13d69c2",
+  "webp": null,
+  "quality": null
+ },
+ "assets/site/5e7c5a23f7045bbbbe0687b30a86f0a0.jpg": {
+  "sha1": "8a2c514fe9e4bb6e705e9d2c963aec6db6e779d0",
+  "webp": null,
+  "quality": null
+ },
+ "assets/site/6379cee645b08597874347eff0186b28.jpg": {
+  "sha1": "6793c2f4bc6190140b860f38585d8b71c4486ba2",
+  "webp": "assets/site/6379cee645b08597874347eff0186b28.webp",
+  "quality": 69
+ },
+ "assets/site/69336b6f84f940f748e9076bf7183667.jpg": {
+  "sha1": "dceaa08d886a391750d7f5613a357d5b4abfc3c8",
+  "webp": "assets/site/69336b6f84f940f748e9076bf7183667.webp",
+  "quality": 76
+ },
+ "assets/site/6b73830ac432cfbbfe280534134cce27.png": {
+  "sha1": "3d667d31252be452036c7d66f314983ad876db33",
+  "webp": "assets/site/6b73830ac432cfbbfe280534134cce27.webp",
+  "quality": 93
+ },
+ "assets/site/6cd3a7d23bf7e98c88c6e4efc7403240.png": {
+  "sha1": "f1eeeb3a8ca52fffa00a080fb69c4ff4a250ee21",
+  "webp": null,
+  "quality": null
+ },
+ "assets/site/7b87dd515c8bef25a2a8b7d321566e31.jpg": {
+  "sha1": "278d712afb0aa90c5dd4c742e4bc0fb743e4f9c0",
+  "webp": "assets/site/7b87dd515c8bef25a2a8b7d321566e31.webp",
+  "quality": 60
+ },
+ "assets/site/8959313f22f7dd475b89e5b03c2b64c5.png": {
+  "sha1": "15b96d417ce622f69122c27deb70b0f369ffea81",
+  "webp": null,
+  "quality": null
+ },
+ "assets/site/8c92048f209e93926d7ba5e15a3eaff0.jpg": {
+  "sha1": "dde919d9f7b431521f7ddda2d55044109e0faaad",
+  "webp": "assets/site/8c92048f209e93926d7ba5e15a3eaff0.webp",
+  "quality": 70
+ },
+ "assets/site/9c9ceae270407492ec13bccb45c882e0.jpg": {
+  "sha1": "6d25a06aaa896245d857f0f32ae31c329e6b3421",
+  "webp": "assets/site/9c9ceae270407492ec13bccb45c882e0.webp",
+  "quality": 76
+ },
+ "assets/site/ac1112bd02663e6a9fa1bb67f94d4051.jpg": {
+  "sha1": "7bc4dd6fc4defe0a507a721e09dfaa1c3baf97bd",
+  "webp": "assets/site/ac1112bd02663e6a9fa1bb67f94d4051.webp",
+  "quality": 88
+ },
+ "assets/site/b9abc648d923cb67c332162bc4f57ed4.png": {
+  "sha1": "357fc8717e431f79ce1812d8d96f0854b1ddcb11",
+  "webp": null,
+  "quality": null
+ },
+ "assets/site/c4d4026b5ff985953e18bf371a9071e1.png": {
+  "sha1": "70ddfd331a685e2b963a3dfbf7b121ad9ae41210",
+  "webp": "assets/site/c4d4026b5ff985953e18bf371a9071e1.webp",
+  "quality": 90
+ },
+ "assets/site/d598498412abaa8a76cbf67f6fe19eb9.jpg": {
+  "sha1": "be98279136eb19ed91c405f56bb4d5eae21af39a",
+  "webp": "assets/site/d598498412abaa8a76cbf67f6fe19eb9.webp",
+  "quality": 72
+ },
+ "assets/site/d65fa6948bfbff9adebd6c4010f0a769.png": {
+  "sha1": "4be478299554d6e10cc2fa180376c0064e34a9ab",
+  "webp": "assets/site/d65fa6948bfbff9adebd6c4010f0a769.webp",
+  "quality": 60
+ },
+ "assets/site/d80be35f8bcc4c6ae451d8faf22088a7.jpg": {
+  "sha1": "0d0836c72cc06e19954a026d44d273f2985272f3",
+  "webp": "assets/site/d80be35f8bcc4c6ae451d8faf22088a7.webp",
+  "quality": 92
+ },
+ "assets/site/dddef29fa0822ffe105a29801d637da7.jpg": {
+  "sha1": "9ed60da4629acb0b5f9ae8e86f009aa91c96e574",
+  "webp": "assets/site/dddef29fa0822ffe105a29801d637da7.webp",
+  "quality": 60
+ },
+ "assets/site/e4c90c82657d9c0725ccc0e7bdda0ebc.jpg": {
+  "sha1": "c7ca942c729d6b6959e0e8983a690ee2b2dc921c",
+  "webp": "assets/site/e4c90c82657d9c0725ccc0e7bdda0ebc.webp",
+  "quality": 60
+ },
+ "assets/site/eff58a5f28052b30478e073c37a03320.png": {
+  "sha1": "e1ed38880defe29580140d91c4a95d896b863cfd",
+  "webp": "assets/site/eff58a5f28052b30478e073c37a03320.webp",
+  "quality": 89
+ },
+ "assets/site/f13983b161267b6b6da5ff7069ceff46.png": {
+  "sha1": "57a855c2e684c80c8363c729a4b5cc640a0f703b",
+  "webp": null,
+  "quality": null
+ },
+ "assets/site/f4134f52b435305ebc44fee871e4711b.jpg": {
+  "sha1": "05abb96c39dd2596b5f189b96279cea84517753d",
+  "webp": "assets/site/f4134f52b435305ebc44fee871e4711b.webp",
+  "quality": 79
+ },
+ "assets/video/hero.jpg": {
+  "sha1": "d86319e6e0471d42d61771d19d2138efdb2775e5",
+  "webp": null,
+  "quality": null
+ },
+ "assets/video/npc-after.jpg": {
+  "sha1": "11c223445be7c84122abcfc0bfbffa93d8bff732",
+  "webp": null,
+  "quality": null
+ },
+ "assets/video/npc-before.jpg": {
+  "sha1": "30164bbd10f072931558101e1fed0cb60d422376",
+  "webp": null,
+  "quality": null
+ },
+ "assets/video/real-talk.jpg": {
+  "sha1": "65fb06d03315ae275dd1d9c3a938d9c1c225a187",
+  "webp": "assets/video/real-talk.webp",
+  "quality": 85
+ }
+}

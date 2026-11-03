@@ -29,8 +29,8 @@ ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
 sys.path.insert(0, HERE)
 import config as C  # noqa: E402
 
-SKIP_DIRS = ('scripts/', '.claude/', '.github/', 'preview/', 'references/', 'blog/content/')
-SKIP_FILES = {'CNAME', '.htaccess', '.gitignore', '.nojekyll', 'sitemap.xml', 'robots.txt', 'llms.txt'}
+SKIP_DIRS = ('scripts/', '.claude/', '.github/', 'references/', 'blog/content/')
+SKIP_FILES = {'CNAME', '.gitignore', '.nojekyll', 'sitemap.xml', 'robots.txt', 'llms.txt', 'assets/fonts/fonts.json'}
 
 GATE = """<meta name="robots" content="noindex, nofollow">
 <script>

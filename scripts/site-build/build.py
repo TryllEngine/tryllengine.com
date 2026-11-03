@@ -14,6 +14,7 @@ copy, real link targets for the design's placeholder links, form
 endpoints. No third-party packages needed:  py -3 scripts/site-build/build.py
 
     --downloads-live   build as if config.DOWNLOADS_LIVE were True (preview.py)
+    --prune            delete the files in assets/site/ that no page uses
 """
 import glob
 import hashlib
@@ -23,6 +24,7 @@ import os
 import re
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date
@@ -253,6 +255,43 @@ FAVICONS = """<link rel="icon" href="/favicon.ico" sizes="any">
 <meta name="theme-color" content="#161D29">"""
 
 
+def load_json(path, default):
+    try:
+        with open(path, encoding='utf-8') as f:
+            return json.load(f)
+    except OSError:
+        return default
+
+
+# The design's Google Fonts, served from assets/fonts/ (fonts.py): {Google stylesheet URL: its CSS}.
+FONTS = load_json(os.path.join(ROOT, 'assets', 'fonts', 'fonts.json'), {})
+fonts_missing = set()
+
+
+def font_links(links):
+    """The design's font links. A Google Fonts stylesheet that fonts.py has copied goes into
+    the page as it is, pointing at assets/fonts/, with its latin files preloaded: nothing
+    loads from Google (visitors' IP addresses stay with us, and two connections fewer).
+    One it hasn't stays a link to Google, with its preconnects."""
+    out, google = [], False
+    for link in links:
+        m = re.search(r'href="(https://fonts\.googleapis\.com/[^"]+)"', link)
+        css = m and FONTS.get(html.unescape(m.group(1)))
+        if css:
+            latin = re.findall(r'/\* latin \*/\s*@font-face\s*\{[^}]*?url\((/assets/fonts/[^)]+)\)', css)
+            out += [f'<link rel="preload" href="{f}" as="font" type="font/woff2" crossorigin>' for f in dict.fromkeys(latin)]
+            out.append('<style>' + re.sub(r'\s*\n\s*', ' ', css).strip() + '</style>')
+            continue
+        if m:
+            google = True
+            fonts_missing.add(html.unescape(m.group(1)))
+        out.append(link)
+    if google:
+        out[:0] = ['<link rel="preconnect" href="https://fonts.googleapis.com">',
+                   '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>']
+    return out
+
+
 def head(meta, baked, extra_ld=()):
     url = C.SITE + meta['path']
     image = meta.get('image') or C.OG_IMAGE
@@ -282,9 +321,7 @@ def head(meta, baked, extra_ld=()):
     ]
     parts += meta.get('head_extra', [])
     parts.append(FAVICONS)
-    parts.append('<link rel="preconnect" href="https://fonts.googleapis.com">')
-    parts.append('<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>')
-    parts += baked.head_links
+    parts += font_links(baked.head_links)
     parts += [f'<style>{s}</style>' for s in baked.styles]
     parts.append('<link rel="stylesheet" href="/assets/css/site.css">')
     parts += [f'<script type="application/ld+json">\n{x}\n</script>' for x in ld]
@@ -325,15 +362,23 @@ def url_status(url):
         return None
 
 
+DOCS_FALLBACKS = os.path.join(HERE, 'docs-fallbacks.json')
+
+
 def check_docs_links(files):
     """Every docs page the site links to opens. "latest" on the docs site is a set of pages
     that forward to the newest version, and a docs release can leave some out: such links
-    go to the version behind "latest" (the docs' versions.json) until "latest" has them."""
+    go to the version behind "latest" (the docs' versions.json) until "latest" has them.
+    Those fallbacks are kept in docs-fallbacks.json, so a build without a connection to the
+    docs site (another machine, CI) keeps them instead of linking pages "latest" lacks."""
     urls = sorted(docs_links)
     with ThreadPoolExecutor(8) as pool:
         status = dict(zip(urls, pool.map(url_status, urls)))
     if all(s is None for s in status.values()):
-        print('docs links not checked: no connection to docs.tryllengine.com')
+        swaps = {u: alt for u, alt in load_json(DOCS_FALLBACKS, {}).items() if u in docs_links}
+        print('docs links not checked: no connection to docs.tryllengine.com' +
+              (f'; kept the {len(swaps)} fallback(s) from the last check' if swaps else ''))
+        swap_docs_links(files, swaps)
         return
     broken = [u for u in urls if status[u] != 200]
     current = None
@@ -351,6 +396,11 @@ def check_docs_links(files):
             print(f'NOTE docs "latest" has no {u[len(C.DOCS_V):]}: linked to {current} until it does')
         else:
             print(f'WARN docs link {u} answers {status[u] or "nothing"}: fix it in config.py or the page')
+    write(DOCS_FALLBACKS, json.dumps(dict(sorted(swaps.items())), indent=1) + '\n')
+    swap_docs_links(files, swaps)
+
+
+def swap_docs_links(files, swaps):
     for path in files if swaps else ():
         text = read(path)
         for u, alt in swaps.items():
@@ -363,6 +413,17 @@ def check_docs_links(files):
 # its content (?v=…), which changes only when the file does. The design export's images
 # (assets/site/) are named by their content already.
 ASSET_URL = re.compile(r'''(?<=["'(;])/assets/(?!site/)[^"'?#()\s\\&]+(?=["')\\&\s])''')
+# Text files are hashed with \n line ends: a Windows checkout has \r\n in them, and the same
+# file must get the same stamp on every machine that builds the site.
+TEXT_FILES = ('.js', '.css', '.html', '.svg', '.json', '.txt', '.xml', '.webmanifest')
+
+
+def digest(path):
+    with open(path, 'rb') as f:
+        data = f.read()
+    if path.endswith(TEXT_FILES):
+        data = data.replace(b'\r\n', b'\n')
+    return hashlib.sha1(data).hexdigest()[:8]
 
 
 def stamp_assets(files):
@@ -375,15 +436,116 @@ def stamp_assets(files):
         if not os.path.isfile(path):
             return m.group(0)
         if path not in digests:
-            with open(path, 'rb') as f:
-                digests[path] = hashlib.sha1(f.read()).hexdigest()[:8]
+            digests[path] = digest(path)
         return f'{m.group(0)}?v={digests[path]}'
 
-    for path in sorted(glob.glob(os.path.join(ROOT, 'assets', 'js', 'pages', '*.js'))) + files:
+    for path in logic_files() + files:
         text = read(path)
         new = ASSET_URL.sub(stamped, text)
         if new != text:
             write(path, new)
+
+
+def logic_files():
+    return sorted(glob.glob(os.path.join(ROOT, 'assets', 'js', 'pages', '*.js')))
+
+
+# Pictures the pages show from assets/, as they write them (root-relative). Link previews and
+# structured data use absolute URLs, so they always keep the original.
+RASTER_URL = re.compile(r'''(?<=["'(;])/assets/(?!favicon/)[^"'?#()\s\\&]+\.(?:jpe?g|png)(?=["')\\&\s])''')
+
+
+def use_webp(files):
+    """A picture images.py has a lighter WebP copy of is loaded as that copy (config.WEBP),
+    unless the original changed after the copy was made. Notes the pictures images.py
+    hasn't looked at yet."""
+    record = load_json(os.path.join(HERE, 'images.json'), {})
+    copies, unseen = {}, set()
+    for path, r in record.items():
+        src, webp = os.path.join(ROOT, path), r.get('webp') and os.path.join(ROOT, r['webp'])
+        if not webp or not os.path.isfile(src) or not os.path.isfile(webp):
+            continue
+        with open(src, 'rb') as f:
+            if hashlib.sha1(f.read()).hexdigest() == r['sha1']:
+                copies['/' + path] = '/' + r['webp']
+            else:
+                print(f'WARN {path} changed after images.py made its WebP copy: pages show the original until it runs again')
+
+    def swap(m):
+        if m.group(0)[1:] not in record:
+            unseen.add(m.group(0)[1:])
+        return copies.get(m.group(0), m.group(0)) if C.WEBP else m.group(0)
+
+    for path in logic_files() + files:
+        text = read(path)
+        new = RASTER_URL.sub(swap, text)
+        if new != text:
+            write(path, new)
+    if unseen:
+        print(f'NOTE {len(unseen)} picture(s) on the pages not checked by images.py yet (it makes lighter '
+              f'copies where nothing visible changes): ' + ', '.join(sorted(unseen)[:5]) + (' …' if len(unseen) > 5 else ''))
+
+
+def check_assets(files, prune):
+    """Warns about an /assets/ file the pages link to that isn't there, and lists the files in
+    assets/site/ no page uses: a design export brings pictures the build replaces (video
+    thumbnails, gallery and quote placeholders). --prune deletes those."""
+    used, missing = set(), set()
+    for path in logic_files() + files + [os.path.join(ROOT, 'assets', 'css', 'site.css')]:
+        for u in re.findall(r'''(?<=["'(;])/assets/[^"'?#()\s\\&]+''', read(path)):
+            if u.endswith('/'):   # a folder the logic builds a name in
+                continue
+            f = os.path.normpath(os.path.join(ROOT, urllib.parse.unquote(u).lstrip('/')))
+            used.add(f)
+            if f.endswith('.webp'):   # a WebP copy: its original stays (link previews, images.py)
+                used.update(f[:-5] + e for e in ('.jpg', '.jpeg', '.png'))
+            if not os.path.isfile(f):
+                missing.add(u)
+    for u in sorted(missing):
+        print(f'WARN {u} is linked from the pages but missing')
+    site = os.path.join(ROOT, 'assets', 'site')
+    unused = [n for n in sorted(os.listdir(site)) if os.path.normpath(os.path.join(site, n)) not in used]
+    if not unused:
+        return
+    size = sum(os.path.getsize(os.path.join(site, n)) for n in unused) // 1024
+    if prune:
+        for n in unused:
+            os.remove(os.path.join(site, n))
+        print(f'pruned {len(unused)} file(s) no page uses from assets/site/ ({size} KB)')
+    else:
+        print(f'NOTE {len(unused)} file(s) in assets/site/ no page uses ({size} KB): run build.py --prune to delete them')
+
+
+# Sitemap: a page's lastmod moves only when the page itself changed (its ?v= stamps aside), so
+# rebuilding on another day doesn't date every page anew. lastmod.json keeps a fingerprint of
+# each page as the live site has it; the --downloads-live build for the preview leaves it alone.
+LASTMOD = os.path.join(HERE, 'lastmod.json')
+UNSTAMPED = re.compile(r'\?v=[0-9a-f]{8}')
+
+
+def page_lastmods(pages, save):
+    """{path: lastmod} for the design pages written, as [(path, file)]."""
+    known = load_json(LASTMOD, None)
+    if known is None:   # first run: start from the dates the sitemap has
+        try:
+            sm = read(os.path.join(ROOT, 'sitemap.xml'))
+        except OSError:
+            sm = ''
+        known = {loc[len(C.SITE):]: {'sha1': None, 'lastmod': mod}
+                 for loc, mod in re.findall(r'<loc>([^<]*)</loc><lastmod>([^<]*)</lastmod>', sm)}
+        first = True
+    else:
+        first = False
+    today, out, record = date.today().isoformat(), {}, {}
+    for path, f in pages:
+        h = hashlib.sha1(UNSTAMPED.sub('', read(f)).encode('utf-8')).hexdigest()
+        k = known.get(path) or {}
+        same = k.get('lastmod') and (k.get('sha1') == h or (first and k.get('sha1') is None))
+        out[path] = k['lastmod'] if same else today
+        record[path] = {'sha1': h, 'lastmod': out[path]}
+    if save:
+        write(LASTMOD, json.dumps(record, indent=1) + '\n')
+    return out
 
 
 # The design logic's clock steps 25 times a second (setInterval, 40 ms), which shows on
@@ -764,17 +926,25 @@ def load_posts():
     return sorted(posts, key=lambda p: p['date'], reverse=True)
 
 
+BLOG_PER_PAGE = 12   # posts per page of the listing (assets/js/blog-list.js reads it from the grid)
+
+
 def blog_listing(body, posts):
+    """Every post's card is in the page, so crawlers see every link; blog-list.js shows one
+    page at a time. Cards after the first page start hidden, so their covers (~300 KB each)
+    load only when someone pages there."""
     cards = []
-    for p in posts:
+    for i, p in enumerate(posts):
         cat = CATS.get(p['category'], p['category'].title())
+        hidden = ' style="display:none"' if i >= BLOG_PER_PAGE else ''
         cards.append(
-            f'<a class="pc" href="/blog/posts/{p["slug"]}/" data-cat="{esc(cat)}">'
+            f'<a class="pc" href="/blog/posts/{p["slug"]}/" data-cat="{esc(cat)}"{hidden}>'
             f'<div class="cv ph" style="background-image:url(\'{esc(p["image"])}\')" role="img" '
             f'aria-label="{esc(p["title"])}"></div>'
             f'<p class="mt">{esc(cat)} · {fmt_date(p["date"])}</p><h3>{esc(p["title"])}</h3></a>')
     body, n = re.subn(r'<div class="grid">.*?</div><p class="emp"[^>]*>',
-                      '<div class="grid">' + ''.join(cards) + '</div><p class="emp" style="display:none">',
+                      f'<div class="grid" data-per-page="{BLOG_PER_PAGE}">' + ''.join(cards) +
+                      '</div><p class="emp" style="display:none">',
                       body, count=1, flags=re.S)
     assert n == 1, 'blog grid not found'
     body, n = re.subn(r'<div class="pgn">(.*?)</div>', r'<nav class="pgn" aria-label="Blog pages">\1</nav>', body,
@@ -868,7 +1038,7 @@ def main():
         write_logic(name, baked)
         html_files.append(os.path.join(ROOT, meta['out']))
         write(html_files[-1], page_html(meta, baked, body, name, ld, scripts))
-        out_pages.append((meta['path'], date.today().isoformat(), meta.get('priority', '0.8')))
+        out_pages.append((meta['path'], html_files[-1], meta.get('priority', '0.8')))
 
     # Blog posts share the blog-post design page.
     baked = Baked('blog-post').clean()
@@ -912,16 +1082,7 @@ def main():
             f'</head>\n<body>\n<p>This page has moved to <a href="{new}">{C.SITE}{new}</a>.</p>\n'
             '</body>\n</html>\n'))
 
-    # Sitemap: new pages, kept legacy pages, then posts (newest first).
-    urls = out_pages[:len(C.PAGES)] + [(p, d, pr) for p, d, pr in C.LEGACY_PAGES] + out_pages[len(C.PAGES):]
-    sm = ['<?xml version="1.0" encoding="UTF-8"?>',
-          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    for path, mod, pr in urls:
-        sm.append(f'  <url><loc>{C.SITE}{path}</loc><lastmod>{mod}</lastmod><priority>{pr}</priority></url>')
-    sm.append('</urlset>')
-    write(os.path.join(ROOT, 'sitemap.xml'), '\n'.join(sm) + '\n')
-
-    print(f'built {len(C.PAGES)} pages, {len(posts)} posts, sitemap with {len(urls)} urls')
+    print(f'built {len(C.PAGES)} pages, {len(posts)} posts')
     for old, _ in C.COPY:
         if old not in copy_used:
             print(f'WARN COPY: "{old}" is no longer in the design; remove it from config.py')
@@ -929,8 +1090,25 @@ def main():
         print(f'downloads not live: download buttons say "Coming soon" and lead to {C.COMING_SOON["href"]}')
     if not C.HUBSPOT['form']:
         print("contact form posts to Formspree until config.HUBSPOT['form'] is set")
+    for link in sorted(fonts_missing):
+        print(f'WARN font {link} loads from Google Fonts: run fonts.py to serve it from assets/fonts/')
     check_docs_links(html_files)
+    use_webp(html_files)
     stamp_assets(html_files)
+
+    # Sitemap: new pages (dated by their last change), kept legacy pages, then posts (newest first).
+    mods = page_lastmods([(path, out) for path, out, _ in out_pages[:len(C.PAGES)]],
+                         save='--downloads-live' not in sys.argv[1:])
+    out_pages[:len(C.PAGES)] = [(path, mods[path], pr) for path, _, pr in out_pages[:len(C.PAGES)]]
+    urls = out_pages[:len(C.PAGES)] + [(p, d, pr) for p, d, pr in C.LEGACY_PAGES] + out_pages[len(C.PAGES):]
+    sm = ['<?xml version="1.0" encoding="UTF-8"?>',
+          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for path, mod, pr in urls:
+        sm.append(f'  <url><loc>{C.SITE}{path}</loc><lastmod>{mod}</lastmod><priority>{pr}</priority></url>')
+    sm.append('</urlset>')
+    write(os.path.join(ROOT, 'sitemap.xml'), '\n'.join(sm) + '\n')
+    print(f'sitemap with {len(urls)} urls')
+    check_assets(html_files, '--prune' in sys.argv[1:])
     if todos:
         print('\nLinks still waiting for a real URL (left as href="#" with data-todo):')
         for t in sorted(set(todos)):

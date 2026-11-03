@@ -169,6 +169,12 @@ py -3 scripts/site-build/build.py
 
 This renders `blog/content/{slug}.md` into the redesign's blog-post layout at `blog/posts/{slug}/index.html` (canonical URL `https://tryllengine.com/blog/posts/{slug}/`), adds the card to `blog.html`, and rewrites `sitemap.xml`. If the markdown starts with an image, that image becomes the large hero photo; otherwise the cover is used.
 
+Then make lighter copies of the new pictures, where nothing visible changes (WebP; it rebuilds the site, and needs Pillow: `py -3 -m pip install pillow numpy`). Without it the pages load the originals, which works too:
+
+```bash
+py -3 scripts/site-build/images.py
+```
+
 ### Step 8: Preview in browser
 
 1. Start the preview server in the background (it resolves URLs like GitHub Pages): `py -3 scripts/site-build/serve.py`

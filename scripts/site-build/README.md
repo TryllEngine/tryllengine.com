@@ -2,7 +2,7 @@
 
 The site is designed in **Claude Design** and published as plain static HTML on GitHub Pages. These scripts turn a design export into the live pages without losing the design's animations, and add everything the design doesn't have: SEO tags, analytics, real forms, link targets and the blog.
 
-Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
+Only Python 3 is needed (no packages). Baking also needs Chrome or Edge, `clips.py` ffmpeg, and `images.py` Pillow and numpy.
 
 ## Everyday tasks
 
@@ -13,6 +13,9 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 | Bring in a new design export | `py -3 scripts/site-build/bake.py "C:/path/to/export"` then `build.py` |
 | Publish the team preview | `py -3 scripts/site-build/preview.py --publish` → https://tryllengine.github.io/site-preview/ |
 | Re-cut the trailer clips (hero, Smart NPCs) | edit `CLIPS` in `config.py`, then `py -3 scripts/site-build/clips.py "C:/path/to/Tryll_Main_final.mp4"` (the trailer without its subtitles) and `build.py` (needs ffmpeg) |
+| Lighter pictures after adding some (a post, a design export) | `py -3 scripts/site-build/images.py` (needs Pillow and numpy; builds the site before and after) |
+| The design asks for another font or weight (the build warns) | `py -3 scripts/site-build/fonts.py`, then `build.py` |
+| Delete design-export pictures no page uses (the build lists them) | `py -3 scripts/site-build/build.py --prune` |
 
 `serve.py` resolves URLs the way GitHub Pages does (`/features` → `features.html`, `/blog/posts/x` → `/blog/posts/x/`), so links behave like production. `python -m http.server` does not.
 
@@ -26,8 +29,11 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
    - Turns the drawn contact and newsletter forms into real `<form>`s.
    - Writes each page's original design logic to `assets/js/pages/<page>.js`.
    - Generates `blog.html` and every `blog/posts/<slug>/index.html` from `blog/posts.json` and `blog/content/*.md`, then rewrites `sitemap.xml`.
-   - Adds `?v=<content hash>` to every file the pages load (CSS, scripts, pictures, clips), so a deploy reaches browsers at once instead of after GitHub Pages' 10-minute cache. The design's own images in `assets/site/` are named by their content already.
-4. In the browser, **assets/js/site.js** (~8 KB) runs that design logic against the static markup. Animations, carousels, menus and toggles behave as in Claude Design, but the HTML is crawlable and there's no React download or page-wide re-render loop.
+   - Writes the design's fonts into each page from `assets/fonts/` instead of linking Google Fonts (`fonts.py` fetched them), so no visitor's IP address goes to Google before consent.
+   - Has the pages load the lighter WebP copy of a picture where `images.py` made one (`config.WEBP`).
+   - Adds `?v=<content hash>` to every file the pages load (CSS, scripts, fonts, pictures, clips), so a deploy reaches browsers at once instead of after GitHub Pages' 10-minute cache. Text files are hashed with `\n` line ends, so a Windows checkout gives the same stamps. The design's own images in `assets/site/` are named by their content already.
+   - Warns about any `/assets/` file the pages link to that is missing, and notes the files in `assets/site/` no page uses (a design export brings placeholder pictures the build replaces; `--prune` deletes them).
+4. In the browser, **assets/js/site.js** (~11 KB) runs that design logic against the static markup. Animations, carousels, menus and toggles behave as in Claude Design, but the HTML is crawlable and there's no React download. Each element's bindings are read once, and the design's animation clock (`tryllClock`) runs on animation frames only while something it moves (a CTA die, the big die) is near the screen; otherwise it steps once a second, so a page that sits open doesn't keep the CPU busy.
 
 ## Where things live
 
@@ -50,14 +56,18 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 | Media logos row: scrolls with a CSS animation (`tryll-logos` in `site.css`), not the design's 25 fps tick | `assets/js/marquee.js` keeps the "on" highlight in step |
 | Contact form → HubSpot once `HUBSPOT['form']` is set in `config.py` (Formspree until then), newsletter → MailerLite | `assets/js/forms.js` |
 | Accepted contact messages → the team's Slack channel | `LEAD_ALERTS` in `config.py` + the Cloudflare Worker in `scripts/lead-alerts/` (setup in its README) |
-| Blog topic chips + pagination | `assets/js/blog-list.js` |
+| Blog topic chips + pagination (the build hides the cards after the first page, so their covers load only when shown) | `assets/js/blog-list.js`, `BLOG_PER_PAGE` in `build.py` |
+| Lighter pictures: WebP copies kept only where SSIM ≥ 0.99 (nothing visible changes) and a fifth smaller; link previews keep the originals | `images.py`, its verdicts in `images.json`; `WEBP` in `config.py` turns them off |
+| Self-hosted fonts (Space Grotesk, SIL Open Font License) | `assets/fonts/`, written by `fonts.py` |
+| Docs links whose page "latest" lacks, sent to the version behind it (kept for builds without a connection to the docs site) | `docs-fallbacks.json`, written by `build.py` |
+| Sitemap dates: a page's lastmod changes only when the page does | `lastmod.json`, written by `build.py` |
 | Cookie banner + Google Consent Mode v2 | `assets/js/cookie-consent.js` |
 | CSS the design doesn't cover (inputs, article headings, lists, video) | `assets/css/site.css` |
 | Markdown → HTML for posts | `markdown_lite.py` |
 
 ## Generated files: don't edit by hand
 
-`index.html`, `features.html`, `download.html`, `demo.html`, `about.html`, `blog.html`, `privacy-policy.html`, `closed-beta.html`, `blog/posts/*/index.html`, `assets/js/pages/*.js` and `sitemap.xml` are rewritten by `build.py`. Change the design, `config.py` or the blog sources instead.
+`index.html`, `features.html`, `download.html`, `demo.html`, `about.html`, `blog.html`, `privacy-policy.html`, `closed-beta.html`, `blog/posts/*/index.html`, `assets/js/pages/*.js` and `sitemap.xml` are rewritten by `build.py`, along with its notes `docs-fallbacks.json` and `lastmod.json`. The `.webp` copies and `images.json` come from `images.py`, `assets/fonts/` from `fonts.py`. Change the design, `config.py` or the blog sources instead.
 
 Hand-written pages from the old design still live at their URLs and are untouched by the build: `tryll-assistant.html`, `boscotryll.html` and `tryll-plugin-alpha.html`.
 

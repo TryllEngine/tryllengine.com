@@ -4,13 +4,15 @@
  * Every post card is in the HTML (so crawlers see all links); this only
  * shows one topic / page at a time. Topic and page live in the URL
  * (?topic=News&page=2) so they survive reloads and the back button.
+ * The build hides the cards after the first page already, so their covers
+ * don't load until they're shown.
  */
 (function () {
     'use strict';
 
-    var PER_PAGE = 12;
     var grid = document.querySelector('.bl .grid');
     if (!grid) return;
+    var PER_PAGE = +grid.getAttribute('data-per-page') || 12;   // build.py BLOG_PER_PAGE
     var cards = Array.prototype.slice.call(grid.querySelectorAll('.pc'));
     var chips = Array.prototype.slice.call(document.querySelectorAll('.bl .chips button'));
     var pgn = document.querySelector('.bl .pgn');

@@ -6,6 +6,9 @@ Edit this file, then run  py -3 scripts/site-build/build.py
 SITE = 'https://tryllengine.com'
 GTM_ID = 'GTM-K8MPGKVX'            # contains GA4 G-V0BH3P7R63 + form/download events
 OG_IMAGE = '/assets/images/og-image.png'
+# Pages load the lighter WebP copy images.py made of a picture, where it has one (see
+# images.py: only where nothing visible changes). False: every page loads the originals.
+WEBP = True
 
 # Forms — the same endpoints the old site used, so submissions keep landing
 # in the same Formspree inbox and MailerLite group.

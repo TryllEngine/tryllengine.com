@@ -1,0 +1,30 @@
+{
+ "/": {
+  "sha1": "cfeed04990abba658e9ca9aea009e9ee14cdbdb9",
+  "lastmod": "2026-11-03"
+ },
+ "/features": {
+  "sha1": "517b1846b568b814b8b0f876d5da71e7d26251ea",
+  "lastmod": "2026-11-03"
+ },
+ "/download": {
+  "sha1": "8fd2abab6b3ac3b9f0fdae7d4e73ffdd3fbbd890",
+  "lastmod": "2026-11-03"
+ },
+ "/demo": {
+  "sha1": "c16823b032caf593deca3c147452dbb8e381cdca",
+  "lastmod": "2026-11-03"
+ },
+ "/about": {
+  "sha1": "b4de0d1dfa7a88d33e4d1571698688c1c788c372",
+  "lastmod": "2026-11-03"
+ },
+ "/blog": {
+  "sha1": "2a64afacdcd45ff05064561483734a6c40e1facc",
+  "lastmod": "2026-11-03"
+ },
+ "/privacy-policy": {
+  "sha1": "154d2ffb9f66ab72946861fc1d6d9ad7ad67167e",
+  "lastmod": "2026-11-03"
+ }
+}

@@ -24,7 +24,8 @@ The main pages are designed in **Claude Design** and turned into static HTML by 
 ├── scripts/site-build/       # annotate → bake → build pipeline, config.py, serve.py
 ├── scripts/lead-alerts/      # Cloudflare Worker: accepted contact messages → Slack (config.LEAD_ALERTS)
 ├── assets/
-│   ├── site/                 # images from the design export (hashed names)
+│   ├── site/                 # images from the design export (hashed names); *.webp: lighter copies (images.py)
+│   ├── fonts/                # the design's fonts, self-hosted (written by scripts/site-build/fonts.py)
 │   ├── js/site.js            # runtime that runs the design logic on static HTML
 │   ├── js/pages/*.js         # GENERATED: each page's design logic
 │   ├── js/forms.js           # contact (HubSpot, or Formspree until config.HUBSPOT is set) + newsletter (MailerLite)
@@ -34,7 +35,7 @@ The main pages are designed in **Claude Design** and turned into static HTML by 
 │   ├── js/blog-list.js       # blog topic chips + pagination
 │   ├── js/cookie-consent.js  # cookie banner + Google Consent Mode v2
 │   ├── css/site.css          # styles the design doesn't cover
-│   ├── blog/                 # post covers and inline images
+│   ├── blog/                 # post covers and inline images (+ .webp copies where lighter, images.py)
 │   └── favicon/, images/, logo/, docs/
 ├── sitemap.xml               # GENERATED
 ├── robots.txt, llms.txt, CNAME
@@ -48,6 +49,8 @@ py -3 scripts/site-build/build.py                 # rebuild pages, blog, sitemap
 py -3 scripts/site-build/bake.py "<export dir>"   # bring in a new Claude Design export, then build
 py -3 scripts/site-build/preview.py --publish     # team preview at tryllengine.github.io/site-preview
 py -3 scripts/site-build/clips.py "<trailer without subtitles>.mp4"   # re-cut the hero / Smart NPCs clips (config.CLIPS), then build
+py -3 scripts/site-build/images.py                # after adding pictures: lighter WebP copies where nothing visible changes (Pillow)
+py -3 scripts/site-build/fonts.py                 # when the design asks for another font: copy it from Google Fonts into assets/fonts/
 ```
 
 Don't use `python -m http.server` to preview: it doesn't resolve `/blog` or `/features` the way GitHub Pages does.
@@ -60,6 +63,7 @@ Don't use `python -m http.server` to preview: it doesn't resolve `/blog` or `/fe
 - **Canonical URLs** have no `.html` (`https://tryllengine.com/features`); blog posts end in a slash (`/blog/posts/{slug}/`, the URL GitHub Pages serves without a redirect).
 - **Analytics**: GTM container `GTM-K8MPGKVX` (holds GA4 `G-V0BH3P7R63`, plus "Form submission" and "Clicks Download" events). `cookie-consent.js` must load before GTM; all consent defaults to denied.
 - **Forms** must stay real `<form>` elements so GTM's form-submission trigger fires.
+- **Fonts are self-hosted** (`assets/fonts/`, `fonts.py`): don't link Google Fonts or other third-party files that load before consent. GTM is the one exception, and its tags wait for consent (Consent Mode).
 - **Old URLs must keep working**: never rename a post slug; when a page is retired, add it to `REDIRECTS` in `config.py` instead of deleting it.
 
 ## Brand

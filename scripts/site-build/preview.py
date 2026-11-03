@@ -92,7 +92,7 @@ def strip_analytics(s):
     s = re.sub(r'<!-- Google Tag Manager \(noscript\) -->\s*|<!-- End Google Tag Manager \(noscript\) -->\s*', '', s)
     s = re.sub(r'<script>\s*\(function\(w,d,s,l,i\).*?</script>\s*', '', s, flags=re.S)
     s = re.sub(r'<noscript><iframe src="https://www\.googletagmanager\.com/ns\.html.*?</noscript>\s*', '', s, flags=re.S)
-    s = re.sub(r'<script src="/assets/js/cookie-consent\.js"></script>\s*', '', s)
+    s = re.sub(r'<script src="/assets/js/cookie-consent\.js(?:\?v=\w+)?"></script>\s*', '', s)
     return s
 
 

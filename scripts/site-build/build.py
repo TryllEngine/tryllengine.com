@@ -15,6 +15,8 @@ endpoints. No third-party packages needed:  py -3 scripts/site-build/build.py
 
     --downloads-live   build as if config.DOWNLOADS_LIVE were True (preview.py)
 """
+import glob
+import hashlib
 import html
 import json
 import os
@@ -354,6 +356,34 @@ def check_docs_links(files):
         for u, alt in swaps.items():
             text = re.sub(re.escape(u) + r'(?=["#])', alt, text)
         write(path, text)
+
+
+# Browsers keep a file from GitHub Pages for 10 minutes, so right after a deploy a new page
+# could meet the old stylesheet, script or clip. Every file the pages load carries a hash of
+# its content (?v=…), which changes only when the file does. The design export's images
+# (assets/site/) are named by their content already.
+ASSET_URL = re.compile(r'''(?<=["'(;])/assets/(?!site/)[^"'?#()\s\\&]+(?=["')\\&\s])''')
+
+
+def stamp_assets(files):
+    """?v=<hash> on the files the pages and their logic (assets/js/pages/*.js) load. The
+    logic goes first: a page loads it by the hash of its stamped text."""
+    digests = {}
+
+    def stamped(m):
+        path = os.path.join(ROOT, m.group(0)[1:])
+        if not os.path.isfile(path):
+            return m.group(0)
+        if path not in digests:
+            with open(path, 'rb') as f:
+                digests[path] = hashlib.sha1(f.read()).hexdigest()[:8]
+        return f'{m.group(0)}?v={digests[path]}'
+
+    for path in sorted(glob.glob(os.path.join(ROOT, 'assets', 'js', 'pages', '*.js'))) + files:
+        text = read(path)
+        new = ASSET_URL.sub(stamped, text)
+        if new != text:
+            write(path, new)
 
 
 # The design logic's clock steps 25 times a second (setInterval, 40 ms), which shows on
@@ -879,6 +909,7 @@ def main():
     if not C.HUBSPOT['form']:
         print("contact form posts to Formspree until config.HUBSPOT['form'] is set")
     check_docs_links(html_files)
+    stamp_assets(html_files)
     if todos:
         print('\nLinks still waiting for a real URL (left as href="#" with data-todo):')
         for t in sorted(set(todos)):

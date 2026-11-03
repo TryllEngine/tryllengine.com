@@ -26,6 +26,7 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
    - Turns the drawn contact and newsletter forms into real `<form>`s.
    - Writes each page's original design logic to `assets/js/pages/<page>.js`.
    - Generates `blog.html` and every `blog/posts/<slug>/index.html` from `blog/posts.json` and `blog/content/*.md`, then rewrites `sitemap.xml`.
+   - Adds `?v=<content hash>` to every file the pages load (CSS, scripts, pictures, clips), so a deploy reaches browsers at once instead of after GitHub Pages' 10-minute cache. The design's own images in `assets/site/` are named by their content already.
 4. In the browser, **assets/js/site.js** (~8 KB) runs that design logic against the static markup. Animations, carousels, menus and toggles behave as in Claude Design, but the HTML is crawlable and there's no React download or page-wide re-render loop.
 
 ## Where things live

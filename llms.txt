@@ -1,16 +1,15 @@
 # Tryll Engine (https://tryllengine.com)
 
-> Tryll is on-device AI middleware for game engines (Unity, Unreal Engine 5 and proprietary engines). It gives in-game characters a realistic mind: they understand natural language, remember what the player did and act accordingly, running on the player's GPU with no servers, no per-token fees, and no user data leaving the device. Built by game developers; Epic MegaGrants recipient, funded by Early Game Ventures.
+> Tryll is on-device AI middleware for game engines (Unity, Unreal Engine 5 and proprietary engines). It gives in-game characters a realistic mind: they understand natural language, remember what the player did and act accordingly, running on the player's GPU with no servers, no per-token fees, and no user data leaving the device. Built by game developers; Epic MegaGrants recipient, funded by Early Game Ventures. Tryll Engine is in open beta.
 
 ## Pages
 
-- [Home](https://tryllengine.com/): what Tryll does, use cases, client stories, pricing, contact
-- [For Developers](https://tryllengine.com/features): features for basic and advanced NPCs, developer tools, performance and memory
-- [Get Tryll Engine](https://tryllengine.com/download): plugins for Unity 6+ and Unreal Engine 5.7+, system requirements, install guides
-- [Demo game: Tryll Colony](https://tryllengine.com/demo): a short scene where you talk your way through and characters react in real time
-- [About](https://tryllengine.com/about): founders and team
+- [Home](https://tryllengine.com/): what Tryll does, use cases, client stories, how to get started, pricing, contact
+- [For Developers](https://tryllengine.com/features): the features, for basic and advanced NPCs, developer tools, performance and memory
+- [Get Tryll Engine](https://tryllengine.com/download): plugins for Unity 6+ and Unreal Engine 5.7+, install guides, system requirements
+- [Demo game: Tryll Colony](https://tryllengine.com/demo): a medieval colony sim built with Tryll Engine, where every villager talks back (coming soon)
+- [About](https://tryllengine.com/about): founders, advisors and team
 - [Blog](https://tryllengine.com/blog): engineering deep-dives, product updates and event news
-- [Tryll Assistant](https://tryllengine.com/tryll-assistant): free on-device AI game guide overlay on Steam
 - [Documentation](https://docs.tryllengine.com/): API reference, how-to guides, model benchmarks
 - [Privacy Policy](https://tryllengine.com/privacy-policy)
 
@@ -19,8 +18,14 @@
 - **Smart NPCs**: characters that understand natural language, remember what the player did, and act accordingly
 - **Real Talk**: speech-to-text and text-to-speech on the player's device, with voiced NPCs in many languages (including Korean and Japanese) without recording every line
 - **Dynamic worlds**: you set the world and its rules; Tryll creates agents and keeps them within those rules
-- **New genres**: mechanics built on conversation that weren't possible before
-- **Developer tools**: Dialog Tester, Agent Log, server memory inspector, dialog variant comparison, workflow graphs in the Unity and Unreal editors
+- **New genres**: game mechanics that weren't possible before
+
+## Features
+
+- **Basic NPC**: natural dialogue with no dialogue trees to script; voice in and out on the player's device, in many languages; roleplay guardrails that catch jailbreaks and out-of-world questions and answer them in character
+- **Advanced NPC**: answers from your world's lore and quest data (and says so when it doesn't know); each player line scored for what your mechanic needs, such as charm, pressure or an offer, while your game decides what happens; moods the character carries into what they say and how they sound; actions and tools that your game checks before they happen; memory and conversation summaries that save with the game
+- **Developer tools** in the Unity and Unreal editors: chat with a character by text or voice without building the game or entering Play mode; visual workflow graphs; Dialog Lab (one scripted conversation across prompts, models and seeds side by side, with checks on every reply); Agent Log (what every agent heard, which path it took and what it said while the game runs)
+- **Performance and memory**: a talking agent fits in 1.6 GB of graphics memory, with speech on the CPU; small models write 100–250 tokens a second on a gaming GPU, many times faster than a character speaks; the Memory window shows how much RAM and graphics memory models and agents take
 
 ## How to get started
 

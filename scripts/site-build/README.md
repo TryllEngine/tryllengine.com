@@ -67,11 +67,9 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge, `clips.
 
 ## Generated files: don't edit by hand
 
-`index.html`, `features.html`, `download.html`, `demo.html`, `about.html`, `blog.html`, `privacy-policy.html`, the redirects (`closed-beta.html`, `boscotryll.html`), `blog/posts/*/index.html`, `assets/js/pages/*.js` and `sitemap.xml` are rewritten by `build.py`, along with its notes `docs-fallbacks.json` and `lastmod.json`. The `.webp` copies and `images.json` come from `images.py`, `assets/fonts/` from `fonts.py`. Change the design, `config.py` or the blog sources instead.
+`index.html`, `features.html`, `download.html`, `demo.html`, `about.html`, `blog.html`, `privacy-policy.html`, the redirects (`closed-beta.html`, `boscotryll.html`, `tryll-assistant.html`, `tryll-plugin-alpha.html`), `blog/posts/*/index.html`, `assets/js/pages/*.js` and `sitemap.xml` are rewritten by `build.py`, along with its notes `docs-fallbacks.json` and `lastmod.json`. The `.webp` copies and `images.json` come from `images.py`, `assets/fonts/` from `fonts.py`. Change the design, `config.py` or the blog sources instead.
 
-Hand-written pages from the old design still live at their URLs and are untouched by the build: `tryll-assistant.html` (Tryll Assistant on Steam) and `tryll-plugin-alpha.html` (the plugin alpha: invited partners open it from personal links, so it stays out of the sitemap and robots.txt keeps it out of search).
-
-Retired URLs go in `REDIRECTS` in `config.py`. GitHub Pages can't do server redirects, so the build writes a small noindex page that forwards instantly with a canonical to the new URL, which Google treats as a permanent move. `/closed-beta` → `/download` and `/boscotryll` → `/` work this way.
+Retired URLs go in `REDIRECTS` in `config.py`. GitHub Pages can't do server redirects, so the build writes a small noindex page that forwards instantly with a canonical to the new URL, which Google treats as a permanent move. `/closed-beta` → `/download` works this way, and the old-design pages (`/tryll-assistant`, `/boscotryll`, `/tryll-plugin-alpha`) forward to the homepage.
 
 ## Coming soon
 

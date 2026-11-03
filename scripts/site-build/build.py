@@ -1096,11 +1096,11 @@ def main():
     use_webp(html_files)
     stamp_assets(html_files)
 
-    # Sitemap: new pages (dated by their last change), kept legacy pages, then posts (newest first).
+    # Sitemap: the pages (dated by their last change), then posts (newest first).
     mods = page_lastmods([(path, out) for path, out, _ in out_pages[:len(C.PAGES)]],
                          save='--downloads-live' not in sys.argv[1:])
     out_pages[:len(C.PAGES)] = [(path, mods[path], pr) for path, _, pr in out_pages[:len(C.PAGES)]]
-    urls = out_pages[:len(C.PAGES)] + [(p, d, pr) for p, d, pr in C.LEGACY_PAGES] + out_pages[len(C.PAGES):]
+    urls = out_pages
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for path, mod, pr in urls:

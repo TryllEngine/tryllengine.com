@@ -60,7 +60,7 @@
     // Small and out of the way: one sentence with the links, then "Reject all" and
     // "Accept all" as identical buttons, so saying no is as easy as saying yes. On phones
     // it is a slim sheet at the bottom: the sentence, then both buttons in one row.
-    // Its own CSS, because the old-design pages load this script without site.css.
+    // Its own CSS, so the banner needs nothing else from the page.
     var BANNER_ID = 'tryll-cookie-banner';
     var B = '#' + BANNER_ID;
     var FONT = '"Space Grotesk",Inter,system-ui,sans-serif';

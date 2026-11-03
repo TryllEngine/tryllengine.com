@@ -18,10 +18,8 @@ The main pages are designed in **Claude Design** and turned into static HTML by 
 │   ├── posts.json            # post index (source)
 │   ├── content/{slug}.md     # post bodies (source)
 │   └── posts/{slug}/index.html   # GENERATED
-├── tryll-assistant.html,     # old-design pages, hand-written, kept at their URLs until redesigned;
-│   tryll-plugin-alpha.html   #   the plugin alpha page serves invited partners' personal download links
-├── closed-beta.html,         # GENERATED redirects: /closed-beta → /download, /boscotryll → /
-│   boscotryll.html           #   (REDIRECTS in config.py)
+├── closed-beta.html, boscotryll.html,             # GENERATED redirects of retired pages
+│   tryll-assistant.html, tryll-plugin-alpha.html  #   (REDIRECTS in config.py)
 ├── scripts/site-build/       # annotate → bake → build pipeline, config.py, serve.py
 ├── scripts/lead-alerts/      # Cloudflare Worker: accepted contact messages → Slack (config.LEAD_ALERTS)
 ├── assets/
@@ -39,7 +37,8 @@ The main pages are designed in **Claude Design** and turned into static HTML by 
 │   ├── blog/                 # post covers and inline images (+ .webp copies where lighter, images.py)
 │   └── favicon/, images/, logo/
 ├── sitemap.xml               # GENERATED
-├── robots.txt, llms.txt, CNAME
+├── robots.txt, CNAME
+├── llms.txt                  # what Tryll is, for AI assistants: hand-written, keep it in step with the product
 ```
 
 ## Development Commands

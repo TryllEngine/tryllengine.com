@@ -354,18 +354,15 @@ PAGES = {
     },
 }
 
-# Old-design pages kept at their URLs until they are redesigned (tryll-plugin-alpha.html
-# too: invited partners' download links, kept out of the sitemap and search).
-LEGACY_PAGES = [
-    ('/tryll-assistant', '2025-12-01', '0.7'),
-]
-
 # Retired URLs. GitHub Pages can't send real redirects, so the build writes a
 # small noindex page per entry that forwards instantly and tells Google where
 # it moved.
 REDIRECTS = {
     '/closed-beta': '/download',   # closed beta ended
-    '/boscotryll': '/',   # the 2025 Deep Rock Galactic mod alpha, from the old design
+    # Old-design pages, retired 2026-11-03:
+    '/boscotryll': '/',            # the Deep Rock Galactic mod alpha (decommissioned)
+    '/tryll-assistant': '/',       # Tryll Assistant on Steam (decommissioned)
+    '/tryll-plugin-alpha': '/',    # the plugin's private alpha (now an open beta)
 }
 
 SOFTWARE_LD = {

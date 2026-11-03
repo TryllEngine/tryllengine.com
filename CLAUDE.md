@@ -38,7 +38,6 @@ The main pages are designed in **Claude Design** and turned into static HTML by 
 │   └── favicon/, images/, logo/, docs/
 ├── sitemap.xml               # GENERATED
 ├── robots.txt, llms.txt
-├── .github/workflows/deploy.yml   # old GitHub Pages deploy: delete it once GitHub Pages is retired (after 2026-11-06)
 ```
 
 ## Development Commands

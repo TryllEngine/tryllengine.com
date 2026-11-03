@@ -676,11 +676,32 @@ def demo_requirements(body):
 
 
 def features_logic(logic):
-    """/features opens in its compact view on phones; the design always opened the full view."""
-    logic, n = re.subn(r'\bcol = !!st\.col\b',
-                       "col = st.col != null ? !!st.col : matchMedia('(max-width: 640px)').matches", logic, count=1)
+    """/features opens in its compact view; the design always opened the full view. A topic's
+    picture lines up with the top of a taller text ("top", measured by _m after the page
+    opens and on resize); switching the view or opening a topic measures again, since the
+    compact view hides the pictures."""
+    logic, n = re.subn(r'\bcol = !!st\.col\b', 'col = st.col != null ? !!st.col : true', logic, count=1)
     assert n == 1, 'compact view flag (col) not found in the features logic'
+    for old, new in (('out.ca = () => this.setState({ col: !col, op: {} });',
+                      'out.ca = () => { this.setState({ col: !col, op: {} }); requestAnimationFrame(this._m); };'),
+                     ('this.setState({ op: n }); };', 'this.setState({ op: n }); requestAnimationFrame(this._m); };')):
+        assert logic.count(old) == 1, f'features logic changed: {old}'
+        logic = logic.replace(old, new)
     return logic
+
+
+def compact_view(body):
+    """The /features markup starts in the compact view too (features_logic), so the page
+    doesn't show the full view first and fold it up once the logic runs."""
+    for old, new in (('<div class="cats" data-b-class="cc">', '<div class="cats cl" data-b-class="cc">'),
+                     ('<i class="x" data-b-class="cai">', '<i class="" data-b-class="cai">'),
+                     ('<span data-t="cal">Compact view</span>', '<span data-t="cal">Full view</span>')):
+        assert body.count(old) == 1, f'compact view markup not found in features: {old}'
+        body = body.replace(old, new)
+    # Folded, with no "top": the logic measures that only for topics shown open.
+    body, n = re.subn(r'(<article id="tp\d+" class="tp)(?: top)?(" data-b-class="o\d+">)', r'\1 cl\2', body)
+    assert n, 'features topics (data-b-class="oN") not found'
+    return body
 
 
 def demo_logic(logic):
@@ -836,7 +857,7 @@ def main():
             ld = [{'@context': 'https://schema.org', '@type': 'Blog', 'name': 'Tryll Engine Blog',
                    'url': C.SITE + '/blog', 'publisher': org_ld()}]
         if name == 'features':
-            body = topic_titles(speech_row(body))
+            body = compact_view(topic_titles(speech_row(body)))
             baked.logic = features_logic(baked.logic)
         if name == 'demo':
             body = demo_page(body)

@@ -22,12 +22,12 @@ class Component extends DCLogic {
   }
   componentWillUnmount() { window.removeEventListener('scroll', this._s); window.removeEventListener('resize', this._m); }
   _rv() {
-    const st = this.state || {}, a = st.a || 0, out = {}, col = st.col != null ? !!st.col : matchMedia('(max-width: 640px)').matches, op = st.op || {};
+    const st = this.state || {}, a = st.a || 0, out = {}, col = st.col != null ? !!st.col : true, op = st.op || {};
     out.cc = 'cats' + (col ? ' cl' : '');
     out.cal = col ? 'Full view' : 'Compact view'; out.cai = col ? '' : 'x';
-    out.ca = () => this.setState({ col: !col, op: {} });
+    out.ca = () => { this.setState({ col: !col, op: {} }); requestAnimationFrame(this._m); };
     for (let k = 0; k < NT; k++) { out['o' + k] = 'tp' + (col && !op[k] ? ' cl' : '') + ((st.tp || {})[k] ? ' top' : '');
-      out['h' + k] = () => { if (!col) return; const n = Object.assign({}, op); n[k] = !n[k]; this.setState({ op: n }); }; }
+      out['h' + k] = () => { if (!col) return; const n = Object.assign({}, op); n[k] = !n[k]; this.setState({ op: n }); requestAnimationFrame(this._m); }; }
     [0, 1, 2, 3].forEach(i => { out['a' + i] = a === i ? 'on' : '';
       out['go' + i] = e => { e.preventDefault(); const el = document.getElementById('cat' + i); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 32, behavior: 'smooth' }); this.setState({ a: i }); }; });
     return out;

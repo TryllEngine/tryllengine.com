@@ -23,3 +23,6 @@ hero-flow.html
 hero-typing.html
 # Python bytecode from scripts/site-build
 __pycache__/
+
+# Output of scripts/site-build/publish.py: what Cloudflare Pages publishes
+/dist/

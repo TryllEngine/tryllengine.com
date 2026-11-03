@@ -25,7 +25,7 @@ Blog posts are Markdown files in `blog/content/`, listed in `blog/posts.json`.
 
 ## Hosting
 
-- **Site:** Cloudflare Pages, connected to this repository. Every push to `main` is published. The pages are built locally with `build.py` and committed, so Cloudflare publishes the files as they are. Each commit's "Cloudflare Pages" check shows its deploy and links to the build log.
+- **Site:** Cloudflare Pages, connected to this repository. Every push to `main` is published. The pages are built locally with `build.py` and committed. Cloudflare's build only runs `scripts/site-build/publish.py`, which copies the site's own files into `dist/` (leaving out the build scripts, notes and sources), and publishes that folder. Each commit's "Cloudflare Pages" check shows its deploy and links to the build log.
 - **DNS:** Cloudflare. `www.tryllengine.com` redirects to `tryllengine.com`.
 - **Docs:** [docs.tryllengine.com](https://docs.tryllengine.com) is a separate Cloudflare Pages project, published from [TryllEngine/docs.tryllengine.com](https://github.com/TryllEngine/docs.tryllengine.com).
 - **Team preview:** a password-protected copy on GitHub Pages at [tryllengine.github.io/site-preview](https://tryllengine.github.io/site-preview/), hidden from search engines. `preview.py --publish` updates it.

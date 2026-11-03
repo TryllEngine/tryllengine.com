@@ -21,7 +21,7 @@ The main pages are designed in **Claude Design** and turned into static HTML by 
 ├── tryll-assistant.html, boscotryll.html,        # old-design pages, hand-written,
 │   tryll-plugin-alpha.html                        #   kept at their URLs until redesigned
 ├── closed-beta.html          # GENERATED redirect to /download (see REDIRECTS in config.py)
-├── scripts/site-build/       # annotate → bake → build pipeline, config.py, serve.py
+├── scripts/site-build/       # annotate → bake → build pipeline, config.py, serve.py, publish.py (what Cloudflare publishes)
 ├── scripts/lead-alerts/      # Cloudflare Worker: accepted contact messages → Slack (config.LEAD_ALERTS)
 ├── assets/
 │   ├── site/                 # images from the design export (hashed names)
@@ -54,7 +54,7 @@ Don't use `python -m http.server` to preview: it doesn't resolve `/blog` or `/fe
 
 ## Hosting
 
-- **Site**: Cloudflare Pages project `tryllengine-com`, connected to this repo. Every push to `main` is published exactly as committed, because the pages are built locally. The "Cloudflare Pages" check on each commit shows its deploy and links to the build log. Claude can't open the Cloudflare dashboard, so if a deploy gets stuck, the user has to click Retry deployment there.
+- **Site**: Cloudflare Pages project `tryllengine-com`, connected to this repo. Every push to `main` is published. Cloudflare's build command, `python3 scripts/site-build/publish.py`, copies into `dist/` everything git tracks except `scripts/`, `.claude/`, `.github/`, `blog/content/`, `references/`, `blog/posts.json` and Markdown files. Cloudflare then publishes `dist/`. The pages themselves are built locally and committed. The "Cloudflare Pages" check on each commit shows its deploy and links to the build log. Claude can't open the Cloudflare dashboard, so if a deploy gets stuck, the user has to click Retry deployment there.
 - **Docs**: docs.tryllengine.com is a separate Cloudflare Pages project, published from the `TryllEngine/docs.tryllengine.com` repo.
 - **DNS** is also on Cloudflare. The `www` → root redirect is a Cloudflare redirect rule, and HTTP/3 is on.
 - **Caching**: browsers revalidate HTML on every visit but keep CSS, scripts and pictures for 4 hours. That's why the build stamps those files with `?v=<content hash>`.

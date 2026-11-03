@@ -12,7 +12,7 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 | Rebuild after editing `config.py`, a blog post or `posts.json` | `py -3 scripts/site-build/build.py` |
 | Bring in a new design export | `py -3 scripts/site-build/bake.py "C:/path/to/export"` then `build.py` |
 | Publish the team preview | `py -3 scripts/site-build/preview.py --publish` → https://tryllengine.github.io/site-preview/ |
-| Publish the live site | commit and push to `main`, and Cloudflare Pages publishes it. The "Cloudflare Pages" check on the commit links to the build log |
+| Publish the live site | commit and push to `main`. Cloudflare Pages runs `publish.py`, which copies the files the site serves into `dist/` (not the scripts, notes or blog sources), and publishes `dist/`. The "Cloudflare Pages" check on the commit links to the build log |
 | Re-cut the trailer clips (hero, Smart NPCs) | edit `CLIPS` in `config.py`, then `py -3 scripts/site-build/clips.py "C:/path/to/Tryll_Main_final.mp4"` (the trailer without its subtitles) and `build.py` (needs ffmpeg) |
 
 `serve.py` resolves URLs the way the live site on Cloudflare Pages does (`/features` → `features.html`, `/blog/posts/x` → `/blog/posts/x/`), so links behave like production. `python -m http.server` does not.

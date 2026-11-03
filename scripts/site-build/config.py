@@ -354,10 +354,10 @@ PAGES = {
     },
 }
 
-# Old-design pages kept at their URLs until they are redesigned.
+# Old-design pages kept at their URLs until they are redesigned (tryll-plugin-alpha.html
+# too: invited partners' download links, kept out of the sitemap and search).
 LEGACY_PAGES = [
     ('/tryll-assistant', '2025-12-01', '0.7'),
-    ('/boscotryll', '2025-07-22', '0.5'),
 ]
 
 # Retired URLs. GitHub Pages can't send real redirects, so the build writes a
@@ -365,6 +365,7 @@ LEGACY_PAGES = [
 # it moved.
 REDIRECTS = {
     '/closed-beta': '/download',   # closed beta ended
+    '/boscotryll': '/',   # the 2025 Deep Rock Galactic mod alpha, from the old design
 }
 
 SOFTWARE_LD = {

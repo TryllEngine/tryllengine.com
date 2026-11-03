@@ -18,9 +18,10 @@ The main pages are designed in **Claude Design** and turned into static HTML by 
 │   ├── posts.json            # post index (source)
 │   ├── content/{slug}.md     # post bodies (source)
 │   └── posts/{slug}/index.html   # GENERATED
-├── tryll-assistant.html, boscotryll.html,        # old-design pages, hand-written,
-│   tryll-plugin-alpha.html                        #   kept at their URLs until redesigned
-├── closed-beta.html          # GENERATED redirect to /download (see REDIRECTS in config.py)
+├── tryll-assistant.html,     # old-design pages, hand-written, kept at their URLs until redesigned;
+│   tryll-plugin-alpha.html   #   the plugin alpha page serves invited partners' personal download links
+├── closed-beta.html,         # GENERATED redirects: /closed-beta → /download, /boscotryll → /
+│   boscotryll.html           #   (REDIRECTS in config.py)
 ├── scripts/site-build/       # annotate → bake → build pipeline, config.py, serve.py
 ├── scripts/lead-alerts/      # Cloudflare Worker: accepted contact messages → Slack (config.LEAD_ALERTS)
 ├── assets/
@@ -36,7 +37,7 @@ The main pages are designed in **Claude Design** and turned into static HTML by 
 │   ├── js/cookie-consent.js  # cookie banner + Google Consent Mode v2
 │   ├── css/site.css          # styles the design doesn't cover
 │   ├── blog/                 # post covers and inline images (+ .webp copies where lighter, images.py)
-│   └── favicon/, images/, logo/, docs/
+│   └── favicon/, images/, logo/
 ├── sitemap.xml               # GENERATED
 ├── robots.txt, llms.txt, CNAME
 ```

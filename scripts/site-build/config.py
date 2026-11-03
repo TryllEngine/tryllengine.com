@@ -60,6 +60,16 @@ COPY = [
     ('Dasha on LinkedIn', 'Daria Trush on LinkedIn'),
     ('VP AI R&amp;D at Microsoft.', 'VP at CrowdStrike Cybersecurity Superintelligence Lab. Ex-VP at Microsoft.'),
     ('. Ported Baldur’s Gate, Stellaris and Crysis', ''),   # Gennadii Potapov, Andrei Morozov, for now
+    # founders panel with nobody picked (sized for ~65 words: a longer text makes the page header grow)
+    ('Why we build Tryll', 'Why we built Tryll'),
+    ('Games are the most interactive medium people have made: the player doesn’t just watch or listen, they act, '
+     'and the world is supposed to answer. That’s why we believe AI belongs in games before it belongs anywhere '
+     'else. We build Tryll as hardcore gamers, for game developers, so the world can finally listen, remember and '
+     'react to the person holding the controller.',
+     'We’ve always loved games for one thing no other medium offers: interactivity. Yet for decades, game worlds '
+     'have run on scripts: talking heads, dialogue trees with predefined reactions and an illusion of choice. '
+     'ChatGPT showed us what’s possible, but paying for every minute of gameplay never scales. Today on-device AI '
+     'is powerful enough to give game worlds what was missing — realistic minds, powered by Tryll.'),
 ]
 if HUBSPOT['form']:   # the privacy policy names the contact form's processor
     COPY += [

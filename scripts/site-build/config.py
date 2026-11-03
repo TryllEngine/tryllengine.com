@@ -229,16 +229,18 @@ CLIPS = {
         (16.40, 18.44, '694:868:573:106'),
         (18.44, 20.16, '694:868:613:106'),
     ]},
-    # Smart NPCs, "With Tryll": asked "Which way to the tavern?", he points the way and runs
-    # ahead: "Right here, try not to die before we get inside." (1:00.8-1:04.64, up to where
-    # the narrator comes in). The crop leaves out the item icons and the compass.
-    'npc-after': {'size': (576, 720), 'crf': 28, 'poster': 0.9,
-                  'captions': [(0.12, 1.64, 'Which way to the tavern?'),
-                               (1.72, 3.84, 'Right here, try not to die before we get inside.')],
+    # Smart NPCs, "With Tryll": he runs up while the player asks "Which way to the tavern?",
+    # then points the way and runs ahead: "Right here, try not to die before we get inside."
+    # (1:00.4-1:04.64, up to where the narrator comes in). Its lines follow the voices: the
+    # trailer's subtitles keep the question up for a second of his answer. The crop leaves out
+    # the item icons and the compass.
+    'npc-after': {'size': (576, 720), 'crf': 28, 'poster': 1.3,
+                  'captions': [(0.05, 0.98, 'Which way to the tavern?'),
+                               (1.00, 4.24, 'Right here, try not to die before we get inside.')],
                   'label': 'With Tryll: asked "Which way to the tavern?", an NPC in the storm points the way '
                            'and runs ahead: "Right here, try not to die before we get inside."',
                   'shots': [
-        (60.80, 64.64, '720:900:600:95'),
+        (60.40, 64.64, '720:900:600:95'),
     ]},
     # Real Talk card: a recording of Tryll Colony (its own "source", not the trailer). The
     # player presses Mic and asks Hal Pike to build the houses, the line appears, he answers

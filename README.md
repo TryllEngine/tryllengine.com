@@ -1,131 +1,28 @@
-# Tryll Engine Website
+# Tryll Engine website
 
-Official marketing website for Tryll Engine - the AI engine that brings NPCs to life in games without cloud dependencies.
+The marketing site for [Tryll Engine](https://tryllengine.com): on-device AI middleware for game engines (Unity, Unreal Engine 5, proprietary engines). Static HTML on GitHub Pages, served from `main` with the custom domain in `CNAME`.
 
-## 🚀 Overview
+## How it's made
 
-Tryll Engine enables game developers to integrate intelligent NPCs powered by local language models. This repository contains the marketing website and BoscoTryll showcase mod demonstration.
+The main pages (home, For Developers, Get Tryll Engine, demo, about, blog, privacy) are designed in **Claude Design** and turned into crawlable static HTML by the scripts in [`scripts/site-build/`](scripts/site-build/README.md), which also add the SEO tags, analytics, real forms and links, and generate the blog from `blog/posts.json` and `blog/content/*.md`. Those pages are generated: change the design export, `scripts/site-build/config.py` or the blog sources, then rebuild.
 
-## 🎮 Live Demo
+`tryll-assistant.html`, `boscotryll.html` and `tryll-plugin-alpha.html` are hand-written pages from the old design, kept at their URLs until they are redesigned.
 
-Visit [tryllengine.com](https://tryllengine.com) to see:
-- Product features and capabilities
-- BoscoTryll showcase mod for Deep Rock Galactic
-- Pricing and early access information
+[`CLAUDE.md`](CLAUDE.md) has the project map and the rules (generated files, URLs, analytics, forms, brand); `.claude/skills/` has the workflows for new posts, pages and checks.
 
-## 📁 Project Structure
+## Working on it
 
-```
-TryllEngine.com/
-├── index.html              # Main landing page
-├── boscotryll.html         # BoscoTryll mod showcase page
-├── privacy-policy.html     # Privacy policy
-├── style.css              # Legacy styles (site uses Tailwind CSS)
-├── STYLE_GUIDE.md         # Design system documentation
-├── robots.txt             # SEO crawler rules
-├── sitemap.xml            # Search engine sitemap
-├── CNAME                  # GitHub Pages custom domain
-└── assets/
-    ├── favicon/           # Favicon files
-    ├── logo/              # Brand assets (SVG)
-    └── team_photos/       # Team photos (unused)
-```
-
-## 🛠️ Technology Stack
-
-- **Frontend**: HTML5, Tailwind CSS (via CDN), Vanilla JavaScript
-- **Design**: Glass morphism, dark theme, responsive mobile-first
-- **Hosting**: GitHub Pages
-- **Icons**: Font Awesome 6.4.0
-- **Fonts**: Inter, JetBrains Mono
-
-## 🎨 Key Features
-
-### Marketing Site (index.html)
-- Interactive feature showcase with smooth animations
-- Developer-focused messaging
-- Pricing tiers (Free & Commercial)
-- FAQ section with collapsible items
-- Contact form for early access
-
-### BoscoTryll Showcase (boscotryll.html)
-- Demonstrates Tryll Engine capabilities
-- Installation and customization guides
-- Personality examples for AI companions
-- System requirements and roadmap
-- Alpha community integration
-
-## 🚦 Development
-
-### Local Development
-
-Since this is a static website, simply open files in a browser:
+Python 3 is all the build needs. On Windows:
 
 ```bash
-# Direct browser
-open index.html
-
-# Or use any static server
-python -m http.server 8000
-# Visit http://localhost:8000
+py -3 scripts/site-build/serve.py      # preview at http://localhost:8000 (resolves /features, /blog like GitHub Pages)
+py -3 scripts/site-build/build.py      # rebuild the pages, the blog and the sitemap
 ```
 
-### Making Changes
+Pushing to `main` publishes the site.
 
-1. Follow the design patterns in `STYLE_GUIDE.md`
-2. Use existing Tailwind classes and custom components
-3. Test on mobile devices (mobile-first approach)
-4. Ensure all animations use the established patterns
+## Legal
 
-### Git Workflow
+Tryll Engine is a trademark of Tryll Engine, Inc. Deep Rock Galactic and Bosco are trademarks of Ghost Ship Games ApS; BoscoTryll is an unofficial mod, not affiliated with Ghost Ship Games. Space Grotesk (in `assets/fonts/`) is licensed under the SIL Open Font License 1.1.
 
-```bash
-# Stage changes
-git add .
-
-# Commit with descriptive message
-git commit -m "Your change description"
-
-# Push to GitHub
-git push origin main
-```
-
-Changes are automatically deployed via GitHub Pages.
-
-## 📝 Content Guidelines
-
-### Brand Voice
-- **Tone**: Professional yet approachable
-- **Audience**: Game developers (studios, indies, modders)
-- **Focus**: Technical capabilities without jargon
-
-### SEO Optimization
-- All pages include meta descriptions and Open Graph tags
-- Structured data for better search visibility
-- Sitemap.xml for search engine discovery
-
-## ⚖️ Legal
-
-### Trademarks
-- Tryll Engine is a trademark of Tryll Engine, Inc.
-- Deep Rock Galactic and Bosco are trademarks of Ghost Ship Games ApS
-- BoscoTryll is an unofficial mod not affiliated with Ghost Ship Games
-
-### License
-© 2025 Tryll Engine, Inc. All rights reserved.
-
-## 🤝 Contributing
-
-This is the official Tryll Engine website. For questions or suggestions:
-- Join our [Discord](https://discord.gg/DTKycjPpzs)
-- Email: Contact through the website form
-
-## 🔗 Links
-
-- **Website**: [tryllengine.com](https://tryllengine.com)
-- **Discord**: [Join Community](https://discord.gg/DTKycjPpzs)
-- **BoscoTryll Mod**: [View Showcase](https://tryllengine.com/boscotryll.html)
-
----
-
-Built with ❤️ by the Tryll Engine team
+© Tryll Engine, Inc. All rights reserved.

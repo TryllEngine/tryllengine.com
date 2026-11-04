@@ -132,6 +132,15 @@ CARD_PICTURES = {   # Real Talk shows a clip instead: CARD_CLIPS below CLIPS
                    'A twenty-sided die opening up with light inside, joined to other dice by threads'),
 }
 
+# /about founders: photos that replace the design's, keyed by the name on the site.
+# Cut-outs on a transparent background, trimmed to the person, about 640px tall.
+FOUNDER_PHOTOS = {
+    'Sasha Glotov': '/assets/images/team/sasha-glotov.webp',
+    'Vladimir Belyaev': '/assets/images/team/vladimir-beliaev.webp',
+    'Alex Riabov': '/assets/images/team/alex-riabov.webp',
+    'Maksim Makevich': '/assets/images/team/maksim-makevich.webp',
+}
+
 # /demo (Tryll Colony): the gallery in order, as (image in assets/images/demo/, which also
 # has a -thumb copy; description for screen readers), and "About this game" in Markdown.
 DEMO_SHOTS = [

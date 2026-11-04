@@ -733,6 +733,34 @@ def demo_logic(logic):
     return logic
 
 
+def founder_photos(body, logic):
+    """/about founders: photos from config.FOUNDER_PHOTOS instead of the design's,
+    in the panel (initially the first founder), the roster tiles and the design logic (FD)."""
+    m = re.search(r'const FD = (\[.*?\]);\n', logic, re.S)
+    if not m:
+        raise SystemExit('about: founders (const FD) not found in the design logic')
+    fd = json.loads(m.group(1))
+    for f in fd:
+        new = C.FOUNDER_PHOTOS.get(f['n'])
+        if not new:
+            continue
+        if f.get('ph'):
+            body = body.replace(f'src="{f["ph"]}"', f'src="{new}"')
+        f['ph'] = new
+        tile = re.search(r'<button type="button" class="rt[^"]*"[^>]*>(?:(?!</button>).)*?<b>'
+                         + re.escape(f['n']) + r'</b>.*?</button>', body, re.S)
+        if not tile:
+            raise SystemExit(f'about: roster tile for {f["n"]} not found')
+        t = re.sub(r'<img class="rph"[^>]*>', '', tile.group(0))
+        t = t.replace('<span class="sel">', f'<img class="rph" src="{new}" alt=""><span class="sel">', 1)
+        t = re.sub(r'class="rt( on)?"', lambda c: f'class="rt{c.group(1) or ""} hp"', t, count=1)
+        body = body[:tile.start()] + t + body[tile.end():]
+    for name in set(C.FOUNDER_PHOTOS) - {f['n'] for f in fd}:
+        print(f'WARN FOUNDER_PHOTOS: "{name}" is not a founder in the design; remove it from config.py')
+    logic = logic[:m.start(1)] + json.dumps(fd, ensure_ascii=False) + logic[m.end(1):]
+    return body, logic
+
+
 def about_page(body):
     """/about: the team comes before the advisors (the design has the advisors first)."""
     adv = re.search(r'<section class="ab mt tm">.*?</section>', body, re.S)
@@ -896,6 +924,7 @@ def main():
             baked.logic = features_logic(baked.logic)
         if name == 'about':
             body = about_page(body)
+            body, baked.logic = founder_photos(body, baked.logic)
         if name == 'demo':
             body = demo_page(body)
             baked.logic = demo_logic(baked.logic)

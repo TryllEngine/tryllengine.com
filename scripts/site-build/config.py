@@ -53,7 +53,8 @@ COPY = [
     ('<small>Then</small><b>1%</b>', '<small>Studios and publishers</small><b>Custom</b>'),
     ('For game developers, individuals and small businesses under $200k USD, and educators and schools with no '
      'revenue limits',
-     'Depending on your use case, we can adjust the revenue share, payment terms and conditions. '
+     'We offer custom licenses and flexible payment models: depending on your use case, we can adjust the '
+     'revenue share, payment terms and conditions, and add the extra services described below. '
      'Don’t hesitate to contact us.'),
     ('">Contact sales <svg', '">Contact us <svg'),
     ('that allows integrate in-game AI', 'that lets you integrate in-game AI'),   # hero typo

@@ -46,6 +46,16 @@ COMING_SOON = {
 # (text in the design, text on the site). Drop an entry once the design has it.
 COPY = [
     ('$500k', '$200k'),   # pricing threshold
+    # pricing: free up to $200k then 1% on the left; custom terms on the right
+    ('No seats. No per-token fees. A 1% royalty once a shipped game passes $200k USD in gross revenue.',
+     'Completely free until your game earns $200k USD in gross revenue. After that, we charge 1% of the '
+     'game’s revenue. No seats, no per-token fees.'),
+    ('<small>Then</small><b>1%</b>', '<small>Studios and publishers</small><b>Custom</b>'),
+    ('For game developers, individuals and small businesses under $200k USD, and educators and schools with no '
+     'revenue limits',
+     'Depending on your use case, we can adjust the revenue share, payment terms and conditions. '
+     'Don’t hesitate to contact us.'),
+    ('">Contact sales <svg', '">Contact us <svg'),
     ('that allows integrate in-game AI', 'that lets you integrate in-game AI'),   # hero typo
     # /about is the Team page: its menu link and heading (the URL stays /about)
     ('<a href="about.html">About</a>', '<a href="about.html">Team</a>'),

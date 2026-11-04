@@ -16,7 +16,7 @@ class Component extends DCLogic {
     o.navM = 'mnav' + (m ? ' on' : ''); o.navX = m ? 'true' : 'false'; o.navT = () => this.setState({ navOpen: !m });
     o.ac = 'ase' + (k < 0 ? ' def' : ''); if (k !== this._lk) { this._fl = !this._fl; this._lk = k; } o.rk = 'rgt ' + (this._fl ? 'fa' : 'fb'); o.home = () => this.setState({ k: -1 });
     o.hc = 'hero2' + (f.ph ? ' hp' : ''); o.cph = f.ph || 'data:image/gif;base64,R0lGODlhAQABAAAAACw=';
-    o.ci = f.i; o.cn = f.n; o.cr = f.r; o.cc = f.c; o.cb = f.b;
+    o.ci = f.i; o.cli = {"Sasha Glotov": "https://www.linkedin.com/in/aleksandrsashaglotov/", "Vladimir Belyaev": "https://www.linkedin.com/in/vladimirsbelyaev/", "Alex Riabov": "https://www.linkedin.com/in/alex-riabov1/", "Maksim Makevich": "https://www.linkedin.com/in/makevich-maksim/"}[f.n] || "https://www.linkedin.com/company/tryllengine/"; o.cn = f.n; o.cr = f.r; o.cc = f.c; o.cb = f.b;
     FD.forEach((_, i) => { o['s' + i] = 'rt' + (i === k ? ' on' : '') + (FD[i].ph ? ' hp' : ''); o['p' + i] = () => { if (!this._r) this.setState({ k: i }); }; });
     o.rc = 'rbtn' + (st.rolling ? ' rl2' : '');
     o.roll = () => { if (this._r) return; let t = k; while (t === k) t = Math.floor(Math.random() * FD.length);

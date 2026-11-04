@@ -311,3 +311,17 @@ input.hp { position: absolute !important; left: -9999px !important; width: 1px; 
    the section no bottom padding, so the last card touched the footer. */
 .ab.mt.tm { padding-bottom: 96px; }
 @media (max-width: 640px) { .ab.mt.tm { padding-bottom: 56px; } }
+
+/* /about advisor cards on desktop: the bio under the role makes the name plate tall enough to
+   cover the face, so it stays folded and opens on hover (or keyboard focus on the LinkedIn link).
+   Touch screens, which can't hover, and the narrower layouts above keep it open. */
+@media (min-width: 1201px) and (hover: hover) {
+    .tmc .tmd {
+        max-height: 0; margin-top: 0; opacity: 0; overflow: hidden;
+        transition: max-height .35s ease, margin-top .35s ease, opacity .25s ease;
+    }
+    .tmc:hover .tmd, .tmc:focus-within .tmd { max-height: 8em; margin-top: 8px; opacity: 1; }
+}
+@media (min-width: 1201px) and (hover: hover) and (prefers-reduced-motion: reduce) {
+    .tmc .tmd { transition: none; }
+}

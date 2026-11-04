@@ -46,6 +46,16 @@ COMING_SOON = {
 # (text in the design, text on the site). Drop an entry once the design has it.
 COPY = [
     ('$500k', '$200k'),   # pricing threshold
+    # pricing: free up to $200k then 1% on the left; custom terms on the right
+    ('No seats. No per-token fees. A 1% royalty once a shipped game passes $200k USD in gross revenue.',
+     'Completely free until your game earns $200k USD in gross revenue. After that, we charge 1% of the game’s '
+     'gross revenue. No seats, no per-token fees.'),
+    ('<small>Then</small><b>1%</b>', '<small>Studios and publishers</small><b>Custom</b>'),
+    ('For game developers, individuals and small businesses under $200k USD, and educators and schools with no '
+     'revenue limits',
+     'Depending on your use case, we can adjust the revenue share, payment terms and conditions. '
+     'Don’t hesitate to contact us.'),
+    ('">Contact sales <svg', '">Contact us <svg'),
     ('that allows integrate in-game AI', 'that lets you integrate in-game AI'),   # hero typo
     # /about is the Team page: its menu link and heading (the URL stays /about)
     ('<a href="about.html">About</a>', '<a href="about.html">Team</a>'),
@@ -120,6 +130,27 @@ CARD_PICTURES = {   # Real Talk shows a clip instead: CARD_CLIPS below CLIPS
     'Dynamic worlds': ('/assets/images/dynamic-worlds.jpg', 'A colony village seen from above'),
     'New genres': ('/assets/images/new-genres.jpg',
                    'A twenty-sided die opening up with light inside, joined to other dice by threads'),
+}
+
+# /about founders: photos that replace the design's, keyed by the name on the site.
+# Cut-outs on a transparent background, trimmed to the person, about 640px tall.
+FOUNDER_PHOTOS = {
+    'Sasha Glotov': '/assets/images/team/sasha-glotov.webp',
+    'Vladimir Belyaev': '/assets/images/team/vladimir-beliaev.webp',
+    'Alex Riabov': '/assets/images/team/alex-riabov.webp',
+    'Maksim Makevich': '/assets/images/team/maksim-makevich.webp',
+}
+
+# /about team and advisor cards: photos that replace the design's (or its empty
+# silhouette), keyed by the name on the card. Portrait crops, 600x800, face near the top.
+TEAM_PHOTOS = {
+    'Miloš Petković': '/assets/images/team/milos-petkovic.jpg',
+    'Daria Trush': '/assets/images/team/daria-trush.jpg',
+    'Alexander Stojanovic': '/assets/images/team/alexander-stojanovic.jpg',
+    'Pierre Moisan': '/assets/images/team/pierre-moisan.jpg',
+    'Gennadii Potapov': '/assets/images/team/gennadii-potapov.jpg',
+    'Lidia Kozlova': '/assets/images/team/lidia-kozlova.jpg',
+    'Andrei Morozov': '/assets/images/team/andrei-morozov.jpg',
 }
 
 # /demo (Tryll Colony): the gallery in order, as (image in assets/images/demo/, which also

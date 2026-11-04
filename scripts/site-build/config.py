@@ -68,7 +68,7 @@ COPY = [
     ('Credited on Diablo IV, Fortnite and many other games.', 'Credited on Diablo IV and many other games.'),
     ('<b>Dasha</b><small>Role</small>', '<b>Daria Trush</b><small>Business development manager</small>'),
     ('Dasha on LinkedIn', 'Daria Trush on LinkedIn'),
-    ('VP AI R&amp;D at Microsoft.', 'VP at CrowdStrike Cybersecurity Superintelligence Lab. Ex-VP at Microsoft.'),
+    ('VP AI R&amp;D at Microsoft.', 'SVP at CrowdStrike Cybersecurity Superintelligence Lab. Ex-VP at Microsoft.'),
     ('. Ported Baldur’s Gate, Stellaris and Crysis', ''),   # Gennadii Potapov, Andrei Morozov, for now
     # founders panel with nobody picked (sized for ~65 words: a longer text makes the page header grow)
     ('Why we build Tryll', 'Why we built Tryll'),

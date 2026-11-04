@@ -307,11 +307,20 @@ PAGE_LINKS = {
         'Lidia Kozlova on LinkedIn': 'https://www.linkedin.com/in/lidia-kozlova-gamedev/',
         'Andrei Morozov on LinkedIn': 'https://www.linkedin.com/in/andreymorozov8/',
         'Miloš Petković on LinkedIn': 'https://www.linkedin.com/in/milos-petkovic-109a2098/',
-        'Nikolay Andreev on LinkedIn': 'https://www.linkedin.com/in/nikolay-andreev-008802178/',
+        'Nikolay Andreev on LinkedIn': 'https://www.linkedin.com/in/nikolay-andreev-%F0%9F%94%9C-ai-and-games-008802178/',
         'Daria Trush on LinkedIn': 'https://www.linkedin.com/in/daria-trush-265a31369/',
     },
     # Replaced by real controls in build.py (subscribe form, pagination).
     'blog': {k: None for k in ('Get updates', 'Previous', 'Next', '1', '2', '3')},
+}
+
+
+# Founders panel on /about: the LinkedIn button follows the selected founder (by name in the design).
+FOUNDER_LINKEDIN = {
+    'Sasha Glotov': 'https://www.linkedin.com/in/aleksandrsashaglotov/',
+    'Vladimir Belyaev': 'https://www.linkedin.com/in/vladimirsbelyaev/',
+    'Alex Riabov': 'https://www.linkedin.com/in/alex-riabov1/',
+    'Maksim Makevich': 'https://www.linkedin.com/in/makevich-maksim/',
 }
 
 

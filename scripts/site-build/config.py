@@ -141,6 +141,18 @@ FOUNDER_PHOTOS = {
     'Maksim Makevich': '/assets/images/team/maksim-makevich.webp',
 }
 
+# /about team and advisor cards: photos that replace the design's (or its empty
+# silhouette), keyed by the name on the card. Portrait crops, 600x800, face near the top.
+TEAM_PHOTOS = {
+    'Miloš Petković': '/assets/images/team/milos-petkovic.jpg',
+    'Daria Trush': '/assets/images/team/daria-trush.jpg',
+    'Alexander Stojanovic': '/assets/images/team/alexander-stojanovic.jpg',
+    'Pierre Moisan': '/assets/images/team/pierre-moisan.jpg',
+    'Gennadii Potapov': '/assets/images/team/gennadii-potapov.jpg',
+    'Lidia Kozlova': '/assets/images/team/lidia-kozlova.jpg',
+    'Andrei Morozov': '/assets/images/team/andrei-morozov.jpg',
+}
+
 # /demo (Tryll Colony): the gallery in order, as (image in assets/images/demo/, which also
 # has a -thumb copy; description for screen readers), and "About this game" in Markdown.
 DEMO_SHOTS = [

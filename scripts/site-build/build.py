@@ -761,6 +761,19 @@ def founder_photos(body, logic):
     return body, logic
 
 
+def team_photos(body):
+    """/about team and advisor cards: photos from config.TEAM_PHOTOS instead of the design's."""
+    for name, src in C.TEAM_PHOTOS.items():
+        card = re.search(r'<div class="tmp">((?:(?!<div class="tmc">).)*?)</div><div class="tmb"><span><b>'
+                         + re.escape(name) + '</b>', body, re.S)
+        if not card:
+            print(f'WARN TEAM_PHOTOS: no card for "{name}" on /about; remove it from config.py')
+            continue
+        img = f'<img src="{src}" alt="{esc(name)}" loading="lazy">'
+        body = body[:card.start(1)] + img + body[card.end(1):]
+    return body
+
+
 def about_page(body):
     """/about: the team comes before the advisors (the design has the advisors first)."""
     adv = re.search(r'<section class="ab mt tm">.*?</section>', body, re.S)
@@ -924,7 +937,7 @@ def main():
             baked.logic = features_logic(baked.logic)
         if name == 'about':
             body = about_page(body)
-            body, baked.logic = founder_photos(body, baked.logic)
+            body, baked.logic = founder_photos(team_photos(body), baked.logic)
         if name == 'demo':
             body = demo_page(body)
             baked.logic = demo_logic(baked.logic)

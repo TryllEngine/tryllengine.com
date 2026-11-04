@@ -48,8 +48,8 @@ COPY = [
     ('$500k', '$200k'),   # pricing threshold
     # pricing: free up to $200k then 1% on the left; custom terms on the right
     ('No seats. No per-token fees. A 1% royalty once a shipped game passes $200k USD in gross revenue.',
-     'Completely free until your game earns $200k USD in gross revenue. After that, we charge 1% of the '
-     'game’s revenue. No seats, no per-token fees.'),
+     'Completely free until your game earns $200k USD in gross revenue. After that, we charge 1% of the game’s '
+     'gross revenue. No seats, no per-token fees.'),
     ('<small>Then</small><b>1%</b>', '<small>Studios and publishers</small><b>Custom</b>'),
     ('For game developers, individuals and small businesses under $200k USD, and educators and schools with no '
      'revenue limits',

@@ -53,8 +53,8 @@ COPY = [
     ('<small>Then</small><b>1%</b>', '<small>Studios and publishers</small><b>Custom</b>'),
     ('For game developers, individuals and small businesses under $200k USD, and educators and schools with no '
      'revenue limits',
-     'Depending on your use case, we can adjust the revenue share, payment terms and conditions. '
-     'Don’t hesitate to contact us.'),
+     'Custom licenses and payment terms, plus hands-on help: model fine-tuning, security guardrails, '
+     'an engineer on your team.'),
     ('">Contact sales <svg', '">Contact us <svg'),
     ('that allows integrate in-game AI', 'that lets you integrate in-game AI'),   # hero typo
     # /about is the Team page: its menu link and heading (the URL stays /about)

@@ -4,8 +4,8 @@ class Component extends DCLogic {
   renderVals() { const o = this._rv() || {}; const m = !!(this.state && this.state.navOpen); o.navM = 'mnav' + (m ? ' on' : ''); o.navX = m ? 'true' : 'false'; o.navT = () => this.setState({ navOpen: !m }); return o; }
   componentDidMount() {
     this._on = () => { const el = document.querySelector('.pb'); if (!el) return; const r = el.getBoundingClientRect(), vh = window.innerHeight || 1;
-      const p = Math.max(0, Math.min(1, (vh * 0.5 - r.top) / Math.max(1, r.height))); this.setState({ p }); };
-    window.addEventListener('scroll', this._on, { passive: true }); this._on();
+      const s = vh * 0.5 - r.top, rem = r.bottom - vh, p = rem <= 0 ? 1 : s <= 0 ? 0 : s / (s + rem); this.setState({ p }); };
+    window.addEventListener('scroll', this._on, { passive: true }); window.addEventListener('resize', this._on); window.addEventListener('load', this._on); this._on();
   }
   componentWillUnmount() { window.removeEventListener('scroll', this._on); }
   _rv() {

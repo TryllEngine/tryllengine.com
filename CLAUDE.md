@@ -13,7 +13,7 @@ The main pages are designed in **Claude Design** and turned into static HTML by 
 ```
 ├── index.html, features.html, download.html,     # GENERATED from the design export
 │   demo.html, about.html, blog.html,              #   by scripts/site-build/build.py
-│   privacy-policy.html
+│   privacy-policy.html, 404.html
 ├── blog/
 │   ├── posts.json            # post index (source)
 │   ├── content/{slug}.md     # post bodies (source)
@@ -24,7 +24,7 @@ The main pages are designed in **Claude Design** and turned into static HTML by 
 ├── scripts/site-build/       # annotate → bake → build pipeline, config.py, serve.py, publish.py (what Cloudflare publishes)
 ├── scripts/lead-alerts/      # Cloudflare Worker: accepted contact messages → Slack (config.LEAD_ALERTS)
 ├── assets/
-│   ├── site/                 # images from the design export (hashed names)
+│   ├── site/                 # images and scripts (three.js) from the design export (hashed names)
 │   ├── js/site.js            # runtime that runs the design logic on static HTML
 │   ├── js/pages/*.js         # GENERATED: each page's design logic
 │   ├── js/forms.js           # contact (HubSpot, or Formspree until config.HUBSPOT is set) + newsletter (MailerLite)
@@ -46,6 +46,7 @@ The main pages are designed in **Claude Design** and turned into static HTML by 
 py -3 scripts/site-build/serve.py                 # preview at http://localhost:8000 (the live site's URL rules)
 py -3 scripts/site-build/build.py                 # rebuild pages, blog, sitemap
 py -3 scripts/site-build/bake.py "<export dir>"   # bring in a new Claude Design export, then build
+py -3 scripts/site-build/bake.py "<export dir>" index 404   # ...or only some of its pages (a "parts" export, see the README)
 py -3 scripts/site-build/preview.py --publish     # team preview at tryllengine.github.io/site-preview
 py -3 scripts/site-build/clips.py "<trailer without subtitles>.mp4"   # re-cut the hero / Smart NPCs clips (config.CLIPS), then build
 ```
@@ -58,7 +59,7 @@ Don't use `python -m http.server` to preview: it doesn't resolve `/blog` or `/fe
 - **Docs**: docs.tryllengine.com is a separate Cloudflare Pages project, published from the `TryllEngine/docs.tryllengine.com` repo.
 - **DNS** is also on Cloudflare. The `www` → root redirect is a Cloudflare redirect rule, and HTTP/3 is on.
 - **Caching**: browsers revalidate HTML on every visit but keep CSS, scripts and pictures for 4 hours. That's why the build stamps those files with `?v=<content hash>`.
-- **Unknown URLs** return the home page with status 200. Cloudflare Pages does this when the site has no `404.html`.
+- **Unknown URLs** get `404.html` (the design's "This page rolled a zero") with status 404: Cloudflare Pages serves the site's top-level `404.html` for any path it doesn't have. Paths publish.py leaves out still go to the home page (`_redirects`).
 - **The team preview** is still a GitHub Pages site (tryllengine.github.io/site-preview), published by `preview.py`.
 
 ## Rules

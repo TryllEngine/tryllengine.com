@@ -4,7 +4,7 @@ Reads the browser-rendered pages in scripts/site-build/baked/ (made by
 bake.py) plus the blog content, and writes:
 
     index.html, features.html, download.html, about.html, demo.html, blog.html,
-    privacy-policy.html
+    privacy-policy.html, 404.html
     blog/posts/<slug>/index.html   (one per entry in blog/posts.json)
     assets/js/pages/<page>.js      (the page's original design logic)
     sitemap.xml
@@ -64,6 +64,8 @@ class Baked:
         # Design styles and font links carry data-dc-tpl; runtime styles don't.
         self.head_links = re.findall(r'<link\b[^>]*data-dc-tpl[^>]*>', head)
         self.styles = re.findall(r'<style data-dc-tpl="\d+">(.*?)</style>', head, re.S)
+        # Libraries the design loads from its own files (three.js for the homepage die).
+        self.scripts = ['/assets/site/' + s for s in re.findall(r'<script src="(?:\./)?assets/([0-9a-f]{32}\.js)"', head)]
         start = raw.index('<div id="dc-root">')
         end = raw.index('<script type="text/x-dc"')
         body = raw[start:end].strip()
@@ -107,6 +109,45 @@ def tablet_menu(styles):
 
 def fix_assets(s):
     return re.sub(r'(?<![\w/.])(?:\./)?assets/([0-9a-f]{32}\.(?:jpg|jpeg|png|svg|webp|gif))', r'/assets/site/\1', s)
+
+
+# ------------------------------------------------------------------- footer
+
+def css_rules(styles):
+    """Each rule of the design's stylesheets as (its @media or '', selector, declarations)."""
+    out = []
+    for css in styles:
+        media = ''
+        for m in re.finditer(r'(@media[^{]*)\{|([^{}]+)\{([^{}]*)\}|\}', re.sub(r'/\*.*?\*/', '', css, flags=re.S)):
+            if m.group(1):
+                media = m.group(1).strip()
+            elif m.group(2) is not None:
+                out.append((media, m.group(2).strip(), m.group(3)))
+            else:
+                media = ''
+    return out
+
+
+def site_footer(home):
+    """The footer of every design page: the homepage's, with its styles (.fv, .fva). The
+    11-04 parts export redesigned it on the homepage and the 404 page only."""
+    m = re.search(r'<footer class="fv\b.*?</footer>', home.body, re.S)
+    if not m:
+        raise SystemExit('index: footer (<footer class="fv ...">) not found')
+    css = ''.join(f'{media}{{{sel}{{{decl}}}}}' if media else f'{sel}{{{decl}}}'
+                  for media, sel, decl in css_rules(home.styles) if re.search(r'\.fva?\b', sel))
+    return m.group(0), css
+
+
+def new_footer(baked, footer):
+    """A page still drawn with the old footer (logo, links, copyright in one row) gets the
+    homepage's. Pages the designer exported with the new one keep their own."""
+    markup, css = footer
+    baked.body, n = re.subn(r'<footer class="fo">.*?</footer>', lambda _: markup, baked.body, count=1, flags=re.S)
+    if n:
+        baked.styles.append(css)
+    elif '<footer class="fv' not in baked.body:
+        raise SystemExit(f'{baked.name}: footer not found')
 
 
 # --------------------------------------------------------------------- links
@@ -261,14 +302,17 @@ def head(meta, baked, extra_ld=()):
     title = meta['title']
     desc = meta['description']
     ld = [json.dumps(x, ensure_ascii=False, indent=1) for x in extra_ld]
+    # A page that isn't indexed (the 404 page, served at any unknown URL) has no canonical URL.
+    robots, canonical = ('noindex', []) if meta.get('noindex') else \
+        ('index, follow, max-image-preview:large', [f'<link rel="canonical" href="{url}">'])
     parts = [
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
         GTM_HEAD,
         f'<title>{esc(title)}</title>',
         f'<meta name="description" content="{esc(desc)}">',
-        '<meta name="robots" content="index, follow, max-image-preview:large">',
-        f'<link rel="canonical" href="{url}">',
+        f'<meta name="robots" content="{robots}">',
+        *canonical,
         f'<meta property="og:type" content="{meta.get("og_type", "website")}">',
         '<meta property="og:site_name" content="Tryll Engine">',
         f'<meta property="og:url" content="{url}">',
@@ -400,8 +444,164 @@ SMOOTH_CLOCK = ('(window.tryllClock || (f => setInterval(() => f(0.04), 40)))'
                 '(dt => this.setState({ T: ((this.state && this.state.T) || 0) + dt }))')
 
 
+# The homepage die is drawn by three.js over the design's SVG die, which the design hides for
+# it. three.js is 670 KB, so it loads when the dice section is 2.5 screens away (not with
+# Save-Data), and the SVG die stays until the WebGL one draws (.d3on on <html>), or for good
+# without WebGL. As designed, the start-up took ~0.7 s in one go (~1.6 s on a phone) and froze
+# the page on its way to the dice. It now runs in steps of at most ~0.15 s, each in a quiet
+# moment (no scrolling, swiping or tapping, the die out of view or at rest), with the shaders compiled in the
+# background and one speckled face texture for all 20 faces instead of 20 drawn alike. The
+# WebGL die is drawn again only when it moved, not on every frame.
+D3_HIDE = ('.gzi svg polygon[stroke="#FFFFFF"]{display:none}', '.gzi svg>g:last-of-type{opacity:0 !important}',
+           '.gzi .dn{display:none !important}')
+D3_HELPERS = """// build.py: the steps of the WebGL die's start-up wait for a quiet moment: no scrolling, swiping or
+// tapping for 0.6 s, the dice section out of view or its die at rest, the browser idle. In
+// each CYC-second cycle (the clock of _rv below) the die rolls until 3 s, lands and settles until
+// ~4.3 s and fades out from CYC - 0.7 s.
+let D3SCROLL = 0, D3SEC = false, D3SELF = null;
+['scroll', 'wheel', 'touchmove', 'pointerdown', 'keydown'].forEach(e =>
+  document.addEventListener(e, () => { D3SCROLL = performance.now(); }, { capture: true, passive: true }));
+if (typeof IntersectionObserver !== 'undefined' && document.querySelector('.gz'))
+  new IntersectionObserver(es => { D3SEC = es.some(x => x.isIntersecting); }).observe(document.querySelector('.gz'));
+const d3Rest = () => {
+  const st = (D3SELF && D3SELF.state) || {}, T = st.T || 0;
+  if (st.drag) return false;
+  if (st.T0 == null && st.Tv == null) return true;
+  const t = (st.T0 != null ? T - st.T0 + 0.45 : T - st.Tv) % CYC;
+  return t > 4.3 && t < CYC - 0.9;
+};
+// 0.6 s: a swipe's smooth scroll and the quote carousel's 0.35 s height ease are over by then.
+const d3Quiet = () => performance.now() - D3SCROLL > 600 && (!D3SEC || d3Rest());
+const d3Idle = () => new Promise(r => {
+  const run = () => d3Quiet() ? r() : wait();   // still quiet when the browser gets to it?
+  const go = () => window.requestIdleCallback ? requestIdleCallback(run, { timeout: 150 }) : setTimeout(run, 16);
+  const wait = () => d3Quiet() ? go() : setTimeout(wait, 60);
+  wait();
+});
+// build.py: draw the WebGL die only when it moved, its canvas changed or it came back into view.
+let D3SIG = '', D3VIS = true;
+function d3Draw(s, cv) {
+  if (!D3VIS) return false;
+  const sig = s.R.map(r => r.map(v => v.toFixed(4)).join()).join(';') + '|' +
+    [s.CX, s.CY, s.RD, s.pop, s.lo, s.no].map(v => (+v || 0).toFixed(3)).join() + '|' + cv.width + 'x' + cv.height;
+  if (sig === D3SIG) return false;
+  D3SIG = sig;
+  return true;
+}
+// build.py: the SVG die gives way once the WebGL one has drawn (.d3on); without WebGL it stays.
+function d3Start(self) {
+  const cv = document.querySelector('.gzi canvas.d3c');
+  if (!cv || !window.THREE) return false;
+  D3SELF = self;
+  d3Start0(self).then(ok => {
+    if (!ok) return;
+    document.documentElement.classList.add('d3on');
+    cv.addEventListener('webglcontextrestored', () => { D3SIG = ''; });
+    if (typeof IntersectionObserver !== 'undefined')
+      new IntersectionObserver(es => { D3VIS = es.some(x => x.isIntersecting); if (D3VIS) D3SIG = ''; }).observe(cv);
+  }, () => {});
+  return true;
+}
+"""
+# The steps (d3Idle before each): the WebGL context; the metal's environment, its shader compiled
+# in the background first; the die's textures and meshes; its shaders, compiled in the background
+# (compileAsync); its textures, sent to the GPU; the first frame (~0.1 s, as the GPU driver
+# finishes the shaders at their first draw).
+D3_STEPS = (
+    ('function d3Start0(self) {', 'async function d3Start0(self) {'),
+    ('const rnd = new T3.WebGLRenderer(', 'await d3Idle(); const rnd = new T3.WebGLRenderer('),
+    ('rnd.setClearColor(0x000000, 0);', 'rnd.setClearColor(0x000000, 0); await d3Idle();'),
+    ('const pm = new T3.PMREMGenerator(rnd); scene.environment = pm.fromEquirectangular(et).texture;',
+     'const pm = new T3.PMREMGenerator(rnd); pm.compileEquirectangularShader(); await d3Idle(); '
+     'scene.environment = pm.fromEquirectangular(et).texture; await d3Idle();'),
+    ('let LOGOM = null, LOGOX = null; const DIG = [];', "let LOGOM = null, LOGOX = null; const DIG = []; const FACE = face('');"),
+    ("const mat = new T3.MeshStandardMaterial({ map: face(''),", 'const mat = new T3.MeshStandardMaterial({ map: FACE,'),
+    ('  loop();\n  self._d3stop',
+     '  await d3Idle(); await rnd.compileAsync(scene, cam);\n'
+     '  await d3Idle(); die.traverse(o => { if (o.material && o.material.map) rnd.initTexture(o.material.map); });\n'
+     '  await d3Idle();\n'
+     '  loop();\n  self._d3stop'),
+)
+# three.js downloads as the section comes near and runs (~20 ms, ~80 ms on a slow phone) in a
+# quiet moment.
+D3_LOAD = ("(el => { if (navigator.connection && navigator.connection.saveData) return; D3SELF = this; const src = %s; "
+           "const go = () => { const pl = document.createElement('link'); pl.rel = 'preload'; pl.as = 'script'; "
+           "pl.href = src; document.head.appendChild(pl); d3Idle().then(() => { const sc = document.createElement('script'); "
+           "sc.src = src; sc.onload = () => go3(0); document.head.appendChild(sc); }); }; "
+           "if (!el || typeof IntersectionObserver === 'undefined') return go(); "
+           "const io = new IntersectionObserver(es => { if (es.some(x => x.isIntersecting)) { io.disconnect(); go(); } }, "
+           "{ rootMargin: '250%% 0px' }); io.observe(el); })(document.querySelector('.gz'));")
+
+
+def dice_3d(baked):
+    """Homepage: the design's WebGL die (D3_HIDE, D3_HELPERS, D3_LOAD above)."""
+    if 'function d3Start(self) {' not in baked.logic:
+        return   # the design has no WebGL die
+    if len(baked.scripts) != 1:
+        raise SystemExit(f'index: the WebGL die needs one design script (three.js), found {baked.scripts}')
+    # d3Rest (D3_HELPERS) follows the die's clock as _rv computes it.
+    for clock in ('const CYC = 7.5;', 'out.E = hudR(st.T0 != null ? T - st.T0 + 0.45 : (st.Tv != null ? T - st.Tv : 0));'):
+        if clock not in baked.logic:
+            raise SystemExit(f'index: the dice clock changed, update d3Rest in build.py: {clock}')
+    for old, new in (('function d3Start(self) {', D3_HELPERS + 'function d3Start0(self) {'),
+                     *D3_STEPS,
+                     ('const s = D20S; if (!s) return;', 'const s = D20S; if (!s || !d3Draw(s, cv)) return;'),
+                     ('go3(0);', D3_LOAD % json.dumps(baked.scripts[0]))):
+        if baked.logic.count(old) != 1:
+            raise SystemExit(f'index: the WebGL die logic changed: {old}')
+        baked.logic = baked.logic.replace(old, new)
+    for rule in D3_HIDE:
+        if not any(rule in s for s in baked.styles):
+            raise SystemExit(f'index: the WebGL die styles changed: {rule}')
+        baked.styles = [s.replace(rule, '.d3on ' + rule) for s in baked.styles]
+
+
+def no_card_video(body, baked):
+    """The design plays a video in the "New genres" card and its logic looks for it for 5 s after
+    the page opens; config.CARD_PICTURES shows a picture there instead, so it stops looking."""
+    if '.ugv.ngv video' in baked.logic and 'class="ugv ngv"' not in body:
+        assert baked.logic.count('ngv(0);') == 1, 'index: "New genres" video logic changed'
+        baked.logic = baked.logic.replace('ngv(0);', '')
+
+
+def quotes_fit(logic):
+    """Phones: the design fits the client quote carousel to the card in view when it is swiped
+    or the window resized. It measures at most once a frame, at its start (each scroll event
+    measured, laying out the page again while the height eased), and once more when the web
+    font is in, which rewraps the quotes."""
+    for old, new in (('this._fitS = () => fitCl();',
+                      'this._fitS = () => { if (!this._fitQ) this._fitQ = requestAnimationFrame(() => { this._fitQ = 0; fitCl(); }); };'),
+                     ('this._fitVc = vc; };',
+                      'this._fitVc = vc; if (document.fonts && document.fonts.ready) document.fonts.ready.then(this._fitS); '
+                      "window.addEventListener('load', this._fitS); };")):
+        if old not in logic:
+            return logic
+        assert logic.count(old) == 1, f'index: quote carousel logic changed: {old}'
+        logic = logic.replace(old, new)
+    return logic
+
+
+# Reading progress beside a post and the privacy policy: the design counted how much of the
+# article had passed the middle of the window, so a short post, which can't scroll that far,
+# stopped at 29% with all of it on screen. It is 100% once the article's end is in view, and
+# counted again when the page has loaded (the lead picture moves the article) and on resize.
+DESIGN_PROGRESS = 'const p = Math.max(0, Math.min(1, (vh * 0.5 - r.top) / Math.max(1, r.height)));'
+READ_PROGRESS = 'const s = vh * 0.5 - r.top, rem = r.bottom - vh, p = rem <= 0 ? 1 : s <= 0 ? 0 : s / (s + rem);'
+DESIGN_PROGRESS_ON = "window.addEventListener('scroll', this._on, { passive: true }); this._on();"
+READ_PROGRESS_ON = ("window.addEventListener('scroll', this._on, { passive: true }); "
+                    "window.addEventListener('resize', this._on); window.addEventListener('load', this._on); this._on();")
+
+
+def reading_progress(name, logic):
+    if DESIGN_PROGRESS not in logic:
+        return logic
+    if logic.count(DESIGN_PROGRESS_ON) != 1:
+        raise SystemExit(f'{name}: reading progress logic changed: {DESIGN_PROGRESS_ON}')
+    return logic.replace(DESIGN_PROGRESS, READ_PROGRESS).replace(DESIGN_PROGRESS_ON, READ_PROGRESS_ON)
+
+
 def write_logic(name, baked):
-    logic = baked.logic.replace(DESIGN_CLOCK, SMOOTH_CLOCK)
+    logic = reading_progress(name, baked.logic.replace(DESIGN_CLOCK, SMOOTH_CLOCK))
     if name == 'about':
         anchor = 'o.ci = f.i;'
         if anchor not in logic:
@@ -568,7 +768,7 @@ def card_pictures(body):
             tag = f'<div class="ugv" style="background-image: url(&quot;{url}&quot;);" role="img" aria-label="{esc(alt)}"></div>'
         else:
             return m.group(0)
-        new, n = re.subn(r'<div class="ugv(?: ph)?"(?: style="[^"]*")?>(?:<span>[^<]*</span>)?</div>',
+        new, n = re.subn(r'<div class="ugv(?: ph| ngv)?"(?: style="[^"]*")?>(?:<span>[^<]*</span>|<video\b[^>]*></video>)?</div>',
                          lambda _: tag, m.group(0), count=1)
         if not n:
             print(f'WARN no picture in the "{h.group(1)}" use-case card')
@@ -611,19 +811,17 @@ def client_quotes(body):
 
 
 def badge_links(body):
-    """The hero's Epic MegaGrants and Early Game Ventures badges, and the footer's "Epic
-    MegaGrants recipient", link out (config.EPIC_MEGAGRANT, EGV_SITE, EGV_NEWS). A badge's
-    logo and text become two links, so EGV's logo can go to their site."""
+    """The hero's Epic MegaGrants and Early Game Ventures badges link out (config.EPIC_MEGAGRANT,
+    EGV_SITE, EGV_NEWS). A badge's logo and text become two links, so EGV's logo can go to
+    their site."""
     epic = esc(C.EPIC_MEGAGRANT)
     body = re.sub(r'<span>(<img [^>]*>)(Epic MegaGrants<br>recipient)</span>',
                   lambda m: f'<span><a class="hbl" href="{epic}" tabindex="-1" aria-hidden="true">{m.group(1)}</a>'
                             f'<a href="{epic}">{m.group(2)}</a></span>', body)
-    body = re.sub(r'<span>(<img [^>]*?)alt=""([^>]*>)(Funded by<br>Early Game Ventures)</span>',
+    return re.sub(r'<span>(<img [^>]*?)alt=""([^>]*>)(Funded by<br>Early Game Ventures)</span>',
                   lambda m: f'<span><a class="hbl" href="{esc(C.EGV_SITE)}" target="_blank" rel="noopener">'
                             f'{m.group(1)}alt="Early Game Ventures"{m.group(2)}</a>'
                             f'<a href="{esc(C.EGV_NEWS)}" target="_blank" rel="noopener">{m.group(3)}</a></span>', body)
-    return body.replace('<span class="cp">Epic MegaGrants recipient</span>',
-                        f'<a class="cp" href="{epic}">Epic MegaGrants recipient</a>')
 
 
 def topic_titles(body):
@@ -904,13 +1102,15 @@ def org_ld():
 def main():
     downloads = C.DOWNLOADS_LIVE or '--downloads-live' in sys.argv[1:]
     posts = load_posts()
-    out_pages = []
+    out_pages = []    # sitemap: (path, lastmod, priority) of the pages, then of the posts
     html_files = []   # pages and posts written, for the docs link check
+    footer = site_footer(Baked('index').clean())
 
     for name, meta in C.PAGES.items():
         if not downloads and 'description_soon' in meta:
             meta = dict(meta, description=meta['description_soon'])
         baked = Baked(name).clean()
+        new_footer(baked, footer)
         body = rewrite_links(name, video_lists(baked.body))
         scripts = ['/assets/js/forms.js']
         ld = []
@@ -921,6 +1121,9 @@ def main():
             body = card_pictures(body)
             body = client_quotes(body)
             body = media_links(smooth_logos(body))
+            dice_3d(baked)
+            no_card_video(body, baked)
+            baked.logic = quotes_fit(baked.logic)
             scripts += ['/assets/js/clips.js', '/assets/js/marquee.js']
             ld = [org_ld(), C.SOFTWARE_LD,
                   {'@context': 'https://schema.org', '@type': 'WebSite', 'name': 'Tryll Engine',
@@ -947,10 +1150,13 @@ def main():
         write_logic(name, baked)
         html_files.append(os.path.join(ROOT, meta['out']))
         write(html_files[-1], page_html(meta, baked, body, name, ld, scripts))
-        out_pages.append((meta['path'], date.today().isoformat(), meta.get('priority', '0.8')))
+        if not meta.get('noindex'):
+            out_pages.append((meta['path'], date.today().isoformat(), meta.get('priority', '0.8')))
+    n_pages = len(out_pages)
 
     # Blog posts share the blog-post design page.
     baked = Baked('blog-post').clean()
+    new_footer(baked, footer)
     tpl_body = rewrite_links('blog-post', baked.body)
     if not downloads:
         tpl_body = coming_soon(tpl_body)
@@ -992,7 +1198,7 @@ def main():
             '</body>\n</html>\n'))
 
     # Sitemap: new pages, kept legacy pages, then posts (newest first).
-    urls = out_pages[:len(C.PAGES)] + [(p, d, pr) for p, d, pr in C.LEGACY_PAGES] + out_pages[len(C.PAGES):]
+    urls = out_pages[:n_pages] + [(p, d, pr) for p, d, pr in C.LEGACY_PAGES] + out_pages[n_pages:]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for path, mod, pr in urls:

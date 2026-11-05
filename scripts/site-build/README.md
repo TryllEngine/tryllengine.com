@@ -11,6 +11,7 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 | Preview the site locally | `py -3 scripts/site-build/serve.py` → http://localhost:8000/ |
 | Rebuild after editing `config.py`, a blog post or `posts.json` | `py -3 scripts/site-build/build.py` |
 | Bring in a new design export | `py -3 scripts/site-build/bake.py "C:/path/to/export"` then `build.py` |
+| Bring in some pages of an export ("parts") | `py -3 scripts/site-build/bake.py "C:/path/to/export" index 404` then `build.py`: the other pages keep their last bake (see Parts exports) |
 | Publish the team preview | `py -3 scripts/site-build/preview.py --publish` → https://tryllengine.github.io/site-preview/ |
 | Publish the live site | commit and push to `main`. Cloudflare Pages runs `publish.py`, which copies the files the site serves into `dist/` (not the scripts, notes or blog sources), and publishes `dist/`. The "Cloudflare Pages" check on the commit links to the build log |
 | Re-cut the trailer clips (hero, Smart NPCs) | edit `CLIPS` in `config.py`, then `py -3 scripts/site-build/clips.py "C:/path/to/Tryll_Main_final.mp4"` (the trailer without its subtitles) and `build.py` (needs ffmpeg) |
@@ -20,7 +21,7 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 ## How it works
 
 1. **annotate.py**: copies the export and marks every template binding (`{{…}}`, `<sc-for>` loops, `onClick` handlers) with `data-*` attributes.
-2. **bake.py**: loads each annotated page in headless Chrome, lets the design runtime render it once, and saves the DOM to `baked/`. Design images go to `assets/site/`.
+2. **bake.py**: loads each annotated page in headless Chrome, lets the design runtime render it once, and saves the DOM to `baked/`. The export's files those pages use (images, three.js) go to `assets/site/`.
 3. **build.py**: turns the baked pages into the site.
    - Writes the page head: `<title>`, description, canonical, Open Graph/Twitter, favicons, JSON-LD, GTM + cookie consent.
    - Swaps the design's placeholder `href="#"` links for real ones from `config.py`.
@@ -42,6 +43,10 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 | Docs links: deep links follow the docs' `latest`, so a docs release needs no change here | `DOCS_V` in `config.py`; the build checks every docs page opens, and links one that `latest` lacks to the version behind `latest` until it has it |
 | /features "Faster than speech": the row for how fast people talk | `SPEECH_ROW` in `config.py` |
 | Animation clock of the design logic (dice, dial): animation frames instead of the design's 25 steps a second | `tryllClock` in `assets/js/site.js`, swapped in by `write_logic` in `build.py` |
+| Homepage die drawn in WebGL (the design's three.js r160, `assets/site/<hash>.js`): loads 2.5 screens before the dice section, starts up in steps at quiet moments (no scrolling or swiping, die at rest) so nothing stutters, and redraws only when the die moves; the design's SVG die shows until then, and for good without WebGL or with Save-Data | `dice_3d` and `D3_*` in `build.py` |
+| Footer: the homepage's (logo, page links, social icons, copyright, Back to top) on every design page that still has the old one | `site_footer`, `new_footer` in `build.py`; "Cookie Settings" goes after the copyright (`cookie-consent.js`) |
+| Client quotes on phones: each card as tall as its quote, the carousel eases to the card in view (the design's logic) and fits again once the web font is in | `quotes_fit` in `build.py` |
+| 404 page ("This page rolled a zero"): served by Cloudflare Pages for any unknown URL, `noindex`, not in the sitemap | `'404'` in `PAGES` in `config.py` |
 | "How to build" videos (YouTube playlists, titles, lengths) | `VIDEO_LISTS` in `config.py`; thumbnails are saved to `assets/images/videos/` |
 | "Coming soon" instead of downloads | `DOWNLOADS_LIVE` and `COMING_SOON` in `config.py` (see below) |
 | Trailer clips: which seconds, crops, sizes; the trailer's YouTube link (empty: no "Watch on YouTube" on the hero) | `CLIPS`, `TRAILER_URL` in `config.py`; `clips.py` writes `assets/video/`. The clips are cut without the trailer's subtitles, which are wider than their crops and too small to read on phones, and show its lines as captions instead (`captions` in `CLIPS`, timed from the subtitled trailer, drawn by `clips.js`) |
@@ -58,7 +63,11 @@ Only Python 3 is needed (no packages). Baking also needs Chrome or Edge.
 
 ## Generated files: don't edit by hand
 
-`index.html`, `features.html`, `download.html`, `demo.html`, `about.html`, `blog.html`, `privacy-policy.html`, `closed-beta.html`, `blog/posts/*/index.html`, `assets/js/pages/*.js` and `sitemap.xml` are rewritten by `build.py`. Change the design, `config.py` or the blog sources instead.
+`index.html`, `features.html`, `download.html`, `demo.html`, `about.html`, `blog.html`, `privacy-policy.html`, `404.html`, `closed-beta.html`, `blog/posts/*/index.html`, `assets/js/pages/*.js` and `sitemap.xml` are rewritten by `build.py`. Change the design, `config.py` or the blog sources instead.
+
+## Parts exports
+
+The designer sometimes sends only the parts that changed: one file per part (`dice-section.html`, `footer.html`, ...), each the whole page with a rule that hides all but that part (`/* parts export: only this section */` and the `.pg>*:not(...)` line after it), plus `support.js` and `assets/`. To bring them in, make an export folder with `support.js`, `assets/` and each page under its design name (`index.html` from any one of the homepage's parts, without those two lines; `404.html` as it is), then bake just those pages, e.g. `bake.py "<folder>" index 404`. bake.py copies only the files the baked pages use. The 11-04 parts redesigned the footer on the homepage and the 404 page only; `build.py` gives the other pages the homepage's footer until a full export has it everywhere.
 
 Hand-written pages from the old design still live at their URLs and are untouched by the build: `tryll-assistant.html`, `boscotryll.html` and `tryll-plugin-alpha.html`.
 

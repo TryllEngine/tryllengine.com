@@ -6,8 +6,9 @@
  * no cookies until the visitor accepts. The choice is stored in
  * localStorage and re-applied on every page load.
  *
- * A "Cookie Settings" link is injected into the footer next to the
- * Privacy Policy link so consent can be changed at any time
+ * A "Cookie Settings" link is injected into the footer (after the
+ * copyright on the design pages, next to the Privacy Policy link on the
+ * old ones) so consent can be changed at any time
  * (window.tryllCookieSettings() reopens the banner).
  */
 (function () {
@@ -169,19 +170,27 @@
     // --- Footer "Cookie Settings" link -----------------------------------
     function injectFooterLink() {
         if (document.getElementById('tryll-cookie-settings-link')) return;
-        // The last one: some footers hold a newsletter form whose fine print links the policy too.
-        var links = document.querySelectorAll('footer a[href*="privacy-policy"]');
-        var privacyLink = links[links.length - 1];
-        if (!privacyLink) return;
         var link = document.createElement('a');
         link.id = 'tryll-cookie-settings-link';
         link.href = '#';
         link.textContent = 'Cookie Settings';
-        link.className = privacyLink.className;
         link.addEventListener('click', function (e) {
             e.preventDefault();
             showBanner();
         });
+        // Design pages: in the footer's bottom row, after the copyright (styled in site.css),
+        // so the row of page links keeps the design's one line.
+        var copyright = document.querySelector('footer .r2 > span');
+        if (copyright) {
+            copyright.parentNode.insertBefore(link, copyright.nextSibling);
+            return;
+        }
+        // Old pages: next to the Privacy Policy link. The last one: some footers hold a
+        // newsletter form whose fine print links the policy too.
+        var links = document.querySelectorAll('footer a[href*="privacy-policy"]');
+        var privacyLink = links[links.length - 1];
+        if (!privacyLink) return;
+        link.className = privacyLink.className;
         privacyLink.parentNode.insertBefore(link, privacyLink.nextSibling);
     }
 

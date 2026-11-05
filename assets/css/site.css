@@ -163,9 +163,17 @@ input.hp { position: absolute !important; left: -9999px !important; width: 1px; 
         background: linear-gradient(270deg, #161D29 0%, rgba(22, 29, 41, 0) 16%); }
 }
 
-/* The hero's badges and the footer's "Epic MegaGrants recipient" are links (build.py badge_links). */
-.pg .hv-bd a, .pg .fr a.cp { color: inherit; text-decoration: none; }
-.pg .hv-bd a:not(.hbl):hover, .pg .fr a.cp:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* Footer: "Cookie Settings" (assets/js/cookie-consent.js) follows the copyright in the bottom row,
+   in its type; in the row of page links it pushed that row onto a second line. */
+.fva .r2 #tryll-cookie-settings-link { margin-right: auto; font-size: 14px; color: rgba(24, 23, 22, .72); }
+.fva .r2 #tryll-cookie-settings-link:hover { color: #181716; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 640px) {
+    .fva .r2 #tryll-cookie-settings-link { margin: -12px 0; padding: 12px 0; }   /* a finger-sized target */
+}
+
+/* The hero's badges are links (build.py badge_links). */
+.pg .hv-bd a { color: inherit; text-decoration: none; }
+.pg .hv-bd a:not(.hbl):hover { text-decoration: underline; text-underline-offset: 3px; }
 .pg .hv-bd .hbl { display: flex; }
 
 /* Phones (the Smart NPCs clips are about 145px wide there): the "Before" / "With Tryll" label

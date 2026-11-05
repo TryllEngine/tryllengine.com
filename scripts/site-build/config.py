@@ -213,8 +213,8 @@ CLIENT_QUOTES = [
               'and iterate faster, allowing me to focus on making the robot feel responsive and alive.'},
 ]
 
-# The hero's badges and the footer's "Epic MegaGrants recipient" link out (build.py
-# badge_links): the grant's blog post; EGV's logo to their site, its text to the news.
+# The hero's badges link out (build.py badge_links): Epic MegaGrants to the grant's blog
+# post; EGV's logo to their site, its text to the news.
 EPIC_MEGAGRANT = '/blog/posts/epic-megagrant-from-unreal-engine/'
 EGV_SITE = 'https://earlygame.vc/'
 EGV_NEWS = MEDIA_LINKS['tech.eu']
@@ -303,6 +303,7 @@ TODO = 'TODO:'   # prefix: link stays href="#" with data-todo, build prints it
 # aria-label for icon-only links. A list means "nth occurrence on the page".
 COMMON_LINKS = {
     'Docs': DOCS,
+    'Read the docs': DOCS,   # 404 page
     'Discord': DISCORD,
     'Join Discord': DISCORD,
     'Discord Never build alone. Join us on Discord': DISCORD,
@@ -415,6 +416,13 @@ PAGES = {
         'title': 'Privacy Policy — Tryll Engine',
         'description': 'How Tryll Engine, Inc. handles personal data of visitors to tryllengine.com: '
                        'contact forms, the newsletter, cookies and analytics, and your rights under GDPR.',
+    },
+    # Cloudflare Pages answers every unknown URL with this page and status 404. Not indexed,
+    # not in the sitemap.
+    '404': {
+        'out': '404.html', 'path': '/404', 'noindex': True,
+        'title': 'Page not found — Tryll Engine',
+        'description': 'This page isn’t on tryllengine.com. The link may be broken, or the page has moved.',
     },
 }
 

@@ -98,6 +98,13 @@ input.hp { position: absolute !important; left: -9999px !important; width: 1px; 
 
 /* "How to get started": the screenshot sits in the middle of the card's height, not at the top. */
 .pg .gs .gim { align-self: center; }
+/* On wider screens its cards stack as you scroll, each sliding over the one before. The first
+   screenshot is taller than the other two (1786x1097 against 1683x892), so the first card was
+   taller and showed under the second. It takes their shape, kept from the top (the zoom button
+   still opens it whole). */
+@media (min-width: 901px) {
+    .pg .gstack > .gs:nth-child(1) .gim { aspect-ratio: 1683 / 892; --g1-y: 0%; }
+}
 
 /* Use-case cards: when the text column was taller, the design stretched the 16:10 picture to
    the row height, which made it wider than its column and pushed it over the text. Keep it

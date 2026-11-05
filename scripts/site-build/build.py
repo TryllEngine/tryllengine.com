@@ -581,8 +581,27 @@ def quotes_fit(logic):
     return logic
 
 
+# Reading progress beside a post and the privacy policy: the design counted how much of the
+# article had passed the middle of the window, so a short post, which can't scroll that far,
+# stopped at 29% with all of it on screen. It is 100% once the article's end is in view, and
+# counted again when the page has loaded (the lead picture moves the article) and on resize.
+DESIGN_PROGRESS = 'const p = Math.max(0, Math.min(1, (vh * 0.5 - r.top) / Math.max(1, r.height)));'
+READ_PROGRESS = 'const s = vh * 0.5 - r.top, rem = r.bottom - vh, p = rem <= 0 ? 1 : s <= 0 ? 0 : s / (s + rem);'
+DESIGN_PROGRESS_ON = "window.addEventListener('scroll', this._on, { passive: true }); this._on();"
+READ_PROGRESS_ON = ("window.addEventListener('scroll', this._on, { passive: true }); "
+                    "window.addEventListener('resize', this._on); window.addEventListener('load', this._on); this._on();")
+
+
+def reading_progress(name, logic):
+    if DESIGN_PROGRESS not in logic:
+        return logic
+    if logic.count(DESIGN_PROGRESS_ON) != 1:
+        raise SystemExit(f'{name}: reading progress logic changed: {DESIGN_PROGRESS_ON}')
+    return logic.replace(DESIGN_PROGRESS, READ_PROGRESS).replace(DESIGN_PROGRESS_ON, READ_PROGRESS_ON)
+
+
 def write_logic(name, baked):
-    logic = baked.logic.replace(DESIGN_CLOCK, SMOOTH_CLOCK)
+    logic = reading_progress(name, baked.logic.replace(DESIGN_CLOCK, SMOOTH_CLOCK))
     if name == 'about':
         anchor = 'o.ci = f.i;'
         if anchor not in logic:
